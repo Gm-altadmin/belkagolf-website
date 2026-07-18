@@ -172,6 +172,15 @@
   .cf-field label { font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.5); }
   .cf-field input, .cf-field select, .cf-field textarea { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); color:#fff; padding:11px 12px; font-family:'Jost',sans-serif; font-size:.85rem; border-radius:2px; }
   .cf-field select option { color:#1a1a1a; }
+  .chip-group { display:flex; flex-wrap:wrap; gap:8px; }
+  .chip {
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.75);
+    padding:9px 16px; border-radius:20px; font-family:'Jost',sans-serif; font-size:.78rem; letter-spacing:.02em;
+    cursor:pointer; transition:all .2s;
+  }
+  .chip:hover { border-color:rgba(184,146,58,.6); color:#fff; }
+  .chip.active { background:#b8923a; border-color:#b8923a; color:#fff; font-weight:500; }
+  input[type="date"] { color-scheme:dark; }
   .cf-field textarea { resize:vertical; min-height:70px; }
   .cf-note { margin-top:14px; font-size:.72rem; color:rgba(255,255,255,.45); text-align:center; }
   .cf-submit { margin-top:6px; background:#b8923a; color:#fff; border:none; padding:15px 28px; font-size:.7rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; border-radius:2px; transition:background .3s; }
@@ -394,11 +403,42 @@
       <div class="cf-grid">
         <div class="cf-field"><label for="q-name" data-i18n="cf_name">Full Name</label><input id="q-name" type="text" required/></div>
         <div class="cf-field"><label for="q-contact" data-i18n="cf_contact">Phone or Email</label><input id="q-contact" type="text" required/></div>
-        <div class="cf-field"><label for="q-dates" data-i18n="cf_dates">Preferred Dates</label><input id="q-dates" type="text" data-i18n-placeholder="cf_dates_ph" placeholder="e.g. 12–19 May 2027"/></div>
-        <div class="cf-field"><label for="q-golfers" data-i18n="cf_golfers">Golfers</label>
-          <select id="q-golfers"><option>1</option><option selected>2</option><option>3</option><option>4</option><option data-i18n="cf_group">Group (5+)</option></select>
+        <div class="cf-field"><label for="q-date" data-i18n="cf_start_date">Start Date</label><input id="q-date" type="date"/></div>
+
+        <div class="cf-field full">
+          <label data-i18n="cf_nights">Nights</label>
+          <div class="chip-group" data-field="nights">
+            <button type="button" class="chip">3</button>
+            <button type="button" class="chip active">5</button>
+            <button type="button" class="chip">7</button>
+            <button type="button" class="chip">10</button>
+            <button type="button" class="chip" data-i18n="cf_chip_14plus">14+</button>
+          </div>
         </div>
-        <div class="cf-field full"><label for="q-msg" data-i18n="cf_msg">Tell us what you're after</label><textarea id="q-msg" data-i18n-placeholder="cf_msg_ph" placeholder="Rounds of golf, preferred hotel or course, handicap, budget range — anything helps us tailor your quote."></textarea></div>
+
+        <div class="cf-field full">
+          <label data-i18n="cf_golfers">Golfers</label>
+          <div class="chip-group" data-field="golfers">
+            <button type="button" class="chip">1</button>
+            <button type="button" class="chip active">2</button>
+            <button type="button" class="chip">3</button>
+            <button type="button" class="chip">4</button>
+            <button type="button" class="chip" data-i18n="cf_group">Group (5+)</button>
+          </div>
+        </div>
+
+        <div class="cf-field full">
+          <label data-i18n="cf_rounds">Rounds of Golf</label>
+          <div class="chip-group" data-field="rounds">
+            <button type="button" class="chip">1</button>
+            <button type="button" class="chip">2</button>
+            <button type="button" class="chip active">3</button>
+            <button type="button" class="chip">4</button>
+            <button type="button" class="chip" data-i18n="cf_unlimited">Unlimited</button>
+          </div>
+        </div>
+
+        <div class="cf-field full"><label for="q-msg" data-i18n="cf_msg_alt">Anything else? (optional)</label><textarea id="q-msg" data-i18n-placeholder="cf_msg_ph_alt" placeholder="Preferred hotel or course, handicap, budget range..."></textarea></div>
       </div>
       <button type="submit" class="cf-submit" style="margin-top:18px" data-i18n="cf_submit">Send via WhatsApp</button>
       <p class="cf-note" data-i18n="cf_note">A local Belek specialist replies personally — usually within a day.</p>
@@ -523,6 +563,21 @@ const io = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 /* ══ WHATSAPP INQUIRY ══ */
+/* ══ SEÇİM ÇİPLERİ (chip) ══ */
+document.querySelectorAll('.chip-group').forEach(group => {
+  group.addEventListener('click', (e) => {
+    const btn = e.target.closest('.chip');
+    if (!btn) return;
+    group.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+function chipValue(field) {
+  const group = document.querySelector(`.chip-group[data-field="${field}"]`);
+  const active = group ? group.querySelector('.chip.active') : null;
+  return active ? active.textContent.trim() : '';
+}
+
 function sendInquiry(ev){
   ev.preventDefault();
   const v = id => document.getElementById(id).value;
@@ -530,8 +585,10 @@ function sendInquiry(ev){
     'Golf holiday inquiry:',
     'Name: ' + v('q-name'),
     'Contact: ' + v('q-contact'),
-    'Preferred dates: ' + (v('q-dates') || '—'),
-    'Golfers: ' + v('q-golfers'),
+    'Start date: ' + (v('q-date') || '—'),
+    'Nights: ' + chipValue('nights'),
+    'Golfers: ' + chipValue('golfers'),
+    'Rounds of golf: ' + chipValue('rounds'),
     'Details: ' + (v('q-msg') || '—')
   ];
   const text = encodeURIComponent(lines.join('\n'));
@@ -582,8 +639,8 @@ const t = {
     gal_eyebrow:'Belek', gal_title:'Courses & Coastline',
     contact_eyebrow:'Get In Touch', contact_title:"Tell us what you're after", contact_desc:"Send your dates, group size and preferred courses — we'll reply with a tailored offer, usually within a day.",
     ci_addr_label:'Address', ci_phone_label:'Phone / WhatsApp', ci_email_label:'Email',
-    cf_name:'Full Name', cf_contact:'Phone or Email', cf_dates:'Preferred Dates', cf_dates_ph:'e.g. 12–19 May 2027', cf_golfers:'Golfers', cf_group:'Group (5+)',
-    cf_msg:"Tell us what you're after", cf_msg_ph:'Rounds of golf, preferred hotel or course, handicap, budget range — anything helps us tailor your quote.', cf_submit:'Send via WhatsApp',
+    cf_name:'Full Name', cf_contact:'Phone or Email', cf_start_date:'Start Date', cf_nights:'Nights', cf_golfers:'Golfers', cf_group:'Group (5+)', cf_rounds:'Rounds of Golf', cf_unlimited:'Unlimited', cf_chip_14plus:'14+',
+    cf_msg_alt:'Anything else? (optional)', cf_msg_ph_alt:'Preferred hotel or course, handicap, budget range...', cf_submit:'Send via WhatsApp',
     cf_note:'A local Belek specialist replies personally — usually within a day.',
     footer_desc:'Golf holidays in Belek, Antalya — courses, hotels, transfers and tee times, arranged by a local team.',
     footer_explore:'Explore', footer_apart:'Belka Golf Residence', footer_rights:'All rights reserved.'
@@ -629,8 +686,8 @@ const t = {
     gal_eyebrow:'Belek', gal_title:'Sahalar & Kıyı Şeridi',
     contact_eyebrow:'İletişime Geçin', contact_title:'Ne aradığınızı bize anlatın', contact_desc:'Tarihlerinizi, grup büyüklüğünüzü ve tercih ettiğiniz sahaları gönderin — genelde aynı gün içinde size özel bir teklifle döneriz.',
     ci_addr_label:'Adres', ci_phone_label:'Telefon / WhatsApp', ci_email_label:'E-posta',
-    cf_name:'Ad Soyad', cf_contact:'Telefon veya E-posta', cf_dates:'Tercih Edilen Tarihler', cf_dates_ph:'ör. 12–19 Mayıs 2027', cf_golfers:'Golfçü Sayısı', cf_group:'Grup (5+)',
-    cf_msg:'Ne aradığınızı bize anlatın', cf_msg_ph:'Round sayısı, tercih edilen otel/saha, handikap, bütçe aralığı — her detay teklifi size göre şekillendirmemize yardımcı olur.', cf_submit:'WhatsApp ile Gönder',
+    cf_name:'Ad Soyad', cf_contact:'Telefon veya E-posta', cf_start_date:'Başlangıç Tarihi', cf_nights:'Gece Sayısı', cf_golfers:'Golfçü Sayısı', cf_group:'Grup (5+)', cf_rounds:'Round Sayısı', cf_unlimited:'Sınırsız', cf_chip_14plus:'14+',
+    cf_msg_alt:'Eklemek istediğiniz bir şey var mı? (opsiyonel)', cf_msg_ph_alt:'Tercih edilen otel/saha, handikap, bütçe aralığı...', cf_submit:'WhatsApp ile Gönder',
     cf_note:'Belek\'teki yerel bir uzman kişisel olarak yanıtlar — genelde aynı gün içinde.',
     footer_desc:"Belek, Antalya'da golf tatili — sahalar, oteller, transferler ve tee-time'lar, yerel bir ekip tarafından ayarlanır.",
     footer_explore:'Keşfet', footer_apart:'Belka Golf Residence', footer_rights:'Tüm hakları saklıdır.'
@@ -676,8 +733,8 @@ const t = {
     gal_eyebrow:'Belek', gal_title:'Plätze & Küste',
     contact_eyebrow:'Kontaktieren Sie Uns', contact_title:"Sagen Sie uns, was Sie suchen", contact_desc:"Senden Sie uns Ihre Reisedaten, Gruppengröße und bevorzugten Plätze — wir antworten meist innerhalb eines Tages mit einem individuellen Angebot.",
     ci_addr_label:'Adresse', ci_phone_label:'Telefon / WhatsApp', ci_email_label:'E-Mail',
-    cf_name:'Vollständiger Name', cf_contact:'Telefon oder E-Mail', cf_dates:'Bevorzugte Reisedaten', cf_dates_ph:'z. B. 12.–19. Mai 2027', cf_golfers:'Golfer', cf_group:'Gruppe (5+)',
-    cf_msg:"Sagen Sie uns, was Sie suchen", cf_msg_ph:'Anzahl der Golfrunden, bevorzugtes Hotel oder Platz, Handicap, Budgetrahmen — jedes Detail hilft uns, Ihr Angebot maßzuschneidern.', cf_submit:'Per WhatsApp Senden',
+    cf_name:'Vollständiger Name', cf_contact:'Telefon oder E-Mail', cf_start_date:'Anreisedatum', cf_nights:'Nächte', cf_golfers:'Golfer', cf_group:'Gruppe (5+)', cf_rounds:'Anzahl der Golfrunden', cf_unlimited:'Unbegrenzt', cf_chip_14plus:'14+',
+    cf_msg_alt:'Sonstige Anmerkungen? (optional)', cf_msg_ph_alt:'Bevorzugtes Hotel oder Platz, Handicap, Budgetrahmen...', cf_submit:'Per WhatsApp Senden',
     cf_note:'Ein lokaler Belek-Spezialist antwortet persönlich — meist innerhalb eines Tages.',
     footer_desc:'Golfurlaub in Belek, Antalya — Plätze, Hotels, Transfers und Startzeiten, organisiert von einem lokalen Team.',
     footer_explore:'Entdecken', footer_apart:'Belka Golf Residence', footer_rights:'Alle Rechte vorbehalten.'
@@ -723,8 +780,8 @@ const t = {
     gal_eyebrow:'Белек', gal_title:'Поля и Побережье',
     contact_eyebrow:'Связаться с Нами', contact_title:'Расскажите, что вы ищете', contact_desc:'Пришлите даты поездки, размер группы и предпочитаемые поля — мы ответим с индивидуальным предложением, обычно в течение дня.',
     ci_addr_label:'Адрес', ci_phone_label:'Телефон / WhatsApp', ci_email_label:'Эл. почта',
-    cf_name:'Полное Имя', cf_contact:'Телефон или Эл. почта', cf_dates:'Предпочитаемые Даты', cf_dates_ph:'напр., 12–19 мая 2027', cf_golfers:'Игроков', cf_group:'Группа (5+)',
-    cf_msg:'Расскажите, что вы ищете', cf_msg_ph:'Количество раундов гольфа, предпочитаемый отель или поле, гандикап, бюджет — любая деталь поможет составить предложение специально для вас.', cf_submit:'Отправить через WhatsApp',
+    cf_name:'Полное Имя', cf_contact:'Телефон или Эл. почта', cf_start_date:'Дата Начала', cf_nights:'Ночей', cf_golfers:'Игроков', cf_group:'Группа (5+)', cf_rounds:'Раундов Гольфа', cf_unlimited:'Без Ограничений', cf_chip_14plus:'14+',
+    cf_msg_alt:'Что-то ещё? (необязательно)', cf_msg_ph_alt:'Предпочитаемый отель или поле, гандикап, бюджет...', cf_submit:'Отправить через WhatsApp',
     cf_note:'Местный специалист по Белеку отвечает лично — обычно в течение дня.',
     footer_desc:'Гольф-отдых в Белеке, Анталья — поля, отели, трансферы и время старта, организовано местной командой.',
     footer_explore:'Разделы', footer_apart:'Belka Golf Residence', footer_rights:'Все права защищены.'
