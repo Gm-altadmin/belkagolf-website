@@ -184,7 +184,10 @@
   input[type="date"] { color-scheme:dark; }
   .cf-field textarea { resize:vertical; min-height:70px; }
   .cf-note { margin-top:14px; font-size:.72rem; color:rgba(255,255,255,.45); text-align:center; }
-  .cf-submit { margin-top:6px; background:#b8923a; color:#fff; border:none; padding:15px 28px; font-size:.7rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; border-radius:2px; transition:background .3s; }
+  .cf-btn-row { display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; }
+  .cf-submit { margin-top:6px; background:#b8923a; color:#fff; border:none; padding:15px 28px; font-size:.7rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; border-radius:2px; transition:background .3s; flex:1 1 200px; }
+  .cf-submit-wa { background:#25d366; }
+  .cf-submit.cf-submit-wa:hover { background:#1fb959; }
   .cf-submit:hover { background:#a07c2e; }
   @media (max-width:900px){ .contact-grid{grid-template-columns:1fr} .cf-grid{grid-template-columns:1fr} }
 
@@ -261,6 +264,7 @@
       <button class="lang-btn" data-lang="tr" onclick="setLang('tr')">TR</button>
       <button class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
       <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</button>
+      <button class="lang-btn" data-lang="sv" onclick="setLang('sv')">SV</button>
     </div>
     <button class="hamburger" onclick="document.getElementById('mnav').classList.add('open')">☰</button>
   </div>
@@ -316,7 +320,7 @@
       <div class="intro-stats reveal">
         <div class="intro-stat"><b>16+</b><span data-i18n="stat1">Golf Courses</span></div>
         <div class="intro-stat"><b>19</b><span data-i18n="stat2">Partner Hotels</span></div>
-        <div class="intro-stat"><b>4</b><span data-i18n="stat3">Languages Spoken</span></div>
+        <div class="intro-stat"><b>5</b><span data-i18n="stat3">Languages Spoken</span></div>
       </div>
     </div>
     <div class="intro-image reveal">
@@ -515,7 +519,10 @@
 
         <div class="cf-field full"><label for="q-msg" data-i18n="cf_msg_alt">Anything else? (optional)</label><textarea id="q-msg" data-i18n-placeholder="cf_msg_ph_alt" placeholder="Preferred hotel or course, handicap, budget range..."></textarea></div>
       </div>
-      <button type="submit" class="cf-submit" style="margin-top:18px" data-i18n="cf_submit">Send via WhatsApp</button>
+      <div class="cf-btn-row">
+        <button type="submit" class="cf-submit" data-i18n="cf_submit">Send via Email</button>
+        <button type="button" class="cf-submit cf-submit-wa" onclick="sendInquiryWhatsApp()"><svg class="icon icon-solid" aria-hidden="true" style="width:1.1em;height:1.1em;vertical-align:-0.18em;margin-right:6px;"><use href="#i-whatsapp"/></svg><span data-i18n="cf_submit_wa">Send via WhatsApp</span></button>
+      </div>
       <p class="cf-note" data-i18n="cf_note">A local Belek specialist replies personally — usually within a day.</p>
     </form>
   </div>
@@ -653,23 +660,60 @@ function chipValue(field) {
   return active ? active.textContent.trim() : '';
 }
 
+function toBold(str) {
+  // Basit ve her e-posta programında/fontta güvenle görünen yöntem: büyük harf
+  return str.toUpperCase();
+}
+
 function sendInquiry(ev){
   ev.preventDefault();
   const v = id => document.getElementById(id).value;
+  const hotel = v('q-hotel');
+  const line = '─────────────────────────';
   const lines = [
-    'Golf holiday inquiry:',
-    'Hotel: ' + v('q-hotel'),
-    'Name: ' + v('q-name'),
-    'Contact: ' + v('q-contact'),
-    'Start date: ' + (v('q-date') || '—'),
-    'Nights: ' + chipValue('nights'),
-    'Golfers: ' + chipValue('golfers'),
-    'Rounds of golf: ' + chipValue('rounds'),
-    'Details: ' + (v('q-msg') || '—')
+    toBold('NEW GOLF HOLIDAY INQUIRY'),
+    line,
+    '',
+    toBold('Hotel:') + ' ' + hotel,
+    toBold('Name:') + ' ' + v('q-name'),
+    toBold('Contact:') + ' ' + v('q-contact'),
+    '',
+    line,
+    toBold('Start date:') + ' ' + (v('q-date') || '—'),
+    toBold('Nights:') + ' ' + chipValue('nights'),
+    toBold('Golfers:') + ' ' + chipValue('golfers'),
+    toBold('Rounds:') + ' ' + chipValue('rounds'),
+    line,
+    '',
+    toBold('Additional details:'),
+    (v('q-msg') || '—'),
+    '',
+    line,
+    'Sent from belkagolf.com'
+  ];
+  const subject = encodeURIComponent('Golf Holiday Inquiry — ' + hotel);
+  const body = encodeURIComponent(lines.join('\n'));
+  window.location.href = 'mailto:info@belkagolf.com?subject=' + subject + '&body=' + body;
+  return false;
+}
+
+function sendInquiryWhatsApp(){
+  const v = id => document.getElementById(id).value;
+  const hotel = v('q-hotel');
+  const lines = [
+    '⛳ *New Golf Holiday Inquiry*',
+    '',
+    '🏨 Hotel: ' + hotel,
+    '👤 Name: ' + v('q-name'),
+    '✉️ Contact: ' + v('q-contact'),
+    '📅 Start date: ' + (v('q-date') || '—'),
+    '🌙 Nights: ' + chipValue('nights'),
+    '👥 Golfers: ' + chipValue('golfers'),
+    '⛳ Rounds: ' + chipValue('rounds'),
+    '📝 Details: ' + (v('q-msg') || '—')
   ];
   const text = encodeURIComponent(lines.join('\n'));
   window.open('https://wa.me/905322622773?text=' + text, '_blank');
-  return false;
 }
 
 /* ══ i18n (EN default / TR) ══ */
@@ -711,12 +755,12 @@ const t = {
     svc1_name:'Private Transfers', svc1_desc:'Airport and course-to-course transfers, timed around your tee times.',
     svc2_name:'Tee-Time Booking', svc2_desc:"Guaranteed tee times across Belek's courses, confirmed before you travel.",
     svc3_name:'Group & Society Golf', svc3_desc:'Tournaments, corporate days and society trips of 8 to 40+ golfers.',
-    svc4_name:'Multilingual Support', svc4_desc:'English, Turkish, German and Russian — a real person, throughout your stay.',
+    svc4_name:'Multilingual Support', svc4_desc:'English, Turkish, German, Russian and Swedish — a real person, throughout your stay.',
     gal_eyebrow:'Belek', gal_title:'Courses & Coastline',
     contact_eyebrow:'Get In Touch', contact_title:"Tell us what you're after", contact_desc:"Send your dates, group size and preferred courses — we'll reply with a tailored offer, usually within a day.",
     ci_addr_label:'Address', ci_phone_label:'Phone / WhatsApp', ci_email_label:'Email',
     cf_hotel:'Which Hotel?', cf_hotel_all:'All Hotels — General Offer', cf_name:'Full Name', cf_contact:'Phone or Email', cf_start_date:'Start Date', cf_nights:'Nights', cf_golfers:'Golfers', cf_group:'Group (5+)', cf_rounds:'Rounds of Golf', cf_unlimited:'Unlimited', cf_chip_14plus:'14+',
-    cf_msg_alt:'Anything else? (optional)', cf_msg_ph_alt:'Preferred hotel or course, handicap, budget range...', cf_submit:'Send via WhatsApp',
+    cf_msg_alt:'Anything else? (optional)', cf_msg_ph_alt:'Preferred hotel or course, handicap, budget range...', cf_submit:'Send via Email', cf_submit_wa:'Send via WhatsApp',
     cf_note:'A local Belek specialist replies personally — usually within a day.',
     footer_desc:'Golf holidays in Belek, Antalya — courses, hotels, transfers and tee times, arranged by a local team.',
     footer_explore:'Explore', footer_apart:'Belka Golf Residence', footer_rights:'All rights reserved.'
@@ -758,12 +802,12 @@ const t = {
     svc1_name:'Özel Transferler', svc1_desc:'Havalimanı ve sahalar arası transferler, tee-time saatlerinize göre ayarlanır.',
     svc2_name:'Tee-Time Rezervasyonu', svc2_desc:"Belek'in sahalarında, seyahatinizden önce onaylanmış garantili tee-time'lar.",
     svc3_name:'Grup & Kulüp Golfü', svc3_desc:'8 ila 40+ golfçüden oluşan turnuvalar, kurumsal günler ve kulüp gezileri.',
-    svc4_name:'Çok Dilli Destek', svc4_desc:'İngilizce, Türkçe, Almanca ve Rusça — tatiliniz boyunca gerçek bir kişi.',
+    svc4_name:'Çok Dilli Destek', svc4_desc:'İngilizce, Türkçe, Almanca, Rusça ve İsveççe — tatiliniz boyunca gerçek bir kişi.',
     gal_eyebrow:'Belek', gal_title:'Sahalar & Kıyı Şeridi',
     contact_eyebrow:'İletişime Geçin', contact_title:'Ne aradığınızı bize anlatın', contact_desc:'Tarihlerinizi, grup büyüklüğünüzü ve tercih ettiğiniz sahaları gönderin — genelde aynı gün içinde size özel bir teklifle döneriz.',
     ci_addr_label:'Adres', ci_phone_label:'Telefon / WhatsApp', ci_email_label:'E-posta',
     cf_hotel:'Hangi Otel?', cf_hotel_all:'Tüm Oteller — Genel Teklif', cf_name:'Ad Soyad', cf_contact:'Telefon veya E-posta', cf_start_date:'Başlangıç Tarihi', cf_nights:'Gece Sayısı', cf_golfers:'Golfçü Sayısı', cf_group:'Grup (5+)', cf_rounds:'Round Sayısı', cf_unlimited:'Sınırsız', cf_chip_14plus:'14+',
-    cf_msg_alt:'Eklemek istediğiniz bir şey var mı? (opsiyonel)', cf_msg_ph_alt:'Tercih edilen otel/saha, handikap, bütçe aralığı...', cf_submit:'WhatsApp ile Gönder',
+    cf_msg_alt:'Eklemek istediğiniz bir şey var mı? (opsiyonel)', cf_msg_ph_alt:'Tercih edilen otel/saha, handikap, bütçe aralığı...', cf_submit:'E-posta ile Gönder', cf_submit_wa:'WhatsApp ile Gönder',
     cf_note:'Belek\'teki yerel bir uzman kişisel olarak yanıtlar — genelde aynı gün içinde.',
     footer_desc:"Belek, Antalya'da golf tatili — sahalar, oteller, transferler ve tee-time'lar, yerel bir ekip tarafından ayarlanır.",
     footer_explore:'Keşfet', footer_apart:'Belka Golf Residence', footer_rights:'Tüm hakları saklıdır.'
@@ -805,12 +849,12 @@ const t = {
     svc1_name:'Private Transfers', svc1_desc:'Flughafen- und Platz-zu-Platz-Transfers, abgestimmt auf Ihre Startzeiten.',
     svc2_name:'Startzeiten-Buchung', svc2_desc:"Garantierte Startzeiten auf allen Plätzen in Belek, bestätigt vor Ihrer Abreise.",
     svc3_name:'Gruppen- & Vereinsgolf', svc3_desc:'Turniere, Firmenevents und Vereinsreisen für 8 bis über 40 Golfer.',
-    svc4_name:'Mehrsprachiger Support', svc4_desc:'Englisch, Türkisch, Deutsch und Russisch — eine echte Person, während Ihres gesamten Aufenthalts.',
+    svc4_name:'Mehrsprachiger Support', svc4_desc:'Englisch, Türkisch, Deutsch, Russisch und Schwedisch — eine echte Person, während Ihres gesamten Aufenthalts.',
     gal_eyebrow:'Belek', gal_title:'Plätze & Küste',
     contact_eyebrow:'Kontaktieren Sie Uns', contact_title:"Sagen Sie uns, was Sie suchen", contact_desc:"Senden Sie uns Ihre Reisedaten, Gruppengröße und bevorzugten Plätze — wir antworten meist innerhalb eines Tages mit einem individuellen Angebot.",
     ci_addr_label:'Adresse', ci_phone_label:'Telefon / WhatsApp', ci_email_label:'E-Mail',
     cf_hotel:'Welches Hotel?', cf_hotel_all:'Alle Hotels — Allgemeines Angebot', cf_name:'Vollständiger Name', cf_contact:'Telefon oder E-Mail', cf_start_date:'Anreisedatum', cf_nights:'Nächte', cf_golfers:'Golfer', cf_group:'Gruppe (5+)', cf_rounds:'Anzahl der Golfrunden', cf_unlimited:'Unbegrenzt', cf_chip_14plus:'14+',
-    cf_msg_alt:'Sonstige Anmerkungen? (optional)', cf_msg_ph_alt:'Bevorzugtes Hotel oder Platz, Handicap, Budgetrahmen...', cf_submit:'Per WhatsApp Senden',
+    cf_msg_alt:'Sonstige Anmerkungen? (optional)', cf_msg_ph_alt:'Bevorzugtes Hotel oder Platz, Handicap, Budgetrahmen...', cf_submit:'Per E-Mail Senden', cf_submit_wa:'Per WhatsApp Senden',
     cf_note:'Ein lokaler Belek-Spezialist antwortet persönlich — meist innerhalb eines Tages.',
     footer_desc:'Golfurlaub in Belek, Antalya — Plätze, Hotels, Transfers und Startzeiten, organisiert von einem lokalen Team.',
     footer_explore:'Entdecken', footer_apart:'Belka Golf Residence', footer_rights:'Alle Rechte vorbehalten.'
@@ -852,15 +896,62 @@ const t = {
     svc1_name:'Частные Трансферы', svc1_desc:'Трансферы из аэропорта и между полями, согласованные с вашим временем старта.',
     svc2_name:'Бронирование Времени Старта', svc2_desc:'Гарантированное время старта на полях Белека, подтверждённое до вашей поездки.',
     svc3_name:'Групповой и Клубный Гольф', svc3_desc:'Турниры, корпоративные мероприятия и клубные поездки для 8–40+ игроков.',
-    svc4_name:'Поддержка на Разных Языках', svc4_desc:'Английский, турецкий, немецкий и русский — живой человек на связи в течение всего вашего пребывания.',
+    svc4_name:'Поддержка на Разных Языках', svc4_desc:'Английский, турецкий, немецкий, русский и шведский — живой человек на связи в течение всего вашего пребывания.',
     gal_eyebrow:'Белек', gal_title:'Поля и Побережье',
     contact_eyebrow:'Связаться с Нами', contact_title:'Расскажите, что вы ищете', contact_desc:'Пришлите даты поездки, размер группы и предпочитаемые поля — мы ответим с индивидуальным предложением, обычно в течение дня.',
     ci_addr_label:'Адрес', ci_phone_label:'Телефон / WhatsApp', ci_email_label:'Эл. почта',
     cf_hotel:'Какой Отель?', cf_hotel_all:'Все Отели — Общее Предложение', cf_name:'Полное Имя', cf_contact:'Телефон или Эл. почта', cf_start_date:'Дата Начала', cf_nights:'Ночей', cf_golfers:'Игроков', cf_group:'Группа (5+)', cf_rounds:'Раундов Гольфа', cf_unlimited:'Без Ограничений', cf_chip_14plus:'14+',
-    cf_msg_alt:'Что-то ещё? (необязательно)', cf_msg_ph_alt:'Предпочитаемый отель или поле, гандикап, бюджет...', cf_submit:'Отправить через WhatsApp',
+    cf_msg_alt:'Что-то ещё? (необязательно)', cf_msg_ph_alt:'Предпочитаемый отель или поле, гандикап, бюджет...', cf_submit:'Отправить по Эл. почте', cf_submit_wa:'Отправить через WhatsApp',
     cf_note:'Местный специалист по Белеку отвечает лично — обычно в течение дня.',
     footer_desc:'Гольф-отдых в Белеке, Анталья — поля, отели, трансферы и время старта, организовано местной командой.',
     footer_explore:'Разделы', footer_apart:'Belka Golf Residence', footer_rights:'Все права защищены.'
+  },
+  sv: {
+    nav_tag:'BELEK, ANTALYA · GOLFSEMESTER', nav_courses:'Golfbanor', nav_packages:'Paket', nav_services:'Tjänster', nav_gallery:'Galleri', nav_contact:'Kontakt', nav_quote:'Begär Offert',
+    hero_label:"Belek, Antalya · Turkiets Golfhuvudstad",
+    hero_title:'Din Golfsemester,<br><em>Perfekt Arrangerad</em>',
+    hero_desc:'Mästerskapsbanor, noggrant utvalda hotell, privata transfers och garanterade starttider — planerat av ett lokalt team i Belek som du alltid kan nå.',
+    hero_btn1:'Kostnadsfri Offert', hero_btn2:'Se Paket',
+    trust1:'Lokalt Team i Belek', trust2:'Inga Dolda Avgifter', trust3:'Garanterade Starttider', trust4:'Specialister på Grupp- och Klubbresor',
+    intro_eyebrow:'Belka Golf', intro_title:'Ett lokalt team, på plats i Belek',
+    intro_desc:"Vi skräddarsyr golfsemestrar utifrån ditt spel — rätt bana, rätt hotell och starttider som verkligen håller. Som teamet bakom Belka Golf Residence i Belek känner vi regionen utan och innan, och vi finns tillgängliga under hela din vistelse, inte bara innan bokning.",
+    stat1:'Golfbanor', stat2:'Partnerhotell', stat3:'Talade Språk',
+    course7_desc:"Tre banor (Old, New &amp; Verde) — ett av Europas största golfkomplex.",
+    course8_desc:'Två moderna banor, Olympos och Aspendos, nära kusten.',
+    course9_desc:'En lugnare, klassisk parkbana bort från de mest trafikerade starttiderna.',
+    course10_desc:'En särpräglad linksbana vid kusten.',
+    course11_desc:'En avslappnad bana i sportklubbsstil med enkel tillgänglighet.',
+    pkg10_sub:"Avslappnat allt-inklusive nära Suenos banor",
+    pkg11_sub:'Bekvämt allt-inklusive, enkel tillgång till banan',
+    pkg13_sub:'Klassisk komfort intill Glorias banor', pkg14_sub:'Lugn för vuxna, ett stenkast från fairwayn',
+    pkg15_sub:'Elegant 5-stjärnigt hotell i en lugnare del av Belek', pkg16_sub:'Sportinriktat allt-inklusive med egen bana',
+    pkg17_sub:'Avslappnad bas med smidiga transfers till varje bana', pkg18_sub:'Livligt allt-inklusive med tillgång till Montgomerie',
+    pkg20_sub:'Vårt eget lägenhetshotell — privat pool, självhushållskomfort',
+    pkg21_sub:'Modernt strandnära resort med två mästerskapsbanor', pkg22_sub:'Regnum Caryas systerhotell, lugnare och i mindre skala',
+    courses_title:'Beleks Golfbanor', courses_desc:'Fler än sexton banor på kort avstånd från varandra — från Tour-arenor till golf i strålkastarljus.',
+    course1_desc:'En bana designad av Colin Montgomerie som stått värd för European Tour-tävlingar, intill Maxx Royal-resorten.',
+    course2_desc:"Sir Nick Faldos signaturbana, med rundorna Prince, King och Queen genom tallskog.",
+    course3_desc:"Europas första helt flodlyste 18-hålsbana — golf i strålkastarljus är ett kännetecken för Belek.",
+    course4_desc:"Två ikoniska banor som sträcker sig ända fram till hotellets dörr, omgivna av höga tallar.",
+    course5_desc:"En modern, välskött bana i anslutning till en av Beleks mest polerade anläggningar.",
+    course6_desc:"Hem till banorna Pasha och PGA Sultan — två av regionens mest etablerade banor.",
+    pkg_eyebrow:'Hotell & Golf', pkg_title:'Utvalda Paket', pkg_desc:"Priserna beror på säsong, gruppstorlek och datum — berätta vad ni önskar så skickar vi en skräddarsydd offert inom en dag.", pkg_cta:'Begär Offert',
+    pkg1_sub:'Lyxiga sviter, klubbhusrestaurang direkt på banan', pkg2_sub:'Rymliga rum, obegränsade golfalternativ', pkg3_sub:'Golf i strålkastarljus, femstjärnigt allt-inklusive',
+    pkg4_sub:'Tillgång till banan bara några steg från rummet', pkg5_sub:'Modern lyx, personlig golfkonsulent', pkg6_sub:'Familjevänligt, perfekt för golfgrupper',
+    pkg7_sub:"Ett av Europas största golfkomplex", pkg8_sub:'En särpräglad linksbana vid kusten',
+    svc_eyebrow:'Det Vi Ordnar', svc_title:'Allt Kring Ditt Golfande',
+    svc1_name:'Privata Transfers', svc1_desc:'Flygplats- och bana-till-bana-transfers, tidsanpassade efter era starttider.',
+    svc2_name:'Bokning av Starttider', svc2_desc:"Garanterade starttider på Beleks banor, bekräftade innan avresa.",
+    svc3_name:'Grupp- och Klubbgolf', svc3_desc:'Turneringar, företagsdagar och klubbresor för 8 till 40+ golfare.',
+    svc4_name:'Flerspråkigt Stöd', svc4_desc:'Engelska, turkiska, tyska, ryska och svenska — en riktig person, under hela er vistelse.',
+    gal_eyebrow:'Belek', gal_title:'Banor & Kustlinje',
+    contact_eyebrow:'Hör Av Er', contact_title:"Berätta vad ni söker", contact_desc:"Skicka era datum, gruppstorlek och önskade banor — vi svarar med en skräddarsydd offert, oftast inom en dag.",
+    ci_addr_label:'Adress', ci_phone_label:'Telefon / WhatsApp', ci_email_label:'E-post',
+    cf_hotel:'Vilket Hotell?', cf_hotel_all:'Alla Hotell — Allmän Offert', cf_name:'Fullständigt Namn', cf_contact:'Telefon eller E-post', cf_start_date:'Startdatum', cf_nights:'Nätter', cf_golfers:'Golfare', cf_group:'Grupp (5+)', cf_rounds:'Antal Golfrundor', cf_unlimited:'Obegränsat', cf_chip_14plus:'14+',
+    cf_msg_alt:'Något mer? (valfritt)', cf_msg_ph_alt:'Önskat hotell eller bana, handicap, budget...', cf_submit:'Skicka via E-post', cf_submit_wa:'Skicka via WhatsApp',
+    cf_note:'En lokal Belek-specialist svarar personligen — oftast inom en dag.',
+    footer_desc:'Golfsemester i Belek, Antalya — banor, hotell, transfers och starttider, ordnat av ett lokalt team.',
+    footer_explore:'Utforska', footer_apart:'Belka Golf Residence', footer_rights:'Alla rättigheter förbehållna.'
   }
 };
 
