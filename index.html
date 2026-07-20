@@ -230,9 +230,16 @@
     .course-track, .pkg-track { animation:none; overflow-x:auto; -webkit-overflow-scrolling:touch; }
     .course-marquee, .pkg-marquee { overflow-x:auto; }
   }
-  @media (max-width:700px) {
-    .course-track { animation-duration:34s; }
-    .pkg-track { animation-duration:50s; }
+  @media (max-width:900px) {
+    .course-track, .pkg-track {
+      animation: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x proximity;
+      padding-bottom: 4px;
+    }
+    .course-marquee, .pkg-marquee { overflow-x: auto; -webkit-mask-image:none; mask-image:none; }
+    .course-card, .pkg-card { scroll-snap-align: start; }
   }
   .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity:1; transform:translateY(0); }
@@ -637,7 +644,8 @@ function renderPackages() {
     return `<div class="pkg-card reveal"><div class="pkg-img">${imgTag}<span class="pkg-tag">${p.tag}</span></div><div class="pkg-body"><h3 class="pkg-hotel">${p.hotel}</h3><p class="pkg-course" data-i18n="${p.subKey}">${p.sub}</p><a ${targetAttr}href="${p.href}" class="pkg-cta" data-i18n="pkg_cta">Request a Quote <svg class="icon icon-line" style="width:.9em;height:.9em"><use href="#i-chevron-right"/></svg></a></div></div>`;
   };
   const html = PACKAGES.map(cardHtml).join('');
-  track.innerHTML = html + html; // kesintisiz kayma için 2 kez
+  const isMobile = window.matchMedia('(max-width: 900px)').matches;
+  track.innerHTML = isMobile ? html : html + html; // masaüstünde kesintisiz kayma için 2 kez
 }
 
 function renderCourses() {
@@ -650,7 +658,8 @@ function renderCourses() {
     return `<div class="course-card reveal"><div class="course-icon"><svg class="icon icon-line" style="width:1.7rem;height:1.7rem"><use href="#i-flag"/></svg></div><h3 class="course-name">${c.name}</h3><p class="course-desc" data-i18n="${c.descKey}">${c.desc}</p></div>`;
   };
   const html = COURSES.map(cardHtml).join('');
-  track.innerHTML = html + html;
+  const isMobile = window.matchMedia('(max-width: 900px)').matches;
+  track.innerHTML = isMobile ? html : html + html;
 }
 renderPackages();
 renderCourses();
