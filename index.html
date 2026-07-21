@@ -637,7 +637,6 @@
 
 <a href="https://wa.me/905322622773" class="wa-fab" target="_blank" title="WhatsApp"><svg class="icon icon-solid" aria-hidden="true" style="width:1.5rem;height:1.5rem"><use href="#i-whatsapp"/></svg></a>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
 <script>
 /* ══ NAV & REVEAL ══ */
 const nav = document.getElementById('navbar');
@@ -736,9 +735,7 @@ const GF_COURSES = [
   'Lykia Links Golf Club',
   'Robinson Nobilis Golf Club'
 ];
-let GF_DATA = [];
-let GF_LOADED = false;
-let GF_LOAD_ERROR = false;
+let GF_SHUTTLE_PRICE = 30; // Sadece ekranda gösterim için (gerçek hesaplama sunucu tarafında yapılıyor)
 
 function initGreenFeeDropdown() {
   const sel = document.getElementById('gf-course');
@@ -749,63 +746,6 @@ function initGreenFeeDropdown() {
     opt.textContent = name;
     sel.appendChild(opt);
   });
-}
-
-async function loadGreenFeeData() {
-  try {
-    const res = await fetch('data/greenfee-prices.xlsx');
-    if (!res.ok) throw new Error('dosya bulunamadı');
-    const buf = await res.arrayBuffer();
-    const wb = XLSX.read(buf, { type: 'array', cellDates: true });
-    const sheet = wb.Sheets[wb.SheetNames[0]];
-    const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: null });
-
-    // Başlık satırını bul ("Golf Sahası" yazan satır)
-    let headerIdx = rows.findIndex(r => r && r[0] === 'Golf Sahası');
-    if (headerIdx === -1) throw new Error('başlık satırı bulunamadı');
-
-    GF_DATA = [];
-    for (let i = headerIdx + 1; i < rows.length; i++) {
-      const r = rows[i];
-      if (!r || !r[0] || !r[1] || !r[2]) continue;
-      const start = new Date(r[1]);
-      const end = new Date(r[2]);
-      if (isNaN(start) || isNaN(end)) continue;
-      GF_DATA.push({
-        course: String(r[0]).trim(),
-        start, end,
-        greenFee: r[3],
-        specialRate: r[4],
-        hotelRate: r[6],
-        token: r[8],
-        buggy: r[9],
-        trolley: r[10],
-        allInclusive: r[11]
-      });
-    }
-    GF_LOADED = true;
-  } catch (e) {
-    GF_LOAD_ERROR = true;
-    console.error('Green fee verisi yüklenemedi:', e);
-  }
-}
-
-const GF_MARKUP = 15;   // Green Fee / Otel Misafiri fiyatına eklenen sabit kâr payı (€)
-const GF_SHUTTLE_PRICE = 30; // Gidiş-dönüş shuttle ücreti (€)
-
-function fmtPrice(v) {
-  if (v === null || v === undefined || v === '') return null;
-  const n = Number(v);
-  if (!isNaN(n) && v !== '') return n + ' €';
-  return String(v); // "Dahil", "Token dahil", "-" gibi metinler
-}
-
-// Green Fee / Otel Misafiri fiyatlarına kâr payı ekler (Buggy/Trolley'e eklenmez)
-function fmtPriceMarked(v) {
-  if (v === null || v === undefined || v === '') return null;
-  const n = Number(v);
-  if (!isNaN(n) && v !== '') return { text: (n + GF_MARKUP) + ' €', numeric: n + GF_MARKUP };
-  return { text: String(v), numeric: null }; // "Dahil" vb. metinlere kâr payı eklenemez
 }
 
 async function lookupGreenFee() {
@@ -824,56 +764,43 @@ async function lookupGreenFee() {
   resultEl.className = 'gf-result';
   resultEl.textContent = (L.gf_loading || 'Checking…');
 
-  if (!GF_LOADED && !GF_LOAD_ERROR) await loadGreenFeeData();
-
-  if (GF_LOAD_ERROR) {
+  let data;
+  try {
+    const params = new URLSearchParams({ course, date: dateVal, shuttle: wantsShuttle ? '1' : '0' });
+    const res = await fetch('/api/greenfee?' + params.toString());
+    if (res.status === 404) {
+      resultEl.className = 'gf-result gf-error';
+      resultEl.textContent = L.gf_not_found || 'No rate found for that date — please request a quote.';
+      return;
+    }
+    if (!res.ok) throw new Error('API hatası: ' + res.status);
+    data = await res.json();
+  } catch (e) {
     resultEl.className = 'gf-result gf-error';
     resultEl.textContent = L.gf_error || 'Price list unavailable right now — please request a quote.';
     return;
   }
 
-  const date = new Date(dateVal + 'T00:00:00');
-  const match = GF_DATA.find(row => row.course === course && date >= row.start && date <= row.end);
-
-  if (!match) {
-    resultEl.className = 'gf-result gf-error';
-    resultEl.textContent = L.gf_not_found || 'No rate found for that date — please request a quote.';
-    return;
-  }
-
-  const gfMarked = fmtPriceMarked(match.greenFee) || fmtPriceMarked(match.specialRate);
-  let html = (L.gf_result_label || 'Green Fee') + ': <strong>' + (gfMarked ? gfMarked.text : '—') + '</strong>';
-
-  const aiVal = match.allInclusive ? String(match.allInclusive).trim().toLowerCase() : '';
-  const isAllInclusive = ['evet', 'yes', 'dahil', 'included', 'da', 'ja'].includes(aiVal);
-  if (isAllInclusive) {
+  let html = (L.gf_result_label || 'Green Fee') + ': <strong>' + (data.greenFee || '—') + '</strong>';
+  if (data.allInclusive) {
     html += ' <span class="gf-ai-badge">✓ ' + (L.gf_all_inclusive || 'All Inclusive') + '</span>';
   }
 
   const extras = [];
-  const hotelMarked = fmtPriceMarked(match.hotelRate);
-  const token = fmtPrice(match.token);
-  const buggy = fmtPrice(match.buggy);
-  const trolley = fmtPrice(match.trolley);
-  if (hotelMarked) extras.push((L.gf_hotel_rate || 'Hotel guest rate') + ': ' + hotelMarked.text);
-  if (token) extras.push('Token: ' + token);
-  if (buggy) extras.push('Buggy: ' + buggy);
-  if (trolley) extras.push('Trolley: ' + trolley);
+  if (data.hotelRate) extras.push((L.gf_hotel_rate || 'Hotel guest rate') + ': ' + data.hotelRate);
+  if (data.token) extras.push('Token: ' + data.token);
+  if (data.buggy) extras.push('Buggy: ' + data.buggy);
+  if (data.trolley) extras.push('Trolley: ' + data.trolley);
 
-  if (wantsShuttle) {
+  if (wantsShuttle && data.total) {
     extras.push((L.gf_shuttle_label || 'Shuttle (round-trip)') + ': ' + GF_SHUTTLE_PRICE + ' €');
-    if (gfMarked && gfMarked.numeric !== null) {
-      html += '  ·  ' + (L.gf_total_label || 'Total') + ': <strong>' + (gfMarked.numeric + GF_SHUTTLE_PRICE) + ' €</strong>';
-    }
+    html += '  ·  ' + (L.gf_total_label || 'Total') + ': <strong>' + data.total + '</strong>';
   }
   if (extras.length) html += '  ·  ' + extras.join('  ·  ');
   resultEl.innerHTML = html;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  initGreenFeeDropdown();
-  loadGreenFeeData();
-});
+document.addEventListener('DOMContentLoaded', initGreenFeeDropdown);
 
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
