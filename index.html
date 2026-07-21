@@ -140,14 +140,13 @@
   .gf-field { display:flex; flex-direction:column; gap:6px; flex:1 1 220px; }
   .gf-field label { font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:#777; }
   .gf-field select, .gf-field input { padding:11px 12px; border:1px solid #ddd; border-radius:2px; font-family:'Jost',sans-serif; font-size:.85rem; background:#fff; color:#1a1a1a; }
-  .gf-btn { background:var(--gold); color:var(--text-dark); border:none; padding:12px 26px; font-size:.68rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase; border-radius:2px; cursor:pointer; transition:background .3s; white-space:nowrap; }
   .gf-shuttle-check { display:flex; align-items:center; gap:8px; font-size:.78rem; color:#444; padding-bottom:11px; white-space:nowrap; cursor:pointer; }
   .gf-shuttle-check input { width:16px; height:16px; accent-color:var(--gold); cursor:pointer; }
   .gf-btn:hover { background:#a07c2e; }
   .gf-result { flex-basis:100%; font-size:.85rem; color:#333; min-height:1.4em; }
   .gf-result strong { color:var(--gold); font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:600; }
   .gf-result.gf-error { color:#a33; }
-  @media (max-width:700px){ .gf-widget{ padding:20px; gap:12px; } .gf-btn{ flex:1 1 100%; } }
+  @media (max-width:700px){ .gf-widget{ padding:20px; gap:12px; } }
   .course-marquee { overflow:hidden; width:100%; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
   .course-track { display:flex; gap:2px; width:max-content; background:#e8e4da; animation:marquee-rtl 60s linear infinite; }
   .course-track:hover { animation-play-state:paused; }
@@ -451,19 +450,18 @@
   <div class="gf-widget reveal">
     <div class="gf-field">
       <label for="gf-course" data-i18n="gf_course_label">Golf Course</label>
-      <select id="gf-course">
+      <select id="gf-course" onchange="lookupGreenFee()">
         <option value="" data-i18n="gf_choose">Choose a course…</option>
       </select>
     </div>
     <div class="gf-field">
       <label for="gf-date" data-i18n="gf_date_label">Date</label>
-      <input type="date" id="gf-date"/>
+      <input type="date" id="gf-date" onchange="lookupGreenFee()"/>
     </div>
     <label class="gf-shuttle-check">
-      <input type="checkbox" id="gf-shuttle"/>
+      <input type="checkbox" id="gf-shuttle" onchange="lookupGreenFee()"/>
       <span data-i18n="gf_shuttle_label">Shuttle (round-trip)</span>
     </label>
-    <button type="button" class="gf-btn" onclick="lookupGreenFee()" data-i18n="gf_check">Check Price</button>
     <div class="gf-result" id="gf-result"></div>
   </div>
   <div class="course-marquee">
