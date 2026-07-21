@@ -131,6 +131,23 @@
 
   /* ══ GOLF COURSES ══ */
   #courses { background:#fff; overflow:hidden; padding-top:0; }
+
+  .gf-widget {
+    display:flex; align-items:flex-end; gap:16px; flex-wrap:wrap;
+    max-width:900px; margin:0 auto 50px; padding:24px 28px;
+    background:var(--bg-cream); border:1px solid #e8e4da; border-radius:2px;
+  }
+  .gf-field { display:flex; flex-direction:column; gap:6px; flex:1 1 220px; }
+  .gf-field label { font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:#777; }
+  .gf-field select, .gf-field input { padding:11px 12px; border:1px solid #ddd; border-radius:2px; font-family:'Jost',sans-serif; font-size:.85rem; background:#fff; color:#1a1a1a; }
+  .gf-btn { background:var(--gold); color:var(--text-dark); border:none; padding:12px 26px; font-size:.68rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase; border-radius:2px; cursor:pointer; transition:background .3s; white-space:nowrap; }
+  .gf-shuttle-check { display:flex; align-items:center; gap:8px; font-size:.78rem; color:#444; padding-bottom:11px; white-space:nowrap; cursor:pointer; }
+  .gf-shuttle-check input { width:16px; height:16px; accent-color:var(--gold); cursor:pointer; }
+  .gf-btn:hover { background:#a07c2e; }
+  .gf-result { flex-basis:100%; font-size:.85rem; color:#333; min-height:1.4em; }
+  .gf-result strong { color:var(--gold); font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:600; }
+  .gf-result.gf-error { color:#a33; }
+  @media (max-width:700px){ .gf-widget{ padding:20px; gap:12px; } .gf-btn{ flex:1 1 100%; } }
   .course-marquee { overflow:hidden; width:100%; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); }
   .course-track { display:flex; gap:2px; width:max-content; background:#e8e4da; animation:marquee-rtl 60s linear infinite; }
   .course-track:hover { animation-play-state:paused; }
@@ -430,6 +447,25 @@
     <h2 class="section-title" data-i18n="courses_title">The Courses of Belek</h2>
     <p class="section-desc" data-i18n="courses_desc" style="margin:0 auto">More than sixteen courses within a short drive of each other — from Tour venues to floodlit night golf.</p>
   </div>
+
+  <div class="gf-widget reveal">
+    <div class="gf-field">
+      <label for="gf-course" data-i18n="gf_course_label">Golf Course</label>
+      <select id="gf-course">
+        <option value="" data-i18n="gf_choose">Choose a course…</option>
+      </select>
+    </div>
+    <div class="gf-field">
+      <label for="gf-date" data-i18n="gf_date_label">Date</label>
+      <input type="date" id="gf-date"/>
+    </div>
+    <label class="gf-shuttle-check">
+      <input type="checkbox" id="gf-shuttle"/>
+      <span data-i18n="gf_shuttle_label">Shuttle (round-trip)</span>
+    </label>
+    <button type="button" class="gf-btn" onclick="lookupGreenFee()" data-i18n="gf_check">Check Price</button>
+    <div class="gf-result" id="gf-result"></div>
+  </div>
   <div class="course-marquee">
     <div class="course-track" id="course-track">
     </div>
@@ -602,6 +638,7 @@
 
 <a href="https://wa.me/905322622773" class="wa-fab" target="_blank" title="WhatsApp"><svg class="icon icon-solid" aria-hidden="true" style="width:1.5rem;height:1.5rem"><use href="#i-whatsapp"/></svg></a>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
 <script>
 /* ══ NAV & REVEAL ══ */
 const nav = document.getElementById('navbar');
@@ -678,6 +715,156 @@ function renderCourses() {
 }
 renderPackages();
 renderCourses();
+
+/* ══ GREEN FEE FİYAT SORGULAMA (Excel'den canlı okuma) ══ */
+const GF_COURSES = [
+  'Montgomerie Maxx Royal',
+  'Cornelia GC - Prince Course',
+  'Cornelia GC - King Course',
+  'Cornelia GC - Queen Course',
+  'Carya Golf Club',
+  'Sueno GC - Pines Course',
+  'Sueno GC - Dunes Course',
+  'Kaya Palazzo Golf Club',
+  'Antalya GC - Pasha Course',
+  'Antalya GC - Sultan Course',
+  'Gloria GC - Old Course',
+  'Gloria GC - New Course',
+  'Gloria GC - Verde Course',
+  'Cullinan Links - Olympos Course',
+  'Cullinan Links - Aspendos Course',
+  'National Golf Club',
+  'Lykia Links Golf Club',
+  'Robinson Nobilis Golf Club'
+];
+let GF_DATA = [];
+let GF_LOADED = false;
+let GF_LOAD_ERROR = false;
+
+function initGreenFeeDropdown() {
+  const sel = document.getElementById('gf-course');
+  if (!sel) return;
+  GF_COURSES.forEach(name => {
+    const opt = document.createElement('option');
+    opt.value = name;
+    opt.textContent = name;
+    sel.appendChild(opt);
+  });
+}
+
+async function loadGreenFeeData() {
+  try {
+    const res = await fetch('data/greenfee-prices.xlsx');
+    if (!res.ok) throw new Error('dosya bulunamadı');
+    const buf = await res.arrayBuffer();
+    const wb = XLSX.read(buf, { type: 'array', cellDates: true });
+    const sheet = wb.Sheets[wb.SheetNames[0]];
+    const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: null });
+
+    // Başlık satırını bul ("Golf Sahası" yazan satır)
+    let headerIdx = rows.findIndex(r => r && r[0] === 'Golf Sahası');
+    if (headerIdx === -1) throw new Error('başlık satırı bulunamadı');
+
+    GF_DATA = [];
+    for (let i = headerIdx + 1; i < rows.length; i++) {
+      const r = rows[i];
+      if (!r || !r[0] || !r[1] || !r[2]) continue;
+      const start = new Date(r[1]);
+      const end = new Date(r[2]);
+      if (isNaN(start) || isNaN(end)) continue;
+      GF_DATA.push({
+        course: String(r[0]).trim(),
+        start, end,
+        greenFee: r[3],
+        specialRate: r[4],
+        hotelRate: r[6],
+        buggy: r[8],
+        trolley: r[9]
+      });
+    }
+    GF_LOADED = true;
+  } catch (e) {
+    GF_LOAD_ERROR = true;
+    console.error('Green fee verisi yüklenemedi:', e);
+  }
+}
+
+const GF_MARKUP = 15;   // Green Fee / Otel Misafiri fiyatına eklenen sabit kâr payı (€)
+const GF_SHUTTLE_PRICE = 30; // Gidiş-dönüş shuttle ücreti (€)
+
+function fmtPrice(v) {
+  if (v === null || v === undefined || v === '') return null;
+  const n = Number(v);
+  if (!isNaN(n) && v !== '') return n + ' €';
+  return String(v); // "Dahil", "Token dahil", "-" gibi metinler
+}
+
+// Green Fee / Otel Misafiri fiyatlarına kâr payı ekler (Buggy/Trolley'e eklenmez)
+function fmtPriceMarked(v) {
+  if (v === null || v === undefined || v === '') return null;
+  const n = Number(v);
+  if (!isNaN(n) && v !== '') return { text: (n + GF_MARKUP) + ' €', numeric: n + GF_MARKUP };
+  return { text: String(v), numeric: null }; // "Dahil" vb. metinlere kâr payı eklenemez
+}
+
+async function lookupGreenFee() {
+  const resultEl = document.getElementById('gf-result');
+  const course = document.getElementById('gf-course').value;
+  const dateVal = document.getElementById('gf-date').value;
+  const wantsShuttle = document.getElementById('gf-shuttle').checked;
+  const L = t[currentLang] || t.en;
+
+  if (!course || !dateVal) {
+    resultEl.className = 'gf-result gf-error';
+    resultEl.textContent = L.gf_select_both || 'Please select a course and a date.';
+    return;
+  }
+
+  resultEl.className = 'gf-result';
+  resultEl.textContent = (L.gf_loading || 'Checking…');
+
+  if (!GF_LOADED && !GF_LOAD_ERROR) await loadGreenFeeData();
+
+  if (GF_LOAD_ERROR) {
+    resultEl.className = 'gf-result gf-error';
+    resultEl.textContent = L.gf_error || 'Price list unavailable right now — please request a quote.';
+    return;
+  }
+
+  const date = new Date(dateVal + 'T00:00:00');
+  const match = GF_DATA.find(row => row.course === course && date >= row.start && date <= row.end);
+
+  if (!match) {
+    resultEl.className = 'gf-result gf-error';
+    resultEl.textContent = L.gf_not_found || 'No rate found for that date — please request a quote.';
+    return;
+  }
+
+  const gfMarked = fmtPriceMarked(match.greenFee) || fmtPriceMarked(match.specialRate);
+  let html = (L.gf_result_label || 'Green Fee') + ': <strong>' + (gfMarked ? gfMarked.text : '—') + '</strong>';
+
+  const extras = [];
+  const hotelMarked = fmtPriceMarked(match.hotelRate);
+  const buggy = fmtPrice(match.buggy);
+  const trolley = fmtPrice(match.trolley);
+  if (hotelMarked) extras.push((L.gf_hotel_rate || 'Hotel guest rate') + ': ' + hotelMarked.text);
+  if (buggy) extras.push('Buggy: ' + buggy);
+  if (trolley) extras.push('Trolley: ' + trolley);
+
+  if (wantsShuttle) {
+    extras.push((L.gf_shuttle_label || 'Shuttle (round-trip)') + ': ' + GF_SHUTTLE_PRICE + ' €');
+    if (gfMarked && gfMarked.numeric !== null) {
+      html += '  ·  ' + (L.gf_total_label || 'Total') + ': <strong>' + (gfMarked.numeric + GF_SHUTTLE_PRICE) + ' €</strong>';
+    }
+  }
+  if (extras.length) html += '  ·  ' + extras.join('  ·  ');
+  resultEl.innerHTML = html;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initGreenFeeDropdown();
+  loadGreenFeeData();
+});
 
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -781,6 +968,7 @@ const t = {
     pkg20_sub:'Our own apart-hotel — private pool, self-catering comfort',
     pkg21_sub:'Modern beachfront resort with two championship courses', pkg22_sub:'Sister resort to Regnum Carya, quieter and boutique-scale',
     courses_title:'The Courses of Belek', courses_desc:'More than sixteen courses within a short drive of each other — from Tour venues to floodlit night golf.',
+    gf_course_label:'Golf Course', gf_choose:'Choose a course…', gf_date_label:'Date', gf_check:'Check Price', gf_select_both:'Please select a course and a date.', gf_loading:'Checking…', gf_error:'Price list unavailable right now — please request a quote.', gf_not_found:'No rate found for that date — please request a quote.', gf_result_label:'Green Fee', gf_hotel_rate:'Hotel guest rate', gf_shuttle_label:'Shuttle (round-trip)', gf_total_label:'Total',
     course1_desc:'A Colin Montgomerie design that has hosted European Tour events, set beside the Maxx Royal resort.',
     course2_desc:"Sir Nick Faldo's signature course, with Prince, King and Queen routings through pine forest.",
     course3_desc:"Europe's first fully floodlit 18-hole course — golf under the lights is a Belek signature.",
@@ -828,6 +1016,7 @@ const t = {
     pkg20_sub:'Kendi apart otelimiz — özel havuz, ev konforu',
     pkg21_sub:'Modern, plaj kenarında, iki şampiyonluk sahasıyla', pkg22_sub:'Regnum Carya\'nın kardeş tesisi, daha sakin ve butik ölçekli',
     courses_title:"Belek'in Golf Sahaları", courses_desc:'Birbirine kısa mesafede, on altıdan fazla saha — Tur etkinliklerine ev sahipliği yapmış olanlardan gece aydınlatmalı sahalara kadar.',
+    gf_course_label:'Golf Sahası', gf_choose:'Bir saha seçin…', gf_date_label:'Tarih', gf_check:'Fiyatı Gör', gf_select_both:'Lütfen bir saha ve tarih seçin.', gf_loading:'Kontrol ediliyor…', gf_error:'Fiyat listesine şu an ulaşılamıyor — lütfen teklif isteyin.', gf_not_found:'Bu tarih için fiyat bulunamadı — lütfen teklif isteyin.', gf_result_label:'Green Fee', gf_hotel_rate:'Otel misafiri fiyatı', gf_shuttle_label:'Shuttle (gidiş-dönüş)', gf_total_label:'Toplam',
     course1_desc:'Avrupa Turu etkinliklerine ev sahipliği yapmış, Colin Montgomerie imzalı, Maxx Royal tesisinin hemen yanında.',
     course2_desc:'Sir Nick Faldo imzası taşıyan, çam ormanı içinde Prince, King ve Queen parkurlarıyla.',
     course3_desc:"Avrupa'nın tam floodlight'lı (gece aydınlatmalı) ilk 18 delikli sahası — Belek'in imza deneyimi.",
@@ -875,6 +1064,7 @@ const t = {
     pkg20_sub:'Unser eigenes Apart-Hotel — privater Pool, Komfort mit Selbstverpflegung',
     pkg21_sub:'Modernes Resort direkt am Strand mit zwei Championship-Plätzen', pkg22_sub:'Schwesterhotel des Regnum Carya, ruhiger und im Boutique-Format',
     courses_title:'Die Golfplätze von Belek', courses_desc:'Mehr als sechzehn Plätze in kurzer Fahrdistanz zueinander — von Tour-Austragungsorten bis zu Golf unter Flutlicht.',
+    gf_course_label:'Golfplatz', gf_choose:'Platz wählen…', gf_date_label:'Datum', gf_check:'Preis Prüfen', gf_select_both:'Bitte Platz und Datum auswählen.', gf_loading:'Wird geprüft…', gf_error:'Preisliste derzeit nicht verfügbar — bitte fordern Sie ein Angebot an.', gf_not_found:'Für dieses Datum wurde kein Preis gefunden — bitte fordern Sie ein Angebot an.', gf_result_label:'Green Fee', gf_hotel_rate:'Hotelgästepreis', gf_shuttle_label:'Shuttle (Hin- und Rückfahrt)', gf_total_label:'Gesamt',
     course1_desc:'Ein Colin-Montgomerie-Design, das bereits European-Tour-Events ausgetragen hat, direkt neben dem Maxx-Royal-Resort.',
     course2_desc:"Der Signature-Platz von Sir Nick Faldo mit den Routen Prince, King und Queen durch den Pinienwald.",
     course3_desc:"Europas erster vollständig flutlichtbeleuchteter 18-Loch-Platz — Golf unter Flutlicht ist ein Markenzeichen von Belek.",
@@ -922,6 +1112,7 @@ const t = {
     pkg20_sub:'Наш собственный апарт-отель — частный бассейн, комфорт с самостоятельным питанием',
     pkg21_sub:'Современный курорт на берегу моря с двумя полями для чемпионатов', pkg22_sub:'Отель-побратим Regnum Carya, более тихий и камерный',
     courses_title:'Гольф-Поля Белека', courses_desc:'Более шестнадцати полей в шаговой доступности друг от друга — от площадок Тура до гольфа при свете прожекторов.',
+    gf_course_label:'Гольф-Поле', gf_choose:'Выберите поле…', gf_date_label:'Дата', gf_check:'Узнать Цену', gf_select_both:'Пожалуйста, выберите поле и дату.', gf_loading:'Проверка…', gf_error:'Прайс-лист временно недоступен — запросите предложение.', gf_not_found:'Цена на эту дату не найдена — запросите предложение.', gf_result_label:'Green Fee', gf_hotel_rate:'Цена для гостей отеля', gf_shuttle_label:'Шаттл (туда и обратно)', gf_total_label:'Итого',
     course1_desc:'Поле, спроектированное Колином Монтгомери, принимавшее турниры European Tour, рядом с курортом Maxx Royal.',
     course2_desc:'Фирменное поле сэра Ника Фалдо с маршрутами Prince, King и Queen через сосновый лес.',
     course3_desc:'Первое в Европе поле на 18 лунок с полным освещением — гольф при свете прожекторов является визитной карточкой Белека.',
@@ -969,6 +1160,7 @@ const t = {
     pkg20_sub:'Vårt eget lägenhetshotell — privat pool, självhushållskomfort',
     pkg21_sub:'Modernt strandnära resort med två mästerskapsbanor', pkg22_sub:'Regnum Caryas systerhotell, lugnare och i mindre skala',
     courses_title:'Beleks Golfbanor', courses_desc:'Fler än sexton banor på kort avstånd från varandra — från Tour-arenor till golf i strålkastarljus.',
+    gf_course_label:'Golfbana', gf_choose:'Välj en bana…', gf_date_label:'Datum', gf_check:'Kontrollera Pris', gf_select_both:'Välj en bana och ett datum.', gf_loading:'Kontrollerar…', gf_error:'Prislistan är inte tillgänglig just nu — begär en offert.', gf_not_found:'Inget pris hittades för det datumet — begär en offert.', gf_result_label:'Green Fee', gf_hotel_rate:'Pris för hotellgäster', gf_shuttle_label:'Shuttle (tur och retur)', gf_total_label:'Totalt',
     course1_desc:'En bana designad av Colin Montgomerie som stått värd för European Tour-tävlingar, intill Maxx Royal-resorten.',
     course2_desc:"Sir Nick Faldos signaturbana, med rundorna Prince, King och Queen genom tallskog.",
     course3_desc:"Europas första helt flodlyste 18-hålsbana — golf i strålkastarljus är ett kännetecken för Belek.",
@@ -995,7 +1187,9 @@ const t = {
   }
 };
 
+let currentLang = 'en';
 function setLang(lang){
+  currentLang = lang;
   document.documentElement.lang = lang;
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   document.querySelectorAll('[data-i18n]').forEach(el => {
