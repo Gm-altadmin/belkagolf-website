@@ -725,7 +725,7 @@ const PACKAGES = [
   { tag:'Montgomerie Maxx Royal', img:'images/voyage.webp', hotel:'Voyage Belek Golf &amp; Spa', subKey:'pkg18_sub', sub:'Lively all-inclusive with Montgomerie access', href:'#contact', blank:false },
   { tag:'Cullinan Links', img:'images/cullinan-belek.webp', hotel:'Cullinan Belek', subKey:'pkg21_sub', sub:'Modern beachfront resort with two championship courses', href:'#contact', blank:false },
   { tag:'Regnum Carya', img:'images/regnum-crown.webp', hotel:'Regnum The Crown', subKey:'pkg22_sub', sub:'Sister resort to Regnum Carya, quieter and boutique-scale', href:'#contact', blank:false },
-  { tag:'Your Belek Base', img:'images/belka-golf-residence.webp', hotel:'Belka Golf Residence', subKey:'pkg20_sub', sub:'Our own apart-hotel — private pool, self-catering comfort', href:'https://belkagolfapart.com', blank:true }
+  { tag:'Your Belek Base', img:'images/belka-golf-residence.webp', hotel:'Belka Golf Residence', subKey:'pkg20_sub', sub:'Our own apart-hotel — private pool, self-catering comfort', href:'https://belkagolfapart.com', blank:true, ctaKey:'pkg20_cta', cta:'View Rooms & Rates' }
 ];
 
 const COURSES = [
@@ -748,7 +748,9 @@ function renderPackages() {
   const cardHtml = p => {
     const imgTag = p.img ? `<img src="${p.img}" alt="${p.hotel}" loading="lazy" decoding="async"/>` : '';
     const targetAttr = p.blank ? 'target="_blank" ' : '';
-    return `<div class="pkg-card reveal"><div class="pkg-img">${imgTag}<span class="pkg-tag">${p.tag}</span></div><div class="pkg-body"><h3 class="pkg-hotel">${p.hotel}</h3><p class="pkg-course" data-i18n="${p.subKey}">${p.sub}</p><a ${targetAttr}href="${p.href}" class="pkg-cta" data-i18n="pkg_cta">Request a Quote <svg class="icon icon-line" style="width:.9em;height:.9em"><use href="#i-chevron-right"/></svg></a></div></div>`;
+    const ctaKey = p.ctaKey || 'pkg_cta';
+    const ctaText = p.cta || 'Request a Quote';
+    return `<div class="pkg-card reveal"><div class="pkg-img">${imgTag}<span class="pkg-tag">${p.tag}</span></div><div class="pkg-body"><h3 class="pkg-hotel">${p.hotel}</h3><p class="pkg-course" data-i18n="${p.subKey}">${p.sub}</p><a ${targetAttr}href="${p.href}" class="pkg-cta" data-i18n="${ctaKey}">${ctaText} <svg class="icon icon-line" style="width:.9em;height:.9em"><use href="#i-chevron-right"/></svg></a></div></div>`;
   };
   const html = PACKAGES.map(cardHtml).join('');
   const isMobile = window.matchMedia('(max-width: 900px)').matches;
@@ -878,8 +880,7 @@ const HP_HOTELS = [
   'Kempinski Hotel The Dome',
   'Robinson Club Nobilis',
   'Sirene Belek Golf Hotel',
-  'Voyage Belek Golf & Spa',
-  'Belka Golf Residence'
+  'Voyage Belek Golf & Spa'
 ];
 
 function initHotelPackageDropdown() {
@@ -1053,7 +1054,7 @@ const t = {
     pkg13_sub:'Classic comfort beside the Gloria courses', pkg14_sub:'Adults-focused calm, steps from the fairways',
     pkg15_sub:'Refined 5-star, quieter end of Belek', pkg16_sub:'Sports-focused all-inclusive with its own course',
     pkg17_sub:'Relaxed base with easy transfers to every course', pkg18_sub:'Lively all-inclusive with Montgomerie access',
-    pkg20_sub:'Our own apart-hotel — private pool, self-catering comfort',
+    pkg20_sub:'Our own apart-hotel — private pool, self-catering comfort', pkg20_cta:'View Rooms & Rates',
     pkg21_sub:'Modern beachfront resort with two championship courses', pkg22_sub:'Sister resort to Regnum Carya, quieter and boutique-scale',
     courses_title:'The Courses of Belek', courses_desc:'More than sixteen courses within a short drive of each other — from Tour venues to floodlit night golf.',
     gf_course_label:'Golf Course', gf_choose:'Choose a course…', gf_date_label:'Date', gf_check:'Check Price', gf_select_both:'Please select a course and a date.', gf_loading:'Checking…', gf_error:'Price list unavailable right now — please request a quote.', gf_not_found:'This course is closed for maintenance (overseeding) on that date.', gf_result_label:'Green Fee', gf_hotel_rate:'Hotel guest rate', gf_shuttle_label:'Shuttle (round-trip)', gf_total_label:'Total', gf_all_inclusive:'All Inclusive',
@@ -1102,7 +1103,7 @@ const t = {
     pkg13_sub:'Gloria sahalarının yanında klasik konfor', pkg14_sub:"Yetişkin odaklı, sakin, fairway'lere yürüme mesafesinde",
     pkg15_sub:"Belek'in daha sakin ucunda, zarif 5 yıldız", pkg16_sub:'Kendi sahasıyla, spor odaklı her şey dahil',
     pkg17_sub:'Her sahaya kolay transferli, sakin bir üs', pkg18_sub:'Montgomerie erişimli, hareketli her şey dahil',
-    pkg20_sub:'Kendi apart otelimiz — özel havuz, ev konforu',
+    pkg20_sub:'Kendi apart otelimiz — özel havuz, ev konforu', pkg20_cta:'Odaları ve Fiyatları Gör',
     pkg21_sub:'Modern, plaj kenarında, iki şampiyonluk sahasıyla', pkg22_sub:'Regnum Carya\'nın kardeş tesisi, daha sakin ve butik ölçekli',
     courses_title:"Belek'in Golf Sahaları", courses_desc:'Birbirine kısa mesafede, on altıdan fazla saha — Tur etkinliklerine ev sahipliği yapmış olanlardan gece aydınlatmalı sahalara kadar.',
     gf_course_label:'Golf Sahası', gf_choose:'Bir saha seçin…', gf_date_label:'Tarih', gf_check:'Fiyatı Gör', gf_select_both:'Lütfen bir saha ve tarih seçin.', gf_loading:'Kontrol ediliyor…', gf_error:'Fiyat listesine şu an ulaşılamıyor — lütfen teklif isteyin.', gf_not_found:'Bu tarihte saha bakımda (overseeding nedeniyle kapalı).', gf_result_label:'Green Fee', gf_hotel_rate:'Otel misafiri fiyatı', gf_shuttle_label:'Shuttle (gidiş-dönüş)', gf_total_label:'Toplam', gf_all_inclusive:'Her Şey Dahil',
@@ -1151,7 +1152,7 @@ const t = {
     pkg13_sub:'Klassischer Komfort direkt an den Gloria-Plätzen', pkg14_sub:'Ruhe für Erwachsene, wenige Schritte vom Fairway',
     pkg15_sub:'Elegantes 5-Sterne-Hotel im ruhigeren Teil von Belek', pkg16_sub:'Sportorientiertes All-Inclusive mit eigenem Platz',
     pkg17_sub:'Entspannte Basis mit kurzen Transfers zu jedem Platz', pkg18_sub:'Lebendiges All-Inclusive mit Zugang zum Montgomerie',
-    pkg20_sub:'Unser eigenes Apart-Hotel — privater Pool, Komfort mit Selbstverpflegung',
+    pkg20_sub:'Unser eigenes Apart-Hotel — privater Pool, Komfort mit Selbstverpflegung', pkg20_cta:'Zimmer & Preise ansehen',
     pkg21_sub:'Modernes Resort direkt am Strand mit zwei Championship-Plätzen', pkg22_sub:'Schwesterhotel des Regnum Carya, ruhiger und im Boutique-Format',
     courses_title:'Die Golfplätze von Belek', courses_desc:'Mehr als sechzehn Plätze in kurzer Fahrdistanz zueinander — von Tour-Austragungsorten bis zu Golf unter Flutlicht.',
     gf_course_label:'Golfplatz', gf_choose:'Platz wählen…', gf_date_label:'Datum', gf_check:'Preis Prüfen', gf_select_both:'Bitte Platz und Datum auswählen.', gf_loading:'Wird geprüft…', gf_error:'Preisliste derzeit nicht verfügbar — bitte fordern Sie ein Angebot an.', gf_not_found:'Dieser Platz ist an diesem Datum wegen Pflegearbeiten (Overseeding) geschlossen.', gf_result_label:'Green Fee', gf_hotel_rate:'Hotelgästepreis', gf_shuttle_label:'Shuttle (Hin- und Rückfahrt)', gf_total_label:'Gesamt', gf_all_inclusive:'All Inclusive',
@@ -1200,7 +1201,7 @@ const t = {
     pkg13_sub:'Классический комфорт рядом с полями Gloria', pkg14_sub:'Спокойствие для взрослых, в двух шагах от фервеев',
     pkg15_sub:'Изысканный 5-звёздочный отель в более тихой части Белека', pkg16_sub:'Спортивно ориентированный отель "всё включено" с собственным полем',
     pkg17_sub:'Спокойная база с удобными трансферами до любого поля', pkg18_sub:'Оживлённый отель "всё включено" с доступом к Montgomerie',
-    pkg20_sub:'Наш собственный апарт-отель — частный бассейн, комфорт с самостоятельным питанием',
+    pkg20_sub:'Наш собственный апарт-отель — частный бассейн, комфорт с самостоятельным питанием', pkg20_cta:'Номера и цены',
     pkg21_sub:'Современный курорт на берегу моря с двумя полями для чемпионатов', pkg22_sub:'Отель-побратим Regnum Carya, более тихий и камерный',
     courses_title:'Гольф-Поля Белека', courses_desc:'Более шестнадцати полей в шаговой доступности друг от друга — от площадок Тура до гольфа при свете прожекторов.',
     gf_course_label:'Гольф-Поле', gf_choose:'Выберите поле…', gf_date_label:'Дата', gf_check:'Узнать Цену', gf_select_both:'Пожалуйста, выберите поле и дату.', gf_loading:'Проверка…', gf_error:'Прайс-лист временно недоступен — запросите предложение.', gf_not_found:'В эту дату поле закрыто на техническое обслуживание (пересев травы).', gf_result_label:'Green Fee', gf_hotel_rate:'Цена для гостей отеля', gf_shuttle_label:'Шаттл (туда и обратно)', gf_total_label:'Итого', gf_all_inclusive:'Всё Включено',
@@ -1249,7 +1250,7 @@ const t = {
     pkg13_sub:'Klassisk komfort intill Glorias banor', pkg14_sub:'Lugn för vuxna, ett stenkast från fairwayn',
     pkg15_sub:'Elegant 5-stjärnigt hotell i en lugnare del av Belek', pkg16_sub:'Sportinriktat allt-inklusive med egen bana',
     pkg17_sub:'Avslappnad bas med smidiga transfers till varje bana', pkg18_sub:'Livligt allt-inklusive med tillgång till Montgomerie',
-    pkg20_sub:'Vårt eget lägenhetshotell — privat pool, självhushållskomfort',
+    pkg20_sub:'Vårt eget lägenhetshotell — privat pool, självhushållskomfort', pkg20_cta:'Se rum & priser',
     pkg21_sub:'Modernt strandnära resort med två mästerskapsbanor', pkg22_sub:'Regnum Caryas systerhotell, lugnare och i mindre skala',
     courses_title:'Beleks Golfbanor', courses_desc:'Fler än sexton banor på kort avstånd från varandra — från Tour-arenor till golf i strålkastarljus.',
     gf_course_label:'Golfbana', gf_choose:'Välj en bana…', gf_date_label:'Datum', gf_check:'Kontrollera Pris', gf_select_both:'Välj en bana och ett datum.', gf_loading:'Kontrollerar…', gf_error:'Prislistan är inte tillgänglig just nu — begär en offert.', gf_not_found:'Denna bana är stängd för underhåll (omsådd av gräs) det datumet.', gf_result_label:'Green Fee', gf_hotel_rate:'Pris för hotellgäster', gf_shuttle_label:'Shuttle (tur och retur)', gf_total_label:'Totalt', gf_all_inclusive:'Allt Inkluderat',
