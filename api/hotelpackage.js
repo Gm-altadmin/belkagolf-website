@@ -67,16 +67,18 @@ module.exports = (req, res) => {
       return;
     }
 
+    const HP_MARKUP = 98; // Tek/Çift/7+1 fiyatlarına eklenen sabit kâr payı (€)
+
     const options = matches.map(m => {
       let price, priceType;
       if (groupSize >= 8 && m.group71 !== null) {
-        price = m.group71;
+        price = m.group71 + HP_MARKUP;
         priceType = 'group71';
       } else if (groupSize >= 2) {
-        price = m.dbl;
+        price = m.dbl + HP_MARKUP;
         priceType = 'double';
       } else {
-        price = m.single;
+        price = m.single + HP_MARKUP;
         priceType = 'single';
       }
       return {
@@ -84,9 +86,9 @@ module.exports = (req, res) => {
         view: m.view,
         price: price !== null ? price + ' €' : null,
         priceType,
-        single: m.single !== null ? m.single + ' €' : null,
-        double: m.dbl !== null ? m.dbl + ' €' : null,
-        group71: m.group71 !== null ? m.group71 + ' €' : null,
+        single: m.single !== null ? (m.single + HP_MARKUP) + ' €' : null,
+        double: m.dbl !== null ? (m.dbl + HP_MARKUP) + ' €' : null,
+        group71: m.group71 !== null ? (m.group71 + HP_MARKUP) + ' €' : null,
         buggyFree: m.buggyFree,
         tokenFree: m.tokenFree,
         transferFree: m.transferFree
