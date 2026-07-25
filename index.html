@@ -153,12 +153,21 @@
   .gf-tt-panel { flex-basis:100%; max-height:0; overflow:hidden; transition:max-height .3s ease; }
   .gf-tt-panel.open { max-height:600px; }
   .gf-tt-inner { padding:16px 0 4px; border-top:1px solid rgba(0,0,0,.1); margin-top:12px; }
-  .gf-tt-course-row { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:8px 12px; background:#f7f5f0; border-radius:2px; margin-bottom:8px; font-size:.82rem; }
-  .gf-tt-course-row .gf-tt-remove { cursor:pointer; color:#a33; font-size:.85rem; padding:0 4px; }
-  .gf-tt-suggestions { margin-bottom:14px; }
+  .gf-tt-course-row { display:flex; align-items:center; gap:12px; padding:10px; background:#f7f5f0; border-radius:4px; margin-bottom:8px; }
+  .gf-tt-course-row .gf-tt-thumb { width:64px; height:64px; border-radius:3px; object-fit:cover; flex-shrink:0; }
+  .gf-tt-course-row .gf-tt-info { flex:1; min-width:0; }
+  .gf-tt-course-row .gf-tt-info .gf-tt-club-name { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:600; color:var(--text-dark); }
+  .gf-tt-course-row .gf-tt-info .gf-tt-club-desc { font-size:.72rem; color:#777; line-height:1.4; margin:2px 0 4px; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
+  .gf-tt-course-row .gf-tt-info .gf-tt-price-line { font-size:.82rem; }
+  .gf-tt-course-row .gf-tt-remove { cursor:pointer; color:#a33; font-size:1rem; padding:0 6px; align-self:flex-start; flex-shrink:0; }
   .gf-tt-suggestions-label { font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; color:#8a7c5c; margin-bottom:8px; }
-  .gf-tt-suggestion-card { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:8px 12px; background:#fff; border:1px dashed rgba(0,0,0,.18); border-radius:2px; margin-bottom:8px; font-size:.82rem; }
-  .gf-tt-suggestion-add { flex-shrink:0; padding:6px 12px; border:1px solid var(--gold); border-radius:2px; background:transparent; color:var(--gold); cursor:pointer; font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; }
+  .gf-tt-suggestions { margin-bottom:14px; }
+  .gf-tt-suggestion-card { display:flex; align-items:center; gap:12px; padding:10px; background:#fff; border:1px dashed rgba(0,0,0,.18); border-radius:4px; margin-bottom:8px; }
+  .gf-tt-suggestion-card .gf-tt-thumb { width:56px; height:56px; border-radius:3px; object-fit:cover; flex-shrink:0; }
+  .gf-tt-suggestion-card .gf-tt-info { flex:1; min-width:0; }
+  .gf-tt-suggestion-card .gf-tt-info .gf-tt-club-name { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:600; color:var(--text-dark); }
+  .gf-tt-suggestion-card .gf-tt-info .gf-tt-club-desc { font-size:.7rem; color:#777; line-height:1.4; margin:2px 0 3px; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
+  .gf-tt-suggestion-add { flex-shrink:0; padding:7px 14px; border:1px solid var(--gold); border-radius:3px; background:transparent; color:var(--gold); cursor:pointer; font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; transition:all .2s; }
   .gf-tt-suggestion-add:hover { background:var(--gold); color:#fff; }
   .gf-tt-contact-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
   .gf-tt-contact-row input { flex:1; min-width:160px; padding:9px 12px; border:1px solid rgba(0,0,0,.2); border-radius:2px; background:#fff; color:#333; font-family:'Jost',sans-serif; font-size:.8rem; }
@@ -842,6 +851,26 @@ const GF_COURSES = [
 ];
 let GF_SHUTTLE_PRICE = 30; // Sadece ekranda gösterim için (gerçek hesaplama sunucu tarafında yapılıyor)
 
+// Her Green Fee alt-sahasını (örn. "Cornelia GC - Prince Course") ilgili kulübün
+// COURSES kaydına (fotoğraf + açıklama) bağlar
+const GF_CLUB_MAP = {
+  'Montgomerie Maxx Royal': 0,
+  'Cornelia GC - Prince Course': 1, 'Cornelia GC - King Course': 1, 'Cornelia GC - Queen Course': 1,
+  'Carya Golf Club': 2,
+  'Sueno GC - Pines Course': 3, 'Sueno GC - Dunes Course': 3,
+  'Kaya Palazzo Golf Club': 4,
+  'Antalya GC - Pasha Course': 5, 'Antalya GC - Sultan Course': 5,
+  'Gloria GC - Old Course': 6, 'Gloria GC - New Course': 6, 'Gloria GC - Verde Course': 6,
+  'Cullinan Links - Olympos Course': 7, 'Cullinan Links - Aspendos Course': 7,
+  'National Golf Club': 8,
+  'Lykia Links Golf Club': 9,
+  'Robinson Nobilis Golf Club': 10
+};
+function gfClubInfo(courseName) {
+  const idx = GF_CLUB_MAP[courseName];
+  return idx !== undefined ? COURSES[idx] : null;
+}
+
 function initGreenFeeDropdown() {
   const sel = document.getElementById('gf-course');
   if (!sel) return;
@@ -960,7 +989,12 @@ function gfRenderTtPanel() {
   listEl.innerHTML = GF_TT_COURSES.map((c, idx) => {
     const priceLabel = (L.gf_result_label || 'Green Fee') + ': <strong>' + (c.data.greenFee || '—') + '</strong>' +
       (c.wantsShuttle && c.data.total ? ' · ' + (L.gf_total_label || 'Total') + ': ' + c.data.total : '');
-    return '<div class="gf-tt-course-row"><div><strong>' + c.course + '</strong> — ' + c.dateVal + '<br/>' + priceLabel + '</div>' +
+    const club = gfClubInfo(c.course);
+    const thumb = club && club.img ? '<img class="gf-tt-thumb" src="' + club.img + '" alt="' + c.course + '" loading="lazy"/>' : '';
+    const desc = club ? '<div class="gf-tt-club-desc">' + ((L[club.descKey]) || club.desc) + '</div>' : '';
+    return '<div class="gf-tt-course-row">' + thumb +
+      '<div class="gf-tt-info"><div class="gf-tt-club-name">' + c.course + '</div>' + desc +
+      '<div class="gf-tt-price-line">' + c.dateVal + ' · ' + priceLabel + '</div></div>' +
       '<span class="gf-tt-remove" data-idx="' + idx + '">✕</span></div>';
   }).join('');
 
@@ -979,7 +1013,12 @@ function gfRenderTtPanel() {
   suggEl.innerHTML = '<div class="gf-tt-suggestions-label">' + (L.gf_tt_suggestions_label || 'Cheaper alternatives') + '</div>' +
     toShow.map(s => {
       const priceLabel = (L.gf_result_label || 'Green Fee') + ': <strong>' + (s.data.greenFee || '—') + '</strong>';
-      return '<div class="gf-tt-suggestion-card"><div><strong>' + s.course + '</strong> — ' + priceLabel + '</div>' +
+      const club = gfClubInfo(s.course);
+      const thumb = club && club.img ? '<img class="gf-tt-thumb" src="' + club.img + '" alt="' + s.course + '" loading="lazy"/>' : '';
+      const desc = club ? '<div class="gf-tt-club-desc">' + ((L[club.descKey]) || club.desc) + '</div>' : '';
+      return '<div class="gf-tt-suggestion-card">' + thumb +
+        '<div class="gf-tt-info"><div class="gf-tt-club-name">' + s.course + '</div>' + desc +
+        '<div class="gf-tt-price-line">' + priceLabel + '</div></div>' +
         '<button type="button" class="gf-tt-suggestion-add" data-course="' + s.course + '">+ ' + (L.gf_tt_add_btn || 'Add') + '</button></div>';
     }).join('');
 }
