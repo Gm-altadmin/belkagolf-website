@@ -44,19 +44,21 @@ function parseDate(str) {
 module.exports = (req, res) => {
   try {
     const { hotel, date, nights, group } = req.query;
-    if (!hotel || !date || !nights) {
+    // "nights" artık zorunlu değil: verilmezse o otel+tarih için TÜM gece
+    // seçenekleri döner, istemci taraf gece butonlarını buradan oluşturur.
+    if (!hotel || !date) {
       res.status(400).json({ error: 'missing_params' });
       return;
     }
 
     const data = loadData();
     const checkDate = new Date(date + 'T00:00:00');
-    const nightsNum = Number(nights);
+    const nightsNum = nights ? Number(nights) : null;
     const groupSize = group ? Number(group) : 1;
 
     const matches = data.filter(row => {
       if (row.hotel !== hotel) return false;
-      if (row.nights !== nightsNum) return false;
+      if (nightsNum !== null && row.nights !== nightsNum) return false;
       const start = parseDate(row.start);
       const end = parseDate(row.end);
       return checkDate >= start && checkDate <= end;
@@ -82,6 +84,7 @@ module.exports = (req, res) => {
         priceType = 'single';
       }
       return {
+        nights: m.nights,
         rounds: m.rounds,
         view: m.view,
         price: price !== null ? price + ' €' : null,

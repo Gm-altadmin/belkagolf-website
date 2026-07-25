@@ -182,6 +182,8 @@
   .hp-badge { display:inline-block; margin-right:8px; padding:2px 8px; background:rgba(184,146,58,.15); border:1px solid rgba(184,146,58,.4); border-radius:10px; }
   .hp-book-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
   .hp-book-btn { display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:2px; font-size:.72rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; border:1px solid rgba(255,255,255,.3); color:#fff; background:transparent; transition:all .25s; }
+  .hp-availability-hint { font-size:.72rem; color:rgba(255,255,255,.5); margin-top:6px; min-height:1.2em; }
+  .hp-availability-hint.hp-hint-none { color:#e08a8a; }
   .hp-book-btn:hover { border-color:#fff; background:rgba(255,255,255,.08); }
   .hp-book-wa { border-color:var(--whatsapp-green); color:var(--whatsapp-green); }
   .hp-book-wa:hover { background:rgba(37,211,102,.12); }
@@ -466,27 +468,22 @@
   <div class="hp-widget reveal">
     <div class="hp-field">
       <label for="hp-hotel" data-i18n="hp_hotel_label">Hotel</label>
-      <select id="hp-hotel" onchange="lookupHotelPackage()">
+      <select id="hp-hotel" onchange="onHpHotelChange()">
         <option value="" data-i18n="hp_choose">Choose a hotel…</option>
       </select>
     </div>
     <div class="hp-field">
       <label for="hp-date" data-i18n="hp_date_label">Check-in Date</label>
       <input type="date" id="hp-date" onchange="lookupHotelPackage()"/>
+      <div class="hp-availability-hint" id="hp-availability-hint"></div>
     </div>
-    <div class="hp-field">
-      <label for="hp-nights" data-i18n="hp_nights_label">Nights</label>
-      <select id="hp-nights" onchange="lookupHotelPackage()">
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5" selected>5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-      </select>
+    <div class="hp-field hp-nights-field" id="hp-nights-field" style="display:none">
+      <label data-i18n="hp_nights_label">Nights</label>
+      <div class="chip-group" id="hp-nights"></div>
     </div>
     <div class="hp-field">
       <label for="hp-group" data-i18n="hp_group_label">Golfers</label>
-      <select id="hp-group" onchange="lookupHotelPackage()">
+      <select id="hp-group" onchange="renderHpResult()">
         <option value="1">1</option>
         <option value="2" selected>2</option>
         <option value="3">3</option>
@@ -907,6 +904,8 @@ function initHotelPackageDropdown() {
   });
 }
 
+let HP_ALL_OPTIONS = [];
+let HP_SELECTED_NIGHTS = null;
 let HP_LAST_OPTIONS = [];
 let HP_SELECTED_ROUNDS = null;
 
@@ -915,6 +914,68 @@ function hpRoundLabel(rounds, L) {
     ? (L.hp_unlimited || 'Unlimited Golf')
     : rounds + ' ' + (L.hp_rounds || 'Rounds');
 }
+
+function renderHpNightsChips() {
+  const wrap = document.getElementById('hp-nights-field');
+  const chipsEl = document.getElementById('hp-nights');
+
+  if (!HP_ALL_OPTIONS.length) {
+    wrap.style.display = 'none';
+    chipsEl.innerHTML = '';
+    HP_SELECTED_NIGHTS = null;
+    HP_LAST_OPTIONS = [];
+    renderHpRoundsChips();
+    renderHpResult();
+    return;
+  }
+
+  const seen = new Set();
+  const nightsList = [];
+  HP_ALL_OPTIONS.forEach(opt => {
+    const key = String(opt.nights);
+    if (!seen.has(key)) { seen.add(key); nightsList.push(opt.nights); }
+  });
+  nightsList.sort((a, b) => a - b);
+
+  if (nightsList.length <= 1) {
+    wrap.style.display = 'none';
+    HP_SELECTED_NIGHTS = nightsList[0] ?? null;
+    updateNightsFilter();
+    return;
+  }
+
+  wrap.style.display = '';
+  if (HP_SELECTED_NIGHTS === null || !nightsList.includes(Number(HP_SELECTED_NIGHTS))) {
+    HP_SELECTED_NIGHTS = nightsList[0];
+  }
+  chipsEl.innerHTML = nightsList.map(n => {
+    const active = n === Number(HP_SELECTED_NIGHTS) ? ' active' : '';
+    return `<button type="button" class="chip${active}" data-nights="${n}">${n}</button>`;
+  }).join('');
+  updateNightsFilter();
+}
+
+function updateNightsFilter() {
+  HP_LAST_OPTIONS = HP_SELECTED_NIGHTS === null
+    ? []
+    : HP_ALL_OPTIONS.filter(opt => Number(opt.nights) === Number(HP_SELECTED_NIGHTS));
+  if (HP_SELECTED_ROUNDS !== null) {
+    const stillValid = HP_LAST_OPTIONS.some(o => o.rounds === HP_SELECTED_ROUNDS);
+    if (!stillValid) HP_SELECTED_ROUNDS = null;
+  }
+  renderHpRoundsChips();
+  renderHpResult();
+}
+
+document.getElementById('hp-nights').addEventListener('click', (e) => {
+  const btn = e.target.closest('.chip');
+  if (!btn) return;
+  HP_SELECTED_NIGHTS = Number(btn.dataset.nights);
+  document.querySelectorAll('#hp-nights .chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  HP_SELECTED_ROUNDS = null;
+  updateNightsFilter();
+});
 
 function renderHpRoundsChips() {
   const wrap = document.getElementById('hp-rounds-field');
@@ -1001,7 +1062,7 @@ function hpOptionSummaryLines(opt) {
   const L = t[currentLang] || t.en;
   const hotel = document.getElementById('hp-hotel').value;
   const dateVal = document.getElementById('hp-date').value;
-  const nights = document.getElementById('hp-nights').value;
+  const nights = HP_SELECTED_NIGHTS;
   const group = document.getElementById('hp-group').value;
   const roundLabel = hpRoundLabel(opt.rounds, L);
   const groupNum = Number(group);
@@ -1083,32 +1144,60 @@ document.getElementById('hp-rounds').addEventListener('click', (e) => {
   renderHpResult();
 });
 
+async function onHpHotelChange() {
+  const hintEl = document.getElementById('hp-availability-hint');
+  const hotel = document.getElementById('hp-hotel').value;
+  const L = t[currentLang] || t.en;
+
+  if (!hotel) {
+    hintEl.textContent = '';
+    hintEl.className = 'hp-availability-hint';
+  } else {
+    hintEl.className = 'hp-availability-hint';
+    hintEl.textContent = (L.hp_checking_dates || 'Checking available dates…');
+    try {
+      const res = await fetch('/api/hotelavailability?hotel=' + encodeURIComponent(hotel));
+      if (res.ok) {
+        const data = await res.json();
+        const ranges = (data.ranges || []).map(r => r.start + ' – ' + r.end).join(',  ');
+        hintEl.textContent = (L.hp_available_dates || 'Available') + ': ' + ranges;
+        hintEl.classList.remove('hp-hint-none');
+      } else {
+        hintEl.textContent = (L.hp_no_dates || 'No dates currently on sale for this hotel.');
+        hintEl.classList.add('hp-hint-none');
+      }
+    } catch (e) {
+      hintEl.textContent = '';
+    }
+  }
+
+  lookupHotelPackage();
+}
+
 async function lookupHotelPackage() {
   const resultEl = document.getElementById('hp-result');
   const hotel = document.getElementById('hp-hotel').value;
   const dateVal = document.getElementById('hp-date').value;
-  const nights = document.getElementById('hp-nights').value;
-  const group = document.getElementById('hp-group').value;
   const L = t[currentLang] || t.en;
 
   if (!hotel || !dateVal) {
     resultEl.className = 'hp-result hp-error';
     resultEl.textContent = L.hp_select_all || 'Please select a hotel and a date.';
-    HP_LAST_OPTIONS = []; HP_SELECTED_ROUNDS = null; renderHpRoundsChips();
+    HP_ALL_OPTIONS = []; HP_SELECTED_NIGHTS = null; renderHpNightsChips();
     return;
   }
 
   resultEl.className = 'hp-result';
   resultEl.textContent = (L.gf_loading || 'Checking…');
-  HP_LAST_OPTIONS = []; HP_SELECTED_ROUNDS = null; renderHpRoundsChips();
+  HP_ALL_OPTIONS = []; HP_SELECTED_NIGHTS = null; renderHpNightsChips();
 
   let data;
   try {
-    const params = new URLSearchParams({ hotel, date: dateVal, nights, group });
+    const params = new URLSearchParams({ hotel, date: dateVal });
     const res = await fetch('/api/hotelpackage?' + params.toString());
     if (res.status === 404) {
       resultEl.className = 'hp-result hp-error';
-      resultEl.textContent = L.hp_not_found || 'No package found for this hotel/date/nights combination — please request a quote.';
+      resultEl.textContent = L.hp_not_found || 'No package found for this hotel/date combination — please request a quote.';
       return;
     }
     if (!res.ok) throw new Error('API hatası: ' + res.status);
@@ -1119,9 +1208,9 @@ async function lookupHotelPackage() {
     return;
   }
 
-  HP_LAST_OPTIONS = data.options || [];
-  renderHpRoundsChips();
-  renderHpResult();
+  resultEl.textContent = '';
+  HP_ALL_OPTIONS = data.options || [];
+  renderHpNightsChips();
 }
 
 document.addEventListener('DOMContentLoaded', initHotelPackageDropdown);
@@ -1229,7 +1318,7 @@ const t = {
     pkg21_sub:'Modern beachfront resort with two championship courses', pkg22_sub:'Sister resort to Regnum Carya, quieter and boutique-scale',
     courses_title:'The Courses of Belek', courses_desc:'More than sixteen courses within a short drive of each other — from Tour venues to floodlit night golf.',
     gf_course_label:'Golf Course', gf_choose:'Choose a course…', gf_date_label:'Date', gf_check:'Check Price', gf_select_both:'Please select a course and a date.', gf_loading:'Checking…', gf_error:'Price list unavailable right now — please request a quote.', gf_not_found:'This course is closed for maintenance (overseeding) on that date.', gf_result_label:'Green Fee', gf_hotel_rate:'Hotel guest rate', gf_shuttle_label:'Shuttle (round-trip)', gf_total_label:'Total', gf_all_inclusive:'All Inclusive',
-    hp_hotel_label:'Hotel', hp_choose:'Choose a hotel…', hp_date_label:'Check-in Date', hp_nights_label:'Nights', hp_group_label:'Golfers', hp_group8:'8 (7+1 group rate)', hp_rounds_label:'Rounds', hp_check:'Check Packages', hp_select_all:'Please select a hotel and a date.', hp_not_found:'No package found for this hotel/date/nights combination — please request a quote.', hp_error:'Package prices unavailable right now — please request a quote.', hp_unlimited:'Unlimited Golf', hp_rounds:'Rounds', hp_buggy_free:'Free Buggy', hp_token_free:'Free Token', hp_transfer_free:'Free Transfer', hp_group71_badge:'7+1 Available', hp_book_whatsapp:'Book via WhatsApp', hp_book_email:'Request by Email', hp_form_name:'Your name', hp_form_phone:'Phone or email', hp_form_send:'Send', hp_pp:'per person', hp_group_rate:'8+ group rate', hp_single:'Single', hp_double:'Double, per person',
+    hp_hotel_label:'Hotel', hp_choose:'Choose a hotel…', hp_date_label:'Check-in Date', hp_nights_label:'Nights', hp_group_label:'Golfers', hp_group8:'8 (7+1 group rate)', hp_rounds_label:'Rounds', hp_check:'Check Packages', hp_select_all:'Please select a hotel and a date.', hp_not_found:'No package found for this hotel/date combination — please request a quote.', hp_error:'Package prices unavailable right now — please request a quote.', hp_unlimited:'Unlimited Golf', hp_rounds:'Rounds', hp_buggy_free:'Free Buggy', hp_token_free:'Free Token', hp_transfer_free:'Free Transfer', hp_group71_badge:'7+1 Available', hp_book_whatsapp:'Book via WhatsApp', hp_book_email:'Request by Email', hp_form_name:'Your name', hp_form_phone:'Phone or email', hp_form_send:'Send', hp_checking_dates:'Checking available dates…', hp_available_dates:'Available', hp_no_dates:'No dates currently on sale for this hotel.', hp_pp:'per person', hp_group_rate:'8+ group rate', hp_single:'Single', hp_double:'Double, per person',
     course1_desc:'A Colin Montgomerie design that has hosted European Tour events, set beside the Maxx Royal resort.',
     course2_desc:"Sir Nick Faldo's signature course, with Prince, King and Queen routings through pine forest.",
     course3_desc:"Europe's first fully floodlit 18-hole course — golf under the lights is a Belek signature.",
@@ -1278,7 +1367,7 @@ const t = {
     pkg21_sub:'Modern, plaj kenarında, iki şampiyonluk sahasıyla', pkg22_sub:'Regnum Carya\'nın kardeş tesisi, daha sakin ve butik ölçekli',
     courses_title:"Belek'in Golf Sahaları", courses_desc:'Birbirine kısa mesafede, on altıdan fazla saha — Tur etkinliklerine ev sahipliği yapmış olanlardan gece aydınlatmalı sahalara kadar.',
     gf_course_label:'Golf Sahası', gf_choose:'Bir saha seçin…', gf_date_label:'Tarih', gf_check:'Fiyatı Gör', gf_select_both:'Lütfen bir saha ve tarih seçin.', gf_loading:'Kontrol ediliyor…', gf_error:'Fiyat listesine şu an ulaşılamıyor — lütfen teklif isteyin.', gf_not_found:'Bu tarihte saha bakımda (overseeding nedeniyle kapalı).', gf_result_label:'Green Fee', gf_hotel_rate:'Otel misafiri fiyatı', gf_shuttle_label:'Shuttle (gidiş-dönüş)', gf_total_label:'Toplam', gf_all_inclusive:'Her Şey Dahil',
-    hp_hotel_label:'Otel', hp_choose:'Bir otel seçin…', hp_date_label:'Giriş Tarihi', hp_nights_label:'Gece Sayısı', hp_group_label:'Golfçü Sayısı', hp_group8:'8 (7+1 grup fiyatı)', hp_rounds_label:'Round Sayısı', hp_check:'Paketleri Gör', hp_select_all:'Lütfen bir otel ve tarih seçin.', hp_not_found:'Bu otel/tarih/gece kombinasyonu için paket bulunamadı — lütfen teklif isteyin.', hp_error:'Paket fiyatlarına şu an ulaşılamıyor — lütfen teklif isteyin.', hp_unlimited:'Sınırsız Golf', hp_rounds:'Round', hp_buggy_free:'Ücretsiz Buggy', hp_token_free:'Ücretsiz Token', hp_transfer_free:'Ücretsiz Transfer', hp_group71_badge:'7+1 Var', hp_book_whatsapp:'WhatsApp ile Rezervasyon', hp_book_email:'E-posta ile Talep Et', hp_form_name:'Adınız', hp_form_phone:'Telefon veya e-posta', hp_form_send:'Gönder', hp_pp:'kişi başı', hp_group_rate:'8+ grup fiyatı', hp_single:'Tek Kişilik', hp_double:'Çift Kişilik, kişi başı',
+    hp_hotel_label:'Otel', hp_choose:'Bir otel seçin…', hp_date_label:'Giriş Tarihi', hp_nights_label:'Gece Sayısı', hp_group_label:'Golfçü Sayısı', hp_group8:'8 (7+1 grup fiyatı)', hp_rounds_label:'Round Sayısı', hp_check:'Paketleri Gör', hp_select_all:'Lütfen bir otel ve tarih seçin.', hp_not_found:'Bu otel/tarih kombinasyonu için paket bulunamadı — lütfen teklif isteyin.', hp_error:'Paket fiyatlarına şu an ulaşılamıyor — lütfen teklif isteyin.', hp_unlimited:'Sınırsız Golf', hp_rounds:'Round', hp_buggy_free:'Ücretsiz Buggy', hp_token_free:'Ücretsiz Token', hp_transfer_free:'Ücretsiz Transfer', hp_group71_badge:'7+1 Var', hp_book_whatsapp:'WhatsApp ile Rezervasyon', hp_book_email:'E-posta ile Talep Et', hp_form_name:'Adınız', hp_form_phone:'Telefon veya e-posta', hp_form_send:'Gönder', hp_checking_dates:'Uygun tarihler kontrol ediliyor…', hp_available_dates:'Uygun tarihler', hp_no_dates:'Bu otel için şu anda satışta tarih yok.', hp_pp:'kişi başı', hp_group_rate:'8+ grup fiyatı', hp_single:'Tek Kişilik', hp_double:'Çift Kişilik, kişi başı',
     course1_desc:'Avrupa Turu etkinliklerine ev sahipliği yapmış, Colin Montgomerie imzalı, Maxx Royal tesisinin hemen yanında.',
     course2_desc:'Sir Nick Faldo imzası taşıyan, çam ormanı içinde Prince, King ve Queen parkurlarıyla.',
     course3_desc:"Avrupa'nın tam floodlight'lı (gece aydınlatmalı) ilk 18 delikli sahası — Belek'in imza deneyimi.",
@@ -1327,7 +1416,7 @@ const t = {
     pkg21_sub:'Modernes Resort direkt am Strand mit zwei Championship-Plätzen', pkg22_sub:'Schwesterhotel des Regnum Carya, ruhiger und im Boutique-Format',
     courses_title:'Die Golfplätze von Belek', courses_desc:'Mehr als sechzehn Plätze in kurzer Fahrdistanz zueinander — von Tour-Austragungsorten bis zu Golf unter Flutlicht.',
     gf_course_label:'Golfplatz', gf_choose:'Platz wählen…', gf_date_label:'Datum', gf_check:'Preis Prüfen', gf_select_both:'Bitte Platz und Datum auswählen.', gf_loading:'Wird geprüft…', gf_error:'Preisliste derzeit nicht verfügbar — bitte fordern Sie ein Angebot an.', gf_not_found:'Dieser Platz ist an diesem Datum wegen Pflegearbeiten (Overseeding) geschlossen.', gf_result_label:'Green Fee', gf_hotel_rate:'Hotelgästepreis', gf_shuttle_label:'Shuttle (Hin- und Rückfahrt)', gf_total_label:'Gesamt', gf_all_inclusive:'All Inclusive',
-    hp_hotel_label:'Hotel', hp_choose:'Hotel wählen…', hp_date_label:'Anreisedatum', hp_nights_label:'Nächte', hp_group_label:'Golfer', hp_group8:'8 (7+1 Gruppenpreis)', hp_rounds_label:'Runden', hp_check:'Pakete Prüfen', hp_select_all:'Bitte Hotel und Datum auswählen.', hp_not_found:'Kein Paket für diese Hotel-/Datums-/Nächte-Kombination gefunden — bitte fordern Sie ein Angebot an.', hp_error:'Paketpreise derzeit nicht verfügbar — bitte fordern Sie ein Angebot an.', hp_unlimited:'Unbegrenztes Golf', hp_rounds:'Runden', hp_buggy_free:'Kostenloser Buggy', hp_token_free:'Kostenloser Token', hp_transfer_free:'Kostenloser Transfer', hp_group71_badge:'7+1 Verfügbar', hp_book_whatsapp:'Über WhatsApp Buchen', hp_book_email:'Per E-Mail Anfragen', hp_form_name:'Ihr Name', hp_form_phone:'Telefon oder E-Mail', hp_form_send:'Senden', hp_pp:'pro Person', hp_group_rate:'8+ Gruppenpreis', hp_single:'Einzelzimmer', hp_double:'Doppelzimmer, pro Person',
+    hp_hotel_label:'Hotel', hp_choose:'Hotel wählen…', hp_date_label:'Anreisedatum', hp_nights_label:'Nächte', hp_group_label:'Golfer', hp_group8:'8 (7+1 Gruppenpreis)', hp_rounds_label:'Runden', hp_check:'Pakete Prüfen', hp_select_all:'Bitte Hotel und Datum auswählen.', hp_not_found:'Kein Paket für diese Hotel-/Datumskombination gefunden — bitte fordern Sie ein Angebot an.', hp_error:'Paketpreise derzeit nicht verfügbar — bitte fordern Sie ein Angebot an.', hp_unlimited:'Unbegrenztes Golf', hp_rounds:'Runden', hp_buggy_free:'Kostenloser Buggy', hp_token_free:'Kostenloser Token', hp_transfer_free:'Kostenloser Transfer', hp_group71_badge:'7+1 Verfügbar', hp_book_whatsapp:'Über WhatsApp Buchen', hp_book_email:'Per E-Mail Anfragen', hp_form_name:'Ihr Name', hp_form_phone:'Telefon oder E-Mail', hp_form_send:'Senden', hp_checking_dates:'Verfügbare Termine werden geprüft…', hp_available_dates:'Verfügbar', hp_no_dates:'Für dieses Hotel sind derzeit keine Termine verfügbar.', hp_pp:'pro Person', hp_group_rate:'8+ Gruppenpreis', hp_single:'Einzelzimmer', hp_double:'Doppelzimmer, pro Person',
     course1_desc:'Ein Colin-Montgomerie-Design, das bereits European-Tour-Events ausgetragen hat, direkt neben dem Maxx-Royal-Resort.',
     course2_desc:"Der Signature-Platz von Sir Nick Faldo mit den Routen Prince, King und Queen durch den Pinienwald.",
     course3_desc:"Europas erster vollständig flutlichtbeleuchteter 18-Loch-Platz — Golf unter Flutlicht ist ein Markenzeichen von Belek.",
@@ -1376,7 +1465,7 @@ const t = {
     pkg21_sub:'Современный курорт на берегу моря с двумя полями для чемпионатов', pkg22_sub:'Отель-побратим Regnum Carya, более тихий и камерный',
     courses_title:'Гольф-Поля Белека', courses_desc:'Более шестнадцати полей в шаговой доступности друг от друга — от площадок Тура до гольфа при свете прожекторов.',
     gf_course_label:'Гольф-Поле', gf_choose:'Выберите поле…', gf_date_label:'Дата', gf_check:'Узнать Цену', gf_select_both:'Пожалуйста, выберите поле и дату.', gf_loading:'Проверка…', gf_error:'Прайс-лист временно недоступен — запросите предложение.', gf_not_found:'В эту дату поле закрыто на техническое обслуживание (пересев травы).', gf_result_label:'Green Fee', gf_hotel_rate:'Цена для гостей отеля', gf_shuttle_label:'Шаттл (туда и обратно)', gf_total_label:'Итого', gf_all_inclusive:'Всё Включено',
-    hp_hotel_label:'Отель', hp_choose:'Выберите отель…', hp_date_label:'Дата Заезда', hp_nights_label:'Ночей', hp_group_label:'Игроков', hp_group8:'8 (групповая цена 7+1)', hp_rounds_label:'Раунды', hp_check:'Проверить Пакеты', hp_select_all:'Пожалуйста, выберите отель и дату.', hp_not_found:'Пакет для этой комбинации отель/дата/ночи не найден — запросите предложение.', hp_error:'Цены на пакеты временно недоступны — запросите предложение.', hp_unlimited:'Безлимитный Гольф', hp_rounds:'Раундов', hp_buggy_free:'Бесплатный Багги', hp_token_free:'Бесплатный Токен', hp_transfer_free:'Бесплатный Трансфер', hp_group71_badge:'Доступно 7+1', hp_book_whatsapp:'Забронировать через WhatsApp', hp_book_email:'Запросить по Email', hp_form_name:'Ваше имя', hp_form_phone:'Телефон или email', hp_form_send:'Отправить', hp_pp:'с человека', hp_group_rate:'групповая цена 8+', hp_single:'Одноместный', hp_double:'Двухместный, с человека',
+    hp_hotel_label:'Отель', hp_choose:'Выберите отель…', hp_date_label:'Дата Заезда', hp_nights_label:'Ночей', hp_group_label:'Игроков', hp_group8:'8 (групповая цена 7+1)', hp_rounds_label:'Раунды', hp_check:'Проверить Пакеты', hp_select_all:'Пожалуйста, выберите отель и дату.', hp_not_found:'Пакет для этой комбинации отель/дата не найден — запросите предложение.', hp_error:'Цены на пакеты временно недоступны — запросите предложение.', hp_unlimited:'Безлимитный Гольф', hp_rounds:'Раундов', hp_buggy_free:'Бесплатный Багги', hp_token_free:'Бесплатный Токен', hp_transfer_free:'Бесплатный Трансфер', hp_group71_badge:'Доступно 7+1', hp_book_whatsapp:'Забронировать через WhatsApp', hp_book_email:'Запросить по Email', hp_form_name:'Ваше имя', hp_form_phone:'Телефон или email', hp_form_send:'Отправить', hp_checking_dates:'Проверка доступных дат…', hp_available_dates:'Доступно', hp_no_dates:'Для этого отеля сейчас нет дат в продаже.', hp_pp:'с человека', hp_group_rate:'групповая цена 8+', hp_single:'Одноместный', hp_double:'Двухместный, с человека',
     course1_desc:'Поле, спроектированное Колином Монтгомери, принимавшее турниры European Tour, рядом с курортом Maxx Royal.',
     course2_desc:'Фирменное поле сэра Ника Фалдо с маршрутами Prince, King и Queen через сосновый лес.',
     course3_desc:'Первое в Европе поле на 18 лунок с полным освещением — гольф при свете прожекторов является визитной карточкой Белека.',
@@ -1425,7 +1514,7 @@ const t = {
     pkg21_sub:'Modernt strandnära resort med två mästerskapsbanor', pkg22_sub:'Regnum Caryas systerhotell, lugnare och i mindre skala',
     courses_title:'Beleks Golfbanor', courses_desc:'Fler än sexton banor på kort avstånd från varandra — från Tour-arenor till golf i strålkastarljus.',
     gf_course_label:'Golfbana', gf_choose:'Välj en bana…', gf_date_label:'Datum', gf_check:'Kontrollera Pris', gf_select_both:'Välj en bana och ett datum.', gf_loading:'Kontrollerar…', gf_error:'Prislistan är inte tillgänglig just nu — begär en offert.', gf_not_found:'Denna bana är stängd för underhåll (omsådd av gräs) det datumet.', gf_result_label:'Green Fee', gf_hotel_rate:'Pris för hotellgäster', gf_shuttle_label:'Shuttle (tur och retur)', gf_total_label:'Totalt', gf_all_inclusive:'Allt Inkluderat',
-    hp_hotel_label:'Hotell', hp_choose:'Välj ett hotell…', hp_date_label:'Ankomstdatum', hp_nights_label:'Nätter', hp_group_label:'Golfare', hp_group8:'8 (7+1-gruppris)', hp_rounds_label:'Rundor', hp_check:'Kontrollera Paket', hp_select_all:'Välj ett hotell och ett datum.', hp_not_found:'Inget paket hittades för denna hotell-/datum-/nattkombination — begär en offert.', hp_error:'Paketpriser är inte tillgängliga just nu — begär en offert.', hp_unlimited:'Obegränsad Golf', hp_rounds:'Rundor', hp_buggy_free:'Gratis Buggy', hp_token_free:'Gratis Token', hp_transfer_free:'Gratis Transfer', hp_group71_badge:'7+1 Tillgängligt', hp_book_whatsapp:'Boka via WhatsApp', hp_book_email:'Begär via E-post', hp_form_name:'Ditt namn', hp_form_phone:'Telefon eller e-post', hp_form_send:'Skicka', hp_pp:'per person', hp_group_rate:'8+ gruppris', hp_single:'Enkelrum', hp_double:'Dubbelrum, per person',
+    hp_hotel_label:'Hotell', hp_choose:'Välj ett hotell…', hp_date_label:'Ankomstdatum', hp_nights_label:'Nätter', hp_group_label:'Golfare', hp_group8:'8 (7+1-gruppris)', hp_rounds_label:'Rundor', hp_check:'Kontrollera Paket', hp_select_all:'Välj ett hotell och ett datum.', hp_not_found:'Inget paket hittades för denna hotell-/datumkombination — begär en offert.', hp_error:'Paketpriser är inte tillgängliga just nu — begär en offert.', hp_unlimited:'Obegränsad Golf', hp_rounds:'Rundor', hp_buggy_free:'Gratis Buggy', hp_token_free:'Gratis Token', hp_transfer_free:'Gratis Transfer', hp_group71_badge:'7+1 Tillgängligt', hp_book_whatsapp:'Boka via WhatsApp', hp_book_email:'Begär via E-post', hp_form_name:'Ditt namn', hp_form_phone:'Telefon eller e-post', hp_form_send:'Skicka', hp_checking_dates:'Kontrollerar tillgängliga datum…', hp_available_dates:'Tillgängligt', hp_no_dates:'Inga datum till salu för detta hotell just nu.', hp_pp:'per person', hp_group_rate:'8+ gruppris', hp_single:'Enkelrum', hp_double:'Dubbelrum, per person',
     course1_desc:'En bana designad av Colin Montgomerie som stått värd för European Tour-tävlingar, intill Maxx Royal-resorten.',
     course2_desc:"Sir Nick Faldos signaturbana, med rundorna Prince, King och Queen genom tallskog.",
     course3_desc:"Europas första helt flodlyste 18-hålsbana — golf i strålkastarljus är ett kännetecken för Belek.",
