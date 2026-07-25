@@ -2,7 +2,7 @@ const XLSX = require('xlsx');
 const path = require('path');
 const fs = require('fs');
 
-const GF_MARKUP = 15;       // Green Fee / Otel Misafiri fiyatına eklenen sabit kâr payı (€)
+const GF_MARKUP = 11;       // Green Fee / Otel Misafiri fiyatına eklenen sabit kâr payı (€)
 const GF_SHUTTLE_PRICE = 30; // Gidiş-dönüş shuttle ücreti (€)
 const AI_TRUE_VALUES = ['evet', 'yes', 'dahil', 'included', 'da', 'ja'];
 
