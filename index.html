@@ -155,26 +155,28 @@
   .gf-result.gf-error::before { content:'⚠ '; }
   .gf-result.gf-closed { color:#7a5f1e; font-style:italic; font-weight:500; }
   .gf-result.gf-closed::before { content:'ⓘ '; font-style:normal; }
-  .gf-tt-toggle { display:inline-flex; align-items:center; gap:6px; margin-top:10px; flex-basis:100%; background:none; border:none; padding:0; cursor:pointer; color:var(--gold); font-family:'Jost',sans-serif; font-size:.78rem; font-weight:500; letter-spacing:.04em; text-transform:uppercase; }
+  .gf-tt-toggle { display:inline-flex; align-items:center; gap:8px; margin-top:12px; flex-basis:100%; width:fit-content; background:none; border:1px solid var(--gold); padding:9px 18px; border-radius:2px; cursor:pointer; color:var(--gold); font-family:'Jost',sans-serif; font-size:.8rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; transition:all .25s; }
+  .gf-tt-toggle:hover { background:rgba(184,146,58,.08); }
   .gf-tt-toggle svg { width:.7rem; height:.7rem; transition:transform .25s; }
   .gf-tt-toggle.open svg { transform:rotate(90deg); }
   .gf-tt-panel { flex-basis:100%; max-height:0; overflow:hidden; transition:max-height .35s ease; }
   .gf-tt-panel.open { max-height:3000px; }
   .gf-tt-inner { padding:16px 0 4px; border-top:1px solid rgba(0,0,0,.1); margin-top:12px; }
-  .gf-tt-course-row { display:flex; align-items:center; gap:12px; padding:10px; background:#f7f5f0; border-radius:4px; margin-bottom:8px; }
-  .gf-tt-course-row .gf-tt-thumb { width:64px; height:64px; border-radius:3px; object-fit:cover; flex-shrink:0; }
+  .gf-tt-course-row { display:flex; align-items:center; gap:16px; padding:14px; background:rgba(184,146,58,.08); border:1px solid rgba(184,146,58,.35); border-radius:6px; margin-bottom:10px; }
+  .gf-tt-course-row .gf-tt-thumb { width:96px; height:96px; border-radius:5px; object-fit:cover; flex-shrink:0; }
   .gf-tt-course-row .gf-tt-info { flex:1; min-width:0; }
-  .gf-tt-course-row .gf-tt-info .gf-tt-club-name { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:600; color:var(--text-dark); }
-  .gf-tt-course-row .gf-tt-info .gf-tt-club-desc { font-size:.72rem; color:#777; line-height:1.4; margin:2px 0 4px; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
-  .gf-tt-course-row .gf-tt-info .gf-tt-price-line { font-size:.82rem; }
-  .gf-tt-course-row .gf-tt-remove { cursor:pointer; color:#a33; font-size:1rem; padding:0 6px; align-self:flex-start; flex-shrink:0; }
+  .gf-tt-course-row .gf-tt-info .gf-tt-club-name { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:600; color:var(--text-dark); }
+  .gf-tt-course-row .gf-tt-info .gf-tt-club-desc { font-size:.78rem; color:#666; line-height:1.4; margin:3px 0 5px; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
+  .gf-tt-course-row .gf-tt-info .gf-tt-price-line { font-size:.92rem; }
+  .gf-tt-course-row .gf-tt-remove { cursor:pointer; color:#a33; font-size:1.1rem; padding:0 6px; align-self:flex-start; flex-shrink:0; }
+  @media (max-width:600px){ .gf-tt-course-row .gf-tt-thumb{ width:72px; height:72px; } .gf-tt-course-row .gf-tt-info .gf-tt-club-name{ font-size:1.1rem; } }
   .gf-tt-suggestions-label { font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; color:#8a7c5c; margin-bottom:8px; }
   .gf-tt-suggestions { margin-bottom:14px; }
-  .gf-tt-suggestion-card { display:flex; align-items:center; gap:12px; padding:10px; background:#fff; border:1px dashed rgba(0,0,0,.18); border-radius:4px; margin-bottom:8px; }
-  .gf-tt-suggestion-card .gf-tt-thumb { width:56px; height:56px; border-radius:3px; object-fit:cover; flex-shrink:0; }
+  .gf-tt-suggestion-card { display:flex; align-items:center; gap:10px; padding:9px 10px; background:#fff; border:1px dashed rgba(0,0,0,.18); border-radius:4px; margin-bottom:8px; }
+  .gf-tt-suggestion-card .gf-tt-thumb { width:44px; height:44px; border-radius:3px; object-fit:cover; flex-shrink:0; opacity:.9; }
   .gf-tt-suggestion-card .gf-tt-info { flex:1; min-width:0; }
-  .gf-tt-suggestion-card .gf-tt-info .gf-tt-club-name { font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:600; color:var(--text-dark); }
-  .gf-tt-suggestion-card .gf-tt-info .gf-tt-club-desc { font-size:.7rem; color:#777; line-height:1.4; margin:2px 0 3px; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
+  .gf-tt-suggestion-card .gf-tt-info .gf-tt-club-name { font-family:'Jost',sans-serif; font-size:.86rem; font-weight:500; color:#555; }
+  .gf-tt-suggestion-card .gf-tt-info .gf-tt-club-desc { font-size:.68rem; color:#999; line-height:1.4; margin:2px 0 3px; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden; }
   .gf-tt-suggestion-add { flex-shrink:0; padding:7px 14px; border:1px solid var(--gold); border-radius:3px; background:transparent; color:var(--gold); cursor:pointer; font-size:.68rem; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; transition:all .2s; }
   .gf-tt-suggestion-add:hover { background:var(--gold); color:#fff; }
   .gf-tt-contact-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
@@ -1050,7 +1052,7 @@ async function gfLoadCheapestAlternatives(selectedCourse, dateVal, wantsShuttle)
     return { course: c, dateVal, wantsShuttle, data, price };
   }));
   const valid = results.filter(r => r !== null).sort((a, b) => a.price - b.price);
-  GF_SUGGESTED_COURSES = valid.slice(0, 2);
+  GF_SUGGESTED_COURSES = valid.slice(0, 3);
   GF_SUGGESTIONS_LOADING = false;
 
   const panelEl = document.getElementById('gf-tt-panel');
