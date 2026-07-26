@@ -246,8 +246,9 @@
   .hp-tt-suggestion-add:hover { background:var(--gold-light); color:#1a1a1a; }
   .hp-tt-greenfee { margin-bottom:14px; }
   .hp-tt-greenfee-label { font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.8); font-weight:500; margin-bottom:8px; }
-  .hp-tt-gf-row { display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:4px; cursor:pointer; }
+  .hp-tt-gf-row { display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:4px; cursor:pointer; border:1px solid rgba(255,255,255,.08); margin-bottom:6px; }
   .hp-tt-gf-row:hover { background:rgba(255,255,255,.05); }
+  .hp-tt-gf-row .hp-tt-thumb { width:44px; height:44px; border-radius:3px; object-fit:cover; flex-shrink:0; }
   .hp-tt-gf-row input { width:17px; height:17px; accent-color:var(--gold); cursor:pointer; flex-shrink:0; }
   .hp-tt-gf-name { flex:1; font-size:.92rem; color:#fff; }
   .hp-tt-gf-price { font-size:.88rem; color:var(--gold-light); font-weight:600; white-space:nowrap; }
@@ -1429,6 +1430,33 @@ let HP_SUGGESTIONS_LOADING = false;
 let HP_TT_GF_PRICES = {};
 let HP_TT_GF_SELECTED = new Set();
 
+async function hpSwitchToHotel(hotelName) {
+  // "View" ile alternatif otele geçiş — lookupHotelPackage()'ın aksine paneli KAPATMAZ,
+  // yazılmış isim/telefon/not ve seçili extra green fee'leri SIFIRLAMAZ.
+  document.getElementById('hp-hotel').value = hotelName;
+  const dateVal = document.getElementById('hp-date').value;
+  const nights = document.getElementById('hp-nights').value;
+  const group = document.getElementById('hp-group').value;
+  const L = t[currentLang] || t.en;
+
+  const data = await hpFetchPackage(hotelName, dateVal, nights, group);
+  if (!data || data === 'error') return; // sorun olursa mevcut seçimi bozma
+
+  HP_LAST_OPTIONS = data.options || [];
+  HP_SELECTED_ROUNDS = null;
+  HP_SELECTED_VIEW = null;
+  renderHpRoundsChips();
+  renderHpViewChips();
+  renderHpResult();
+
+  if (HP_LAST_OPTIONS.length) {
+    HP_TT_HOTEL = { hotel: hotelName, dateVal, nights, group, options: HP_LAST_OPTIONS };
+    hpLoadCheapestAlternatives(hotelName, dateVal, nights, group);
+    const panelEl = document.getElementById('hp-tt-panel');
+    if (panelEl.classList.contains('open')) hpRenderTtPanel();
+  }
+}
+
 function hpHotelInfo(hotelName) {
   return PACKAGES.find(p => p.hotel.replace(/&amp;/g, '&') === hotelName) || null;
 }
@@ -1502,13 +1530,20 @@ function hpRenderGreenFeeOptions(loading) {
       '<div class="gf-tt-suggestions-label">' + (L.gf_tt_suggestions_loading || 'Checking prices…') + '</div>';
     return;
   }
-  const rows = COURSES.map((club, idx) => {
-    const info = HP_TT_GF_PRICES[idx];
-    if (!info) return '';
-    const checked = HP_TT_GF_SELECTED.has(String(idx)) ? ' checked' : '';
-    return '<label class="hp-tt-gf-row"><input type="checkbox" data-idx="' + idx + '"' + checked + '/>' +
-      '<span class="hp-tt-gf-name">' + club.name + '</span>' +
-      '<span class="hp-tt-gf-price">' + info.price + ' €</span></label>';
+  // "3 en ucuz alternatif otel" ile aynı mantık: fiyata göre sırala, sadece en ucuz 3'ü göster
+  const cheapest = Object.entries(HP_TT_GF_PRICES)
+    .filter(([idx, info]) => info)
+    .map(([idx, info]) => ({ idx, ...info, club: COURSES[idx] }))
+    .sort((a, b) => a.price - b.price)
+    .slice(0, 3);
+
+  const rows = cheapest.map(item => {
+    const checked = HP_TT_GF_SELECTED.has(String(item.idx)) ? ' checked' : '';
+    const thumb = item.club && item.club.img ? '<img class="hp-tt-thumb" src="' + item.club.img + '" alt="' + item.club.name + '" loading="lazy"/>' : '';
+    return '<label class="hp-tt-gf-row">' + thumb +
+      '<input type="checkbox" data-idx="' + item.idx + '"' + checked + '/>' +
+      '<span class="hp-tt-gf-name">' + item.club.name + '</span>' +
+      '<span class="hp-tt-gf-price">' + item.price + ' €</span></label>';
   }).join('');
   wrap.innerHTML = rows
     ? '<div class="hp-tt-greenfee-label">' + (L.hp_tt_gf_label || 'Add extra green fee') + '</div>' + rows
@@ -1565,8 +1600,7 @@ document.getElementById('hp-tt-toggle').addEventListener('click', () => {
 document.getElementById('hp-tt-suggestions').addEventListener('click', (e) => {
   const btn = e.target.closest('.hp-tt-suggestion-add');
   if (!btn) return;
-  document.getElementById('hp-hotel').value = btn.dataset.hotel;
-  lookupHotelPackage();
+  hpSwitchToHotel(btn.dataset.hotel);
 });
 
 document.getElementById('hp-tt-greenfee').addEventListener('change', (e) => {
