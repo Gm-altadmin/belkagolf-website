@@ -219,6 +219,42 @@
   .hp-option strong { color:var(--gold-light); font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; }
   .hp-badges { margin-top:4px; font-size:.85rem; color:rgba(255,255,255,.75); }
   .hp-badge { display:inline-block; margin-right:8px; padding:2px 8px; background:rgba(184,146,58,.15); border:1px solid rgba(184,146,58,.4); border-radius:10px; }
+  .hp-tt-toggle { display:inline-flex; align-items:center; gap:6px; margin-top:10px; flex-basis:100%; background:none; border:none; padding:0; cursor:pointer; color:var(--gold-light); font-family:'Jost',sans-serif; font-size:.85rem; font-weight:500; letter-spacing:.04em; text-transform:uppercase; }
+  .hp-tt-toggle svg { width:.7rem; height:.7rem; transition:transform .25s; }
+  .hp-tt-toggle.open svg { transform:rotate(90deg); }
+  .hp-trust-line { flex-basis:100%; display:flex; align-items:center; gap:8px; font-size:.92rem; color:var(--gold-light); font-style:italic; margin-top:10px; }
+  .hp-trust-line::before { content:'✓'; font-style:normal; font-weight:700; }
+  .hp-tt-panel { flex-basis:100%; max-height:0; overflow:hidden; transition:max-height .35s ease; }
+  .hp-tt-panel.open { max-height:4000px; }
+  .hp-tt-inner { padding:16px 0 4px; border-top:1px solid rgba(255,255,255,.12); margin-top:12px; }
+  .hp-tt-hotel-row { display:flex; align-items:center; gap:12px; padding:10px; background:rgba(255,255,255,.05); border-radius:4px; margin-bottom:12px; }
+  .hp-tt-hotel-row .hp-tt-thumb { width:72px; height:72px; border-radius:3px; object-fit:cover; flex-shrink:0; }
+  .hp-tt-hotel-row .hp-tt-info { flex:1; min-width:0; }
+  .hp-tt-hotel-name { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:600; color:#fff; }
+  .hp-tt-price-line { font-size:.88rem; color:rgba(255,255,255,.85); margin-top:2px; }
+  .hp-tt-suggestions-label { font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-light); margin-bottom:8px; }
+  .hp-tt-suggestions { margin-bottom:14px; }
+  .hp-tt-suggestion-card { display:flex; align-items:center; gap:12px; padding:10px; background:rgba(255,255,255,.03); border:1px dashed rgba(255,255,255,.22); border-radius:4px; margin-bottom:8px; }
+  .hp-tt-suggestion-card .hp-tt-thumb { width:56px; height:56px; border-radius:3px; object-fit:cover; flex-shrink:0; }
+  .hp-tt-suggestion-card .hp-tt-info { flex:1; min-width:0; }
+  .hp-tt-suggestion-add { flex-shrink:0; padding:7px 14px; border:1px solid var(--gold-light); border-radius:3px; background:transparent; color:var(--gold-light); cursor:pointer; font-size:.75rem; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; transition:all .2s; }
+  .hp-tt-suggestion-add:hover { background:var(--gold-light); color:#1a1a1a; }
+  .hp-tt-greenfee { margin-bottom:14px; }
+  .hp-tt-greenfee-label { font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.8); font-weight:500; margin-bottom:8px; }
+  .hp-tt-gf-row { display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:4px; cursor:pointer; }
+  .hp-tt-gf-row:hover { background:rgba(255,255,255,.05); }
+  .hp-tt-gf-row input { width:17px; height:17px; accent-color:var(--gold); cursor:pointer; flex-shrink:0; }
+  .hp-tt-gf-name { flex:1; font-size:.92rem; color:#fff; }
+  .hp-tt-gf-price { font-size:.88rem; color:var(--gold-light); font-weight:600; white-space:nowrap; }
+  .hp-tt-contact-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+  .hp-tt-contact-row input { flex:1; min-width:160px; padding:11px 12px; border:1px solid rgba(255,255,255,.32); border-radius:2px; background:rgba(255,255,255,.08); color:#fff; font-family:'Jost',sans-serif; font-size:.92rem; }
+  .hp-tt-note { width:100%; padding:11px 12px; margin-bottom:14px; border:1px solid rgba(255,255,255,.32); border-radius:2px; background:rgba(255,255,255,.08); color:#fff; font-family:'Jost',sans-serif; font-size:.92rem; resize:vertical; }
+  .hp-tt-submit-row { display:flex; gap:10px; flex-wrap:wrap; }
+  .hp-tt-submit { display:inline-flex; align-items:center; gap:8px; padding:11px 18px; border-radius:2px; font-size:.85rem; font-weight:500; letter-spacing:.04em; text-transform:uppercase; border:1px solid rgba(255,255,255,.35); color:#fff; background:transparent; cursor:pointer; transition:all .25s; }
+  .hp-tt-submit:hover { border-color:#fff; background:rgba(255,255,255,.08); }
+  .hp-tt-submit-wa { border-color:var(--whatsapp-green); color:var(--whatsapp-green); }
+  .hp-tt-submit-wa:hover { background:rgba(37,211,102,.12); }
+  .hp-tt-submit-wa svg { width:1rem; height:1rem; }
   @media (max-width:700px){ .hp-widget{ padding:20px; gap:12px; } }
   #packages .section-eyebrow { color:var(--gold-light); }
   #packages .section-title { color:#fff; }
@@ -531,6 +567,30 @@
       <div class="chip-group" id="hp-rounds"></div>
     </div>
     <div class="hp-result" id="hp-result"></div>
+    <button type="button" class="hp-tt-toggle" id="hp-tt-toggle" style="display:none">
+      <svg class="icon icon-line" aria-hidden="true"><use href="#i-chevron-right"/></svg>
+      <span data-i18n="hp_tt_toggle">Request This Package</span>
+    </button>
+    <p class="hp-trust-line" id="hp-trust-line" data-i18n="hp_trust_line" style="display:none">We'll confirm exact availability with the hotel and get back to you as soon as possible.</p>
+    <div class="hp-tt-panel" id="hp-tt-panel">
+      <div class="hp-tt-inner">
+        <div id="hp-tt-hotel-row"></div>
+        <div class="hp-tt-suggestions" id="hp-tt-suggestions"></div>
+        <div class="hp-tt-greenfee" id="hp-tt-greenfee"></div>
+        <div class="hp-tt-contact-row">
+          <input type="text" id="hp-tt-name" data-i18n-placeholder="gf_form_name" placeholder="Your name"/>
+          <input type="text" id="hp-tt-phone" data-i18n-placeholder="gf_form_phone" placeholder="Phone or email"/>
+        </div>
+        <textarea class="hp-tt-note" id="hp-tt-note" rows="2" data-i18n-placeholder="hp_tt_note_ph" placeholder="Anything else we should know?"></textarea>
+        <div class="hp-tt-submit-row">
+          <button type="button" class="hp-tt-submit hp-tt-submit-wa" id="hp-tt-send-wa">
+            <svg class="icon icon-solid" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            <span data-i18n="gf_tt_send_wa">Send via WhatsApp</span>
+          </button>
+          <button type="button" class="hp-tt-submit" id="hp-tt-send-email" data-i18n="gf_tt_send_email">Send via Email</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="pkg-marquee">
@@ -1237,11 +1297,22 @@ document.getElementById('hp-rounds').addEventListener('click', (e) => {
 
 async function lookupHotelPackage() {
   const resultEl = document.getElementById('hp-result');
+  const toggleEl = document.getElementById('hp-tt-toggle');
+  const panelEl = document.getElementById('hp-tt-panel');
   const hotel = document.getElementById('hp-hotel').value;
   const dateVal = document.getElementById('hp-date').value;
   const nights = document.getElementById('hp-nights').value;
   const group = document.getElementById('hp-group').value;
   const L = t[currentLang] || t.en;
+
+  toggleEl.style.display = 'none';
+  toggleEl.classList.remove('open');
+  panelEl.classList.remove('open');
+  document.getElementById('hp-trust-line').style.display = 'none';
+  HP_TT_HOTEL = null;
+  HP_SUGGESTED_HOTELS = [];
+  HP_SUGGESTIONS_LOADING = false;
+  HP_TT_GF_SELECTED = new Set();
 
   if (!hotel || !dateVal) {
     resultEl.className = 'hp-result hp-error';
@@ -1274,7 +1345,227 @@ async function lookupHotelPackage() {
   HP_LAST_OPTIONS = data.options || [];
   renderHpRoundsChips();
   renderHpResult();
+
+  if (HP_LAST_OPTIONS.length) {
+    HP_TT_HOTEL = { hotel, dateVal, nights, group, options: HP_LAST_OPTIONS };
+    toggleEl.style.display = 'inline-flex';
+    document.getElementById('hp-trust-line').style.display = 'flex';
+    hpLoadCheapestAlternatives(hotel, dateVal, nights, group);
+    hpLoadGreenFeeOptions(dateVal);
+  }
 }
+
+/* ══ OTEL+GOLF PAKET TALEP AKORDİYONU (tee-time ile aynı mantık) ══ */
+let HP_TT_HOTEL = null;
+let HP_SUGGESTED_HOTELS = [];
+let HP_SUGGESTIONS_LOADING = false;
+let HP_TT_GF_PRICES = {};
+let HP_TT_GF_SELECTED = new Set();
+
+function hpHotelInfo(hotelName) {
+  return PACKAGES.find(p => p.hotel.replace(/&amp;/g, '&') === hotelName) || null;
+}
+
+function hpOptionsMinDouble(options) {
+  let min = null;
+  (options || []).forEach(o => {
+    const n = parseFloat(String(o.double || '').replace(/[^\d.,]/g, '').replace(',', '.'));
+    if (!isNaN(n) && (min === null || n < min)) min = n;
+  });
+  return min;
+}
+
+async function hpFetchPackage(hotel, dateVal, nights, group) {
+  try {
+    const params = new URLSearchParams({ hotel, date: dateVal, nights, group });
+    const res = await fetch('/api/hotelpackage?' + params.toString());
+    if (res.status === 404) return null;
+    if (!res.ok) return 'error';
+    return await res.json();
+  } catch (e) {
+    return 'error';
+  }
+}
+
+async function hpLoadCheapestAlternatives(selectedHotel, dateVal, nights, group) {
+  HP_SUGGESTIONS_LOADING = true;
+  const others = HP_HOTELS.filter(h => h !== selectedHotel);
+  const results = await Promise.all(others.map(async h => {
+    const data = await hpFetchPackage(h, dateVal, nights, group);
+    if (!data || data === 'error') return null;
+    const min = hpOptionsMinDouble(data.options);
+    if (min === null) return null;
+    return { hotel: h, price: min };
+  }));
+  const valid = results.filter(r => r !== null).sort((a, b) => a.price - b.price);
+  HP_SUGGESTED_HOTELS = valid.slice(0, 3);
+  HP_SUGGESTIONS_LOADING = false;
+
+  const panelEl = document.getElementById('hp-tt-panel');
+  if (panelEl.classList.contains('open')) hpRenderTtPanel();
+}
+
+function hpClubRepresentativeCourses() {
+  const reps = {};
+  Object.entries(GF_CLUB_MAP).forEach(([course, idx]) => {
+    if (!(idx in reps)) reps[idx] = course;
+  });
+  return reps;
+}
+
+async function hpLoadGreenFeeOptions(dateVal) {
+  const reps = hpClubRepresentativeCourses();
+  HP_TT_GF_PRICES = {};
+  const panelEl = document.getElementById('hp-tt-panel');
+  if (panelEl.classList.contains('open')) hpRenderGreenFeeOptions(true);
+  await Promise.all(Object.entries(reps).map(async ([idx, course]) => {
+    const data = await gfFetchPrice(course, dateVal, false);
+    if (data === 'closed' || data === 'error') { HP_TT_GF_PRICES[idx] = null; return; }
+    const price = gfPriceNumeric(data);
+    HP_TT_GF_PRICES[idx] = price === null ? null : { course, price };
+  }));
+  if (panelEl.classList.contains('open')) hpRenderGreenFeeOptions();
+}
+
+function hpRenderGreenFeeOptions(loading) {
+  const L = t[currentLang] || t.en;
+  const wrap = document.getElementById('hp-tt-greenfee');
+  if (loading) {
+    wrap.innerHTML = '<div class="hp-tt-greenfee-label">' + (L.hp_tt_gf_label || 'Add extra green fee') + '</div>' +
+      '<div class="gf-tt-suggestions-label">' + (L.gf_tt_suggestions_loading || 'Checking prices…') + '</div>';
+    return;
+  }
+  const rows = COURSES.map((club, idx) => {
+    const info = HP_TT_GF_PRICES[idx];
+    if (!info) return '';
+    const checked = HP_TT_GF_SELECTED.has(String(idx)) ? ' checked' : '';
+    return '<label class="hp-tt-gf-row"><input type="checkbox" data-idx="' + idx + '"' + checked + '/>' +
+      '<span class="hp-tt-gf-name">' + club.name + '</span>' +
+      '<span class="hp-tt-gf-price">' + info.price + ' €</span></label>';
+  }).join('');
+  wrap.innerHTML = rows
+    ? '<div class="hp-tt-greenfee-label">' + (L.hp_tt_gf_label || 'Add extra green fee') + '</div>' + rows
+    : '';
+}
+
+function hpRenderTtPanel() {
+  const L = t[currentLang] || t.en;
+
+  const hotelRowEl = document.getElementById('hp-tt-hotel-row');
+  if (HP_TT_HOTEL) {
+    const info = hpHotelInfo(HP_TT_HOTEL.hotel);
+    const thumb = info && info.img ? '<img class="hp-tt-thumb" src="' + info.img + '" alt="' + HP_TT_HOTEL.hotel + '" loading="lazy"/>' : '';
+    const min = hpOptionsMinDouble(HP_TT_HOTEL.options);
+    const priceLabel = min !== null ? (L.hp_double || 'Double, per person') + ': <strong>' + min + ' €</strong>' : '';
+    hotelRowEl.innerHTML = '<div class="hp-tt-hotel-row">' + thumb +
+      '<div class="hp-tt-info"><div class="hp-tt-hotel-name">' + HP_TT_HOTEL.hotel + '</div>' +
+      '<div class="hp-tt-price-line">' + HP_TT_HOTEL.dateVal + ' · ' + HP_TT_HOTEL.nights + (L.hp_nights_short || 'N') + ' · ' + priceLabel + '</div></div></div>';
+  } else {
+    hotelRowEl.innerHTML = '';
+  }
+
+  const suggEl = document.getElementById('hp-tt-suggestions');
+  if (HP_SUGGESTIONS_LOADING) {
+    suggEl.innerHTML = '<div class="hp-tt-suggestions-label">' + (L.hp_tt_suggestions_loading || 'Finding alternative hotels…') + '</div>';
+  } else if (HP_SUGGESTED_HOTELS.length) {
+    suggEl.innerHTML = '<div class="hp-tt-suggestions-label">' + (L.hp_tt_suggestions_label || 'Cheaper alternatives for these dates') + '</div>' +
+      HP_SUGGESTED_HOTELS.map(s => {
+        const info = hpHotelInfo(s.hotel);
+        const thumb = info && info.img ? '<img class="hp-tt-thumb" src="' + info.img + '" alt="' + s.hotel + '" loading="lazy"/>' : '';
+        return '<div class="hp-tt-suggestion-card">' + thumb +
+          '<div class="hp-tt-info"><div class="hp-tt-hotel-name">' + s.hotel + '</div>' +
+          '<div class="hp-tt-price-line">' + (L.hp_double || 'Double, per person') + ': <strong>' + s.price + ' €</strong></div></div>' +
+          '<button type="button" class="hp-tt-suggestion-add" data-hotel="' + s.hotel + '">' + (L.hp_tt_switch_btn || 'View') + '</button></div>';
+      }).join('');
+  } else {
+    suggEl.innerHTML = '';
+  }
+
+  hpRenderGreenFeeOptions();
+}
+
+document.getElementById('hp-tt-toggle').addEventListener('click', () => {
+  const toggleEl = document.getElementById('hp-tt-toggle');
+  const panelEl = document.getElementById('hp-tt-panel');
+  const isOpen = panelEl.classList.toggle('open');
+  toggleEl.classList.toggle('open', isOpen);
+  if (isOpen) hpRenderTtPanel();
+});
+
+document.getElementById('hp-tt-suggestions').addEventListener('click', (e) => {
+  const btn = e.target.closest('.hp-tt-suggestion-add');
+  if (!btn) return;
+  document.getElementById('hp-hotel').value = btn.dataset.hotel;
+  lookupHotelPackage();
+});
+
+document.getElementById('hp-tt-greenfee').addEventListener('change', (e) => {
+  const cb = e.target.closest('input[type=checkbox]');
+  if (!cb) return;
+  if (cb.checked) HP_TT_GF_SELECTED.add(cb.dataset.idx);
+  else HP_TT_GF_SELECTED.delete(cb.dataset.idx);
+});
+
+function hpGreenFeeLines(prefix, indexed) {
+  const L = t[currentLang] || t.en;
+  const lines = [];
+  let i = 0;
+  HP_TT_GF_SELECTED.forEach(idx => {
+    const info = HP_TT_GF_PRICES[idx];
+    if (!info) return;
+    i++;
+    const label = indexed ? i + '. ' + info.course : prefix + info.course;
+    lines.push(label + ' — ' + (L.gf_result_label || 'Green Fee') + ': ' + info.price + ' €');
+  });
+  return lines;
+}
+
+document.getElementById('hp-tt-send-wa').addEventListener('click', () => {
+  if (!HP_TT_HOTEL) return;
+  const name = document.getElementById('hp-tt-name').value;
+  const contact = document.getElementById('hp-tt-phone').value;
+  const note = document.getElementById('hp-tt-note').value;
+  const min = hpOptionsMinDouble(HP_TT_HOTEL.options);
+  const lines = ['🏨 *Hotel + Golf Package Request*', ''];
+  if (name) lines.push('👤 Name: ' + name);
+  if (contact) lines.push('📞 Contact: ' + contact);
+  lines.push('');
+  lines.push('🏨 ' + HP_TT_HOTEL.hotel);
+  lines.push('   ' + HP_TT_HOTEL.dateVal + ' · ' + HP_TT_HOTEL.nights + ' nights · ' + HP_TT_HOTEL.group + ' golfers');
+  if (min !== null) lines.push('   Double, per person: ' + min + ' €');
+  const gfLines = hpGreenFeeLines('⛳ ', false);
+  if (gfLines.length) { lines.push('', '*Extra Green Fee requested:*'); lines.push(...gfLines); }
+  if (note) lines.push('', '📝 ' + note);
+  lines.push('', 'Please confirm availability and send final pricing.');
+  const text = encodeURIComponent(lines.join('\n'));
+  window.open('https://wa.me/905322622773?text=' + text, '_blank');
+});
+
+document.getElementById('hp-tt-send-email').addEventListener('click', () => {
+  if (!HP_TT_HOTEL) return;
+  const name = document.getElementById('hp-tt-name').value || '—';
+  const contact = document.getElementById('hp-tt-phone').value || '—';
+  const note = document.getElementById('hp-tt-note').value;
+  const min = hpOptionsMinDouble(HP_TT_HOTEL.options);
+  const lines = [
+    toBold('HOTEL + GOLF PACKAGE REQUEST'),
+    '─────────────────────────',
+    '',
+    toBold('Name:') + ' ' + name,
+    toBold('Contact:') + ' ' + contact,
+    '',
+    toBold('Hotel:') + ' ' + HP_TT_HOTEL.hotel,
+    toBold('Dates:') + ' ' + HP_TT_HOTEL.dateVal + ' · ' + HP_TT_HOTEL.nights + ' nights · ' + HP_TT_HOTEL.group + ' golfers'
+  ];
+  if (min !== null) lines.push(toBold('Double, per person:') + ' ' + min + ' €');
+  const gfLines = hpGreenFeeLines('', true);
+  if (gfLines.length) { lines.push('', toBold('Extra Green Fee requested:')); lines.push(...gfLines); }
+  if (note) lines.push('', toBold('Special request:') + ' ' + note);
+  lines.push('', 'Please confirm availability and send final pricing.', '', '─────────────────────────', 'Sent from belkagolf.com');
+  const subject = encodeURIComponent('Hotel + Golf Package Request');
+  const body = encodeURIComponent(lines.join('\n'));
+  window.location.href = 'mailto:info@belkagolf.com?subject=' + subject + '&body=' + body;
+});
 
 document.addEventListener('DOMContentLoaded', initHotelPackageDropdown);
 
@@ -1620,6 +1911,9 @@ function setLang(lang){
   }
   if (typeof GF_TT_COURSES !== 'undefined' && GF_TT_COURSES.length) {
     gfRenderTtPanel();
+  }
+  if (typeof HP_TT_HOTEL !== 'undefined' && HP_TT_HOTEL) {
+    hpRenderTtPanel();
   }
 }
 </script>
