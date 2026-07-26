@@ -227,16 +227,21 @@
   .hp-tt-panel { flex-basis:100%; max-height:0; overflow:hidden; transition:max-height .35s ease; }
   .hp-tt-panel.open { max-height:4000px; }
   .hp-tt-inner { padding:16px 0 4px; border-top:1px solid rgba(255,255,255,.12); margin-top:12px; }
-  .hp-tt-hotel-row { display:flex; align-items:center; gap:12px; padding:10px; background:rgba(255,255,255,.05); border-radius:4px; margin-bottom:12px; }
-  .hp-tt-hotel-row .hp-tt-thumb { width:72px; height:72px; border-radius:3px; object-fit:cover; flex-shrink:0; }
+  .hp-tt-hotel-row { display:flex; align-items:center; gap:18px; padding:16px; background:rgba(184,146,58,.1); border:1px solid rgba(184,146,58,.4); border-radius:6px; margin-bottom:16px; }
+  .hp-tt-hotel-row .hp-tt-thumb { width:120px; height:120px; border-radius:5px; object-fit:cover; flex-shrink:0; }
   .hp-tt-hotel-row .hp-tt-info { flex:1; min-width:0; }
-  .hp-tt-hotel-name { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:600; color:#fff; }
-  .hp-tt-price-line { font-size:.88rem; color:rgba(255,255,255,.85); margin-top:2px; }
+  .hp-tt-hotel-row .hp-tt-hotel-name { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:600; color:#fff; line-height:1.2; }
+  .hp-tt-hotel-row .hp-tt-price-line { font-size:1.05rem; color:rgba(255,255,255,.9); margin-top:6px; }
+  .hp-tt-hotel-row .hp-tt-price-line strong { font-size:1.3rem; color:var(--gold-light); }
+  @media (max-width:600px){ .hp-tt-hotel-row .hp-tt-thumb{ width:88px; height:88px; } .hp-tt-hotel-row .hp-tt-hotel-name{ font-size:1.25rem; } }
   .hp-tt-suggestions-label { font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-light); margin-bottom:8px; }
   .hp-tt-suggestions { margin-bottom:14px; }
-  .hp-tt-suggestion-card { display:flex; align-items:center; gap:12px; padding:10px; background:rgba(255,255,255,.03); border:1px dashed rgba(255,255,255,.22); border-radius:4px; margin-bottom:8px; }
-  .hp-tt-suggestion-card .hp-tt-thumb { width:56px; height:56px; border-radius:3px; object-fit:cover; flex-shrink:0; }
+  .hp-tt-suggestion-card { display:flex; align-items:center; gap:12px; padding:9px 10px; background:rgba(255,255,255,.03); border:1px dashed rgba(255,255,255,.22); border-radius:4px; margin-bottom:8px; }
+  .hp-tt-suggestion-card .hp-tt-thumb { width:48px; height:48px; border-radius:3px; object-fit:cover; flex-shrink:0; opacity:.9; }
   .hp-tt-suggestion-card .hp-tt-info { flex:1; min-width:0; }
+  .hp-tt-suggestion-card .hp-tt-hotel-name { font-family:'Jost',sans-serif; font-size:.88rem; font-weight:500; color:rgba(255,255,255,.85); }
+  .hp-tt-suggestion-card .hp-tt-price-line { font-size:.82rem; color:rgba(255,255,255,.65); margin-top:1px; }
+  .hp-tt-suggestion-card .hp-tt-price-line strong { color:var(--gold-light); font-weight:600; }
   .hp-tt-suggestion-add { flex-shrink:0; padding:7px 14px; border:1px solid var(--gold-light); border-radius:3px; background:transparent; color:var(--gold-light); cursor:pointer; font-size:.75rem; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; transition:all .2s; }
   .hp-tt-suggestion-add:hover { background:var(--gold-light); color:#1a1a1a; }
   .hp-tt-greenfee { margin-bottom:14px; }
