@@ -313,10 +313,6 @@
   .contact-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:70px; max-width:1300px; margin:0 auto; }
   #contact .section-eyebrow { color:var(--gold-light); }
   #contact .section-title { color:#fff; }
-  .contact-info-item { display:flex; gap:16px; margin-top:26px; }
-  .contact-info-item svg { color:var(--gold); margin-top:3px; }
-  .contact-info-item h4 { font-size:1rem; font-weight:600; margin-bottom:3px; }
-  .contact-info-item p, .contact-info-item a { font-size:1rem; color:rgba(255,255,255,.75); }
   .chip-group { display:flex; flex-wrap:wrap; gap:8px; }
   .chip {
     background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.3); color:rgba(255,255,255,.88);
@@ -718,18 +714,6 @@
       <div class="gold-line reveal"></div>
       <h2 class="section-title reveal" data-i18n="contact_title">Tell us what you're after</h2>
       <p class="section-desc reveal" style="color:rgba(255,255,255,.6)" data-i18n="contact_desc">Reach out any time — a local Belek specialist replies personally, usually within a day.</p>
-      <div class="contact-info-item reveal">
-        <svg class="icon icon-line" style="width:1.1rem;height:1.1rem"><use href="#i-map-marker"/></svg>
-        <div><h4 data-i18n="ci_addr_label">Address</h4><p>Belek Mah. Mehmet Akif Ersoy Cad. 25, Belek, Antalya</p></div>
-      </div>
-      <div class="contact-info-item reveal">
-        <svg class="icon icon-line" style="width:1.1rem;height:1.1rem"><use href="#i-phone"/></svg>
-        <div><h4 data-i18n="ci_phone_label">Phone / WhatsApp</h4><a href="https://wa.me/905322622773" target="_blank">+90 532 262 27 73</a></div>
-      </div>
-      <div class="contact-info-item reveal">
-        <svg class="icon icon-line" style="width:1.1rem;height:1.1rem"><use href="#i-envelope"/></svg>
-        <div><h4 data-i18n="ci_email_label">Email</h4><a href="mailto:info@belkagolf.com">info@belkagolf.com</a></div>
-      </div>
     </div>
 
     <div class="reveal">
@@ -1697,7 +1681,7 @@ const t = {
     svc4_name:'Multilingual Support', svc4_desc:'English, Turkish, German, Russian and Swedish — a real person, throughout your stay.',
     gal_eyebrow:'Belek', gal_title:'Courses & Coastline',
     contact_eyebrow:'Get In Touch', contact_title:"Tell us what you're after", contact_desc:"Reach out any time — a local Belek specialist replies personally, usually within a day.",
-    ci_addr_label:'Address', ci_phone_label:'Phone / WhatsApp', ci_email_label:'Email',
+    ci_addr_label:'Address',
     cf_submit:'Send via Email', cf_submit_wa:'Send via WhatsApp',
     footer_desc:'Golf holidays in Belek, Antalya — courses, hotels, transfers and tee times, arranged by a local team.',
     footer_explore:'Explore', footer_apart:'Belka Golf Residence', footer_rights:'All rights reserved.'
@@ -1744,7 +1728,7 @@ const t = {
     svc4_name:'Çok Dilli Destek', svc4_desc:'İngilizce, Türkçe, Almanca, Rusça ve İsveççe — tatiliniz boyunca gerçek bir kişi.',
     gal_eyebrow:'Belek', gal_title:'Sahalar & Kıyı Şeridi',
     contact_eyebrow:'İletişime Geçin', contact_title:'Ne aradığınızı bize anlatın', contact_desc:'İstediğiniz zaman ulaşın — Belek\'teki yerel bir uzman kişisel olarak yanıtlar, genelde aynı gün içinde.',
-    ci_addr_label:'Adres', ci_phone_label:'Telefon / WhatsApp', ci_email_label:'E-posta',
+    ci_addr_label:'Adres',
     cf_submit:'E-posta ile Gönder', cf_submit_wa:'WhatsApp ile Gönder',
     footer_desc:"Belek, Antalya'da golf tatili — sahalar, oteller, transferler ve tee-time'lar, yerel bir ekip tarafından ayarlanır.",
     footer_explore:'Keşfet', footer_apart:'Belka Golf Residence', footer_rights:'Tüm hakları saklıdır.'
@@ -1791,7 +1775,7 @@ const t = {
     svc4_name:'Mehrsprachiger Support', svc4_desc:'Englisch, Türkisch, Deutsch, Russisch und Schwedisch — eine echte Person, während Ihres gesamten Aufenthalts.',
     gal_eyebrow:'Belek', gal_title:'Plätze & Küste',
     contact_eyebrow:'Kontaktieren Sie Uns', contact_title:"Sagen Sie uns, was Sie suchen", contact_desc:"Melden Sie sich jederzeit — ein lokaler Belek-Spezialist antwortet persönlich, meist innerhalb eines Tages.",
-    ci_addr_label:'Adresse', ci_phone_label:'Telefon / WhatsApp', ci_email_label:'E-Mail',
+    ci_addr_label:'Adresse',
     cf_submit:'Per E-Mail Senden', cf_submit_wa:'Per WhatsApp Senden',
     footer_desc:'Golfurlaub in Belek, Antalya — Plätze, Hotels, Transfers und Startzeiten, organisiert von einem lokalen Team.',
     footer_explore:'Entdecken', footer_apart:'Belka Golf Residence', footer_rights:'Alle Rechte vorbehalten.'
@@ -1838,7 +1822,7 @@ const t = {
     svc4_name:'Поддержка на Разных Языках', svc4_desc:'Английский, турецкий, немецкий, русский и шведский — живой человек на связи в течение всего вашего пребывания.',
     gal_eyebrow:'Белек', gal_title:'Поля и Побережье',
     contact_eyebrow:'Связаться с Нами', contact_title:'Расскажите, что вы ищете', contact_desc:'Напишите нам в любое время — местный специалист в Белеке ответит лично, обычно в течение дня.',
-    ci_addr_label:'Адрес', ci_phone_label:'Телефон / WhatsApp', ci_email_label:'Эл. почта',
+    ci_addr_label:'Адрес',
     cf_submit:'Отправить по Эл. почте', cf_submit_wa:'Отправить через WhatsApp',
     footer_desc:'Гольф-отдых в Белеке, Анталья — поля, отели, трансферы и время старта, организовано местной командой.',
     footer_explore:'Разделы', footer_apart:'Belka Golf Residence', footer_rights:'Все права защищены.'
@@ -1885,7 +1869,7 @@ const t = {
     svc4_name:'Flerspråkigt Stöd', svc4_desc:'Engelska, turkiska, tyska, ryska och svenska — en riktig person, under hela er vistelse.',
     gal_eyebrow:'Belek', gal_title:'Banor & Kustlinje',
     contact_eyebrow:'Hör Av Er', contact_title:"Berätta vad ni söker", contact_desc:"Hör av er när som helst — en lokal Belek-specialist svarar personligen, oftast inom en dag.",
-    ci_addr_label:'Adress', ci_phone_label:'Telefon / WhatsApp', ci_email_label:'E-post',
+    ci_addr_label:'Adress',
     cf_submit:'Skicka via E-post', cf_submit_wa:'Skicka via WhatsApp',
     footer_desc:'Golfsemester i Belek, Antalya — banor, hotell, transfers och starttider, ordnat av ett lokalt team.',
     footer_explore:'Utforska', footer_apart:'Belka Golf Residence', footer_rights:'Alla rättigheter förbehållna.'
