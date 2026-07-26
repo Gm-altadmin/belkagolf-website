@@ -1211,9 +1211,8 @@ function renderHpResult() {
     if (opt.group71) badges.push((L.hp_group71_badge || '7+1 Available'));
     const badgesHtml = badges.length ? '<div class="hp-badges">' + badges.map(b => '<span class="hp-badge">' + b + '</span>').join('') + '</div>' : '';
 
-    let priceLine = (L.hp_single || 'Single') + ': <strong>' + (opt.single || '—') + '</strong>' +
-      '  ·  ' + (L.hp_double || 'Double, per person') + ': <strong>' + (opt.double || '—') + '</strong>';
-    if (groupNum >= 8 && opt.group71) {
+    let priceLine = (L.hp_double || 'Double, per person') + ': <strong>' + (opt.double || '—') + '</strong>';
+    if (opt.group71) {
       priceLine += '  ·  ' + (L.hp_group_rate || '8+ group rate') + ': <strong>' + opt.group71 + '</strong>';
     }
 
