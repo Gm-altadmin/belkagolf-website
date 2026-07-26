@@ -250,6 +250,9 @@
   .hp-tt-gf-row input { width:17px; height:17px; accent-color:var(--gold); cursor:pointer; flex-shrink:0; }
   .hp-tt-gf-name { flex:1; font-size:.92rem; color:#fff; }
   .hp-tt-gf-price { font-size:.88rem; color:var(--gold-light); font-weight:600; white-space:nowrap; }
+  .hp-tt-gf-row-closed { display:flex; align-items:center; gap:10px; padding:9px 10px; opacity:.5; }
+  .hp-tt-gf-row-closed .hp-tt-gf-name { flex:1; font-size:.92rem; color:rgba(255,255,255,.6); }
+  .hp-tt-gf-price.hp-tt-gf-closed { font-size:.82rem; color:rgba(255,255,255,.5); font-weight:400; font-style:italic; }
   .hp-tt-contact-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
   .hp-tt-contact-row input { flex:1; min-width:160px; padding:11px 12px; border:1px solid rgba(255,255,255,.32); border-radius:2px; background:rgba(255,255,255,.08); color:#fff; font-family:'Jost',sans-serif; font-size:.92rem; }
   .hp-tt-note { width:100%; padding:11px 12px; margin-bottom:14px; border:1px solid rgba(255,255,255,.32); border-radius:2px; background:rgba(255,255,255,.08); color:#fff; font-family:'Jost',sans-serif; font-size:.92rem; resize:vertical; }
@@ -1505,15 +1508,17 @@ function hpRenderGreenFeeOptions(loading) {
   }
   const rows = COURSES.map((club, idx) => {
     const info = HP_TT_GF_PRICES[idx];
-    if (!info) return '';
+    if (!info) {
+      return '<div class="hp-tt-gf-row hp-tt-gf-row-closed">' +
+        '<span class="hp-tt-gf-name">' + club.name + '</span>' +
+        '<span class="hp-tt-gf-price hp-tt-gf-closed">' + (L.hp_tt_gf_closed || 'Unavailable for this date') + '</span></div>';
+    }
     const checked = HP_TT_GF_SELECTED.has(String(idx)) ? ' checked' : '';
     return '<label class="hp-tt-gf-row"><input type="checkbox" data-idx="' + idx + '"' + checked + '/>' +
       '<span class="hp-tt-gf-name">' + club.name + '</span>' +
       '<span class="hp-tt-gf-price">' + info.price + ' €</span></label>';
   }).join('');
-  wrap.innerHTML = rows
-    ? '<div class="hp-tt-greenfee-label">' + (L.hp_tt_gf_label || 'Add extra green fee') + '</div>' + rows
-    : '';
+  wrap.innerHTML = '<div class="hp-tt-greenfee-label">' + (L.hp_tt_gf_label || 'Add extra green fee') + '</div>' + rows;
 }
 
 function hpRenderTtPanel() {
