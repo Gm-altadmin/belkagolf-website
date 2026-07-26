@@ -208,6 +208,10 @@
     background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:2px;
   }
   .hp-field { display:flex; flex-direction:column; gap:6px; flex:1 1 200px; }
+  .hp-field-hotel { flex:2 1 220px; }
+  .hp-field-compact { flex:1 1 130px; max-width:160px; min-width:0; }
+  .hp-field-compact select, .hp-field-compact input { min-width:0; width:100%; }
+  .hp-rounds-field, .hp-view-field { flex:0 1 auto; }
   .hp-field label { font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.8); font-weight:500; }
   .hp-field select, .hp-field input { padding:13px 14px; border:1px solid rgba(255,255,255,.32); border-radius:2px; font-family:'Jost',sans-serif; font-size:1rem; background:rgba(255,255,255,.08); color:#fff; color-scheme:dark; }
   .hp-field select option { color:#1a1a1a; }
@@ -219,8 +223,15 @@
   .hp-option strong { color:var(--gold-light); font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; }
   .hp-badges { margin-top:4px; font-size:.85rem; color:rgba(255,255,255,.75); }
   .hp-badge { display:inline-block; margin-right:8px; padding:2px 8px; background:rgba(184,146,58,.15); border:1px solid rgba(184,146,58,.4); border-radius:10px; }
-  .hp-tt-toggle { display:inline-flex; align-items:center; gap:6px; margin-top:10px; flex-basis:100%; background:none; border:none; padding:0; cursor:pointer; color:var(--gold-light); font-family:'Jost',sans-serif; font-size:.85rem; font-weight:500; letter-spacing:.04em; text-transform:uppercase; }
-  .hp-tt-toggle svg { width:.7rem; height:.7rem; transition:transform .25s; }
+  .hp-tt-toggle {
+    display:inline-flex; align-items:center; gap:10px; margin-top:16px; flex-basis:100%; width:fit-content;
+    background:var(--gold); color:var(--text-dark); border:none; cursor:pointer;
+    padding:14px 26px; border-radius:2px; font-family:'Jost',sans-serif;
+    font-size:.8rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+    transition:all .3s;
+  }
+  .hp-tt-toggle:hover { background:#a07c2e; transform:translateY(-1px); }
+  .hp-tt-toggle svg { width:.85rem; height:.85rem; transition:transform .25s; }
   .hp-tt-toggle.open svg { transform:rotate(90deg); }
   .hp-trust-line { flex-basis:100%; display:flex; align-items:center; gap:8px; font-size:.92rem; color:var(--gold-light); font-style:italic; margin-top:10px; }
   .hp-trust-line::before { content:'✓'; font-style:normal; font-weight:700; }
@@ -536,17 +547,17 @@
   </div>
 
   <div class="hp-widget reveal">
-    <div class="hp-field">
+    <div class="hp-field hp-field-hotel">
       <label for="hp-hotel" data-i18n="hp_hotel_label">Hotel</label>
       <select id="hp-hotel" onchange="lookupHotelPackage()">
         <option value="" data-i18n="hp_choose">Choose a hotel…</option>
       </select>
     </div>
-    <div class="hp-field">
+    <div class="hp-field hp-field-compact">
       <label for="hp-date" data-i18n="hp_date_label">Check-in Date</label>
       <input type="date" id="hp-date" onchange="lookupHotelPackage()"/>
     </div>
-    <div class="hp-field">
+    <div class="hp-field hp-field-compact">
       <label for="hp-nights" data-i18n="hp_nights_label">Nights</label>
       <select id="hp-nights" onchange="lookupHotelPackage()">
         <option value="3">3</option>
@@ -556,7 +567,7 @@
         <option value="7" selected>7</option>
       </select>
     </div>
-    <div class="hp-field">
+    <div class="hp-field hp-field-compact">
       <label for="hp-group" data-i18n="hp_group_label">Golfers</label>
       <select id="hp-group" onchange="lookupHotelPackage()">
         <option value="1">1</option>
