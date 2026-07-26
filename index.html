@@ -272,7 +272,6 @@
   }
   .chip:hover { border-color:rgba(184,146,58,.6); color:#fff; }
   .chip.active { background:var(--gold); border-color:var(--gold); color:#fff; font-weight:500; }
-  #q-date { color-scheme:dark; }
   .cf-field textarea { resize:vertical; min-height:70px; }
   .cf-note { margin-top:14px; font-size:.72rem; color:rgba(255,255,255,.45); text-align:center; }
   .cf-btn-row { display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; }
@@ -646,7 +645,7 @@
       </div>
       <div class="contact-info-item reveal">
         <svg class="icon icon-line" style="width:1.1rem;height:1.1rem"><use href="#i-phone"/></svg>
-        <div><h4 data-i18n="ci_phone_label">Phone / WhatsApp</h4><a href="tel:+905322622773">+90 532 262 27 73</a></div>
+        <div><h4 data-i18n="ci_phone_label">Phone / WhatsApp</h4><a href="https://wa.me/905322622773" target="_blank">+90 532 262 27 73</a></div>
       </div>
       <div class="contact-info-item reveal">
         <svg class="icon icon-line" style="width:1.1rem;height:1.1rem"><use href="#i-envelope"/></svg>
@@ -683,42 +682,8 @@
 
         <div class="cf-field"><label for="q-name" data-i18n="cf_name">Full Name</label><input id="q-name" type="text" required/></div>
         <div class="cf-field"><label for="q-contact" data-i18n="cf_contact">Phone or Email</label><input id="q-contact" type="text" required/></div>
-        <div class="cf-field"><label for="q-date" data-i18n="cf_start_date">Start Date</label><input id="q-date" type="date"/></div>
 
-        <div class="cf-field full">
-          <label data-i18n="cf_nights">Nights</label>
-          <div class="chip-group" data-field="nights">
-            <button type="button" class="chip">3</button>
-            <button type="button" class="chip active">5</button>
-            <button type="button" class="chip">7</button>
-            <button type="button" class="chip">10</button>
-            <button type="button" class="chip" data-i18n="cf_chip_14plus">14+</button>
-          </div>
-        </div>
-
-        <div class="cf-field full">
-          <label data-i18n="cf_golfers">Golfers</label>
-          <div class="chip-group" data-field="golfers">
-            <button type="button" class="chip">1</button>
-            <button type="button" class="chip active">2</button>
-            <button type="button" class="chip">3</button>
-            <button type="button" class="chip">4</button>
-            <button type="button" class="chip" data-i18n="cf_group">Group (5+)</button>
-          </div>
-        </div>
-
-        <div class="cf-field full">
-          <label data-i18n="cf_rounds">Rounds of Golf</label>
-          <div class="chip-group" data-field="rounds">
-            <button type="button" class="chip">1</button>
-            <button type="button" class="chip">2</button>
-            <button type="button" class="chip active">3</button>
-            <button type="button" class="chip">4</button>
-            <button type="button" class="chip" data-i18n="cf_unlimited">Unlimited</button>
-          </div>
-        </div>
-
-        <div class="cf-field full"><label for="q-msg" data-i18n="cf_msg_alt">Anything else? (optional)</label><textarea id="q-msg" data-i18n-placeholder="cf_msg_ph_alt" placeholder="Preferred hotel or course, handicap, budget range..."></textarea></div>
+        <div class="cf-field full"><label for="q-msg" data-i18n="cf_msg_alt">Anything else? (optional)</label><textarea id="q-msg" data-i18n-placeholder="cf_msg_ph_alt" placeholder="Preferred dates, group size, nights, rounds, budget range..." rows="4"></textarea></div>
       </div>
       <div class="cf-btn-row">
         <button type="submit" class="cf-submit" data-i18n="cf_submit">Send via Email</button>
@@ -755,7 +720,7 @@
       <h4 data-i18n="ci_addr_label">Contact</h4>
       <div class="footer-links">
         <span>Belek Mah. M. Akif Ersoy Cad. 25, Antalya</span>
-        <a href="tel:+905322622773">+90 532 262 27 73</a>
+        <a href="https://wa.me/905322622773" target="_blank">+90 532 262 27 73</a>
         <a href="mailto:info@belkagolf.com">info@belkagolf.com</a>
       </div>
     </div>
@@ -1351,12 +1316,6 @@ function sendInquiry(ev){
     toBold('Contact:') + ' ' + v('q-contact'),
     '',
     line,
-    toBold('Start date:') + ' ' + (v('q-date') || '—'),
-    toBold('Nights:') + ' ' + chipValue('nights'),
-    toBold('Golfers:') + ' ' + chipValue('golfers'),
-    toBold('Rounds:') + ' ' + chipValue('rounds'),
-    line,
-    '',
     toBold('Additional details:'),
     (v('q-msg') || '—'),
     '',
@@ -1378,10 +1337,6 @@ function sendInquiryWhatsApp(){
     '🏨 Hotel: ' + hotel,
     '👤 Name: ' + v('q-name'),
     '✉️ Contact: ' + v('q-contact'),
-    '📅 Start date: ' + (v('q-date') || '—'),
-    '🌙 Nights: ' + chipValue('nights'),
-    '👥 Golfers: ' + chipValue('golfers'),
-    '⛳ Rounds: ' + chipValue('rounds'),
     '📝 Details: ' + (v('q-msg') || '—')
   ];
   const text = encodeURIComponent(lines.join('\n'));
