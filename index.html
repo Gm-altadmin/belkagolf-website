@@ -275,7 +275,7 @@
   .hp-tt-submit-wa { border-color:var(--whatsapp-green); color:var(--whatsapp-green); }
   .hp-tt-submit-wa:hover { background:rgba(37,211,102,.12); }
   .hp-tt-submit-wa svg { width:1rem; height:1rem; }
-  @media (max-width:700px){ .hp-widget{ padding:20px; gap:12px; } }
+  @media (max-width:700px){ .hp-widget{ padding:20px; gap:12px; } .hp-field-date{ flex-basis:100%; max-width:none; } }
   #packages .section-eyebrow { color:var(--gold-light); }
   #packages .section-title { color:#fff; }
   #packages .section-desc { color:rgba(255,255,255,.6); }
@@ -543,7 +543,7 @@
         <option value="" data-i18n="hp_choose">Choose a hotel…</option>
       </select>
     </div>
-    <div class="hp-field hp-field-compact">
+    <div class="hp-field hp-field-compact hp-field-date">
       <label for="hp-date" data-i18n="hp_date_label">Check-in Date</label>
       <input type="date" id="hp-date" onchange="lookupHotelPackage()"/>
     </div>
