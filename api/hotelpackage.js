@@ -1,9 +1,7 @@
 const XLSX = require('xlsx');
 const path = require('path');
 const fs = require('fs');
-
 let cachedData = null;
-
 function loadData() {
   if (cachedData) return cachedData;
   const filePath = path.join(__dirname, 'data', 'hotel-packages.xlsx');
@@ -11,7 +9,6 @@ function loadData() {
   const wb = XLSX.read(buf, { type: 'buffer', cellDates: false });
   const sheet = wb.Sheets[wb.SheetNames[0]];
   const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: null });
-
   const headerIdx = rows.findIndex(r => r && r[0] === 'Otel');
   const data = [];
   for (let i = headerIdx + 1; i < rows.length; i++) {
@@ -34,12 +31,20 @@ function loadData() {
   cachedData = data;
   return data;
 }
-
 // "26.08.2026" formatındaki tarihi karşılaştırılabilir hale getirir
 function parseDate(str) {
   const [d, m, y] = str.split('.').map(Number);
   return new Date(y, m - 1, d);
 }
+
+// Bu otellerin fiyatlarına kâr payı ZATEN dahil (bilyanagolf.com üzerinden alınan
+// fiyatlar, kaynağında zaten kâr marjı içeriyor) — bu yüzden HP_MARKUP eklenmez.
+const HP_MARKUP_EXCLUDED_HOTELS = new Set([
+  'Gloria Serenity Resort',
+  'Gloria Golf Resort',
+  'Gloria Verde Resort & Spa',
+  'Robinson Club Nobilis'
+]);
 
 module.exports = (req, res) => {
   try {
@@ -50,12 +55,10 @@ module.exports = (req, res) => {
       res.status(400).json({ error: 'missing_params' });
       return;
     }
-
     const data = loadData();
     const checkDate = new Date(date + 'T00:00:00');
     const nightsNum = nights ? Number(nights) : null;
     const groupSize = group ? Number(group) : 1;
-
     const matches = data.filter(row => {
       if (row.hotel !== hotel) return false;
       if (nightsNum !== null && row.nights !== nightsNum) return false;
@@ -63,24 +66,22 @@ module.exports = (req, res) => {
       const end = parseDate(row.end);
       return checkDate >= start && checkDate <= end;
     });
-
     if (matches.length === 0) {
       res.status(404).json({ error: 'not_found' });
       return;
     }
-
     const HP_MARKUP = 98; // Tek/Çift/7+1 fiyatlarına eklenen sabit kâr payı (€)
-
+    const markupForThisHotel = HP_MARKUP_EXCLUDED_HOTELS.has(hotel) ? 0 : HP_MARKUP;
     const options = matches.map(m => {
       let price, priceType;
       if (groupSize >= 8 && m.group71 !== null) {
-        price = m.group71 + HP_MARKUP;
+        price = m.group71 + markupForThisHotel;
         priceType = 'group71';
       } else if (groupSize >= 2) {
-        price = m.dbl + HP_MARKUP;
+        price = m.dbl + markupForThisHotel;
         priceType = 'double';
       } else {
-        price = m.single + HP_MARKUP;
+        price = m.single + markupForThisHotel;
         priceType = 'single';
       }
       return {
@@ -89,15 +90,14 @@ module.exports = (req, res) => {
         view: m.view,
         price: price !== null ? price + ' €' : null,
         priceType,
-        single: m.single !== null ? (m.single + HP_MARKUP) + ' €' : null,
-        double: m.dbl !== null ? (m.dbl + HP_MARKUP) + ' €' : null,
-        group71: m.group71 !== null ? (m.group71 + HP_MARKUP) + ' €' : null,
+        single: m.single !== null ? (m.single + markupForThisHotel) + ' €' : null,
+        double: m.dbl !== null ? (m.dbl + markupForThisHotel) + ' €' : null,
+        group71: m.group71 !== null ? (m.group71 + markupForThisHotel) + ' €' : null,
         buggyFree: m.buggyFree,
         tokenFree: m.tokenFree,
         transferFree: m.transferFree
       };
     });
-
     res.setHeader('Cache-Control', 'no-store');
     res.status(200).json({ options });
   } catch (e) {
