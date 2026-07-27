@@ -256,6 +256,8 @@
   .hp-tt-suggestion-card .hp-tt-price-line { font-size:.82rem; color:rgba(255,255,255,.65); margin-top:1px; }
   .hp-tt-suggestion-card .hp-tt-price-line strong { color:var(--gold-light); font-weight:600; }
   .hp-tt-suggestion-card input[type=checkbox] { width:17px; height:17px; accent-color:var(--gold-light); cursor:pointer; flex-shrink:0; }
+  .hp-tt-suggestion-badges { margin-top:2px; font-size:.68rem; }
+  .hp-tt-suggestion-badges .hp-badge { margin-right:5px; padding:1px 6px; }
   .hp-tt-greenfee { margin-bottom:14px; }
   .hp-tt-greenfee-label { font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.8); font-weight:500; margin-bottom:8px; }
   .hp-tt-gf-row { display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:4px; cursor:pointer; }
@@ -1307,6 +1309,11 @@ document.getElementById('hp-rounds').addEventListener('click', (e) => {
   renderHpResult();
   const panelEl = document.getElementById('hp-tt-panel');
   if (panelEl.classList.contains('open')) hpRenderTtPanel();
+  if (HP_TT_HOTEL) {
+    HP_SUGGESTIONS_LOADING = true;
+    if (panelEl.classList.contains('open')) hpRenderTtPanel();
+    hpLoadCheapestAlternatives(HP_TT_HOTEL.hotel, HP_TT_HOTEL.dateVal, HP_TT_HOTEL.nights, HP_TT_HOTEL.group);
+  }
 });
 
 document.getElementById('hp-view').addEventListener('click', (e) => {
@@ -1403,6 +1410,15 @@ function hpOptionsMinDouble(options) {
   return min;
 }
 
+function hpOptionsMinDoubleOpt(options) {
+  let min = null, minOpt = null;
+  (options || []).forEach(o => {
+    const n = parseFloat(String(o.double || '').replace(/[^\d.,]/g, '').replace(',', '.'));
+    if (!isNaN(n) && (min === null || n < min)) { min = n; minOpt = o; }
+  });
+  return minOpt;
+}
+
 async function hpFetchPackage(hotel, dateVal, nights, group) {
   try {
     const params = new URLSearchParams({ hotel, date: dateVal, nights, group });
@@ -1417,13 +1433,20 @@ async function hpFetchPackage(hotel, dateVal, nights, group) {
 
 async function hpLoadCheapestAlternatives(selectedHotel, dateVal, nights, group) {
   HP_SUGGESTIONS_LOADING = true;
+  const roundsFilter = HP_SELECTED_ROUNDS;
   const others = HP_HOTELS.filter(h => h !== selectedHotel);
   const results = await Promise.all(others.map(async h => {
     const data = await hpFetchPackage(h, dateVal, nights, group);
     if (!data || data === 'error') return null;
-    const min = hpOptionsMinDouble(data.options);
-    if (min === null) return null;
-    return { hotel: h, price: min };
+    const allOptions = data.options || [];
+    const roundsMatched = roundsFilter === null ? allOptions : allOptions.filter(o => o.rounds === roundsFilter);
+    // Aynı Round sayısında paket yoksa bu oteli alternatif olarak önerme (yanlış karşılaştırma olmasın)
+    const pool = roundsMatched.length ? roundsMatched : (roundsFilter === null ? allOptions : []);
+    const opt = hpOptionsMinDoubleOpt(pool);
+    if (!opt) return null;
+    const n = parseFloat(String(opt.double || '').replace(/[^\d.,]/g, '').replace(',', '.'));
+    if (isNaN(n)) return null;
+    return { hotel: h, price: n, rounds: opt.rounds, view: opt.view || '', group71: opt.group71 || null, buggyFree: !!opt.buggyFree, tokenFree: !!opt.tokenFree, transferFree: !!opt.transferFree };
   }));
   const valid = results.filter(r => r !== null).sort((a, b) => a.price - b.price);
   HP_SUGGESTED_HOTELS = valid.slice(0, 3);
@@ -1506,9 +1529,19 @@ function hpRenderTtPanel() {
         const info = hpHotelInfo(s.hotel);
         const thumb = info && info.img ? '<img class="hp-tt-thumb" src="' + info.img + '" alt="' + s.hotel + '" loading="lazy"/>' : '';
         const checked = HP_TT_ALT_HOTELS_SELECTED.has(s.hotel) ? ' checked' : '';
+        const roundLabel = s.rounds ? ' · ' + hpRoundLabel(s.rounds, L) : '';
+        const viewLabel = s.view ? ' · ' + s.view : '';
+        const badges = [];
+        if (s.buggyFree) badges.push((L.hp_buggy_free || 'Free Buggy'));
+        if (s.tokenFree) badges.push((L.hp_token_free || 'Free Token'));
+        if (s.transferFree) badges.push((L.hp_transfer_free || 'Free Transfer'));
+        if (s.group71) badges.push((L.hp_group71_badge || '7+1 Available'));
+        const badgesHtml = badges.length ? '<div class="hp-badges hp-tt-suggestion-badges">' + badges.map(b => '<span class="hp-badge">' + b + '</span>').join('') + '</div>' : '';
+        let priceLine = (L.hp_double || 'Double, per person') + roundLabel + viewLabel + ': <strong>' + s.price + ' €</strong>';
+        if (s.group71) priceLine += '  ·  ' + (L.hp_group_rate || '8+ group rate') + ': <strong>' + s.group71 + '</strong>';
         return '<label class="hp-tt-suggestion-card">' + thumb +
           '<div class="hp-tt-info"><div class="hp-tt-hotel-name">' + s.hotel + '</div>' +
-          '<div class="hp-tt-price-line">' + (L.hp_double || 'Double, per person') + ': <strong>' + s.price + ' €</strong></div></div>' +
+          '<div class="hp-tt-price-line">' + priceLine + '</div>' + badgesHtml + '</div>' +
           '<input type="checkbox" data-hotel="' + s.hotel + '" data-price="' + s.price + '"' + checked + '/></label>';
       }).join('');
   } else {
