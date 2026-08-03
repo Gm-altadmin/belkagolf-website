@@ -1,13 +1,21 @@
 // Şifre ile korunan rapor API'si.
 // /rapor.html buraya şifreyi gönderir, doğruysa son 10 günün
-// sales@/info@ trafiğini Gmail'den çekip durum + öncelik ile döner.
+// sales@/info@ trafiğini Gmail'den çekip BİRİKİMLİ RENK İZİ ile döner.
 //
-// NOT: Bu, gerçek bir dil-anlama analizi DEĞİL - anahtar kelime ve
-// "son mesajı kim attı" (biz mi, müşteri mi) mantığına dayalı bir
-// yaklaşıklama. Chat'teki "rapor" komutunun yaptığı derin okuma/
-// önceliklendirme (thread geçmişini anlama, kayıp-müşteri paternleri,
-// çapraz-otel eşleştirme) burada YOK. Gerçek analiz için Claude API
-// entegrasyonu gerekir (henüz kurulmadı).
+// Renkler emoji DEĞİL, düz metin kod olarak dönülüyor (yellow/green/pink/
+// cancel/confirm) - render tarafı (rapor.html) bunları CSS ile çizilmiş
+// renkli noktalara çeviriyor. Bu, bazı emojilerin (özellikle 🩷) bazı
+// sistemlerde/fontlarda düzgün görünmemesi sorununu tamamen ortadan kaldırır.
+//
+// RENK İZİ MANTIĞI (kullanıcı tanımlı, 03.08.2026):
+//   müşteri -> biz         : yellow (henüz teklif gönderilmediyse)
+//   biz     -> otel        : green
+//   otel    -> biz         : yellow
+//   biz     -> müşteri     : pink   (bu andan itibaren "teklif gönderildi"
+//                                    bayrağı açılır - bundan sonraki müşteri
+//                                    mesajları artık yellow değil pink olur)
+//   müşteri -> biz (teklif sonrası) : pink
+//   ❌/✅ anahtar kelimeyle ayrıca kontrol edilir, varsa trail'in sonuna eklenir.
 
 const NOISE_SENDERS = [
   'stopsale@maxxroyal.com', 'opensale@maxxroyal.com',
@@ -18,6 +26,22 @@ const NOISE_SENDERS = [
 ];
 
 const OUR_DOMAIN = 'belkagolf.com';
+
+const HOTEL_DOMAINS = [
+  'maxxroyal.com', 'cajabymaxxroyal.com', 'corneliadiamond.com', 'regnumhotels.com',
+  'cullinanhotels.com', 'cullinanlinksgolfclub.com', 'sueno.com.tr', 'kayahotels.com.tr',
+  'titanic-hotels.com', 'gloria.com.tr', 'kempinski.com', 'robinson.com', 'sirene.com.tr',
+  'voyagehotel.com', 'swandorhotels.com', 'caryagolf.com', 'guvenok.com.tr',
+  'mardanpalace.com', 'euromsg.net'
+];
+
+function isOurDomain(addr) {
+  return (addr || '').toLowerCase().includes(OUR_DOMAIN);
+}
+function isHotelDomain(addr) {
+  const a = (addr || '').toLowerCase();
+  return HOTEL_DOMAINS.some((d) => a.includes(d));
+}
 
 async function getAccessToken() {
   const r = await fetch('https://oauth2.googleapis.com/token', {
@@ -46,31 +70,61 @@ function daysBetween(date) {
   return Math.floor((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24));
 }
 
-// 4 renk kuralı: ✅ konfirme, ❌ iptal/kayıp, 🟢 teklif gönderildi/müşteri sırası,
-// 🔴 bizim tarafta bekleyen/cevapsız (ne kadar uzunsa o kadar öncelikli),
-// 🟡 diğer bekleyen durumlar.
-function classify({ snippet, subject, fromHeader, daysWaiting, isUrgentKw }) {
+function getHeaderFrom(msg, name) {
+  const headers = msg.payload ? msg.payload.headers || [] : [];
+  return (headers.find((h) => h.name === name) || {}).value || '';
+}
+
+// Thread'deki tüm mesajları işleyip birikimli renk izini (kod dizisi) kurar.
+function buildTrail(msgs) {
+  let offerSent = false;
+  const trail = [];
+  let lastIsFromUs = false;
+
+  for (const msg of msgs) {
+    const from = getHeaderFrom(msg, 'From');
+    const to = getHeaderFrom(msg, 'To');
+
+    if (isOurDomain(from)) {
+      lastIsFromUs = true;
+      if (isHotelDomain(to)) {
+        trail.push('green');
+      } else {
+        trail.push('pink');
+        offerSent = true;
+      }
+    } else if (isHotelDomain(from)) {
+      lastIsFromUs = false;
+      trail.push('yellow');
+    } else {
+      lastIsFromUs = false;
+      trail.push(offerSent ? 'pink' : 'yellow');
+    }
+  }
+
+  return { trail, lastIsFromUs };
+}
+
+function classify({ snippet, subject, trail, lastIsFromUs, daysWaiting, isUrgentKw }) {
   const text = (snippet + ' ' + subject).toLowerCase();
-  const lastFromUs = fromHeader.toLowerCase().includes(OUR_DOMAIN);
 
   if (/\biptal\b|cancel|no show|no-show|no longer/i.test(text)) {
-    return { emoji: '❌', label: 'İptal / Kayıp', priority: -100 };
+    return { trail: [...trail, 'cancel'], label: 'İptal / Kayıp', priority: -100 };
   }
   if (/konfirme|confirmed|onayland[ıi]/i.test(text)) {
-    return { emoji: '✅', label: 'Onaylandı / Konfirme', priority: -50 };
+    return { trail: [...trail, 'confirm'], label: 'Onaylandı / Konfirme', priority: -50 };
   }
-  if (!lastFromUs) {
-    // Müşteriden son mesaj geldi, biz henüz cevap vermemişiz (veya cevabımız bu thread'de görünmüyor).
+
+  if (!lastIsFromUs) {
     let priority = daysWaiting * 2;
     if (isUrgentKw) priority += 100;
-    return { emoji: '🔴', label: `Bizim tarafta bekliyor (${daysWaiting} gün)`, priority };
+    return { trail, label: `Bizim sıramız (${daysWaiting} gün)`, priority };
   }
-  if (/teklif|offer|fiyat teklifi|quote/i.test(text)) {
-    let priority = daysWaiting;
-    if (isUrgentKw) priority += 50;
-    return { emoji: '🟢', label: `Teklif gönderildi, cevap bekleniyor (${daysWaiting} gün)`, priority };
-  }
-  return { emoji: '🟡', label: `Diğer / bekliyor (${daysWaiting} gün)`, priority: daysWaiting };
+  let priority = daysWaiting;
+  if (isUrgentKw) priority += 50;
+  const lastColor = trail[trail.length - 1];
+  const bekleyen = lastColor === 'green' ? 'Otelden cevap bekleniyor' : 'Müşteriden cevap bekleniyor';
+  return { trail, label: `${bekleyen} (${daysWaiting} gün)`, priority };
 }
 
 export default async function handler(req, res) {
@@ -103,7 +157,7 @@ export default async function handler(req, res) {
     const items = [];
     for (const th of threads.slice(0, 35)) {
       const detRes = await fetch(
-        `https://gmail.googleapis.com/gmail/v1/users/me/threads/${th.id}?format=metadata&metadataHeaders=Subject&metadataHeaders=From&metadataHeaders=Date`,
+        `https://gmail.googleapis.com/gmail/v1/users/me/threads/${th.id}?format=metadata&metadataHeaders=Subject&metadataHeaders=From&metadataHeaders=To&metadataHeaders=Date`,
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
       const det = await detRes.json();
@@ -112,50 +166,48 @@ export default async function handler(req, res) {
       const last = msgs[msgs.length - 1];
       if (!last) continue;
 
-      const headers = last.payload ? last.payload.headers || [] : [];
-      const getH = (name) => (headers.find((h) => h.name === name) || {}).value || '';
-      const subject = getH('Subject');
-      const from = getH('From');
-      const date = getH('Date');
+      const subject = getHeaderFrom(last, 'Subject');
+      const lastFrom = getHeaderFrom(last, 'From');
+      const date = getHeaderFrom(last, 'Date');
       const snippet = last.snippet || '';
 
-      // Grup büyüklüğü ve URGENT tespiti için ilk mesajın snippet'ına da bak (ilk talep genelde en detaylı olur).
       const firstSnippet = first ? first.snippet || '' : '';
       const combinedText = subject + ' ' + snippet + ' ' + firstSnippet;
       const groupSize = extractGroupSize(combinedText);
       const isUrgentKw = /urgent|acil/i.test(combinedText);
 
       const daysWaiting = date ? daysBetween(new Date(date)) : 0;
-      const status = classify({ snippet, subject, fromHeader: from, daysWaiting, isUrgentKw });
+      const { trail: rawTrail, lastIsFromUs } = buildTrail(msgs);
+      const status = classify({ snippet, subject, trail: rawTrail, lastIsFromUs, daysWaiting, isUrgentKw });
 
       let oneri = '—';
-      if (status.emoji === '🔴') {
-        oneri = 'Yanıt gönderilmeli' + (daysWaiting >= 3 ? ' (gecikme var)' : '');
-      } else if (status.emoji === '🟢' && daysWaiting >= 5) {
-        oneri = 'Hatırlatma maili gönderilebilir';
+      if (!lastIsFromUs) {
+        oneri = 'Yanıt gönderilmeli' + (daysWaiting >= 2 ? ' (gecikme var)' : '');
+      } else if (daysWaiting >= 5) {
+        oneri = 'Hatırlatma gönderilebilir';
       }
       if (groupSize && groupSize >= 6) {
         oneri += (oneri === '—' ? '' : ' — ') + `Büyük grup (${groupSize} kişi)`;
       }
       if (isUrgentKw) {
-        oneri = '🔺 URGENT — ' + (oneri === '—' ? 'öncelikli incelenmeli' : oneri);
+        oneri = 'URGENT — ' + (oneri === '—' ? 'öncelikli incelenmeli' : oneri);
       }
 
       items.push({
         threadId: th.id,
         subject,
-        from,
+        from: lastFrom,
         date,
         snippet,
-        status: status.emoji,
+        trail: status.trail,
         statusLabel: status.label,
         oneri,
         priority: status.priority,
-        groupSize
+        groupSize,
+        messageCount: msgs.length
       });
     }
 
-    // Öncelik: kriter 1 (bekleme süresi) + acil bayrağı ağırlıklı skor, en yüksek önce.
     items.sort((a, b) => b.priority - a.priority);
 
     res.status(200).json({
