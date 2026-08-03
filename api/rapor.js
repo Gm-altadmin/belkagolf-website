@@ -2,9 +2,14 @@
 // /rapor.html buraya şifreyi gönderir, doğruysa son 10 günün
 // sales@/info@ trafiğini Gmail'den çekip BİRİKİMLİ RENK İZİ ile döner.
 //
-// Renkler emoji DEĞİL, düz metin kod olarak dönülüyor (yellow/green/pink/
-// cancel/confirm) - render tarafı (rapor.html) bunları CSS ile çizilmiş
-// renkli noktalara çeviriyor.
+// RENK MANTIĞI (futbol benzetmesi, kullanıcı tanımlı 03.08.2026):
+// "Top" (aksiyon) her zaman mesajın gittiği tarafın rengini yakar.
+//   -> Bize gelen HER mesaj (müşteriden veya otelden fark etmez) : SARI
+//   -> Bizden otele giden mesaj                                   : YEŞİL
+//   -> Bizden müşteriye giden mesaj                                : PEMBE
+// Faz/geçmiş bayrağı YOK - basit ve sabit: alıcıya göre renk belirlenir.
+// Noktalar hiç silinmeden, mesaj sırasına göre soldan sağa birikir.
+// ❌/✅ anahtar kelimeyle ayrıca kontrol edilir, varsa trail'in sonuna eklenir.
 
 const NOISE_SENDERS = [
   'stopsale@maxxroyal.com', 'opensale@maxxroyal.com',
@@ -55,6 +60,22 @@ function extractGroupSize(text) {
   return m ? parseInt(m[1], 10) : null;
 }
 
+// Kriter 5 (tahmini rezervasyon değeri) - gece sayısı, pax ile birlikte kabaca büyüklük fikri verir.
+function extractNights(text) {
+  const m = text.match(/(\d{1,2})\s?(night|nights|gece)/i);
+  return m ? parseInt(m[1], 10) : null;
+}
+
+// Kriter 7 (sadakat sinyali) - geçmiş raporlarda tekrar eden, kaybedilmesi maliyetli müşteriler.
+// Bu liste zaman içinde büyütülebilir - yeni bir tekrar müşteri fark edilince buraya eklenir.
+const LOYAL_CUSTOMER_NAMES = [
+  'gramstad', 'sønsteby', 'sonsteby', 'noman zia'
+];
+function isLoyalCustomer(text) {
+  const t = text.toLowerCase();
+  return LOYAL_CUSTOMER_NAMES.some((n) => t.includes(n));
+}
+
 function daysBetween(date) {
   return Math.floor((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24));
 }
@@ -64,53 +85,54 @@ function getHeaderFrom(msg, name) {
   return (headers.find((h) => h.name === name) || {}).value || '';
 }
 
+// Thread'deki tüm mesajları işleyip birikimli renk izini kurar.
+// Kural: her mesajın rengi, mesajı ALAN tarafa göre belirlenir (top kimdeyse o renk).
 function buildTrail(msgs) {
-  let offerSent = false;
   const trail = [];
-  let lastIsFromUs = false;
+  let lastColor = null; // son mesajın rengi = topun şu an kimde olduğu
 
   for (const msg of msgs) {
     const from = getHeaderFrom(msg, 'From');
     const to = getHeaderFrom(msg, 'To');
 
+    let color;
     if (isOurDomain(from)) {
-      lastIsFromUs = true;
-      if (isHotelDomain(to)) {
-        trail.push('green');
-      } else {
-        trail.push('pink');
-        offerSent = true;
-      }
-    } else if (isHotelDomain(from)) {
-      lastIsFromUs = false;
-      trail.push('yellow');
+      // Biz gönderdik - kime?
+      color = isHotelDomain(to) ? 'green' : 'pink';
     } else {
-      lastIsFromUs = false;
-      trail.push(offerSent ? 'pink' : 'yellow');
+      // Bize geldi (müşteriden veya otelden) - top bizde, her zaman sarı.
+      color = 'yellow';
     }
+    trail.push(color);
+    lastColor = color;
   }
 
-  return { trail, lastIsFromUs };
+  return { trail, lastColor };
 }
 
-function classify({ snippet, subject, trail, lastIsFromUs, daysWaiting, isUrgentKw }) {
+function classify({ snippet, subject, trail, lastColor, daysWaiting, isUrgentKw }) {
   const text = (snippet + ' ' + subject).toLowerCase();
 
-  if (/\biptal\b|cancel|no show|no-show|no longer/i.test(text)) {
-    return { trail: [...trail, 'cancel'], label: 'İptal / Kayıp', priority: -100 };
+  // Kriter 4 (kayıp-müşteri paterni) + genel "iş bitti, kayıp" sinyalleri.
+  if (/\biptal\b|cancel|no show|no-show|no longer|reddet|red edi|vazgeç|istemiyoruz|istemiyorum|başka (bir )?(firma|teklif|otel)i? (ile|tercih)|artık ilgilenmiyor/i.test(text)) {
+    return { trail: [...trail, 'cancel'], label: 'Reddedildi / İptal / Kayıp', priority: -100 };
   }
-  if (/konfirme|confirmed|onayland[ıi]/i.test(text)) {
-    return { trail: [...trail, 'confirm'], label: 'Onaylandı / Konfirme', priority: -50 };
+  // "İş bitti, onaylandı" sinyalleri - rezervasyon konfirme, kabul, VEYA ödeme aşamasına geçmiş
+  // (hesap numarası/IBAN istemi = ödemeye geçilmiş, iş kapanmış demektir).
+  if (/konfirme|confirmed|onayland[ıi]|kabul (ediyoruz|ediyorum|ettik)|find attached reservation|attached reservation|reservation attached|hesap numar|iban|banka bilgi|banka hesap|send.*(bank|account) details|payment details|proforma.*(gönder|ekte)/i.test(text)) {
+    return { trail: [...trail, 'confirm'], label: 'Kabul Edildi / Onaylandı', priority: -50 };
   }
 
-  if (!lastIsFromUs) {
+  if (lastColor === 'yellow') {
+    // Top bizde - bizim sıramız, aksiyon gerekiyor.
     let priority = daysWaiting * 2;
     if (isUrgentKw) priority += 100;
     return { trail, label: `Bizim sıramız (${daysWaiting} gün)`, priority };
   }
+
+  // Top otelde (green) veya müşteride (pink) - onların sırası, biz bekliyoruz.
   let priority = daysWaiting;
   if (isUrgentKw) priority += 50;
-  const lastColor = trail[trail.length - 1];
   const bekleyen = lastColor === 'green' ? 'Otelden cevap bekleniyor' : 'Müşteriden cevap bekleniyor';
   return { trail, label: `${bekleyen} (${daysWaiting} gün)`, priority };
 }
@@ -133,7 +155,7 @@ export default async function handler(req, res) {
     const tenDaysAgo = new Date(Date.now() - 10 * 24 * 60 * 60 * 1000);
     const dateStr = `${tenDaysAgo.getFullYear()}/${tenDaysAgo.getMonth() + 1}/${tenDaysAgo.getDate()}`;
     const noiseExcl = NOISE_SENDERS.map((s) => `-from:${s}`).join(' ');
-    const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com) after:${dateStr} ${noiseExcl}`;
+    const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com) after:${dateStr} ${noiseExcl}`;
 
     const listRes = await fetch(
       `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(q)}&maxResults=40`,
@@ -162,20 +184,54 @@ export default async function handler(req, res) {
       const firstSnippet = first ? first.snippet || '' : '';
       const combinedText = subject + ' ' + snippet + ' ' + firstSnippet;
       const groupSize = extractGroupSize(combinedText);
-      const isUrgentKw = /urgent|acil/i.test(combinedText);
+      const nights = extractNights(combinedText);
+      const loyal = isLoyalCustomer(subject + ' ' + lastFrom);
+      // Kriter 2 (URGENT bayrağı) - daha geniş kelime kapsamı.
+      const isUrgentKw = /urgent|acil|asap|hemen|acilen|önemli/i.test(combinedText);
+      // Kriter 8 (fiyat-karşılaştırma / rakip firmalardan alışveriş sinyali).
+      const isPriceShopping = /cheaper|best price|lowest price|alternative|compare|diğer seçenek|daha uygun fiyat|en uygun fiyat|fiyat karşılaştır|rakip/i.test(combinedText);
 
       const daysWaiting = date ? daysBetween(new Date(date)) : 0;
-      const { trail: rawTrail, lastIsFromUs } = buildTrail(msgs);
-      const status = classify({ snippet, subject, trail: rawTrail, lastIsFromUs, daysWaiting, isUrgentKw });
+      const { trail: rawTrail, lastColor } = buildTrail(msgs);
+      const status = classify({ snippet, subject, trail: rawTrail, lastColor, daysWaiting, isUrgentKw });
+      if (isPriceShopping && status.priority > 0) {
+        status.priority += 20;
+      }
+      if (loyal && status.priority > 0) {
+        status.priority += 30;
+      }
+      if (groupSize && nights && groupSize * nights >= 30 && status.priority > 0) {
+        status.priority += 15;
+      }
 
       let oneri = '—';
-      if (!lastIsFromUs) {
-        oneri = 'Yanıt gönderilmeli' + (daysWaiting >= 2 ? ' (gecikme var)' : '');
+      let isLate = false;
+      if (lastColor === 'yellow') {
+        // Sarı = bizim sorumluluğumuz. Mailin cevapsız kalması doğrudan gelir kaybı riski -
+        // bu yüzden kademeli, gitgide sertleşen bir uyarı metni kullanıyoruz.
+        if (daysWaiting === 0) {
+          oneri = 'Yanıt gönderilmeli (bugün geldi)';
+        } else if (daysWaiting === 1) {
+          oneri = '⚠️ 1 gündür yanıtsız - bugün cevaplanmalı';
+          isLate = true;
+        } else {
+          oneri = `🚨 ${daysWaiting} GÜNDÜR YANITSIZ - GELİR KAYBI RİSKİ, hemen cevaplanmalı`;
+          isLate = true;
+        }
       } else if (daysWaiting >= 5) {
         oneri = 'Hatırlatma gönderilebilir';
       }
       if (groupSize && groupSize >= 6) {
         oneri += (oneri === '—' ? '' : ' — ') + `Büyük grup (${groupSize} kişi)`;
+      }
+      if (groupSize && nights && groupSize * nights >= 30) {
+        oneri += (oneri === '—' ? '' : ' — ') + `Yüksek değerli rezervasyon (${groupSize}p x ${nights}g)`;
+      }
+      if (loyal) {
+        oneri += (oneri === '—' ? '' : ' — ') + 'Sadık/tekrar müşteri - kaybetmemeye dikkat';
+      }
+      if (isPriceShopping) {
+        oneri += (oneri === '—' ? '' : ' — ') + 'Muhtemelen fiyat karşılaştırıyor, hızlı dönülmeli';
       }
       if (isUrgentKw) {
         oneri = 'URGENT — ' + (oneri === '—' ? 'öncelikli incelenmeli' : oneri);
@@ -192,7 +248,8 @@ export default async function handler(req, res) {
         oneri,
         priority: status.priority,
         groupSize,
-        messageCount: msgs.length
+        messageCount: msgs.length,
+        isLate
       });
     }
 
