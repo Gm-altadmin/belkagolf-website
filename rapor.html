@@ -141,17 +141,18 @@ async function loadReport() {
       — ${data.count} talep bulundu — en öncelikli üstte</div>`;
     html += '<button class="refresh-btn" onclick="loadReport()">Yenile</button>';
     html += `<div class="legend">
-      <span class="legend-item"><span class="dot dot-yellow"></span> müşteri/otel → biz (teklif öncesi)</span>
-      <span class="legend-item"><span class="dot dot-green"></span> biz → otel</span>
-      <span class="legend-item"><span class="dot dot-pink"></span> biz ↔ müşteri (teklif sonrası)</span>
-      <span class="legend-item"><span class="dot dot-cancel"></span> iptal/kayıp</span>
-      <span class="legend-item"><span class="dot dot-confirm"></span> onaylandı</span>
+      <span class="legend-item"><span class="dot dot-yellow"></span> bize gelen (top bizde)</span>
+      <span class="legend-item"><span class="dot dot-green"></span> biz → otel (top otelde)</span>
+      <span class="legend-item"><span class="dot dot-pink"></span> biz → müşteri (top müşteride)</span>
+      <span class="legend-item"><span class="dot dot-cancel"></span> reddedildi/iptal (kayıp)</span>
+      <span class="legend-item"><span class="dot dot-confirm"></span> kabul edildi/onaylandı</span>
     </div>
     <div style="color:#777;font-size:0.78rem;margin-bottom:8px;">Noktalar solda eskiden yeniye sıralanır - sağdaki en güncel durum.</div>`;
     html += '<table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>İz / Durum</th><th>Öneri</th></tr>';
     for (const item of data.items) {
       const d = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
-      html += `<tr>
+      const lateStyle = item.isLate ? ' style="background:rgba(224,92,92,0.1);border-left:3px solid #e05c5c;"' : '';
+      html += `<tr${lateStyle}>
         <td>${d}</td>
         <td>${escapeHtml(item.from)}</td>
         <td>${escapeHtml(item.subject)}</td>
