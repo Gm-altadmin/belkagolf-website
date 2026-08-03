@@ -4,18 +4,7 @@
 //
 // Renkler emoji DEĞİL, düz metin kod olarak dönülüyor (yellow/green/pink/
 // cancel/confirm) - render tarafı (rapor.html) bunları CSS ile çizilmiş
-// renkli noktalara çeviriyor. Bu, bazı emojilerin (özellikle 🩷) bazı
-// sistemlerde/fontlarda düzgün görünmemesi sorununu tamamen ortadan kaldırır.
-//
-// RENK İZİ MANTIĞI (kullanıcı tanımlı, 03.08.2026):
-//   müşteri -> biz         : yellow (henüz teklif gönderilmediyse)
-//   biz     -> otel        : green
-//   otel    -> biz         : yellow
-//   biz     -> müşteri     : pink   (bu andan itibaren "teklif gönderildi"
-//                                    bayrağı açılır - bundan sonraki müşteri
-//                                    mesajları artık yellow değil pink olur)
-//   müşteri -> biz (teklif sonrası) : pink
-//   ❌/✅ anahtar kelimeyle ayrıca kontrol edilir, varsa trail'in sonuna eklenir.
+// renkli noktalara çeviriyor.
 
 const NOISE_SENDERS = [
   'stopsale@maxxroyal.com', 'opensale@maxxroyal.com',
@@ -75,7 +64,6 @@ function getHeaderFrom(msg, name) {
   return (headers.find((h) => h.name === name) || {}).value || '';
 }
 
-// Thread'deki tüm mesajları işleyip birikimli renk izini (kod dizisi) kurar.
 function buildTrail(msgs) {
   let offerSent = false;
   const trail = [];
