@@ -14,7 +14,7 @@
     margin: 0;
     padding: 40px 20px;
   }
-  .box { max-width: 1000px; margin: 0 auto; }
+  .box { max-width: 1100px; margin: 0 auto; }
   h1 {
     font-family: 'Cormorant Garamond', Georgia, serif;
     color: #c9a961;
@@ -22,6 +22,10 @@
     margin-bottom: 4px;
   }
   .sub { color: #999; margin-bottom: 24px; font-size: 0.9rem; }
+  .legend {
+    display: flex; gap: 18px; flex-wrap: wrap; margin: 18px 0 8px;
+    font-size: 0.82rem; color: #bbb;
+  }
   .gate {
     display: flex;
     gap: 10px;
@@ -50,7 +54,7 @@
   button:hover { background: #ddbf7a; }
   .err { color: #e88; margin-top: 12px; width: 100%; }
   .loading { color: #999; margin-top: 24px; }
-  table { width: 100%; border-collapse: collapse; margin-top: 28px; font-size: 0.88rem; }
+  table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.86rem; }
   th, td {
     text-align: left;
     padding: 10px 12px;
@@ -65,12 +69,17 @@
     border: 1px solid #c9a961; color: #c9a961; margin-top: 16px;
   }
   .refresh-btn:hover { background: #c9a96122; }
+  .oneri { color: #ddbf7a; font-weight: 500; }
+  .disclaimer {
+    margin-top: 20px; padding: 12px 14px; background: #1e2b23;
+    border-left: 3px solid #c9a961; font-size: 0.8rem; color: #999;
+  }
 </style>
 </head>
 <body>
 <div class="box">
   <h1>Belka Golf — Talep Raporu</h1>
-  <div class="sub">Son 10 gün · sales@ / info@ trafiği</div>
+  <div class="sub">Son 10 gün · sales@ / info@ trafiği · otomatik (canlı)</div>
 
   <div id="gate" class="gate">
     <input type="password" id="pw" placeholder="Şifre" onkeydown="if(event.key==='Enter')loadReport()">
@@ -104,20 +113,33 @@ async function loadReport() {
     }
 
     let html = `<div class="meta">Son güncelleme: ${new Date(data.generatedAt).toLocaleString('tr-TR')}
-      — ${data.count} talep bulundu</div>`;
+      — ${data.count} talep bulundu · en öncelikli üstte</div>`;
     html += '<button class="refresh-btn" onclick="loadReport()">Yenile</button>';
-    html += '<table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>Durum</th></tr>';
+    html += `<div class="legend">
+      <span>🔴 bizim tarafta bekleyen/cevapsız</span>
+      <span>🟢 teklif gönderildi, cevap bekleniyor</span>
+      <span>🟡 diğer bekleyen</span>
+      <span>❌ iptal/kayıp</span>
+      <span>✅ onaylandı</span>
+    </div>`;
+    html += '<table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>Durum</th><th>Öneri</th></tr>';
     for (const item of data.items) {
       const d = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
       html += `<tr>
         <td>${d}</td>
         <td>${escapeHtml(item.from)}</td>
         <td>${escapeHtml(item.subject)}</td>
-        <td>${escapeHtml(item.snippet).slice(0, 140)}${item.snippet.length > 140 ? '…' : ''}</td>
+        <td>${escapeHtml(item.snippet).slice(0, 120)}${item.snippet.length > 120 ? '…' : ''}</td>
         <td>${item.status} ${escapeHtml(item.statusLabel)}</td>
+        <td class="oneri">${escapeHtml(item.oneri)}</td>
       </tr>`;
     }
     html += '</table>';
+    html += `<div class="disclaimer">Bu sayfa anahtar-kelime tabanlı basit kurallarla çalışır
+      (kim son mesajı attı, "acil"/"URGENT" geçiyor mu, kaç gündür bekliyor vb.).
+      Chat'teki "rapor" komutunun yaptığı derinlemesine analiz (geçmiş kayıp-müşteri paternleri,
+      çapraz-otel eşleştirme, tam bağlam okuma) burada yok — en doğru/detaylı analiz için
+      chat'te "rapor" yazmaya devam edin.</div>`;
     content.innerHTML = html;
   } catch (e) {
     err.textContent = 'Bağlantı hatası: ' + e.message;
