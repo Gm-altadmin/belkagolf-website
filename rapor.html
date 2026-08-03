@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Rapor</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Jost', Arial, sans-serif;
+    background: #16211a;
+    color: #f0ece2;
+    margin: 0;
+    padding: 40px 20px;
+  }
+  .box { max-width: 1000px; margin: 0 auto; }
+  h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #c9a961;
+    font-size: 2rem;
+    margin-bottom: 4px;
+  }
+  .sub { color: #999; margin-bottom: 24px; font-size: 0.9rem; }
+  .gate {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  input[type=password] {
+    padding: 12px 14px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #3a4a3d;
+    background: #1e2b23;
+    color: #fff;
+    width: 240px;
+  }
+  button {
+    padding: 12px 24px;
+    background: #c9a961;
+    color: #16211a;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  button:hover { background: #ddbf7a; }
+  .err { color: #e88; margin-top: 12px; width: 100%; }
+  .loading { color: #999; margin-top: 24px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 28px; font-size: 0.88rem; }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid #2a352d;
+    vertical-align: top;
+  }
+  th { color: #c9a961; font-weight: 600; }
+  tr:hover { background: #1e2b23; }
+  .meta { color: #999; font-size: 0.85rem; margin-top: 18px; }
+  .refresh-btn {
+    padding: 8px 16px; font-size: 0.85rem; background: transparent;
+    border: 1px solid #c9a961; color: #c9a961; margin-top: 16px;
+  }
+  .refresh-btn:hover { background: #c9a96122; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>Belka Golf — Talep Raporu</h1>
+  <div class="sub">Son 10 gün · sales@ / info@ trafiği</div>
+
+  <div id="gate" class="gate">
+    <input type="password" id="pw" placeholder="Şifre" onkeydown="if(event.key==='Enter')loadReport()">
+    <button onclick="loadReport()">Giriş</button>
+  </div>
+  <div class="err" id="err"></div>
+  <div id="content"></div>
+</div>
+
+<script>
+async function loadReport() {
+  const pw = document.getElementById('pw').value;
+  const err = document.getElementById('err');
+  const content = document.getElementById('content');
+  err.textContent = '';
+  content.innerHTML = '<div class="loading">Yükleniyor, bu 10-20 saniye sürebilir...</div>';
+
+  try {
+    const res = await fetch('/api/rapor?password=' + encodeURIComponent(pw));
+    const data = await res.json();
+
+    if (res.status === 401) {
+      err.textContent = 'Şifre hatalı.';
+      content.innerHTML = '';
+      return;
+    }
+    if (data.error) {
+      err.textContent = 'Hata: ' + data.error;
+      content.innerHTML = '';
+      return;
+    }
+
+    let html = `<div class="meta">Son güncelleme: ${new Date(data.generatedAt).toLocaleString('tr-TR')}
+      — ${data.count} talep bulundu</div>`;
+    html += '<button class="refresh-btn" onclick="loadReport()">Yenile</button>';
+    html += '<table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>Durum</th></tr>';
+    for (const item of data.items) {
+      const d = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
+      html += `<tr>
+        <td>${d}</td>
+        <td>${escapeHtml(item.from)}</td>
+        <td>${escapeHtml(item.subject)}</td>
+        <td>${escapeHtml(item.snippet).slice(0, 140)}${item.snippet.length > 140 ? '…' : ''}</td>
+        <td>${item.status} ${escapeHtml(item.statusLabel)}</td>
+      </tr>`;
+    }
+    html += '</table>';
+    content.innerHTML = html;
+  } catch (e) {
+    err.textContent = 'Bağlantı hatası: ' + e.message;
+    content.innerHTML = '';
+  }
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+</script>
+</body>
+</html>
