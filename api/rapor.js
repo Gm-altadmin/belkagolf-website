@@ -67,7 +67,6 @@ function extractNights(text) {
 }
 
 // Kriter 7 (sadakat sinyali) - geçmiş raporlarda tekrar eden, kaybedilmesi maliyetli müşteriler.
-// Bu liste zaman içinde büyütülebilir - yeni bir tekrar müşteri fark edilince buraya eklenir.
 const LOYAL_CUSTOMER_NAMES = [
   'gramstad', 'sønsteby', 'sonsteby', 'noman zia'
 ];
@@ -85,11 +84,9 @@ function getHeaderFrom(msg, name) {
   return (headers.find((h) => h.name === name) || {}).value || '';
 }
 
-// Thread'deki tüm mesajları işleyip birikimli renk izini kurar.
-// Kural: her mesajın rengi, mesajı ALAN tarafa göre belirlenir (top kimdeyse o renk).
 function buildTrail(msgs) {
   const trail = [];
-  let lastColor = null; // son mesajın rengi = topun şu an kimde olduğu
+  let lastColor = null;
 
   for (const msg of msgs) {
     const from = getHeaderFrom(msg, 'From');
@@ -97,10 +94,8 @@ function buildTrail(msgs) {
 
     let color;
     if (isOurDomain(from)) {
-      // Biz gönderdik - kime?
       color = isHotelDomain(to) ? 'green' : 'pink';
     } else {
-      // Bize geldi (müşteriden veya otelden) - top bizde, her zaman sarı.
       color = 'yellow';
     }
     trail.push(color);
@@ -113,24 +108,19 @@ function buildTrail(msgs) {
 function classify({ snippet, subject, trail, lastColor, daysWaiting, isUrgentKw }) {
   const text = (snippet + ' ' + subject).toLowerCase();
 
-  // Kriter 4 (kayıp-müşteri paterni) + genel "iş bitti, kayıp" sinyalleri.
   if (/\biptal\b|cancel|no show|no-show|no longer|reddet|red edi|vazgeç|istemiyoruz|istemiyorum|başka (bir )?(firma|teklif|otel)i? (ile|tercih)|artık ilgilenmiyor/i.test(text)) {
     return { trail: [...trail, 'cancel'], label: 'Reddedildi / İptal / Kayıp', priority: -100 };
   }
-  // "İş bitti, onaylandı" sinyalleri - rezervasyon konfirme, kabul, VEYA ödeme aşamasına geçmiş
-  // (hesap numarası/IBAN istemi = ödemeye geçilmiş, iş kapanmış demektir).
   if (/konfirme|confirmed|onayland[ıi]|kabul (ediyoruz|ediyorum|ettik)|find attached reservation|attached reservation|reservation attached|hesap numar|iban|banka bilgi|banka hesap|send.*(bank|account) details|payment details|proforma.*(gönder|ekte)/i.test(text)) {
     return { trail: [...trail, 'confirm'], label: 'Kabul Edildi / Onaylandı', priority: -50 };
   }
 
   if (lastColor === 'yellow') {
-    // Top bizde - bizim sıramız, aksiyon gerekiyor.
     let priority = daysWaiting * 2;
     if (isUrgentKw) priority += 100;
     return { trail, label: `Bizim sıramız (${daysWaiting} gün)`, priority };
   }
 
-  // Top otelde (green) veya müşteride (pink) - onların sırası, biz bekliyoruz.
   let priority = daysWaiting;
   if (isUrgentKw) priority += 50;
   const bekleyen = lastColor === 'green' ? 'Otelden cevap bekleniyor' : 'Müşteriden cevap bekleniyor';
@@ -186,9 +176,7 @@ export default async function handler(req, res) {
       const groupSize = extractGroupSize(combinedText);
       const nights = extractNights(combinedText);
       const loyal = isLoyalCustomer(subject + ' ' + lastFrom);
-      // Kriter 2 (URGENT bayrağı) - daha geniş kelime kapsamı.
       const isUrgentKw = /urgent|acil|asap|hemen|acilen|önemli/i.test(combinedText);
-      // Kriter 8 (fiyat-karşılaştırma / rakip firmalardan alışveriş sinyali).
       const isPriceShopping = /cheaper|best price|lowest price|alternative|compare|diğer seçenek|daha uygun fiyat|en uygun fiyat|fiyat karşılaştır|rakip/i.test(combinedText);
 
       const daysWaiting = date ? daysBetween(new Date(date)) : 0;
@@ -207,8 +195,6 @@ export default async function handler(req, res) {
       let oneri = '—';
       let isLate = false;
       if (lastColor === 'yellow') {
-        // Sarı = bizim sorumluluğumuz. Mailin cevapsız kalması doğrudan gelir kaybı riski -
-        // bu yüzden kademeli, gitgide sertleşen bir uyarı metni kullanıyoruz.
         if (daysWaiting === 0) {
           oneri = 'Yanıt gönderilmeli (bugün geldi)';
         } else if (daysWaiting === 1) {
@@ -253,7 +239,7 @@ export default async function handler(req, res) {
       });
     }
 
-    items.sort((a, b) => b.priority - a.priority);
+    items.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     res.status(200).json({
       generatedAt: new Date().toISOString(),
