@@ -23,9 +23,10 @@
   }
   .sub { color: #999; margin-bottom: 24px; font-size: 0.9rem; }
   .legend {
-    display: flex; gap: 18px; flex-wrap: wrap; margin: 18px 0 8px;
-    font-size: 0.82rem; color: #bbb;
+    display: flex; gap: 18px; flex-wrap: wrap; align-items: center;
+    margin: 18px 0 8px; font-size: 0.82rem; color: #bbb;
   }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
   .gate {
     display: flex;
     gap: 10px;
@@ -70,10 +71,27 @@
   }
   .refresh-btn:hover { background: #c9a96122; }
   .oneri { color: #ddbf7a; font-weight: 500; }
+  .status-label { font-size: 0.78rem; color: #999; margin-top: 4px; display: block; }
   .disclaimer {
     margin-top: 20px; padding: 12px 14px; background: #1e2b23;
     border-left: 3px solid #c9a961; font-size: 0.8rem; color: #999;
   }
+
+  /* Renk noktaları - emoji YOK, font/işletim sistemi bağımsız her yerde aynı görünür */
+  .dot {
+    display: inline-block;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    margin-right: 3px;
+    vertical-align: middle;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .dot-yellow { background: #e8c547; }
+  .dot-green  { background: #4caf7a; }
+  .dot-pink   { background: #e87fa8; }
+  .dot-cancel { background: #e05c5c; }
+  .dot-confirm{ background: #4caf7a; border-color: #fff; }
+  .dot-cancel, .dot-confirm { border-radius: 3px; } /* iptal/onay kare, akış noktalarından ayırt edilsin */
 </style>
 </head>
 <body>
@@ -90,6 +108,14 @@
 </div>
 
 <script>
+const DOT_LABEL = {
+  yellow: 'sarı', green: 'yeşil', pink: 'pembe', cancel: 'iptal', confirm: 'onay'
+};
+
+function renderTrail(trail) {
+  return trail.map(c => `<span class="dot dot-${c}" title="${DOT_LABEL[c] || c}"></span>`).join('');
+}
+
 async function loadReport() {
   const pw = document.getElementById('pw').value;
   const err = document.getElementById('err');
@@ -113,16 +139,17 @@ async function loadReport() {
     }
 
     let html = `<div class="meta">Son güncelleme: ${new Date(data.generatedAt).toLocaleString('tr-TR')}
-      — ${data.count} talep bulundu · en öncelikli üstte</div>`;
+      — ${data.count} talep bulundu — en öncelikli üstte</div>`;
     html += '<button class="refresh-btn" onclick="loadReport()">Yenile</button>';
     html += `<div class="legend">
-      <span>🔴 bizim tarafta bekleyen/cevapsız</span>
-      <span>🟢 teklif gönderildi, cevap bekleniyor</span>
-      <span>🟡 diğer bekleyen</span>
-      <span>❌ iptal/kayıp</span>
-      <span>✅ onaylandı</span>
-    </div>`;
-    html += '<table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>Durum</th><th>Öneri</th></tr>';
+      <span class="legend-item"><span class="dot dot-yellow"></span> müşteri/otel → biz (teklif öncesi)</span>
+      <span class="legend-item"><span class="dot dot-green"></span> biz → otel</span>
+      <span class="legend-item"><span class="dot dot-pink"></span> biz ↔ müşteri (teklif sonrası)</span>
+      <span class="legend-item"><span class="dot dot-cancel"></span> iptal/kayıp</span>
+      <span class="legend-item"><span class="dot dot-confirm"></span> onaylandı</span>
+    </div>
+    <div style="color:#777;font-size:0.78rem;margin-bottom:8px;">Noktalar solda eskiden yeniye sıralanır - sağdaki en güncel durum.</div>`;
+    html += '<table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>İz / Durum</th><th>Öneri</th></tr>';
     for (const item of data.items) {
       const d = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
       html += `<tr>
@@ -130,16 +157,15 @@ async function loadReport() {
         <td>${escapeHtml(item.from)}</td>
         <td>${escapeHtml(item.subject)}</td>
         <td>${escapeHtml(item.snippet).slice(0, 120)}${item.snippet.length > 120 ? '…' : ''}</td>
-        <td>${item.status} ${escapeHtml(item.statusLabel)}</td>
+        <td>${renderTrail(item.trail)}<span class="status-label">${escapeHtml(item.statusLabel)}</span></td>
         <td class="oneri">${escapeHtml(item.oneri)}</td>
       </tr>`;
     }
     html += '</table>';
-    html += `<div class="disclaimer">Bu sayfa anahtar-kelime tabanlı basit kurallarla çalışır
-      (kim son mesajı attı, "acil"/"URGENT" geçiyor mu, kaç gündür bekliyor vb.).
-      Chat'teki "rapor" komutunun yaptığı derinlemesine analiz (geçmiş kayıp-müşteri paternleri,
-      çapraz-otel eşleştirme, tam bağlam okuma) burada yok — en doğru/detaylı analiz için
-      chat'te "rapor" yazmaya devam edin.</div>`;
+    html += `<div class="disclaimer">Bu sayfa anahtar-kelime ve "kim kime yazdı" (domain bazlı) kurallarla çalışır.
+      Chat'teki "rapor" komutunun yaptığı derinlemesine analiz (tam bağlam okuma,
+      geçmiş kayıp-müşteri paternleri, çapraz-otel eşleştirme) burada yok — en doğru/detaylı
+      analiz için chat'te "rapor" yazmaya devam edin.</div>`;
     content.innerHTML = html;
   } catch (e) {
     err.textContent = 'Bağlantı hatası: ' + e.message;
