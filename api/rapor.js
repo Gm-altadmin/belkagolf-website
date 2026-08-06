@@ -1,5 +1,5 @@
 // Şifre ile korunan rapor API'si.
-// /rapor.html buraya şifreyi gönderir, doğruysa son 10 günün
+// /rapor.html buraya şifreyi gönderir, doğruysa son 8 günün
 // sales@/info@ trafiğini Gmail'den çekip BİRİKİMLİ RENK İZİ ile döner.
 //
 // RENK MANTIĞI (futbol benzetmesi, kullanıcı tanımlı 03.08.2026):
@@ -16,8 +16,16 @@ const NOISE_SENDERS = [
   'stopsale@voyagehotel.com', 'opensale@voyagehotel.com',
   'stopsale@cajabymaxxroyal.com', 'opensale@cajabymaxxroyal.com',
   'sales@euromsg.net', 'email@email.qnb.com.tr',
-  'noreply@mail.manus.im', 'bulten@rafinemedya.info'
+  'noreply@mail.manus.im', 'bulten@rafinemedya.info',
+  'newsletter@tourexpimail.com', 'top20@de.travelzoo.com',
+  'exclusive@de.travelzoo.com', 'info@platformgolf.com',
+  'david@miasportstechnology.com', 'partners@partners.yemeksepeti.com',
+  'info@e.thelifecoshop.com', 'info@golfinitaly.com',
+  'barisgedik@qral.tech', 'sasha@choosevamoostravelapp.com'
 ];
+// NOT: sales@euromsg.net rapor taramasından hariç ama Gmail inbox'ta HİÇ engellenmiyor -
+// Cullinan Belek'in stop-sale kanalı, çok önemli, silinmemeli/bloklanmamalı.
+// NOT: Cornelia veya caryagolf.com ile ilgili hiçbir adres buraya eklenmemeli - gerçek ortaklar.
 
 const OUR_DOMAIN = 'belkagolf.com';
 
@@ -142,8 +150,8 @@ export default async function handler(req, res) {
   try {
     const accessToken = await getAccessToken();
 
-    const tenDaysAgo = new Date(Date.now() - 10 * 24 * 60 * 60 * 1000);
-    const dateStr = `${tenDaysAgo.getFullYear()}/${tenDaysAgo.getMonth() + 1}/${tenDaysAgo.getDate()}`;
+    const eightDaysAgo = new Date(Date.now() - 8 * 24 * 60 * 60 * 1000);
+    const dateStr = `${eightDaysAgo.getFullYear()}/${eightDaysAgo.getMonth() + 1}/${eightDaysAgo.getDate()}`;
     const noiseExcl = NOISE_SENDERS.map((s) => `-from:${s}`).join(' ');
     const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com) after:${dateStr} ${noiseExcl}`;
 
