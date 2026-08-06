@@ -117,22 +117,22 @@ function classify({ snippet, subject, trail, lastColor, daysWaiting, isUrgentKw 
   const text = (snippet + ' ' + subject).toLowerCase();
 
   if (/\biptal\b|cancel|no show|no-show|no longer|reddet|red edi|vazgeç|istemiyoruz|istemiyorum|başka (bir )?(firma|teklif|otel)i? (ile|tercih)|artık ilgilenmiyor/i.test(text)) {
-    return { trail: [...trail, 'cancel'], label: 'Reddedildi / İptal / Kayıp', priority: -100 };
+    return { trail: [...trail, 'cancel'], label: 'Reddedildi / İptal / Kayıp', priority: -100, closed: true };
   }
   if (/konfirme|confirmed|onayland[ıi]|kabul (ediyoruz|ediyorum|ettik)|find attached reservation|attached reservation|reservation attached|hesap numar|iban|banka bilgi|banka hesap|send.*(bank|account) details|payment details|proforma.*(gönder|ekte)/i.test(text)) {
-    return { trail: [...trail, 'confirm'], label: 'Kabul Edildi / Onaylandı', priority: -50 };
+    return { trail: [...trail, 'confirm'], label: 'Kabul Edildi / Onaylandı', priority: -50, closed: true };
   }
 
   if (lastColor === 'yellow') {
     let priority = daysWaiting * 2;
     if (isUrgentKw) priority += 100;
-    return { trail, label: `Bizim sıramız (${daysWaiting} gün)`, priority };
+    return { trail, label: `Bizim sıramız (${daysWaiting} gün)`, priority, closed: false };
   }
 
   let priority = daysWaiting;
   if (isUrgentKw) priority += 50;
   const bekleyen = lastColor === 'green' ? 'Otelden cevap bekleniyor' : 'Müşteriden cevap bekleniyor';
-  return { trail, label: `${bekleyen} (${daysWaiting} gün)`, priority };
+  return { trail, label: `${bekleyen} (${daysWaiting} gün)`, priority, closed: false };
 }
 
 export default async function handler(req, res) {
@@ -155,15 +155,22 @@ export default async function handler(req, res) {
     const noiseExcl = NOISE_SENDERS.map((s) => `-from:${s}`).join(' ');
     const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com) after:${dateStr} ${noiseExcl}`;
 
-    const listRes = await fetch(
-      `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(q)}&maxResults=40`,
-      { headers: { Authorization: `Bearer ${accessToken}` } }
-    );
-    const listData = await listRes.json();
-    const threads = listData.threads || [];
+    // NOT (06.08.2026 düzeltmesi): maxResults 40 idi - yoğun trafikte 8 günlük pencerenin
+    // tamamı 40 thread'e sığmıyordu, sadece son ~5 gün geliyordu. Artık Gmail'in sayfalama
+    // (pageToken) mekanizmasıyla gerçekten TÜM 8 gün çekiliyor (150 thread'e kadar).
+    let threads = [];
+    let pageToken = '';
+    for (let i = 0; i < 4; i++) {
+      const url = `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(q)}&maxResults=50${pageToken ? `&pageToken=${pageToken}` : ''}`;
+      const listRes = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
+      const listData = await listRes.json();
+      threads = threads.concat(listData.threads || []);
+      if (!listData.nextPageToken || threads.length >= 150) break;
+      pageToken = listData.nextPageToken;
+    }
 
     const items = [];
-    for (const th of threads.slice(0, 35)) {
+    for (const th of threads.slice(0, 150)) {
       const detRes = await fetch(
         `https://gmail.googleapis.com/gmail/v1/users/me/threads/${th.id}?format=metadata&metadataHeaders=Subject&metadataHeaders=From&metadataHeaders=To&metadataHeaders=Date`,
         { headers: { Authorization: `Bearer ${accessToken}` } }
@@ -200,9 +207,14 @@ export default async function handler(req, res) {
         status.priority += 15;
       }
 
+      // NOT (06.08.2026 düzeltmesi): status.closed (iptal/onay) kontrolü önceden yoktu -
+      // bir talep iptal/onaylanmış olsa bile son mesaj müşteriden geldiyse (sarı) öneri
+      // hala "yanıt gönderilmeli" diyordu. Artık kapalı (iptal/onay) durumlarda öneri hep "—".
       let oneri = '—';
       let isLate = false;
-      if (lastColor === 'yellow') {
+      if (status.closed) {
+        oneri = '—';
+      } else if (lastColor === 'yellow') {
         if (daysWaiting === 0) {
           oneri = 'Yanıt gönderilmeli (bugün geldi)';
         } else if (daysWaiting === 1) {
@@ -215,20 +227,22 @@ export default async function handler(req, res) {
       } else if (daysWaiting >= 5) {
         oneri = 'Hatırlatma gönderilebilir';
       }
-      if (groupSize && groupSize >= 6) {
-        oneri += (oneri === '—' ? '' : ' — ') + `Büyük grup (${groupSize} kişi)`;
-      }
-      if (groupSize && nights && groupSize * nights >= 30) {
-        oneri += (oneri === '—' ? '' : ' — ') + `Yüksek değerli rezervasyon (${groupSize}p x ${nights}g)`;
-      }
-      if (loyal) {
-        oneri += (oneri === '—' ? '' : ' — ') + 'Sadık/tekrar müşteri - kaybetmemeye dikkat';
-      }
-      if (isPriceShopping) {
-        oneri += (oneri === '—' ? '' : ' — ') + 'Muhtemelen fiyat karşılaştırıyor, hızlı dönülmeli';
-      }
-      if (isUrgentKw) {
-        oneri = 'URGENT — ' + (oneri === '—' ? 'öncelikli incelenmeli' : oneri);
+      if (!status.closed) {
+        if (groupSize && groupSize >= 6) {
+          oneri += (oneri === '—' ? '' : ' — ') + `Büyük grup (${groupSize} kişi)`;
+        }
+        if (groupSize && nights && groupSize * nights >= 30) {
+          oneri += (oneri === '—' ? '' : ' — ') + `Yüksek değerli rezervasyon (${groupSize}p x ${nights}g)`;
+        }
+        if (loyal) {
+          oneri += (oneri === '—' ? '' : ' — ') + 'Sadık/tekrar müşteri - kaybetmemeye dikkat';
+        }
+        if (isPriceShopping) {
+          oneri += (oneri === '—' ? '' : ' — ') + 'Muhtemelen fiyat karşılaştırıyor, hızlı dönülmeli';
+        }
+        if (isUrgentKw) {
+          oneri = 'URGENT — ' + (oneri === '—' ? 'öncelikli incelenmeli' : oneri);
+        }
       }
 
       items.push({
