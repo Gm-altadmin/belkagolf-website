@@ -83,6 +83,22 @@ function isLoyalCustomer(text) {
   return LOYAL_CUSTOMER_NAMES.some((n) => t.includes(n));
 }
 
+// AYNI-MÜŞTERİ BİRLEŞTİRME (06.08.2026 eklendi): Roger'ın konu başlıkları hep
+// "Mr. X" / "Mrs. X" formatında sabit (Request Mr. X, Reservation Mr. X,
+// YENI REZ.//SUENO GOLF//Mr. X//tarihler, RE:/Sv:/FW: önekleriyle). Bu ismi
+// çekip normalize ederek aynı müşterinin farklı thread'lerini (rezervasyon +
+// tee-time + invoice gibi ayrı konu başlıklarıyla açılmış olsa bile) tek
+// müşteri anahtarında gruplamak için kullanılır.
+function extractCustomerKey(subject) {
+  const m = (subject || '').match(/Mrs?\.?\s+([^\/\n]+)/i);
+  if (!m) return null;
+  let name = m[1].split('//')[0];
+  name = name.replace(/\bINVOICE\b.*$/i, '');
+  name = name.replace(/[^\p{L}\s.-]/gu, ' ');
+  name = name.trim().toLowerCase().replace(/\s+/g, ' ');
+  return name.length >= 3 ? name : null;
+}
+
 function daysBetween(date) {
   return Math.floor((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24));
 }
@@ -155,9 +171,8 @@ export default async function handler(req, res) {
     const noiseExcl = NOISE_SENDERS.map((s) => `-from:${s}`).join(' ');
     const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com) after:${dateStr} ${noiseExcl}`;
 
-    // NOT (06.08.2026 düzeltmesi): maxResults 40 idi - yoğun trafikte 8 günlük pencerenin
-    // tamamı 40 thread'e sığmıyordu, sadece son ~5 gün geliyordu. Artık Gmail'in sayfalama
-    // (pageToken) mekanizmasıyla gerçekten TÜM 8 gün çekiliyor (150 thread'e kadar).
+    // maxResults 40 idi - yoğun trafikte 8 günlük pencerenin tamamı sığmıyordu.
+    // Artık Gmail'in sayfalama (pageToken) mekanizmasıyla 150 thread'e kadar çekiliyor.
     let threads = [];
     let pageToken = '';
     for (let i = 0; i < 4; i++) {
@@ -207,9 +222,6 @@ export default async function handler(req, res) {
         status.priority += 15;
       }
 
-      // NOT (06.08.2026 düzeltmesi): status.closed (iptal/onay) kontrolü önceden yoktu -
-      // bir talep iptal/onaylanmış olsa bile son mesaj müşteriden geldiyse (sarı) öneri
-      // hala "yanıt gönderilmeli" diyordu. Artık kapalı (iptal/onay) durumlarda öneri hep "—".
       let oneri = '—';
       let isLate = false;
       if (status.closed) {
@@ -257,16 +269,46 @@ export default async function handler(req, res) {
         priority: status.priority,
         groupSize,
         messageCount: msgs.length,
-        isLate
+        isLate,
+        customerKey: extractCustomerKey(subject)
       });
     }
 
-    items.sort((a, b) => new Date(b.date) - new Date(a.date));
+    // AYNI-MÜŞTERİ BİRLEŞTİRME (06.08.2026): customerKey aynıysa tek satırda birleştir.
+    // En güncel thread'in durumu/trail'i/önerisi "birincil" kabul edilir (en doğru güncel
+    // durumu yansıtır); diğer thread'lerin konu başlıkları "otherSubjects" listesinde
+    // saklanır, kaç thread birleştiğini gösteren mergedCount eklenir. customerKey
+    // bulunamayan (örn. Roger dışı, direkt müşteri) itemlar birleştirilmeden kalır.
+    const byCustomer = new Map();
+    const standalone = [];
+    for (const it of items) {
+      if (!it.customerKey) {
+        standalone.push(it);
+        continue;
+      }
+      const existing = byCustomer.get(it.customerKey);
+      if (!existing) {
+        byCustomer.set(it.customerKey, { ...it, otherSubjects: [], mergedCount: 1 });
+      } else {
+        existing.mergedCount += 1;
+        existing.otherSubjects.push(it.subject);
+        if (new Date(it.date) > new Date(existing.date)) {
+          const otherSubjects = [...existing.otherSubjects, existing.subject];
+          const mergedCount = existing.mergedCount;
+          Object.assign(existing, it);
+          existing.otherSubjects = otherSubjects;
+          existing.mergedCount = mergedCount;
+        }
+      }
+    }
+    const finalItems = [...byCustomer.values(), ...standalone];
+
+    finalItems.sort((a, b) => new Date(b.date) - new Date(a.date));
 
     res.status(200).json({
       generatedAt: new Date().toISOString(),
-      count: items.length,
-      items
+      count: finalItems.length,
+      items: finalItems
     });
   } catch (e) {
     res.status(500).json({ error: e.message });
