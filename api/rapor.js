@@ -21,8 +21,14 @@ const NOISE_SENDERS = [
   'exclusive@de.travelzoo.com', 'info@platformgolf.com',
   'david@miasportstechnology.com', 'partners@partners.yemeksepeti.com',
   'info@e.thelifecoshop.com', 'info@golfinitaly.com',
-  'barisgedik@qral.tech', 'sasha@choosevamoostravelapp.com'
+  'barisgedik@qral.tech', 'sasha@choosevamoostravelapp.com',
+  'email.apple.com', 'mail.anthropic.com',
+  'account-misc-noreply@google.com', 'forwarding-noreply@google.com'
 ];
+// NOT (06.08.2026): son ikisi kategorisi genişletildi - kişisel hesap/abonelik/sistem
+// bildirimleri (Apple, Google hesap bildirimleri, Claude.ai giriş linki vb.) iş
+// yazışması değil, sales@/info@/mb@ kutularına karışan kişisel/sistemsel gürültü.
+// Bu tür yeni bir gönderen fark edilirse buraya eklenmeye devam edilecek.
 // NOT: sales@euromsg.net rapor taramasından hariç ama Gmail inbox'ta HİÇ engellenmiyor -
 // Cullinan Belek'in stop-sale kanalı, çok önemli, silinmemeli/bloklanmamalı.
 // NOT: Cornelia veya caryagolf.com ile ilgili hiçbir adres buraya eklenmemeli - gerçek ortaklar.
@@ -125,13 +131,9 @@ function buildTrail(msgs) {
   return { trail, lastColor };
 }
 
-// DÜZELTME (06.08.2026, ikinci analiz): iptal/onay anahtar kelime kontrolü artık SADECE
-// son mesaj BİZE GELMİŞSE (lastColor === 'yellow') çalışıyor. Önceden bizim kendi giden
-// mesajlarımızdaki standart ifadeler ("...konfirme etmenizi rica ederiz", "please confirm
-// and send tee-times") de bu regex'i tetikleyip talebi YANLIŞLIKLA "Onaylandı" olarak
-// kapatıyordu - talep aslında hâlâ otelden yanıt bekliyor olsa bile. Gerçek bir onay/iptal
-// her zaman KARŞI TARAFTAN (otel/müşteri) bize doğru gelir, bizim kendi talep metnimizden
-// değil - bu yüzden kontrolü yellow (bize gelen) mesajlarla sınırlamak doğru olanı yakalar.
+// İptal/onay anahtar kelime kontrolü SADECE son mesaj BİZE GELMİŞSE (lastColor==='yellow')
+// çalışır - bizim kendi giden metnimizdeki ("...konfirme etmenizi rica ederiz" gibi)
+// ifadeler yanlışlıkla talebi kapatmasın diye.
 function classify({ snippet, subject, trail, lastColor, daysWaiting, isUrgentKw }) {
   const text = (snippet + ' ' + subject).toLowerCase();
 
