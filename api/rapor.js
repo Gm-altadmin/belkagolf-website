@@ -25,10 +25,9 @@ const NOISE_SENDERS = [
   'email.apple.com', 'mail.anthropic.com',
   'account-misc-noreply@google.com', 'forwarding-noreply@google.com'
 ];
-// NOT (06.08.2026): son ikisi kategorisi genişletildi - kişisel hesap/abonelik/sistem
-// bildirimleri (Apple, Google hesap bildirimleri, Claude.ai giriş linki vb.) iş
-// yazışması değil, sales@/info@/mb@ kutularına karışan kişisel/sistemsel gürültü.
-// Bu tür yeni bir gönderen fark edilirse buraya eklenmeye devam edilecek.
+// NOT: kişisel hesap/abonelik/sistem bildirimleri (Apple, Google hesap bildirimleri,
+// Claude.ai giriş linki vb.) iş yazışması değil, sales@/info@/mb@ kutularına karışan
+// kişisel/sistemsel gürültü - yeni bir tanesi fark edilirse buraya eklenmeye devam edilecek.
 // NOT: sales@euromsg.net rapor taramasından hariç ama Gmail inbox'ta HİÇ engellenmiyor -
 // Cullinan Belek'in stop-sale kanalı, çok önemli, silinmemeli/bloklanmamalı.
 // NOT: Cornelia veya caryagolf.com ile ilgili hiçbir adres buraya eklenmemeli - gerçek ortaklar.
@@ -131,19 +130,25 @@ function buildTrail(msgs) {
   return { trail, lastColor };
 }
 
-// İptal/onay anahtar kelime kontrolü SADECE son mesaj BİZE GELMİŞSE (lastColor==='yellow')
-// çalışır - bizim kendi giden metnimizdeki ("...konfirme etmenizi rica ederiz" gibi)
-// ifadeler yanlışlıkla talebi kapatmasın diye.
+// DÜZELTME (06.08.2026, beşinci tur): önceki düzeltme iptal/onay kontrolünü SADECE
+// bize gelen (yellow) mesajlarla sınırlamıştı - ama bu, BİZİM müşteriye/Roger'a
+// gönderdiğimiz gerçek onay bildirimlerini ("Hello Roger. This booking is confirmed.")
+// de görmezden gelmeye başladı (pembe/biz→müşteri mesajlar artık hiç kontrol edilmiyordu).
+// Asıl sorun yön değil, KELİME KALIBIYDI: "...konfirme etmenizi rica ederiz" (bizim
+// TALEBİMİZ, bir istek) içindeki bare "konfirme" kelimesi, gerçek bir onay durumundan
+// ayırt edilemiyordu. Çözüm: yön kısıtlaması kaldırıldı (her mesaj kontrol edilir,
+// yönü ne olursa olsun), bunun yerine regex daraltıldı - sadece "konfirmedir" (durum
+// bildirimi) eşleşir, bare "konfirme" (istek fiili) artık eşleşmiyor. "confirmed"
+// (İngilizce) zaten sadece durum bildirimlerinde geçer ("this booking is confirmed"),
+// "please confirm" gibi isteklerde geçmediği için ek değişiklik gerekmedi.
 function classify({ snippet, subject, trail, lastColor, daysWaiting, isUrgentKw }) {
   const text = (snippet + ' ' + subject).toLowerCase();
 
-  if (lastColor === 'yellow') {
-    if (/\biptal\b|cancel|no show|no-show|no longer|reddet|red edi|vazgeç|istemiyoruz|istemiyorum|başka (bir )?(firma|teklif|otel)i? (ile|tercih)|artık ilgilenmiyor/i.test(text)) {
-      return { trail: [...trail, 'cancel'], label: 'Reddedildi / İptal / Kayıp', priority: -100, closed: true };
-    }
-    if (/konfirme|confirmed|onayland[ıi]|kabul (ediyoruz|ediyorum|ettik)|find attached reservation|attached reservation|reservation attached|hesap numar|iban|banka bilgi|banka hesap|send.*(bank|account) details|payment details|proforma.*(gönder|ekte)/i.test(text)) {
-      return { trail: [...trail, 'confirm'], label: 'Kabul Edildi / Onaylandı', priority: -50, closed: true };
-    }
+  if (/\biptal\b|cancel|no show|no-show|no longer|reddet|red edi|vazgeç|istemiyoruz|istemiyorum|başka (bir )?(firma|teklif|otel)i? (ile|tercih)|artık ilgilenmiyor/i.test(text)) {
+    return { trail: [...trail, 'cancel'], label: 'Reddedildi / İptal / Kayıp', priority: -100, closed: true };
+  }
+  if (/konfirmedir|confirmed|onayland[ıi]|kabul (ediyoruz|ediyorum|ettik)|find attached reservation|attached reservation|reservation attached|hesap numar|iban|banka bilgi|banka hesap|send.*(bank|account) details|payment details|proforma.*(gönder|ekte)/i.test(text)) {
+    return { trail: [...trail, 'confirm'], label: 'Kabul Edildi / Onaylandı', priority: -50, closed: true };
   }
 
   if (lastColor === 'yellow') {
