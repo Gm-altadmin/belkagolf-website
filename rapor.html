@@ -91,12 +91,32 @@
   .dot-cancel { background: #e05c5c; }
   .dot-confirm{ background: #4caf7a; border-color: #fff; }
   .dot-cancel, .dot-confirm { border-radius: 3px; }
+
+  .merge-badge {
+    display: inline-block;
+    background: #3a4a3d;
+    color: #c9a961;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 10px;
+    margin-left: 6px;
+    cursor: help;
+    vertical-align: middle;
+  }
+  .other-subjects {
+    display: block;
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
 </style>
 </head>
 <body>
 <div class="box">
   <h1>Belka Golf — Talep Raporu</h1>
-  <div class="sub">Son 10 gün · sales@ / info@ trafiği · otomatik (canlı)</div>
+  <div class="sub">Son 8 gün · sales@ / info@ / mb@ trafiği · otomatik (canlı)</div>
 
   <div id="gate" class="gate">
     <input type="password" id="pw" placeholder="Şifre" onkeydown="if(event.key==='Enter')loadReport()">
@@ -120,7 +140,7 @@ async function loadReport() {
   const err = document.getElementById('err');
   const content = document.getElementById('content');
   err.textContent = '';
-  content.innerHTML = '<div class="loading">Yükleniyor, bu 10-20 saniye sürebilir...</div>';
+  content.innerHTML = '<div class="loading">Yükleniyor...</div>';
 
   try {
     const res = await fetch('/api/rapor?password=' + encodeURIComponent(pw));
@@ -146,16 +166,33 @@ async function loadReport() {
       <span class="legend-item"><span class="dot dot-pink"></span> biz → müşteri (top müşteride)</span>
       <span class="legend-item"><span class="dot dot-cancel"></span> reddedildi/iptal (kayıp)</span>
       <span class="legend-item"><span class="dot dot-confirm"></span> kabul edildi/onaylandı</span>
+      <span class="legend-item"><span class="merge-badge">×N</span> aynı müşterinin N mail'i birleşti</span>
     </div>
     <div style="color:#777;font-size:0.78rem;margin-bottom:8px;">Noktalar solda eskiden yeniye sıralanır - sağdaki en güncel durum.</div>`;
     html += '<table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>İz / Durum</th><th>Öneri</th></tr>';
     for (const item of data.items) {
       const d = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
       const lateStyle = item.isLate ? ' style="background:rgba(224,92,92,0.1);border-left:3px solid #e05c5c;"' : '';
+
+      // Birleşen thread rozeti + gizli diğer konu başlıkları listesi (06.08.2026 eklendi)
+      const mergeCount = item.mergedCount || 1;
+      let mergeBadge = '';
+      let otherSubjectsHtml = '';
+      if (mergeCount > 1) {
+        const titleText = 'Bu satır ' + mergeCount + ' ayrı mail/thread\'in birleşimi: '
+          + [item.subject, ...(item.otherSubjects || [])].map(s => escapeHtml(s)).join(' | ');
+        mergeBadge = `<span class="merge-badge" title="${titleText}">×${mergeCount}</span>`;
+        if (item.otherSubjects && item.otherSubjects.length) {
+          otherSubjectsHtml = `<span class="other-subjects">+ ${item.otherSubjects.length} diğer: ${
+            item.otherSubjects.map(s => escapeHtml(s)).join(' · ')
+          }</span>`;
+        }
+      }
+
       html += `<tr${lateStyle}>
         <td>${d}</td>
         <td>${escapeHtml(item.from)}</td>
-        <td>${escapeHtml(item.subject)}</td>
+        <td>${escapeHtml(item.subject)}${mergeBadge}${otherSubjectsHtml}</td>
         <td>${escapeHtml(item.snippet).slice(0, 120)}${item.snippet.length > 120 ? '…' : ''}</td>
         <td>${renderTrail(item.trail)}<span class="status-label">${escapeHtml(item.statusLabel)}</span></td>
         <td class="oneri">${escapeHtml(item.oneri)}</td>
