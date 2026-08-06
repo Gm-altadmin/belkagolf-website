@@ -83,17 +83,11 @@ function isLoyalCustomer(text) {
   return LOYAL_CUSTOMER_NAMES.some((n) => t.includes(n));
 }
 
-// AYNI-MÜŞTERİ BİRLEŞTİRME (06.08.2026 eklendi, 06.08.2026 sağlamlaştırıldı): Roger'ın
-// konu başlıkları hep "Mr. X" / "Mrs. X" formatında sabit. Bu ismi çekip normalize ederek
-// aynı müşterinin farklı thread'lerini (rezervasyon + tee-time + invoice gibi ayrı konu
-// başlıklarıyla açılmış olsa bile, otel/Roger/direkt müşteri fark etmeksizin - hangisi
-// yazarsa yazsın konu başlığında isim varsa yakalanır) tek müşteri anahtarında gruplamak
-// için kullanılır.
-// SAĞLAMLAŞTIRMA: eskiden "//" görene kadar HER ŞEYİ isme dahil ediyordu - "Mr. Erik
-// Sæther. Price inquiry" gibi durumlarda "Price inquiry" de isme karışıyor, aynı kişinin
-// farklı thread'leri YANLIŞLIKLA birleşmeyebiliyordu. Artık sadece büyük harfle başlayan
-// ardışık kelimeleri (isim/soyisim) yakalıyor, ilk küçük harfli kelime/noktalama/"//"
-// görülünce durduruyor.
+// AYNI-MÜŞTERİ BİRLEŞTİRME: Roger'ın konu başlıkları hep "Mr. X" / "Mrs. X" formatında
+// sabit. Bu ismi çekip normalize ederek aynı müşterinin farklı thread'lerini (rezervasyon
+// + tee-time + invoice gibi ayrı konu başlıklarıyla açılmış olsa bile) tek müşteri
+// anahtarında gruplamak için kullanılır. Sadece büyük harfle başlayan ardışık kelimeleri
+// (isim/soyisim, max 4 kelime) yakalıyor.
 function extractCustomerKey(subject) {
   const m = (subject || '').match(/Mrs?\.?\s+((?:[A-ZÆØÅÄÖÜÇĞİÖŞÜ][\p{L}'-]*\s*){1,4})/u);
   if (!m) return null;
@@ -131,14 +125,23 @@ function buildTrail(msgs) {
   return { trail, lastColor };
 }
 
+// DÜZELTME (06.08.2026, ikinci analiz): iptal/onay anahtar kelime kontrolü artık SADECE
+// son mesaj BİZE GELMİŞSE (lastColor === 'yellow') çalışıyor. Önceden bizim kendi giden
+// mesajlarımızdaki standart ifadeler ("...konfirme etmenizi rica ederiz", "please confirm
+// and send tee-times") de bu regex'i tetikleyip talebi YANLIŞLIKLA "Onaylandı" olarak
+// kapatıyordu - talep aslında hâlâ otelden yanıt bekliyor olsa bile. Gerçek bir onay/iptal
+// her zaman KARŞI TARAFTAN (otel/müşteri) bize doğru gelir, bizim kendi talep metnimizden
+// değil - bu yüzden kontrolü yellow (bize gelen) mesajlarla sınırlamak doğru olanı yakalar.
 function classify({ snippet, subject, trail, lastColor, daysWaiting, isUrgentKw }) {
   const text = (snippet + ' ' + subject).toLowerCase();
 
-  if (/\biptal\b|cancel|no show|no-show|no longer|reddet|red edi|vazgeç|istemiyoruz|istemiyorum|başka (bir )?(firma|teklif|otel)i? (ile|tercih)|artık ilgilenmiyor/i.test(text)) {
-    return { trail: [...trail, 'cancel'], label: 'Reddedildi / İptal / Kayıp', priority: -100, closed: true };
-  }
-  if (/konfirme|confirmed|onayland[ıi]|kabul (ediyoruz|ediyorum|ettik)|find attached reservation|attached reservation|reservation attached|hesap numar|iban|banka bilgi|banka hesap|send.*(bank|account) details|payment details|proforma.*(gönder|ekte)/i.test(text)) {
-    return { trail: [...trail, 'confirm'], label: 'Kabul Edildi / Onaylandı', priority: -50, closed: true };
+  if (lastColor === 'yellow') {
+    if (/\biptal\b|cancel|no show|no-show|no longer|reddet|red edi|vazgeç|istemiyoruz|istemiyorum|başka (bir )?(firma|teklif|otel)i? (ile|tercih)|artık ilgilenmiyor/i.test(text)) {
+      return { trail: [...trail, 'cancel'], label: 'Reddedildi / İptal / Kayıp', priority: -100, closed: true };
+    }
+    if (/konfirme|confirmed|onayland[ıi]|kabul (ediyoruz|ediyorum|ettik)|find attached reservation|attached reservation|reservation attached|hesap numar|iban|banka bilgi|banka hesap|send.*(bank|account) details|payment details|proforma.*(gönder|ekte)/i.test(text)) {
+      return { trail: [...trail, 'confirm'], label: 'Kabul Edildi / Onaylandı', priority: -50, closed: true };
+    }
   }
 
   if (lastColor === 'yellow') {
@@ -194,12 +197,8 @@ export default async function handler(req, res) {
       pageToken = listData.nextPageToken;
     }
 
-    // PERFORMANS DÜZELTMESİ (06.08.2026): eskiden her thread detayı SIRAYLA (tek tek
-    // await) çekiliyordu - 150 thread x ~300-500ms = 45-75 saniye, Vercel'in serverless
-    // fonksiyon süre sınırını (plana göre 10-60sn) aşıp timeout/hata riski doğuruyordu
-    // (8 günlük pencere düzeltmesinin fark edilmeyen yan etkisi). Artık 10'arlı gruplar
-    // halinde PARALEL çekiliyor (Promise.all) - toplam süre ~5-10 saniyeye düşüyor,
-    // Gmail API rate-limit'e de takılmayacak kadar ölçülü.
+    // Thread detayları 10'arlı gruplar halinde PARALEL çekiliyor (Promise.all) -
+    // seri yöntemde 150 thread 45-75sn sürüp Vercel timeout riski taşıyordu.
     const threadList = threads.slice(0, 150);
     const detailResults = [];
     for (const group of chunk(threadList, 10)) {
