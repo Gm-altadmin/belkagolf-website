@@ -101,16 +101,20 @@
     padding: 1px 6px;
     border-radius: 10px;
     margin-left: 6px;
-    cursor: help;
+    cursor: pointer;
     vertical-align: middle;
+    user-select: none;
   }
+  .merge-badge:hover { background: #4a5c4d; }
   .other-subjects {
-    display: block;
+    display: none;
     font-size: 0.75rem;
     color: #888;
     margin-top: 4px;
-    line-height: 1.4;
+    line-height: 1.5;
   }
+  .other-subjects.open { display: block; }
+  .other-subjects div { padding: 1px 0; }
 </style>
 </head>
 <body>
@@ -133,6 +137,13 @@ const DOT_LABEL = {
 
 function renderTrail(trail) {
   return trail.map(c => `<span class="dot dot-${c}" title="${DOT_LABEL[c] || c}"></span>`).join('');
+}
+
+// Rozete tıklayınca birleşen diğer konu başlıklarını aç/kapa (06.08.2026 eklendi -
+// önceden hep açık duruyordu, uzun ×N satırlarında sayfa gereksiz uzuyordu).
+function toggleOther(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
 }
 
 async function loadReport() {
@@ -166,26 +177,28 @@ async function loadReport() {
       <span class="legend-item"><span class="dot dot-pink"></span> biz → müşteri (top müşteride)</span>
       <span class="legend-item"><span class="dot dot-cancel"></span> reddedildi/iptal (kayıp)</span>
       <span class="legend-item"><span class="dot dot-confirm"></span> kabul edildi/onaylandı</span>
-      <span class="legend-item"><span class="merge-badge">×N</span> aynı müşterinin N mail'i birleşti</span>
+      <span class="legend-item"><span class="merge-badge">×N</span> aynı müşterinin N mail'i birleşti — tıkla, aç/kapa</span>
     </div>
     <div style="color:#777;font-size:0.78rem;margin-bottom:8px;">Noktalar solda eskiden yeniye sıralanır - sağdaki en güncel durum.</div>`;
     html += '<table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>İz / Durum</th><th>Öneri</th></tr>';
+
+    let rowIdx = 0;
     for (const item of data.items) {
+      rowIdx++;
       const d = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
       const lateStyle = item.isLate ? ' style="background:rgba(224,92,92,0.1);border-left:3px solid #e05c5c;"' : '';
 
-      // Birleşen thread rozeti + gizli diğer konu başlıkları listesi (06.08.2026 eklendi)
+      // Birleşen thread rozeti - tıklanana kadar KAPALI, sayfayı uzatmıyor.
       const mergeCount = item.mergedCount || 1;
       let mergeBadge = '';
       let otherSubjectsHtml = '';
       if (mergeCount > 1) {
-        const titleText = 'Bu satır ' + mergeCount + ' ayrı mail/thread\'in birleşimi: '
-          + [item.subject, ...(item.otherSubjects || [])].map(s => escapeHtml(s)).join(' | ');
-        mergeBadge = `<span class="merge-badge" title="${titleText}">×${mergeCount}</span>`;
+        const othersId = 'others-' + rowIdx;
+        mergeBadge = `<span class="merge-badge" onclick="toggleOther('${othersId}')" title="Tıkla: diğer ${mergeCount - 1} mail'i göster/gizle">×${mergeCount}</span>`;
         if (item.otherSubjects && item.otherSubjects.length) {
-          otherSubjectsHtml = `<span class="other-subjects">+ ${item.otherSubjects.length} diğer: ${
-            item.otherSubjects.map(s => escapeHtml(s)).join(' · ')
-          }</span>`;
+          otherSubjectsHtml = `<div class="other-subjects" id="${othersId}">${
+            item.otherSubjects.map(s => '<div>· ' + escapeHtml(s) + '</div>').join('')
+          }</div>`;
         }
       }
 
