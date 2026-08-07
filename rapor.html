@@ -116,25 +116,41 @@
   .other-subjects.open { display: block; }
   .other-subjects div { padding: 1px 0; }
 
-  .closed-toggle {
-    margin-top: 26px;
-    padding: 12px 16px;
+  /* SKORBORD (06.08.2026 eklendi): en üstte iki ayrı, bağımsız açılır-kapanır buton -
+     biri onaylı, biri iptal olan talepler için, spor skoru gibi sayı gösteriyor. */
+  .scoreboard {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 18px 0;
+  }
+  .score-btn {
+    flex: 1;
+    min-width: 220px;
+    padding: 16px 20px;
     background: #1e2b23;
     border: 1px solid #3a4a3d;
-    border-radius: 8px;
-    color: #c9a961;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 0.9rem;
+    user-select: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    user-select: none;
+    transition: background 0.15s;
   }
-  .closed-toggle:hover { background: #24322a; }
-  .closed-toggle .arrow { transition: transform 0.15s; }
-  .closed-toggle.open .arrow { transform: rotate(90deg); }
-  .closed-section { display: none; margin-top: 8px; }
-  .closed-section.open { display: block; }
+  .score-btn:hover { background: #24322a; }
+  .score-btn .label { font-size: 0.95rem; color: #ccc; display: flex; align-items: center; gap: 8px; }
+  .score-btn .count {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  .score-btn.confirm .count { color: #4caf7a; }
+  .score-btn.cancel .count { color: #e05c5c; }
+  .score-btn .arrow { font-size: 0.8rem; color: #777; transition: transform 0.15s; margin-left: 10px; }
+  .score-btn.open .arrow { transform: rotate(90deg); }
+  .score-section { display: none; margin-bottom: 8px; }
+  .score-section.open { display: block; }
 </style>
 </head>
 <body>
@@ -159,27 +175,24 @@ function renderTrail(trail) {
   return trail.map(c => `<span class="dot dot-${c}" title="${DOT_LABEL[c] || c}"></span>`).join('');
 }
 
-// Rozete tıklayınca birleşen diğer konu başlıklarını aç/kapa.
 function toggleOther(id) {
   const el = document.getElementById(id);
   if (el) el.classList.toggle('open');
 }
 
-// KAPANANLAR bölümünü aç/kapa (06.08.2026 eklendi) - onaylanan/iptal olan talepler
-// artık üst listede değil, ayrı katlanır bir bölümde.
-function toggleClosed() {
-  const section = document.getElementById('closed-section');
-  const toggle = document.getElementById('closed-toggle');
+// Skorbord butonlarını aç/kapa (06.08.2026 eklendi).
+function toggleScore(kind) {
+  const section = document.getElementById('score-section-' + kind);
+  const btn = document.getElementById('score-btn-' + kind);
   if (section) section.classList.toggle('open');
-  if (toggle) toggle.classList.toggle('open');
+  if (btn) btn.classList.toggle('open');
 }
 
-// Bir item'ın "kapanmış" (onaylanmış/iptal olmuş) olup olmadığını statusLabel'e
-// bakarak anlıyoruz - rapor.js zaten bu iki durumu ayırt edilebilir sabit metinlerle
-// döndürüyor ("Kabul Edildi / Onaylandı" ve "Reddedildi / İptal / Kayıp").
-function isClosedItem(item) {
-  const l = item.statusLabel || '';
-  return l.indexOf('Kabul Edildi') === 0 || l.indexOf('Reddedildi') === 0;
+function isConfirmed(item) {
+  return (item.statusLabel || '').indexOf('Kabul Edildi') === 0;
+}
+function isCancelled(item) {
+  return (item.statusLabel || '').indexOf('Reddedildi') === 0;
 }
 
 function buildRow(item, rowIdx) {
@@ -209,6 +222,17 @@ function buildRow(item, rowIdx) {
   </tr>`;
 }
 
+function buildTable(items, startIdx) {
+  let rowIdx = startIdx;
+  let html = '<table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>İz / Durum</th><th>Öneri</th></tr>';
+  for (const item of items) {
+    rowIdx++;
+    html += buildRow(item, 'r' + rowIdx);
+  }
+  html += '</table>';
+  return { html, nextIdx: rowIdx };
+}
+
 async function loadReport() {
   const pw = document.getElementById('pw').value;
   const err = document.getElementById('err');
@@ -231,48 +255,54 @@ async function loadReport() {
       return;
     }
 
-    // AKSİYON / KAPANAN AYRIMI (06.08.2026 eklendi): onaylanmış ve iptal olmuş talepler
-    // artık üst listeden çıkarılıp ayrı, katlanır bir "Kapananlar" bölümüne taşınıyor -
-    // üstte sadece hâlâ aksiyon bekleyen (bizde/otelde/müşteride) talepler kalıyor.
-    const activeItems = data.items.filter(it => !isClosedItem(it));
-    const closedItems = data.items.filter(isClosedItem);
+    // SKORBORD (06.08.2026): onaylı ve iptal olan talepler ayrı ayrı sayılıp, en üstte
+    // iki bağımsız skor butonu olarak gösteriliyor - her biri kendi listesini açar.
+    const confirmedItems = data.items.filter(isConfirmed);
+    const cancelledItems = data.items.filter(isCancelled);
+    const activeItems = data.items.filter(it => !isConfirmed(it) && !isCancelled(it));
+
+    let rowCounter = 0;
 
     let html = `<div class="meta">Son güncelleme: ${new Date(data.generatedAt).toLocaleString('tr-TR')}
-      — ${data.count} talep bulundu (${activeItems.length} aksiyon bekliyor, ${closedItems.length} kapandı) — en öncelikli üstte</div>`;
+      — ${data.count} talep bulundu — en öncelikli üstte</div>`;
     html += '<button class="refresh-btn" onclick="loadReport()">Yenile</button>';
+
+    // Skorbord
+    html += `<div class="scoreboard">
+      <div class="score-btn confirm" id="score-btn-confirm" onclick="toggleScore('confirm')">
+        <span class="label"><span class="dot dot-confirm"></span> Onaylı</span>
+        <span class="count">${confirmedItems.length}</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="score-btn cancel" id="score-btn-cancel" onclick="toggleScore('cancel')">
+        <span class="label"><span class="dot dot-cancel"></span> İptal</span>
+        <span class="count">${cancelledItems.length}</span>
+        <span class="arrow">▶</span>
+      </div>
+    </div>`;
+
+    const confirmedTable = buildTable(confirmedItems, rowCounter);
+    rowCounter = confirmedTable.nextIdx;
+    html += `<div class="score-section" id="score-section-confirm">${confirmedTable.html}</div>`;
+
+    const cancelledTable = buildTable(cancelledItems, rowCounter);
+    rowCounter = cancelledTable.nextIdx;
+    html += `<div class="score-section" id="score-section-cancel">${cancelledTable.html}</div>`;
+
     html += `<div class="legend">
       <span class="legend-item"><span class="dot dot-yellow"></span> bize gelen (top bizde)</span>
       <span class="legend-item"><span class="dot dot-green"></span> biz → otel (top otelde)</span>
       <span class="legend-item"><span class="dot dot-pink"></span> biz → müşteri (top müşteride)</span>
-      <span class="legend-item"><span class="dot dot-cancel"></span> reddedildi/iptal (kayıp)</span>
-      <span class="legend-item"><span class="dot dot-confirm"></span> kabul edildi/onaylandı</span>
       <span class="legend-item"><span class="merge-badge">×N</span> aynı müşterinin N mail'i birleşti — tıkla, aç/kapa</span>
     </div>
-    <div style="color:#777;font-size:0.78rem;margin-bottom:8px;">Noktalar solda eskiden yeniye sıralanır - sağdaki en güncel durum.</div>`;
+    <div style="color:#777;font-size:0.78rem;margin-bottom:8px;">Noktalar solda eskiden yeniye sıralanır - sağdaki en güncel durum. Aşağıdaki liste sadece aksiyon bekleyen talepleri gösterir.</div>`;
 
-    html += '<table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>İz / Durum</th><th>Öneri</th></tr>';
-    let rowIdx = 0;
-    for (const item of activeItems) {
-      rowIdx++;
-      html += buildRow(item, 'a' + rowIdx);
-    }
-    html += '</table>';
+    const activeTable = buildTable(activeItems, rowCounter);
+    html += activeTable.html;
 
     if (activeItems.length === 0) {
-      html += '<div style="color:#999;margin-top:14px;">Şu an aksiyon bekleyen talep yok — hepsi kapanmış.</div>';
+      html += '<div style="color:#999;margin-top:14px;">Şu an aksiyon bekleyen talep yok — hepsi onaylı/iptal.</div>';
     }
-
-    // KAPANANLAR bölümü - varsayılan kapalı.
-    html += `<div class="closed-toggle" id="closed-toggle" onclick="toggleClosed()">
-      <span>Kapananlar (Onaylanan / İptal olan) — ${closedItems.length} talep</span>
-      <span class="arrow">▶</span>
-    </div>`;
-    html += '<div class="closed-section" id="closed-section"><table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>İz / Durum</th><th>Öneri</th></tr>';
-    for (const item of closedItems) {
-      rowIdx++;
-      html += buildRow(item, 'c' + rowIdx);
-    }
-    html += '</table></div>';
 
     html += `<div class="disclaimer">Bu sayfa anahtar-kelime ve "kim kime yazdı" (domain bazlı) kurallarla çalışır.
       Chat'teki "rapor" komutunun yaptığı derinlemesine analiz (tam bağlam okuma,
