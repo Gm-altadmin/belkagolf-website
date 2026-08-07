@@ -100,6 +100,25 @@ function extractCustomerKey(subject) {
   return name.length >= 3 ? name : null;
 }
 
+// YEDEK BİRLEŞTİRME ANAHTARI (06.08.2026 eklendi): "Mr./Mrs. X" ismi geçmeyen konu
+// başlıkları için (özellikle otellerin isim kullanmadan gönderdiği tekrar mailler, örn.
+// "RE: Tee time müsaitliği talebi//GLORIA//03.09.2026-06.09.2026- 3 pax" - aynı otel aynı
+// tarihi 3 ayrı mail olarak göndermiş, aralarında isim yok ama konu birebir aynı). Bu
+// durumda konu başlığını normalize ederek (RE:/FW:/Sv: önekleri, boşluk farkları temizlenir)
+// ikinci bir anahtar olarak kullanıyoruz. extractCustomerKey bir isim bulduysa ona öncelik
+// verilir - bu sadece isim YOKSA devreye giren bir yedek.
+function extractSubjectKey(subject) {
+  let s = (subject || '').trim();
+  if (!s) return null;
+  // Baştaki RE:/FW:/Fwd:/Sv: öneklerini (birden fazla olabilir) temizle.
+  s = s.replace(/^(re|fw|fwd|sv)\s*:\s*/gi, '');
+  while (/^(re|fw|fwd|sv)\s*:\s*/i.test(s)) {
+    s = s.replace(/^(re|fw|fwd|sv)\s*:\s*/i, '');
+  }
+  s = s.toLowerCase().replace(/\s+/g, ' ').trim();
+  return s.length >= 8 ? 'subj:' + s : null;
+}
+
 function daysBetween(date) {
   return Math.floor((Date.now() - date.getTime()) / (1000 * 60 * 60 * 24));
 }
@@ -130,17 +149,10 @@ function buildTrail(msgs) {
   return { trail, lastColor };
 }
 
-// DÜZELTME (06.08.2026, beşinci tur): önceki düzeltme iptal/onay kontrolünü SADECE
-// bize gelen (yellow) mesajlarla sınırlamıştı - ama bu, BİZİM müşteriye/Roger'a
-// gönderdiğimiz gerçek onay bildirimlerini ("Hello Roger. This booking is confirmed.")
-// de görmezden gelmeye başladı (pembe/biz→müşteri mesajlar artık hiç kontrol edilmiyordu).
-// Asıl sorun yön değil, KELİME KALIBIYDI: "...konfirme etmenizi rica ederiz" (bizim
-// TALEBİMİZ, bir istek) içindeki bare "konfirme" kelimesi, gerçek bir onay durumundan
-// ayırt edilemiyordu. Çözüm: yön kısıtlaması kaldırıldı (her mesaj kontrol edilir,
-// yönü ne olursa olsun), bunun yerine regex daraltıldı - sadece "konfirmedir" (durum
-// bildirimi) eşleşir, bare "konfirme" (istek fiili) artık eşleşmiyor. "confirmed"
-// (İngilizce) zaten sadece durum bildirimlerinde geçer ("this booking is confirmed"),
-// "please confirm" gibi isteklerde geçmediği için ek değişiklik gerekmedi.
+// İptal/onay anahtar kelime kontrolü yöne bakmaz (her mesaj kontrol edilir); regex
+// bilerek daraltılmış - bare "konfirme" (istek fiili, "...etmenizi rica ederiz") değil,
+// sadece "konfirmedir" (durum bildirimi) eşleşir, "confirmed" zaten sadece durum
+// bildirimlerinde geçtiği için ek değişiklik gerekmedi.
 function classify({ snippet, subject, trail, lastColor, daysWaiting, isUrgentKw }) {
   const text = (snippet + ' ' + subject).toLowerCase();
 
@@ -288,6 +300,7 @@ export default async function handler(req, res) {
         }
       }
 
+      const nameKey = extractCustomerKey(subject);
       items.push({
         threadId: det.id,
         subject,
@@ -301,14 +314,15 @@ export default async function handler(req, res) {
         groupSize,
         messageCount: msgs.length,
         isLate,
-        customerKey: extractCustomerKey(subject)
+        // İsim bulunduysa onu kullan; yoksa konu başlığı bazlı yedek anahtara düş.
+        customerKey: nameKey || extractSubjectKey(subject)
       });
     }
 
-    // AYNI-MÜŞTERİ BİRLEŞTİRME: customerKey aynıysa tek satırda birleştir. En güncel
-    // thread'in durumu/trail'i/önerisi "birincil" kabul edilir; diğer thread'lerin konu
-    // başlıkları "otherSubjects" listesinde saklanır, mergedCount kaç thread birleştiğini
-    // gösterir. customerKey bulunamayan itemlar birleştirilmeden kalır.
+    // AYNI-MÜŞTERİ / AYNI-KONU BİRLEŞTİRME: customerKey aynıysa tek satırda birleştir.
+    // En güncel thread'in durumu/trail'i/önerisi "birincil" kabul edilir; diğer thread'lerin
+    // konu başlıkları "otherSubjects" listesinde saklanır, mergedCount kaç thread
+    // birleştiğini gösterir. customerKey hiç bulunamayan itemlar birleştirilmeden kalır.
     const byCustomer = new Map();
     const standalone = [];
     for (const it of items) {
