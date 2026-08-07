@@ -106,9 +106,6 @@ function extractCustomerKey(subject) {
 // Yanıt:/Yönlendirilen: - hepsi, art arda birikmiş olsalar bile art arda temizlenir)
 // ikinci bir anahtar olarak kullanır. extractCustomerKey bir isim bulduysa ona öncelik
 // verilir - bu sadece isim YOKSA devreye giren bir yedek.
-// DÜZELTME (06.08.2026): "Ynt:" (Türkçe Outlook yanıt öneki) eskiden temizlenmiyordu -
-// aynı konu farklı sayıda "Ynt:" biriktirmiş iki thread (biri 1 kez yanıtlanmış, diğeri 2
-// kez) farklı metin olarak görülüp YANLIŞLIKLA birleşmiyordu (Kempinski örneği).
 function extractSubjectKey(subject) {
   let s = (subject || '').trim();
   if (!s) return null;
@@ -154,10 +151,14 @@ function buildTrail(msgs) {
 // bilerek daraltılmış - bare "konfirme" (istek fiili, "...etmenizi rica ederiz") değil,
 // sadece "konfirmedir" (durum bildirimi) eşleşir, "confirmed" zaten sadece durum
 // bildirimlerinde geçtiği için ek değişiklik gerekmedi.
+// DÜZELTME (07.08.2026): "close the request" / "kapatabilirsiniz" gibi Roger'ın talebi
+// fiilen sonlandırdığı ("artık ilgilenmiyorum" demeden, dolaylı yoldan kapatma) ifadeler
+// eskiden hiç yakalanmıyordu - bu tür mesajlar aktif/yanıt bekleyen gibi görünmeye devam
+// ediyordu. İptal listesine eklendi.
 function classify({ snippet, subject, trail, lastColor, daysWaiting, isUrgentKw }) {
   const text = (snippet + ' ' + subject).toLowerCase();
 
-  if (/\biptal\b|cancel|no show|no-show|no longer|reddet|red edi|vazgeç|istemiyoruz|istemiyorum|başka (bir )?(firma|teklif|otel)i? (ile|tercih)|artık ilgilenmiyor/i.test(text)) {
+  if (/\biptal\b|cancel|no show|no-show|no longer|reddet|red edi|vazgeç|istemiyoruz|istemiyorum|başka (bir )?(firma|teklif|otel)i? (ile|tercih)|artık ilgilenmiyor|close (the |this )?request|kapat(ınız|abilirsiniz)? (bu |bu\s*)?(talebi|isteği)|talebi kapat/i.test(text)) {
     return { trail: [...trail, 'cancel'], label: 'Reddedildi / İptal / Kayıp', priority: -100, closed: true };
   }
   if (/konfirmedir|confirmed|onayland[ıi]|kabul (ediyoruz|ediyorum|ettik)|find attached reservation|attached reservation|reservation attached|hesap numar|iban|banka bilgi|banka hesap|send.*(bank|account) details|payment details|proforma.*(gönder|ekte)/i.test(text)) {
