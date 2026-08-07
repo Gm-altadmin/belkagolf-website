@@ -100,20 +100,21 @@ function extractCustomerKey(subject) {
   return name.length >= 3 ? name : null;
 }
 
-// YEDEK BİRLEŞTİRME ANAHTARI (06.08.2026 eklendi): "Mr./Mrs. X" ismi geçmeyen konu
-// başlıkları için (özellikle otellerin isim kullanmadan gönderdiği tekrar mailler, örn.
-// "RE: Tee time müsaitliği talebi//GLORIA//03.09.2026-06.09.2026- 3 pax" - aynı otel aynı
-// tarihi 3 ayrı mail olarak göndermiş, aralarında isim yok ama konu birebir aynı). Bu
-// durumda konu başlığını normalize ederek (RE:/FW:/Sv: önekleri, boşluk farkları temizlenir)
-// ikinci bir anahtar olarak kullanıyoruz. extractCustomerKey bir isim bulduysa ona öncelik
+// YEDEK BİRLEŞTİRME ANAHTARI: "Mr./Mrs. X" ismi geçmeyen konu başlıkları için (özellikle
+// otellerin isim kullanmadan gönderdiği tekrar mailler). Konu başlığını normalize ederek
+// (baştaki TÜM yanıt/yönlendirme önekleri - İngilizce RE:/FW:/Fwd: VE Türkçe Ynt:/Yn:/
+// Yanıt:/Yönlendirilen: - hepsi, art arda birikmiş olsalar bile art arda temizlenir)
+// ikinci bir anahtar olarak kullanır. extractCustomerKey bir isim bulduysa ona öncelik
 // verilir - bu sadece isim YOKSA devreye giren bir yedek.
+// DÜZELTME (06.08.2026): "Ynt:" (Türkçe Outlook yanıt öneki) eskiden temizlenmiyordu -
+// aynı konu farklı sayıda "Ynt:" biriktirmiş iki thread (biri 1 kez yanıtlanmış, diğeri 2
+// kez) farklı metin olarak görülüp YANLIŞLIKLA birleşmiyordu (Kempinski örneği).
 function extractSubjectKey(subject) {
   let s = (subject || '').trim();
   if (!s) return null;
-  // Baştaki RE:/FW:/Fwd:/Sv: öneklerini (birden fazla olabilir) temizle.
-  s = s.replace(/^(re|fw|fwd|sv)\s*:\s*/gi, '');
-  while (/^(re|fw|fwd|sv)\s*:\s*/i.test(s)) {
-    s = s.replace(/^(re|fw|fwd|sv)\s*:\s*/i, '');
+  const prefixRe = /^(re|fw|fwd|sv|ynt|yn|yanıt|yanit|yönlendirilen|yonlendirilen)\s*:\s*/i;
+  while (prefixRe.test(s)) {
+    s = s.replace(prefixRe, '');
   }
   s = s.toLowerCase().replace(/\s+/g, ' ').trim();
   return s.length >= 8 ? 'subj:' + s : null;
