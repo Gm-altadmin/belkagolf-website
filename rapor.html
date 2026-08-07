@@ -115,6 +115,26 @@
   }
   .other-subjects.open { display: block; }
   .other-subjects div { padding: 1px 0; }
+
+  .closed-toggle {
+    margin-top: 26px;
+    padding: 12px 16px;
+    background: #1e2b23;
+    border: 1px solid #3a4a3d;
+    border-radius: 8px;
+    color: #c9a961;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+  .closed-toggle:hover { background: #24322a; }
+  .closed-toggle .arrow { transition: transform 0.15s; }
+  .closed-toggle.open .arrow { transform: rotate(90deg); }
+  .closed-section { display: none; margin-top: 8px; }
+  .closed-section.open { display: block; }
 </style>
 </head>
 <body>
@@ -139,11 +159,54 @@ function renderTrail(trail) {
   return trail.map(c => `<span class="dot dot-${c}" title="${DOT_LABEL[c] || c}"></span>`).join('');
 }
 
-// Rozete tıklayınca birleşen diğer konu başlıklarını aç/kapa (06.08.2026 eklendi -
-// önceden hep açık duruyordu, uzun ×N satırlarında sayfa gereksiz uzuyordu).
+// Rozete tıklayınca birleşen diğer konu başlıklarını aç/kapa.
 function toggleOther(id) {
   const el = document.getElementById(id);
   if (el) el.classList.toggle('open');
+}
+
+// KAPANANLAR bölümünü aç/kapa (06.08.2026 eklendi) - onaylanan/iptal olan talepler
+// artık üst listede değil, ayrı katlanır bir bölümde.
+function toggleClosed() {
+  const section = document.getElementById('closed-section');
+  const toggle = document.getElementById('closed-toggle');
+  if (section) section.classList.toggle('open');
+  if (toggle) toggle.classList.toggle('open');
+}
+
+// Bir item'ın "kapanmış" (onaylanmış/iptal olmuş) olup olmadığını statusLabel'e
+// bakarak anlıyoruz - rapor.js zaten bu iki durumu ayırt edilebilir sabit metinlerle
+// döndürüyor ("Kabul Edildi / Onaylandı" ve "Reddedildi / İptal / Kayıp").
+function isClosedItem(item) {
+  const l = item.statusLabel || '';
+  return l.indexOf('Kabul Edildi') === 0 || l.indexOf('Reddedildi') === 0;
+}
+
+function buildRow(item, rowIdx) {
+  const d = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
+  const lateStyle = item.isLate ? ' style="background:rgba(224,92,92,0.1);border-left:3px solid #e05c5c;"' : '';
+
+  const mergeCount = item.mergedCount || 1;
+  let mergeBadge = '';
+  let otherSubjectsHtml = '';
+  if (mergeCount > 1) {
+    const othersId = 'others-' + rowIdx;
+    mergeBadge = `<span class="merge-badge" onclick="toggleOther('${othersId}')" title="Tıkla: diğer ${mergeCount - 1} mail'i göster/gizle">×${mergeCount}</span>`;
+    if (item.otherSubjects && item.otherSubjects.length) {
+      otherSubjectsHtml = `<div class="other-subjects" id="${othersId}">${
+        item.otherSubjects.map(s => '<div>· ' + escapeHtml(s) + '</div>').join('')
+      }</div>`;
+    }
+  }
+
+  return `<tr${lateStyle}>
+    <td>${d}</td>
+    <td>${escapeHtml(item.from)}</td>
+    <td>${escapeHtml(item.subject)}${mergeBadge}${otherSubjectsHtml}</td>
+    <td>${escapeHtml(item.snippet).slice(0, 120)}${item.snippet.length > 120 ? '…' : ''}</td>
+    <td>${renderTrail(item.trail)}<span class="status-label">${escapeHtml(item.statusLabel)}</span></td>
+    <td class="oneri">${escapeHtml(item.oneri)}</td>
+  </tr>`;
 }
 
 async function loadReport() {
@@ -168,8 +231,14 @@ async function loadReport() {
       return;
     }
 
+    // AKSİYON / KAPANAN AYRIMI (06.08.2026 eklendi): onaylanmış ve iptal olmuş talepler
+    // artık üst listeden çıkarılıp ayrı, katlanır bir "Kapananlar" bölümüne taşınıyor -
+    // üstte sadece hâlâ aksiyon bekleyen (bizde/otelde/müşteride) talepler kalıyor.
+    const activeItems = data.items.filter(it => !isClosedItem(it));
+    const closedItems = data.items.filter(isClosedItem);
+
     let html = `<div class="meta">Son güncelleme: ${new Date(data.generatedAt).toLocaleString('tr-TR')}
-      — ${data.count} talep bulundu — en öncelikli üstte</div>`;
+      — ${data.count} talep bulundu (${activeItems.length} aksiyon bekliyor, ${closedItems.length} kapandı) — en öncelikli üstte</div>`;
     html += '<button class="refresh-btn" onclick="loadReport()">Yenile</button>';
     html += `<div class="legend">
       <span class="legend-item"><span class="dot dot-yellow"></span> bize gelen (top bizde)</span>
@@ -180,38 +249,31 @@ async function loadReport() {
       <span class="legend-item"><span class="merge-badge">×N</span> aynı müşterinin N mail'i birleşti — tıkla, aç/kapa</span>
     </div>
     <div style="color:#777;font-size:0.78rem;margin-bottom:8px;">Noktalar solda eskiden yeniye sıralanır - sağdaki en güncel durum.</div>`;
+
     html += '<table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>İz / Durum</th><th>Öneri</th></tr>';
-
     let rowIdx = 0;
-    for (const item of data.items) {
+    for (const item of activeItems) {
       rowIdx++;
-      const d = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
-      const lateStyle = item.isLate ? ' style="background:rgba(224,92,92,0.1);border-left:3px solid #e05c5c;"' : '';
-
-      // Birleşen thread rozeti - tıklanana kadar KAPALI, sayfayı uzatmıyor.
-      const mergeCount = item.mergedCount || 1;
-      let mergeBadge = '';
-      let otherSubjectsHtml = '';
-      if (mergeCount > 1) {
-        const othersId = 'others-' + rowIdx;
-        mergeBadge = `<span class="merge-badge" onclick="toggleOther('${othersId}')" title="Tıkla: diğer ${mergeCount - 1} mail'i göster/gizle">×${mergeCount}</span>`;
-        if (item.otherSubjects && item.otherSubjects.length) {
-          otherSubjectsHtml = `<div class="other-subjects" id="${othersId}">${
-            item.otherSubjects.map(s => '<div>· ' + escapeHtml(s) + '</div>').join('')
-          }</div>`;
-        }
-      }
-
-      html += `<tr${lateStyle}>
-        <td>${d}</td>
-        <td>${escapeHtml(item.from)}</td>
-        <td>${escapeHtml(item.subject)}${mergeBadge}${otherSubjectsHtml}</td>
-        <td>${escapeHtml(item.snippet).slice(0, 120)}${item.snippet.length > 120 ? '…' : ''}</td>
-        <td>${renderTrail(item.trail)}<span class="status-label">${escapeHtml(item.statusLabel)}</span></td>
-        <td class="oneri">${escapeHtml(item.oneri)}</td>
-      </tr>`;
+      html += buildRow(item, 'a' + rowIdx);
     }
     html += '</table>';
+
+    if (activeItems.length === 0) {
+      html += '<div style="color:#999;margin-top:14px;">Şu an aksiyon bekleyen talep yok — hepsi kapanmış.</div>';
+    }
+
+    // KAPANANLAR bölümü - varsayılan kapalı.
+    html += `<div class="closed-toggle" id="closed-toggle" onclick="toggleClosed()">
+      <span>Kapananlar (Onaylanan / İptal olan) — ${closedItems.length} talep</span>
+      <span class="arrow">▶</span>
+    </div>`;
+    html += '<div class="closed-section" id="closed-section"><table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>İz / Durum</th><th>Öneri</th></tr>';
+    for (const item of closedItems) {
+      rowIdx++;
+      html += buildRow(item, 'c' + rowIdx);
+    }
+    html += '</table></div>';
+
     html += `<div class="disclaimer">Bu sayfa anahtar-kelime ve "kim kime yazdı" (domain bazlı) kurallarla çalışır.
       Chat'teki "rapor" komutunun yaptığı derinlemesine analiz (tam bağlam okuma,
       geçmiş kayıp-müşteri paternleri, çapraz-otel eşleştirme) burada yok — en doğru/detaylı
