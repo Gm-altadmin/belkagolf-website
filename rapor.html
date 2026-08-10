@@ -175,6 +175,33 @@
     display: inline-block; font-size: 0.7rem; background: #2a3f2f; color: #7fcf9a;
     padding: 1px 6px; border-radius: 8px; margin-right: 4px;
   }
+
+  /* Otel seçim akordiyonu (10.08.2026 eklendi) */
+  .hotel-accordion {
+    border: 1px solid #3a4a3d; border-radius: 8px; margin-bottom: 16px;
+    background: #1e2b23; overflow: hidden;
+  }
+  .hotel-accordion-header {
+    padding: 12px 16px; cursor: pointer; display: flex; justify-content: space-between;
+    align-items: center; user-select: none; font-size: 0.9rem; color: #ddd;
+  }
+  .hotel-accordion-header:hover { background: #24322a; }
+  .hotel-accordion-header .arrow { color: #c9a961; transition: transform 0.15s; }
+  .hotel-accordion-header.open .arrow { transform: rotate(90deg); }
+  .hotel-accordion-body {
+    display: none; padding: 12px 16px 16px; border-top: 1px solid #2a352d;
+  }
+  .hotel-accordion-body.open { display: block; }
+  .hotel-accordion-actions { margin-bottom: 10px; display: flex; gap: 14px; }
+  .hotel-accordion-actions a { color: #c9a961; font-size: 0.8rem; cursor: pointer; text-decoration: underline; }
+  .hotel-checkbox-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 6px 16px;
+  }
+  .hotel-checkbox-item {
+    display: flex; align-items: center; gap: 8px; font-size: 0.86rem; color: #ddd;
+  }
+  .hotel-checkbox-item input { width: 16px; height: 16px; }
 </style>
 </head>
 <body>
@@ -198,6 +225,19 @@
   </div>
 
   <div id="view-search" style="display:none;">
+    <div class="hotel-accordion" id="hotel-accordion">
+      <div class="hotel-accordion-header" id="hotel-accordion-header" onclick="toggleHotelAccordion()">
+        <span id="hotel-accordion-label">Oteller: Tümü (18)</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="hotel-accordion-body" id="hotel-accordion-body">
+        <div class="hotel-accordion-actions">
+          <a onclick="setAllHotels(true)">Tümünü Seç</a>
+          <a onclick="setAllHotels(false)">Tümünü Kaldır</a>
+        </div>
+        <div class="hotel-checkbox-grid" id="hotel-checkbox-grid"></div>
+      </div>
+    </div>
     <div class="search-form">
       <div class="search-field">
         <label>Giriş Tarihi</label>
@@ -251,6 +291,54 @@ function fmtEuro(n) {
   return n === null || n === undefined ? '—' : n.toLocaleString('tr-TR') + ' €';
 }
 
+// Otel seçim akordiyonu (10.08.2026 eklendi) - 18 otel, varsayılan hepsi seçili.
+const ALL_HOTELS = [
+  'Maxx Royal Belek Golf Resort', 'Cornelia Diamond Golf Resort & Spa',
+  'Regnum Carya Golf & Spa', 'Regnum The Crown', 'Cullinan Belek',
+  'Sueno Hotels Golf Belek', 'Sueno Hotels DeLuxe Belek',
+  'Kaya Palazzo Golf Resort & Spa', 'Kaya Belek Hotel',
+  'Titanic Deluxe Golf Belek', 'Gloria Serenity Resort', 'Gloria Golf Resort',
+  'Gloria Verde Resort & Spa', 'Lykia World Antalya', 'Kempinski Hotel The Dome',
+  'Robinson Club Nobilis', 'Sirene Belek Golf Hotel', 'Voyage Belek Golf & Spa'
+];
+
+function buildHotelCheckboxes() {
+  const grid = document.getElementById('hotel-checkbox-grid');
+  grid.innerHTML = ALL_HOTELS.map((h, i) => `
+    <label class="hotel-checkbox-item">
+      <input type="checkbox" class="hotel-cb" value="${escapeHtml(h)}" checked onchange="updateHotelAccordionLabel()">
+      ${escapeHtml(h)}
+    </label>`).join('');
+}
+
+function toggleHotelAccordion() {
+  document.getElementById('hotel-accordion-header').classList.toggle('open');
+  document.getElementById('hotel-accordion-body').classList.toggle('open');
+}
+
+function setAllHotels(checked) {
+  document.querySelectorAll('.hotel-cb').forEach(cb => cb.checked = checked);
+  updateHotelAccordionLabel();
+}
+
+function getSelectedHotels() {
+  return Array.from(document.querySelectorAll('.hotel-cb')).filter(cb => cb.checked).map(cb => cb.value);
+}
+
+function updateHotelAccordionLabel() {
+  const selected = getSelectedHotels();
+  const label = document.getElementById('hotel-accordion-label');
+  if (selected.length === ALL_HOTELS.length) {
+    label.textContent = 'Oteller: Tümü (18)';
+  } else if (selected.length === 0) {
+    label.textContent = 'Oteller: Hiçbiri seçili değil';
+  } else {
+    label.textContent = `Oteller: ${selected.length} seçili`;
+  }
+}
+
+buildHotelCheckboxes();
+
 async function runHotelSearch() {
   const date = document.getElementById('s-date').value;
   const nights = document.getElementById('s-nights').value;
@@ -258,6 +346,11 @@ async function runHotelSearch() {
   const pax = document.getElementById('s-pax').value;
   const box = document.getElementById('search-results');
 
+  const selectedHotels = getSelectedHotels();
+  if (selectedHotels.length === 0) {
+    box.innerHTML = '<div class="err">En az bir otel seçili olmalı.</div>';
+    return;
+  }
   if (!date) {
     box.innerHTML = '<div class="err">Giriş tarihi zorunlu.</div>';
     return;
@@ -269,6 +362,9 @@ async function runHotelSearch() {
     if (nights) params.set('nights', nights);
     if (rounds) params.set('rounds', rounds);
     if (pax) params.set('pax', pax);
+    if (selectedHotels.length < ALL_HOTELS.length) {
+      params.set('hotels', selectedHotels.join('|'));
+    }
 
     const res = await fetch('/api/hotelsearch?' + params.toString());
     const data = await res.json();
