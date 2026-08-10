@@ -196,7 +196,9 @@ function isCancelled(item) {
 }
 
 function buildRow(item, rowIdx) {
-  const d = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
+  // Saat eklendi (10.08.2026) - hangi mailin önce geldiğini ayırt etmek için tarihin
+  // yanında saat de gösteriliyor artık.
+  const d = item.date ? new Date(item.date).toLocaleDateString('tr-TR') + ' ' + new Date(item.date).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }) : '';
   const lateStyle = item.isLate ? ' style="background:rgba(224,92,92,0.1);border-left:3px solid #e05c5c;"' : '';
 
   const mergeCount = item.mergedCount || 1;
@@ -224,7 +226,7 @@ function buildRow(item, rowIdx) {
 
 function buildTable(items, startIdx) {
   let rowIdx = startIdx;
-  let html = '<table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>İz / Durum</th><th>Öneri</th></tr>';
+  let html = '<table><tr><th>Tarih / Saat</th><th>Kimden</th><th>Konu</th><th>Özet</th><th>İz / Durum</th><th>Öneri</th></tr>';
   for (const item of items) {
     rowIdx++;
     html += buildRow(item, 'r' + rowIdx);
