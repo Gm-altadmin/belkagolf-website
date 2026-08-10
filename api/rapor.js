@@ -51,7 +51,7 @@ const HOTEL_DOMAINS = [
   'cullinanhotels.com', 'cullinanlinksgolfclub.com', 'sueno.com.tr', 'kayahotels.com.tr',
   'titanic-hotels.com', 'gloria.com.tr', 'kempinski.com', 'robinson.com', 'sirene.com.tr',
   'voyagehotel.com', 'swandorhotels.com', 'caryagolf.com', 'guvenok.com.tr',
-  'mardanpalace.com', 'euromsg.net'
+  'mardanpalace.com', 'euromsg.net', 'agc.com.tr', 'nationalturkey.com'
 ];
 
 function isOurDomain(addr) {
