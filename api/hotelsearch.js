@@ -10,6 +10,42 @@ const XLSX = require('xlsx');
 const path = require('path');
 const fs = require('fs');
 
+let cachedCampaigns = null;
+function loadCampaigns() {
+  if (cachedCampaigns) return cachedCampaigns;
+  try {
+    const filePath = path.join(__dirname, 'data', 'campaigns.json');
+    const raw = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    cachedCampaigns = raw.campaigns.filter(c => c.autoApply);
+  } catch (e) {
+    cachedCampaigns = [];
+  }
+  return cachedCampaigns;
+}
+
+function parseDateDMY(str) {
+  const [d, m, y] = str.split('.').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+// Belirli bir otel + giriş tarihi için AKTİF (bugün rezervasyon penceresinde VE
+// giriş tarihi konaklama döneminde) kampanya var mı - varsa döndürür.
+function findActiveCampaign(hotel, checkDate) {
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const campaigns = loadCampaigns();
+  for (const c of campaigns) {
+    if (c.hotel !== hotel) continue;
+    const bookingStart = parseDateDMY(c.bookingStart);
+    const bookingEnd = parseDateDMY(c.bookingEnd);
+    if (today < bookingStart || today > bookingEnd) continue;
+    const stayStart = parseDateDMY(c.stayStart);
+    const stayEnd = parseDateDMY(c.stayEnd);
+    if (checkDate < stayStart || checkDate > stayEnd) continue;
+    return c;
+  }
+  return null;
+}
+
 let cachedData = null;
 function loadData() {
   if (cachedData) return cachedData;
@@ -138,16 +174,36 @@ module.exports = (req, res) => {
       const single = m.single !== null ? m.single + markup : null;
       const dbl = m.dbl !== null ? m.dbl + markup : null;
       const group71 = m.group71 !== null ? m.group71 + markup : null;
+
+      // Kampanya varsa: indirim HAM kontrat fiyatına uygulanır, sonra üzerine
+      // her zamanki kâr payımız eklenir - yani kampanya bizim marjımızı
+      // değiştirmez, sadece otelin net fiyatını düşürür.
+      const campaign = findActiveCampaign(m.hotel, checkDate);
+      let campaignSingle = null, campaignDouble = null, campaignGroup71 = null;
+      if (campaign) {
+        const f = 1 - campaign.discountPercent / 100;
+        campaignSingle = m.single !== null ? Math.round(m.single * f) + markup : null;
+        campaignDouble = m.dbl !== null ? Math.round(m.dbl * f) + markup : null;
+        campaignGroup71 = m.group71 !== null ? Math.round(m.group71 * f) + markup : null;
+      }
+
       let sortPrice;
-      if (groupSize >= 8 && group71 !== null) sortPrice = group71;
-      else if (groupSize >= 2) sortPrice = dbl;
-      else sortPrice = single;
+      const effectiveSingle = campaignSingle !== null ? campaignSingle : single;
+      const effectiveDouble = campaignDouble !== null ? campaignDouble : dbl;
+      const effectiveGroup71 = campaignGroup71 !== null ? campaignGroup71 : group71;
+      if (groupSize >= 8 && effectiveGroup71 !== null) sortPrice = effectiveGroup71;
+      else if (groupSize >= 2) sortPrice = effectiveDouble;
+      else sortPrice = effectiveSingle;
+
       return {
         hotel: m.hotel,
         view: m.view,
         nights: m.nights,
         rounds: m.rounds,
         single, double: dbl, group71,
+        campaignSingle, campaignDouble, campaignGroup71,
+        campaignDiscountPercent: campaign ? campaign.discountPercent : null,
+        campaignSource: campaign ? campaign.source : null,
         sortPrice,
         nDiff: nightsDiff(m),
         rDiff: roundsDiff(m),
