@@ -24,7 +24,7 @@ const NOISE_SENDERS = [
   'barisgedik@qral.tech', 'sasha@choosevamoostravelapp.com',
   'email.apple.com', 'mail.anthropic.com',
   'account-misc-noreply@google.com', 'forwarding-noreply@google.com',
-  'stopsale@regnumhotels.com'
+  'stopsale@regnumhotels.com', 'gm@belkagolf.com'
 ];
 // NOT: kişisel hesap/abonelik/sistem bildirimleri (Apple, Google hesap bildirimleri,
 // Claude.ai giriş linki vb.) iş yazışması değil, sales@/info@/mb@ kutularına karışan
@@ -32,6 +32,8 @@ const NOISE_SENDERS = [
 // NOT: sales@euromsg.net rapor taramasından hariç ama Gmail inbox'ta HİÇ engellenmiyor -
 // Cullinan Belek'in stop-sale kanalı, çok önemli, silinmemeli/bloklanmamalı.
 // NOT: Cornelia veya caryagolf.com ile ilgili hiçbir adres buraya eklenmemeli - gerçek ortaklar.
+// NOT (10.08.2026): gm@belkagolf.com şirket sahibinin kendi adresi - müşteri/otel talebi
+// değil, bu adresten gelen/CC'lenen hiçbir mail rapora müşteri talebi gibi girmemeli.
 //
 // NOT (10.08.2026, önemli): Birçok otel stop-sale bültenlerini KİŞİSEL ÇALIŞAN
 // adreslerinden gönderiyor (jenerik stopsale@ değil) - örn. Kaya Hotels, Kempinski,
@@ -52,9 +54,7 @@ const HOTEL_DOMAINS = [
   'titanic-hotels.com', 'gloria.com.tr', 'kempinski.com', 'robinson.com', 'sirene.com.tr',
   'voyagehotel.com', 'swandorhotels.com', 'caryagolf.com', 'guvenok.com.tr',
   'mardanpalace.com', 'euromsg.net', 'agc.com.tr', 'nationalturkey.com'
-];
-
-function isOurDomain(addr) {
+];function isOurDomain(addr) {
   return (addr || '').toLowerCase().includes(OUR_DOMAIN);
 }
 function isHotelDomain(addr) {
