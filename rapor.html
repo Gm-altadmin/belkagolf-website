@@ -230,6 +230,16 @@
     display: inline-block; font-size: 0.65rem; background: #2a3f2f; color: #7fcf9a;
     padding: 0px 5px; border-radius: 6px; margin-left: 4px;
   }
+
+  /* Stop/Open Sale sekmesi (10.08.2026 eklendi) */
+  .sale-badge {
+    display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 2px 9px;
+    border-radius: 10px;
+  }
+  .sale-badge.stop { background: #3a2020; color: #e88; }
+  .sale-badge.open { background: #1e3a24; color: #7fcf9a; }
+  .sale-badge.both { background: #3a3520; color: #ddbf7a; }
+  .sale-badge.other { background: #2a2a2a; color: #999; }
 </style>
 </head>
 <body>
@@ -247,6 +257,7 @@
     <button class="tab-btn active" id="tab-btn-rapor" onclick="switchTab('rapor')">Talep Raporu</button>
     <button class="tab-btn" id="tab-btn-search" onclick="switchTab('search')">Fiyat Arama</button>
     <button class="tab-btn" id="tab-btn-campaigns" onclick="switchTab('campaigns')">Kampanyalar</button>
+    <button class="tab-btn" id="tab-btn-stopsale" onclick="switchTab('stopsale')">Stop/Open Sale</button>
   </div>
 
   <div id="view-rapor">
@@ -315,6 +326,12 @@
     <div class="meta" id="campaigns-meta">Yükleniyor...</div>
     <div id="campaigns-body"></div>
   </div>
+
+  <div id="view-stopsale" style="display:none;">
+    <div class="meta" id="stopsale-meta">Yükleniyor...</div>
+    <button class="refresh-btn" onclick="loadStopSale()">Yenile</button>
+    <div id="stopsale-body"></div>
+  </div>
 </div>
 
 <script>
@@ -339,10 +356,50 @@ function switchTab(name) {
   document.getElementById('view-rapor').style.display = name === 'rapor' ? 'block' : 'none';
   document.getElementById('view-search').style.display = name === 'search' ? 'block' : 'none';
   document.getElementById('view-campaigns').style.display = name === 'campaigns' ? 'block' : 'none';
+  document.getElementById('view-stopsale').style.display = name === 'stopsale' ? 'block' : 'none';
   document.getElementById('tab-btn-rapor').classList.toggle('active', name === 'rapor');
   document.getElementById('tab-btn-search').classList.toggle('active', name === 'search');
   document.getElementById('tab-btn-campaigns').classList.toggle('active', name === 'campaigns');
+  document.getElementById('tab-btn-stopsale').classList.toggle('active', name === 'stopsale');
   if (name === 'campaigns') loadCampaigns();
+  if (name === 'stopsale') loadStopSale();
+}
+
+const SALE_LABEL = { stop: 'STOP SALE', open: 'OPEN SALE', both: 'STOP & OPEN', other: 'Diğer' };
+
+async function loadStopSale() {
+  const meta = document.getElementById('stopsale-meta');
+  const body = document.getElementById('stopsale-body');
+  meta.textContent = 'Yükleniyor...';
+  body.innerHTML = '';
+  try {
+    const res = await fetch('/api/stopsale?password=' + encodeURIComponent(SAVED_PW));
+    const data = await res.json();
+    if (res.status === 401) { meta.textContent = 'Şifre hatalı — sayfayı yenileyip tekrar giriş yapın.'; return; }
+    if (data.error) { meta.textContent = 'Hata: ' + escapeHtml(data.error); return; }
+
+    meta.textContent = `Son 30 gün — ${data.count} stop/open sale bildirimi (en yeni üstte)`;
+
+    if (data.items.length === 0) {
+      body.innerHTML = '<div style="color:#999;margin-top:14px;">Son 30 günde stop/open sale bildirimi yok.</div>';
+      return;
+    }
+
+    let html = '<table><tr><th>Tarih</th><th>Otel</th><th>Tip</th><th>Konu</th></tr>';
+    for (const it of data.items) {
+      const d = it.date ? new Date(it.date).toLocaleDateString('tr-TR') + ' ' + new Date(it.date).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }) : '';
+      html += `<tr>
+        <td>${escapeHtml(d)}</td>
+        <td>${escapeHtml(it.hotel)}</td>
+        <td><span class="sale-badge ${it.type}">${SALE_LABEL[it.type] || it.type}</span></td>
+        <td>${escapeHtml(it.subject)}</td>
+      </tr>`;
+    }
+    html += '</table>';
+    body.innerHTML = html;
+  } catch (e) {
+    meta.textContent = 'Bağlantı hatası: ' + e.message;
+  }
 }
 
 async function loadCampaigns() {
