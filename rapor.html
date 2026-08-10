@@ -202,6 +202,34 @@
     display: flex; align-items: center; gap: 8px; font-size: 0.86rem; color: #ddd;
   }
   .hotel-checkbox-item input, .view-checkbox-item input { width: 16px; height: 16px; }
+
+  /* Kampanya gösterimi (10.08.2026 eklendi) */
+  .campaign-card {
+    border: 1px solid #3a4a3d; border-radius: 8px; padding: 14px 16px;
+    margin-bottom: 10px; background: #1e2b23;
+  }
+  .campaign-card.active { border-color: #4caf7a; }
+  .campaign-card.inactive { opacity: 0.55; }
+  .campaign-card .hotel-name { font-weight: 600; color: #fff; font-size: 0.95rem; }
+  .campaign-card .discount { color: #4caf7a; font-weight: 700; font-size: 1.1rem; margin-left: 8px; }
+  .campaign-card .details { color: #999; font-size: 0.82rem; margin-top: 4px; }
+  .campaign-status {
+    display: inline-block; font-size: 0.72rem; padding: 1px 8px; border-radius: 10px;
+    margin-left: 8px; vertical-align: middle;
+  }
+  .campaign-status.active { background: #2a3f2f; color: #7fcf9a; }
+  .campaign-status.inactive { background: #3a2a2a; color: #cf8080; }
+  .watch-card {
+    border: 1px dashed #3a4a3d; border-radius: 8px; padding: 12px 16px;
+    margin-bottom: 8px; background: transparent; color: #999; font-size: 0.85rem;
+  }
+  .watch-card .hotel-name { color: #ccc; font-weight: 600; }
+  .price-original { text-decoration: line-through; color: #888; font-size: 0.85em; }
+  .price-campaign { color: #4caf7a; font-weight: 700; display: block; }
+  .price-campaign-badge {
+    display: inline-block; font-size: 0.65rem; background: #2a3f2f; color: #7fcf9a;
+    padding: 0px 5px; border-radius: 6px; margin-left: 4px;
+  }
 </style>
 </head>
 <body>
@@ -218,6 +246,7 @@
   <div class="tabs" id="tabs">
     <button class="tab-btn active" id="tab-btn-rapor" onclick="switchTab('rapor')">Talep Raporu</button>
     <button class="tab-btn" id="tab-btn-search" onclick="switchTab('search')">Fiyat Arama</button>
+    <button class="tab-btn" id="tab-btn-campaigns" onclick="switchTab('campaigns')">Kampanyalar</button>
   </div>
 
   <div id="view-rapor">
@@ -281,6 +310,11 @@
     </div>
     <div id="search-results"></div>
   </div>
+
+  <div id="view-campaigns" style="display:none;">
+    <div class="meta" id="campaigns-meta">Yükleniyor...</div>
+    <div id="campaigns-body"></div>
+  </div>
 </div>
 
 <script>
@@ -302,15 +336,73 @@ async function doLogin() {
 }
 
 function switchTab(name) {
-  const isRapor = name === 'rapor';
-  document.getElementById('view-rapor').style.display = isRapor ? 'block' : 'none';
-  document.getElementById('view-search').style.display = isRapor ? 'none' : 'block';
-  document.getElementById('tab-btn-rapor').classList.toggle('active', isRapor);
-  document.getElementById('tab-btn-search').classList.toggle('active', !isRapor);
+  document.getElementById('view-rapor').style.display = name === 'rapor' ? 'block' : 'none';
+  document.getElementById('view-search').style.display = name === 'search' ? 'block' : 'none';
+  document.getElementById('view-campaigns').style.display = name === 'campaigns' ? 'block' : 'none';
+  document.getElementById('tab-btn-rapor').classList.toggle('active', name === 'rapor');
+  document.getElementById('tab-btn-search').classList.toggle('active', name === 'search');
+  document.getElementById('tab-btn-campaigns').classList.toggle('active', name === 'campaigns');
+  if (name === 'campaigns') loadCampaigns();
+}
+
+async function loadCampaigns() {
+  const meta = document.getElementById('campaigns-meta');
+  const body = document.getElementById('campaigns-body');
+  meta.textContent = 'Yükleniyor...';
+  body.innerHTML = '';
+  try {
+    const res = await fetch('/api/campaigns?password=' + encodeURIComponent(SAVED_PW));
+    const data = await res.json();
+    if (res.status === 401) { meta.textContent = 'Şifre hatalı — sayfayı yenileyip tekrar giriş yapın.'; return; }
+    if (data.error) { meta.textContent = 'Hata: ' + data.error; return; }
+
+    meta.textContent = `Son güncelleme (Claude tarafından): ${data.lastUpdatedByClaude} — otomatik fiyata yansıyan kampanyalar aşağıda.`;
+
+    let html = '';
+    for (const c of data.campaigns) {
+      const statusClass = c.isActive ? 'active' : 'inactive';
+      const statusLabel = c.isActive ? 'Aktif' : 'Süresi geçti';
+      html += `<div class="campaign-card ${statusClass}">
+        <span class="hotel-name">${escapeHtml(c.hotel)}</span>
+        <span class="discount">%${c.discountPercent} EB</span>
+        <span class="campaign-status ${statusClass}">${statusLabel}</span>
+        <div class="details">
+          Konaklama: ${escapeHtml(c.stayStart)} – ${escapeHtml(c.stayEnd)} &nbsp;|&nbsp;
+          Rezervasyon penceresi: ${escapeHtml(c.bookingStart)} – ${escapeHtml(c.bookingEnd)} &nbsp;|&nbsp;
+          Kaynak: ${escapeHtml(c.source)}
+        </div>
+      </div>`;
+    }
+
+    if (data.watchOnly && data.watchOnly.length) {
+      html += '<div style="margin-top:20px;color:#c9a961;font-size:0.9rem;">İzleniyor (fiyata otomatik yansımıyor)</div>';
+      for (const w of data.watchOnly) {
+        html += `<div class="watch-card">
+          <span class="hotel-name">${escapeHtml(w.hotel)}</span> — ${escapeHtml(w.note)}
+          <div style="margin-top:2px;color:#777;">Son görülme: ${escapeHtml(w.lastSeen)}</div>
+        </div>`;
+      }
+    }
+
+    body.innerHTML = html || '<div style="color:#999;">Şu an kayıtlı kampanya yok.</div>';
+  } catch (e) {
+    meta.textContent = 'Bağlantı hatası: ' + e.message;
+  }
 }
 
 function fmtEuro(n) {
   return n === null || n === undefined ? '—' : n.toLocaleString('tr-TR') + ' €';
+}
+
+// Kampanya fiyatı varsa: orijinal fiyat üstü çizili küçük, altında yeni
+// (yeşil) kampanyalı fiyat + rozet. Yoksa sadece normal fiyat.
+function fmtPriceCell(original, campaignPrice, badgeHtml) {
+  if (original === null || original === undefined) return '—';
+  if (campaignPrice !== null && campaignPrice !== undefined && campaignPrice !== original) {
+    return `<span class="price-original">${fmtEuro(original)}</span>` +
+      `<span class="price-campaign">${fmtEuro(campaignPrice)}${badgeHtml}</span>`;
+  }
+  return fmtEuro(original);
 }
 
 // Otel seçim akordiyonu (10.08.2026 eklendi) - 18 otel, varsayılan hepsi seçili.
@@ -472,14 +564,16 @@ async function runHotelSearch() {
           r.tokenFree ? '<span class="badge-free">Token</span>' : '',
           r.transferFree ? '<span class="badge-free">Transfer</span>' : ''
         ].join('');
+        const badgeHtml = r.campaignDiscountPercent
+          ? `<span class="price-campaign-badge" title="${escapeHtml(r.campaignSource || '')}">%${r.campaignDiscountPercent} EB</span>` : '';
         html += `<tr>
           <td>${escapeHtml(r.hotel)}</td>
           <td>${escapeHtml(r.view || '—')}</td>
           <td>${r.nights}</td>
           <td>${escapeHtml(String(r.rounds))}</td>
-          <td>${fmtEuro(r.single)}</td>
-          <td>${fmtEuro(r.double)}</td>
-          <td>${fmtEuro(r.group71)}</td>
+          <td>${fmtPriceCell(r.single, r.campaignSingle, badgeHtml)}</td>
+          <td>${fmtPriceCell(r.double, r.campaignDouble, badgeHtml)}</td>
+          <td>${fmtPriceCell(r.group71, r.campaignGroup71, badgeHtml)}</td>
           <td>${badges || '—'}</td>
         </tr>`;
       }
