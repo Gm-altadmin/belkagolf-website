@@ -24,7 +24,7 @@ const NOISE_SENDERS = [
   'barisgedik@qral.tech', 'sasha@choosevamoostravelapp.com',
   'email.apple.com', 'mail.anthropic.com',
   'account-misc-noreply@google.com', 'forwarding-noreply@google.com',
-  'stopsale@regnumhotels.com', 'gm@belkagolf.com'
+  'stopsale@regnumhotels.com', 'gm@belkagolf.com', 'post@runnersworld.no'
 ];
 // NOT: kişisel hesap/abonelik/sistem bildirimleri (Apple, Google hesap bildirimleri,
 // Claude.ai giriş linki vb.) iş yazışması değil, sales@/info@/mb@ kutularına karışan
