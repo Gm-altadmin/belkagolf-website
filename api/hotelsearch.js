@@ -57,7 +57,7 @@ const HP_MARKUP_EXCLUDED_HOTELS = new Set([
 
 module.exports = (req, res) => {
   try {
-    const { password, date, nights, rounds, pax } = req.query;
+    const { password, date, nights, rounds, pax, hotels } = req.query;
 
     if (!process.env.RAPOR_SIFRE || password !== process.env.RAPOR_SIFRE) {
       res.status(401).json({ error: 'Şifre hatalı.' });
@@ -68,7 +68,11 @@ module.exports = (req, res) => {
       return;
     }
 
-    const data = loadData();
+    let data = loadData();
+    if (hotels) {
+      const hotelSet = new Set(hotels.split('|'));
+      data = data.filter(row => hotelSet.has(row.hotel));
+    }
     const checkDate = new Date(date + 'T00:00:00');
     const nightsNum = nights ? Number(nights) : null;
     const roundsReq = rounds || null;
@@ -160,7 +164,7 @@ module.exports = (req, res) => {
     res.status(200).json({
       count: results.length,
       fallbackNote,
-      results: results.slice(0, 60)
+      results: results.slice(0, 150)
     });
   } catch (e) {
     res.status(500).json({ error: 'server_error', detail: String(e.message || e) });
