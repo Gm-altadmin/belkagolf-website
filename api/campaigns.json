@@ -1,0 +1,18 @@
+{
+  "campaigns": [
+    { "hotel": "Kaya Palazzo Golf Resort & Spa", "bookingStart": "01.08.2026", "bookingEnd": "14.08.2026", "stayStart": "01.09.2026", "stayEnd": "06.10.2026", "discountPercent": 20, "autoApply": true, "source": "Kaya Hotels indirim tablosu, 31.07.2026" },
+    { "hotel": "Kaya Palazzo Golf Resort & Spa", "bookingStart": "01.08.2026", "bookingEnd": "14.08.2026", "stayStart": "07.10.2026", "stayEnd": "12.02.2027", "discountPercent": 15, "autoApply": true, "source": "Kaya Hotels indirim tablosu, 31.07.2026" },
+    { "hotel": "Kaya Palazzo Golf Resort & Spa", "bookingStart": "01.08.2026", "bookingEnd": "14.08.2026", "stayStart": "13.02.2027", "stayEnd": "31.03.2027", "discountPercent": 10, "autoApply": true, "source": "Kaya Hotels indirim tablosu, 31.07.2026" },
+    { "hotel": "Kaya Palazzo Golf Resort & Spa", "bookingStart": "01.08.2026", "bookingEnd": "14.08.2026", "stayStart": "01.04.2027", "stayEnd": "15.06.2027", "discountPercent": 20, "autoApply": true, "source": "Kaya Hotels indirim tablosu, 31.07.2026" },
+    { "hotel": "Kaya Belek Hotel", "bookingStart": "01.08.2026", "bookingEnd": "14.08.2026", "stayStart": "01.09.2026", "stayEnd": "15.09.2026", "discountPercent": 15, "autoApply": true, "source": "Kaya Hotels indirim tablosu, 31.07.2026" },
+    { "hotel": "Kaya Belek Hotel", "bookingStart": "01.08.2026", "bookingEnd": "14.08.2026", "stayStart": "30.09.2026", "stayEnd": "06.10.2026", "discountPercent": 20, "autoApply": true, "source": "Kaya Hotels indirim tablosu, 31.07.2026" },
+    { "hotel": "Kaya Belek Hotel", "bookingStart": "01.08.2026", "bookingEnd": "14.08.2026", "stayStart": "07.10.2026", "stayEnd": "31.10.2026", "discountPercent": 10, "autoApply": true, "source": "Kaya Hotels indirim tablosu, 31.07.2026" },
+    { "hotel": "Gloria Verde Resort & Spa", "bookingStart": "01.08.2026", "bookingEnd": "30.09.2026", "stayStart": "01.12.2026", "stayEnd": "28.02.2027", "discountPercent": 35, "autoApply": true, "source": "Gloria Hotels EB maili, 31.07.2026" },
+    { "hotel": "Gloria Serenity Resort", "bookingStart": "01.08.2026", "bookingEnd": "30.09.2026", "stayStart": "01.12.2026", "stayEnd": "28.02.2027", "discountPercent": 35, "autoApply": true, "source": "Gloria Hotels EB maili, 31.07.2026" }
+  ],
+  "watchOnly": [
+    { "hotel": "Voyage Belek Golf & Spa", "note": "İndirim oranı neredeyse haftalık değişiyor, mail formatı (uzun yanıt zinciri) otomatik okumaya uygun değil - fiyata otomatik yansımıyor, mail kontrol edilmeli.", "lastSeen": "10.08.2026" },
+    { "hotel": "Maxx Royal Belek Golf Resort", "note": "İndirim oranı sık değişiyor, mail formatı otomatik okumaya uygun değil - fiyata otomatik yansımıyor, mail kontrol edilmeli.", "lastSeen": "07.08.2026" }
+  ],
+  "lastUpdatedByClaude": "10.08.2026"
+}
