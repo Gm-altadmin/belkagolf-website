@@ -151,25 +151,171 @@
   .score-btn.open .arrow { transform: rotate(90deg); }
   .score-section { display: none; margin-bottom: 8px; }
   .score-section.open { display: block; }
+
+  /* Sekmeler (10.08.2026 eklendi) - Talep Raporu / Fiyat Arama */
+  .tabs { display: none; gap: 8px; margin: 18px 0 20px; border-bottom: 1px solid #2a352d; }
+  .tab-btn {
+    background: transparent; border: none; color: #999; padding: 10px 18px;
+    font-size: 0.95rem; font-weight: 500; cursor: pointer; border-bottom: 2px solid transparent;
+    border-radius: 0; margin-bottom: -1px;
+  }
+  .tab-btn:hover { background: transparent; color: #ddd; }
+  .tab-btn.active { color: #c9a961; border-bottom: 2px solid #c9a961; }
+  .search-form {
+    display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; margin-bottom: 20px;
+  }
+  .search-field { display: flex; flex-direction: column; gap: 4px; }
+  .search-field label { font-size: 0.78rem; color: #999; }
+  .search-field input {
+    padding: 10px 12px; border-radius: 8px; border: 1px solid #3a4a3d;
+    background: #1e2b23; color: #fff; font-size: 0.92rem; width: 140px;
+  }
+  .search-note { color: #ddbf7a; font-size: 0.85rem; margin-bottom: 12px; }
+  .badge-free {
+    display: inline-block; font-size: 0.7rem; background: #2a3f2f; color: #7fcf9a;
+    padding: 1px 6px; border-radius: 8px; margin-right: 4px;
+  }
 </style>
 </head>
 <body>
 <div class="box">
-  <h1>Belka Golf — Talep Raporu</h1>
-  <div class="sub">Son 8 gün · sales@ / info@ / mb@ trafiği · otomatik (canlı)</div>
+  <h1>Belka Golf — İç Panel</h1>
+  <div class="sub">Talep Raporu ve Otel+Golf Fiyat Arama</div>
 
   <div id="gate" class="gate">
-    <input type="password" id="pw" placeholder="Şifre" onkeydown="if(event.key==='Enter')loadReport()">
-    <button onclick="loadReport()">Giriş</button>
+    <input type="password" id="pw" placeholder="Şifre" onkeydown="if(event.key==='Enter')doLogin()">
+    <button onclick="doLogin()">Giriş</button>
   </div>
   <div class="err" id="err"></div>
-  <div id="content"></div>
+
+  <div class="tabs" id="tabs">
+    <button class="tab-btn active" id="tab-btn-rapor" onclick="switchTab('rapor')">Talep Raporu</button>
+    <button class="tab-btn" id="tab-btn-search" onclick="switchTab('search')">Fiyat Arama</button>
+  </div>
+
+  <div id="view-rapor">
+    <div id="content"></div>
+  </div>
+
+  <div id="view-search" style="display:none;">
+    <div class="search-form">
+      <div class="search-field">
+        <label>Giriş Tarihi</label>
+        <input type="date" id="s-date">
+      </div>
+      <div class="search-field">
+        <label>Gece Sayısı</label>
+        <input type="number" id="s-nights" placeholder="örn. 7" min="1">
+      </div>
+      <div class="search-field">
+        <label>Round Sayısı</label>
+        <input type="text" id="s-rounds" placeholder="örn. 3 veya Sınırsız">
+      </div>
+      <div class="search-field">
+        <label>Kişi Sayısı</label>
+        <input type="number" id="s-pax" placeholder="2" min="1" value="2">
+      </div>
+      <button onclick="runHotelSearch()">Ara</button>
+    </div>
+    <div id="search-results"></div>
+  </div>
 </div>
 
 <script>
 const DOT_LABEL = {
   yellow: 'sarı', green: 'yeşil', pink: 'pembe', cancel: 'iptal', confirm: 'onay'
 };
+
+// Şifre girişten sonra hem rapor hem fiyat-arama sekmesi tarafından kullanılıyor.
+let SAVED_PW = '';
+
+async function doLogin() {
+  SAVED_PW = document.getElementById('pw').value;
+  await loadReport();
+  // loadReport hata vermediyse (401/err boşsa) şifre doğrudur - sekmeleri göster.
+  if (!document.getElementById('err').textContent) {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('tabs').style.display = 'flex';
+  }
+}
+
+function switchTab(name) {
+  const isRapor = name === 'rapor';
+  document.getElementById('view-rapor').style.display = isRapor ? 'block' : 'none';
+  document.getElementById('view-search').style.display = isRapor ? 'none' : 'block';
+  document.getElementById('tab-btn-rapor').classList.toggle('active', isRapor);
+  document.getElementById('tab-btn-search').classList.toggle('active', !isRapor);
+}
+
+function fmtEuro(n) {
+  return n === null || n === undefined ? '—' : n.toLocaleString('tr-TR') + ' €';
+}
+
+async function runHotelSearch() {
+  const date = document.getElementById('s-date').value;
+  const nights = document.getElementById('s-nights').value;
+  const rounds = document.getElementById('s-rounds').value;
+  const pax = document.getElementById('s-pax').value;
+  const box = document.getElementById('search-results');
+
+  if (!date) {
+    box.innerHTML = '<div class="err">Giriş tarihi zorunlu.</div>';
+    return;
+  }
+  box.innerHTML = '<div class="loading">Aranıyor...</div>';
+
+  try {
+    const params = new URLSearchParams({ password: SAVED_PW, date });
+    if (nights) params.set('nights', nights);
+    if (rounds) params.set('rounds', rounds);
+    if (pax) params.set('pax', pax);
+
+    const res = await fetch('/api/hotelsearch?' + params.toString());
+    const data = await res.json();
+
+    if (res.status === 401) {
+      box.innerHTML = '<div class="err">Şifre hatalı — sayfayı yenileyip tekrar giriş yapın.</div>';
+      return;
+    }
+    if (data.error) {
+      box.innerHTML = '<div class="err">Hata: ' + escapeHtml(data.error) + '</div>';
+      return;
+    }
+
+    let html = '';
+    if (data.fallbackNote) {
+      html += `<div class="search-note">⚠️ ${escapeHtml(data.fallbackNote)}</div>`;
+    }
+    html += `<div class="meta">${data.count} sonuç — en ucuzdan pahalıya sıralı</div>`;
+
+    if (data.results.length === 0) {
+      html += '<div style="color:#999;margin-top:14px;">Bu tarih için hiçbir otelde uygun paket bulunamadı.</div>';
+    } else {
+      html += '<table><tr><th>Otel</th><th>Görünüm</th><th>Gece</th><th>Round</th><th>Tekil</th><th>Çift/Kişi</th><th>7+1/Kişi</th><th>Dahil</th></tr>';
+      for (const r of data.results) {
+        const badges = [
+          r.buggyFree ? '<span class="badge-free">Buggy</span>' : '',
+          r.tokenFree ? '<span class="badge-free">Token</span>' : '',
+          r.transferFree ? '<span class="badge-free">Transfer</span>' : ''
+        ].join('');
+        html += `<tr>
+          <td>${escapeHtml(r.hotel)}</td>
+          <td>${escapeHtml(r.view || '—')}</td>
+          <td>${r.nights}</td>
+          <td>${escapeHtml(String(r.rounds))}</td>
+          <td>${fmtEuro(r.single)}</td>
+          <td>${fmtEuro(r.double)}</td>
+          <td>${fmtEuro(r.group71)}</td>
+          <td>${badges || '—'}</td>
+        </tr>`;
+      }
+      html += '</table>';
+    }
+    box.innerHTML = html;
+  } catch (e) {
+    box.innerHTML = '<div class="err">Bağlantı hatası: ' + escapeHtml(e.message) + '</div>';
+  }
+}
 
 function renderTrail(trail) {
   return trail.map(c => `<span class="dot dot-${c}" title="${DOT_LABEL[c] || c}"></span>`).join('');
