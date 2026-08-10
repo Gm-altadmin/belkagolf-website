@@ -80,26 +80,44 @@ module.exports = (req, res) => {
       return checkDate >= start && checkDate <= end;
     }
 
+    // Gece/round "uzaklığı": istenenle ne kadar örtüşüyor. 'Sınırsız' round her zaman
+    // istenen round sayısını karşılar (uzaklık 0) - unlimited golf her ihtiyacı çözer.
+    function nightsDiff(row) {
+      if (nightsNum === null) return 0;
+      return Math.abs(row.nights - nightsNum);
+    }
+    function roundsDiff(row) {
+      if (roundsReq === null) return 0;
+      if (String(row.rounds) === 'Sınırsız') return 0;
+      const rn = Number(row.rounds);
+      const reqN = Number(roundsReq);
+      if (isNaN(rn) || isNaN(reqN)) return 999;
+      return Math.abs(rn - reqN);
+    }
+
+    let isExactFallback = false;
+    let fallbackNote = null;
+
     // 1. deneme: gece + round tam eşleşme
     let matches = data.filter(row =>
       dateMatch(row) &&
       (nightsNum === null || row.nights === nightsNum) &&
       (roundsReq === null || String(row.rounds) === String(roundsReq))
     );
-    let fallbackNote = null;
 
-    // 2. deneme: round eşleşmesini bırak (istenen round yok ama otel o tarihte satılıyor)
-    if (matches.length === 0 && roundsReq !== null) {
-      matches = data.filter(row =>
-        dateMatch(row) && (nightsNum === null || row.nights === nightsNum)
-      );
-      if (matches.length > 0) fallbackNote = 'İstenen round sayısı bu tarihte bulunamadı — mevcut round seçenekleri gösteriliyor.';
-    }
-
-    // 3. deneme: gece sayısı eşleşmesini de bırak (o tarihte otel satılıyor ama farklı gece paketi var)
-    if (matches.length === 0 && nightsNum !== null) {
+    // Fallback: tam eşleşme yoksa, tarihte satılan TÜM satırları al ve istenen
+    // gece/round sayısına EN YAKIN olanları öne çıkar (sadece fiyata göre değil -
+    // fiyata göre sıralamak alakasız/çok kısa-konaklama paketlerini öne çıkarıp
+    // yanıltıcı oluyordu).
+    if (matches.length === 0) {
       matches = data.filter(row => dateMatch(row));
-      if (matches.length > 0) fallbackNote = 'İstenen gece sayısı bu tarihte bulunamadı — mevcut gece seçenekleri gösteriliyor.';
+      isExactFallback = true;
+      const parts = [];
+      if (nightsNum !== null) parts.push('gece sayısı');
+      if (roundsReq !== null) parts.push('round sayısı');
+      if (parts.length) {
+        fallbackNote = `İstenen ${parts.join(' ve ')} bu tarihte tam bulunamadı — en yakın seçenekler gösteriliyor (gece/round sütunlarına dikkat edin).`;
+      }
     }
 
     const results = matches.map(m => {
@@ -118,6 +136,8 @@ module.exports = (req, res) => {
         rounds: m.rounds,
         single, double: dbl, group71,
         sortPrice,
+        nDiff: nightsDiff(m),
+        rDiff: roundsDiff(m),
         buggyFree: m.buggyFree,
         tokenFree: m.tokenFree,
         transferFree: m.transferFree,
@@ -125,7 +145,16 @@ module.exports = (req, res) => {
         periodEnd: m.end
       };
     }).filter(r => r.sortPrice !== null)
-      .sort((a, b) => a.sortPrice - b.sortPrice);
+      .sort((a, b) => {
+        // Tam eşleşme modunda (fallback değil) doğrudan fiyata göre sırala.
+        // Fallback modunda önce istenen gece/round'a en yakın olan öne çıksın,
+        // eşit yakınlıkta olanlar arasında fiyat belirleyici olsun.
+        if (isExactFallback) {
+          if (a.nDiff !== b.nDiff) return a.nDiff - b.nDiff;
+          if (a.rDiff !== b.rDiff) return a.rDiff - b.rDiff;
+        }
+        return a.sortPrice - b.sortPrice;
+      });
 
     res.setHeader('Cache-Control', 'no-store');
     res.status(200).json({
