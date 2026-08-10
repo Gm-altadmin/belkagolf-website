@@ -23,7 +23,8 @@ const NOISE_SENDERS = [
   'info@e.thelifecoshop.com', 'info@golfinitaly.com',
   'barisgedik@qral.tech', 'sasha@choosevamoostravelapp.com',
   'email.apple.com', 'mail.anthropic.com',
-  'account-misc-noreply@google.com', 'forwarding-noreply@google.com'
+  'account-misc-noreply@google.com', 'forwarding-noreply@google.com',
+  'stopsale@regnumhotels.com'
 ];
 // NOT: kişisel hesap/abonelik/sistem bildirimleri (Apple, Google hesap bildirimleri,
 // Claude.ai giriş linki vb.) iş yazışması değil, sales@/info@/mb@ kutularına karışan
@@ -31,6 +32,17 @@ const NOISE_SENDERS = [
 // NOT: sales@euromsg.net rapor taramasından hariç ama Gmail inbox'ta HİÇ engellenmiyor -
 // Cullinan Belek'in stop-sale kanalı, çok önemli, silinmemeli/bloklanmamalı.
 // NOT: Cornelia veya caryagolf.com ile ilgili hiçbir adres buraya eklenmemeli - gerçek ortaklar.
+//
+// NOT (10.08.2026, önemli): Birçok otel stop-sale bültenlerini KİŞİSEL ÇALIŞAN
+// adreslerinden gönderiyor (jenerik stopsale@ değil) - örn. Kaya Hotels, Kempinski,
+// Gloria, Cornelia, Sueno, Mardan Palace hep farklı personel adresleri kullanıyor.
+// Bunların bazıları AYNI ZAMANDA gerçek fiyat tekliflerini de gönderiyor (örn. Sirene'de
+// aizek.chekirova@sirene.com.tr hem stop-sale hem gerçek teklif gönderiyor) - bu yüzden
+// bu adresleri NOISE_SENDERS'a eklemek gerçek işi de filtreler (Cornelia hatasının aynısı).
+// Çözüm: adres yerine KONU BAŞLIĞI bazlı filtre (aşağıdaki sorguda -subject:"stop sale"
+// -subject:"open sale") kullanılıyor - gerçek müşteri talepleri hiçbir zaman konu
+// başlığında bu ifadeleri geçirmiyor, o yüzden bu güvenli ve adres listesinden çok daha
+// kapsamlı bir çözüm.
 
 const OUR_DOMAIN = 'belkagolf.com';
 
@@ -151,10 +163,6 @@ function buildTrail(msgs) {
 // bilerek daraltılmış - bare "konfirme" (istek fiili, "...etmenizi rica ederiz") değil,
 // sadece "konfirmedir" (durum bildirimi) eşleşir, "confirmed" zaten sadece durum
 // bildirimlerinde geçtiği için ek değişiklik gerekmedi.
-// DÜZELTME (07.08.2026): "close the request" / "kapatabilirsiniz" gibi Roger'ın talebi
-// fiilen sonlandırdığı ("artık ilgilenmiyorum" demeden, dolaylı yoldan kapatma) ifadeler
-// eskiden hiç yakalanmıyordu - bu tür mesajlar aktif/yanıt bekleyen gibi görünmeye devam
-// ediyordu. İptal listesine eklendi.
 function classify({ snippet, subject, trail, lastColor, daysWaiting, isUrgentKw }) {
   const text = (snippet + ' ' + subject).toLowerCase();
 
@@ -203,7 +211,11 @@ export default async function handler(req, res) {
     const eightDaysAgo = new Date(Date.now() - 8 * 24 * 60 * 60 * 1000);
     const dateStr = `${eightDaysAgo.getFullYear()}/${eightDaysAgo.getMonth() + 1}/${eightDaysAgo.getDate()}`;
     const noiseExcl = NOISE_SENDERS.map((s) => `-from:${s}`).join(' ');
-    const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com) after:${dateStr} ${noiseExcl}`;
+    // KONU BAŞLIĞI BAZLI STOP/OPEN SALE FİLTRESİ (10.08.2026 eklendi): kişisel çalışan
+    // adreslerinden gelen stop-sale bültenlerini de yakalar, adres listesine bağımlı
+    // kalmadan. Gerçek müşteri talepleri konu başlığında bu ifadeleri hiç geçirmez.
+    const subjectExcl = '-subject:"stop sale" -subject:"open sale" -subject:"stop&open sale"';
+    const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com) after:${dateStr} ${noiseExcl} ${subjectExcl}`;
 
     // maxResults 40 idi - yoğun trafikte 8 günlük pencerenin tamamı sığmıyordu.
     // Artık Gmail'in sayfalama (pageToken) mekanizmasıyla 150 thread'e kadar çekiliyor.
