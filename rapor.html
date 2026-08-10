@@ -176,32 +176,32 @@
     padding: 1px 6px; border-radius: 8px; margin-right: 4px;
   }
 
-  /* Otel seçim akordiyonu (10.08.2026 eklendi) */
-  .hotel-accordion {
+  /* Otel/Oda Tipi seçim akordiyonları (10.08.2026 eklendi) */
+  .hotel-accordion, .view-accordion {
     border: 1px solid #3a4a3d; border-radius: 8px; margin-bottom: 16px;
     background: #1e2b23; overflow: hidden;
   }
-  .hotel-accordion-header {
+  .hotel-accordion-header, .view-accordion-header {
     padding: 12px 16px; cursor: pointer; display: flex; justify-content: space-between;
     align-items: center; user-select: none; font-size: 0.9rem; color: #ddd;
   }
-  .hotel-accordion-header:hover { background: #24322a; }
-  .hotel-accordion-header .arrow { color: #c9a961; transition: transform 0.15s; }
-  .hotel-accordion-header.open .arrow { transform: rotate(90deg); }
-  .hotel-accordion-body {
+  .hotel-accordion-header:hover, .view-accordion-header:hover { background: #24322a; }
+  .hotel-accordion-header .arrow, .view-accordion-header .arrow { color: #c9a961; transition: transform 0.15s; }
+  .hotel-accordion-header.open .arrow, .view-accordion-header.open .arrow { transform: rotate(90deg); }
+  .hotel-accordion-body, .view-accordion-body {
     display: none; padding: 12px 16px 16px; border-top: 1px solid #2a352d;
   }
-  .hotel-accordion-body.open { display: block; }
-  .hotel-accordion-actions { margin-bottom: 10px; display: flex; gap: 14px; }
-  .hotel-accordion-actions a { color: #c9a961; font-size: 0.8rem; cursor: pointer; text-decoration: underline; }
-  .hotel-checkbox-grid {
+  .hotel-accordion-body.open, .view-accordion-body.open { display: block; }
+  .hotel-accordion-actions, .view-accordion-actions { margin-bottom: 10px; display: flex; gap: 14px; }
+  .hotel-accordion-actions a, .view-accordion-actions a { color: #c9a961; font-size: 0.8rem; cursor: pointer; text-decoration: underline; }
+  .hotel-checkbox-grid, .view-checkbox-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 6px 16px;
   }
-  .hotel-checkbox-item {
+  .hotel-checkbox-item, .view-checkbox-item {
     display: flex; align-items: center; gap: 8px; font-size: 0.86rem; color: #ddd;
   }
-  .hotel-checkbox-item input { width: 16px; height: 16px; }
+  .hotel-checkbox-item input, .view-checkbox-item input { width: 16px; height: 16px; }
 </style>
 </head>
 <body>
@@ -236,6 +236,19 @@
           <a onclick="setAllHotels(false)">Tümünü Kaldır</a>
         </div>
         <div class="hotel-checkbox-grid" id="hotel-checkbox-grid"></div>
+      </div>
+    </div>
+    <div class="view-accordion" id="view-accordion">
+      <div class="view-accordion-header" id="view-accordion-header" onclick="toggleViewAccordion()">
+        <span id="view-accordion-label">Oda Tipi: Tümü</span>
+        <span class="arrow">▶</span>
+      </div>
+      <div class="view-accordion-body" id="view-accordion-body">
+        <div class="view-accordion-actions">
+          <a onclick="setAllViews(true)">Tümünü Seç</a>
+          <a onclick="setAllViews(false)">Tümünü Kaldır</a>
+        </div>
+        <div class="view-checkbox-grid" id="view-checkbox-grid"></div>
       </div>
     </div>
     <div class="search-form">
@@ -339,6 +352,54 @@ function updateHotelAccordionLabel() {
 
 buildHotelCheckboxes();
 
+// Oda tipi seçim akordiyonu (10.08.2026 eklendi) - hotel-packages.xlsx'te geçen
+// tüm "Oda Görünümü" değerleri + görünüm belirtilmemiş oteller için özel seçenek.
+const NONE_VIEW = '__NONE__';
+const ALL_VIEWS = [
+  'Land View', 'Golf View', 'Sea View', 'Side Sea View', 'Deluxe Sea View',
+  'Garden View', 'Standard Room', 'Superior Room', 'Superior Room Sea View',
+  'Superior Side Sea View', 'Suite Sea View', 'Sea View / Deluxe Junior Suite',
+  'Luxury Lagoon Suite', NONE_VIEW
+];
+const VIEW_LABELS = { [NONE_VIEW]: 'Görünüm Belirtilmemiş (tek kategori)' };
+
+function buildViewCheckboxes() {
+  const grid = document.getElementById('view-checkbox-grid');
+  grid.innerHTML = ALL_VIEWS.map(v => `
+    <label class="view-checkbox-item">
+      <input type="checkbox" class="view-cb" value="${escapeHtml(v)}" checked onchange="updateViewAccordionLabel()">
+      ${escapeHtml(VIEW_LABELS[v] || v)}
+    </label>`).join('');
+}
+
+function toggleViewAccordion() {
+  document.getElementById('view-accordion-header').classList.toggle('open');
+  document.getElementById('view-accordion-body').classList.toggle('open');
+}
+
+function setAllViews(checked) {
+  document.querySelectorAll('.view-cb').forEach(cb => cb.checked = checked);
+  updateViewAccordionLabel();
+}
+
+function getSelectedViews() {
+  return Array.from(document.querySelectorAll('.view-cb')).filter(cb => cb.checked).map(cb => cb.value);
+}
+
+function updateViewAccordionLabel() {
+  const selected = getSelectedViews();
+  const label = document.getElementById('view-accordion-label');
+  if (selected.length === ALL_VIEWS.length) {
+    label.textContent = 'Oda Tipi: Tümü';
+  } else if (selected.length === 0) {
+    label.textContent = 'Oda Tipi: Hiçbiri seçili değil';
+  } else {
+    label.textContent = `Oda Tipi: ${selected.length} seçili`;
+  }
+}
+
+buildViewCheckboxes();
+
 async function runHotelSearch() {
   const date = document.getElementById('s-date').value;
   const nights = document.getElementById('s-nights').value;
@@ -347,8 +408,13 @@ async function runHotelSearch() {
   const box = document.getElementById('search-results');
 
   const selectedHotels = getSelectedHotels();
+  const selectedViews = getSelectedViews();
   if (selectedHotels.length === 0) {
     box.innerHTML = '<div class="err">En az bir otel seçili olmalı.</div>';
+    return;
+  }
+  if (selectedViews.length === 0) {
+    box.innerHTML = '<div class="err">En az bir oda tipi seçili olmalı.</div>';
     return;
   }
   if (!date) {
@@ -364,6 +430,9 @@ async function runHotelSearch() {
     if (pax) params.set('pax', pax);
     if (selectedHotels.length < ALL_HOTELS.length) {
       params.set('hotels', selectedHotels.join('|'));
+    }
+    if (selectedViews.length < ALL_VIEWS.length) {
+      params.set('views', selectedViews.join('|'));
     }
 
     const res = await fetch('/api/hotelsearch?' + params.toString());
