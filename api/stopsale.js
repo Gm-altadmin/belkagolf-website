@@ -266,11 +266,13 @@ export default async function handler(req, res) {
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const rows = [];
 
-    // Kullanıcı isteğiyle geçici olarak dışarıda tutulanlar (11.08.2026):
-    // Voyage Sorgun (sadece bu alt-otel, diğer Voyage'lar kalıyor) ve Mardan Palace
-    // (tüm otel). İleride kaldırılmak istenirse burası düzenlenmeli.
-    const EXCLUDED_SUBHOTELS = new Set(['VOYAGE SORGUN']);
-    const EXCLUDED_SENDER_DOMAINS = ['mardanpalace.com'];
+    // Kullanıcı isteğiyle geçici olarak dışarıda tutulanlar (11.08.2026, genişletildi):
+    // Voyage Sorgun/Torba/Kundu (sadece bunlar, Voyage Belek kalıyor), Mardan Palace,
+    // Rixos, Caja by Maxx Royal, Maxx Royal Bodrum Resort ve kendi belkagolf.com
+    // adresimizden gelen (dahili/yanlış eşleşen) kayıtlar (tümü otel bazlı çalışılmıyor
+    // ya da bizim kendi domainimiz). İleride kaldırılmak istenirse burası düzenlenmeli.
+    const EXCLUDED_SUBHOTELS = new Set(['VOYAGE SORGUN', 'VOYAGE TORBA', 'VOYAGE KUNDU', 'MAXX ROYAL BODRUM RESORT']);
+    const EXCLUDED_SENDER_DOMAINS = ['mardanpalace.com', 'rixos.com', 'cajabymaxxroyal.com', 'belkagolf.com'];
 
     for (const det of detailResults) {
       const msgs = det.messages || [];
@@ -320,7 +322,11 @@ export default async function handler(req, res) {
               context: e.context
             });
           }
-        } else {
+        } else if (entries.length === 0) {
+          // Sadece gerçekten hiç tarih ÇIKARILAMADIYSA bu satır gösterilir.
+          // entries.length > 0 ama futureEntries.length === 0 ise (yani tarih
+          // bulundu ama hepsi geçmişte kaldı), bu artık geçersiz bir bildirimdir -
+          // hiç gösterilmez (yanlış "çıkarılamadı" mesajı vermek yerine).
           rows.push({
             hotel: baseHotel, subject,
             dateStart: null, dateEnd: null, dateStartSort: Infinity,
