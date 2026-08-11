@@ -383,36 +383,36 @@ async function loadStopSale() {
     if (res.status === 401) { meta.textContent = 'Şifre hatalı — sayfayı yenileyip tekrar giriş yapın.'; return; }
     if (data.error) { meta.textContent = 'Hata: ' + escapeHtml(data.error); return; }
 
-    meta.textContent = `Bugünden itibaren ${data.count} bildirim — tarihe göre gruplu, en yakın tarih üstte`;
+    meta.textContent = `Bugünden itibaren ${data.count} bildirim — otel bazlı gruplu, en acil otel üstte`;
 
     if (data.items.length === 0) {
       body.innerHTML = '<div style="color:#999;margin-top:14px;">Bugünden itibaren stop/open sale bildirimi yok.</div>';
       return;
     }
 
-    // Aynı tarihi/tarih aralığını etkileyen bildirimleri tek grupta topla -
-    // backend zaten en yakın tarihe göre sıralı veriyor, burada sadece
-    // ardışık aynı-tarihli satırları aynı başlık altında birleştiriyoruz.
+    // Aynı oteli etkileyen tüm bildirimleri tek grupta topla - backend zaten
+    // her otelin en yakın tarihine göre sıralı veriyor (en acil otel üstte),
+    // burada sadece ardışık aynı-otelli satırları aynı başlık altında birleştiriyoruz.
     const groups = [];
     let currentKey = null;
     for (const it of data.items) {
-      const key = it.dateStart
-        ? (it.dateStart === it.dateEnd ? it.dateStart : `${it.dateStart} – ${it.dateEnd}`)
-        : 'Tarih belirsiz';
-      if (key !== currentKey) {
-        groups.push({ key, items: [] });
-        currentKey = key;
+      if (it.hotel !== currentKey) {
+        groups.push({ key: it.hotel, items: [] });
+        currentKey = it.hotel;
       }
       groups[groups.length - 1].items.push(it);
     }
 
     let html = '';
     for (const g of groups) {
-      html += `<div class="date-group-header">${escapeHtml(g.key)} — ${g.items.length} otel</div>`;
-      html += '<table><tr><th>Otel</th><th>Tip</th><th>Detay</th><th>Konu</th></tr>';
+      html += `<div class="date-group-header">${escapeHtml(g.key)} — ${g.items.length} bildirim</div>`;
+      html += '<table><tr><th>Tarih</th><th>Tip</th><th>Detay</th><th>Konu</th></tr>';
       for (const it of g.items) {
+        const d = it.dateStart
+          ? (it.dateStart === it.dateEnd ? it.dateStart : `${it.dateStart} – ${it.dateEnd}`)
+          : '—';
         html += `<tr>
-          <td>${escapeHtml(it.hotel)}</td>
+          <td>${escapeHtml(d)}</td>
           <td><span class="sale-badge ${it.type}">${SALE_LABEL[it.type] || it.type}</span></td>
           <td>${escapeHtml(it.context || '—')}</td>
           <td>${escapeHtml(it.subject)}</td>
