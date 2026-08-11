@@ -84,7 +84,10 @@ function fmtDate(d) {
 const STOP_RE = /stop sale|satışa kapalı|satisa kapali/i;
 const OPEN_RE = /open sale|satışa açık|satisa acik/i;
 
-// Bilinen otel alt-marka isimleri (tek hücreli, colspan başlık satırlarında görülür).
+// Bilinen otel alt-marka isimleri (tek hücreli, colspan başlık satırlarında görülür
+// - Gloria/Regnum gibi Word tabanlı maillerde). Voyage gibi bazı oteller alt-otel
+// adını SADECE subject'te veriyor, tablo içinde hiç geçmiyor - o yüzden subject'ten
+// de ayrıca bakılıyor (extractFromHtml çağrılmadan önce).
 const SUBHOTEL_NAMES = [
   'GLORIA SERENITY RESORT', 'GLORIA GOLF RESORT', 'GLORIA VERDE RESORT',
   'REGNUM CARYA', 'REGNUM THE CROWN', 'CAJA BY MAXX ROYAL', 'MAXX ROYAL BODRUM RESORT',
@@ -92,13 +95,21 @@ const SUBHOTEL_NAMES = [
   'VOYAGE KUNDU', 'SUENO HOTELS GOLF BELEK', 'SUENO HOTELS DELUXE BELEK'
 ];
 
+// Subject'ten alt-otel adı çıkarmayı dener (Voyage gibi tabloya otel adı koymayan
+// oteller için). Bulamazsa null döner, extractFromHtml içindeki tablo başlıkları
+// (varsa) bunu ezip geçebilir.
+function subHotelFromSubject(subject) {
+  const upper = (subject || '').toUpperCase();
+  return SUBHOTEL_NAMES.find(n => upper.includes(n)) || null;
+}
+
 // Mail HTML'ini sırayla tarar: <tr>...</tr> bloklarını ve stop/open anahtar
 // kelimelerini orijinal sırada bulup "geçerli tip" ve "geçerli alt-otel" durumunu
 // güncelleyerek her tablo satırından {dateStart, dateEnd, type, context, subHotel} çıkarır.
-function extractFromHtml(html, subjectType) {
+function extractFromHtml(html, subjectType, initialSubHotel) {
   const tokenRe = /(<tr[\s\S]*?<\/tr>)|(stop sale|open sale|satışa kapalı|satisa kapali|satışa açık|satisa acik)/gi;
   let currentType = subjectType;
-  let currentSubHotel = null;
+  let currentSubHotel = initialSubHotel || null;
   const entries = [];
   let m;
   while ((m = tokenRe.exec(html)) !== null) {
@@ -257,8 +268,9 @@ export default async function handler(req, res) {
         const sType = subjectType(subject);
         const html = findHtmlBody(msg.payload);
         const baseHotel = hotelFromSender(from);
+        const subHotelFromSubj = subHotelFromSubject(subject);
 
-        let entries = html ? extractFromHtml(html, sType) : [];
+        let entries = html ? extractFromHtml(html, sType, subHotelFromSubj) : [];
 
         // HTML'de hiç tablo satırı bulunamadıysa (nadir - genelde sadece PDF ekli
         // maillerde), düz metinden TEK TARİH aralığı denemesi yapılır (son çare,
