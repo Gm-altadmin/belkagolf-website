@@ -241,10 +241,16 @@
   .sale-badge.both { background: #3a3520; color: #ddbf7a; }
   .sale-badge.other { background: #2a2a2a; color: #999; }
   .date-group-header {
-    margin: 22px 0 8px; padding: 8px 12px; background: #1e2b23; border-radius: 6px;
+    margin: 10px 0 0; padding: 10px 12px; background: #1e2b23; border-radius: 6px;
     border-left: 3px solid #c9a961; color: #c9a961; font-weight: 600; font-size: 0.95rem;
+    cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    user-select: none;
   }
-  .date-group-header:first-of-type { margin-top: 4px; }
+  .date-group-header:hover { background: #24322a; }
+  .date-group-header .arrow { transition: transform 0.15s; color: #c9a961; }
+  .date-group-header.open .arrow { transform: rotate(90deg); }
+  .date-group-body { display: none; margin-bottom: 4px; }
+  .date-group-body.open { display: block; }
 </style>
 </head>
 <body>
@@ -372,6 +378,13 @@ function switchTab(name) {
 
 const SALE_LABEL = { stop: 'STOP SALE', open: 'OPEN SALE', both: 'STOP & OPEN', other: 'Diğer' };
 
+function toggleStopSaleGroup(gid) {
+  const body = document.getElementById(gid);
+  const header = body.previousElementSibling;
+  body.classList.toggle('open');
+  header.classList.toggle('open');
+}
+
 async function loadStopSale() {
   const meta = document.getElementById('stopsale-meta');
   const body = document.getElementById('stopsale-body');
@@ -404,8 +417,13 @@ async function loadStopSale() {
     }
 
     let html = '';
-    for (const g of groups) {
-      html += `<div class="date-group-header">${escapeHtml(g.key)} — ${g.items.length} bildirim</div>`;
+    groups.forEach((g, i) => {
+      const gid = 'ssgrp-' + i;
+      html += `<div class="date-group-header" onclick="toggleStopSaleGroup('${gid}')">
+        <span>${escapeHtml(g.key)} — ${g.items.length} bildirim</span>
+        <span class="arrow">▶</span>
+      </div>`;
+      html += `<div class="date-group-body" id="${gid}">`;
       html += '<table><tr><th>Tarih</th><th>Tip</th><th>Detay</th><th>Konu</th></tr>';
       for (const it of g.items) {
         const d = it.dateStart
@@ -418,8 +436,8 @@ async function loadStopSale() {
           <td>${escapeHtml(it.subject)}</td>
         </tr>`;
       }
-      html += '</table>';
-    }
+      html += '</table></div>';
+    });
     body.innerHTML = html;
   } catch (e) {
     meta.textContent = 'Bağlantı hatası: ' + e.message;
