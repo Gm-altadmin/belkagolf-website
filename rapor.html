@@ -396,7 +396,7 @@ async function loadStopSale() {
     if (res.status === 401) { meta.textContent = 'Şifre hatalı — sayfayı yenileyip tekrar giriş yapın.'; return; }
     if (data.error) { meta.textContent = 'Hata: ' + escapeHtml(data.error); return; }
 
-    meta.textContent = `Bugünden itibaren ${data.count} bildirim — otel bazlı gruplu, en acil otel üstte`;
+    meta.textContent = `Bugünden itibaren ${data.count} bildirim — otel bazlı gruplu, alfabetik sıralı`;
 
     if (data.items.length === 0) {
       body.innerHTML = '<div style="color:#999;margin-top:14px;">Bugünden itibaren stop/open sale bildirimi yok.</div>';
@@ -404,8 +404,8 @@ async function loadStopSale() {
     }
 
     // Aynı oteli etkileyen tüm bildirimleri tek grupta topla - backend zaten
-    // her otelin en yakın tarihine göre sıralı veriyor (en acil otel üstte),
-    // burada sadece ardışık aynı-otelli satırları aynı başlık altında birleştiriyoruz.
+    // otelleri alfabetik sıralı veriyor, burada sadece ardışık aynı-otelli
+    // satırları aynı başlık altında birleştiriyoruz.
     const groups = [];
     let currentKey = null;
     for (const it of data.items) {
