@@ -1,34 +1,50 @@
-// Stop Sale / Open Sale takip API'si (v2, 10.08.2026 - ileri tarihe göre yeniden yazıldı).
+// Stop Sale / Open Sale takip API'si (v3, 11.08.2026 - HTML tablo tabanlı yeniden yazım).
 //
-// İLK VERSİYONDAKİ HATA: maili ALMA tarihine göre sıralıyordu (geriye dönük) -
-// ama personelin ihtiyacı "hangi İLERİ konaklama tarihinde satış durduruldu/açıldı"
-// bilgisidir. Bu versiyon mail GÖVDESİNDEN etkilenen tarih(ler)i çıkarır, sadece
-// BUGÜNDEN İLERİ olanları gösterir, en yakın tarihi en üste koyar.
+// v2'DEKİ HATA: mail gövdesini düz metne çevirip SATIR SATIR tarih+durum arıyordu.
+// Ama bazı oteller (Gloria, Regnum - Word/Outlook üretimi HTML) tarihi tek hücrede
+// veriyor, "Stop Sale" ifadesi satır başına değil sadece bir kere BÖLÜM BAŞLIĞINDA
+// geçiyor (örn. "GLORIA SERENITY RESORT" başlığından sonra 6 tarih satırı, hiçbirinde
+// "stop sale" yazmıyor). Satır bazlı arama bu durumda ya tarihi kaçırıyor ya da yanlış
+// bir metne bağlıyordu.
 //
-// Format çeşitliliği: otelden otele tablo sütun sırası bile değişiyor (bazısı
-// Market/Tarih/Oda/Durum, bazısı Pazar/Oda/Tarih/Durum). Sabit sütun pozisyonuna
-// güvenmek yerine, her satırda tarih deseni + stop/open anahtar kelimesini ayrı ayrı
-// arayıp eşleştiriyoruz - bu hem tablo hem düz metin formatlarında çalışır.
+// v3 ÇÖZÜMÜ: mail HTML'ini SIRALI olarak tarar (regex ile <tr>...</tr> bloklarını VE
+// "stop sale"/"open sale" başlık kelimelerini karışık sırada, orijinal doküman
+// sırasında bulur). Bir başlık kelimesi görülünce "geçerli tip" güncellenir; bir
+// tablo satırı görülünce o satırın TÜM <td> hücreleri birleştirilip (tek "satır metni"
+// oluşturulur - hücre içindeki <p>/<br> bölünmeleri artık sorun olmaz) o satırdan tarih
+// aralığı çıkarılır ve o an geçerli olan tipe atanır. Satırın kendi içinde de bir
+// stop/open kelimesi varsa (Voyage/Kempinski gibi), o öncelikli kullanılır.
+// Ayrıca otel alt-adı başlıkları (örn. "GLORIA SERENITY RESORT") ayrıca takip edilip
+// generic "Gloria Serenity/Golf/Verde" etiketi yerine doğru alt-otel adı kullanılıyor.
+//
+// Düz metne (plaintextBody) HİÇ güvenilmiyor artık - tablo yapısı kaybolduğunda satır
+// sınırları güvenilmez hale geliyordu. Sadece HTML'den, tablo satırı bazlı çıkarım var.
+// Hiç <tr> bulunamayan mailler (örn. sadece PDF ekli, gövdede tablo yok) için tarih
+// üretilmez - "Tarih otomatik çıkarılamadı" ile gösterilir, YANLIŞ TARİH ÜRETİLMEZ.
 
 function decodeBase64Url(data) {
   const b64 = (data || '').replace(/-/g, '+').replace(/_/g, '/');
   return Buffer.from(b64, 'base64').toString('utf8');
 }
 
-function stripHtml(html) {
-  return (html || '')
-    .replace(/<style[\s\S]*?<\/style>/gi, '')
-    .replace(/<br\s*\/?>/gi, '\n')
-    .replace(/<\/(p|div|tr|li)>/gi, '\n')
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
-    .replace(/[ \t]+/g, ' ')
-    .replace(/\n\s*\n+/g, '\n')
-    .trim();
+function findHtmlBody(payload) {
+  if (!payload) return '';
+  if (payload.mimeType === 'text/html' && payload.body && payload.body.data) {
+    return decodeBase64Url(payload.body.data);
+  }
+  if (payload.parts) {
+    for (const p of payload.parts) {
+      if (p.mimeType === 'text/html' && p.body && p.body.data) return decodeBase64Url(p.body.data);
+    }
+    for (const p of payload.parts) {
+      const r = findHtmlBody(p);
+      if (r) return r;
+    }
+  }
+  return '';
 }
 
-function findBodyText(payload) {
+function findPlainBody(payload) {
   if (!payload) return '';
   if (payload.mimeType === 'text/plain' && payload.body && payload.body.data) {
     return decodeBase64Url(payload.body.data);
@@ -38,14 +54,91 @@ function findBodyText(payload) {
       if (p.mimeType === 'text/plain' && p.body && p.body.data) return decodeBase64Url(p.body.data);
     }
     for (const p of payload.parts) {
-      const r = findBodyText(p);
+      const r = findPlainBody(p);
       if (r) return r;
     }
   }
-  if (payload.mimeType === 'text/html' && payload.body && payload.body.data) {
-    return stripHtml(decodeBase64Url(payload.body.data));
-  }
   return '';
+}
+
+function cellText(td) {
+  return td
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+const DATE_RANGE_RE = /(\d{1,2})\.(\d{1,2})\.(\d{2,4})(?:\s*[-–]\s*(\d{1,2})\.(\d{1,2})\.(\d{2,4}))?/;
+
+function toDate(d, m, y) {
+  const yr = y.length === 2 ? 2000 + parseInt(y, 10) : parseInt(y, 10);
+  return new Date(yr, parseInt(m, 10) - 1, parseInt(d, 10));
+}
+
+function fmtDate(d) {
+  return String(d.getDate()).padStart(2, '0') + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + d.getFullYear();
+}
+
+const STOP_RE = /stop sale|satışa kapalı|satisa kapali/i;
+const OPEN_RE = /open sale|satışa açık|satisa acik/i;
+
+// Bilinen otel alt-marka isimleri (tek hücreli, colspan başlık satırlarında görülür).
+const SUBHOTEL_NAMES = [
+  'GLORIA SERENITY RESORT', 'GLORIA GOLF RESORT', 'GLORIA VERDE RESORT',
+  'REGNUM CARYA', 'REGNUM THE CROWN', 'CAJA BY MAXX ROYAL', 'MAXX ROYAL BODRUM RESORT',
+  'MAXX ROYAL BELEK GOLF RESORT', 'VOYAGE BELEK', 'VOYAGE SORGUN', 'VOYAGE TORBA',
+  'VOYAGE KUNDU', 'SUENO HOTELS GOLF BELEK', 'SUENO HOTELS DELUXE BELEK'
+];
+
+// Mail HTML'ini sırayla tarar: <tr>...</tr> bloklarını ve stop/open anahtar
+// kelimelerini orijinal sırada bulup "geçerli tip" ve "geçerli alt-otel" durumunu
+// güncelleyerek her tablo satırından {dateStart, dateEnd, type, context, subHotel} çıkarır.
+function extractFromHtml(html, subjectType) {
+  const tokenRe = /(<tr[\s\S]*?<\/tr>)|(stop sale|open sale|satışa kapalı|satisa kapali|satışa açık|satisa acik)/gi;
+  let currentType = subjectType;
+  let currentSubHotel = null;
+  const entries = [];
+  let m;
+  while ((m = tokenRe.exec(html)) !== null) {
+    if (m[1]) {
+      // <tr> bloğu - hücreleri ayıkla
+      const tds = [...m[1].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)].map(x => cellText(x[1]));
+      const rowText = tds.join(' ').trim();
+      if (!rowText) continue;
+
+      // Bu satır aslında bir otel alt-adı başlığı mı? (tek anlamlı hücre, bilinen isim)
+      const upper = rowText.toUpperCase();
+      const subMatch = SUBHOTEL_NAMES.find(n => upper.includes(n));
+      if (subMatch && !DATE_RANGE_RE.test(rowText)) {
+        currentSubHotel = subMatch;
+        continue;
+      }
+
+      const dm = rowText.match(DATE_RANGE_RE);
+      if (!dm) continue;
+      const dateStart = toDate(dm[1], dm[2], dm[3]);
+      const dateEnd = dm[4] ? toDate(dm[4], dm[5], dm[6]) : dateStart;
+      if (isNaN(dateStart.getTime())) continue;
+
+      let rowType = currentType;
+      if (STOP_RE.test(rowText)) rowType = 'stop';
+      else if (OPEN_RE.test(rowText)) rowType = 'open';
+
+      let context = rowText
+        .replace(DATE_RANGE_RE, '')
+        .replace(/stop sale|open sale|satışa kapalı|satisa kapali|satışa açık|satisa acik|\(dahil\)|\(inc\)|\(incl\.?\)|\(included\)/gi, '')
+        .replace(/\s{2,}/g, ' ')
+        .trim();
+      if (context.length > 60) context = context.slice(0, 60) + '…';
+
+      entries.push({ dateStart, dateEnd, type: rowType, context: context || null, subHotel: currentSubHotel });
+    } else if (m[2]) {
+      currentType = STOP_RE.test(m[2]) ? 'stop' : 'open';
+    }
+  }
+  return entries;
 }
 
 const HOTEL_DOMAIN_MAP = [
@@ -72,52 +165,6 @@ function hotelFromSender(addr) {
   const a = (addr || '').toLowerCase();
   const found = HOTEL_DOMAIN_MAP.find(h => h.domains.some(d => a.includes(d)));
   return found ? found.hotel : (a.split('@')[1] || 'Bilinmeyen');
-}
-
-// DD.MM.YY veya DD.MM.YYYY, tekli ya da "DD.MM.YY-DD.MM.YY" aralık.
-const DATE_RANGE_RE = /(\d{1,2})\.(\d{1,2})\.(\d{2,4})(?:\s*[-–]\s*(\d{1,2})\.(\d{1,2})\.(\d{2,4}))?/;
-
-function toDate(d, m, y) {
-  const yr = y.length === 2 ? 2000 + parseInt(y, 10) : parseInt(y, 10);
-  return new Date(yr, parseInt(m, 10) - 1, parseInt(d, 10));
-}
-
-function fmtDate(d) {
-  return String(d.getDate()).padStart(2, '0') + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + d.getFullYear();
-}
-
-function lineType(line) {
-  const l = line.toLowerCase();
-  const isStop = /stop sale|satışa kapalı|satisa kapali|durdurulmasını|durdurmanızı/.test(l);
-  const isOpen = /open sale|satışa açık|satisa acik|açılmasını|açılmasına/.test(l);
-  if (isStop && isOpen) return 'both';
-  if (isStop) return 'stop';
-  if (isOpen) return 'open';
-  return null;
-}
-
-// Mail gövdesini satır satır tarayıp {dateStart, dateEnd, type, context} listesi çıkarır.
-// Satırda hem tarih hem stop/open kelimesi varsa o satırdan; yoksa genel subject tipini kullanır.
-function extractDatedEntries(bodyText, subjectType) {
-  const lines = bodyText.split('\n').map(l => l.trim()).filter(Boolean);
-  const entries = [];
-  for (const line of lines) {
-    const m = line.match(DATE_RANGE_RE);
-    if (!m) continue;
-    const dateStart = toDate(m[1], m[2], m[3]);
-    const dateEnd = m[4] ? toDate(m[4], m[5], m[6]) : dateStart;
-    if (isNaN(dateStart.getTime())) continue;
-    const type = lineType(line) || subjectType;
-    // Bağlam metni: tarih ve durum ifadeleri çıkarılmış, kısaltılmış satır.
-    let context = line
-      .replace(DATE_RANGE_RE, '')
-      .replace(/stop sale|open sale|satışa kapalı|satisa kapali|satışa açık|satisa acik|\(dahil\)|\(inc\)|\(incl\.?\)/gi, '')
-      .replace(/\s{2,}/g, ' ')
-      .trim();
-    if (context.length > 70) context = context.slice(0, 70) + '…';
-    entries.push({ dateStart, dateEnd, type, context: context || null });
-  }
-  return entries;
 }
 
 async function getAccessToken() {
@@ -171,9 +218,6 @@ export default async function handler(req, res) {
 
   try {
     const accessToken = await getAccessToken();
-    // Alma tarihine göre 45 gün geriye kadar TARA (eski bir mail hâlâ ileri
-    // tarihli bir stop-sale anlatıyor olabilir) - ama SONUÇTA sadece bugünden
-    // ileri konaklama tarihlerini göstereceğiz.
     const searchWindowAgo = new Date(Date.now() - 45 * 24 * 60 * 60 * 1000);
     const dateStr = `${searchWindowAgo.getFullYear()}/${searchWindowAgo.getMonth() + 1}/${searchWindowAgo.getDate()}`;
     const q = `(subject:"stop sale" OR subject:"open sale" OR subject:"stop&open sale") after:${dateStr}`;
@@ -211,16 +255,33 @@ export default async function handler(req, res) {
         const subject = getHeader(msg, 'Subject');
         const from = getHeader(msg, 'From');
         const sType = subjectType(subject);
-        const bodyText = findBodyText(msg.payload);
-        const entries = extractDatedEntries(bodyText, sType);
+        const html = findHtmlBody(msg.payload);
+        const baseHotel = hotelFromSender(from);
 
-        const hotel = hotelFromSender(from);
+        let entries = html ? extractFromHtml(html, sType) : [];
+
+        // HTML'de hiç tablo satırı bulunamadıysa (nadir - genelde sadece PDF ekli
+        // maillerde), düz metinden TEK TARİH aralığı denemesi yapılır (son çare,
+        // düşük güven) - ama satır bazlı çoklu-tarih taraması YAPILMAZ (o v2'nin hatasıydı).
+        if (entries.length === 0) {
+          const plain = findPlainBody(msg.payload);
+          const dm = plain.match(DATE_RANGE_RE);
+          if (dm) {
+            const dateStart = toDate(dm[1], dm[2], dm[3]);
+            const dateEnd = dm[4] ? toDate(dm[4], dm[5], dm[6]) : dateStart;
+            if (!isNaN(dateStart.getTime())) {
+              entries = [{ dateStart, dateEnd, type: sType, context: '(tek tarih, düşük güven - mail\'e bakın)', subHotel: null }];
+            }
+          }
+        }
+
         const futureEntries = entries.filter(e => e.dateEnd >= today);
 
         if (futureEntries.length > 0) {
           for (const e of futureEntries) {
             rows.push({
-              hotel, subject,
+              hotel: e.subHotel ? toTitleCase(e.subHotel) : baseHotel,
+              subject,
               dateStart: fmtDate(e.dateStart),
               dateEnd: fmtDate(e.dateEnd),
               dateStartSort: e.dateStart.getTime(),
@@ -229,19 +290,19 @@ export default async function handler(req, res) {
             });
           }
         } else {
-          // Tarih hiç çıkarılamadıysa (nadiren, farklı bir format) - yine de
-          // görünür kalsın ki personel mail'e bakabilsin, en sona sıralanır.
           rows.push({
-            hotel, subject,
+            hotel: baseHotel, subject,
             dateStart: null, dateEnd: null, dateStartSort: Infinity,
-            type: sType, context: 'Tarih otomatik çıkarılamadı — mail\'e bakın'
+            type: sType, context: 'Tarih otomatik çıkarılamadı — mail\'e bakın (PDF ekli olabilir)'
           });
         }
       }
     }
 
-    // Aynı otel+tarih+tip+bağlam kombinasyonu tekrar ediyorsa (aynı mail birden
-    // fazla alıcıya gitmiş olabilir) tekilleştir.
+    function toTitleCase(s) {
+      return s.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+    }
+
     const seen = new Set();
     const deduped = rows.filter(r => {
       const key = r.hotel + '|' + r.dateStart + '|' + r.dateEnd + '|' + r.type + '|' + r.context;
