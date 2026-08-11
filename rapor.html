@@ -240,6 +240,11 @@
   .sale-badge.open { background: #1e3a24; color: #7fcf9a; }
   .sale-badge.both { background: #3a3520; color: #ddbf7a; }
   .sale-badge.other { background: #2a2a2a; color: #999; }
+  .date-group-header {
+    margin: 22px 0 8px; padding: 8px 12px; background: #1e2b23; border-radius: 6px;
+    border-left: 3px solid #c9a961; color: #c9a961; font-weight: 600; font-size: 0.95rem;
+  }
+  .date-group-header:first-of-type { margin-top: 4px; }
 </style>
 </head>
 <body>
@@ -378,27 +383,43 @@ async function loadStopSale() {
     if (res.status === 401) { meta.textContent = 'Şifre hatalı — sayfayı yenileyip tekrar giriş yapın.'; return; }
     if (data.error) { meta.textContent = 'Hata: ' + escapeHtml(data.error); return; }
 
-    meta.textContent = `Bugünden itibaren ${data.count} bildirim — en yakın tarih üstte`;
+    meta.textContent = `Bugünden itibaren ${data.count} bildirim — tarihe göre gruplu, en yakın tarih üstte`;
 
     if (data.items.length === 0) {
       body.innerHTML = '<div style="color:#999;margin-top:14px;">Bugünden itibaren stop/open sale bildirimi yok.</div>';
       return;
     }
 
-    let html = '<table><tr><th>Tarih</th><th>Otel</th><th>Tip</th><th>Detay</th><th>Konu</th></tr>';
+    // Aynı tarihi/tarih aralığını etkileyen bildirimleri tek grupta topla -
+    // backend zaten en yakın tarihe göre sıralı veriyor, burada sadece
+    // ardışık aynı-tarihli satırları aynı başlık altında birleştiriyoruz.
+    const groups = [];
+    let currentKey = null;
     for (const it of data.items) {
-      const d = it.dateStart
+      const key = it.dateStart
         ? (it.dateStart === it.dateEnd ? it.dateStart : `${it.dateStart} – ${it.dateEnd}`)
-        : '—';
-      html += `<tr>
-        <td>${escapeHtml(d)}</td>
-        <td>${escapeHtml(it.hotel)}</td>
-        <td><span class="sale-badge ${it.type}">${SALE_LABEL[it.type] || it.type}</span></td>
-        <td>${escapeHtml(it.context || '—')}</td>
-        <td>${escapeHtml(it.subject)}</td>
-      </tr>`;
+        : 'Tarih belirsiz';
+      if (key !== currentKey) {
+        groups.push({ key, items: [] });
+        currentKey = key;
+      }
+      groups[groups.length - 1].items.push(it);
     }
-    html += '</table>';
+
+    let html = '';
+    for (const g of groups) {
+      html += `<div class="date-group-header">${escapeHtml(g.key)} — ${g.items.length} otel</div>`;
+      html += '<table><tr><th>Otel</th><th>Tip</th><th>Detay</th><th>Konu</th></tr>';
+      for (const it of g.items) {
+        html += `<tr>
+          <td>${escapeHtml(it.hotel)}</td>
+          <td><span class="sale-badge ${it.type}">${SALE_LABEL[it.type] || it.type}</span></td>
+          <td>${escapeHtml(it.context || '—')}</td>
+          <td>${escapeHtml(it.subject)}</td>
+        </tr>`;
+      }
+      html += '</table>';
+    }
     body.innerHTML = html;
   } catch (e) {
     meta.textContent = 'Bağlantı hatası: ' + e.message;
