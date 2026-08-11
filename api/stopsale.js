@@ -348,19 +348,11 @@ export default async function handler(req, res) {
       return true;
     });
 
-    // Otel bazlı gruplama için: her otelin EN YAKIN tarihini bul, otelleri buna göre
-    // sırala (en acil otel en üstte), sonra her otelin kendi içinde tarihe göre sırala.
-    // Böylece aynı otelin tüm bildirimleri ardışık gelir - frontend bunları tek grupta gösterebilir.
-    const earliestByHotel = new Map();
-    for (const r of deduped) {
-      const cur = earliestByHotel.get(r.hotel);
-      if (cur === undefined || r.dateStartSort < cur) earliestByHotel.set(r.hotel, r.dateStartSort);
-    }
+    // Otel bazlı gruplama için: oteller ALFABETİK sıralanır, her otelin kendi
+    // içinde tarihe göre (en yakın önce) sıralanır. Böylece aynı otelin tüm
+    // bildirimleri ardışık gelir - frontend bunları tek grupta gösterebilir.
     deduped.sort((a, b) => {
-      const ea = earliestByHotel.get(a.hotel);
-      const eb = earliestByHotel.get(b.hotel);
-      if (ea !== eb) return ea - eb;
-      if (a.hotel !== b.hotel) return a.hotel.localeCompare(b.hotel);
+      if (a.hotel !== b.hotel) return a.hotel.localeCompare(b.hotel, 'tr');
       return a.dateStartSort - b.dateStartSort;
     });
 
