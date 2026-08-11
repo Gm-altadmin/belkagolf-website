@@ -378,20 +378,23 @@ async function loadStopSale() {
     if (res.status === 401) { meta.textContent = 'Şifre hatalı — sayfayı yenileyip tekrar giriş yapın.'; return; }
     if (data.error) { meta.textContent = 'Hata: ' + escapeHtml(data.error); return; }
 
-    meta.textContent = `Son 30 gün — ${data.count} stop/open sale bildirimi (en yeni üstte)`;
+    meta.textContent = `Bugünden itibaren ${data.count} bildirim — en yakın tarih üstte`;
 
     if (data.items.length === 0) {
-      body.innerHTML = '<div style="color:#999;margin-top:14px;">Son 30 günde stop/open sale bildirimi yok.</div>';
+      body.innerHTML = '<div style="color:#999;margin-top:14px;">Bugünden itibaren stop/open sale bildirimi yok.</div>';
       return;
     }
 
-    let html = '<table><tr><th>Tarih</th><th>Otel</th><th>Tip</th><th>Konu</th></tr>';
+    let html = '<table><tr><th>Tarih</th><th>Otel</th><th>Tip</th><th>Detay</th><th>Konu</th></tr>';
     for (const it of data.items) {
-      const d = it.date ? new Date(it.date).toLocaleDateString('tr-TR') + ' ' + new Date(it.date).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }) : '';
+      const d = it.dateStart
+        ? (it.dateStart === it.dateEnd ? it.dateStart : `${it.dateStart} – ${it.dateEnd}`)
+        : '—';
       html += `<tr>
         <td>${escapeHtml(d)}</td>
         <td>${escapeHtml(it.hotel)}</td>
         <td><span class="sale-badge ${it.type}">${SALE_LABEL[it.type] || it.type}</span></td>
+        <td>${escapeHtml(it.context || '—')}</td>
         <td>${escapeHtml(it.subject)}</td>
       </tr>`;
     }
