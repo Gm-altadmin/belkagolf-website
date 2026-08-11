@@ -64,13 +64,19 @@ function findPlainBody(payload) {
 function cellText(td) {
   return td
     .replace(/<[^>]+>/g, ' ')
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(parseInt(dec, 10)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
     .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
     .replace(/\s+/g, ' ')
     .trim();
 }
 
-const DATE_RANGE_RE = /(\d{1,2})\.(\d{1,2})\.(\d{2,4})(?:\s*[-–]\s*(\d{1,2})\.(\d{1,2})\.(\d{2,4}))?/;
+const DATE_RANGE_RE = /(\d{1,2})\.(\d{1,2})\.(\d{2,4})(?:\s*[-–—]\s*(\d{1,2})\.(\d{1,2})\.(\d{2,4}))?/;
 
 function toDate(d, m, y) {
   const yr = y.length === 2 ? 2000 + parseInt(y, 10) : parseInt(y, 10);
