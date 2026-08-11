@@ -260,15 +260,25 @@ export default async function handler(req, res) {
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const rows = [];
 
+    // Kullanıcı isteğiyle geçici olarak dışarıda tutulanlar (11.08.2026):
+    // Voyage Sorgun (sadece bu alt-otel, diğer Voyage'lar kalıyor) ve Mardan Palace
+    // (tüm otel). İleride kaldırılmak istenirse burası düzenlenmeli.
+    const EXCLUDED_SUBHOTELS = new Set(['VOYAGE SORGUN']);
+    const EXCLUDED_SENDER_DOMAINS = ['mardanpalace.com'];
+
     for (const det of detailResults) {
       const msgs = det.messages || [];
       for (const msg of msgs) {
         const subject = getHeader(msg, 'Subject');
         const from = getHeader(msg, 'From');
+
+        if (EXCLUDED_SENDER_DOMAINS.some(d => from.toLowerCase().includes(d))) continue;
+        const subHotelFromSubj = subHotelFromSubject(subject);
+        if (subHotelFromSubj && EXCLUDED_SUBHOTELS.has(subHotelFromSubj)) continue;
+
         const sType = subjectType(subject);
         const html = findHtmlBody(msg.payload);
         const baseHotel = hotelFromSender(from);
-        const subHotelFromSubj = subHotelFromSubject(subject);
 
         let entries = html ? extractFromHtml(html, sType, subHotelFromSubj) : [];
 
