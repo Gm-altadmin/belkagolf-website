@@ -1327,12 +1327,24 @@ function renderHpAllResult(results) {
     : r.priceType === 'single'
       ? (L.hp_single || 'Single, per person')
       : (L.hp_double || 'Double, per person');
-  resultEl.innerHTML = results.map(r =>
-    '<div class="hp-option hp-all-row" data-hotel="' + encodeURIComponent(r.hotel) + '">' +
+  // Round sayısı + oda görünümü + rozetler de eklendi (19.08.2026) - önceden sadece
+  // otel adı + fiyat gösteriliyordu, iç Fiyat Arama aracındaki gibi detay yoktu.
+  resultEl.innerHTML = results.map(r => {
+    const roundLabel = hpRoundLabel(r.rounds, L);
+    const viewLabel = r.view ? ' — ' + r.view : '';
+    const badges = [];
+    if (r.buggyFree) badges.push((L.hp_buggy_free || 'Free Buggy'));
+    if (r.tokenFree) badges.push((L.hp_token_free || 'Free Token'));
+    if (r.transferFree) badges.push((L.hp_transfer_free || 'Free Transfer'));
+    if (r.group71) badges.push((L.hp_group71_badge || '7+1 Available'));
+    const badgesHtml = badges.length ? '<div class="hp-badges">' + badges.map(b => '<span class="hp-badge">' + b + '</span>').join('') + '</div>' : '';
+    return '<div class="hp-option hp-all-row" data-hotel="' + encodeURIComponent(r.hotel) + '">' +
       '<div><strong>' + hpEscape(r.hotel) + '</strong></div>' +
+      '<div style="margin-top:2px;color:rgba(255,255,255,.65);font-size:.88rem">' + roundLabel + viewLabel + '</div>' +
       '<div style="margin-top:4px">' + priceLabelFor(r) + ': <strong>' + r.price + '</strong></div>' +
-    '</div>'
-  ).join('');
+      badgesHtml +
+    '</div>';
+  }).join('');
 }
 
 document.getElementById('hp-result').addEventListener('click', (e) => {
