@@ -53,7 +53,7 @@ const HP_MARKUP_EXCLUDED_HOTELS = new Set([
 
 module.exports = (req, res) => {
   try {
-    const { date, nights, group } = req.query;
+    const { date, nights, group, rounds } = req.query;
     if (!date) {
       res.status(400).json({ error: 'missing_params' });
       return;
@@ -71,6 +71,12 @@ module.exports = (req, res) => {
       const matches = data.filter(row => {
         if (row.hotel !== hotel) return false;
         if (nightsNum !== null && row.nights !== nightsNum) return false;
+        // Round filtresi (19.08.2026 eklendi): kullanıcı belirli bir round sayısı
+        // istediyse SADECE o otelin o sayıya sahip satırlarını dahil et - böylece
+        // farklı otellerin farklı round sayılarındaki fiyatları karşılaştırılmaz
+        // (örn. birinin 3 round'luk en ucuz paketi, diğerinin 1 round'luk paketiyle
+        // yan yana gösterilmesin). Belirtilmezse eski davranış: round fark etmez.
+        if (rounds) { if (String(row.rounds) !== String(rounds)) return false; }
         const start = parseDate(row.start);
         const end = parseDate(row.end);
         return checkDate >= start && checkDate <= end;
