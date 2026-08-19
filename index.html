@@ -222,8 +222,11 @@
   .hp-result.hp-error::before { content:'⚠ '; }
   .hp-option { padding:14px 0; border-top:1px solid rgba(255,255,255,.08); }
   .hp-option:first-child { border-top:none; }
-  .hp-all-row { cursor:pointer; transition:background .15s; margin:0 -4px; padding-left:4px; padding-right:4px; border-radius:6px; }
+  .hp-all-row { cursor:pointer; transition:background .15s; margin:0 -4px; padding-left:4px; padding-right:4px; border-radius:6px; display:flex; gap:14px; align-items:flex-start; }
   .hp-all-row:hover { background:rgba(255,255,255,.05); }
+  .hp-all-thumb { width:72px; height:72px; object-fit:cover; border-radius:8px; flex:none; }
+  .hp-all-thumb-empty { background:rgba(255,255,255,.06); }
+  .hp-all-info { flex:1; min-width:0; }
   .hp-option strong { color:var(--gold-light); font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; }
   .hp-badges { margin-top:4px; font-size:.85rem; color:rgba(255,255,255,.75); }
   .hp-badge { display:inline-block; margin-right:8px; padding:2px 8px; background:rgba(184,146,58,.15); border:1px solid rgba(184,146,58,.4); border-radius:10px; }
@@ -1327,8 +1330,9 @@ function renderHpAllResult(results) {
     : r.priceType === 'single'
       ? (L.hp_single || 'Single, per person')
       : (L.hp_double || 'Double, per person');
-  // Round sayısı + oda görünümü + rozetler de eklendi (19.08.2026) - önceden sadece
-  // otel adı + fiyat gösteriliyordu, iç Fiyat Arama aracındaki gibi detay yoktu.
+  // Round sayısı + oda görünümü + rozetler + otel fotoğrafı eklendi (19.08.2026) -
+  // önceden sadece otel adı + fiyat gösteriliyordu. Fotoğraf PACKAGES dizisindeki
+  // mevcut görsellerden (hpHotelInfo) alınıyor - ekstra bir kaynak eklemeye gerek yok.
   resultEl.innerHTML = results.map(r => {
     const roundLabel = hpRoundLabel(r.rounds, L);
     const viewLabel = r.view ? ' — ' + r.view : '';
@@ -1338,11 +1342,16 @@ function renderHpAllResult(results) {
     if (r.transferFree) badges.push((L.hp_transfer_free || 'Free Transfer'));
     if (r.group71) badges.push((L.hp_group71_badge || '7+1 Available'));
     const badgesHtml = badges.length ? '<div class="hp-badges">' + badges.map(b => '<span class="hp-badge">' + b + '</span>').join('') + '</div>' : '';
+    const info = hpHotelInfo(r.hotel);
+    const imgHtml = info ? '<img src="' + info.img + '" alt="" class="hp-all-thumb" loading="lazy">' : '<div class="hp-all-thumb hp-all-thumb-empty"></div>';
     return '<div class="hp-option hp-all-row" data-hotel="' + encodeURIComponent(r.hotel) + '">' +
-      '<div><strong>' + hpEscape(r.hotel) + '</strong></div>' +
-      '<div style="margin-top:2px;color:rgba(255,255,255,.65);font-size:.88rem">' + roundLabel + viewLabel + '</div>' +
-      '<div style="margin-top:4px">' + priceLabelFor(r) + ': <strong>' + r.price + '</strong></div>' +
-      badgesHtml +
+      imgHtml +
+      '<div class="hp-all-info">' +
+        '<div><strong>' + hpEscape(r.hotel) + '</strong></div>' +
+        '<div style="margin-top:2px;color:rgba(255,255,255,.65);font-size:.88rem">' + roundLabel + viewLabel + '</div>' +
+        '<div style="margin-top:4px">' + priceLabelFor(r) + ': <strong>' + r.price + '</strong></div>' +
+        badgesHtml +
+      '</div>' +
     '</div>';
   }).join('');
 }
