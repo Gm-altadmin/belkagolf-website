@@ -47,14 +47,11 @@ function findActiveCampaign(hotel, checkDate) {
 }
 
 let cachedData = null;
-function loadData() {
-  if (cachedData) return cachedData;
-  const filePath = path.join(__dirname, 'data', 'hotel-packages.xlsx');
-  const buf = fs.readFileSync(filePath);
-  const wb = XLSX.read(buf, { type: 'buffer', cellDates: false });
-  const sheet = wb.Sheets[wb.SheetNames[0]];
-  const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: null });
+
+function parseSheetRows(rows) {
   const headerIdx = rows.findIndex(r => r && r[0] === 'Otel');
+  if (headerIdx === -1) return []; // veri tablosu olmayan sayfa (örn. Özet-Index)
+
   const data = [];
   for (let i = headerIdx + 1; i < rows.length; i++) {
     const r = rows[i];
@@ -74,6 +71,23 @@ function loadData() {
       transferFree: r[11] === 'Evet'
     });
   }
+  return data;
+}
+
+function loadData() {
+  if (cachedData) return cachedData;
+  const filePath = path.join(__dirname, 'data', 'hotel-packages.xlsx');
+  const buf = fs.readFileSync(filePath);
+  const wb = XLSX.read(buf, { type: 'buffer', cellDates: false });
+
+  // Dosyadaki TÜM sayfaları tara (her otel kendi sayfasında olabilir).
+  let data = [];
+  for (const sheetName of wb.SheetNames) {
+    const sheet = wb.Sheets[sheetName];
+    const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: null });
+    data = data.concat(parseSheetRows(rows));
+  }
+
   cachedData = data;
   return data;
 }

@@ -8,15 +8,10 @@ const AI_TRUE_VALUES = ['evet', 'yes', 'dahil', 'included', 'da', 'ja'];
 
 let cachedData = null;
 
-function loadData() {
-  if (cachedData) return cachedData;
-  const filePath = path.join(__dirname, 'data', 'greenfee-prices.xlsx');
-  const buf = fs.readFileSync(filePath);
-  const wb = XLSX.read(buf, { type: 'buffer', cellDates: true });
-  const sheet = wb.Sheets[wb.SheetNames[0]];
-  const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: null });
-
+function parseSheetRows(rows) {
   const headerIdx = rows.findIndex(r => r && r[0] === 'Golf Sahası');
+  if (headerIdx === -1) return []; // bu sayfada veri tablosu yok (örn. Özet-Index sayfası)
+
   const data = [];
   for (let i = headerIdx + 1; i < rows.length; i++) {
     const r = rows[i];
@@ -29,13 +24,31 @@ function loadData() {
       start, end,
       greenFee: r[3],
       specialRate: r[4],
-      hotelRate: r[6],
-      token: r[8],
-      buggy: r[9],
-      trolley: r[10],
-      allInclusive: r[11]
+      hotelRate: r[5],
+      token: r[6],
+      buggy: r[7],
+      trolley: r[8],
+      allInclusive: r[9]
     });
   }
+  return data;
+}
+
+function loadData() {
+  if (cachedData) return cachedData;
+  const filePath = path.join(__dirname, 'data', 'greenfee-prices.xlsx');
+  const buf = fs.readFileSync(filePath);
+  const wb = XLSX.read(buf, { type: 'buffer', cellDates: true });
+
+  // Dosyadaki TÜM sayfaları tara (her golf kulübü/sahası kendi sayfasında olabilir).
+  // "Golf Sahası" başlıklı veri tablosu içermeyen sayfalar (örn. Özet-Index) otomatik atlanır.
+  let data = [];
+  for (const sheetName of wb.SheetNames) {
+    const sheet = wb.Sheets[sheetName];
+    const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: null });
+    data = data.concat(parseSheetRows(rows));
+  }
+
   cachedData = data;
   return data;
 }
