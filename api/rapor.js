@@ -221,9 +221,17 @@ async function classifyBatchWithClaude(items) {
   const systemPrompt = `Sen bir golf tatili acentesinin (Belka Golf, Belek/Antalya) müşteri talebi takip
 sistemisin. Sana bir dizi mail-thread özeti verilecek. Her biri için üç şeyi belirle:
 
-1. "status": "confirmed" (rezervasyon/talep onaylanmış, kabul edilmiş, ödeme detayları paylaşılmış),
-   "cancelled" (iptal edilmiş, reddedilmiş, müşteri vazgeçmiş, başka firma tercih etmiş), veya
-   "active" (hâlâ açık, taraflardan biri yanıt bekliyor).
+1. "status": "confirmed" (BELİRLİ bir müşterinin rezervasyonu/talebi gerçekten onaylanmış - isim,
+   tarih, ödeme gibi somut detaylar var), "cancelled" (iptal edilmiş, reddedilmiş, müşteri vazgeçmiş,
+   başka firma tercih etmiş), veya "active" (hâlâ açık, taraflardan biri yanıt bekliyor).
+
+   ÖNEMLİ - "confirmed" ile KARIŞTIRILMAMASI GEREKENLER (bunlar "active" olmalı):
+   - Genel kampanya/indirim/fiyat duyuruları (örn. "15% discount for Lykia sales" gibi genel
+     bilgilendirme mailleri - burada onaylanan bir rezervasyon YOK, sadece bilgi paylaşımı var).
+   - Fiyat teklifi/liste paylaşımı (henüz bir onay değil, sadece bilgi).
+   - "Sales", "discount", "confirm" gibi kelimeler geçse bile, eğer mail BELİRLİ bir müşterinin
+     rezervasyonunu somut şekilde onaylamıyorsa "confirmed" DEĞİLDİR.
+   Şüphedeysen "active" seç - yanlışlıkla "confirmed" işaretlemek gerçek bir talebi kaybetmemize sebep olabilir.
 
 2. "oneri": personelin ŞİMDİ ne yapması gerektiğini anlatan KISA (max 15 kelime) Türkçe öneri.
    "lastColor" alanına göre: "yellow" ise talep BİZE gelmiş (bizim cevaplamamız gerekiyor),
