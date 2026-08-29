@@ -1083,10 +1083,12 @@ async function loadReport() {
       html += '<div style="color:#999;margin-top:14px;">Şu an aksiyon bekleyen talep yok — hepsi onaylı/iptal.</div>';
     }
 
-    html += `<div class="disclaimer">Bu sayfa anahtar-kelime ve "kim kime yazdı" (domain bazlı) kurallarla çalışır.
-      Chat'teki "rapor" komutunun yaptığı derinlemesine analiz (tam bağlam okuma,
-      geçmiş kayıp-müşteri paternleri, çapraz-otel eşleştirme) burada yok — en doğru/detaylı
-      analiz için chat'te "rapor" yazmaya devam edin.</div>`;
+    html += `<div class="disclaimer">Durum tespiti (onaylandı/iptal/aktif), öneri metni ve gürültü işaretlemesi
+      artık Claude API (Haiku) ile anlam bazlı yapılıyor - eski anahtar-kelime sistemi sadece API bir hata
+      verirse yedek olarak devreye giriyor. "Kim kime yazdı" (Bizde/Otelde/Müşteride) yönü hâlâ domain bazlı,
+      deterministik bir kuralla belirleniyor. Daha derinlemesine, çok adımlı bir analiz (geçmiş kayıp-müşteri
+      paternleri, çapraz-otel eşleştirme, konuşma geçmişiyle bağlam) istersen chat'te "rapor" yazmaya devam
+      edebilirsin.</div>`;
     content.innerHTML = html;
   } catch (e) {
     err.textContent = 'Bağlantı hatası: ' + e.message;
