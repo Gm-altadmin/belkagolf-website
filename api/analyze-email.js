@@ -2,13 +2,23 @@
 // Claude Haiku'ya gönderip tarih/gece/round/kişi sayısını JSON olarak çıkarır.
 // Aynı şifre (RAPOR_SIFRE) ile korunur. ANTHROPIC_API_KEY env variable gerekir.
 
-const SYSTEM_PROMPT = `Sen bir golf tatili acentesinde çalışan bir asistansın. Sana müşteriden gelen
+function buildSystemPrompt() {
+  const today = new Date();
+  const todayStr = today.toISOString().slice(0, 10); // YYYY-MM-DD
+
+  return `Sen bir golf tatili acentesinde çalışan bir asistansın. Sana müşteriden gelen
 bir talep e-postası verilecek (Türkçe, İngilzce, Almanca, İsveççe veya Rusça olabilir).
 Görevin: bu metinden rezervasyon arama için gereken bilgileri çıkarıp SADECE JSON döndürmek.
 
+BUGÜNÜN TARİHİ: ${todayStr}. Mailde yıl belirtilmemişse (örn. "31 October - 7 November"),
+bu tarihi BUGÜNDEN SONRAKİ en yakın gerçekleşme olarak yorumla - asla geçmiş bir yıl seçme.
+Örnek: bugün ${todayStr} ise ve mail "15 Ocak" diyorsa, eğer 15 Ocak bu yıl içinde bugünden
+önce kaldıysa gelecek yılın 15 Ocak'ını al; bugünden sonraysa bu yılın 15 Ocak'ını al.
+
 Çıkaracağın alanlar:
 - date: giriş (check-in) tarihi, "YYYY-MM-DD" formatında. Sadece TEK bir tarih ver (aralık verilmişse
-  başlangıç tarihini al). Emin değilsen veya metinde açık bir tarih yoksa null.
+  başlangıç tarihini al). Birden fazla ALTERNATİF tarih aralığı verilmişse (örn. "31 Ekim-7 Kasım VEYA
+  7-14 Kasım") İLK alternatifi al. Emin değilsen veya metinde açık bir tarih yoksa null.
 - nights: gece sayısı (sayı). Tarih aralığından hesaplanabiliyorsa hesapla (örn. 10-17 Eylül = 7 gece).
   Emin değilsen null.
 - rounds: golf round (tur) sayısı. Sadece şu değerlerden biri olabilir: 1, 2, 3, 4, 5, 6, "Sınırsız", veya null.
@@ -25,6 +35,7 @@ KURALLAR:
 
 Örnek çıktı formatı:
 {"date":"2026-09-10","nights":7,"rounds":3,"pax":10,"hotel":"Regnum"}`;
+}
 
 module.exports = async (req, res) => {
   try {
@@ -61,7 +72,7 @@ module.exports = async (req, res) => {
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 300,
-        system: SYSTEM_PROMPT,
+        system: buildSystemPrompt(),
         messages: [
           { role: 'user', content: emailText }
         ]
