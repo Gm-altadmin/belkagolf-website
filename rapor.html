@@ -171,6 +171,22 @@
     background: #1e2b23; color: #fff; font-size: 0.92rem; width: 140px;
   }
   .search-note { color: #ddbf7a; font-size: 0.85rem; margin-bottom: 12px; }
+  .email-analyze-box {
+    border: 1px solid #3a4a3d; border-radius: 8px; padding: 14px 16px; margin-bottom: 18px;
+    background: #1e2b23; display: flex; flex-direction: column; gap: 8px;
+  }
+  .email-analyze-box label { font-size: 0.78rem; color: #999; }
+  .email-analyze-box textarea {
+    padding: 10px 12px; border-radius: 8px; border: 1px solid #3a4a3d;
+    background: #14201a; color: #fff; font-size: 0.9rem; font-family: inherit; resize: vertical;
+  }
+  .email-analyze-box button {
+    align-self: flex-start; padding: 9px 18px; border-radius: 8px; border: none;
+    background: #c9a961; color: #14201a; font-weight: 600; cursor: pointer; font-size: 0.88rem;
+  }
+  .email-analyze-box button:disabled { opacity: 0.6; cursor: default; }
+  #s-analyze-status { font-size: 0.82rem; color: #7fcf9a; min-height: 1.1em; }
+  #s-analyze-status.err { color: #e08a8a; }
   .badge-free {
     display: inline-block; font-size: 0.7rem; background: #2a3f2f; color: #7fcf9a;
     padding: 1px 6px; border-radius: 8px; margin-right: 4px;
@@ -301,6 +317,12 @@
         </div>
         <div class="view-checkbox-grid" id="view-checkbox-grid"></div>
       </div>
+    </div>
+    <div class="email-analyze-box">
+      <label>Müşteri Mailini Yapıştır (opsiyonel)</label>
+      <textarea id="s-email-text" rows="5" placeholder="Müşteriden gelen talep mailini buraya yapıştırın..."></textarea>
+      <button id="s-analyze-btn" onclick="analyzeEmail()">Analiz Et</button>
+      <div id="s-analyze-status"></div>
     </div>
     <div class="search-form">
       <div class="search-field">
@@ -599,6 +621,68 @@ function updateViewAccordionLabel() {
 }
 
 buildViewCheckboxes();
+
+async function analyzeEmail() {
+  const text = document.getElementById('s-email-text').value.trim();
+  const statusEl = document.getElementById('s-analyze-status');
+  const btn = document.getElementById('s-analyze-btn');
+  statusEl.classList.remove('err');
+
+  if (!text) {
+    statusEl.classList.add('err');
+    statusEl.textContent = 'Önce mail metnini yapıştırın.';
+    return;
+  }
+
+  btn.disabled = true;
+  statusEl.textContent = 'Analiz ediliyor...';
+
+  try {
+    const res = await fetch('/api/analyze-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: SAVED_PW, text })
+    });
+    const data = await res.json();
+
+    if (res.status === 401) {
+      statusEl.classList.add('err');
+      statusEl.textContent = 'Şifre hatalı — sayfayı yenileyip tekrar giriş yapın.';
+      return;
+    }
+    if (data.error) {
+      statusEl.classList.add('err');
+      statusEl.textContent = 'Analiz başarısız oldu — bilgileri elle girebilirsiniz.';
+      return;
+    }
+
+    const filled = [];
+    if (data.date) { document.getElementById('s-date').value = data.date; filled.push('tarih'); }
+    if (data.nights) { document.getElementById('s-nights').value = data.nights; filled.push('gece'); }
+    if (data.rounds) {
+      const roundsSelect = document.getElementById('s-rounds');
+      const val = String(data.rounds);
+      if ([...roundsSelect.options].some(o => o.value === val)) {
+        roundsSelect.value = val;
+        filled.push('round');
+      }
+    }
+    if (data.pax) { document.getElementById('s-pax').value = data.pax; filled.push('kişi sayısı'); }
+
+    if (filled.length === 0) {
+      statusEl.textContent = 'Mailden net bir bilgi çıkarılamadı — kutucukları elle doldurun.';
+    } else {
+      let msg = 'Dolduruldu: ' + filled.join(', ') + '. Lütfen kontrol edip "Ara"ya basın.';
+      if (data.hotel) msg += ' (Belirtilen otel: ' + data.hotel + ')';
+      statusEl.textContent = msg;
+    }
+  } catch (e) {
+    statusEl.classList.add('err');
+    statusEl.textContent = 'Bağlantı hatası — tekrar deneyin.';
+  } finally {
+    btn.disabled = false;
+  }
+}
 
 async function runHotelSearch() {
   const date = document.getElementById('s-date').value;
