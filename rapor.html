@@ -432,7 +432,7 @@ async function scanNoise() {
   actions.style.display = 'none';
 
   try {
-    const res = await fetch('/api/noise-scan?password=' + encodeURIComponent(SAVED_PW));
+    const res = await fetch('/api/noise?password=' + encodeURIComponent(SAVED_PW));
     const data = await res.json();
 
     if (res.status === 401) {
@@ -486,7 +486,7 @@ async function confirmNoise() {
 
   statusEl.textContent = 'Kaydediliyor...';
   try {
-    const res = await fetch('/api/mark-noise', {
+    const res = await fetch('/api/noise', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ password: SAVED_PW, senders: checked })
