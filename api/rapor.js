@@ -48,6 +48,22 @@ const NOISE_SENDERS = [
 
 const OUR_DOMAIN = 'belkagolf.com';
 
+// Gürültü Kontrolü sekmesinde onaylanıp GitHub'a otomatik commit edilen ek
+// göndericileri okur (api/mark-noise.js tarafından güncellenir). Dosya yoksa
+// veya bozuksa sessizce boş liste döner - sabit NOISE_SENDERS listesi zaten çalışmaya devam eder.
+function loadPersistedNoiseSenders() {
+  try {
+    const path = require('path');
+    const fs = require('fs');
+    const filePath = path.join(__dirname, 'data', 'noise-senders.json');
+    const raw = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    return Array.isArray(raw.senders) ? raw.senders : [];
+  } catch (e) {
+    return [];
+  }
+}
+const PERSISTED_NOISE_SENDERS = loadPersistedNoiseSenders();
+
 const HOTEL_DOMAINS = [
   'maxxroyal.com', 'cajabymaxxroyal.com', 'corneliadiamond.com', 'regnumhotels.com',
   'cullinanhotels.com', 'cullinanlinksgolfclub.com', 'sueno.com.tr', 'kayahotels.com.tr',
@@ -210,7 +226,7 @@ export default async function handler(req, res) {
 
     const eightDaysAgo = new Date(Date.now() - 8 * 24 * 60 * 60 * 1000);
     const dateStr = `${eightDaysAgo.getFullYear()}/${eightDaysAgo.getMonth() + 1}/${eightDaysAgo.getDate()}`;
-    const noiseExcl = NOISE_SENDERS.map((s) => `-from:${s}`).join(' ');
+    const noiseExcl = [...NOISE_SENDERS, ...PERSISTED_NOISE_SENDERS].map((s) => `-from:${s}`).join(' ');
     // KONU BAŞLIĞI BAZLI STOP/OPEN SALE FİLTRESİ (10.08.2026 eklendi): kişisel çalışan
     // adreslerinden gelen stop-sale bültenlerini de yakalar, adres listesine bağımlı
     // kalmadan. Gerçek müşteri talepleri konu başlığında bu ifadeleri hiç geçirmez.
