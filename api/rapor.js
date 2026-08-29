@@ -201,7 +201,12 @@ function classifyFallback({ snippet, subject, trail, lastColor, daysWaiting, isU
   let priority = daysWaiting;
   if (isUrgentKw) priority += 50;
   const bekleyen = lastColor === 'green' ? 'Otelden cevap bekleniyor' : 'Müşteriden cevap bekleniyor';
-  const oneri = daysWaiting >= 5 ? 'Hatırlatma gönderilebilir' : '—';
+  let oneri = '—';
+  if (daysWaiting >= 1) {
+    oneri = lastColor === 'green'
+      ? 'Otelden yanıt gecikti — müşteriyi bilgilendir veya oteli ara'
+      : 'Hatırlatma gönderilebilir — müşteri kaybı riski';
+  }
   return { trail, label: `${bekleyen} (${daysWaiting} gün)`, priority, closed: false, oneri, isNoise: false };
 }
 
@@ -234,12 +239,19 @@ sistemisin. Sana bir dizi mail-thread özeti verilecek. Her biri için üç şey
    Şüphedeysen "active" seç - yanlışlıkla "confirmed" işaretlemek gerçek bir talebi kaybetmemize sebep olabilir.
 
 2. "oneri": personelin ŞİMDİ ne yapması gerektiğini anlatan KISA (max 15 kelime) Türkçe öneri.
-   "lastColor" alanına göre: "yellow" ise talep BİZE gelmiş (bizim cevaplamamız gerekiyor),
-   "green" ise biz otele göndermişiz (otelden yanıt bekleniyor), "pink" ise biz müşteriye
-   göndermişiz (müşteriden yanıt bekleniyor). "daysWaiting" gün sayısına göre aciliyeti yansıt
-   (0="bugün geldi", 1="1 gündür yanıtsız - bugün cevaplanmalı", 2+="X GÜNDÜR YANITSIZ - hemen
-   cevaplanmalı"). "isUrgentKw" true ise önerinin başına "URGENT —" ekle. status "confirmed" veya
-   "cancelled" ise oneri her zaman "—" olsun (kapanmış talepler için öneri gerekmez).
+   "lastColor" alanına göre üç farklı durum var:
+   - "yellow": talep BİZE gelmiş, bizim cevaplamamız gerekiyor. "daysWaiting"e göre: 0="bugün geldi,
+     yanıt gönderilmeli", 1="1 gündür yanıtsız - bugün cevaplanmalı", 2+="X GÜNDÜR YANITSIZ - hemen
+     cevaplanmalı".
+   - "pink": biz müşteriye göndermişiz, müşteriden yanıt bekleniyor. daysWaiting=0 ise "—" (henüz
+     erken, bekle). daysWaiting>=1 ise "Hatırlatma gönderilebilir — müşteri kaybı riski" gibi bir
+     hatırlatma öner (müşteri sessizliği ciddiye alınmalı, günler geçtikçe müşteri kaybetme riski artar).
+   - "green": biz otele göndermişiz, otelden yanıt bekleniyor. Oteller birkaç saat içinde cevap
+     vermeyebilir, bu normaldir - daysWaiting=0 ise "—" (henüz normal bekleme süresi). daysWaiting>=1
+     ise "Otelden yanıt gecikti — müşteriyi bilgilendir veya oteli ara" gibi bir uyarı ver (bir günü
+     aşan otel sessizliği, müşteriyi bilgisiz bırakıp kaybetme riski taşır).
+   "isUrgentKw" true ise önerinin başına "URGENT —" ekle. status "confirmed" veya "cancelled" ise
+   oneri her zaman "—" olsun (kapanmış talepler için öneri gerekmez).
 
 3. "isNoise": bu aslında gerçek bir müşteri talebi veya otel/kulüp iş yazışması DEĞİL de
    (bülten, reklam, otomatik sistem bildirimi, spam, alakasız toplu mail) gürültü mü? true/false.
