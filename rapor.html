@@ -44,6 +44,10 @@
     color: #777; font-size: 0.85rem; padding: 12px 14px;
     border: 1px solid #3a4a3d; border-top: none; border-radius: 0 0 8px 8px; margin-bottom: 4px;
   }
+  .noise-flag {
+    display: block; font-size: 0.72rem; color: #e0a878; background: #3f2a2a;
+    padding: 1px 6px; border-radius: 8px; margin-top: 4px; width: fit-content;
+  }
   .gate {
     display: flex;
     gap: 10px;
@@ -953,10 +957,14 @@ function buildRow(item, rowIdx) {
     }
   }
 
+  const noiseBadge = item.isNoise
+    ? '<span class="noise-flag" title="Claude bu talebi olası gürültü olarak işaretledi - gerçek bir müşteri/otel talebi değilse Gürültü Kontrolü sekmesinden kalıcı olarak ekleyebilirsiniz">⚠ Muhtemelen gürültü</span>'
+    : '';
+
   return `<tr${lateStyle}>
     <td>${d}</td>
     <td>${escapeHtml(item.from)}</td>
-    <td>${escapeHtml(item.subject)}${mergeBadge}${otherSubjectsHtml}</td>
+    <td>${escapeHtml(item.subject)}${mergeBadge}${otherSubjectsHtml}${noiseBadge}</td>
     <td>${escapeHtml(item.snippet).slice(0, 120)}${item.snippet.length > 120 ? '…' : ''}</td>
     <td>${renderTrail(item.trail)}<span class="status-label">${escapeHtml(item.statusLabel)}</span></td>
     <td class="oneri">${escapeHtml(item.oneri)}</td>
