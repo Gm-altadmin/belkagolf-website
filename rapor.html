@@ -27,6 +27,23 @@
     margin: 18px 0 8px; font-size: 0.82rem; color: #bbb;
   }
   .legend-item { display: flex; align-items: center; gap: 6px; }
+  .ball-group {
+    margin-top: 22px; margin-bottom: 4px;
+  }
+  .ball-group-header {
+    display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+    background: #1e2b23; border: 1px solid #3a4a3d; border-radius: 8px 8px 0 0;
+    font-size: 1.05rem;
+  }
+  .ball-group-count {
+    background: #c9a961; color: #14201a; font-weight: 700; font-size: 0.85rem;
+    padding: 2px 9px; border-radius: 10px;
+  }
+  .ball-group-note { color: #999; font-size: 0.8rem; margin-left: auto; }
+  .ball-group-empty {
+    color: #777; font-size: 0.85rem; padding: 12px 14px;
+    border: 1px solid #3a4a3d; border-top: none; border-radius: 0 0 8px 8px; margin-bottom: 4px;
+  }
   .gate {
     display: flex;
     gap: 10px;
@@ -906,6 +923,17 @@ function isCancelled(item) {
   return (item.statusLabel || '').indexOf('Reddedildi') === 0;
 }
 
+// "Top kimde" - aktif (onaylanmamış/iptal edilmemiş) bir talebin iz dizisindeki SON renk,
+// o an sırayı kimin beklediğini gösterir. sarı=bize geldi (bizim cevaplamamız gerek),
+// yeşil=biz otele gönderdik (otel bekleniyor), pembe=biz müşteriye gönderdik (müşteri bekleniyor).
+function ballCategory(item) {
+  const last = item.trail && item.trail.length ? item.trail[item.trail.length - 1] : null;
+  if (last === 'yellow') return 'bizde';
+  if (last === 'green') return 'otelde';
+  if (last === 'pink') return 'musteride';
+  return 'bizde'; // beklenmeyen durum - güvenli varsayım
+}
+
 function buildRow(item, rowIdx) {
   // Saat eklendi (10.08.2026) - hangi mailin önce geldiğini ayırt etmek için tarihin
   // yanında saat de gösteriliyor artık.
@@ -1007,11 +1035,41 @@ async function loadReport() {
       <span class="legend-item"><span class="dot dot-green"></span> biz → otel (top otelde)</span>
       <span class="legend-item"><span class="dot dot-pink"></span> biz → müşteri (top müşteride)</span>
       <span class="legend-item"><span class="merge-badge">×N</span> aynı müşterinin N mail'i birleşti — tıkla, aç/kapa</span>
-    </div>
-    <div style="color:#777;font-size:0.78rem;margin-bottom:8px;">Noktalar solda eskiden yeniye sıralanır - sağdaki en güncel durum. Aşağıdaki liste sadece aksiyon bekleyen talepleri gösterir.</div>`;
+    </div>`;
 
-    const activeTable = buildTable(activeItems, rowCounter);
-    html += activeTable.html;
+    // "Top kimde" gruplaması (29.08.2026) - tek karışık liste yerine üç ayrı bölüm:
+    // Bizde (biz cevaplamalıyız) / Otelde (otel bekleniyor) / Müşteride (müşteri bekleniyor).
+    // Her grup içinde sıra korunuyor (backend zaten tarihe göre yeniden eskiye sıralı döndürüyor).
+    const groups = { bizde: [], otelde: [], musteride: [] };
+    for (const it of activeItems) {
+      groups[ballCategory(it)].push(it);
+    }
+
+    const GROUP_META = {
+      bizde: { title: 'Bizde', dot: 'yellow', note: 'Bu taleplere bizim cevap vermemiz gerekiyor' },
+      otelde: { title: 'Otelde', dot: 'green', note: 'Otelden yanıt bekleniyor' },
+      musteride: { title: 'Müşteride', dot: 'pink', note: 'Müşteriden yanıt bekleniyor' }
+    };
+
+    for (const key of ['bizde', 'otelde', 'musteride']) {
+      const meta = GROUP_META[key];
+      const groupItems = groups[key];
+      html += `<div class="ball-group">
+        <div class="ball-group-header">
+          <span class="dot dot-${meta.dot}"></span>
+          <strong>${meta.title}</strong>
+          <span class="ball-group-count">${groupItems.length}</span>
+          <span class="ball-group-note">${meta.note}</span>
+        </div>
+      </div>`;
+      const groupTable = buildTable(groupItems, rowCounter);
+      rowCounter = groupTable.nextIdx;
+      if (groupItems.length === 0) {
+        html += '<div class="ball-group-empty">— Bu kategoride bekleyen talep yok —</div>';
+      } else {
+        html += groupTable.html;
+      }
+    }
 
     if (activeItems.length === 0) {
       html += '<div style="color:#999;margin-top:14px;">Şu an aksiyon bekleyen talep yok — hepsi onaylı/iptal.</div>';
