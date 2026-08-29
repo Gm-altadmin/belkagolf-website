@@ -195,6 +195,14 @@
     display: inline-block; font-size: 0.72rem; background: #3f2a2a; color: #e0a878;
     padding: 1px 6px; border-radius: 8px; margin-left: 4px; white-space: nowrap;
   }
+  .noise-candidate {
+    border: 1px solid #3a4a3d; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px;
+    background: #1e2b23;
+  }
+  .noise-candidate label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+  .noise-candidate input[type="checkbox"] { width: 16px; height: 16px; }
+  .noise-subject { color: #ccc; font-size: 0.88rem; margin-top: 4px; margin-left: 24px; }
+  .noise-reason { color: #ddbf7a; font-size: 0.82rem; margin-top: 4px; margin-left: 24px; }
 
   /* Otel/Oda Tipi seçim akordiyonları (10.08.2026 eklendi) */
   .hotel-accordion, .view-accordion {
@@ -289,6 +297,7 @@
     <button class="tab-btn" id="tab-btn-search" onclick="switchTab('search')">Fiyat Arama</button>
     <button class="tab-btn" id="tab-btn-campaigns" onclick="switchTab('campaigns')">Kampanyalar</button>
     <button class="tab-btn" id="tab-btn-stopsale" onclick="switchTab('stopsale')">Stop/Open Sale</button>
+    <button class="tab-btn" id="tab-btn-noise" onclick="switchTab('noise')">Gürültü Kontrolü</button>
   </div>
 
   <div id="view-rapor">
@@ -369,6 +378,16 @@
     <button class="refresh-btn" onclick="loadStopSale()">Yenile</button>
     <div id="stopsale-body"></div>
   </div>
+
+  <div id="view-noise" style="display:none;">
+    <div class="meta" id="noise-meta">Henüz taranmadı.</div>
+    <button class="refresh-btn" onclick="scanNoise()">Son 8 Günü Tara</button>
+    <div id="noise-body"></div>
+    <div id="noise-actions" style="display:none; margin-top:16px;">
+      <button class="refresh-btn" onclick="confirmNoise()">Seçilenleri Gürültüye Ekle</button>
+      <div id="noise-action-status" style="margin-top:8px; font-size:0.85rem;"></div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -394,12 +413,103 @@ function switchTab(name) {
   document.getElementById('view-search').style.display = name === 'search' ? 'block' : 'none';
   document.getElementById('view-campaigns').style.display = name === 'campaigns' ? 'block' : 'none';
   document.getElementById('view-stopsale').style.display = name === 'stopsale' ? 'block' : 'none';
+  document.getElementById('view-noise').style.display = name === 'noise' ? 'block' : 'none';
   document.getElementById('tab-btn-rapor').classList.toggle('active', name === 'rapor');
   document.getElementById('tab-btn-search').classList.toggle('active', name === 'search');
   document.getElementById('tab-btn-campaigns').classList.toggle('active', name === 'campaigns');
   document.getElementById('tab-btn-stopsale').classList.toggle('active', name === 'stopsale');
+  document.getElementById('tab-btn-noise').classList.toggle('active', name === 'noise');
   if (name === 'campaigns') loadCampaigns();
   if (name === 'stopsale') loadStopSale();
+}
+
+async function scanNoise() {
+  const meta = document.getElementById('noise-meta');
+  const body = document.getElementById('noise-body');
+  const actions = document.getElementById('noise-actions');
+  meta.textContent = 'Taranıyor... (biraz sürebilir)';
+  body.innerHTML = '';
+  actions.style.display = 'none';
+
+  try {
+    const res = await fetch('/api/noise-scan?password=' + encodeURIComponent(SAVED_PW));
+    const data = await res.json();
+
+    if (res.status === 401) {
+      meta.textContent = 'Şifre hatalı — sayfayı yenileyip tekrar giriş yapın.';
+      return;
+    }
+    if (data.error) {
+      meta.textContent = 'Hata: ' + escapeHtml(data.error);
+      return;
+    }
+
+    if (data.candidates.length === 0) {
+      meta.textContent = `${data.scannedSenders} gönderici tarandı — şüpheli gürültü bulunamadı.`;
+      return;
+    }
+
+    meta.textContent = `${data.scannedSenders} gönderici tarandı — ${data.candidates.length} şüpheli aday bulundu. İşaretleyip aşağıdaki butona basın.`;
+
+    let html = '';
+    data.candidates.forEach((c, i) => {
+      html += `
+        <div class="noise-candidate">
+          <label>
+            <input type="checkbox" class="noise-check" data-email="${escapeHtml(extractNoiseEmail(c.from))}">
+            <strong>${escapeHtml(c.from)}</strong>
+          </label>
+          <div class="noise-subject">${escapeHtml(c.subject)}</div>
+          <div class="noise-reason">Gerekçe: ${escapeHtml(c.reason)}</div>
+        </div>`;
+    });
+    body.innerHTML = html;
+    actions.style.display = 'block';
+  } catch (e) {
+    meta.textContent = 'Bağlantı hatası — tekrar deneyin.';
+  }
+}
+
+function extractNoiseEmail(fromHeader) {
+  const m = (fromHeader || '').match(/<([^>]+)>/);
+  return m ? m[1] : fromHeader;
+}
+
+async function confirmNoise() {
+  const checked = [...document.querySelectorAll('.noise-check:checked')].map((el) => el.dataset.email);
+  const statusEl = document.getElementById('noise-action-status');
+
+  if (checked.length === 0) {
+    statusEl.textContent = 'Önce en az bir gönderici işaretleyin.';
+    return;
+  }
+
+  statusEl.textContent = 'Kaydediliyor...';
+  try {
+    const res = await fetch('/api/mark-noise', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: SAVED_PW, senders: checked })
+    });
+    const data = await res.json();
+
+    if (res.status === 401) {
+      statusEl.textContent = 'Şifre hatalı.';
+      return;
+    }
+    if (data.error) {
+      statusEl.textContent = 'Hata: ' + escapeHtml(data.error);
+      return;
+    }
+
+    statusEl.textContent = `${data.addedCount} gönderici gürültü listesine eklendi (toplam ${data.totalSenders}). GitHub'a otomatik kaydedildi, ~1 dakika içinde sistem güncellenecek.`;
+    // İşaretlenenleri listeden kaldır (tekrar işaretlenmesin diye).
+    document.querySelectorAll('.noise-check:checked').forEach((el) => {
+      el.closest('.noise-candidate').remove();
+    });
+  } catch (e) {
+    statusEl.textContent = 'Bağlantı hatası — tekrar deneyin.';
+  }
 }
 
 const SALE_LABEL = { stop: 'STOP SALE', open: 'OPEN SALE', both: 'STOP & OPEN', other: 'Diğer' };
