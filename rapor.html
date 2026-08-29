@@ -191,6 +191,10 @@
     display: inline-block; font-size: 0.7rem; background: #2a3f2f; color: #7fcf9a;
     padding: 1px 6px; border-radius: 8px; margin-right: 4px;
   }
+  .rounds-deficit {
+    display: inline-block; font-size: 0.72rem; background: #3f2a2a; color: #e0a878;
+    padding: 1px 6px; border-radius: 8px; margin-left: 4px; white-space: nowrap;
+  }
 
   /* Otel/Oda Tipi seçim akordiyonları (10.08.2026 eklendi) */
   .hotel-accordion, .view-accordion {
@@ -753,7 +757,7 @@ async function runHotelSearch() {
           <td>${escapeHtml(r.hotel)}</td>
           <td>${escapeHtml(r.view || '—')}</td>
           <td>${r.nights}</td>
-          <td>${escapeHtml(String(r.rounds))}</td>
+          <td>${escapeHtml(String(r.rounds))}${r.roundsDeficit ? ` <span class="rounds-deficit">+${r.roundsDeficit} round gerekli</span>` : ''}</td>
           <td>${fmtPriceCell(r.single, r.campaignSingle, badgeHtml)}</td>
           <td>${fmtPriceCell(r.double, r.campaignDouble, badgeHtml)}</td>
           <td>${fmtPriceCell(r.group71, r.campaignGroup71, badgeHtml)}</td>
