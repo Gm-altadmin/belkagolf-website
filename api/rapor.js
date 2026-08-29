@@ -154,6 +154,13 @@ function getHeaderFrom(msg, name) {
   return (headers.find((h) => h.name === name) || {}).value || '';
 }
 
+function messageColor(from, to) {
+  if (isOurDomain(from)) {
+    return isHotelDomain(to) ? 'green' : 'pink';
+  }
+  return 'yellow';
+}
+
 function buildTrail(msgs) {
   const trail = [];
   let lastColor = null;
@@ -161,13 +168,7 @@ function buildTrail(msgs) {
   for (const msg of msgs) {
     const from = getHeaderFrom(msg, 'From');
     const to = getHeaderFrom(msg, 'To');
-
-    let color;
-    if (isOurDomain(from)) {
-      color = isHotelDomain(to) ? 'green' : 'pink';
-    } else {
-      color = 'yellow';
-    }
+    const color = messageColor(from, to);
     trail.push(color);
     lastColor = color;
   }
@@ -331,6 +332,80 @@ function chunk(arr, size) {
   return out;
 }
 
+// Aynı isimdeki (customerKey) birden fazla thread bulunduğunda, hepsinin GERÇEKTEN
+// aynı devam eden talep mi yoksa aynı isimli müşteriden gelen FARKLI/bağımsız talepler
+// mi olduğunu Claude'a sorar. Sadece aynı kümeye (cluster) atananlar birleştirilecek -
+// customerKey'e küme numarası eklenerek (örn. "roger::c1" / "roger::c2") mevcut
+// birleştirme mantığı hiç değişmeden doğru şekilde ayırt eder. API hatası olursa
+// güvenli varsayım: hepsi aynı kabul edilir (eski davranış - hepsi birleşir).
+async function resolveRequestClusters(items) {
+  const groupedByKey = new Map();
+  for (const it of items) {
+    if (!it.customerKey) continue;
+    if (!groupedByKey.has(it.customerKey)) groupedByKey.set(it.customerKey, []);
+    groupedByKey.get(it.customerKey).push(it);
+  }
+  const candidateGroups = [...groupedByKey.entries()].filter(([, arr]) => arr.length > 1);
+  if (candidateGroups.length === 0 || !process.env.ANTHROPIC_API_KEY) return;
+
+  const systemPrompt = `Aynı isimdeki bir müşteriden gelen birden fazla mail-thread özeti göreceksin.
+Bunlar GERÇEKTEN aynı devam eden talebin/rezervasyonun parçası mı (birbirine cevap niteliğinde,
+aynı tarih/konu/detaylar üzerinden ilerliyor), yoksa BİRBİRİNDEN BAĞIMSIZ, farklı talepler mi
+(farklı tarihler, farklı gruplar, alakasız konular - sadece aynı isimde başka bir kişi ya da aynı
+müşterinin tamamen ayrı bir yeni talebi)?
+
+Her birine bir küme numarası ata - aynı küme numarası = aynı talep/negotiation. Emin değilsen
+AYNI kümede tut (yanlışlıkla ayırmak, yanlışlıkla birleştirmekten daha az zararlıdır - ayrılan
+talepler raporda iki ayrı satır olur, bu kabul edilebilir).
+
+SADECE JSON dizisi döndür, başka hiçbir metin ekleme:
+[{"index":1,"cluster":1},{"index":2,"cluster":1},{"index":3,"cluster":2}]`;
+
+  await Promise.all(candidateGroups.map(async ([key, arr]) => {
+    try {
+      const listText = arr
+        .map((it, i) => `${i + 1}. Tarih: ${it.date}\n   Konu: ${it.subject}\n   Özet: ${it.snippet.slice(0, 200)}`)
+        .join('\n\n');
+
+      const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': process.env.ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01'
+        },
+        body: JSON.stringify({
+          model: 'claude-haiku-4-5-20251001',
+          max_tokens: 512,
+          system: systemPrompt,
+          messages: [{ role: 'user', content: listText }]
+        })
+      });
+      if (!apiRes.ok) throw new Error('anthropic_api_error');
+
+      const data = await apiRes.json();
+      const rawText = (data.content || [])
+        .filter((b) => b.type === 'text')
+        .map((b) => b.text)
+        .join('')
+        .trim();
+      const cleaned = rawText.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
+      const parsed = JSON.parse(cleaned);
+      if (!Array.isArray(parsed)) throw new Error('not_array');
+
+      const clusterByIndex = new Map(parsed.map((p) => [p.index, p.cluster]));
+      arr.forEach((it, i) => {
+        const clusterNum = clusterByIndex.get(i + 1) ?? 1;
+        if (clusterNum !== 1) {
+          it.customerKey = `${key}::c${clusterNum}`;
+        }
+      });
+    } catch (e) {
+      // Hata olursa dokunma - hepsi aynı customerKey ile kalır (eski, güvenli davranış).
+    }
+  }));
+}
+
 export default async function handler(req, res) {
   const password = req.query.password || (req.body && req.body.password) || '';
 
@@ -407,13 +482,23 @@ export default async function handler(req, res) {
       const daysWaiting = date ? daysBetween(new Date(date)) : 0;
       const { trail: rawTrail, lastColor } = buildTrail(msgs);
 
+      // Bu thread'in HER mesajının (tarih+kimden+kime) ham bilgisi saklanıyor - aynı
+      // müşteriye ait FARKLI thread'ler (örn. asıl talep + bizim otelle ayrı yazışmamız)
+      // birleştirilirken, tüm mesajlar tarihe göre karıştırılıp TEK bir kronolojik iz
+      // oluşturulacak (bkz. aşağıdaki customerKey birleştirme adımı).
+      const rawMsgs = msgs.map((m) => ({
+        date: getHeaderFrom(m, 'Date'),
+        from: getHeaderFrom(m, 'From'),
+        to: getHeaderFrom(m, 'To')
+      }));
+
       const nameKey = extractCustomerKey(subject);
       rawItems.push({
         index: rawItems.length + 1,
         threadId: det.id,
         subject, from: lastFrom, date, snippet,
         trail: rawTrail, lastColor, daysWaiting, isUrgentKw, isPriceShopping,
-        groupSize, nights, loyal, messageCount: msgs.length,
+        groupSize, nights, loyal, messageCount: msgs.length, rawMsgs,
         customerKey: nameKey || extractSubjectKey(subject)
       });
     }
@@ -441,6 +526,7 @@ export default async function handler(req, res) {
         date: it.date,
         snippet: it.snippet,
         trail: cls.trail,
+        rawMsgs: it.rawMsgs,
         statusLabel: cls.label,
         oneri: cls.oneri,
         isNoise: cls.isNoise || false,
@@ -453,16 +539,25 @@ export default async function handler(req, res) {
     }
 
     // AYNI-MÜŞTERİ / AYNI-KONU BİRLEŞTİRME: customerKey aynıysa tek satırda birleştir.
-    // En güncel thread'in durumu/trail'i/önerisi "birincil" kabul edilir; diğer thread'lerin
+    // Önce Claude'a "bunlar gerçekten aynı talep mi" diye sorulup, farklıysa customerKey
+    // küme numarasıyla ayrılıyor (bkz. resolveRequestClusters) - böylece aynı isimdeki
+    // FARKLI talepler yanlışlıkla birleştirilmiyor.
+    await resolveRequestClusters(items);
+
+    // En güncel thread'in durumu/önerisi "birincil" kabul edilir; diğer thread'lerin
     // konu başlıkları "otherSubjects" listesinde saklanır, mergedCount kaç thread
     // birleştiğini gösterir. customerKey hiç bulunamayan itemlar birleştirilmeden kalır.
     const byCustomer = new Map();
+    const allMsgsByCustomer = new Map(); // customerKey -> tüm birleşen thread'lerin TÜM mesajları
     const standalone = [];
     for (const it of items) {
       if (!it.customerKey) {
         standalone.push(it);
         continue;
       }
+      if (!allMsgsByCustomer.has(it.customerKey)) allMsgsByCustomer.set(it.customerKey, []);
+      allMsgsByCustomer.get(it.customerKey).push(...(it.rawMsgs || []));
+
       const existing = byCustomer.get(it.customerKey);
       if (!existing) {
         byCustomer.set(it.customerKey, { ...it, otherSubjects: [], mergedCount: 1 });
@@ -478,7 +573,30 @@ export default async function handler(req, res) {
         }
       }
     }
-    const finalItems = [...byCustomer.values(), ...standalone];
+
+    // Aynı müşteriye ait BİRDEN FAZLA thread birleştiyse (örn. müşterinin asıl talebi + bizim
+    // otelle ayrı yazışmamız), tek thread'in izi yerine TÜM mesajlar tarihe göre kronolojik
+    // sıraya dizilip TEK birleşik iz oluşturuluyor - müşteri(sarı)→biz(yeşil,otele sorduk)→
+    // otel(sarı)→biz(pembe,müşteriye ilettik)→müşteri(sarı,itiraz)→biz(yeşil,tekrar sorduk)...
+    // gibi tam kronoloji tek satırda görünür. Durum/öneri metni değişmiyor - hâlâ en güncel
+    // mesajdan (birincil item) geliyor, sadece GÖRSEL iz genişletiliyor.
+    const MAX_TRAIL_DOTS = 40; // aşırı uzun geçmişlerde satır genişliği taşmasın diye üst sınır
+    for (const [key, merged] of byCustomer.entries()) {
+      if (merged.mergedCount <= 1) continue;
+      const allMsgs = allMsgsByCustomer.get(key) || [];
+      const sorted = allMsgs
+        .filter((m) => m.date)
+        .sort((a, b) => new Date(a.date) - new Date(b.date));
+      if (sorted.length === 0) continue;
+      let combinedTrail = sorted.map((m) => messageColor(m.from, m.to));
+      if (combinedTrail.length > MAX_TRAIL_DOTS) {
+        combinedTrail = combinedTrail.slice(-MAX_TRAIL_DOTS);
+      }
+      merged.trail = combinedTrail;
+    }
+
+    const finalItems = [...byCustomer.values(), ...standalone]
+      .map(({ rawMsgs, ...rest }) => rest); // rawMsgs sadece iz birleştirme için gerekliydi, istemciye gönderilmiyor
 
     finalItems.sort((a, b) => new Date(b.date) - new Date(a.date));
 
