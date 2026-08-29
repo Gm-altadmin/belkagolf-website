@@ -17,10 +17,14 @@
 // Ayrıca otel alt-adı başlıkları (örn. "GLORIA SERENITY RESORT") ayrıca takip edilip
 // generic "Gloria Serenity/Golf/Verde" etiketi yerine doğru alt-otel adı kullanılıyor.
 //
-// Düz metne (plaintextBody) HİÇ güvenilmiyor artık - tablo yapısı kaybolduğunda satır
-// sınırları güvenilmez hale geliyordu. Sadece HTML'den, tablo satırı bazlı çıkarım var.
-// Hiç <tr> bulunamayan mailler (örn. sadece PDF ekli, gövdede tablo yok) için tarih
-// üretilmez - "Tarih otomatik çıkarılamadı" ile gösterilir, YANLIŞ TARİH ÜRETİLMEZ.
+// Düz metne (plaintextBody) artık SINIRLI ve KALIP-BAZLI güveniliyor (v4, 29.08.2026):
+// sadece extractFromPlainTextLines'daki çok spesifik "TARİH(-TARİH) tarihinde/tarihleri
+// dahil ... STOP/OPEN SALE" satır kalıbına uyan satırlar kabul ediliyor - v2'nin genel-amaçlı,
+// hataya açık satır taramasından farklı. HTML tablo (1. çare) her zaman önceliklidir; bu
+// sadece HTML'de hiç <tr> yokken (Sueno gibi düz-metin mailler) devreye giren 2. çaredir.
+// Hâlâ hiçbir kalıp eşleşmezse (örn. sadece PDF ekli, gövdede hiç yapı yok), 3. çare olarak
+// TEK TARİH aralığı denemesi yapılır - "Tarih otomatik çıkarılamadı" ile gösterilir, YANLIŞ
+// TARİH ÜRETİLMEZ.
 
 function decodeBase64Url(data) {
   const b64 = (data || '').replace(/-/g, '+').replace(/_/g, '/');
@@ -89,6 +93,64 @@ function fmtDate(d) {
 
 const STOP_RE = /stop sale|satışa kapalı|satisa kapali/i;
 const OPEN_RE = /open sale|satışa açık|satisa acik/i;
+
+// v4 EKLEMESİ (29.08.2026): bazı oteller (Sueno gibi) stop-sale bilgisini HTML TABLOSU
+// olarak DEĞİL, düz paragraf/satır metni olarak gönderiyor - örn:
+//   "SUENO GOLF HOTEL BELEK
+//    24.09.2026 tarihinde standart golf view oda tipi STOP SALE
+//    15.10-18.10.2026 tarihleri dahil standart golf view oda tipi STOP SALE"
+// extractFromHtml hiç <tr> bulamayınca (entries=[]), v3 tasarımı direkt "tek tarih,
+// düşük güven" son çareye düşüyordu - bu, birden fazla tarih/oda tipi içeren mailleri
+// tek bir belirsiz kayda indirgiyordu (Sueno örneğinde 11 gerçek kayıt yerine 1).
+// Bu yeni ara katman, SATIR SATIR "TARİH(-TARİH) tarihinde/tarihleri dahil ... STOP/OPEN
+// SALE" kalıbını tanır (v2'nin genel-amaçlı satır taramasından farklı - burada kalıp çok
+// spesifik, yanlış eşleşme riski düşük) ve büyük harf başlık satırlarını (örn. "SUENO
+// DELUXE HOTEL BELEK") alt-otel adı olarak takip eder.
+const LINE_DATE_SALE_RE = /(\d{1,2})\.(\d{1,2})(?:\.(\d{2,4}))?(?:\s*[-–—]\s*(\d{1,2})\.(\d{1,2})\.(\d{2,4}))?\s*tarih(?:inde|leri\s+dahil)\s+(.+?)\s+(STOP\s*SALE|OPEN\s*SALE|SATIŞA\s*KAPALI|SATIŞA\s*AÇIK)/i;
+
+function isHeaderLine(line) {
+  if (!line || line.length < 3 || line.length > 60) return false;
+  if (/\d/.test(line)) return false;
+  if (!/^[A-ZÇĞİÖŞÜ&/.,\- ]+$/.test(line)) return false;
+  if (!/[A-ZÇĞİÖŞÜ]/.test(line)) return false;
+  return true;
+}
+
+function extractFromPlainTextLines(text) {
+  const lines = (text || '').split(/\r?\n/);
+  let currentSubHotel = null;
+  const entries = [];
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (!line) continue;
+    const m = line.match(LINE_DATE_SALE_RE);
+    if (m) {
+      const d1 = parseInt(m[1], 10), mo1 = parseInt(m[2], 10);
+      let y1 = m[3] ? (m[3].length === 2 ? 2000 + parseInt(m[3], 10) : parseInt(m[3], 10)) : null;
+      let dateEnd;
+      if (m[4]) {
+        const d2 = parseInt(m[4], 10), mo2 = parseInt(m[5], 10);
+        const y2 = m[6].length === 2 ? 2000 + parseInt(m[6], 10) : parseInt(m[6], 10);
+        dateEnd = new Date(y2, mo2 - 1, d2);
+        if (y1 === null) y1 = y2; // aralığın ilk tarihinde yıl yoksa bitiş tarihinden ödünç al
+      }
+      if (y1 === null) continue; // yıl hiç çıkarılamadıysa güvenli tarafta kal, atla
+      const dateStart = new Date(y1, mo1 - 1, d1);
+      if (!dateEnd) dateEnd = dateStart;
+      if (isNaN(dateStart.getTime()) || isNaN(dateEnd.getTime())) continue;
+
+      const saleKw = m[8].toUpperCase();
+      const type = /STOP|KAPALI/.test(saleKw) ? 'stop' : 'open';
+      let context = m[7].trim();
+      if (context.length > 60) context = context.slice(0, 60) + '…';
+
+      entries.push({ dateStart, dateEnd, type, context, subHotel: currentSubHotel });
+    } else if (isHeaderLine(line)) {
+      currentSubHotel = line;
+    }
+  }
+  return entries;
+}
 
 // Bilinen otel alt-marka isimleri (tek hücreli, colspan başlık satırlarında görülür
 // - Gloria/Regnum gibi Word tabanlı maillerde). Voyage gibi bazı oteller alt-otel
@@ -290,9 +352,16 @@ export default async function handler(req, res) {
 
         let entries = html ? extractFromHtml(html, sType, subHotelFromSubj) : [];
 
-        // HTML'de hiç tablo satırı bulunamadıysa (nadir - genelde sadece PDF ekli
-        // maillerde), düz metinden TEK TARİH aralığı denemesi yapılır (son çare,
-        // düşük güven) - ama satır bazlı çoklu-tarih taraması YAPILMAZ (o v2'nin hatasıydı).
+        // 1. çare (HTML tablo) boşsa: 2. çare - düz metin satır kalıbı (bkz. yukarıdaki
+        // extractFromPlainTextLines yorumu, Sueno gibi tablosuz mailler için 29.08.2026 eklendi).
+        if (entries.length === 0) {
+          const plainLines = findPlainBody(msg.payload);
+          entries = extractFromPlainTextLines(plainLines);
+        }
+
+        // 2. çare de boşsa (nadir - genelde sadece PDF ekli maillerde), düz metinden TEK
+        // TARİH aralığı denemesi yapılır (son çare, düşük güven) - satır bazlı çoklu-tarih
+        // taraması burada YAPILMAZ (o v2'nin hatasıydı, artık extractFromPlainTextLines var).
         if (entries.length === 0) {
           const plain = findPlainBody(msg.payload);
           const dm = plain.match(DATE_RANGE_RE);
