@@ -1052,9 +1052,9 @@ async function loadReport() {
     // yine hangisinin hangisi olduğunu satır bazında gösteriyor. "Bizde" (aksiyon gerekli)
     // ayrı ve en üstte kalıyor - bu da en uzun bekleyen en üstte olacak şekilde sıralı.
     const bizdeItems = activeItems.filter((it) => ballCategory(it) === 'bizde')
-      .sort((a, b) => new Date(a.date) - new Date(b.date));
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
     const bekleniyorItems = activeItems.filter((it) => ballCategory(it) !== 'bizde')
-      .sort((a, b) => new Date(a.date) - new Date(b.date));
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
 
     html += `<div class="ball-group">
       <div class="ball-group-header">
