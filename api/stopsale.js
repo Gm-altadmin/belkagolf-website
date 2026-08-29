@@ -37,7 +37,7 @@
 // stop/limited kayıtları üretilir. Bu kaynak, HTML/düz-metin ayrıştırıcılarına EK olarak
 // (onların yerine değil) devreye girer - ikisi birbirini tamamlar.
 
-import * as XLSX from 'xlsx';
+const XLSX = require('xlsx');
 
 function decodeBase64Url(data) {
   const b64 = (data || '').replace(/-/g, '+').replace(/_/g, '/');
