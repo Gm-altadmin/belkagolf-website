@@ -175,30 +175,132 @@ function buildTrail(msgs) {
   return { trail, lastColor };
 }
 
-// İptal/onay anahtar kelime kontrolü yöne bakmaz (her mesaj kontrol edilir); regex
-// bilerek daraltılmış - bare "konfirme" (istek fiili, "...etmenizi rica ederiz") değil,
-// sadece "konfirmedir" (durum bildirimi) eşleşir, "confirmed" zaten sadece durum
-// bildirimlerinde geçtiği için ek değişiklik gerekmedi.
-function classify({ snippet, subject, trail, lastColor, daysWaiting, isUrgentKw }) {
+// ESKİ regex/kelime-bazlı sınıflandırma - artık birincil yöntem DEĞİL, sadece
+// Claude API çağrısı başarısız olursa (rate limit, ağ hatası vb.) YEDEK olarak kullanılıyor.
+// Bilinen kırılganlığı var (bkz. "konfirmedir" false-positive regresyon geçmişi) - bu yüzden
+// birincil yöntem 29.08.2026'da Claude Haiku'ya taşındı (classifyBatchWithClaude).
+function classifyFallback({ snippet, subject, trail, lastColor, daysWaiting, isUrgentKw }) {
   const text = (snippet + ' ' + subject).toLowerCase();
 
   if (/\biptal\b|cancel|no show|no-show|no longer|reddet|red edi|vazgeç|istemiyoruz|istemiyorum|başka (bir )?(firma|teklif|otel)i? (ile|tercih)|artık ilgilenmiyor|close (the |this )?request|kapat(ınız|abilirsiniz)? (bu |bu\s*)?(talebi|isteği)|talebi kapat/i.test(text)) {
-    return { trail: [...trail, 'cancel'], label: 'Reddedildi / İptal / Kayıp', priority: -100, closed: true };
+    return { trail: [...trail, 'cancel'], label: 'Reddedildi / İptal / Kayıp', priority: -100, closed: true, oneri: '—', isNoise: false };
   }
   if (/konfirmedir|confirmed|onayland[ıi]|kabul (ediyoruz|ediyorum|ettik)|find attached reservation|attached reservation|reservation attached|hesap numar|iban|banka bilgi|banka hesap|send.*(bank|account) details|payment details|proforma.*(gönder|ekte)/i.test(text)) {
-    return { trail: [...trail, 'confirm'], label: 'Kabul Edildi / Onaylandı', priority: -50, closed: true };
+    return { trail: [...trail, 'confirm'], label: 'Kabul Edildi / Onaylandı', priority: -50, closed: true, oneri: '—', isNoise: false };
   }
 
   if (lastColor === 'yellow') {
     let priority = daysWaiting * 2;
     if (isUrgentKw) priority += 100;
-    return { trail, label: `Bizim sıramız (${daysWaiting} gün)`, priority, closed: false };
+    const oneri = daysWaiting === 0 ? 'Yanıt gönderilmeli (bugün geldi)'
+      : daysWaiting === 1 ? '⚠️ 1 gündür yanıtsız - bugün cevaplanmalı'
+      : `🚨 ${daysWaiting} GÜNDÜR YANITSIZ - hemen cevaplanmalı`;
+    return { trail, label: `Bizim sıramız (${daysWaiting} gün)`, priority, closed: false, oneri, isNoise: false };
   }
 
   let priority = daysWaiting;
   if (isUrgentKw) priority += 50;
   const bekleyen = lastColor === 'green' ? 'Otelden cevap bekleniyor' : 'Müşteriden cevap bekleniyor';
-  return { trail, label: `${bekleyen} (${daysWaiting} gün)`, priority, closed: false };
+  const oneri = daysWaiting >= 5 ? 'Hatırlatma gönderilebilir' : '—';
+  return { trail, label: `${bekleyen} (${daysWaiting} gün)`, priority, closed: false, oneri, isNoise: false };
+}
+
+// BİRİNCİL sınıflandırma yöntemi (29.08.2026): regex yerine Claude Haiku, tüm talepleri
+// gerçek anlam bazlı değerlendiriyor - durum (onaylandı/iptal/aktif), Türkçe öneri metni,
+// VE olası gürültü tespiti (personel görüp "Gürültü Kontrolü" sekmesinden kalıcı olarak
+// ekleyebilir - burada OTOMATİK gizleme yapılmıyor, sadece işaretleniyor).
+// Maliyet/hız için 20'li gruplar halinde PARALEL Claude çağrısı yapılıyor.
+async function classifyBatchWithClaude(items) {
+  if (!process.env.ANTHROPIC_API_KEY || items.length === 0) {
+    return items.map((it) => ({ index: it.index, ...classifyFallback(it) }));
+  }
+
+  const CHUNK_SIZE = 20;
+  const chunks = chunk(items, CHUNK_SIZE);
+
+  const systemPrompt = `Sen bir golf tatili acentesinin (Belka Golf, Belek/Antalya) müşteri talebi takip
+sistemisin. Sana bir dizi mail-thread özeti verilecek. Her biri için üç şeyi belirle:
+
+1. "status": "confirmed" (rezervasyon/talep onaylanmış, kabul edilmiş, ödeme detayları paylaşılmış),
+   "cancelled" (iptal edilmiş, reddedilmiş, müşteri vazgeçmiş, başka firma tercih etmiş), veya
+   "active" (hâlâ açık, taraflardan biri yanıt bekliyor).
+
+2. "oneri": personelin ŞİMDİ ne yapması gerektiğini anlatan KISA (max 15 kelime) Türkçe öneri.
+   "lastColor" alanına göre: "yellow" ise talep BİZE gelmiş (bizim cevaplamamız gerekiyor),
+   "green" ise biz otele göndermişiz (otelden yanıt bekleniyor), "pink" ise biz müşteriye
+   göndermişiz (müşteriden yanıt bekleniyor). "daysWaiting" gün sayısına göre aciliyeti yansıt
+   (0="bugün geldi", 1="1 gündür yanıtsız - bugün cevaplanmalı", 2+="X GÜNDÜR YANITSIZ - hemen
+   cevaplanmalı"). "isUrgentKw" true ise önerinin başına "URGENT —" ekle. status "confirmed" veya
+   "cancelled" ise oneri her zaman "—" olsun (kapanmış talepler için öneri gerekmez).
+
+3. "isNoise": bu aslında gerçek bir müşteri talebi veya otel/kulüp iş yazışması DEĞİL de
+   (bülten, reklam, otomatik sistem bildirimi, spam, alakasız toplu mail) gürültü mü? true/false.
+   Emin değilsen false yaz - yanlışlıkla gerçek bir talebi gürültü işaretlemek daha kötü bir hata.
+
+SADECE JSON dizisi döndür, başka hiçbir metin/açıklama/markdown ekleme:
+[{"index":1,"status":"active","oneri":"...","isNoise":false}, ...]`;
+
+  const results = await Promise.all(
+    chunks.map(async (group) => {
+      const listText = group
+        .map((it) => `${it.index}. Konu: ${it.subject}\n   Özet: ${it.snippet.slice(0, 250)}\n   lastColor: ${it.lastColor}\n   daysWaiting: ${it.daysWaiting}\n   isUrgentKw: ${it.isUrgentKw}`)
+        .join('\n\n');
+
+      try {
+        const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': process.env.ANTHROPIC_API_KEY,
+            'anthropic-version': '2023-06-01'
+          },
+          body: JSON.stringify({
+            model: 'claude-haiku-4-5-20251001',
+            max_tokens: 2048,
+            system: systemPrompt,
+            messages: [{ role: 'user', content: listText }]
+          })
+        });
+        if (!apiRes.ok) throw new Error('anthropic_api_error');
+
+        const data = await apiRes.json();
+        const rawText = (data.content || [])
+          .filter((b) => b.type === 'text')
+          .map((b) => b.text)
+          .join('')
+          .trim();
+        const cleaned = rawText.replace(/^```json\s*/i, '').replace(/^```\s*/i, '').replace(/```\s*$/i, '').trim();
+        const parsed = JSON.parse(cleaned);
+        if (!Array.isArray(parsed)) throw new Error('not_array');
+
+        const byIndex = new Map(parsed.map((p) => [p.index, p]));
+        return group.map((it) => {
+          const r = byIndex.get(it.index);
+          if (!r) return { index: it.index, ...classifyFallback(it) };
+          const closed = r.status === 'confirmed' || r.status === 'cancelled';
+          const trail = r.status === 'confirmed' ? [...it.trail, 'confirm']
+            : r.status === 'cancelled' ? [...it.trail, 'cancel']
+            : it.trail;
+          const label = r.status === 'confirmed' ? 'Kabul Edildi / Onaylandı'
+            : r.status === 'cancelled' ? 'Reddedildi / İptal / Kayıp'
+            : it.lastColor === 'yellow' ? `Bizim sıramız (${it.daysWaiting} gün)`
+            : it.lastColor === 'green' ? `Otelden cevap bekleniyor (${it.daysWaiting} gün)`
+            : `Müşteriden cevap bekleniyor (${it.daysWaiting} gün)`;
+          return {
+            index: it.index, trail, label, closed,
+            oneri: closed ? '—' : (r.oneri || '—'),
+            isNoise: !!r.isNoise,
+            priority: 0
+          };
+        });
+      } catch (e) {
+        // Bu grup için Claude başarısız oldu - eski regex yöntemine düş, rapor tamamen çökmesin.
+        return group.map((it) => ({ index: it.index, ...classifyFallback(it) }));
+      }
+    })
+  );
+
+  return results.flat();
 }
 
 // Küçük bir dizi elemanı BATCH_SIZE'lık parçalara böler - Gmail API'ye aşırı paralel
@@ -262,7 +364,7 @@ export default async function handler(req, res) {
       detailResults.push(...group_dets);
     }
 
-    const items = [];
+    const rawItems = [];
     for (const det of detailResults) {
       const msgs = det.messages || [];
       const first = msgs[0];
@@ -284,68 +386,49 @@ export default async function handler(req, res) {
 
       const daysWaiting = date ? daysBetween(new Date(date)) : 0;
       const { trail: rawTrail, lastColor } = buildTrail(msgs);
-      const status = classify({ snippet, subject, trail: rawTrail, lastColor, daysWaiting, isUrgentKw });
-      if (isPriceShopping && status.priority > 0) {
-        status.priority += 20;
-      }
-      if (loyal && status.priority > 0) {
-        status.priority += 30;
-      }
-      if (groupSize && nights && groupSize * nights >= 30 && status.priority > 0) {
-        status.priority += 15;
-      }
-
-      let oneri = '—';
-      let isLate = false;
-      if (status.closed) {
-        oneri = '—';
-      } else if (lastColor === 'yellow') {
-        if (daysWaiting === 0) {
-          oneri = 'Yanıt gönderilmeli (bugün geldi)';
-        } else if (daysWaiting === 1) {
-          oneri = '⚠️ 1 gündür yanıtsız - bugün cevaplanmalı';
-          isLate = true;
-        } else {
-          oneri = `🚨 ${daysWaiting} GÜNDÜR YANITSIZ - GELİR KAYBI RİSKİ, hemen cevaplanmalı`;
-          isLate = true;
-        }
-      } else if (daysWaiting >= 5) {
-        oneri = 'Hatırlatma gönderilebilir';
-      }
-      if (!status.closed) {
-        if (groupSize && groupSize >= 6) {
-          oneri += (oneri === '—' ? '' : ' — ') + `Büyük grup (${groupSize} kişi)`;
-        }
-        if (groupSize && nights && groupSize * nights >= 30) {
-          oneri += (oneri === '—' ? '' : ' — ') + `Yüksek değerli rezervasyon (${groupSize}p x ${nights}g)`;
-        }
-        if (loyal) {
-          oneri += (oneri === '—' ? '' : ' — ') + 'Sadık/tekrar müşteri - kaybetmemeye dikkat';
-        }
-        if (isPriceShopping) {
-          oneri += (oneri === '—' ? '' : ' — ') + 'Muhtemelen fiyat karşılaştırıyor, hızlı dönülmeli';
-        }
-        if (isUrgentKw) {
-          oneri = 'URGENT — ' + (oneri === '—' ? 'öncelikli incelenmeli' : oneri);
-        }
-      }
 
       const nameKey = extractCustomerKey(subject);
-      items.push({
+      rawItems.push({
+        index: rawItems.length + 1,
         threadId: det.id,
-        subject,
-        from: lastFrom,
-        date,
-        snippet,
-        trail: status.trail,
-        statusLabel: status.label,
-        oneri,
-        priority: status.priority,
-        groupSize,
-        messageCount: msgs.length,
-        isLate,
-        // İsim bulunduysa onu kullan; yoksa konu başlığı bazlı yedek anahtara düş.
+        subject, from: lastFrom, date, snippet,
+        trail: rawTrail, lastColor, daysWaiting, isUrgentKw, isPriceShopping,
+        groupSize, nights, loyal, messageCount: msgs.length,
         customerKey: nameKey || extractSubjectKey(subject)
+      });
+    }
+
+    // Durum (onaylandı/iptal/aktif) + Öneri metni + gürültü tespiti artık Claude Haiku
+    // ile toplu (20'li paralel gruplar) yapılıyor - bkz. classifyBatchWithClaude yorumu.
+    const classifications = await classifyBatchWithClaude(rawItems);
+    const classByIndex = new Map(classifications.map((c) => [c.index, c]));
+
+    const items = [];
+    for (const it of rawItems) {
+      const cls = classByIndex.get(it.index) || classifyFallback(it);
+      let priority = cls.priority || 0;
+      if (!cls.closed) {
+        if (it.isPriceShopping) priority += 20;
+        if (it.loyal) priority += 30;
+        if (it.groupSize && it.nights && it.groupSize * it.nights >= 30) priority += 15;
+      }
+      const isLate = !cls.closed && it.lastColor === 'yellow' && it.daysWaiting >= 1;
+
+      items.push({
+        threadId: it.threadId,
+        subject: it.subject,
+        from: it.from,
+        date: it.date,
+        snippet: it.snippet,
+        trail: cls.trail,
+        statusLabel: cls.label,
+        oneri: cls.oneri,
+        isNoise: cls.isNoise || false,
+        priority,
+        groupSize: it.groupSize,
+        messageCount: it.messageCount,
+        isLate,
+        customerKey: it.customerKey
       });
     }
 
