@@ -1045,38 +1045,47 @@ async function loadReport() {
       <span class="legend-item"><span class="merge-badge">×N</span> aynı müşterinin N mail'i birleşti — tıkla, aç/kapa</span>
     </div>`;
 
-    // "Top kimde" gruplaması (29.08.2026) - tek karışık liste yerine üç ayrı bölüm:
-    // Bizde (biz cevaplamalıyız) / Otelde (otel bekleniyor) / Müşteride (müşteri bekleniyor).
-    // Her grup içinde sıra korunuyor (backend zaten tarihe göre yeniden eskiye sıralı döndürüyor).
-    const groups = { bizde: [], otelde: [], musteride: [] };
-    for (const it of activeItems) {
-      groups[ballCategory(it)].push(it);
+    // "Top kimde" gruplaması (29.08.2026, iki gruba indirildi 29.08.2026): otel ve müşteri
+    // bekleyenler artık AYRI bölümler değil - ikisi de "yanıt bekleniyor" tek grubunda,
+    // en uzun bekleyen üstte (asıl önemli olan müşterinin toplam ne kadar süredir cevap
+    // alamadığı, otelden mi müşteriden mi kaynaklandığı değil). Nokta rengi (yeşil/pembe)
+    // yine hangisinin hangisi olduğunu satır bazında gösteriyor. "Bizde" (aksiyon gerekli)
+    // ayrı ve en üstte kalıyor - bu da en uzun bekleyen en üstte olacak şekilde sıralı.
+    const bizdeItems = activeItems.filter((it) => ballCategory(it) === 'bizde')
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
+    const bekleniyorItems = activeItems.filter((it) => ballCategory(it) !== 'bizde')
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    html += `<div class="ball-group">
+      <div class="ball-group-header">
+        <span class="dot dot-yellow"></span>
+        <strong>Bizde — Aksiyon Gerekli</strong>
+        <span class="ball-group-count">${bizdeItems.length}</span>
+        <span class="ball-group-note">Bu taleplere bizim cevap vermemiz gerekiyor</span>
+      </div>
+    </div>`;
+    {
+      const t = buildTable(bizdeItems, rowCounter);
+      rowCounter = t.nextIdx;
+      html += bizdeItems.length === 0
+        ? '<div class="ball-group-empty">— Bu kategoride bekleyen talep yok —</div>'
+        : t.html;
     }
 
-    const GROUP_META = {
-      bizde: { title: 'Bizde', dot: 'yellow', note: 'Bu taleplere bizim cevap vermemiz gerekiyor' },
-      otelde: { title: 'Otelde', dot: 'green', note: 'Otelden yanıt bekleniyor' },
-      musteride: { title: 'Müşteride', dot: 'pink', note: 'Müşteriden yanıt bekleniyor' }
-    };
-
-    for (const key of ['bizde', 'otelde', 'musteride']) {
-      const meta = GROUP_META[key];
-      const groupItems = groups[key];
-      html += `<div class="ball-group">
-        <div class="ball-group-header">
-          <span class="dot dot-${meta.dot}"></span>
-          <strong>${meta.title}</strong>
-          <span class="ball-group-count">${groupItems.length}</span>
-          <span class="ball-group-note">${meta.note}</span>
-        </div>
-      </div>`;
-      const groupTable = buildTable(groupItems, rowCounter);
-      rowCounter = groupTable.nextIdx;
-      if (groupItems.length === 0) {
-        html += '<div class="ball-group-empty">— Bu kategoride bekleyen talep yok —</div>';
-      } else {
-        html += groupTable.html;
-      }
+    html += `<div class="ball-group">
+      <div class="ball-group-header">
+        <span class="dot dot-green"></span><span class="dot dot-pink"></span>
+        <strong>Yanıt Bekleniyor</strong>
+        <span class="ball-group-count">${bekleniyorItems.length}</span>
+        <span class="ball-group-note">Otel veya müşteriden yanıt bekleniyor — en uzun bekleyen üstte</span>
+      </div>
+    </div>`;
+    {
+      const t = buildTable(bekleniyorItems, rowCounter);
+      rowCounter = t.nextIdx;
+      html += bekleniyorItems.length === 0
+        ? '<div class="ball-group-empty">— Bu kategoride bekleyen talep yok —</div>'
+        : t.html;
     }
 
     if (activeItems.length === 0) {
