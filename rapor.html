@@ -44,6 +44,25 @@
     color: #777; font-size: 0.85rem; padding: 12px 14px;
     border: 1px solid #3a4a3d; border-top: none; border-radius: 0 0 8px 8px; margin-bottom: 4px;
   }
+  .ball-filters {
+    display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0 4px;
+  }
+  .ball-filter-btn {
+    display: flex; align-items: center; gap: 6px; padding: 8px 14px;
+    background: #1e2b23; border: 1px solid #3a4a3d; border-radius: 8px;
+    color: #ccc; font-size: 0.88rem; cursor: pointer; font-family: inherit;
+  }
+  .ball-filter-btn:hover { border-color: #c9a961; }
+  .ball-filter-btn.active {
+    background: #c9a961; color: #14201a; border-color: #c9a961; font-weight: 600;
+  }
+  .ball-filter-btn.active .ball-filter-count {
+    background: #14201a; color: #c9a961;
+  }
+  .ball-filter-count {
+    background: #3a4a3d; color: #ddd; font-size: 0.78rem;
+    padding: 1px 7px; border-radius: 9px;
+  }
   .noise-flag {
     display: block; font-size: 0.72rem; color: #e0a878; background: #3f2a2a;
     padding: 1px 6px; border-radius: 8px; margin-top: 4px; width: fit-content;
@@ -1045,48 +1064,31 @@ async function loadReport() {
       <span class="legend-item"><span class="merge-badge">×N</span> aynı müşterinin N mail'i birleşti — tıkla, aç/kapa</span>
     </div>`;
 
-    // "Top kimde" gruplaması (29.08.2026, iki gruba indirildi 29.08.2026): otel ve müşteri
-    // bekleyenler artık AYRI bölümler değil - ikisi de "yanıt bekleniyor" tek grubunda,
-    // en uzun bekleyen üstte (asıl önemli olan müşterinin toplam ne kadar süredir cevap
-    // alamadığı, otelden mi müşteriden mi kaynaklandığı değil). Nokta rengi (yeşil/pembe)
-    // yine hangisinin hangisi olduğunu satır bazında gösteriyor. "Bizde" (aksiyon gerekli)
-    // ayrı ve en üstte kalıyor - bu da en uzun bekleyen en üstte olacak şekilde sıralı.
-    const bizdeItems = activeItems.filter((it) => ballCategory(it) === 'bizde')
+    // "Top kimde" filtresi (29.08.2026, tek listeye indirildi 29.08.2026): artık üç ayrı
+    // sabit bölüm yok - TEK liste (tarihe göre yeniden eskiye sıralı), üstte 3 filtre butonu
+    // ("Bizde" / "Otelde" / "Müşteride" + varsayılan "Tümü"). Butona basınca liste JS
+    // tarafında (yeniden sunucuya sormadan) filtreleniyor - bkz. renderBallList().
+    window.currentActiveItems = activeItems
+      .slice()
       .sort((a, b) => new Date(b.date) - new Date(a.date));
-    const bekleniyorItems = activeItems.filter((it) => ballCategory(it) !== 'bizde')
-      .sort((a, b) => new Date(b.date) - new Date(a.date));
+    window.activeRowCounterBase = rowCounter;
+    window.currentBallFilter = 'all';
 
-    html += `<div class="ball-group">
-      <div class="ball-group-header">
-        <span class="dot dot-yellow"></span>
-        <strong>Bizde — Aksiyon Gerekli</strong>
-        <span class="ball-group-count">${bizdeItems.length}</span>
-        <span class="ball-group-note">Bu taleplere bizim cevap vermemiz gerekiyor</span>
-      </div>
-    </div>`;
-    {
-      const t = buildTable(bizdeItems, rowCounter);
-      rowCounter = t.nextIdx;
-      html += bizdeItems.length === 0
-        ? '<div class="ball-group-empty">— Bu kategoride bekleyen talep yok —</div>'
-        : t.html;
-    }
-
-    html += `<div class="ball-group">
-      <div class="ball-group-header">
-        <span class="dot dot-green"></span><span class="dot dot-pink"></span>
-        <strong>Yanıt Bekleniyor</strong>
-        <span class="ball-group-count">${bekleniyorItems.length}</span>
-        <span class="ball-group-note">Otel veya müşteriden yanıt bekleniyor — en uzun bekleyen üstte</span>
-      </div>
-    </div>`;
-    {
-      const t = buildTable(bekleniyorItems, rowCounter);
-      rowCounter = t.nextIdx;
-      html += bekleniyorItems.length === 0
-        ? '<div class="ball-group-empty">— Bu kategoride bekleyen talep yok —</div>'
-        : t.html;
-    }
+    html += `<div class="ball-filters">
+      <button class="ball-filter-btn active" id="ball-filter-all" onclick="setBallFilter('all')">
+        Tümü <span class="ball-filter-count">${activeItems.length}</span>
+      </button>
+      <button class="ball-filter-btn" id="ball-filter-bizde" onclick="setBallFilter('bizde')">
+        <span class="dot dot-yellow"></span> Bizde <span class="ball-filter-count">${activeItems.filter(it => ballCategory(it) === 'bizde').length}</span>
+      </button>
+      <button class="ball-filter-btn" id="ball-filter-otelde" onclick="setBallFilter('otelde')">
+        <span class="dot dot-green"></span> Otelde <span class="ball-filter-count">${activeItems.filter(it => ballCategory(it) === 'otelde').length}</span>
+      </button>
+      <button class="ball-filter-btn" id="ball-filter-musteride" onclick="setBallFilter('musteride')">
+        <span class="dot dot-pink"></span> Müşteride <span class="ball-filter-count">${activeItems.filter(it => ballCategory(it) === 'musteride').length}</span>
+      </button>
+    </div>
+    <div id="ball-list-container"></div>`;
 
     if (activeItems.length === 0) {
       html += '<div style="color:#999;margin-top:14px;">Şu an aksiyon bekleyen talep yok — hepsi onaylı/iptal.</div>';
@@ -1099,10 +1101,34 @@ async function loadReport() {
       paternleri, çapraz-otel eşleştirme, konuşma geçmişiyle bağlam) istersen chat'te "rapor" yazmaya devam
       edebilirsin.</div>`;
     content.innerHTML = html;
+    renderBallList();
   } catch (e) {
     err.textContent = 'Bağlantı hatası: ' + e.message;
     content.innerHTML = '';
   }
+}
+
+function setBallFilter(filter) {
+  window.currentBallFilter = filter;
+  ['all', 'bizde', 'otelde', 'musteride'].forEach((f) => {
+    document.getElementById('ball-filter-' + f).classList.toggle('active', f === filter);
+  });
+  renderBallList();
+}
+
+function renderBallList() {
+  const container = document.getElementById('ball-list-container');
+  if (!container) return;
+  const filter = window.currentBallFilter || 'all';
+  const all = window.currentActiveItems || [];
+  const items = filter === 'all' ? all : all.filter((it) => ballCategory(it) === filter);
+
+  if (items.length === 0) {
+    container.innerHTML = '<div class="ball-group-empty">— Bu filtrede bekleyen talep yok —</div>';
+    return;
+  }
+  const t = buildTable(items, window.activeRowCounterBase || 0);
+  container.innerHTML = t.html;
 }
 
 function escapeHtml(str) {
