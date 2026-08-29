@@ -158,32 +158,87 @@ module.exports = (req, res) => {
       return Math.abs(rn - reqN);
     }
 
-    let isExactFallback = false;
     let fallbackNote = null;
+    let anyNightsFallback = false;
+    let anyRoundsDeficit = false;
 
-    // 1. deneme: gece + round tam eşleşme
-    let matches = data.filter(row =>
-      dateMatch(row) &&
-      (nightsNum === null || row.nights === nightsNum) &&
-      (roundsReq === null || String(row.rounds) === String(roundsReq))
-    );
+    // Tarihte satılan tüm satırlar (otel/oda tipi filtresi zaten data'ya uygulanmış durumda).
+    const dateRows = data.filter(row => dateMatch(row));
 
-    // Fallback: tam eşleşme yoksa, tarihte satılan TÜM satırları al ve istenen
-    // gece/round sayısına EN YAKIN olanları öne çıkar (sadece fiyata göre değil -
-    // fiyata göre sıralamak alakasız/çok kısa-konaklama paketlerini öne çıkarıp
-    // yanıltıcı oluyordu).
-    if (matches.length === 0) {
-      matches = data.filter(row => dateMatch(row));
-      isExactFallback = true;
-      const parts = [];
-      if (nightsNum !== null) parts.push('gece sayısı');
-      if (roundsReq !== null) parts.push('round sayısı');
-      if (parts.length) {
-        fallbackNote = `İstenen ${parts.join(' ve ')} bu tarihte tam bulunamadı — en yakın seçenekler gösteriliyor (gece/round sütunlarına dikkat edin).`;
+    // Otel bazında en iyi eşleşmeyi bul: her otel kendi içinde değerlendirilir,
+    // bir otelin tam eşleşmesi diğer otelleri ASLA elemez (eski hatalı davranış buydu -
+    // Kaya Palazzo 6 round sattığı için Sueno'nun 4 round'luk, Cornelia'nın 2 round'luk
+    // paketleri tamamen gizleniyordu). Round karşılanamıyorsa fark not olarak eklenir -
+    // eksik round'lar personel tarafından başka golf kulüplerinden manuel tamamlanır.
+    const hotelNames = [...new Set(dateRows.map(r => r.hotel))];
+    let matches = [];
+
+    for (const hotel of hotelNames) {
+      let hotelRows = dateRows.filter(r => r.hotel === hotel);
+      let nightsFallbackUsed = false;
+
+      if (nightsNum !== null) {
+        const exactNights = hotelRows.filter(r => r.nights === nightsNum);
+        if (exactNights.length) {
+          hotelRows = exactNights;
+        } else {
+          nightsFallbackUsed = true; // gece sayısı bu otelde tam yok, tüm gece seçenekleri havuzda kalır
+        }
+      }
+
+      let chosenRows, roundsUsed, roundsDeficit;
+
+      if (roundsReq === null) {
+        chosenRows = hotelRows;
+        roundsUsed = null;
+        roundsDeficit = 0;
+      } else {
+        const exactRounds = hotelRows.filter(r =>
+          String(r.rounds) === String(roundsReq) || String(r.rounds) === 'Sınırsız'
+        );
+        if (exactRounds.length) {
+          chosenRows = exactRounds;
+          roundsUsed = roundsReq;
+          roundsDeficit = 0;
+        } else {
+          const numericRows = hotelRows.filter(r => !isNaN(Number(r.rounds)));
+          const belowOrEqual = numericRows.filter(r => Number(r.rounds) <= roundsReq);
+          if (belowOrEqual.length) {
+            const maxRound = Math.max(...belowOrEqual.map(r => Number(r.rounds)));
+            chosenRows = belowOrEqual.filter(r => Number(r.rounds) === maxRound);
+            roundsUsed = maxRound;
+            roundsDeficit = roundsReq - maxRound;
+          } else if (numericRows.length) {
+            // Bu otelde istenenden düşük/eşit round seçeneği hiç yok - en düşük
+            // (istenenin üzerindeki en küçük) seçeneği göster, eksik yok say.
+            const minRound = Math.min(...numericRows.map(r => Number(r.rounds)));
+            chosenRows = numericRows.filter(r => Number(r.rounds) === minRound);
+            roundsUsed = minRound;
+            roundsDeficit = 0;
+          } else {
+            chosenRows = [];
+            roundsUsed = null;
+            roundsDeficit = 0;
+          }
+        }
+      }
+
+      if (nightsFallbackUsed) anyNightsFallback = true;
+      if (roundsDeficit > 0) anyRoundsDeficit = true;
+
+      for (const row of chosenRows) {
+        matches.push({ row, nightsFallbackUsed, roundsUsed, roundsDeficit });
       }
     }
 
-    const results = matches.map(m => {
+    const noteParts = [];
+    if (anyNightsFallback) noteParts.push('bazı otellerde istenen gece sayısı tam bulunamadı (en yakın gösteriliyor)');
+    if (anyRoundsDeficit) noteParts.push('bazı otellerde istenen round sayısına ulaşılamadı - eksik round\'lar başka bir golf kulübünden ayrıca eklenmelidir ("+N round" notuna bakın)');
+    if (noteParts.length) {
+      fallbackNote = noteParts.join('; ') + '.';
+    }
+
+    const results = matches.map(({ row: m, roundsUsed, roundsDeficit }) => {
       const markup = HP_MARKUP_EXCLUDED_HOTELS.has(m.hotel) ? 0 : HP_MARKUP;
       const single = m.single !== null ? m.single + markup : null;
       const dbl = m.dbl !== null ? m.dbl + markup : null;
@@ -214,13 +269,13 @@ module.exports = (req, res) => {
         view: m.view,
         nights: m.nights,
         rounds: m.rounds,
+        roundsDeficit,
         single, double: dbl, group71,
         campaignSingle, campaignDouble, campaignGroup71,
         campaignDiscountPercent: campaign ? campaign.discountPercent : null,
         campaignSource: campaign ? campaign.source : null,
         sortPrice,
         nDiff: nightsDiff(m),
-        rDiff: roundsDiff(m),
         buggyFree: m.buggyFree,
         tokenFree: m.tokenFree,
         transferFree: m.transferFree,
@@ -229,13 +284,9 @@ module.exports = (req, res) => {
       };
     }).filter(r => r.sortPrice !== null)
       .sort((a, b) => {
-        // Tam eşleşme modunda (fallback değil) doğrudan fiyata göre sırala.
-        // Fallback modunda önce istenen gece/round'a en yakın olan öne çıksın,
-        // eşit yakınlıkta olanlar arasında fiyat belirleyici olsun.
-        if (isExactFallback) {
-          if (a.nDiff !== b.nDiff) return a.nDiff - b.nDiff;
-          if (a.rDiff !== b.rDiff) return a.rDiff - b.rDiff;
-        }
+        // Eksik round'u olmayanlar (tam veya en iyi eşleşme) önce, sonra fiyata göre.
+        if (a.roundsDeficit !== b.roundsDeficit) return a.roundsDeficit - b.roundsDeficit;
+        if (a.nDiff !== b.nDiff) return a.nDiff - b.nDiff;
         return a.sortPrice - b.sortPrice;
       });
 
