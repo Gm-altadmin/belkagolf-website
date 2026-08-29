@@ -26,6 +26,19 @@
 // TEK TARİH aralığı denemesi yapılır - "Tarih otomatik çıkarılamadı" ile gösterilir, YANLIŞ
 // TARİH ÜRETİLMEZ.
 
+// v5 EKLEMESİ (29.08.2026): bazı oteller (Sueno gibi) mail'e RENK-KODLU EXCEL TAKVİMİ
+// ekliyor - her gün ayrı sütun (28.08.2026-31.12.2027 arası, ~494 gün!), her oda tipi
+// ayrı satır, durum METİN değil HÜCRE RENGİYLE kodlanmış (kırmızı=STOP, yeşil=OPEN,
+// turuncu=LIMITED). Mail metni sadece "önceki tablodan değişenler" (delta) listeliyor -
+// asıl güncel/tam tablo bu Excel'de. extractFromColorCalendar bu ek varsa indirip
+// (fetchAttachmentData) SheetJS ile (cellStyles:true - hücre dolgu rengini okumak için
+// şart) satır satır tarar, ardışık aynı-renkli günleri tek tarih aralığına birleştirir.
+// "open" (yeşil/müsait) günler aksiyon gerektirmediği için rapora dahil edilmez, sadece
+// stop/limited kayıtları üretilir. Bu kaynak, HTML/düz-metin ayrıştırıcılarına EK olarak
+// (onların yerine değil) devreye girer - ikisi birbirini tamamlar.
+
+import * as XLSX from 'xlsx';
+
 function decodeBase64Url(data) {
   const b64 = (data || '').replace(/-/g, '+').replace(/_/g, '/');
   return Buffer.from(b64, 'base64').toString('utf8');
@@ -220,6 +233,116 @@ function extractFromHtml(html, subjectType, initialSubHotel) {
   return entries;
 }
 
+// --- Renk-kodlu Excel takvimi (v5, bkz. yukarıdaki dosya başı yorumu) ---
+
+const CALENDAR_COLOR_TYPE = [
+  { rgbs: ['FF0000'], type: 'stop' },
+  { rgbs: ['92D050'], type: 'open' },
+  { rgbs: ['FFC000'], type: 'limited' }
+];
+
+function colorToCalendarType(rgb) {
+  if (!rgb) return null;
+  const clean = rgb.toUpperCase().slice(-6); // baştaki alpha kanalını (FF) at, sadece RRGGBB kalsın
+  const found = CALENDAR_COLOR_TYPE.find((c) => c.rgbs.includes(clean));
+  return found ? found.type : null;
+}
+
+function isSpreadsheetPart(part) {
+  return part.mimeType === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    || (part.filename && /\.xlsx$/i.test(part.filename));
+}
+
+// MIME ağacında (nested multipart olabilir) gerçek ek (attachmentId'li) parçaları bulur.
+function findAttachmentParts(payload, results = []) {
+  if (payload.parts) {
+    for (const p of payload.parts) {
+      if (p.filename && p.body && p.body.attachmentId) results.push(p);
+      findAttachmentParts(p, results);
+    }
+  }
+  return results;
+}
+
+async function fetchAttachmentBuffer(accessToken, messageId, attachmentId) {
+  const url = `https://gmail.googleapis.com/gmail/v1/users/me/messages/${messageId}/attachments/${attachmentId}`;
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
+  const data = await res.json();
+  if (!data.data) return null;
+  return Buffer.from(decodeBase64Url(data.data), 'base64');
+}
+
+// Takvimi tarar: önce "başlık satırı"nı (art arda birden fazla gerçek Excel-tarih hücresi
+// içeren ilk satır) bulur, o satırdan sütun->tarih haritası çıkarır. Sonraki her satırda
+// A sütunu (otel adı, boşsa bir önceki dolu değer geçerli sayılır - forward-fill) ve B
+// sütunu (oda/kategori adı) okunur; C sütunundan sonraki tarih sütunlarında ardışık
+// aynı-renkli günler tek aralığa birleştirilir. Sadece stop/limited (aksiyon gerektiren)
+// kayıtlar üretilir - "open" (müsait/yeşil) günler rapora dahil edilmez.
+function extractFromColorCalendar(buffer) {
+  let wb;
+  try {
+    wb = XLSX.read(buffer, { type: 'buffer', cellStyles: true, cellDates: true });
+  } catch (e) {
+    return [];
+  }
+  const ws = wb.Sheets[wb.SheetNames[0]];
+  if (!ws || !ws['!ref']) return [];
+  const range = XLSX.utils.decode_range(ws['!ref']);
+
+  let headerRow = -1, dateStartCol = -1;
+  for (let r = range.s.r; r <= Math.min(range.e.r, range.s.r + 5); r++) {
+    let dateCount = 0, firstDateCol = -1;
+    for (let c = range.s.c; c <= range.e.c; c++) {
+      const cell = ws[XLSX.utils.encode_cell({ r, c })];
+      if (cell && cell.t === 'd') {
+        if (firstDateCol === -1) firstDateCol = c;
+        dateCount++;
+      }
+    }
+    if (dateCount > 10) { headerRow = r; dateStartCol = firstDateCol; break; }
+  }
+  if (headerRow === -1) return [];
+
+  const colDates = {};
+  for (let c = dateStartCol; c <= range.e.c; c++) {
+    const cell = ws[XLSX.utils.encode_cell({ r: headerRow, c })];
+    if (cell && cell.t === 'd') colDates[c] = cell.v;
+  }
+
+  const entries = [];
+  let currentHotel = null;
+  for (let r = headerRow + 1; r <= range.e.r; r++) {
+    const hotelCell = ws[XLSX.utils.encode_cell({ r, c: 0 })];
+    const labelCell = ws[XLSX.utils.encode_cell({ r, c: 1 })];
+    if (hotelCell && hotelCell.v) currentHotel = String(hotelCell.v).trim();
+    const label = labelCell && labelCell.v ? String(labelCell.v).trim() : null;
+    if (!label || !currentHotel) continue;
+
+    let runType = null, runStart = null, runEnd = null;
+    const flushRun = () => {
+      if (runType && runType !== 'open' && runStart) {
+        entries.push({ dateStart: new Date(runStart), dateEnd: new Date(runEnd), type: runType, context: label, subHotel: currentHotel });
+      }
+      runType = null; runStart = null; runEnd = null;
+    };
+    for (let c = dateStartCol; c <= range.e.c; c++) {
+      if (!colDates[c]) continue;
+      const cell = ws[XLSX.utils.encode_cell({ r, c })];
+      const rgb = cell && cell.s && cell.s.fgColor ? cell.s.fgColor.rgb : null;
+      const type = colorToCalendarType(rgb);
+      const date = colDates[c];
+      if (type === runType && runEnd) {
+        const diffDays = Math.round((date - runEnd) / 86400000);
+        if (diffDays === 1) { runEnd = date; continue; }
+      }
+      flushRun();
+      if (type) { runType = type; runStart = date; runEnd = date; }
+    }
+    flushRun();
+  }
+  return entries;
+}
+
 const HOTEL_DOMAIN_MAP = [
   { domains: ['maxxroyal.com', 'cajabymaxxroyal.com'], hotel: 'Maxx Royal Belek Golf Resort' },
   { domains: ['corneliadiamond.com'], hotel: 'Cornelia Diamond Golf Resort & Spa' },
@@ -352,7 +475,24 @@ export default async function handler(req, res) {
 
         let entries = html ? extractFromHtml(html, sType, subHotelFromSubj) : [];
 
-        // 1. çare (HTML tablo) boşsa: 2. çare - düz metin satır kalıbı (bkz. yukarıdaki
+        // Renk-kodlu Excel takvimi var mı? (bkz. extractFromColorCalendar yorumu) - HTML/metin
+        // sonucundan BAĞIMSIZ olarak, EK bilgi kaynağı olarak her zaman kontrol edilir (ikisi
+        // birbirini dışlamaz, Excel çoğunlukla metinden çok daha kapsamlıdır).
+        const attachmentParts = findAttachmentParts(msg.payload);
+        for (const part of attachmentParts) {
+          if (!isSpreadsheetPart(part)) continue;
+          try {
+            const buf = await fetchAttachmentBuffer(accessToken, msg.id, part.body.attachmentId);
+            if (buf) {
+              const calendarEntries = extractFromColorCalendar(buf);
+              entries = entries.concat(calendarEntries);
+            }
+          } catch (e) {
+            // Excel indirilemedi/okunamadı - sessizce atla, HTML/metin sonucu ne ise o kalır.
+          }
+        }
+
+        // 1. çare (HTML tablo) + Excel takvimi boşsa: 2. çare - düz metin satır kalıbı (bkz. yukarıdaki
         // extractFromPlainTextLines yorumu, Sueno gibi tablosuz mailler için 29.08.2026 eklendi).
         if (entries.length === 0) {
           const plainLines = findPlainBody(msg.payload);
