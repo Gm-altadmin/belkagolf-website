@@ -75,7 +75,7 @@
   .reminder-btn:hover { border-color: #9ec5e0; }
   .reminder-panel {
     margin-top: 8px; padding: 10px; background: #14201a; border: 1px solid #3a4a3d;
-    border-radius: 8px; display: flex; flex-direction: column; gap: 6px; max-width: 420px;
+    border-radius: 8px; display: flex; flex-direction: column; gap: 6px; max-width: 640px;
   }
   .reminder-field { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; }
   .reminder-field label { color: #999; min-width: 55px; }
@@ -88,8 +88,9 @@
     background: #1e2b23; color: #fff; font-size: 0.8rem; font-family: inherit;
   }
   .reminder-panel textarea {
-    padding: 8px; border-radius: 6px; border: 1px solid #3a4a3d;
-    background: #1e2b23; color: #fff; font-size: 0.82rem; font-family: inherit; resize: vertical;
+    padding: 10px; border-radius: 6px; border: 1px solid #3a4a3d;
+    background: #1e2b23; color: #fff; font-size: 0.92rem; line-height: 1.4;
+    font-family: inherit; resize: vertical; width: 100%; box-sizing: border-box;
   }
   .reminder-send-btn {
     align-self: flex-start; padding: 6px 16px; border-radius: 6px; border: none;
@@ -1069,7 +1070,7 @@ async function draftReminder(threadId, rowIdx) {
         </select>
       </div>
       <div class="reminder-field"><label>Konu:</label> <input type="text" id="rem-subject-${rowIdx}" value="${escapeHtml(data.subject)}"></div>
-      <textarea id="rem-body-${rowIdx}" rows="6">${escapeHtml(data.draft)}</textarea>
+      <textarea id="rem-body-${rowIdx}" rows="16">${escapeHtml(data.draft)}</textarea>
       <button class="reminder-send-btn" onclick="sendReminder('${threadId}', '${rowIdx}')">Gönder</button>
       <div class="reminder-status" id="rem-status-${rowIdx}"></div>`;
   } catch (e) {
