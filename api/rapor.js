@@ -459,12 +459,24 @@ function findPlainTextBody(payload) {
 function buildQuoteBlock(originalFrom, originalDate, originalBody) {
   if (!originalBody) return '';
   const dateStr = originalDate ? new Date(originalDate).toLocaleString('tr-TR') : '';
-  // Satır zaten ">" ile başlıyorsa (orijinal mesajın kendisi zaten eski bir yazışmayı
-  // alıntılamış olabilir - Outlook "Yanıtla" davranışı) üstüne tekrar ">" EKLEME, olduğu
-  // gibi bırak - yoksa "> >" gibi çift işaretli, okunması zor bir alıntı oluşuyordu.
-  const quoted = originalBody.split(/\r?\n/)
-    .map((line) => (line.trimStart().startsWith('>') ? line : '> ' + line))
+
+  // 1. Art arda gelen fazla boş satırları tek boş satıra indir - orijinal mesajlar
+  // (özellikle Outlook kaynaklı) genelde paragraflar arasında birden fazla boş satır
+  // içeriyor, bu da alıntıyı gereksiz uzatıp dağınık gösteriyor.
+  const collapsed = originalBody.replace(/\n{3,}/g, '\n\n');
+
+  // 2. Satır zaten ">" ile başlıyorsa (mesaj kendi içinde eski bir yazışmayı zaten
+  // alıntılamış olabilir) üstüne tekrar ">" ekleme. Boş satırlara HİÇ işaret koyma -
+  // normal bir mail alıntısında boş satırlar da boş kalır, "> " ile doldurulmaz.
+  const quoted = collapsed.split(/\r?\n/)
+    .map((line) => {
+      const trimmed = line.trim();
+      if (trimmed === '') return '';
+      if (trimmed.startsWith('>')) return line;
+      return '> ' + line;
+    })
     .join('\n');
+
   return `\n\n--- Önceki mesaj / Original message ---\n${dateStr} tarihinde ${originalFrom} yazdı:\n\n${quoted}`;
 }
 
