@@ -73,33 +73,46 @@
     cursor: pointer; font-family: inherit;
   }
   .reminder-btn:hover { border-color: #9ec5e0; }
+  .reminder-row td { padding: 0; border: none; }
   .reminder-panel {
-    margin-top: 8px; padding: 10px; background: #14201a; border: 1px solid #3a4a3d;
-    border-radius: 8px; display: flex; flex-direction: column; gap: 6px; max-width: 640px;
+    background: #fff; color: #222; border-radius: 8px; padding: 14px 18px;
+    margin: 8px 4px; box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+    display: flex; flex-direction: column; gap: 10px;
   }
-  .reminder-field { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; }
-  .reminder-field label { color: #999; min-width: 55px; }
+  .reminder-panel-header {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid #eee; padding-bottom: 8px; margin-bottom: 2px;
+  }
+  .reminder-panel-header strong { color: #333; font-size: 0.92rem; }
+  .reminder-close-btn {
+    background: none; border: none; color: #999; font-size: 1.2rem; line-height: 1;
+    cursor: pointer; padding: 2px 6px; border-radius: 4px;
+  }
+  .reminder-close-btn:hover { color: #333; background: #f0f0f0; }
+  .reminder-fields-row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .reminder-field { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; flex: 1; min-width: 220px; }
+  .reminder-field label { color: #777; min-width: 55px; }
   .reminder-field input {
-    flex: 1; padding: 4px 8px; border-radius: 6px; border: 1px solid #3a4a3d;
-    background: #1e2b23; color: #fff; font-size: 0.8rem; font-family: inherit;
+    flex: 1; padding: 5px 8px; border-radius: 6px; border: 1px solid #ccc;
+    background: #fafafa; color: #222; font-size: 0.82rem; font-family: inherit;
   }
   .reminder-panel select {
-    flex: 1; padding: 4px 8px; border-radius: 6px; border: 1px solid #3a4a3d;
-    background: #1e2b23; color: #fff; font-size: 0.8rem; font-family: inherit;
+    flex: 1; padding: 5px 8px; border-radius: 6px; border: 1px solid #ccc;
+    background: #fafafa; color: #222; font-size: 0.82rem; font-family: inherit;
   }
   .reminder-panel textarea {
-    padding: 10px; border-radius: 6px; border: 1px solid #3a4a3d;
-    background: #1e2b23; color: #fff; font-size: 0.92rem; line-height: 1.4;
+    padding: 10px; border-radius: 6px; border: 1px solid #ccc;
+    background: #fff; color: #222; font-size: 0.92rem; line-height: 1.4;
     font-family: inherit; resize: vertical; width: 100%; box-sizing: border-box;
   }
   .reminder-send-btn {
     align-self: flex-start; padding: 6px 16px; border-radius: 6px; border: none;
     background: #c9a961; color: #14201a; font-weight: 600; cursor: pointer; font-size: 0.82rem;
   }
-  .reminder-loading, .reminder-error { font-size: 0.8rem; color: #999; }
-  .reminder-error { color: #e08a8a; }
-  .reminder-status { font-size: 0.8rem; color: #7fcf9a; }
-  .reminder-status.err { color: #e08a8a; }
+  .reminder-loading, .reminder-error { font-size: 0.8rem; color: #666; }
+  .reminder-error { color: #c0392b; }
+  .reminder-status { font-size: 0.8rem; color: #2e7d32; }
+  .reminder-status.err { color: #c0392b; }
   .gate {
     display: flex;
     gap: 10px;
@@ -1014,9 +1027,19 @@ function buildRow(item, rowIdx) {
     : '';
 
   const isClosed = (item.statusLabel || '').startsWith('Kabul Edildi') || (item.statusLabel || '').startsWith('Reddedildi');
-  const reminderHtml = isClosed ? '' : `
-    <button class="reminder-btn" onclick="draftReminder('${item.threadId}', '${rowIdx}')">✉ Hatırlat</button>
-    <div class="reminder-panel" id="reminder-${rowIdx}" style="display:none;"></div>`;
+  const reminderBtn = isClosed ? '' : `<button class="reminder-btn" onclick="draftReminder('${item.threadId}', '${rowIdx}')">✉ Hatırlat</button>`;
+  const reminderRow = isClosed ? '' : `
+  <tr class="reminder-row" id="reminder-row-${rowIdx}" style="display:none;">
+    <td colspan="6">
+      <div class="reminder-panel">
+        <div class="reminder-panel-header">
+          <strong>Hatırlatma Maili</strong>
+          <button class="reminder-close-btn" onclick="closeReminder('${rowIdx}')" title="Kapat">✕</button>
+        </div>
+        <div id="reminder-${rowIdx}"></div>
+      </div>
+    </td>
+  </tr>`;
 
   return `<tr${lateStyle}>
     <td>${d}</td>
@@ -1024,8 +1047,8 @@ function buildRow(item, rowIdx) {
     <td>${escapeHtml(item.subject)}${mergeBadge}${otherSubjectsHtml}${noiseBadge}</td>
     <td>${escapeHtml(item.snippet).slice(0, 120)}${item.snippet.length > 120 ? '…' : ''}</td>
     <td>${renderTrail(item.trail)}<span class="status-label">${escapeHtml(item.statusLabel)}</span></td>
-    <td class="oneri">${escapeHtml(item.oneri)}${reminderHtml}</td>
-  </tr>`;
+    <td class="oneri">${escapeHtml(item.oneri)}${reminderBtn}</td>
+  </tr>${reminderRow}`;
 }
 
 function buildTable(items, startIdx) {
@@ -1039,10 +1062,16 @@ function buildTable(items, startIdx) {
   return { html, nextIdx: rowIdx };
 }
 
+function closeReminder(rowIdx) {
+  const row = document.getElementById('reminder-row-' + rowIdx);
+  if (row) row.style.display = 'none';
+}
+
 async function draftReminder(threadId, rowIdx) {
-  const panel = document.getElementById('reminder-' + rowIdx);
-  panel.style.display = 'block';
-  panel.innerHTML = '<div class="reminder-loading">Taslak hazırlanıyor...</div>';
+  const row = document.getElementById('reminder-row-' + rowIdx);
+  const content = document.getElementById('reminder-' + rowIdx);
+  row.style.display = 'table-row';
+  content.innerHTML = '<div class="reminder-loading">Taslak hazırlanıyor...</div>';
 
   try {
     const res = await fetch('/api/rapor', {
@@ -1053,28 +1082,30 @@ async function draftReminder(threadId, rowIdx) {
     const data = await res.json();
 
     if (res.status === 401) {
-      panel.innerHTML = '<div class="reminder-error">Şifre hatalı — sayfayı yenileyip tekrar giriş yapın.</div>';
+      content.innerHTML = '<div class="reminder-error">Şifre hatalı — sayfayı yenileyip tekrar giriş yapın.</div>';
       return;
     }
     if (data.error) {
-      panel.innerHTML = `<div class="reminder-error">Taslak oluşturulamadı: ${escapeHtml(data.error)}</div>`;
+      content.innerHTML = `<div class="reminder-error">Taslak oluşturulamadı: ${escapeHtml(data.error)}</div>`;
       return;
     }
 
-    panel.innerHTML = `
-      <div class="reminder-field"><label>Kime:</label> <input type="text" id="rem-to-${rowIdx}" value="${escapeHtml(data.to)}"></div>
-      <div class="reminder-field"><label>Kimden:</label>
-        <select id="rem-from-${rowIdx}">
-          <option value="sales@belkagolf.com" ${data.from === 'sales@belkagolf.com' ? 'selected' : ''}>sales@belkagolf.com</option>
-          <option value="info@belkagolf.com" ${data.from === 'info@belkagolf.com' ? 'selected' : ''}>info@belkagolf.com</option>
-        </select>
+    content.innerHTML = `
+      <div class="reminder-fields-row">
+        <div class="reminder-field"><label>Kime:</label> <input type="text" id="rem-to-${rowIdx}" value="${escapeHtml(data.to)}"></div>
+        <div class="reminder-field"><label>Kimden:</label>
+          <select id="rem-from-${rowIdx}">
+            <option value="sales@belkagolf.com" ${data.from === 'sales@belkagolf.com' ? 'selected' : ''}>sales@belkagolf.com</option>
+            <option value="info@belkagolf.com" ${data.from === 'info@belkagolf.com' ? 'selected' : ''}>info@belkagolf.com</option>
+          </select>
+        </div>
       </div>
       <div class="reminder-field"><label>Konu:</label> <input type="text" id="rem-subject-${rowIdx}" value="${escapeHtml(data.subject)}"></div>
       <textarea id="rem-body-${rowIdx}" rows="16">${escapeHtml(data.draft)}</textarea>
       <button class="reminder-send-btn" onclick="sendReminder('${threadId}', '${rowIdx}')">Gönder</button>
       <div class="reminder-status" id="rem-status-${rowIdx}"></div>`;
   } catch (e) {
-    panel.innerHTML = '<div class="reminder-error">Bağlantı hatası — tekrar deneyin.</div>';
+    content.innerHTML = '<div class="reminder-error">Bağlantı hatası — tekrar deneyin.</div>';
   }
 }
 
