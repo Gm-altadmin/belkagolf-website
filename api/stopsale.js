@@ -38,20 +38,7 @@
 // (onların yerine değil) devreye girer - ikisi birbirini tamamlar.
 
 const XLSX = require('xlsx');
-
-function decodeBase64Url(data) {
-  const b64 = (data || '').replace(/-/g, '+').replace(/_/g, '/');
-  return Buffer.from(b64, 'base64').toString('utf8');
-}
-
-// decodeBase64Url'den FARKLI: o metin (HTML/mail gövdesi) için base64->STRING çeviriyor.
-// Excel gibi BINARY ekler için bu yanlış - UTF-8 string'e çevirmek geçersiz byte dizilerini
-// bozuyor/siliyor (30.08.2026'da bulunan hata: 44KB'lık dosya bu yüzden 70 byte'a düşüyordu).
-// Binary veri için base64 doğrudan Buffer'a çevrilmeli, string'e hiç uğramadan.
-function decodeBase64UrlToBuffer(data) {
-  const b64 = (data || '').replace(/-/g, '+').replace(/_/g, '/');
-  return Buffer.from(b64, 'base64');
-}
+const { getAccessToken, chunk, decodeBase64UrlToText: decodeBase64Url, decodeBase64UrlToBuffer } = require('./lib/gmail');
 
 function findHtmlBody(payload) {
   if (!payload) return '';
@@ -381,34 +368,10 @@ function hotelFromSender(addr) {
   return found ? found.hotel : (a.split('@')[1] || 'Bilinmeyen');
 }
 
-async function getAccessToken() {
-  const r = await fetch('https://oauth2.googleapis.com/token', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      client_id: process.env.GMAIL_CLIENT_ID,
-      client_secret: process.env.GMAIL_CLIENT_SECRET,
-      refresh_token: process.env.GMAIL_REFRESH_TOKEN,
-      grant_type: 'refresh_token'
-    })
-  });
-  const data = await r.json();
-  if (!data.access_token) {
-    throw new Error('Access token alınamadı - GMAIL_REFRESH_TOKEN kurulu mu? Detay: ' + JSON.stringify(data));
-  }
-  return data.access_token;
-}
-
 function getHeader(msg, name) {
   const h = (msg.payload && msg.payload.headers) || [];
   const f = h.find(x => x.name === name);
   return f ? f.value : '';
-}
-
-function chunk(arr, size) {
-  const out = [];
-  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
-  return out;
 }
 
 function subjectType(subject) {

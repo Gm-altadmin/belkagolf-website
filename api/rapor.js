@@ -51,7 +51,8 @@ const NOISE_SENDERS = [
 // başlığında bu ifadeleri geçirmiyor, o yüzden bu güvenli ve adres listesinden çok daha
 // kapsamlı bir çözüm.
 
-const OUR_DOMAIN = 'belkagolf.com';
+const { OUR_DOMAIN, HOTEL_DOMAINS, isOurDomain, isHotelDomain } = require('./lib/domains');
+const { getAccessToken } = require('./lib/gmail');
 
 // Gürültü Kontrolü sekmesinde onaylanıp GitHub'a otomatik commit edilen ek
 // göndericileri okur (api/mark-noise.js tarafından güncellenir). Dosya yoksa
@@ -68,38 +69,6 @@ function loadPersistedNoiseSenders() {
   }
 }
 const PERSISTED_NOISE_SENDERS = loadPersistedNoiseSenders();
-
-const HOTEL_DOMAINS = [
-  'maxxroyal.com', 'cajabymaxxroyal.com', 'corneliadiamond.com', 'regnumhotels.com',
-  'cullinanhotels.com', 'cullinanlinksgolfclub.com', 'sueno.com.tr', 'kayahotels.com.tr',
-  'titanic-hotels.com', 'gloria.com.tr', 'kempinski.com', 'robinson.com', 'sirene.com.tr',
-  'voyagehotel.com', 'swandorhotels.com', 'caryagolf.com', 'guvenok.com.tr',
-  'mardanpalace.com', 'euromsg.net', 'agc.com.tr', 'nationalturkey.com'
-];function isOurDomain(addr) {
-  return (addr || '').toLowerCase().includes(OUR_DOMAIN);
-}
-function isHotelDomain(addr) {
-  const a = (addr || '').toLowerCase();
-  return HOTEL_DOMAINS.some((d) => a.includes(d));
-}
-
-async function getAccessToken() {
-  const r = await fetch('https://oauth2.googleapis.com/token', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      client_id: process.env.GMAIL_CLIENT_ID,
-      client_secret: process.env.GMAIL_CLIENT_SECRET,
-      refresh_token: process.env.GMAIL_REFRESH_TOKEN,
-      grant_type: 'refresh_token'
-    })
-  });
-  const data = await r.json();
-  if (!data.access_token) {
-    throw new Error('Access token alınamadı - GMAIL_REFRESH_TOKEN kurulu mu? Detay: ' + JSON.stringify(data));
-  }
-  return data.access_token;
-}
 
 function extractGroupSize(text) {
   const m = text.match(/(\d{1,2})\s?(pax|kişi|kisi|pers\.?|person|people)/i);
@@ -335,13 +304,7 @@ SADECE JSON dizisi döndür, başka hiçbir metin/açıklama/markdown ekleme:
   return results.flat();
 }
 
-// Küçük bir dizi elemanı BATCH_SIZE'lık parçalara böler - Gmail API'ye aşırı paralel
-// istek atıp rate-limit yememek için, ama yine de seri fetch'ten çok daha hızlı olur.
-function chunk(arr, size) {
-  const out = [];
-  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
-  return out;
-}
+const { chunk } = require('./lib/gmail');
 
 // Aynı isimdeki (customerKey) birden fazla thread bulunduğunda, hepsinin GERÇEKTEN
 // aynı devam eden talep mi yoksa aynı isimli müşteriden gelen FARKLI/bağımsız talepler
@@ -422,20 +385,7 @@ SADECE JSON dizisi döndür, başka hiçbir metin ekleme:
 // bu iki yeni işlev mevcut rapor.js'e "action" parametresiyle eklendi (bkz. handler
 // içindeki yönlendirme). action olmadan istek gelirse eskisi gibi tam rapor üretilir.
 
-function getHeaderVal(msg, name) {
-  const headers = msg.payload ? msg.payload.headers || [] : [];
-  return (headers.find((h) => h.name.toLowerCase() === name.toLowerCase()) || {}).value || '';
-}
-
-function extractEmailAddr(headerValue) {
-  const m = (headerValue || '').match(/<([^>]+)>/);
-  return m ? m[1].toLowerCase() : (headerValue || '').trim().toLowerCase();
-}
-
-function decodeBase64UrlToText(dataStr) {
-  const b64 = (dataStr || '').replace(/-/g, '+').replace(/_/g, '/');
-  return Buffer.from(b64, 'base64').toString('utf8');
-}
+const { getHeaderVal, extractEmailAddr, decodeBase64UrlToText } = require('./lib/gmail');
 
 // Mesajın düz-metin gövdesini (varsa) bulur - alıntı (quote) bloğu oluşturmak için.
 // HTML-only mesajlarda düz metin yoksa boş döner (alıntı eklenmez, sorun değil).

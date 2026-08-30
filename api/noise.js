@@ -5,64 +5,18 @@
 // GET  /api/noise?password=...            -> tarama (eski noise-scan.js)
 // POST /api/noise {password,senders:[...]} -> onaylanan göndericileri GitHub'a
 //                                              kalıcı olarak commit eder (eski mark-noise.js)
+//
+// 30.08.2026 refactor: domain/Gmail yardımcıları artık api/lib/'den içe aktarılıyor
+// (önceden rapor.js/stopsale.js ile birebir kopyalanmış haldeydi - kod tekrarı riski).
 
-const OUR_DOMAIN = 'belkagolf.com';
-
-const HOTEL_DOMAINS = [
-  'maxxroyal.com', 'cajabymaxxroyal.com', 'corneliadiamond.com', 'regnumhotels.com',
-  'cullinanhotels.com', 'cullinanlinksgolfclub.com', 'sueno.com.tr', 'kayahotels.com.tr',
-  'titanic-hotels.com', 'gloria.com.tr', 'kempinski.com', 'robinson.com', 'sirene.com.tr',
-  'voyagehotel.com', 'swandorhotels.com', 'caryagolf.com', 'guvenok.com.tr',
-  'mardanpalace.com', 'euromsg.net', 'agc.com.tr', 'nationalturkey.com'
-];
+const { isOurDomain, isHotelDomain } = require('./lib/domains');
+const { getAccessToken, getHeaderVal, extractEmailAddr, chunk } = require('./lib/gmail');
 
 const KNOWN_AGENTS = ['rogerlode@hotmail.com'];
 
-function isOurDomain(addr) {
-  return (addr || '').toLowerCase().includes(OUR_DOMAIN);
-}
-function isHotelDomain(addr) {
-  const a = (addr || '').toLowerCase();
-  return HOTEL_DOMAINS.some((d) => a.includes(d));
-}
 function isKnownAgent(addr) {
   const a = (addr || '').toLowerCase();
   return KNOWN_AGENTS.some((k) => a.includes(k));
-}
-
-function extractEmail(headerValue) {
-  const m = (headerValue || '').match(/<([^>]+)>/);
-  if (m) return m[1].toLowerCase();
-  return (headerValue || '').trim().toLowerCase();
-}
-
-async function getAccessToken() {
-  const r = await fetch('https://oauth2.googleapis.com/token', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      client_id: process.env.GMAIL_CLIENT_ID,
-      client_secret: process.env.GMAIL_CLIENT_SECRET,
-      refresh_token: process.env.GMAIL_REFRESH_TOKEN,
-      grant_type: 'refresh_token'
-    })
-  });
-  const data = await r.json();
-  if (!data.access_token) {
-    throw new Error('Access token alınamadı. Detay: ' + JSON.stringify(data));
-  }
-  return data.access_token;
-}
-
-function getHeaderFrom(msg, name) {
-  const headers = msg.payload ? msg.payload.headers || [] : [];
-  return (headers.find((h) => h.name === name) || {}).value || '';
-}
-
-function chunk(arr, size) {
-  const out = [];
-  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
-  return out;
 }
 
 function loadPersistedNoise() {
@@ -188,8 +142,8 @@ async function handleScan(req, res) {
   for (const det of detailResults) {
     const msgs = det.messages || [];
     for (const msg of msgs) {
-      const fromHeader = getHeaderFrom(msg, 'From');
-      const fromEmail = extractEmail(fromHeader);
+      const fromHeader = getHeaderVal(msg, 'From');
+      const fromEmail = extractEmailAddr(fromHeader);
       if (!fromEmail) continue;
       if (isOurDomain(fromEmail)) continue;
       if (isHotelDomain(fromEmail)) continue;
@@ -199,7 +153,7 @@ async function handleScan(req, res) {
 
       seen.set(fromEmail, {
         from: fromHeader,
-        subject: getHeaderFrom(msg, 'Subject'),
+        subject: getHeaderVal(msg, 'Subject'),
         snippet: msg.snippet || ''
       });
     }
