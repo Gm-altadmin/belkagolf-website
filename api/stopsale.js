@@ -267,9 +267,24 @@ function findAttachmentParts(payload, results = []) {
 async function fetchAttachmentBuffer(accessToken, messageId, attachmentId) {
   const url = `https://gmail.googleapis.com/gmail/v1/users/me/messages/${messageId}/attachments/${attachmentId}`;
   const res = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
-  const data = await res.json();
-  if (!data.data) return null;
-  return Buffer.from(decodeBase64Url(data.data), 'base64');
+  const rawText = await res.text();
+  let data;
+  try {
+    data = JSON.parse(rawText);
+  } catch (e) {
+    throw new Error(`JSON parse hatası, HTTP ${res.status}, ilk 150 karakter: ${rawText.slice(0, 150)}`);
+  }
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status}: ${rawText.slice(0, 200)}`);
+  }
+  if (!data.data) {
+    throw new Error(`data.data alanı yok. Yanıt anahtarları: [${Object.keys(data).join(', ')}], gmail-size: ${data.size}`);
+  }
+  const buf = Buffer.from(decodeBase64Url(data.data), 'base64');
+  if (buf.length < 1000) {
+    throw new Error(`Beklenenden çok küçük - gmail-size alanı: ${data.size}, base64 uzunluk: ${data.data.length}, decode sonrası: ${buf.length} byte`);
+  }
+  return buf;
 }
 
 // Takvimi tarar: önce "başlık satırı"nı (art arda birden fazla gerçek Excel-tarih hücresi
