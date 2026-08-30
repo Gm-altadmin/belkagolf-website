@@ -584,13 +584,17 @@ doğrulanmış cümleler:
   direkt, süslemesiz. Örnek: "Hello Roger, [direkt içerik]. Best Regards," - selamlama/kapanış
   arası neredeyse hiç dolgu cümlesi yok, günlük iş yazışması tonu.
 
-- "customer" tipi (doğrudan müşteri): Alıcı adının diline uygun resmiyet seviyesi seç (örn.
-  "Sehr geehrte Familie X" / "Dear Ms. X" / "Merhaba,"). Klişe YOK (yukarıdaki yasak liste),
-  direkt bilgi/cevapla başla. Sorun/iptal gibi hassas konularda GERÇEK empati göster (örnek gerçek
-  cümle: "es tut uns sehr leid, dass Sie erkrankt sind, wir wünschen Ihnen eine schnelle gute
-  Besserung" tarzı - dile çevirerek uygula). Kapanış dile göre doğal olsun ("Kind Regards," /
-  "Vielen Dank, bei weiteren Fragen stehen wir gerne zur Verfügüng." vb.) - "Saygılarımla/Best
-  Regards" imza kısmı zaten ayrıca ekleniyor, sen sadece gövdeyi yaz.
+- "customer" tipi (doğrudan müşteri): Genelde İngilizce (uluslararası standart) - alıcının adı/dili
+  başka bir dil ima ediyorsa (örn. Almanca isim + Almanca son mesaj özeti) o dile uygun resmiyet
+  seviyesi seç (örn. "Sehr geehrte Familie X" / "Dear Ms. X" / "Hello [isim]," / "Good morning
+  [isim],"). Klişe YOK (yukarıdaki yasak liste), direkt bilgi/cevapla başla. Sorun/iptal gibi
+  hassas konularda GERÇEK empati göster (örnek gerçek cümle: "es tut uns sehr leid, dass Sie
+  erkrankt sind, wir wünschen Ihnen eine schnelle gute Besserung" tarzı - dile çevirerek uygula).
+  Fiyat/paket bilgisinden bahsedersen (Öneri metninde geçen bir sayı/tarih varsa) ŞİRKETİN GERÇEK
+  formatını kullan: fiyat "XXX.- EUR p.p." (kişi başı) şeklinde, grup indirimi varsa "7+1 FREE"
+  ifadesiyle, tee-time bilgisi "Tarih + Saat + Saha adı + Oyuncu sayısı" sırasıyla. Kapanış dile
+  göre doğal olsun ("Kind Regards," / "Best Regards," / "Vielen Dank, bei weiteren Fragen stehen
+  wir gerne zur Verfügüng." vb.) - imza kısmı zaten ayrıca ekleniyor, sen sadece gövdeyi yaz.
 
 Kısa, nazik bir hatırlatma maili yaz - selamlama + 2-3 cümlelik nazik hatırlatma + kapanış
 yeterli, uzatma. SADECE mail gövdesini döndür, başka hiçbir açıklama/başlık ekleme.`;
@@ -704,48 +708,119 @@ function toBase64Url(str) {
   return Buffer.from(str, 'utf8').toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
 
-// --- Toplu üslup analizi (action=styleAnalysis, 30.08.2026 eklendi) ---
-// BİR KEZLİK, manuel tetiklenen bir araç: info@/sales@'in GERÇEK gönderdiği çok sayıda
-// maili (chat'teki hafıza sınırından TAMAMEN bağımsız - bu Vercel'de, kendi sunucu
-// tarafında çalışıyor) tam metniyle çekip, gruplar halinde Claude'a analiz ettirip,
-// sonunda TEK bir birleşik üslup rehberi üretir. Chunk'lar paralel işlenir (Vercel süre
-// sınırını aşmamak için), sonunda ayrı bir "sentez" çağrısıyla tüm grupların bulguları
-// tek bir rapora birleştirilir.
+// --- GitHub'da kalıcı ilerleme/not dosyaları (30.08.2026, üslup analizi için) ---
+// Vercel fonksiyonları çalışma zamanında kalıcı yazamıyor - bu yüzden "hangi mailler
+// işlendi" ve "şimdiye kadarki bulgular" GitHub'a commit edilerek saklanıyor (noise.js'teki
+// mark-noise mantığıyla aynı desen). Her yeni çalıştırma önce GitHub'dan mevcut ilerlemeyi
+// okur, sadece İŞLENMEMİŞ mailleri analiz eder, sonra güncellenmiş listeyi geri yazar -
+// böylece aynı mail iki kez analiz edilmez, "her saat/her tıklamada devam et" mümkün olur.
+const GH_REPO_OWNER = 'Gm-altadmin';
+const GH_REPO_NAME = 'belkagolf-website';
+const GH_BRANCH = 'main';
+
+async function githubReadJson(path, fallback) {
+  if (!process.env.GITHUB_TOKEN) return { data: fallback, sha: null };
+  const url = `https://api.github.com/repos/${GH_REPO_OWNER}/${GH_REPO_NAME}/contents/${path}?ref=${GH_BRANCH}`;
+  const headers = {
+    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28'
+  };
+  const res = await fetch(url, { headers });
+  if (!res.ok) return { data: fallback, sha: null }; // dosya yoksa (ilk çalıştırma) boş başla
+  const json = await res.json();
+  try {
+    return { data: JSON.parse(Buffer.from(json.content, 'base64').toString('utf8')), sha: json.sha };
+  } catch (e) {
+    return { data: fallback, sha: json.sha };
+  }
+}
+
+async function githubWriteJson(path, dataObj, sha, message) {
+  if (!process.env.GITHUB_TOKEN) return false;
+  const url = `https://api.github.com/repos/${GH_REPO_OWNER}/${GH_REPO_NAME}/contents/${path}`;
+  const headers = {
+    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+    'Content-Type': 'application/json'
+  };
+  const contentB64 = Buffer.from(JSON.stringify(dataObj, null, 2) + '\n', 'utf8').toString('base64');
+  const body = { message, content: contentB64, branch: GH_BRANCH };
+  if (sha) body.sha = sha;
+  const res = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
+  return res.ok;
+}
+
+// --- Toplu üslup analizi (action=styleAnalysis, 30.08.2026 eklendi, 30.08.2026 kalıcı
+// ilerleme takibi eklendi) ---
+// BİR KEZLİK değil artık - TEKRAR TEKRAR çalıştırılabilir (buton her tıklandığında ya da
+// otomatik/saatlik). Her çalıştırma: (1) GitHub'dan "şimdiye kadar işlenen thread ID'leri"
+// listesini okur, (2) info@/sales@'in gönderdiği maillerden SADECE işlenmemiş olanları
+// (en fazla `limit` kadar) çeker, (3) analiz edip GitHub'a hem yeni ID'leri hem yeni
+// bulguları ekler, (4) o ana kadarki TÜM bulguları tek bir güncel rehberde sentezler.
+// Aynı mail iki kez analiz edilmez - "kalan" sayısı sıfıra inince tüm geçmiş taranmış olur.
 async function handleStyleAnalysis(req, res, accessToken) {
   if (!process.env.ANTHROPIC_API_KEY) {
     res.status(500).json({ error: 'api_key_missing' });
     return;
   }
+  if (!process.env.GITHUB_TOKEN) {
+    res.status(500).json({ error: 'github_token_missing - kalıcı ilerleme takibi için GITHUB_TOKEN gerekli' });
+    return;
+  }
 
-  const maxMessages = Math.min(parseInt(req.query.limit || req.body?.limit || '150', 10) || 150, 300);
+  const PROGRESS_PATH = 'api/data/style-analysis-progress.json';
+  const NOTES_PATH = 'api/data/style-analysis-notes.json';
+  const maxNew = Math.min(parseInt(req.query.limit || req.body?.limit || '150', 10) || 150, 300);
 
-  // sadece BİZİM gönderdiğimiz (info@/sales@) mailler - gelen değil, üslup analizi için
+  const { data: progress, sha: progressSha } = await githubReadJson(PROGRESS_PATH, { processedIds: [] });
+  const { data: notes, sha: notesSha } = await githubReadJson(NOTES_PATH, { chunkAnalyses: [] });
+  const processedSet = new Set(progress.processedIds || []);
+
+  // info@/sales@'in gönderdiği TÜM thread'leri sayfalayarak tara, İŞLENMEMİŞ olanlardan
+  // en fazla maxNew tanesini topla. Toplam kaç thread olduğunu (resultCountEstimate) da
+  // "kalan" hesaplamak için sakla.
   const q = '(from:info@belkagolf.com OR from:sales@belkagolf.com)';
-  let threads = [];
+  const newThreadIds = [];
   let pageToken = '';
-  for (let i = 0; i < 6 && threads.length < maxMessages; i++) {
-    const url = `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(q)}&maxResults=50${pageToken ? `&pageToken=${pageToken}` : ''}`;
+  let totalSeen = 0;
+  let totalEstimate = 0;
+  for (let i = 0; i < 20 && newThreadIds.length < maxNew; i++) {
+    const url = `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(q)}&maxResults=100${pageToken ? `&pageToken=${pageToken}` : ''}`;
     const listRes = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
     const listData = await listRes.json();
-    threads = threads.concat(listData.threads || []);
+    if (i === 0) totalEstimate = parseInt(listData.resultSizeEstimate || '0', 10);
+    const pageThreads = listData.threads || [];
+    totalSeen += pageThreads.length;
+    for (const th of pageThreads) {
+      if (!processedSet.has(th.id) && newThreadIds.length < maxNew) newThreadIds.push(th.id);
+    }
     if (!listData.nextPageToken) break;
     pageToken = listData.nextPageToken;
   }
-  threads = threads.slice(0, maxMessages);
 
-  // Her thread'in son mesajını tam metniyle çek (paralel, 10'ar 10'ar - Gmail rate-limit'e takılmamak için)
+  if (newThreadIds.length === 0) {
+    res.status(200).json({
+      done: true,
+      message: 'Tüm mailler zaten daha önce analiz edilmiş - işlenecek yeni mail yok.',
+      totalProcessedSoFar: processedSet.size
+    });
+    return;
+  }
+
+  // Her yeni thread'in son (bize ait) mesajını tam metniyle çek
   const messages = [];
-  for (const group of chunk(threads, 10)) {
+  for (const group of chunk(newThreadIds, 10)) {
     const details = await Promise.all(
-      group.map((th) =>
-        fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${th.id}?format=full`,
+      group.map((id) =>
+        fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${id}?format=full`,
           { headers: { Authorization: `Bearer ${accessToken}` } }
         ).then((r) => r.json()).catch(() => null)
       )
     );
     for (const det of details) {
       if (!det || !det.messages) continue;
-      // sadece bizim gönderdiğimiz mesajları al (thread'de karşı tarafın mesajı da olabilir)
       const ourMsgs = det.messages.filter((m) => {
         const from = getHeaderVal(m, 'From').toLowerCase();
         return from.includes('info@belkagolf.com') || from.includes('sales@belkagolf.com');
@@ -758,16 +833,15 @@ async function handleStyleAnalysis(req, res, accessToken) {
         }
       }
     }
-    if (messages.length >= maxMessages) break;
   }
 
-  if (messages.length === 0) {
-    res.status(200).json({ error: 'no_messages_found', scanned: threads.length });
-    return;
-  }
+  // Yeni ID'leri hemen işlenmiş say (analiz kısmi başarısız olsa bile aynı maili
+  // tekrar tekrar denemeyelim - Claude hatası olursa o grup zaten atlanıyor).
+  const updatedProcessedIds = [...processedSet, ...newThreadIds];
 
-  // Gruplar halinde (20'şer) Claude'a analiz ettir - paralel
-  const analysisSystemPrompt = `Sen bir yazışma üslubu analistisin. Sana bir golf tatili acentesinin
+  let newChunkAnalyses = [];
+  if (messages.length > 0) {
+    const analysisSystemPrompt = `Sen bir yazışma üslubu analistisin. Sana bir golf tatili acentesinin
 (Belka Golf) GERÇEKTEN GÖNDERDİĞİ mailler verilecek (alıcı adresi + konu + gövde). Görevin: bu
 maillerdeki TEKRAR EDEN kalıpları (açılış cümleleri, kapanış cümleleri, ton, resmiyet seviyesi)
 tespit etmek. Alıcı otel/kulüp domaini ise "otel", müşteri/acente ise "müşteri" olarak ayır.
@@ -776,45 +850,48 @@ SADECE gerçekten TEKRAR EDEN (2+ kez görülen) kalıpları raporla - tek sefer
 görmezden gel. Çıktın kısa, madde işaretli bir özet olsun: hangi açılış cümleleri, hangi kapanış
 cümleleri, hangi ton tekrar ediyor. Türkçe yaz.`;
 
-  const chunks = chunk(messages, 20);
-  const chunkAnalyses = await Promise.all(
-    chunks.map(async (grp) => {
-      const listText = grp.map((m, i) =>
-        `${i + 1}. Kime: ${m.to}\n   Konu: ${m.subject}\n   Gövde: ${m.body}`
-      ).join('\n\n---\n\n');
-      try {
-        const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': process.env.ANTHROPIC_API_KEY,
-            'anthropic-version': '2023-06-01'
-          },
-          body: JSON.stringify({
-            model: 'claude-haiku-4-5-20251001',
-            max_tokens: 1024,
-            system: analysisSystemPrompt,
-            messages: [{ role: 'user', content: listText }]
-          })
-        });
-        if (!apiRes.ok) return null;
-        const data = await apiRes.json();
-        return (data.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('');
-      } catch (e) {
-        return null;
-      }
-    })
-  );
+    const msgChunks = chunk(messages, 20);
+    const chunkResults = await Promise.all(
+      msgChunks.map(async (grp) => {
+        const listText = grp.map((m, i) =>
+          `${i + 1}. Kime: ${m.to}\n   Konu: ${m.subject}\n   Gövde: ${m.body}`
+        ).join('\n\n---\n\n');
+        try {
+          const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-api-key': process.env.ANTHROPIC_API_KEY,
+              'anthropic-version': '2023-06-01'
+            },
+            body: JSON.stringify({
+              model: 'claude-haiku-4-5-20251001',
+              max_tokens: 1024,
+              system: analysisSystemPrompt,
+              messages: [{ role: 'user', content: listText }]
+            })
+          });
+          if (!apiRes.ok) return null;
+          const data = await apiRes.json();
+          return (data.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('');
+        } catch (e) {
+          return null;
+        }
+      })
+    );
+    newChunkAnalyses = chunkResults.filter(Boolean);
+  }
 
-  const validAnalyses = chunkAnalyses.filter(Boolean);
+  const allChunkAnalyses = [...(notes.chunkAnalyses || []), ...newChunkAnalyses];
 
-  // Sentez: tüm grup bulgularını TEK bir üslup rehberine birleştir
+  // Sentez: ŞİMDİYE KADAR biriken TÜM grup bulgularını (bu çalıştırma + önceki tüm
+  // çalıştırmalar) TEK, güncel bir üslup rehberine birleştir.
   const synthesisPrompt = `Aşağıda, aynı şirketin (Belka Golf) yazışma örneklerinden çıkarılmış
-${validAnalyses.length} ayrı analiz grubu var. Bunları TEK, birleşik, çelişkisiz bir üslup rehberine
+${allChunkAnalyses.length} ayrı analiz grubu var. Bunları TEK, birleşik, çelişkisiz bir üslup rehberine
 dönüştür - otel-yazışması ve müşteri-yazışması için ayrı ayrı: en sık tekrar eden açılış kalıbı,
 en sık tekrar eden kapanış kalıbı, genel ton. Türkçe, kısa, net madde işaretleriyle yaz.`;
 
-  let styleGuide = validAnalyses.join('\n\n---\n\n');
+  let styleGuide = allChunkAnalyses.join('\n\n---\n\n');
   try {
     const synthRes = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -827,7 +904,7 @@ en sık tekrar eden kapanış kalıbı, genel ton. Türkçe, kısa, net madde i�
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 1500,
         system: synthesisPrompt,
-        messages: [{ role: 'user', content: validAnalyses.join('\n\n---GRUP---\n\n') }]
+        messages: [{ role: 'user', content: allChunkAnalyses.join('\n\n---GRUP---\n\n').slice(0, 60000) }]
       })
     });
     if (synthRes.ok) {
@@ -838,10 +915,29 @@ en sık tekrar eden kapanış kalıbı, genel ton. Türkçe, kısa, net madde i�
     // sentez başarısız olursa, ham grup analizlerini döndür (yukarıda zaten atanmış)
   }
 
+  // İlerlemeyi ve bulguları GitHub'a kaydet - bir sonraki çalıştırma buradan devam eder.
+  await githubWriteJson(
+    PROGRESS_PATH,
+    { processedIds: updatedProcessedIds, lastRunAt: new Date().toISOString() },
+    progressSha,
+    `Üslup analizi ilerlemesi: +${newThreadIds.length} yeni mail işlendi (toplam ${updatedProcessedIds.length})`
+  );
+  await githubWriteJson(
+    NOTES_PATH,
+    { chunkAnalyses: allChunkAnalyses, lastRunAt: new Date().toISOString() },
+    notesSha,
+    `Üslup analizi bulguları güncellendi (${allChunkAnalyses.length} grup)`
+  );
+
+  const remaining = Math.max(0, totalEstimate - updatedProcessedIds.length);
+
   res.status(200).json({
-    scannedThreads: threads.length,
-    analyzedMessages: messages.length,
-    chunkCount: chunks.length,
+    done: remaining === 0,
+    newlyProcessed: newThreadIds.length,
+    newlyAnalyzedMessages: messages.length,
+    totalProcessedSoFar: updatedProcessedIds.length,
+    estimatedTotalMatching: totalEstimate,
+    estimatedRemaining: remaining,
     styleGuide
   });
 }
