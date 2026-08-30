@@ -2,6 +2,11 @@
 // /rapor.html buraya şifreyi gönderir, doğruysa son 8 günün
 // sales@/info@ trafiğini Gmail'den çekip BİRİKİMLİ RENK İZİ ile döner.
 //
+// Vercel Hobby planı varsayılan fonksiyon süresi kısa (10sn) olabilir - toplu üslup
+// analizi (action=styleAnalysis, 30.08.2026 eklendi) çok sayıda mail çekip Claude'a
+// gönderdiği için bu süreyi aşabilir. Mümkün olan en yüksek süreye çıkarılıyor.
+export const config = { maxDuration: 60 };
+//
 // RENK MANTIĞI (futbol benzetmesi, kullanıcı tanımlı 03.08.2026):
 // "Top" (aksiyon) her zaman mesajın gittiği tarafın rengini yakar.
 //   -> Bize gelen HER mesaj (müşteriden veya otelden fark etmez) : SARI
@@ -699,6 +704,148 @@ function toBase64Url(str) {
   return Buffer.from(str, 'utf8').toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
 
+// --- Toplu üslup analizi (action=styleAnalysis, 30.08.2026 eklendi) ---
+// BİR KEZLİK, manuel tetiklenen bir araç: info@/sales@'in GERÇEK gönderdiği çok sayıda
+// maili (chat'teki hafıza sınırından TAMAMEN bağımsız - bu Vercel'de, kendi sunucu
+// tarafında çalışıyor) tam metniyle çekip, gruplar halinde Claude'a analiz ettirip,
+// sonunda TEK bir birleşik üslup rehberi üretir. Chunk'lar paralel işlenir (Vercel süre
+// sınırını aşmamak için), sonunda ayrı bir "sentez" çağrısıyla tüm grupların bulguları
+// tek bir rapora birleştirilir.
+async function handleStyleAnalysis(req, res, accessToken) {
+  if (!process.env.ANTHROPIC_API_KEY) {
+    res.status(500).json({ error: 'api_key_missing' });
+    return;
+  }
+
+  const maxMessages = Math.min(parseInt(req.query.limit || req.body?.limit || '150', 10) || 150, 300);
+
+  // sadece BİZİM gönderdiğimiz (info@/sales@) mailler - gelen değil, üslup analizi için
+  const q = '(from:info@belkagolf.com OR from:sales@belkagolf.com)';
+  let threads = [];
+  let pageToken = '';
+  for (let i = 0; i < 6 && threads.length < maxMessages; i++) {
+    const url = `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(q)}&maxResults=50${pageToken ? `&pageToken=${pageToken}` : ''}`;
+    const listRes = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
+    const listData = await listRes.json();
+    threads = threads.concat(listData.threads || []);
+    if (!listData.nextPageToken) break;
+    pageToken = listData.nextPageToken;
+  }
+  threads = threads.slice(0, maxMessages);
+
+  // Her thread'in son mesajını tam metniyle çek (paralel, 10'ar 10'ar - Gmail rate-limit'e takılmamak için)
+  const messages = [];
+  for (const group of chunk(threads, 10)) {
+    const details = await Promise.all(
+      group.map((th) =>
+        fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${th.id}?format=full`,
+          { headers: { Authorization: `Bearer ${accessToken}` } }
+        ).then((r) => r.json()).catch(() => null)
+      )
+    );
+    for (const det of details) {
+      if (!det || !det.messages) continue;
+      // sadece bizim gönderdiğimiz mesajları al (thread'de karşı tarafın mesajı da olabilir)
+      const ourMsgs = det.messages.filter((m) => {
+        const from = getHeaderVal(m, 'From').toLowerCase();
+        return from.includes('info@belkagolf.com') || from.includes('sales@belkagolf.com');
+      });
+      for (const m of ourMsgs) {
+        const body = findPlainTextBody(m.payload);
+        if (body && body.trim().length > 20) {
+          const to = getHeaderVal(m, 'To');
+          messages.push({ to, subject: getHeaderVal(m, 'Subject'), body: body.slice(0, 1500) });
+        }
+      }
+    }
+    if (messages.length >= maxMessages) break;
+  }
+
+  if (messages.length === 0) {
+    res.status(200).json({ error: 'no_messages_found', scanned: threads.length });
+    return;
+  }
+
+  // Gruplar halinde (20'şer) Claude'a analiz ettir - paralel
+  const analysisSystemPrompt = `Sen bir yazışma üslubu analistisin. Sana bir golf tatili acentesinin
+(Belka Golf) GERÇEKTEN GÖNDERDİĞİ mailler verilecek (alıcı adresi + konu + gövde). Görevin: bu
+maillerdeki TEKRAR EDEN kalıpları (açılış cümleleri, kapanış cümleleri, ton, resmiyet seviyesi)
+tespit etmek. Alıcı otel/kulüp domaini ise "otel", müşteri/acente ise "müşteri" olarak ayır.
+
+SADECE gerçekten TEKRAR EDEN (2+ kez görülen) kalıpları raporla - tek seferlik/rastgele cümleleri
+görmezden gel. Çıktın kısa, madde işaretli bir özet olsun: hangi açılış cümleleri, hangi kapanış
+cümleleri, hangi ton tekrar ediyor. Türkçe yaz.`;
+
+  const chunks = chunk(messages, 20);
+  const chunkAnalyses = await Promise.all(
+    chunks.map(async (grp) => {
+      const listText = grp.map((m, i) =>
+        `${i + 1}. Kime: ${m.to}\n   Konu: ${m.subject}\n   Gövde: ${m.body}`
+      ).join('\n\n---\n\n');
+      try {
+        const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-api-key': process.env.ANTHROPIC_API_KEY,
+            'anthropic-version': '2023-06-01'
+          },
+          body: JSON.stringify({
+            model: 'claude-haiku-4-5-20251001',
+            max_tokens: 1024,
+            system: analysisSystemPrompt,
+            messages: [{ role: 'user', content: listText }]
+          })
+        });
+        if (!apiRes.ok) return null;
+        const data = await apiRes.json();
+        return (data.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('');
+      } catch (e) {
+        return null;
+      }
+    })
+  );
+
+  const validAnalyses = chunkAnalyses.filter(Boolean);
+
+  // Sentez: tüm grup bulgularını TEK bir üslup rehberine birleştir
+  const synthesisPrompt = `Aşağıda, aynı şirketin (Belka Golf) yazışma örneklerinden çıkarılmış
+${validAnalyses.length} ayrı analiz grubu var. Bunları TEK, birleşik, çelişkisiz bir üslup rehberine
+dönüştür - otel-yazışması ve müşteri-yazışması için ayrı ayrı: en sık tekrar eden açılış kalıbı,
+en sık tekrar eden kapanış kalıbı, genel ton. Türkçe, kısa, net madde işaretleriyle yaz.`;
+
+  let styleGuide = validAnalyses.join('\n\n---\n\n');
+  try {
+    const synthRes = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 1500,
+        system: synthesisPrompt,
+        messages: [{ role: 'user', content: validAnalyses.join('\n\n---GRUP---\n\n') }]
+      })
+    });
+    if (synthRes.ok) {
+      const synthData = await synthRes.json();
+      styleGuide = (synthData.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('');
+    }
+  } catch (e) {
+    // sentez başarısız olursa, ham grup analizlerini döndür (yukarıda zaten atanmış)
+  }
+
+  res.status(200).json({
+    scannedThreads: threads.length,
+    analyzedMessages: messages.length,
+    chunkCount: chunks.length,
+    styleGuide
+  });
+}
+
 async function handleSendReminder(req, res, accessToken) {
   const { threadId, to, from, subject, body } = req.body || {};
   if (!threadId || !to || !from || !subject || !body) {
@@ -746,13 +893,15 @@ export default async function handler(req, res) {
   }
 
   const action = req.query.action || (req.body && req.body.action) || 'report';
-  if (action === 'draft' || action === 'send') {
+  if (action === 'draft' || action === 'send' || action === 'styleAnalysis') {
     try {
       const accessToken = await getAccessToken();
       if (action === 'draft') {
         await handleDraftReminder(req, res, accessToken);
-      } else {
+      } else if (action === 'send') {
         await handleSendReminder(req, res, accessToken);
+      } else {
+        await handleStyleAnalysis(req, res, accessToken);
       }
     } catch (e) {
       res.status(500).json({ error: e.message });
