@@ -3,12 +3,13 @@
 // hotel-packages.xlsx üzerinde tarar, uygun olanları en ucuzdan pahalıya sıralar.
 // Aynı şifre (RAPOR_SIFRE) ile korunur - /rapor.html'deki "Fiyat Arama" sekmesi buraya bağlanır.
 //
-// NOT: HP_MARKUP ve HP_MARKUP_EXCLUDED_HOTELS burada api/hotelpackage.js ile AYNI
-// tutulmalı - biri değişirse diğeri de güncellenmeli (iki dosyada da manuel senkron).
+// 30.08.2026 refactor: HP_MARKUP/HP_MARKUP_EXCLUDED_HOTELS/veri okuma artık api/_lib/
+// hotel-pricing.js'den içe aktarılıyor - hotelpackage.js ile manuel senkron tutma riski
+// ortadan kalktı (önceden üç dosyada birebir kopyalanmış haldeydi).
 
-const XLSX = require('xlsx');
 const path = require('path');
 const fs = require('fs');
+const { loadHotelPackageData, HP_MARKUP, HP_MARKUP_EXCLUDED_HOTELS } = require('./_lib/hotel-pricing');
 
 let cachedCampaigns = null;
 function loadCampaigns() {
@@ -48,62 +49,19 @@ function findActiveCampaign(hotel, checkDate) {
 
 let cachedData = null;
 
-function parseSheetRows(rows) {
-  const headerIdx = rows.findIndex(r => r && r[0] === 'Otel');
-  if (headerIdx === -1) return []; // veri tablosu olmayan sayfa (örn. Özet-Index)
-
-  const data = [];
-  for (let i = headerIdx + 1; i < rows.length; i++) {
-    const r = rows[i];
-    if (!r || !r[0] || !r[1] || !r[2]) continue;
-    if (String(r[0]).trim() === 'Belka Golf Residence') continue; // ayrı site, paket satışı yok
-    data.push({
-      hotel: String(r[0]).trim(),
-      start: r[1], end: r[2],
-      nights: Number(r[3]),
-      rounds: r[4],
-      view: r[5] || null,
-      single: r[6] !== null ? Number(r[6]) : null,
-      dbl: r[7] !== null ? Number(r[7]) : null,
-      group71: r[8] !== null ? Number(r[8]) : null,
-      buggyFree: r[9] === 'Evet',
-      tokenFree: r[10] === 'Evet',
-      transferFree: r[11] === 'Evet'
-    });
-  }
-  return data;
-}
-
+// Ortak loadHotelPackageData() TÜM otelleri döner (Belka Golf Residence dahil) - burada
+// (personel iç fiyat arama) o ayrı site paket satışı yapmadığı için hariç tutuluyor.
+// Bu filtre SADECE burada var, hotelpackage.js/hotelpackage-all.js'de yok (bilinçli fark).
 function loadData() {
   if (cachedData) return cachedData;
-  const filePath = path.join(__dirname, 'data', 'hotel-packages.xlsx');
-  const buf = fs.readFileSync(filePath);
-  const wb = XLSX.read(buf, { type: 'buffer', cellDates: false });
-
-  // Dosyadaki TÜM sayfaları tara (her otel kendi sayfasında olabilir).
-  let data = [];
-  for (const sheetName of wb.SheetNames) {
-    const sheet = wb.Sheets[sheetName];
-    const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: null });
-    data = data.concat(parseSheetRows(rows));
-  }
-
-  cachedData = data;
-  return data;
+  cachedData = loadHotelPackageData().filter((row) => row.hotel !== 'Belka Golf Residence');
+  return cachedData;
 }
 
 function parseDate(str) {
   const [d, m, y] = str.split('.').map(Number);
   return new Date(y, m - 1, d);
 }
-
-const HP_MARKUP = 98;
-const HP_MARKUP_EXCLUDED_HOTELS = new Set([
-  'Gloria Serenity Resort',
-  'Gloria Golf Resort',
-  'Gloria Verde Resort & Spa',
-  'Robinson Club Nobilis'
-]);
 
 module.exports = (req, res) => {
   try {

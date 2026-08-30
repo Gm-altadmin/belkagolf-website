@@ -1,65 +1,10 @@
-const XLSX = require('xlsx');
-const path = require('path');
-const fs = require('fs');
-let cachedData = null;
+const { loadHotelPackageData, HP_MARKUP, HP_MARKUP_EXCLUDED_HOTELS } = require('./_lib/hotel-pricing');
 
-function parseSheetRows(rows) {
-  const headerIdx = rows.findIndex(r => r && r[0] === 'Otel');
-  if (headerIdx === -1) return []; // bu sayfada veri tablosu yok (örn. Özet-Index sayfası)
-
-  const data = [];
-  for (let i = headerIdx + 1; i < rows.length; i++) {
-    const r = rows[i];
-    if (!r || !r[0] || !r[1] || !r[2]) continue; // otel adı + tarih olmayan (boş şablon) satırları atla
-    data.push({
-      hotel: String(r[0]).trim(),
-      start: r[1], end: r[2],
-      nights: Number(r[3]),
-      rounds: r[4],                 // sayı ya da "Sınırsız"
-      view: r[5] || null,           // "Land View" / "Golf View" / "Sea View" / null
-      single: r[6] !== null ? Number(r[6]) : null,
-      dbl: r[7] !== null ? Number(r[7]) : null,
-      group71: r[8] !== null ? Number(r[8]) : null,
-      buggyFree: r[9] === 'Evet',
-      tokenFree: r[10] === 'Evet',
-      transferFree: r[11] === 'Evet'
-    });
-  }
-  return data;
-}
-
-function loadData() {
-  if (cachedData) return cachedData;
-  const filePath = path.join(__dirname, 'data', 'hotel-packages.xlsx');
-  const buf = fs.readFileSync(filePath);
-  const wb = XLSX.read(buf, { type: 'buffer', cellDates: false });
-
-  // Dosyadaki TÜM sayfaları tara (her otel kendi sayfasında olabilir).
-  // "Otel" başlıklı veri tablosu içermeyen sayfalar (örn. Özet-Index) otomatik atlanır.
-  let data = [];
-  for (const sheetName of wb.SheetNames) {
-    const sheet = wb.Sheets[sheetName];
-    const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: null });
-    data = data.concat(parseSheetRows(rows));
-  }
-
-  cachedData = data;
-  return data;
-}
 // "26.08.2026" formatındaki tarihi karşılaştırılabilir hale getirir
 function parseDate(str) {
   const [d, m, y] = str.split('.').map(Number);
   return new Date(y, m - 1, d);
 }
-
-// Bu otellerin fiyatlarına kâr payı ZATEN dahil (bilyanagolf.com üzerinden alınan
-// fiyatlar, kaynağında zaten kâr marjı içeriyor) — bu yüzden HP_MARKUP eklenmez.
-const HP_MARKUP_EXCLUDED_HOTELS = new Set([
-  'Gloria Serenity Resort',
-  'Gloria Golf Resort',
-  'Gloria Verde Resort & Spa',
-  'Robinson Club Nobilis'
-]);
 
 module.exports = (req, res) => {
   try {
@@ -70,7 +15,7 @@ module.exports = (req, res) => {
       res.status(400).json({ error: 'missing_params' });
       return;
     }
-    const data = loadData();
+    const data = loadHotelPackageData();
     const checkDate = new Date(date + 'T00:00:00');
     const nightsNum = nights ? Number(nights) : null;
     const groupSize = group ? Number(group) : 1;
@@ -85,7 +30,6 @@ module.exports = (req, res) => {
       res.status(404).json({ error: 'not_found' });
       return;
     }
-    const HP_MARKUP = 98; // Tek/Çift/7+1 fiyatlarına eklenen sabit kâr payı (€)
     const markupForThisHotel = HP_MARKUP_EXCLUDED_HOTELS.has(hotel) ? 0 : HP_MARKUP;
     const options = matches.map(m => {
       let price, priceType;

@@ -3,67 +3,12 @@
 // en ucuzdan en pahalıya sıralı döner. api/hotelpackage.js ile aynı veri/mantığı
 // kullanır (markup, oda görünümü, round dahil) - sadece tek otel yerine hepsini
 // tarayıp sıralar. Şifre GEREKMEZ - bu da hotelpackage.js gibi herkese açık.
-const XLSX = require('xlsx');
-const path = require('path');
-const fs = require('fs');
-
-let cachedData = null;
-
-function parseSheetRows(rows) {
-  const headerIdx = rows.findIndex(r => r && r[0] === 'Otel');
-  if (headerIdx === -1) return []; // veri tablosu olmayan sayfa (örn. Özet-Index)
-
-  const data = [];
-  for (let i = headerIdx + 1; i < rows.length; i++) {
-    const r = rows[i];
-    if (!r || !r[0] || !r[1] || !r[2]) continue;
-    data.push({
-      hotel: String(r[0]).trim(),
-      start: r[1], end: r[2],
-      nights: Number(r[3]),
-      rounds: r[4],
-      view: r[5] || null,
-      single: r[6] !== null ? Number(r[6]) : null,
-      dbl: r[7] !== null ? Number(r[7]) : null,
-      group71: r[8] !== null ? Number(r[8]) : null,
-      buggyFree: r[9] === 'Evet',
-      tokenFree: r[10] === 'Evet',
-      transferFree: r[11] === 'Evet'
-    });
-  }
-  return data;
-}
-
-function loadData() {
-  if (cachedData) return cachedData;
-  const filePath = path.join(__dirname, 'data', 'hotel-packages.xlsx');
-  const buf = fs.readFileSync(filePath);
-  const wb = XLSX.read(buf, { type: 'buffer', cellDates: false });
-
-  // Dosyadaki TÜM sayfaları tara (her otel kendi sayfasında olabilir).
-  let data = [];
-  for (const sheetName of wb.SheetNames) {
-    const sheet = wb.Sheets[sheetName];
-    const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, raw: false, defval: null });
-    data = data.concat(parseSheetRows(rows));
-  }
-
-  cachedData = data;
-  return data;
-}
+const { loadHotelPackageData, HP_MARKUP, HP_MARKUP_EXCLUDED_HOTELS } = require('./_lib/hotel-pricing');
 
 function parseDate(str) {
   const [d, m, y] = str.split('.').map(Number);
   return new Date(y, m - 1, d);
 }
-
-// api/hotelpackage.js ile AYNI liste tutulmalı - biri değişirse diğeri de.
-const HP_MARKUP_EXCLUDED_HOTELS = new Set([
-  'Gloria Serenity Resort',
-  'Gloria Golf Resort',
-  'Gloria Verde Resort & Spa',
-  'Robinson Club Nobilis'
-]);
 
 module.exports = (req, res) => {
   try {
@@ -72,11 +17,10 @@ module.exports = (req, res) => {
       res.status(400).json({ error: 'missing_params' });
       return;
     }
-    const data = loadData();
+    const data = loadHotelPackageData();
     const checkDate = new Date(date + 'T00:00:00');
     const nightsNum = nights ? Number(nights) : null;
     const groupSize = group ? Number(group) : 1;
-    const HP_MARKUP = 98;
 
     const hotels = [...new Set(data.map(r => r.hotel))];
     const results = [];
