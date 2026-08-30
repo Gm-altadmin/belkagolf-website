@@ -460,19 +460,31 @@ function buildQuoteBlock(originalFrom, originalDate, originalBody) {
   if (!originalBody) return '';
   const dateStr = originalDate ? new Date(originalDate).toLocaleString('tr-TR') : '';
 
-  // 1. Art arda gelen fazla boş satırları tek boş satıra indir - orijinal mesajlar
-  // (özellikle Outlook kaynaklı) genelde paragraflar arasında birden fazla boş satır
-  // içeriyor, bu da alıntıyı gereksiz uzatıp dağınık gösteriyor.
-  const collapsed = originalBody.replace(/\n{3,}/g, '\n\n');
+  const rawLines = originalBody.split(/\r?\n/);
 
-  // 2. Satır zaten ">" ile başlıyorsa (mesaj kendi içinde eski bir yazışmayı zaten
-  // alıntılamış olabilir) üstüne tekrar ">" ekleme. Boş satırlara HİÇ işaret koyma -
-  // normal bir mail alıntısında boş satırlar da boş kalır, "> " ile doldurulmaz.
-  const quoted = collapsed.split(/\r?\n/)
+  // 1. Her satırı işaretle: gerçekten boş mu (trim sonrası hiç karakter kalmıyorsa -
+  // sadece boşluk/tab/nbsp içeren satırlar da BOŞ sayılır, orijinal mailler genelde
+  // "tamamen boş" değil "tek boşluk karakterli" satırlar kullanıyor, bu yüzden \n{3,}
+  // gibi ham regex yeterli değildi).
+  const isBlank = (l) => l.replace(/[\s\u00A0]+/g, '') === '';
+
+  // 2. Art arda gelen boş satırları TEK boş satıra indir.
+  const collapsedLines = [];
+  let prevWasBlank = false;
+  for (const line of rawLines) {
+    const blank = isBlank(line);
+    if (blank && prevWasBlank) continue; // ikinci+ art arda boş satırı atla
+    collapsedLines.push(blank ? '' : line);
+    prevWasBlank = blank;
+  }
+
+  // 3. Alıntı işareti: boş satırlara HİÇ ">" konmaz. Zaten ">" ile başlayan satırlar
+  // (mesaj kendi içinde eski bir yazışmayı alıntılamışsa) olduğu gibi bırakılır -
+  // yoksa "> >" gibi çift işaretli, okunması zor bir alıntı oluşuyordu.
+  const quoted = collapsedLines
     .map((line) => {
-      const trimmed = line.trim();
-      if (trimmed === '') return '';
-      if (trimmed.startsWith('>')) return line;
+      if (line === '') return '';
+      if (line.trimStart().startsWith('>')) return line;
       return '> ' + line;
     })
     .join('\n');
