@@ -459,7 +459,12 @@ function findPlainTextBody(payload) {
 function buildQuoteBlock(originalFrom, originalDate, originalBody) {
   if (!originalBody) return '';
   const dateStr = originalDate ? new Date(originalDate).toLocaleString('tr-TR') : '';
-  const quoted = originalBody.split(/\r?\n/).map((line) => '> ' + line).join('\n');
+  // Satır zaten ">" ile başlıyorsa (orijinal mesajın kendisi zaten eski bir yazışmayı
+  // alıntılamış olabilir - Outlook "Yanıtla" davranışı) üstüne tekrar ">" EKLEME, olduğu
+  // gibi bırak - yoksa "> >" gibi çift işaretli, okunması zor bir alıntı oluşuyordu.
+  const quoted = originalBody.split(/\r?\n/)
+    .map((line) => (line.trimStart().startsWith('>') ? line : '> ' + line))
+    .join('\n');
   return `\n\n--- Önceki mesaj / Original message ---\n${dateStr} tarihinde ${originalFrom} yazdı:\n\n${quoted}`;
 }
 
