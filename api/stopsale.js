@@ -38,7 +38,7 @@
 // (onların yerine değil) devreye girer - ikisi birbirini tamamlar.
 
 const XLSX = require('xlsx');
-const { getAccessToken, chunk, decodeBase64UrlToText: decodeBase64Url, decodeBase64UrlToBuffer } = require('./lib/gmail');
+const { getAccessToken, chunk, decodeBase64UrlToText: decodeBase64Url, decodeBase64UrlToBuffer } = require('./_lib/gmail');
 
 function findHtmlBody(payload) {
   if (!payload) return '';

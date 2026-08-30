@@ -51,8 +51,8 @@ const NOISE_SENDERS = [
 // başlığında bu ifadeleri geçirmiyor, o yüzden bu güvenli ve adres listesinden çok daha
 // kapsamlı bir çözüm.
 
-const { OUR_DOMAIN, HOTEL_DOMAINS, isOurDomain, isHotelDomain } = require('./lib/domains');
-const { getAccessToken } = require('./lib/gmail');
+const { OUR_DOMAIN, HOTEL_DOMAINS, isOurDomain, isHotelDomain } = require('./_lib/domains');
+const { getAccessToken } = require('./_lib/gmail');
 
 // Gürültü Kontrolü sekmesinde onaylanıp GitHub'a otomatik commit edilen ek
 // göndericileri okur (api/mark-noise.js tarafından güncellenir). Dosya yoksa
@@ -304,7 +304,7 @@ SADECE JSON dizisi döndür, başka hiçbir metin/açıklama/markdown ekleme:
   return results.flat();
 }
 
-const { chunk } = require('./lib/gmail');
+const { chunk } = require('./_lib/gmail');
 
 // Aynı isimdeki (customerKey) birden fazla thread bulunduğunda, hepsinin GERÇEKTEN
 // aynı devam eden talep mi yoksa aynı isimli müşteriden gelen FARKLI/bağımsız talepler
@@ -385,7 +385,7 @@ SADECE JSON dizisi döndür, başka hiçbir metin ekleme:
 // bu iki yeni işlev mevcut rapor.js'e "action" parametresiyle eklendi (bkz. handler
 // içindeki yönlendirme). action olmadan istek gelirse eskisi gibi tam rapor üretilir.
 
-const { getHeaderVal, extractEmailAddr, decodeBase64UrlToText } = require('./lib/gmail');
+const { getHeaderVal, extractEmailAddr, decodeBase64UrlToText } = require('./_lib/gmail');
 
 // Mesajın düz-metin gövdesini (varsa) bulur - alıntı (quote) bloğu oluşturmak için.
 // HTML-only mesajlarda düz metin yoksa boş döner (alıntı eklenmez, sorun değil).

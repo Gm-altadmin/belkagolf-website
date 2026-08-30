@@ -9,8 +9,8 @@
 // 30.08.2026 refactor: domain/Gmail yardımcıları artık api/lib/'den içe aktarılıyor
 // (önceden rapor.js/stopsale.js ile birebir kopyalanmış haldeydi - kod tekrarı riski).
 
-const { isOurDomain, isHotelDomain } = require('./lib/domains');
-const { getAccessToken, getHeaderVal, extractEmailAddr, chunk } = require('./lib/gmail');
+const { isOurDomain, isHotelDomain } = require('./_lib/domains');
+const { getAccessToken, getHeaderVal, extractEmailAddr, chunk } = require('./_lib/gmail');
 
 const KNOWN_AGENTS = ['rogerlode@hotmail.com'];
 
