@@ -44,6 +44,15 @@ function decodeBase64Url(data) {
   return Buffer.from(b64, 'base64').toString('utf8');
 }
 
+// decodeBase64Url'den FARKLI: o metin (HTML/mail gövdesi) için base64->STRING çeviriyor.
+// Excel gibi BINARY ekler için bu yanlış - UTF-8 string'e çevirmek geçersiz byte dizilerini
+// bozuyor/siliyor (30.08.2026'da bulunan hata: 44KB'lık dosya bu yüzden 70 byte'a düşüyordu).
+// Binary veri için base64 doğrudan Buffer'a çevrilmeli, string'e hiç uğramadan.
+function decodeBase64UrlToBuffer(data) {
+  const b64 = (data || '').replace(/-/g, '+').replace(/_/g, '/');
+  return Buffer.from(b64, 'base64');
+}
+
 function findHtmlBody(payload) {
   if (!payload) return '';
   if (payload.mimeType === 'text/html' && payload.body && payload.body.data) {
@@ -267,24 +276,12 @@ function findAttachmentParts(payload, results = []) {
 async function fetchAttachmentBuffer(accessToken, messageId, attachmentId) {
   const url = `https://gmail.googleapis.com/gmail/v1/users/me/messages/${messageId}/attachments/${attachmentId}`;
   const res = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
-  const rawText = await res.text();
-  let data;
-  try {
-    data = JSON.parse(rawText);
-  } catch (e) {
-    throw new Error(`JSON parse hatası, HTTP ${res.status}, ilk 150 karakter: ${rawText.slice(0, 150)}`);
-  }
   if (!res.ok) {
-    throw new Error(`HTTP ${res.status}: ${rawText.slice(0, 200)}`);
+    throw new Error(`HTTP ${res.status}`);
   }
-  if (!data.data) {
-    throw new Error(`data.data alanı yok. Yanıt anahtarları: [${Object.keys(data).join(', ')}], gmail-size: ${data.size}`);
-  }
-  const buf = Buffer.from(decodeBase64Url(data.data), 'base64');
-  if (buf.length < 1000) {
-    throw new Error(`Beklenenden çok küçük - gmail-size alanı: ${data.size}, base64 uzunluk: ${data.data.length}, decode sonrası: ${buf.length} byte`);
-  }
-  return buf;
+  const data = await res.json();
+  if (!data.data) return null;
+  return decodeBase64UrlToBuffer(data.data);
 }
 
 // Takvimi tarar: önce "başlık satırı"nı (art arda birden fazla gerçek Excel-tarih hücresi
@@ -492,7 +489,9 @@ export default async function handler(req, res) {
 
         // Renk-kodlu Excel takvimi var mı? (bkz. extractFromColorCalendar yorumu) - HTML/metin
         // sonucundan BAĞIMSIZ olarak, EK bilgi kaynağı olarak her zaman kontrol edilir (ikisi
-        // birbirini dışlamaz, Excel çoğunlukla metinden çok daha kapsamlıdır).
+        // birbirini dışlamaz, Excel çoğunlukla metinden çok daha kapsamlıdır). Hata/0-sonuç
+        // durumunda sessizce atlamak yerine hafif bir uyarı satırı bırakılıyor (30.08.2026 -
+        // bir kere gerçek bir hatayı (base64 çözme bug'ı) bu sayede bulup düzelttik).
         const attachmentParts = findAttachmentParts(msg.payload);
         for (const part of attachmentParts) {
           if (!isSpreadsheetPart(part)) continue;
@@ -502,28 +501,17 @@ export default async function handler(req, res) {
               const calendarEntries = extractFromColorCalendar(buf);
               entries = entries.concat(calendarEntries);
               if (calendarEntries.length === 0) {
-                // TEŞHİS AMAÇLI (geçici): dosya indirildi ve okundu ama 0 kayıt üretti -
-                // muhtemelen tarih başlık satırı beklenen formatta bulunamadı.
                 entries.push({
                   dateStart: new Date(), dateEnd: new Date(), type: sType,
-                  context: `⚠ Excel okundu (${buf.length} byte) ama 0 kayıt üretti - format uyuşmuyor olabilir`,
+                  context: `⚠ Excel eki okundu ama kayıt üretmedi (${buf.length} byte, format tanınmadı)`,
                   subHotel: null
                 });
               }
-            } else {
-              entries.push({
-                dateStart: new Date(), dateEnd: new Date(), type: sType,
-                context: '⚠ Excel indirilemedi (buf boş döndü)',
-                subHotel: null
-              });
             }
           } catch (e) {
-            // TEŞHİS AMAÇLI (geçici, 30.08.2026): hata artık sessizce yutulmuyor, raporda
-            // görünür bir satır olarak çıkıyor - hangi hatanın oluştuğunu görüp kalıcı
-            // düzeltme yapabilmek için. Sorun bulununca bu satır kaldırılabilir.
             entries.push({
               dateStart: new Date(), dateEnd: new Date(), type: sType,
-              context: `⚠ EXCEL OKUMA HATASI: ${String((e && e.message) || e).slice(0, 200)}`,
+              context: `⚠ Excel eki okunamadı: ${String((e && e.message) || e).slice(0, 150)}`,
               subHotel: null
             });
           }
