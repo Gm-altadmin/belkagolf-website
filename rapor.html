@@ -475,12 +475,13 @@
     </div>
 
     <div style="margin-top:32px; padding-top:20px; border-top:1px solid #3a4a3d;">
-      <h3 style="color:#c9a961; font-size:1rem; margin-bottom:8px;">Üslup Analizi (bir kerelik araştırma aracı)</h3>
+      <h3 style="color:#c9a961; font-size:1rem; margin-bottom:8px;">Üslup Analizi (kalıcı ilerleme takipli)</h3>
       <div style="color:#999; font-size:0.82rem; margin-bottom:10px;">
-        info@/sales@'in gerçekten gönderdiği maillerin geniş bir örneklemini (varsayılan 150) tarayıp
-        tekrar eden üslup kalıplarını çıkarır. Birkaç dakika sürebilir. Sonucu kopyalayıp chat'e yapıştır.
+        info@/sales@'in gönderdiği mailleri tarar - her çalıştırmada SADECE daha önce hiç
+        bakılmamış yeni mailleri işler (aynı mail iki kez analiz edilmez), ilerleme GitHub'a
+        kaydedilir. "Kalan" sıfıra inene kadar istediğin sıklıkta tekrar tekrar çalıştırabilirsin.
       </div>
-      <button class="refresh-btn" onclick="runStyleAnalysis()">Üslup Analizini Çalıştır</button>
+      <button class="refresh-btn" onclick="runStyleAnalysis()">Üslup Analizini Çalıştır (sıradaki 150)</button>
       <div id="style-analysis-status" style="margin-top:8px; font-size:0.85rem; color:#999;"></div>
       <textarea id="style-analysis-result" readonly rows="18"
         style="display:none; width:100%; margin-top:12px; padding:12px; border-radius:8px;
@@ -509,8 +510,13 @@ async function runStyleAnalysis() {
       statusEl.textContent = 'Hata: ' + escapeHtml(data.error);
       return;
     }
+    if (data.done && data.newlyProcessed === undefined) {
+      statusEl.textContent = `Tüm mailler zaten analiz edilmiş (toplam ${data.totalProcessedSoFar}). İşlenecek yeni mail yok.`;
+      return;
+    }
 
-    statusEl.textContent = `${data.scannedThreads} thread tarandı, ${data.analyzedMessages} mail analiz edildi (${data.chunkCount} grup). Sonuç aşağıda:`;
+    const doneNote = data.done ? ' ✓ TAMAMLANDI - tüm geçmiş mailler işlendi.' : ` Kalan tahmini: ~${data.estimatedRemaining} — tekrar çalıştırarak devam edebilirsin.`;
+    statusEl.textContent = `Bu çalıştırmada +${data.newlyProcessed} yeni mail işlendi (toplam ${data.totalProcessedSoFar}/${data.estimatedTotalMatching}).${doneNote} Güncel rehber aşağıda:`;
     resultEl.value = data.styleGuide;
     resultEl.style.display = 'block';
   } catch (e) {
