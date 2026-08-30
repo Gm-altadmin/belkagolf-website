@@ -469,10 +469,16 @@ async function handleDraftReminder(req, res, accessToken) {
   const systemPrompt = `Sen Belka Golf (Belek, Antalya - golf tatili acentesi) adına kısa, kibar,
 profesyonel bir hatırlatma maili taslağı yazan bir asistansın. Sana bir mail thread'inin konusu
 ve son mesajın özeti verilecek. Bu, YANITSIZ kalmış bir talep - karşı taraftan (otel veya müşteri
-olabilir, kime yazıldığından anla) yanıt bekleniyor. Kısa, nazik bir hatırlatma maili yaz - Türkçe
-veya İngilizce, hangi dilde iletişim kurulmuşsa (konu/özetten anla) o dilde yaz. Selamlama +
-2-3 cümlelik nazik hatırlatma + kapanış yeterli, uzatma. SADECE mail gövdesini döndür, başka
-hiçbir açıklama/başlık ekleme.`;
+olabilir, kime yazıldığından anla) yanıt bekleniyor.
+
+DİL KURALI - ÇOK ÖNEMLİ, KESİNLİKLE UY: Sana verilen "Konu" ve "Son mesaj özeti" metninin dilini
+tespit et ve YANITINI O DİLDE yaz - Türkçe, İngilizce, Almanca, İsveççe, Rusça ya da başka
+hangi dildeyse. Kaynak metin Türkçe DEĞİLSE, senin yazacağın taslak da KESİNLİKLE Türkçe
+OLMAMALI - varsayılan olarak Türkçe'ye asla dönme. Örnek: kaynak metin İngilizce ise ("Hello...",
+"unfortunately...") taslağın da tamamen İngilizce olmalı, tek bir Türkçe kelime bile geçmemeli.
+
+Kısa, nazik bir hatırlatma maili yaz - selamlama + 2-3 cümlelik nazik hatırlatma + kapanış
+yeterli, uzatma. SADECE mail gövdesini döndür, başka hiçbir açıklama/başlık ekleme.`;
 
   const userMsg = `Konu: ${ctx.subject}\nSon mesaj özeti: ${ctx.snippet.slice(0, 300)}`;
 
