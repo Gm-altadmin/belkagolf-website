@@ -486,9 +486,31 @@ export default async function handler(req, res) {
             if (buf) {
               const calendarEntries = extractFromColorCalendar(buf);
               entries = entries.concat(calendarEntries);
+              if (calendarEntries.length === 0) {
+                // TEŞHİS AMAÇLI (geçici): dosya indirildi ve okundu ama 0 kayıt üretti -
+                // muhtemelen tarih başlık satırı beklenen formatta bulunamadı.
+                entries.push({
+                  dateStart: new Date(), dateEnd: new Date(), type: sType,
+                  context: `⚠ Excel okundu (${buf.length} byte) ama 0 kayıt üretti - format uyuşmuyor olabilir`,
+                  subHotel: null
+                });
+              }
+            } else {
+              entries.push({
+                dateStart: new Date(), dateEnd: new Date(), type: sType,
+                context: '⚠ Excel indirilemedi (buf boş döndü)',
+                subHotel: null
+              });
             }
           } catch (e) {
-            // Excel indirilemedi/okunamadı - sessizce atla, HTML/metin sonucu ne ise o kalır.
+            // TEŞHİS AMAÇLI (geçici, 30.08.2026): hata artık sessizce yutulmuyor, raporda
+            // görünür bir satır olarak çıkıyor - hangi hatanın oluştuğunu görüp kalıcı
+            // düzeltme yapabilmek için. Sorun bulununca bu satır kaldırılabilir.
+            entries.push({
+              dateStart: new Date(), dateEnd: new Date(), type: sType,
+              context: `⚠ EXCEL OKUMA HATASI: ${String((e && e.message) || e).slice(0, 200)}`,
+              subHotel: null
+            });
           }
         }
 
