@@ -510,7 +510,18 @@ async function getThreadContext(accessToken, threadId) {
     if (!isOwnStaff) recipientName = candidate;
   }
 
-  return { subject, snippet, ourAddress, recipient, recipientName, messageIdHeader, threadId, quoteBlock };
+  // Alıcı tipi (30.08.2026, gerçek üslup analizinden): otel/Roger/müşteri - taslak
+  // yazarken doğru şirket şablonunu (üç ayrı, gerçek örneklerden çıkarılmış kalıp)
+  // kullanmak için. rogerlode@hotmail.com özel bir durum (tekrar eden acente, çok
+  // kısa/direkt İngilizce üslup) - genel "müşteri" kalıbından farklı davranıyor.
+  let recipientType = 'customer';
+  if (recipient.includes('rogerlode@hotmail.com')) {
+    recipientType = 'roger';
+  } else if (isHotelDomain(recipient)) {
+    recipientType = 'hotel';
+  }
+
+  return { subject, snippet, ourAddress, recipient, recipientName, recipientType, messageIdHeader, threadId, quoteBlock };
 }
 
 async function handleDraftReminder(req, res, accessToken) {
@@ -543,10 +554,43 @@ hangi dildeyse. Kaynak metin Türkçe DEĞİLSE, senin yazacağın taslak da KES
 OLMAMALI - varsayılan olarak Türkçe'ye asla dönme. Örnek: kaynak metin İngilizce ise ("Hello...",
 "unfortunately...") taslağın da tamamen İngilizce olmalı, tek bir Türkçe kelime bile geçmemeli.
 
+YASAKLI KLİŞE İFADELER - KESİNLİKLE KULLANMA: Aşağıdaki gibi bariz "yapay zeka" kokan, kalıplaşmış
+açılış cümleleri gerçek bir insanın yazmayacağı, müşterinin fark edip cevap bile vermeyeceği
+ifadelerdir - hiçbirini, hiçbir dilde (bunların çevirileri dahil) kullanma:
+- "I hope this email/message finds you well"
+- "I hope you are doing well" / "I hope you're having a great day"
+- "I wanted to follow up on" / "I wanted to reach out"
+- "Umarım bu mail sizi iyi bulur" / "Umarım iyisinizdir" gibi Türkçe çevirileri
+Bunun yerine DOĞRUDAN konuya gir - kısa bir selamlamadan sonra direkt hatırlatmayı yaz, tıpkı
+gerçek bir satış temsilcisinin günlük dilde yazacağı gibi. Örnek iyi açılış: "Merhaba [isim],
+[konu] ile ilgili size dönüş yapmak istedik." / "Hi [isim], following up on [konu] below."
+
+ÜSLUP KURALI - GERÇEK ŞİRKET ŞABLONUNU TAKLİT ET (30.08.2026, ~50 gerçek Belka Golf mailinden
+çıkarılan kalıp): Sana "Alıcı tipi" verilecek (hotel/roger/customer). Buna göre AŞAĞIDAKİ GERÇEK
+kalıbı kullan - bunlar uydurma değil, şirketin fiilen kullandığı, 3+ farklı otelde birebir
+doğrulanmış cümleler:
+
+- "hotel" tipi (otel/kulüp personeline yazılıyor): Türkçe, işlemsel, kısa. Açılış TAM OLARAK bu
+  kalıpta: "Merhaba [isim] Hanım/Bey, öncelikle BELKA GOLF olarak güzel bir gün dileriz." Gövdede
+  küçük sohbet YOK, direkt konuya gir. Kapanış TAM OLARAK: "Değerli işbirliğiniz ve desteğiniz
+  için şimdiden teşekkür eder, iyi çalışmalar dileriz. Saygılarımla,"
+
+- "roger" tipi (rogerlode@hotmail.com, tekrar eden Norveçli acente): İngilizce, ÇOK kısa ve
+  direkt, süslemesiz. Örnek: "Hello Roger, [direkt içerik]. Best Regards," - selamlama/kapanış
+  arası neredeyse hiç dolgu cümlesi yok, günlük iş yazışması tonu.
+
+- "customer" tipi (doğrudan müşteri): Alıcı adının diline uygun resmiyet seviyesi seç (örn.
+  "Sehr geehrte Familie X" / "Dear Ms. X" / "Merhaba,"). Klişe YOK (yukarıdaki yasak liste),
+  direkt bilgi/cevapla başla. Sorun/iptal gibi hassas konularda GERÇEK empati göster (örnek gerçek
+  cümle: "es tut uns sehr leid, dass Sie erkrankt sind, wir wünschen Ihnen eine schnelle gute
+  Besserung" tarzı - dile çevirerek uygula). Kapanış dile göre doğal olsun ("Kind Regards," /
+  "Vielen Dank, bei weiteren Fragen stehen wir gerne zur Verfügüng." vb.) - "Saygılarımla/Best
+  Regards" imza kısmı zaten ayrıca ekleniyor, sen sadece gövdeyi yaz.
+
 Kısa, nazik bir hatırlatma maili yaz - selamlama + 2-3 cümlelik nazik hatırlatma + kapanış
 yeterli, uzatma. SADECE mail gövdesini döndür, başka hiçbir açıklama/başlık ekleme.`;
 
-  const userMsg = `Konu: ${ctx.subject}\nAlıcı adı: ${ctx.recipientName || '(bilinmiyor - isim kullanma)'}\nSon mesaj özeti: ${ctx.snippet.slice(0, 300)}`;
+  const userMsg = `Konu: ${ctx.subject}\nAlıcı adı: ${ctx.recipientName || '(bilinmiyor - isim kullanma)'}\nAlıcı tipi: ${ctx.recipientType}\nSon mesaj özeti: ${ctx.snippet.slice(0, 300)}`;
 
   const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
