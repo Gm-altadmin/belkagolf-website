@@ -406,6 +406,158 @@ SADECE JSON dizisi döndür, başka hiçbir metin ekleme:
   }));
 }
 
+// --- Hatırlatma maili: taslak oluşturma + gönderme (30.08.2026 eklendi) ---
+// Vercel Hobby planının 12-fonksiyon sınırına takılmamak için AYRI bir dosya açılmadı,
+// bu iki yeni işlev mevcut rapor.js'e "action" parametresiyle eklendi (bkz. handler
+// içindeki yönlendirme). action olmadan istek gelirse eskisi gibi tam rapor üretilir.
+
+function getHeaderVal(msg, name) {
+  const headers = msg.payload ? msg.payload.headers || [] : [];
+  return (headers.find((h) => h.name.toLowerCase() === name.toLowerCase()) || {}).value || '';
+}
+
+function extractEmailAddr(headerValue) {
+  const m = (headerValue || '').match(/<([^>]+)>/);
+  return m ? m[1].toLowerCase() : (headerValue || '').trim().toLowerCase();
+}
+
+// Bir thread'in son mesajını + hangi kendi adresimizin (sales@/info@) bu yazışmada
+// kullanıldığını + karşı tarafın adresini belirler - hatırlatma taslağı ve gönderimi
+// için gereken tüm bağlamı tek yerde toplar.
+async function getThreadContext(accessToken, threadId) {
+  const res = await fetch(
+    `https://gmail.googleapis.com/gmail/v1/users/me/threads/${threadId}?format=full`,
+    { headers: { Authorization: `Bearer ${accessToken}` } }
+  );
+  const data = await res.json();
+  const msgs = data.messages || [];
+  if (msgs.length === 0) throw new Error('Thread boş veya bulunamadı.');
+  const last = msgs[msgs.length - 1];
+
+  const subject = getHeaderVal(last, 'Subject');
+  const fromAddr = extractEmailAddr(getHeaderVal(last, 'From'));
+  const toAddr = extractEmailAddr(getHeaderVal(last, 'To'));
+  const messageIdHeader = getHeaderVal(last, 'Message-ID') || getHeaderVal(last, 'Message-Id');
+  const snippet = last.snippet || '';
+
+  // Hangi kendi adresimiz (sales@/info@) bu yazışmada geçiyor - hatırlatmayı da o
+  // adresten göndermek için. İkisi de yoksa varsayılan sales@ kullanılır.
+  let ourAddress = 'sales@belkagolf.com';
+  if (fromAddr.includes('info@belkagolf.com') || toAddr.includes('info@belkagolf.com')) {
+    ourAddress = 'info@belkagolf.com';
+  }
+
+  // Karşı taraf (alıcı) - bizim adresimiz olmayan taraf.
+  const recipient = isOurDomain(fromAddr) ? toAddr : fromAddr;
+
+  return { subject, snippet, ourAddress, recipient, messageIdHeader, threadId };
+}
+
+async function handleDraftReminder(req, res, accessToken) {
+  const { threadId } = req.body || {};
+  if (!threadId) {
+    res.status(400).json({ error: 'threadId eksik' });
+    return;
+  }
+  if (!process.env.ANTHROPIC_API_KEY) {
+    res.status(500).json({ error: 'api_key_missing' });
+    return;
+  }
+
+  const ctx = await getThreadContext(accessToken, threadId);
+
+  const systemPrompt = `Sen Belka Golf (Belek, Antalya - golf tatili acentesi) adına kısa, kibar,
+profesyonel bir hatırlatma maili taslağı yazan bir asistansın. Sana bir mail thread'inin konusu
+ve son mesajın özeti verilecek. Bu, YANITSIZ kalmış bir talep - karşı taraftan (otel veya müşteri
+olabilir, kime yazıldığından anla) yanıt bekleniyor. Kısa, nazik bir hatırlatma maili yaz - Türkçe
+veya İngilizce, hangi dilde iletişim kurulmuşsa (konu/özetten anla) o dilde yaz. Selamlama +
+2-3 cümlelik nazik hatırlatma + kapanış yeterli, uzatma. SADECE mail gövdesini döndür, başka
+hiçbir açıklama/başlık ekleme.`;
+
+  const userMsg = `Konu: ${ctx.subject}\nSon mesaj özeti: ${ctx.snippet.slice(0, 300)}`;
+
+  const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': process.env.ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01'
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 400,
+      system: systemPrompt,
+      messages: [{ role: 'user', content: userMsg }]
+    })
+  });
+  if (!apiRes.ok) throw new Error('Anthropic API hatası: ' + (await apiRes.text()).slice(0, 300));
+
+  const data = await apiRes.json();
+  const draft = (data.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
+
+  res.status(200).json({
+    draft,
+    to: ctx.recipient,
+    from: ctx.ourAddress,
+    subject: ctx.subject.toLowerCase().startsWith('re:') ? ctx.subject : `Re: ${ctx.subject}`
+  });
+}
+
+function buildMimeMessage({ from, to, subject, body, inReplyTo }) {
+  const headers = [
+    `From: ${from}`,
+    `To: ${to}`,
+    `Subject: =?UTF-8?B?${Buffer.from(subject, 'utf8').toString('base64')}?=`,
+    'MIME-Version: 1.0',
+    'Content-Type: text/plain; charset="UTF-8"',
+    'Content-Transfer-Encoding: base64'
+  ];
+  if (inReplyTo) {
+    headers.push(`In-Reply-To: ${inReplyTo}`);
+    headers.push(`References: ${inReplyTo}`);
+  }
+  const bodyB64 = Buffer.from(body, 'utf8').toString('base64');
+  return headers.join('\r\n') + '\r\n\r\n' + bodyB64;
+}
+
+function toBase64Url(str) {
+  return Buffer.from(str, 'utf8').toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+async function handleSendReminder(req, res, accessToken) {
+  const { threadId, to, from, subject, body } = req.body || {};
+  if (!threadId || !to || !from || !subject || !body) {
+    res.status(400).json({ error: 'Eksik alan(lar) var (threadId/to/from/subject/body).' });
+    return;
+  }
+  if (!ALLOWED_SEND_FROM.has(from)) {
+    res.status(400).json({ error: `Bu adresten gönderim izinli değil: ${from}` });
+    return;
+  }
+
+  const ctx = await getThreadContext(accessToken, threadId);
+  const raw = buildMimeMessage({ from, to, subject, body, inReplyTo: ctx.messageIdHeader });
+
+  const sendRes = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ raw: toBase64Url(raw), threadId })
+  });
+
+  if (!sendRes.ok) {
+    const errText = await sendRes.text();
+    res.status(502).json({ error: 'Gmail gönderim hatası', detail: errText.slice(0, 300) });
+    return;
+  }
+
+  res.status(200).json({ success: true });
+}
+
+const ALLOWED_SEND_FROM = new Set(['sales@belkagolf.com', 'info@belkagolf.com']);
+
 export default async function handler(req, res) {
   const password = req.query.password || (req.body && req.body.password) || '';
 
@@ -415,6 +567,21 @@ export default async function handler(req, res) {
   }
   if (!process.env.GMAIL_REFRESH_TOKEN) {
     res.status(500).json({ error: 'Sistem henüz kurulmadı: GMAIL_REFRESH_TOKEN eksik. Önce /api/auth-start adresini ziyaret edin.' });
+    return;
+  }
+
+  const action = req.query.action || (req.body && req.body.action) || 'report';
+  if (action === 'draft' || action === 'send') {
+    try {
+      const accessToken = await getAccessToken();
+      if (action === 'draft') {
+        await handleDraftReminder(req, res, accessToken);
+      } else {
+        await handleSendReminder(req, res, accessToken);
+      }
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
     return;
   }
 
