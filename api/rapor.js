@@ -227,17 +227,23 @@ async function classifyBatchWithClaude(items) {
   const systemPrompt = `Sen bir golf tatili acentesinin (Belka Golf, Belek/Antalya) müşteri talebi takip
 sistemisin. Sana bir dizi mail-thread özeti verilecek. Her biri için üç şeyi belirle:
 
-1. "status": "confirmed" (BELİRLİ bir müşterinin rezervasyonu/talebi gerçekten onaylanmış - isim,
-   tarih, ödeme gibi somut detaylar var), "cancelled" (iptal edilmiş, reddedilmiş, müşteri vazgeçmiş,
-   başka firma tercih etmiş), veya "active" (hâlâ açık, taraflardan biri yanıt bekliyor).
+1. "status": "confirmed" (konu KAPANMIŞ/anlaşmaya varılmış - ya BELİRLİ bir müşterinin rezervasyonu
+   onaylanmış (isim, tarih, ödeme gibi somut detaylar var), YA DA otel/kulüp ile aramızdaki idari bir
+   konuda (check-list, kontrat, prosedür vb.) açıkça "mutabıkız/anlaştık/onaylandı/kabul ediyoruz"
+   türünden KESİN bir kapanış ifadesi var - böyle bir mailde artık gerçekten beklenen bir yanıt YOK),
+   "cancelled" (iptal edilmiş, reddedilmiş, müşteri vazgeçmiş, başka firma tercih etmiş), veya
+   "active" (hâlâ açık, taraflardan biri yanıt bekliyor).
 
    ÖNEMLİ - "confirmed" ile KARIŞTIRILMAMASI GEREKENLER (bunlar "active" olmalı):
    - Genel kampanya/indirim/fiyat duyuruları (örn. "15% discount for Lykia sales" gibi genel
-     bilgilendirme mailleri - burada onaylanan bir rezervasyon YOK, sadece bilgi paylaşımı var).
+     bilgilendirme mailleri - burada onaylanan bir rezervasyon YOK, sadece bilgi paylaşımı var,
+     KAPANIŞ ifadesi de yok).
    - Fiyat teklifi/liste paylaşımı (henüz bir onay değil, sadece bilgi).
    - "Sales", "discount", "confirm" gibi kelimeler geçse bile, eğer mail BELİRLİ bir müşterinin
-     rezervasyonunu somut şekilde onaylamıyorsa "confirmed" DEĞİLDİR.
+     rezervasyonunu somut şekilde onaylamıyorsa VE açık bir kapanış ifadesi de yoksa "confirmed" DEĞİLDİR.
    Şüphedeysen "active" seç - yanlışlıkla "confirmed" işaretlemek gerçek bir talebi kaybetmemize sebep olabilir.
+   Ama tam tersi de zararlı: "mutabıkız" gibi net bir kapanış cümlesi varken "active" bırakmak,
+   biten bir konuyu sürekli "yanıt bekliyor" göstermeye devam eder - bu da yanlıştır.
 
 2. "oneri": personelin ŞİMDİ ne yapması gerektiğini anlatan KISA (max 15 kelime) Türkçe öneri.
    "lastColor" alanına göre üç farklı durum var:
@@ -421,6 +427,37 @@ function extractEmailAddr(headerValue) {
   return m ? m[1].toLowerCase() : (headerValue || '').trim().toLowerCase();
 }
 
+function decodeBase64UrlToText(dataStr) {
+  const b64 = (dataStr || '').replace(/-/g, '+').replace(/_/g, '/');
+  return Buffer.from(b64, 'base64').toString('utf8');
+}
+
+// Mesajın düz-metin gövdesini (varsa) bulur - alıntı (quote) bloğu oluşturmak için.
+// HTML-only mesajlarda düz metin yoksa boş döner (alıntı eklenmez, sorun değil).
+function findPlainTextBody(payload) {
+  if (!payload) return '';
+  if (payload.mimeType === 'text/plain' && payload.body && payload.body.data) {
+    return decodeBase64UrlToText(payload.body.data);
+  }
+  if (payload.parts) {
+    for (const p of payload.parts) {
+      const found = findPlainTextBody(p);
+      if (found) return found;
+    }
+  }
+  return '';
+}
+
+// Orijinal mesajı ">" ile alıntılanmış klasik "Yanıtla" formatına çevirir - hatırlatma
+// mailinin altına eklenir, böylece alıcı (özellikle Outlook gibi thread-görünümü zayıf
+// istemcilerde) önceki yazışmanın tamamını görür, veri/bağlam kaybı olmaz.
+function buildQuoteBlock(originalFrom, originalDate, originalBody) {
+  if (!originalBody) return '';
+  const dateStr = originalDate ? new Date(originalDate).toLocaleString('tr-TR') : '';
+  const quoted = originalBody.split(/\r?\n/).map((line) => '> ' + line).join('\n');
+  return `\n\n--- Önceki mesaj / Original message ---\n${dateStr} tarihinde ${originalFrom} yazdı:\n\n${quoted}`;
+}
+
 // Bir thread'in son mesajını + hangi kendi adresimizin (sales@/info@) bu yazışmada
 // kullanıldığını + karşı tarafın adresini belirler - hatırlatma taslağı ve gönderimi
 // için gereken tüm bağlamı tek yerde toplar.
@@ -436,9 +473,13 @@ async function getThreadContext(accessToken, threadId) {
 
   const subject = getHeaderVal(last, 'Subject');
   const fromAddr = extractEmailAddr(getHeaderVal(last, 'From'));
+  const fromHeaderFull = getHeaderVal(last, 'From');
   const toAddr = extractEmailAddr(getHeaderVal(last, 'To'));
   const messageIdHeader = getHeaderVal(last, 'Message-ID') || getHeaderVal(last, 'Message-Id');
+  const dateHeader = getHeaderVal(last, 'Date');
   const snippet = last.snippet || '';
+  const plainBody = findPlainTextBody(last.payload);
+  const quoteBlock = buildQuoteBlock(fromHeaderFull, dateHeader, plainBody);
 
   // Hangi kendi adresimiz (sales@/info@) bu yazışmada geçiyor - hatırlatmayı da o
   // adresten göndermek için. İkisi de yoksa varsayılan sales@ kullanılır.
@@ -450,7 +491,26 @@ async function getThreadContext(accessToken, threadId) {
   // Karşı taraf (alıcı) - bizim adresimiz olmayan taraf.
   const recipient = isOurDomain(fromAddr) ? toAddr : fromAddr;
 
-  return { subject, snippet, ourAddress, recipient, messageIdHeader, threadId };
+  // Alıcının GERÇEK adını (varsa) selamlama satırından regex ile çıkarır - Claude'a
+  // tahmin ettirmek yerine (30.08.2026: bir vakada Claude, mail imzasındaki KENDİ
+  // personelimizin adını (örn. "Anastasiya") muhatap sanıp ona hitap eden bir taslak
+  // yazmıştı - ciddi bir hata). Regex ile çıkarım varsa KESİN doğru isim garanti eder;
+  // bulunamazsa Claude'a "isim kullanma" talimatı verilir, asla tahmin ettirilmez.
+  const greetingSource = plainBody || snippet;
+  const greetingMatch = greetingSource.match(
+    /(?:Merhaba|Sayın|Selam|Hi|Hello|Dear|Sehr geehrte[r]?|Hej|Здравствуйте|Уважаем\w*)\s+([A-ZÇĞİÖŞÜ][a-zçğıöşüA-ZÇĞİÖŞÜ]+(?:\s+[A-ZÇĞİÖŞÜ][a-zçğıöşüA-ZÇĞİÖŞÜ]+){0,2})/
+  );
+  // Bulunan isim, bizim kendi personel isimlerimizden biriyse (imza karışıklığı riski)
+  // KULLANMA - güvenli tarafta kal.
+  const OWN_STAFF_NAMES = ['anastasiya', 'avan', 'elena', 'beyzadeoğlu', 'beyzadeoglu', 'mustafa'];
+  let recipientName = null;
+  if (greetingMatch) {
+    const candidate = greetingMatch[1].trim();
+    const isOwnStaff = OWN_STAFF_NAMES.some((n) => candidate.toLowerCase().includes(n));
+    if (!isOwnStaff) recipientName = candidate;
+  }
+
+  return { subject, snippet, ourAddress, recipient, recipientName, messageIdHeader, threadId, quoteBlock };
 }
 
 async function handleDraftReminder(req, res, accessToken) {
@@ -471,6 +531,12 @@ profesyonel bir hatırlatma maili taslağı yazan bir asistansın. Sana bir mail
 ve son mesajın özeti verilecek. Bu, YANITSIZ kalmış bir talep - karşı taraftan (otel veya müşteri
 olabilir, kime yazıldığından anla) yanıt bekleniyor.
 
+MUHATAP KURALI - ÇOK ÖNEMLİ, KESİNLİKLE UY: Sana "Alıcı adı" alanında kime yazdığın verilecek -
+maili SADECE o isme hitaben yaz. Son mesaj özetinde geçen BAŞKA bir isim varsa (örn. mail
+imzasındaki gönderen adı - "Anastasiya Avan", "Elena Beyzadeoğlu" gibi Belka Golf çalışanları),
+bunlar BİZİM KENDİ personelimizdir, ASLA onlara hitap etme - bu ciddi bir hata olur. "Alıcı adı"
+verilmemişse (bilinmiyorsa) isim kullanmadan genel bir selamlama yap ("Merhaba," / "Hello,").
+
 DİL KURALI - ÇOK ÖNEMLİ, KESİNLİKLE UY: Sana verilen "Konu" ve "Son mesaj özeti" metninin dilini
 tespit et ve YANITINI O DİLDE yaz - Türkçe, İngilizce, Almanca, İsveççe, Rusça ya da başka
 hangi dildeyse. Kaynak metin Türkçe DEĞİLSE, senin yazacağın taslak da KESİNLİKLE Türkçe
@@ -480,7 +546,7 @@ OLMAMALI - varsayılan olarak Türkçe'ye asla dönme. Örnek: kaynak metin İng
 Kısa, nazik bir hatırlatma maili yaz - selamlama + 2-3 cümlelik nazik hatırlatma + kapanış
 yeterli, uzatma. SADECE mail gövdesini döndür, başka hiçbir açıklama/başlık ekleme.`;
 
-  const userMsg = `Konu: ${ctx.subject}\nSon mesaj özeti: ${ctx.snippet.slice(0, 300)}`;
+  const userMsg = `Konu: ${ctx.subject}\nAlıcı adı: ${ctx.recipientName || '(bilinmiyor - isim kullanma)'}\nSon mesaj özeti: ${ctx.snippet.slice(0, 300)}`;
 
   const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -500,29 +566,88 @@ yeterli, uzatma. SADECE mail gövdesini döndür, başka hiçbir açıklama/baş
 
   const data = await apiRes.json();
   const draft = (data.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
+  const fullDraft = draft + ctx.quoteBlock;
 
   res.status(200).json({
-    draft,
+    draft: fullDraft,
     to: ctx.recipient,
     from: ctx.ourAddress,
     subject: ctx.subject.toLowerCase().startsWith('re:') ? ctx.subject : `Re: ${ctx.subject}`
   });
 }
 
+// Kimden adresine göre imza (30.08.2026 eklendi) - gerçek imzaların metnini
+// az önceki incelemeden aldık: sales@ = Anastasiya Avan (Sales Manager),
+// info@ = Elena Beyzadeoğlu (Sales & Marketing). Logolardan sadece sitede zaten
+// hazır olan ikisi (Belka Golf ana logo + Belka Golf Residence) kullanılıyor -
+// Viking19/TURSAB/İAGTO logoları henüz yok, ileride eklenebilir.
+const SIGNATURES = {
+  'sales@belkagolf.com': {
+    name: 'Anastasiya Avan (Mrs.)',
+    title: 'Sales Manager',
+    phone: '+90 552 478 07 89'
+  },
+  'info@belkagolf.com': {
+    name: 'Elena Beyzadeoğlu',
+    title: 'Sales & Marketing',
+    phone: '+90 541 338 77 31'
+  }
+};
+
+const LOGO_BASE = 'https://belkagolf-website.vercel.app/images';
+
+function buildSignatureHtml(fromAddress) {
+  const sig = SIGNATURES[fromAddress];
+  if (!sig) return '';
+  return `
+    <div style="font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#000;margin-top:20px;">
+      <p style="margin:0;">Saygılarımla / Best Regards,</p>
+      <p style="margin:0;">&nbsp;</p>
+      <p style="margin:0;"><b style="color:#043D51;">${sig.name}</b></p>
+      <p style="margin:0;color:#043D51;">${sig.title}</p>
+      <p style="margin:0;font-size:10pt;">Antalya / Turkey</p>
+      <p style="margin:0;font-size:10pt;">${sig.phone}</p>
+      <p style="margin:0;font-size:10pt;">
+        <a href="mailto:${fromAddress}" style="color:#833C0B;">${fromAddress}</a> |
+        <a href="http://www.belkagolf.com" style="color:#833C0B;">www.belkagolf.com</a>
+      </p>
+      <p style="margin:0;font-size:10pt;"><b>TURSAB</b> 6676 - Member of <b>İAGTO</b></p>
+      <p style="margin:8px 0 0 0;">
+        <img src="${LOGO_BASE}/belka-golf-logo.webp" height="70" alt="Belka Golf">
+        &nbsp;&nbsp;
+        <a href="https://www.belkagolf.com/belka-golf-residence-22/">
+          <img src="${LOGO_BASE}/belka-golf-residence.webp" height="80" alt="Belka Golf Residence">
+        </a>
+      </p>
+    </div>`;
+}
+
+function escapeHtmlBasic(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 function buildMimeMessage({ from, to, subject, body, inReplyTo }) {
+  const paragraphs = body.split(/\r?\n/).map((line) =>
+    line.trim() === '' ? '<p style="margin:0;">&nbsp;</p>' : `<p style="margin:0;">${escapeHtmlBasic(line)}</p>`
+  ).join('\n');
+  const htmlBody = `<html><body style="font-family:Calibri,Arial,sans-serif;font-size:11pt;">
+    ${paragraphs}
+    ${buildSignatureHtml(from)}
+  </body></html>`;
+
   const headers = [
-    `From: ${from}`,
+    `From: "Belka Golf" <${from}>`,
     `To: ${to}`,
     `Subject: =?UTF-8?B?${Buffer.from(subject, 'utf8').toString('base64')}?=`,
     'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset="UTF-8"',
+    'Content-Type: text/html; charset="UTF-8"',
     'Content-Transfer-Encoding: base64'
   ];
   if (inReplyTo) {
     headers.push(`In-Reply-To: ${inReplyTo}`);
     headers.push(`References: ${inReplyTo}`);
   }
-  const bodyB64 = Buffer.from(body, 'utf8').toString('base64');
+  const bodyB64 = Buffer.from(htmlBody, 'utf8').toString('base64');
   return headers.join('\r\n') + '\r\n\r\n' + bodyB64;
 }
 
