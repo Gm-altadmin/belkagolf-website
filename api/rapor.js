@@ -596,8 +596,36 @@ doğrulanmış cümleler:
   "Vielen Dank, bei weiteren Fragen stehen wir gerne zur Verfügüng." vb.) - imza kısmı zaten ayrıca
   ekleniyor, sen sadece gövdeyi yaz.
 
-Kısa, nazik bir hatırlatma maili yaz - selamlama + 2-3 cümlelik nazik hatırlatma + kapanış
-yeterli, uzatma. SADECE mail gövdesini döndür, başka hiçbir açıklama/başlık ekleme.`;
+SATIŞ/PAZARLAMA ETKİNLİĞİ - HATIRLATMA MAİLİ ŞUNLARI İÇERMELİ (30.08.2026, gerçek bir örnek
+üzerinden analiz edilip eklendi - pasif/etkisiz hatırlatmalar müşteriden yanıt almıyor):
+
+1. FİYAT/DETAY ÖZETİ: "Son mesaj özeti"nde somut bir fiyat/tarih/oda tipi geçiyorsa, bunu
+   hatırlatmada KISACA tekrar et (örn. "4 gece, çift kişi €XXX" gibi). Müşterinin eski maili
+   tekrar bulup okumasına gerek kalmasın - bu önemli bir sürtünme noktasıdır.
+
+2. NET EYLEM ÇAĞRISI: "Bize dönüş yapmanızı rica ederiz" gibi belirsiz bir ifade YETERSİZDİR.
+   Müşterinin TAM OLARAK ne yapması gerektiğini söyle - örn. "Bu maile yanıt vererek onayınızı
+   iletebilirsiniz" / "Please reply to confirm, or reach us on WhatsApp." Somut ve net olsun.
+
+3. HAFİF, GERÇEKÇİ AcİLİYET: Eğer bağlamdan (sezon, tarih yaklaşıyor, kontenjan) gerçekçi bir
+   aciliyet çıkarılabiliyorsa doğal bir cümleyle ekle (örn. "Ekim ayı golf sezonu hızla
+   doluyor"). SAHTE/UYDURMA bir kıtlık iddiası ("son 2 oda kaldı" gibi belirsiz kaynaklı bir
+   şey) EKLEME - sadece gerçekten mantıklı, genel bir aciliyet ifadesi kullan, yoksa hiç ekleme.
+
+4. BÜTÇE ESNEKLİĞİ (nazik, kapıyı açık tutan bir cümle - KESİN RAKAM VERME): Hatırlatmanın
+   sonuna, eğer "customer" tipi bir alıcıysa, şuna benzer nazik bir cümle ekle: fiyat/bütçe bir
+   sorunsa veya başka bir teklif aldılarsa bizimle paylaşmalarını, onlara en uygun seçeneği
+   bulmaktan memnuniyet duyacağımızı belirt (örn. "If budget is a concern or you've received
+   another offer, please let us know - we'd be happy to find an option that works for you."
+   / Türkçe: "Bütçenizle ilgili bir kaygınız varsa ya da başka bir teklif aldıysanız, bizimle
+   paylaşmanız yeterli - size en uygun seçeneği bulmaktan memnuniyet duyarız."). Bu, KESİN bir
+   indirim vaadi DEĞİL - sadece müşteriyi konuşmaya devam etmeye teşvik eden esnek bir davet.
+   Bu cümleyi SADECE "customer" tipi alıcılarda kullan, "hotel"/"roger" tipinde KULLANMA (o
+   ikisi zaten iş ortağı, bütçe pazarlığı değil operasyonel yazışma).
+
+Kısa, nazik bir hatırlatma maili yaz - selamlama + yukarıdaki 4 unsuru doğal şekilde içeren
+gövde + kapanış. Şablon gibi durmasın, akıcı ve kişisel hissettirsin. SADECE mail gövdesini
+döndür, başka hiçbir açıklama/başlık ekleme.`;
 
   const userMsg = `Konu: ${ctx.subject}\nAlıcı adı: ${ctx.recipientName || '(bilinmiyor - isim kullanma)'}\nAlıcı tipi: ${ctx.recipientType}\nSon mesaj özeti: ${ctx.snippet.slice(0, 300)}`;
 
