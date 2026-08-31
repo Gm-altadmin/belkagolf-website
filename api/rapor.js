@@ -475,23 +475,39 @@ async function getThreadContext(accessToken, threadId) {
   // Karşı taraf (alıcı) - bizim adresimiz olmayan taraf.
   const recipient = isOurDomain(fromAddr) ? toAddr : fromAddr;
 
-  // Alıcının GERÇEK adını (varsa) selamlama satırından regex ile çıkarır - Claude'a
-  // tahmin ettirmek yerine (30.08.2026: bir vakada Claude, mail imzasındaki KENDİ
-  // personelimizin adını (örn. "Anastasiya") muhatap sanıp ona hitap eden bir taslak
-  // yazmıştı - ciddi bir hata). Regex ile çıkarım varsa KESİN doğru isim garanti eder;
-  // bulunamazsa Claude'a "isim kullanma" talimatı verilir, asla tahmin ettirilmez.
-  const greetingSource = plainBody || snippet;
-  const greetingMatch = greetingSource.match(
-    /(?:Merhaba|Sayın|Selam|Hi|Hello|Dear|Sehr geehrte[r]?|Hej|Здравствуйте|Уважаем\w*)\s+([A-ZÇĞİÖŞÜ][a-zçğıöşüA-ZÇĞİÖŞÜ]+(?:\s+[A-ZÇĞİÖŞÜ][a-zçğıöşüA-ZÇĞİÖŞÜ]+){0,2})/
-  );
-  // Bulunan isim, bizim kendi personel isimlerimizden biriyse (imza karışıklığı riski)
-  // KULLANMA - güvenli tarafta kal.
-  const OWN_STAFF_NAMES = ['anastasiya', 'avan', 'elena', 'beyzadeoğlu', 'beyzadeoglu', 'mustafa'];
+  // Alıcının GERÇEK adını çıkarır - Claude'a tahmin ettirmek yerine kesin bir kaynağa
+  // dayanıyor. YÖNE GÖRE farklı kaynak kullanılıyor (30.08.2026 düzeltmesi - bir vakada
+  // Kenan Çot (Gloria) bize "Merhaba Anastasya Hanım" diye yazmıştı - yani mesaj bize
+  // GELMİŞTİ, içindeki selamlama BİZE hitap ediyordu, ama eski mantık o ismi "alıcı"
+  // sanıp Claude'a "Anastasya'ya hitap et" demişti - kendi personelimize hitap eden bir
+  // taslak çıkmıştı. Artık: son mesaj bize GELMİŞSE ismi selamlama cümlesinden değil,
+  // gönderenin Gmail "Kimden" görünen adından (örn. "Kenan Çot") alıyoruz - çok daha
+  // güvenilir, çünkü o zaten gönderenin gerçek adı, tahmin/regex riski yok):
+  const OWN_STAFF_NAMES = ['anastas', 'avan', 'elena', 'beyzadeoğlu', 'beyzadeoglu', 'mustafa'];
+  const lastIsIncoming = !isOurDomain(fromAddr);
   let recipientName = null;
-  if (greetingMatch) {
-    const candidate = greetingMatch[1].trim();
-    const isOwnStaff = OWN_STAFF_NAMES.some((n) => candidate.toLowerCase().includes(n));
-    if (!isOwnStaff) recipientName = candidate;
+
+  if (lastIsIncoming) {
+    // Mesaj bize gelmiş - gönderenin görünen adı en güvenilir kaynak (içindeki selamlama
+    // bize hitap ediyor olabilir, kullanma).
+    const nameMatch = fromHeaderFull.match(/^"?([^"<]+?)"?\s*<[^>]+>$/);
+    if (nameMatch) {
+      const candidate = nameMatch[1].trim();
+      const isOwnStaff = OWN_STAFF_NAMES.some((n) => candidate.toLowerCase().includes(n));
+      if (candidate && !candidate.includes('@') && !isOwnStaff) recipientName = candidate;
+    }
+  } else {
+    // Mesajı BİZ göndermişiz - içindeki selamlama gerçekten karşı tarafa hitap ediyor,
+    // regex ile güvenle çıkarılabilir.
+    const greetingSource = plainBody || snippet;
+    const greetingMatch = greetingSource.match(
+      /(?:Merhaba|Sayın|Selam|Hi|Hello|Dear|Sehr geehrte[r]?|Hej|Здравствуйте|Уважаем\w*)\s+([A-ZÇĞİÖŞÜ][a-zçğıöşüA-ZÇĞİÖŞÜ]+(?:\s+[A-ZÇĞİÖŞÜ][a-zçğıöşüA-ZÇĞİÖŞÜ]+){0,2})/
+    );
+    if (greetingMatch) {
+      const candidate = greetingMatch[1].trim();
+      const isOwnStaff = OWN_STAFF_NAMES.some((n) => candidate.toLowerCase().includes(n));
+      if (!isOwnStaff) recipientName = candidate;
+    }
   }
 
   // Alıcı tipi (30.08.2026, gerçek üslup analizinden): otel/Roger/müşteri - taslak
