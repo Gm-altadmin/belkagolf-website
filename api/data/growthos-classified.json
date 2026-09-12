@@ -919,23 +919,6 @@
       ]
     },
     {
-      "threadId": "1a08113c824ec2fd",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "A considered Belek group-golf option for Bridgnorth Golf Club",
-      "lastMessageId": "1a08113c824ec2fd",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 8 Sep 2026 05:52:32 -0700",
-      "replies": [
-        {
-          "messageId": "1a08113c824ec2fd",
-          "date": "Tue, 8 Sep 2026 05:52:32 -0700",
-          "snippet": "Hello Scott Warne, Belka Golf works with European golf partners such as Bridgnorth Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground,",
-          "category": "positive",
-          "translation": "Belka Golf, Bridgnorth Golf Club ile Belek'te şeffaf bir grup golf paketi (green fees, otel, yerel destek) sunmak için işbirliği yapmaktadır."
-        }
-      ]
-    },
-    {
       "threadId": "1a08113b571db1b7",
       "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
       "subject": "A considered Belek group-golf option for Thorndon Park Golf Club",
@@ -2451,5 +2434,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:30:41.425Z"
+  "lastRunAt": "2026-09-12T15:30:46.240Z"
 }
