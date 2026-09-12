@@ -3818,6 +3818,23 @@
           "translation": "Konu satırı yalnızca görülüyor, asıl içerik özeti boş olarak gelmektedir. Değerlendirme yapılamaz."
         }
       ]
+    },
+    {
+      "threadId": "1a085188e2c92d2d",
+      "from": "Mail Delivery Subsystem <mailer-daemon@googlemail.com>",
+      "subject": "Delivery Status Notification (Failure)",
+      "lastMessageId": "1a0851894f87d826",
+      "latestCategory": "other",
+      "latestDate": "Wed, 09 Sep 2026 00:36:15 -0700 (PDT)",
+      "replies": [
+        {
+          "messageId": "1a0851894f87d826",
+          "date": "Wed, 09 Sep 2026 00:36:15 -0700 (PDT)",
+          "snippet": "Adres bulunamadı golf@gutkaden.de e-posta adresi bulunamadığından veya e-posta alamadığından iletiniz teslim edilemedi. DAHA FAZLA BİLGİ Bu bağlantıyla üçüncü taraf bir siteye yönlendirileceksiniz Uzak",
+          "category": "other",
+          "translation": "E-posta teslim edilemedi. golf@gutkaden.de adresine ulaşılamadı veya adres bulunamadı. Bu bir otomatik teslim hatası bildirimidir."
+        }
+      ]
     }
   ],
   "recipientAddresses": [
@@ -4020,7 +4037,35 @@
     "secretary@brackenghyll.co.uk",
     "info@achimergolfclub.de",
     "skga@skga.sk",
-    "maksymilian.saluda@pgapolska.com"
+    "maksymilian.saluda@pgapolska.com",
+    "office@gogmagog.co.uk",
+    "professional@royalworlington.co.uk",
+    "golf@brean.com",
+    "joebraycoaching@aol.co.uk",
+    "gm@longashtongolfclub.co.uk",
+    "antti.ahti@helsingingolfklubi.fi",
+    "office@golfclub-urloffen.de",
+    "golf@gutkaden.de",
+    "bleikgolf@gmail.com",
+    "erik@hagagolf.no",
+    "info@brightongolf.co.uk",
+    "office@thorndonpark.com",
+    "golf@westlancashiregolf.co.uk",
+    "sh@newgenerationgolf.co.uk",
+    "jari.hakkarainen@tapiolagolf.fi",
+    "julia.k@thenational.se",
+    "ingsod2@gmail.com",
+    "golfzveza@golfzveza-slovenije.si",
+    "kansli@edagk.com",
+    "amanda.bjork@kristianstadsgk.com",
+    "bar@rokenes.no",
+    "lpgc-pro@langleyparkgolf.co.uk",
+    "proshop@bathgolfclub.org.uk",
+    "secretary@alnmouthgolfclub.com",
+    "erg@ringsidegolf.fi",
+    "golfschule@golfclub-abenberg.de",
+    "kristo@golf.ee",
+    "proart@volny.cz"
   ],
-  "lastRunAt": "2026-09-12T13:54:43.385Z"
+  "lastRunAt": "2026-09-12T14:36:31.847Z"
 }
