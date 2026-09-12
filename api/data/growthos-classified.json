@@ -2864,23 +2864,6 @@
       ]
     },
     {
-      "threadId": "1a00072974de5699",
-      "from": "\"Özlem Bayraktar\" <ozlem.bayraktar@agc.com.tr>",
-      "subject": "RE: TEE-TİME RESERVATİON - 5pax - 29.04.2027 - Einar Gulbrandsen",
-      "lastMessageId": "1a00083133bf3cdf",
-      "latestCategory": "positive",
-      "latestDate": "Fri, 14 Aug 2026 16:43:05 +0300",
-      "replies": [
-        {
-          "messageId": "1a00083133bf3cdf",
-          "date": "Fri, 14 Aug 2026 16:43:05 +0300",
-          "snippet": "Merhaba Elena Hanım, Rezervasyonunuz konfirmedir. İyi çalışmalar dilerim. Özlem BAYRAKTAR. From: Belka Golf &lt;info@belkagolf.com&gt; Sent: Friday, August 14, 2026 4:25 PM To: Reservation 1 &lt;",
-          "category": "positive",
-          "translation": "29.04.2027 tarihinde 5 kişi için tee-time rezervasyonu onaylanmıştır."
-        }
-      ]
-    },
-    {
       "threadId": "1a0006d774b37635",
       "from": "Reservation1 - DAMLA SAVASTURK <reservation1@corneliadiamond.com>",
       "subject": "RE: HOTEL+GOLF RESERVATİON - 27.04.-04.05.2027 - 5pax - Einar Gulbrandsen",
@@ -3624,5 +3607,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:23:46.742Z"
+  "lastRunAt": "2026-09-12T15:23:53.813Z"
 }
