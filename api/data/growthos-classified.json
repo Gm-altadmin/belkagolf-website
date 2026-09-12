@@ -2762,23 +2762,6 @@
       ]
     },
     {
-      "threadId": "1a00f31c8fc4acbb",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Trond Nilsen",
-      "lastMessageId": "1a01a666353a7d2f",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 19 Aug 2026 14:21:53 +0000",
-      "replies": [
-        {
-          "messageId": "1a01a666353a7d2f",
-          "date": "Wed, 19 Aug 2026 14:21:53 +0000",
-          "snippet": "This booking is confirmed for 2 x dbl in Sueno Golf. I will send you all details later. ------------------------------------------------------------------------------------------ DinGolfReise er den",
-          "category": "positive",
-          "translation": "Sueno Golf'ta çift oda rezervasyonu onaylanmıştır. Detaylar daha sonra gönderilecektir."
-        }
-      ]
-    },
-    {
       "threadId": "19fffa88cacdae86",
       "from": "\"Hilal KARADENİZ | Sueno Hotels Satış Pazarlama\" <hilal.karadeniz@sueno.com.tr>",
       "subject": "RE: Tee time değişikliği// RE: YENI REZ.//Arnstein Vagle //SUENO GOLF//10.10-17.10.2026//7 gece konaklama + 4x round Pines&Dunes // 2 PAX ",
@@ -3437,5 +3420,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:24:49.421Z"
+  "lastRunAt": "2026-09-12T15:24:52.620Z"
 }
