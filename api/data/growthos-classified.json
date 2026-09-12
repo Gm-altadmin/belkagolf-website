@@ -936,23 +936,6 @@
       ]
     },
     {
-      "threadId": "1a0851b63251e897",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "A considered Belek group-golf option for Rosa Golf Club",
-      "lastMessageId": "1a0851b63251e897",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 9 Sep 2026 03:39:19 -0400",
-      "replies": [
-        {
-          "messageId": "1a0851b63251e897",
-          "date": "Wed, 9 Sep 2026 03:39:19 -0400",
-          "snippet": "Hello Alfred Kos, Belka Golf works with European golf partners such as Rosa Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground, with",
-          "category": "positive",
-          "translation": "Belka Golf, Rosa Golf Club ile Belek'te şeffaf grup golf paketi (green fee, otel, yerel destek dahil) sunmak üzere ortaklık yapıyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851b5a2eab06b",
       "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
       "subject": "Belka Golf — gruppegolf-konsept for Meland Golfklubb",
@@ -3046,5 +3029,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:28:25.152Z"
+  "lastRunAt": "2026-09-12T15:28:28.078Z"
 }
