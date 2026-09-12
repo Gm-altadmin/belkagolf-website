@@ -113,16 +113,6 @@
   .reminder-error { color: #c0392b; }
   .reminder-status { font-size: 0.8rem; color: #2e7d32; }
   .reminder-status.err { color: #c0392b; }
-  .gos-badge {
-    display: inline-block; font-size: 0.78rem; padding: 2px 9px; border-radius: 10px;
-    font-weight: 600; white-space: nowrap;
-  }
-  .gos-badge-positive { background: #1f4a2e; color: #7fcf9a; }
-  .gos-badge-meeting { background: #1f3a4a; color: #9ec5e0; }
-  .gos-badge-referral { background: #3a2f4a; color: #c9a9e0; }
-  .gos-badge-later { background: #3f3a1f; color: #ddbf7a; }
-  .gos-badge-danger { background: #3f2a2a; color: #e08a8a; }
-  .gos-badge-muted { background: #2a2a2a; color: #999; }
   .gate {
     display: flex;
     gap: 10px;
@@ -394,7 +384,6 @@
     <button class="tab-btn" id="tab-btn-campaigns" onclick="switchTab('campaigns')">Kampanyalar</button>
     <button class="tab-btn" id="tab-btn-stopsale" onclick="switchTab('stopsale')">Stop/Open Sale</button>
     <button class="tab-btn" id="tab-btn-noise" onclick="switchTab('noise')">Gürültü Kontrolü</button>
-    <button class="tab-btn" id="tab-btn-growthos" onclick="switchTab('growthos')">Growth OS Yanıtları</button>
   </div>
 
   <div id="view-rapor">
@@ -500,229 +489,7 @@
         font-family:inherit; box-sizing:border-box;"></textarea>
     </div>
   </div>
-
-  <div id="view-growthos" style="display:none;">
-    <div class="meta" id="gos-meta">Henüz taranmadı.</div>
-    <button class="refresh-btn" onclick="scanGrowthOs()">Yeni Cevapları Tara</button>
-    <button class="refresh-btn" style="background:#2a3a4a;color:#9ec5e0;" onclick="scanGrowthOsByAddress()" title="Etiketi kopmuş/thread'i bozulmuş cevapları, sadece 'bu adrese daha önce gönderdik mi' kontrolüyle bulur">Adres Eşleştirmeli Ek Tarama</button>
-    <div id="gos-address-status" style="margin-top:6px; font-size:0.8rem; color:#999;"></div>
-    <div class="ball-filters" id="gos-filters" style="display:none;">
-      <button class="ball-filter-btn active" id="gos-filter-all" onclick="setGosFilter('all')">Tümü <span class="ball-filter-count" id="gos-count-all">0</span></button>
-      <button class="ball-filter-btn" id="gos-filter-positive" onclick="setGosFilter('positive')">Olumlu <span class="ball-filter-count" id="gos-count-positive">0</span></button>
-      <button class="ball-filter-btn" id="gos-filter-meeting" onclick="setGosFilter('meeting')">Görüşme <span class="ball-filter-count" id="gos-count-meeting">0</span></button>
-      <button class="ball-filter-btn" id="gos-filter-referral" onclick="setGosFilter('referral')">Referans <span class="ball-filter-count" id="gos-count-referral">0</span></button>
-      <button class="ball-filter-btn" id="gos-filter-later" onclick="setGosFilter('later')">Daha sonra <span class="ball-filter-count" id="gos-count-later">0</span></button>
-      <button class="ball-filter-btn" id="gos-filter-do_not_contact" onclick="setGosFilter('do_not_contact')">İletişime geçmeyin <span class="ball-filter-count" id="gos-count-do_not_contact">0</span></button>
-    </div>
-    <div id="gos-list-container"></div>
-  </div>
 </div>
-
-<script>
-const GOS_CATEGORY_LABEL = {
-  positive: 'Olumlu', meeting: 'Görüşme', referral: 'Referans',
-  later: 'Daha sonra', do_not_contact: 'İletişime geçmeyin', other: 'Diğer/Otomatik'
-};
-const GOS_CATEGORY_CLASS = {
-  positive: 'gos-badge-positive', meeting: 'gos-badge-meeting', referral: 'gos-badge-referral',
-  later: 'gos-badge-later', do_not_contact: 'gos-badge-danger', other: 'gos-badge-muted'
-};
-let gosItems = [];
-let gosFilter = 'all';
-
-async function scanGrowthOs() {
-  const metaEl = document.getElementById('gos-meta');
-  metaEl.textContent = 'Taranıyor... (yeni cevaplar Claude ile sınıflandırılıyor, biraz sürebilir)';
-  try {
-    const res = await fetch('/api/rapor?action=growthOsScan&password=' + encodeURIComponent(SAVED_PW));
-    const data = await res.json();
-    if (res.status === 401) { metaEl.textContent = 'Şifre hatalı — sayfayı yenileyin.'; return; }
-    if (data.error) { metaEl.textContent = 'Hata: ' + escapeHtml(data.error); return; }
-    // "other" (otomatik yanıt/bounce) hariç, EN GÜNCEL cevabına göre filtrelenir -
-    // ama geçmiş cevaplar (item.replies) kaybolmadan saklanır, satırda görülebilir.
-    gosItems = (data.items || []).filter((it) => it.latestCategory !== 'other');
-    gosItems.sort((a, b) => new Date(b.latestDate) - new Date(a.latestDate));
-    metaEl.textContent = `Toplam ${gosItems.length} yazışma (${data.newlyProcessed} yeni cevap işlendi).`;
-    document.getElementById('gos-filters').style.display = 'flex';
-    renderGosCounts();
-    renderGosList();
-  } catch (e) {
-    metaEl.textContent = 'Bağlantı hatası — tekrar deneyin.';
-  }
-}
-
-// Etiketi kopmuş / thread'i bozulmuş cevapları bulmak için: "bu adrese daha önce Growth OS
-// maili gönderdik mi" kontrolüyle gelen kutusunu tarar (etikete hiç bakmadan). Önce en az
-// bir kez normal "Yeni Cevapları Tara" çalıştırılmış olmalı (alıcı adres listesi oradan gelir).
-async function scanGrowthOsByAddress() {
-  const statusEl = document.getElementById('gos-address-status');
-  statusEl.textContent = 'Adres eşleştirmeli tarama yapılıyor... (400+ adres kontrol edilebilir, biraz sürebilir)';
-  try {
-    const res = await fetch('/api/rapor?action=growthOsScanByAddress&password=' + encodeURIComponent(SAVED_PW));
-    const data = await res.json();
-    if (res.status === 401) { statusEl.textContent = 'Şifre hatalı — sayfayı yenileyin.'; return; }
-    if (data.error) { statusEl.textContent = 'Hata: ' + escapeHtml(data.error); return; }
-    gosItems = (data.items || []).filter((it) => it.latestCategory !== 'other');
-    gosItems.sort((a, b) => new Date(b.latestDate) - new Date(a.latestDate));
-    statusEl.textContent = `Adres eşleştirmeli taramada +${data.newlyProcessed} yeni cevap bulundu (toplam ${gosItems.length} yazışma).`;
-    document.getElementById('gos-filters').style.display = 'flex';
-    renderGosCounts();
-    renderGosList();
-  } catch (e) {
-    statusEl.textContent = 'Bağlantı hatası — tekrar deneyin.';
-  }
-}
-
-function renderGosCounts() {
-  document.getElementById('gos-count-all').textContent = gosItems.length;
-  for (const cat of ['positive', 'meeting', 'referral', 'later', 'do_not_contact']) {
-    document.getElementById('gos-count-' + cat).textContent = gosItems.filter((it) => it.latestCategory === cat).length;
-  }
-}
-
-function setGosFilter(filter) {
-  gosFilter = filter;
-  ['all', 'positive', 'meeting', 'referral', 'later', 'do_not_contact'].forEach((f) => {
-    document.getElementById('gos-filter-' + f).classList.toggle('active', f === filter);
-  });
-  renderGosList();
-}
-
-function toggleGosHistory(rowId) {
-  const el = document.getElementById('gos-history-' + rowId);
-  if (el) el.style.display = el.style.display === 'none' ? 'block' : 'none';
-}
-
-function renderGosList() {
-  const container = document.getElementById('gos-list-container');
-  const items = gosFilter === 'all' ? gosItems : gosItems.filter((it) => it.latestCategory === gosFilter);
-  if (items.length === 0) {
-    container.innerHTML = '<div class="ball-group-empty">— Bu kategoride cevap yok —</div>';
-    return;
-  }
-  let html = '<table><tr><th>Tarih</th><th>Kimden</th><th>Konu</th><th>Türkçe Özet</th><th>Kategori</th><th></th></tr>';
-  items.forEach((it, i) => {
-    const replies = it.replies || [];
-    const latest = replies[replies.length - 1] || {};
-    const d = it.latestDate ? new Date(it.latestDate).toLocaleString('tr-TR') : '';
-    const rowId = 'gos-r' + i;
-
-    // Birden fazla cevap varsa (×N rozeti, Talep Raporu'ndaki merge-badge ile aynı fikir) -
-    // geçmiş kayıp olmuyor, tıklayınca önceki cevaplar (tarih+kategori+çeviri) açılıyor.
-    let historyBadge = '';
-    let historyPanel = '';
-    if (replies.length > 1) {
-      const historyId = 'gos-history-' + rowId;
-      historyBadge = `<span class="merge-badge" onclick="toggleGosHistory('${rowId}')" title="Tıkla: önceki ${replies.length - 1} cevabı göster/gizle">×${replies.length}</span>`;
-      const olderRows = replies.slice(0, -1).map((r) => {
-        const rd = r.date ? new Date(r.date).toLocaleString('tr-TR') : '';
-        return `<div style="margin-top:4px;">
-          <span class="gos-badge ${GOS_CATEGORY_CLASS[r.category] || 'gos-badge-muted'}">${GOS_CATEGORY_LABEL[r.category] || r.category}</span>
-          <span style="color:#999; font-size:0.78rem;"> ${escapeHtml(rd)}</span> — ${escapeHtml(r.translation || '—')}
-        </div>`;
-      }).join('');
-      historyPanel = `<div class="other-subjects" id="${historyId}" style="display:none;">${olderRows}</div>`;
-    }
-
-    const gmailLink = `https://mail.google.com/mail/u/0/#all/${it.threadId}`;
-
-    html += `<tr>
-      <td>${escapeHtml(d)}</td>
-      <td>${escapeHtml(it.from)}</td>
-      <td>${escapeHtml(it.subject)}${historyBadge}${historyPanel}</td>
-      <td>${escapeHtml(latest.translation || '—')}</td>
-      <td><span class="gos-badge ${GOS_CATEGORY_CLASS[it.latestCategory] || 'gos-badge-muted'}">${GOS_CATEGORY_LABEL[it.latestCategory] || it.latestCategory}</span></td>
-      <td><button class="reminder-btn" onclick="openGosReply('${it.threadId}', '${rowId}')">✉ Yanıtla</button></td>
-    </tr>
-    <tr class="reminder-row" id="reminder-row-${rowId}" style="display:none;">
-      <td colspan="6">
-        <div class="reminder-panel">
-          <div class="reminder-panel-header">
-            <strong>Yanıt Hazırla</strong>
-            <button class="reminder-close-btn" onclick="closeReminder('${rowId}')" title="Kapat">✕</button>
-          </div>
-          <div style="background:#f4f4f4; border-radius:6px; padding:12px; margin-bottom:4px;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;">
-              <div>
-                <div style="font-size:0.78rem; color:#777; font-weight:600; margin-bottom:4px;">MÜŞTERİNİN YAZDIĞI:</div>
-                <div style="font-size:0.92rem; color:#222;">${escapeHtml(latest.translation || it.subject || '—')}</div>
-              </div>
-              <a href="${gmailLink}" target="_blank" rel="noopener" style="white-space:nowrap; font-size:0.8rem; color:#833C0B; text-decoration:none; border:1px solid #833C0B; border-radius:6px; padding:4px 10px;">Gmail'de Aç ↗</a>
-            </div>
-          </div>
-          <div id="reminder-${rowId}">
-            <div class="reminder-fields-row">
-              <button class="reminder-send-btn" style="background:#2a3a4a;color:#9ec5e0;" onclick="draftGosReply('${it.threadId}', '${rowId}', 'auto')">Claude Otomatik Taslak Yazsın</button>
-            </div>
-            <div class="reminder-field" style="margin-top:10px;"><label>Ya da Türkçe yaz:</label></div>
-            <textarea id="gos-turkish-${rowId}" rows="4" placeholder="Cevabınızı Türkçe yazın, Claude karşı tarafın diline çevirsin..." style="padding:10px; border-radius:6px; border:1px solid #ccc; background:#fff; color:#222; font-size:0.9rem; width:100%; box-sizing:border-box;"></textarea>
-            <button class="reminder-send-btn" style="margin-top:8px;" onclick="draftGosReply('${it.threadId}', '${rowId}', 'translate')">Bu Metni Çevir</button>
-          </div>
-        </div>
-      </td>
-    </tr>`;
-  });
-  html += '</table>';
-  container.innerHTML = html;
-}
-
-async function openGosReply(threadId, rowId) {
-  const row = document.getElementById('reminder-row-' + rowId);
-  row.style.display = row.style.display === 'none' ? 'table-row' : 'none';
-}
-
-async function draftGosReply(threadId, rowId, mode) {
-  const content = document.getElementById('reminder-' + rowId);
-  const turkishText = mode === 'translate' ? document.getElementById('gos-turkish-' + rowId).value.trim() : null;
-  if (mode === 'translate' && !turkishText) {
-    alert('Önce Türkçe metni yazın.');
-    return;
-  }
-  content.innerHTML = '<div class="reminder-loading">Hazırlanıyor...</div>';
-  try {
-    const res = await fetch('/api/rapor', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password: SAVED_PW, action: 'growthOsDraft', threadId, mode, turkishText })
-    });
-    const data = await res.json();
-    if (data.error) { content.innerHTML = `<div class="reminder-error">${escapeHtml(data.error)}</div>`; return; }
-    content.innerHTML = `
-      <div class="reminder-fields-row">
-        <div class="reminder-field"><label>Kime:</label> <input type="text" id="gos-to-${rowId}" value="${escapeHtml(data.to)}"></div>
-      </div>
-      <div class="reminder-field"><label>Konu:</label> <input type="text" id="gos-subject-${rowId}" value="${escapeHtml(data.subject)}"></div>
-      <textarea id="gos-body-${rowId}" rows="14">${escapeHtml(data.draft)}</textarea>
-      <input type="hidden" id="gos-msgid-${rowId}" value="${escapeHtml(data.messageIdHeader || '')}">
-      <button class="reminder-send-btn" onclick="sendGosReply('${threadId}', '${rowId}')">Gönder</button>
-      <div class="reminder-status" id="gos-status-${rowId}"></div>`;
-  } catch (e) {
-    content.innerHTML = '<div class="reminder-error">Bağlantı hatası — tekrar deneyin.</div>';
-  }
-}
-
-async function sendGosReply(threadId, rowId) {
-  const to = document.getElementById('gos-to-' + rowId).value.trim();
-  const subject = document.getElementById('gos-subject-' + rowId).value.trim();
-  const body = document.getElementById('gos-body-' + rowId).value;
-  const messageIdHeader = document.getElementById('gos-msgid-' + rowId).value;
-  const statusEl = document.getElementById('gos-status-' + rowId);
-  statusEl.textContent = 'Gönderiliyor...';
-  try {
-    const res = await fetch('/api/rapor', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password: SAVED_PW, action: 'growthOsSend', threadId, to, subject, body, messageIdHeader })
-    });
-    const data = await res.json();
-    if (data.error) { statusEl.classList.add('err'); statusEl.textContent = 'Gönderilemedi: ' + data.error; return; }
-    statusEl.textContent = '✓ Gönderildi.';
-  } catch (e) {
-    statusEl.classList.add('err');
-    statusEl.textContent = 'Bağlantı hatası — tekrar deneyin.';
-  }
-}
-</script>
 
 <script>
 async function runStyleAnalysis() {
@@ -782,13 +549,11 @@ function switchTab(name) {
   document.getElementById('view-campaigns').style.display = name === 'campaigns' ? 'block' : 'none';
   document.getElementById('view-stopsale').style.display = name === 'stopsale' ? 'block' : 'none';
   document.getElementById('view-noise').style.display = name === 'noise' ? 'block' : 'none';
-  document.getElementById('view-growthos').style.display = name === 'growthos' ? 'block' : 'none';
   document.getElementById('tab-btn-rapor').classList.toggle('active', name === 'rapor');
   document.getElementById('tab-btn-search').classList.toggle('active', name === 'search');
   document.getElementById('tab-btn-campaigns').classList.toggle('active', name === 'campaigns');
   document.getElementById('tab-btn-stopsale').classList.toggle('active', name === 'stopsale');
   document.getElementById('tab-btn-noise').classList.toggle('active', name === 'noise');
-  document.getElementById('tab-btn-growthos').classList.toggle('active', name === 'growthos');
   if (name === 'campaigns') loadCampaigns();
   if (name === 'stopsale') loadStopSale();
 }
