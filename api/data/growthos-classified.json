@@ -1436,23 +1436,6 @@
       ]
     },
     {
-      "threadId": "1a0851ab80f003a7",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "A considered Belek group-golf option for Girton Golf Club",
-      "lastMessageId": "1a0851ab80f003a7",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 9 Sep 2026 03:38:36 -0400",
-      "replies": [
-        {
-          "messageId": "1a0851ab80f003a7",
-          "date": "Wed, 9 Sep 2026 03:38:36 -0400",
-          "snippet": "Hello Giuseppe Ungaro, Belka Golf works with European golf partners such as Girton Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground,",
-          "category": "positive",
-          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Girton Golf Club'a tanıtıyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851a6ff568e43",
       "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
       "subject": "A considered Belek group-golf option for Burnham & Berrow Golf Club",
@@ -2791,5 +2774,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:29:14.330Z"
+  "lastRunAt": "2026-09-12T15:29:16.922Z"
 }
