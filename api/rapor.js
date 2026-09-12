@@ -795,84 +795,11 @@ const GROWTHOS_CATEGORY_TR = {
   later: 'Daha sonra', do_not_contact: 'İletişime geçmeyin', other: 'Diğer/Otomatik'
 };
 
-async function handleGrowthOsScan(req, res, accessToken) {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    res.status(500).json({ error: 'api_key_missing' });
-    return;
-  }
-  const PATH = 'api/data/growthos-classified.json';
-  const { data: store, sha } = await githubReadJson(PATH, { items: [] });
-  // threadId -> son işlenen mesajın ID'si. Sadece threadId takip etmek YETERSİZ olurdu:
-  // aynı thread'de müşteri İKİNCİ kez yazarsa (biz cevap verdikten sonra tekrar), thread
-  // zaten "işlendi" sayılıp o yeni mesaj hiç görülmezdi. Mesaj ID bazlı takip, aynı
-  // thread'de yeni bir mesaj geldiğinde bunu doğru şekilde "güncelleme" olarak yakalar.
-  const lastProcessedMsgId = new Map(store.items.map((it) => [it.threadId, it.lastMessageId]));
-
-  // 09.09.2026 SORUN ÇIKTI (kullanıcı bulguları): "label:growth-os in:inbox" sorgusu
-  // ~400 gönderilen maile karşı sadece 8 cevap buldu - şüpheli derecede düşük. Growth OS
-  // projesinin kendi geçmişinde AYNI risk zaten belgelenmişti: Gmail'in bu etiket
-  // üzerindeki "in:inbox" araması güvenilmez/eksik sonuç verebiliyor. Düzeltme: artık
-  // SADECE etikete göre arıyoruz (in:inbox kısıtlaması KALDIRILDI) - kendi kodumuzda
-  // zaten "bizim domainimizden gelmeyen son mesaj" mantığıyla gerçek cevapları
-  // ayıklıyoruz (aşağıda), Gmail'in in:inbox indekslemesine hiç bağımlı değiliz artık.
-  const q = 'label:growth-os';
-  let threads = [];
-  let pageToken = '';
-  // Sayfalama sınırı 6'dan 10'a çıkarıldı (09.09.2026) - 400+ gönderilen mail varsa 6
-  // sayfa (maks. 300 thread) hepsini kapsamayabilirdi, bazıları hiç taranmadan atlanırdı.
-  for (let i = 0; i < 10; i++) {
-    const url = `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(q)}&maxResults=50${pageToken ? `&pageToken=${pageToken}` : ''}`;
-    const listRes = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
-    const listData = await listRes.json();
-    threads = threads.concat(listData.threads || []);
-    if (!listData.nextPageToken) break;
-    pageToken = listData.nextPageToken;
-  }
-
-  // Her thread'i çekip, "bize gelen SON mesaj"ı (thread'in mutlak son mesajı değil -
-  // biz o thread'de en son cevap vermiş olabiliriz, o zaman müşterinin gerçek son
-  // mesajı daha geride kalır) bulup, daha önce işlediğimiz mesajla karşılaştırıyoruz.
-  const newItems = [];
-  for (const group of chunk(threads.map((t) => t.id), 10)) {
-    const details = await Promise.all(
-      group.map((id) =>
-        // format=metadata (tam içerik değil) - bu tarama aşamasında sadece kimden/tarih/
-        // konu/özet gerekiyor, tam mesaj gövdesi değil. 400+ thread taranacağı için bu,
-        // Vercel'in süre sınırına takılmamak adına önemli bir hız kazancı sağlıyor.
-        fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${id}?format=metadata&metadataHeaders=From&metadataHeaders=Date&metadataHeaders=Subject`,
-          { headers: { Authorization: `Bearer ${accessToken}` } }
-        ).then((r) => r.json()).catch(() => null)
-      )
-    );
-    for (const det of details) {
-      if (!det || !det.messages || det.messages.length === 0) continue;
-      // Müşterinin (bizim domainimiz DIŞINDAKİ) en son mesajını bul - thread'in
-      // mutlak sonuncusu değil, çünkü biz sonradan cevap vermiş olabiliriz.
-      let lastCustomerMsg = null;
-      for (let i = det.messages.length - 1; i >= 0; i--) {
-        const fromH = getHeaderVal(det.messages[i], 'From');
-        if (!isOurDomain(extractEmailAddr(fromH))) { lastCustomerMsg = det.messages[i]; break; }
-      }
-      if (!lastCustomerMsg) continue; // bu thread'de hiç müşteri mesajı yok, atla
-
-      const alreadyProcessed = lastProcessedMsgId.get(det.id);
-      if (alreadyProcessed === lastCustomerMsg.id) continue; // bu mesajı zaten işledik
-
-      newItems.push({
-        threadId: det.id,
-        lastMessageId: lastCustomerMsg.id,
-        date: getHeaderVal(lastCustomerMsg, 'Date'),
-        from: getHeaderVal(lastCustomerMsg, 'From'),
-        subject: getHeaderVal(lastCustomerMsg, 'Subject'),
-        snippet: lastCustomerMsg.snippet || ''
-      });
-    }
-  }
-
-  if (newItems.length === 0) {
-    res.status(200).json({ items: store.items, newlyProcessed: 0 });
-    return;
-  }
+// Growth OS cevaplarını Claude ile sınıflandırır (kategori + Türkçe çeviri) - hem etiket-
+// bazlı taramada hem adres-eşleştirmeli ek taramada AYNI mantık kullanılıyor, kod tekrarı
+// olmasın diye tek yere çıkarıldı (bugünkü _lib refactor'üyle aynı prensip).
+async function classifyGrowthOsItems(newItems) {
+  if (newItems.length === 0) return [];
 
   const classifySystemPrompt = `Sen "Belka Golf Growth OS" adlı bir B2B iş ortaklığı teklif
 kampanyasına gelen cevapları sınıflandıran bir asistansın. Sana yabancı dilde (Almanca/
@@ -934,12 +861,13 @@ SADECE JSON dizisi döndür: [{"index":1,"category":"positive","translation":"..
       });
     });
   });
+  return finalNewItems;
+}
 
-  // GÜNCELLEME (30.09.2026 düzeltmesi): aynı thread'de yeni bir cevap geldiğinde artık
-  // ESKİ kaydın üzerine YAZILMIYOR - yeni cevap "replies" dizisine EKLENİYOR, geçmiş
-  // korunuyor (Talep Raporu'ndaki iz mantığına benzer). "latestCategory" filtreleme için
-  // hep en güncel cevabın kategorisini yansıtır, ama eski cevaplar/kategoriler de saklanır.
-  const byThreadId = new Map(store.items.map((it) => [it.threadId, it]));
+// Yeni sınıflandırılan cevapları mevcut kayıtlara EKLER (üzerine yazmaz) - aynı thread'de
+// birden fazla cevap varsa hepsi "replies" dizisinde birikir, geçmiş kaybolmaz.
+function mergeGrowthOsItemsIntoStore(storeItems, finalNewItems) {
+  const byThreadId = new Map(storeItems.map((it) => [it.threadId, it]));
   for (const it of finalNewItems) {
     const replyEntry = {
       messageId: it.lastMessageId,
@@ -968,10 +896,209 @@ SADECE JSON dizisi döndür: [{"index":1,"category":"positive","translation":"..
       });
     }
   }
-  const allItems = [...byThreadId.values()];
+  return [...byThreadId.values()];
+}
 
-  await githubWriteJson(PATH, { items: allItems, lastRunAt: new Date().toISOString() }, sha,
-    `Growth OS cevapları: +${finalNewItems.length} yeni/güncellenen mesaj sınıflandırıldı (toplam ${allItems.length} thread)`);
+async function handleGrowthOsScan(req, res, accessToken) {
+  if (!process.env.ANTHROPIC_API_KEY) {
+    res.status(500).json({ error: 'api_key_missing' });
+    return;
+  }
+  const PATH = 'api/data/growthos-classified.json';
+  const { data: store, sha } = await githubReadJson(PATH, { items: [], recipientAddresses: [] });
+  // threadId -> son işlenen mesajın ID'si. Sadece threadId takip etmek YETERSİZ olurdu:
+  // aynı thread'de müşteri İKİNCİ kez yazarsa (biz cevap verdikten sonra tekrar), thread
+  // zaten "işlendi" sayılıp o yeni mesaj hiç görülmezdi. Mesaj ID bazlı takip, aynı
+  // thread'de yeni bir mesaj geldiğinde bunu doğru şekilde "güncelleme" olarak yakalar.
+  const lastProcessedMsgId = new Map(store.items.map((it) => [it.threadId, it.lastMessageId]));
+
+  // 09.09.2026 SORUN ÇIKTI (kullanıcı bulguları): "label:growth-os in:inbox" sorgusu
+  // ~400 gönderilen maile karşı sadece 8 cevap buldu - şüpheli derecede düşük. Growth OS
+  // projesinin kendi geçmişinde AYNI risk zaten belgelenmişti: Gmail'in bu etiket
+  // üzerindeki "in:inbox" araması güvenilmez/eksik sonuç verebiliyor. Düzeltme: artık
+  // SADECE etikete göre arıyoruz (in:inbox kısıtlaması KALDIRILDI) - kendi kodumuzda
+  // zaten "bizim domainimizden gelmeyen son mesaj" mantığıyla gerçek cevapları
+  // ayıklıyoruz (aşağıda), Gmail'in in:inbox indekslemesine hiç bağımlı değiliz artık.
+  const q = 'label:growth-os';
+  let threads = [];
+  let pageToken = '';
+  // Sayfalama sınırı 6'dan 10'a çıkarıldı (09.09.2026) - 400+ gönderilen mail varsa 6
+  // sayfa (maks. 300 thread) hepsini kapsamayabilirdi, bazıları hiç taranmadan atlanırdı.
+  for (let i = 0; i < 10; i++) {
+    const url = `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(q)}&maxResults=50${pageToken ? `&pageToken=${pageToken}` : ''}`;
+    const listRes = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
+    const listData = await listRes.json();
+    threads = threads.concat(listData.threads || []);
+    if (!listData.nextPageToken) break;
+    pageToken = listData.nextPageToken;
+  }
+
+  // Her thread'i çekip, "bize gelen SON mesaj"ı (thread'in mutlak son mesajı değil -
+  // biz o thread'de en son cevap vermiş olabiliriz, o zaman müşterinin gerçek son
+  // mesajı daha geride kalır) bulup, daha önce işlediğimiz mesajla karşılaştırıyoruz.
+  // Aynı zamanda BİZİM gönderdiğimiz mesajların "Kime" adreslerini de topluyoruz -
+  // bunlar kalıcı olarak saklanıp "Adres Eşleştirmeli Ek Tarama" (growthOsScanByAddress)
+  // tarafından, etiketi kopmuş/thread'i bozulmuş cevapları bulmak için kullanılacak.
+  const newItems = [];
+  const recipientAddresses = new Set(store.recipientAddresses || []);
+  for (const group of chunk(threads.map((t) => t.id), 10)) {
+    const details = await Promise.all(
+      group.map((id) =>
+        // format=metadata (tam içerik değil) - bu tarama aşamasında sadece kimden/kime/
+        // tarih/konu/özet gerekiyor, tam mesaj gövdesi değil. 400+ thread taranacağı için
+        // bu, Vercel'in süre sınırına takılmamak adına önemli bir hız kazancı sağlıyor.
+        fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${id}?format=metadata&metadataHeaders=From&metadataHeaders=To&metadataHeaders=Date&metadataHeaders=Subject`,
+          { headers: { Authorization: `Bearer ${accessToken}` } }
+        ).then((r) => r.json()).catch(() => null)
+      )
+    );
+    for (const det of details) {
+      if (!det || !det.messages || det.messages.length === 0) continue;
+
+      // Bizim gönderdiğimiz her mesajın "Kime" adresini topla (adres-eşleştirmeli ek
+      // tarama için kalıcı liste).
+      for (const m of det.messages) {
+        const mFrom = extractEmailAddr(getHeaderVal(m, 'From'));
+        if (isOurDomain(mFrom)) {
+          const mTo = extractEmailAddr(getHeaderVal(m, 'To'));
+          if (mTo) recipientAddresses.add(mTo);
+        }
+      }
+
+      // Müşterinin (bizim domainimiz DIŞINDAKİ) en son mesajını bul - thread'in
+      // mutlak sonuncusu değil, çünkü biz sonradan cevap vermiş olabiliriz.
+      let lastCustomerMsg = null;
+      for (let i = det.messages.length - 1; i >= 0; i--) {
+        const fromH = getHeaderVal(det.messages[i], 'From');
+        if (!isOurDomain(extractEmailAddr(fromH))) { lastCustomerMsg = det.messages[i]; break; }
+      }
+      if (!lastCustomerMsg) continue; // bu thread'de hiç müşteri mesajı yok, atla
+
+      const alreadyProcessed = lastProcessedMsgId.get(det.id);
+      if (alreadyProcessed === lastCustomerMsg.id) continue; // bu mesajı zaten işledik
+
+      newItems.push({
+        threadId: det.id,
+        lastMessageId: lastCustomerMsg.id,
+        date: getHeaderVal(lastCustomerMsg, 'Date'),
+        from: getHeaderVal(lastCustomerMsg, 'From'),
+        subject: getHeaderVal(lastCustomerMsg, 'Subject'),
+        snippet: lastCustomerMsg.snippet || ''
+      });
+    }
+  }
+
+  // Yeni cevap bulunamasa bile, bu taramada toplanan alıcı adresleri (recipientAddresses)
+  // kalıcı olarak kaydedilmeli - yoksa "Adres Eşleştirmeli Ek Tarama" hep boş listeyle
+  // çalışırdı. Sadece adres listesi değiştiyse GitHub'a yaz.
+  const addressListChanged = recipientAddresses.size !== (store.recipientAddresses || []).length;
+  if (newItems.length === 0) {
+    if (addressListChanged) {
+      await githubWriteJson(PATH,
+        { items: store.items, recipientAddresses: [...recipientAddresses], lastRunAt: new Date().toISOString() },
+        sha, `Growth OS: alıcı adres listesi güncellendi (${recipientAddresses.size} adres)`);
+    }
+    res.status(200).json({ items: store.items, newlyProcessed: 0 });
+    return;
+  }
+
+  const finalNewItems = await classifyGrowthOsItems(newItems);
+  const allItems = mergeGrowthOsItemsIntoStore(store.items, finalNewItems);
+
+  await githubWriteJson(PATH,
+    { items: allItems, recipientAddresses: [...recipientAddresses], lastRunAt: new Date().toISOString() },
+    sha, `Growth OS cevapları: +${finalNewItems.length} yeni/güncellenen mesaj sınıflandırıldı (toplam ${allItems.length} thread)`);
+
+  res.status(200).json({ items: allItems, newlyProcessed: finalNewItems.length });
+}
+
+// --- Adres Eşleştirmeli Ek Tarama (action=growthOsScanByAddress, 09.09.2026) ---
+// Bazı müşteriler "Yanıtla" yerine yeni bir mail yazınca (ya da mail programı referans
+// başlıklarını kaybedince) Gmail bunu AYNI thread'in devamı SAYMIYOR - hem thread hem
+// etiket eşleşmesi kopuyor, normal tarama (handleGrowthOsScan, sadece "label:growth-os")
+// bu cevabı hiç bulamıyor. Bu ek tarama, etikete hiç bakmadan, SADECE "bu adrese daha
+// önce Growth OS maili gönderdik mi" bilgisine göre gelen kutusunu tarar - kullanıcının
+// önerdiği yöntem. handleGrowthOsScan'in her çalıştırmasında topladığı/kalıcı sakladığı
+// "recipientAddresses" listesini kullanır - bu yüzden ÖNCE en az bir kez normal tarama
+// yapılmış olmalı (yoksa adres listesi boş çıkar).
+async function handleGrowthOsScanByAddress(req, res, accessToken) {
+  if (!process.env.ANTHROPIC_API_KEY) {
+    res.status(500).json({ error: 'api_key_missing' });
+    return;
+  }
+  const PATH = 'api/data/growthos-classified.json';
+  const { data: store, sha } = await githubReadJson(PATH, { items: [], recipientAddresses: [] });
+  const addressList = store.recipientAddresses || [];
+  if (addressList.length === 0) {
+    res.status(200).json({ error: 'Önce normal "Yeni Cevapları Tara" en az bir kez çalıştırılmalı (alıcı adres listesi henüz boş).' });
+    return;
+  }
+
+  const lastProcessedMsgId = new Map(store.items.map((it) => [it.threadId, it.lastMessageId]));
+
+  // Adresleri gruplar halinde ara ("from:a OR from:b OR ...") - tek seferde 400 adresi
+  // tek sorguya sığdırmak yerine 20'şerlik gruplara bölüyoruz (Gmail sorgu uzunluğu ve
+  // güvenilirlik için). Etikete hiç bakmıyoruz - sadece "kimden geldi" önemli.
+  const extraThreadIds = new Set();
+  for (const group of chunk(addressList, 20)) {
+    const orQuery = 'in:inbox (' + group.map((a) => `from:${a}`).join(' OR ') + ')';
+    let pageToken = '';
+    for (let i = 0; i < 3; i++) {
+      const url = `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(orQuery)}&maxResults=50${pageToken ? `&pageToken=${pageToken}` : ''}`;
+      const listRes = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
+      const listData = await listRes.json();
+      for (const t of (listData.threads || [])) extraThreadIds.add(t.id);
+      if (!listData.nextPageToken) break;
+      pageToken = listData.nextPageToken;
+    }
+  }
+
+  if (extraThreadIds.size === 0) {
+    res.status(200).json({ items: store.items, newlyProcessed: 0 });
+    return;
+  }
+
+  const newItems = [];
+  for (const group of chunk([...extraThreadIds], 10)) {
+    const details = await Promise.all(
+      group.map((id) =>
+        fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${id}?format=metadata&metadataHeaders=From&metadataHeaders=Date&metadataHeaders=Subject`,
+          { headers: { Authorization: `Bearer ${accessToken}` } }
+        ).then((r) => r.json()).catch(() => null)
+      )
+    );
+    for (const det of details) {
+      if (!det || !det.messages || det.messages.length === 0) continue;
+      let lastCustomerMsg = null;
+      for (let i = det.messages.length - 1; i >= 0; i--) {
+        const fromH = getHeaderVal(det.messages[i], 'From');
+        if (!isOurDomain(extractEmailAddr(fromH))) { lastCustomerMsg = det.messages[i]; break; }
+      }
+      if (!lastCustomerMsg) continue;
+      const alreadyProcessed = lastProcessedMsgId.get(det.id);
+      if (alreadyProcessed === lastCustomerMsg.id) continue;
+      newItems.push({
+        threadId: det.id,
+        lastMessageId: lastCustomerMsg.id,
+        date: getHeaderVal(lastCustomerMsg, 'Date'),
+        from: getHeaderVal(lastCustomerMsg, 'From'),
+        subject: getHeaderVal(lastCustomerMsg, 'Subject'),
+        snippet: lastCustomerMsg.snippet || ''
+      });
+    }
+  }
+
+  if (newItems.length === 0) {
+    res.status(200).json({ items: store.items, newlyProcessed: 0 });
+    return;
+  }
+
+  const finalNewItems = await classifyGrowthOsItems(newItems);
+  const allItems = mergeGrowthOsItemsIntoStore(store.items, finalNewItems);
+
+  await githubWriteJson(PATH,
+    { items: allItems, recipientAddresses: addressList, lastRunAt: new Date().toISOString() },
+    sha, `Growth OS adres-eşleştirmeli ek tarama: +${finalNewItems.length} yeni mesaj (etiketsiz/thread'i kopuk cevaplar dahil)`);
 
   res.status(200).json({ items: allItems, newlyProcessed: finalNewItems.length });
 }
@@ -1333,7 +1460,8 @@ export default async function handler(req, res) {
 
   const action = req.query.action || (req.body && req.body.action) || 'report';
   if (action === 'draft' || action === 'send' || action === 'styleAnalysis' ||
-      action === 'growthOsScan' || action === 'growthOsDraft' || action === 'growthOsSend') {
+      action === 'growthOsScan' || action === 'growthOsScanByAddress' ||
+      action === 'growthOsDraft' || action === 'growthOsSend') {
     try {
       const accessToken = await getAccessToken();
       if (action === 'draft') {
@@ -1344,6 +1472,8 @@ export default async function handler(req, res) {
         await handleStyleAnalysis(req, res, accessToken);
       } else if (action === 'growthOsScan') {
         await handleGrowthOsScan(req, res, accessToken);
+      } else if (action === 'growthOsScanByAddress') {
+        await handleGrowthOsScanByAddress(req, res, accessToken);
       } else if (action === 'growthOsDraft') {
         await handleGrowthOsDraft(req, res, accessToken);
       } else {
