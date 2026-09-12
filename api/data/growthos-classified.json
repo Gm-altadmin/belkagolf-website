@@ -3357,23 +3357,6 @@
       ]
     },
     {
-      "threadId": "19df1d1b3493ca9e",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Reservation Mr. Ottar Breivik (family group) INVOICE",
-      "lastMessageId": "19df7ee1e218c796",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 5 May 2026 14:37:51 +0300",
-      "replies": [
-        {
-          "messageId": "19df7ee1e218c796",
-          "date": "Tue, 5 May 2026 14:37:51 +0300",
-          "snippet": "I do not know what you have informed them about a refund for the original booking / stay? If you told them they will get a refund, then it will be problem for me to say they will not get a refund... --",
-          "category": "positive",
-          "translation": "Ottar Breivik'in aile grubu rezervasyonu hakkında geri ödeme detayları ile ilgili önemli bir muhasebe/operasyonel takip."
-        }
-      ]
-    },
-    {
       "threadId": "1a0909d7e07cf2f2",
       "from": "Debra Shepherd <debra.shepherd@surbitongolfclub.com>",
       "subject": "Automatic reply: A considered Belek group-golf option for Surbiton Golf Club",
@@ -3760,5 +3743,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:22:49.922Z"
+  "lastRunAt": "2026-09-12T15:22:56.027Z"
 }
