@@ -2490,23 +2490,6 @@
       ]
     },
     {
-      "threadId": "1a0431363c291b13",
-      "from": "\"Lisa Gahn | Blaumond GmbH\" <lisa.gahn@blaumond24.de>",
-      "subject": "Shuttle Service Inquiry for Golf Transfers | Belek (2 Passengers)",
-      "lastMessageId": "1a0431363c291b13",
-      "latestCategory": "positive",
-      "latestDate": "Thu, 27 Aug 2026 11:55:39 +0000",
-      "replies": [
-        {
-          "messageId": "1a0431363c291b13",
-          "date": "Thu, 27 Aug 2026 11:55:39 +0000",
-          "snippet": "Dear Mrs. Beyzadeoğlu, I would like to inquire about booking a private shuttle service for two guests in Belek, Turkey. We are looking to arrange daily round-trip transfers between their hotel and",
-          "category": "positive",
-          "translation": "Belek'te 2 konuk için özel shuttle servisi (otel-golf sahası arası) talep ediliyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a0426a0e9f67460",
       "from": "A H <arif@goldsports.pro>",
       "subject": "Re: Golf tatili",
@@ -3794,5 +3777,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:22:36.177Z"
+  "lastRunAt": "2026-09-12T15:22:41.746Z"
 }
