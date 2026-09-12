@@ -2473,23 +2473,6 @@
       ]
     },
     {
-      "threadId": "1a070b2b5435af4e",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Payments",
-      "lastMessageId": "1a08a5f26f84f137",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Thu, 10 Sep 2026 08:11:27 +0000",
-      "replies": [
-        {
-          "messageId": "1a08a5f26f84f137",
-          "date": "Thu, 10 Sep 2026 08:11:27 +0000",
-          "snippet": "5 days since last contact... 🙂 Still no answer. It looks like this is my responsibility to follow up. I really hope you can take your time and look into this so that we can move forward. --------------",
-          "category": "do_not_contact",
-          "translation": "5 gündür cevap yok. Ödeme konusunda takip yapılmasını istiyor, ilerleme için çabuk cevap bekliyoruz."
-        }
-      ]
-    },
-    {
       "threadId": "1a06cdb6dd18d729",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Dag Jarle Vignes ARRIVAL TRANSFER",
@@ -3964,5 +3947,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:19:52.272Z"
+  "lastRunAt": "2026-09-12T15:19:57.184Z"
 }
