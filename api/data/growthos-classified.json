@@ -1652,10 +1652,10 @@
     {
       "threadId": "1a0851b3adfaa146",
       "from": "Mail Delivery Subsystem <mailer-daemon@googlemail.com>",
-      "subject": "Delivery Status Notification (Delay)",
-      "lastMessageId": "1a08f794c84acfb8",
+      "subject": "Delivery Status Notification (Failure)",
+      "lastMessageId": "1a0949835b719284",
       "latestCategory": "other",
-      "latestDate": "Fri, 11 Sep 2026 00:58:06 -0700 (PDT)",
+      "latestDate": "Sat, 12 Sep 2026 00:49:58 -0700 (PDT)",
       "replies": [
         {
           "messageId": "1a08f794c84acfb8",
@@ -1663,6 +1663,13 @@
           "snippet": "Teslim tamamlanmadı İletiniz formann@brgolf.no adresine teslim edilirken geçici bir sorun oluştu. Gmail 23 saat boyunca iletiyi yeniden göndermeyi deneyecek. Teslim kalıcı olarak başarısız olursa",
           "category": "other",
           "translation": "Gmail teslim hatası bildirimi. Mail formann@brgolf.no adresine gönderilemedi, sistem 23 saat boyunca yeniden deneyecek."
+        },
+        {
+          "messageId": "1a0949835b719284",
+          "date": "Sat, 12 Sep 2026 00:49:58 -0700 (PDT)",
+          "snippet": "İleti teslim edilemedi İletiniz formann@brgolf.no adresine teslim edilirken bir sorun oluştu. Aşağıdaki teknik ayrıntıları inceleyin veya birkaç dakika sonra yeniden göndermeyi deneyin. DAHA FAZLA",
+          "category": "other",
+          "translation": "Teslim Durumu Bildirimi - formann@brgolf.no adresine mail gönderilemedi. Teknik sorun veya adres hatalı."
         }
       ]
     },
@@ -3705,6 +3712,57 @@
           "translation": "Otomatik yanıt mesajı. The Scandinavian Golf Club'tan teşekkür ve ilgi için takdir mesajı. Gerçek bir insan cevabı değil, otomatik cevaplama sistemi."
         }
       ]
+    },
+    {
+      "threadId": "1a0944d0ad398498",
+      "from": "Postmaster <postmaster@natrohost.com>",
+      "subject": "Undeliverable: Belka Golf — Gruppengolf-Konzept für Golfclub Brunn am Gebirge",
+      "lastMessageId": "1a0944d15111a747",
+      "latestCategory": "other",
+      "latestDate": "Sat, 12 Sep 2026 09:27:55 +0300",
+      "replies": [
+        {
+          "messageId": "1a0944d15111a747",
+          "date": "Sat, 12 Sep 2026 09:27:55 +0300",
+          "snippet": "This is the mail system at host cluster10-mx25.natrohost.com. I&#39;m sorry to have to inform you that your message could not be delivered to one or more recipients. It&#39;s attached below. &lt;office",
+          "category": "other",
+          "translation": "Mail teslim edilemedi - sistem hatası. Alıcıya ulaşılamadı, bounce mesajı."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0851954adfce5b",
+      "from": "Mail Delivery Subsystem <mailer-daemon@googlemail.com>",
+      "subject": "Delivery Status Notification (Failure)",
+      "lastMessageId": "1a08519637f79f5d",
+      "latestCategory": "other",
+      "latestDate": "Wed, 09 Sep 2026 00:37:08 -0700 (PDT)",
+      "replies": [
+        {
+          "messageId": "1a08519637f79f5d",
+          "date": "Wed, 09 Sep 2026 00:37:08 -0700 (PDT)",
+          "snippet": "Adres bulunamadı kim@egk.dk e-posta adresi bulunamadığından veya e-posta alamadığından iletiniz teslim edilemedi. DAHA FAZLA BİLGİ Bu bağlantıyla üçüncü taraf bir siteye yönlendirileceksiniz Uzak",
+          "category": "other",
+          "translation": "Teslim Durumu Bildirimi - kim@egk.dk adresine mail teslim edilemedi, adres bulunamadı veya almıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a085181a2570c6c",
+      "from": "Mail Delivery Subsystem <mailer-daemon@googlemail.com>",
+      "subject": "Delivery Status Notification (Failure)",
+      "lastMessageId": "1a08518256111973",
+      "latestCategory": "other",
+      "latestDate": "Wed, 09 Sep 2026 00:35:47 -0700 (PDT)",
+      "replies": [
+        {
+          "messageId": "1a08518256111973",
+          "date": "Wed, 09 Sep 2026 00:35:47 -0700 (PDT)",
+          "snippet": "Adres bulunamadı beran@gcko.cz e-posta adresi bulunamadığından veya e-posta alamadığından iletiniz teslim edilemedi. Uzak sunucunun yanıtı şuydu: 550 5.1.1 sorry, no such mailbox here",
+          "category": "other",
+          "translation": "Teslim Durumu Bildirimi - beran@gcko.cz adresine mail teslim edilemedi, mailbox bulunamadı."
+        }
+      ]
     }
   ],
   "recipientAddresses": [
@@ -3801,7 +3859,87 @@
     "front.office@piringolf.bg",
     "stefan.meyer59@gmail.com",
     "gianpaolofanti@aon.at",
-    "gk@araslovgolf.se"
+    "gk@araslovgolf.se",
+    "lene.fgk@gmail.com",
+    "rowanhunkin@hotmail.com",
+    "pepi.j.ebner@icloud.com",
+    "sport@reitershotels.at",
+    "office@gccbrunn.at",
+    "info@ukrgolf.org",
+    "michalak@skga.sk",
+    "sekretariat@skga.sk",
+    "tjasa.muller@royalbled.com",
+    "pro@ofg.nu",
+    "axel@skaftogk.se",
+    "anton@skaftogk.se",
+    "info@flommensgk.se",
+    "jan.ekblom@falsterbogk.se",
+    "david@davidleetgolf.se",
+    "janne.ekman@eskilstunagk.se",
+    "goran.lindblad@eskilstunagk.se",
+    "info@aregolfklubb.com",
+    "emil@fdgolfab.com",
+    "info@degerforsgolf.se",
+    "klubbchef@stockholmsgolfklubb.se",
+    "kansli@stockholmsgolfklubb.se",
+    "maria.bengtsson@brohofslott.se",
+    "jonas.lindgren@brohofslott.se",
+    "niklas.lindstrom@ekerum.com",
+    "golf@zavidovo-golf.ru",
+    "i.veretenin@peterhofgolf.ru",
+    "s.falin@sf-golfclub.ru",
+    "office@golfas.rs",
+    "ozkan.baykal@nationalgolf.ro",
+    "marius.pacurari@frgolf.ro",
+    "laura.iacob@frgolf.ro",
+    "kamil.bartkowiak@pgapolska.com",
+    "przemyslaw.klos@pgapolska.com",
+    "recepcja@wroclaw.golf",
+    "rosa@rosa.golf",
+    "alfred.kos@rosa.golf",
+    "kai@melandgolf.no",
+    "dgk@drobakgolf.no",
+    "cathrine@drobakgolf.no",
+    "formann@brgolf.no",
+    "post@jgk.no",
+    "davis.puksts@jurmalagolf.lv",
+    "office@girtongolf.co.uk",
+    "enquiries@burnhamgolf.co.uk",
+    "manager@brough-golfclub.co.uk",
+    "proshop@broadstonegolfclub.com",
+    "colesgolf@aol.co.uk",
+    "andreas@asgolf.info",
+    "kim@egk.dk",
+    "je@egk.dk",
+    "beran@gcko.cz",
+    "vlad.florea@frgolf.ro",
+    "marek@sandvalley.pl",
+    "gediminas@golfofederacija.lt",
+    "ured@golfsavez.hr",
+    "enquiries@henburygolfclub.co.uk",
+    "enquiries@bridlingtongolfclub.co.uk",
+    "info@bradfordmoorgolfclub.co.uk",
+    "secretary@bingleystivesgc.com",
+    "reception@charthills.co.uk",
+    "mika.asikainen@hartolagolf.com",
+    "info@glc-haghof.de",
+    "mice@pestovogolf.com",
+    "info@bodensgk.se",
+    "info@bolidensgolfklubb.se",
+    "magnus.lagerlof@ekerum.com",
+    "pro@puttom.se",
+    "tranare@arbogagk.se",
+    "magnus@askersundsgolfklubb.se",
+    "jorgen.aker@ullnagolf.se",
+    "tone@askergolf.no",
+    "theo@beverley.golf",
+    "mattshort@sandmartins.com",
+    "secretary@ashtongolfclub.co.uk",
+    "info@hvideklit.dk",
+    "lars@aalborggolfklub.dk",
+    "ziga.osterc@golfzveza-slovenije.si",
+    "a.roslaniec@polski.golf",
+    "r.franczak@polski.golf"
   ],
-  "lastRunAt": "2026-09-12T08:13:40.811Z"
+  "lastRunAt": "2026-09-12T09:48:04.844Z"
 }
