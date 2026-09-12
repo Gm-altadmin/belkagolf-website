@@ -3034,23 +3034,6 @@
       ]
     },
     {
-      "threadId": "19ffb238c63556da",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Johan Askeland",
-      "lastMessageId": "1a06179e6fe8c3ce",
-      "latestCategory": "later",
-      "latestDate": "Wed, 2 Sep 2026 09:36:14 +0000",
-      "replies": [
-        {
-          "messageId": "1a06179e6fe8c3ce",
-          "date": "Wed, 2 Sep 2026 09:36:14 +0000",
-          "snippet": "Cancelled for now. He will come back later. ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra",
-          "category": "later",
-          "translation": "Bay Askeland şu an iptal etti ancak daha sonra geri dönecek."
-        }
-      ]
-    },
-    {
       "threadId": "19ffb4fc156f59c5",
       "from": "\"Kenan Çot\" <kenan.cot@gloria.com.tr>",
       "subject": "RE: Oda ve Tee-time Müsaitliği - GLORIA VERDE - 03.04.-10.04.2027 & 10.04.-17.04.2027 - 2pax",
@@ -3879,5 +3862,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:21:48.666Z"
+  "lastRunAt": "2026-09-12T15:21:53.100Z"
 }
