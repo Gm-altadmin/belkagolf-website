@@ -2456,23 +2456,6 @@
       ]
     },
     {
-      "threadId": "1a086040b2ae47ee",
-      "from": "Jonni Tiainen <tiainen.jonni@gmail.com>",
-      "subject": "Request for quote for Sueno Golf Belek",
-      "lastMessageId": "1a086040b2ae47ee",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 9 Sep 2026 14:53:27 +0300",
-      "replies": [
-        {
-          "messageId": "1a086040b2ae47ee",
-          "date": "Wed, 9 Sep 2026 14:53:27 +0300",
-          "snippet": "Hello, Our group would be interested in a quote for Sueno Golf Belek consisting of 6 green fees + standard room accommodation, all inclusive, for 8 people for the following alternative dates: - 23 to",
-          "category": "positive",
-          "translation": "Sueno Golf Belek için 8 kişi, 6 green fee + konaklama (all-inclusive) teklif talep ediyor, alternatif tarihler sunuyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a06cdb6dd18d729",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Dag Jarle Vignes ARRIVAL TRANSFER",
@@ -3947,5 +3930,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:19:57.184Z"
+  "lastRunAt": "2026-09-12T15:20:32.601Z"
 }
