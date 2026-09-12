@@ -2524,23 +2524,6 @@
       ]
     },
     {
-      "threadId": "1a02443dfd96e483",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Hello",
-      "lastMessageId": "1a024688c23c9253",
-      "latestCategory": "referral",
-      "latestDate": "Fri, 21 Aug 2026 13:00:27 +0000",
-      "replies": [
-        {
-          "messageId": "1a024688c23c9253",
-          "date": "Fri, 21 Aug 2026 13:00:27 +0000",
-          "snippet": "Ok... Say hello from me... 🙂 ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra Norge. Mvh/Best",
-          "category": "referral",
-          "translation": "Norveçli golf tur operatörü DinGolfReise selamlarını gönderiyor. Başka birine yönlendirme veya tanıtım mesajı gibi görünüyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a023fe09b389406",
       "from": "\"Kenan Çot\" <kenan.cot@gloria.com.tr>",
       "subject": "RE: Tee-time Müsaitliği - 15.10.2026 - 4pax",
@@ -3182,5 +3165,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:26:05.164Z"
+  "lastRunAt": "2026-09-12T15:26:11.564Z"
 }
