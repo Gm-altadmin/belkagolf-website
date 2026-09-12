@@ -3170,23 +3170,6 @@
       ]
     },
     {
-      "threadId": "19feaca25927f493",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Kristian Reed",
-      "lastMessageId": "19ff9e23b61497e8",
-      "latestCategory": "positive",
-      "latestDate": "Thu, 13 Aug 2026 06:49:41 +0000",
-      "replies": [
-        {
-          "messageId": "19ff9e23b61497e8",
-          "date": "Thu, 13 Aug 2026 06:49:41 +0000",
-          "snippet": "This booking is confirmed for 3 pax in 1 x dbl/twin + 1 x sngl I will send you all details soon ------------------------------------------------------------------------------------------ DinGolfReise",
-          "category": "positive",
-          "translation": "Kristian Reed için 3 kişilik rezervasyon onaylanmış. Kısa süre içinde tüm detaylar gönderilecek."
-        }
-      ]
-    },
-    {
       "threadId": "19fc3f07ef01fffc",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: New system for arrival?",
@@ -3641,5 +3624,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:23:40.968Z"
+  "lastRunAt": "2026-09-12T15:23:46.742Z"
 }
