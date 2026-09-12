@@ -2643,23 +2643,6 @@
       ]
     },
     {
-      "threadId": "1a01f2c96a70d4c5",
-      "from": "Golf Reservation <golf.reservation@swandorhotels.com>",
-      "subject": "RE: 01.11.-08.11.2026 - UNLIMITED GOLF + BUGGY ?",
-      "lastMessageId": "1a01f40415095399",
-      "latestCategory": "positive",
-      "latestDate": "Thu, 20 Aug 2026 12:58:20 +0000",
-      "replies": [
-        {
-          "messageId": "1a01f40415095399",
-          "date": "Thu, 20 Aug 2026 12:58:20 +0000",
-          "snippet": "Elena Hanım merhaba; Unlimited Paket fiyatlarımızın üzerine Buggy fiyatını ilave ederek misafirlere sunabilirsiniz, misafirin raporu varsa Buggy konusunda yardımcı olabiliriz. Rezervasyon aşamasında",
-          "category": "positive",
-          "translation": "Unlimited golf paketi üzerine buggy fiyatı eklenerek sunuluyor. Misafirlerin raporu varsa yardımcı olabileceğini belirtiyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a01e838ca7f3dde",
       "from": "Per Anderz Eldenfalk <eldenfalk@me.com>",
       "subject": "Re: Lykia links",
@@ -3386,5 +3369,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:24:58.980Z"
+  "lastRunAt": "2026-09-12T15:25:03.284Z"
 }
