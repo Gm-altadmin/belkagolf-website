@@ -273,23 +273,6 @@
       ]
     },
     {
-      "threadId": "1a080e0e33bef9d2",
-      "from": "Henrik Oscarsson <henrik.oscarsson@ullnagolf.se>",
-      "subject": "Sv: Belka Golf — gruppgolfkoncept för Ullna Golf & Country Club",
-      "lastMessageId": "1a081058bfeae033",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Tue, 8 Sep 2026 12:36:52 +0000",
-      "replies": [
-        {
-          "messageId": "1a081058bfeae033",
-          "date": "Tue, 8 Sep 2026 12:36:52 +0000",
-          "snippet": "Hej! Vi är inte intresserade av ett möte eftersom vi redan jobbar med en researrangör. Bästa hälsningar Henrik -----Ursprungligt meddelande----- Från: mustafa beyzadeoğlu &lt;mbeyzadeoglubelka@gmail.",
-          "category": "do_not_contact",
-          "translation": "Henrik, toplantıya ilgi duymadığını ve zaten başka bir araştırma düzenleyicisiyle çalıştıklarını bildirmiştir."
-        }
-      ]
-    },
-    {
       "threadId": "1a080e0d88f62bf7",
       "from": "\"Amanda Björk\" <Amanda.Bjork@kristianstadsgk.com>",
       "subject": "Autosvar: Belka Golf — gruppgolfkoncept för Kristianstads Golfklubb & Destination",
@@ -2349,5 +2332,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:31:25.547Z"
+  "lastRunAt": "2026-09-12T15:31:28.500Z"
 }
