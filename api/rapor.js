@@ -51,8 +51,7 @@ const NOISE_SENDERS = [
 // başlığında bu ifadeleri geçirmiyor, o yüzden bu güvenli ve adres listesinden çok daha
 // kapsamlı bir çözüm.
 
-const { OUR_DOMAIN, HOTEL_DOMAINS, isOurDomain, isHotelDomain } = require('./_lib/domains');
-const { getAccessToken } = require('./_lib/gmail');
+const OUR_DOMAIN = 'belkagolf.com';
 
 // Gürültü Kontrolü sekmesinde onaylanıp GitHub'a otomatik commit edilen ek
 // göndericileri okur (api/mark-noise.js tarafından güncellenir). Dosya yoksa
@@ -69,6 +68,38 @@ function loadPersistedNoiseSenders() {
   }
 }
 const PERSISTED_NOISE_SENDERS = loadPersistedNoiseSenders();
+
+const HOTEL_DOMAINS = [
+  'maxxroyal.com', 'cajabymaxxroyal.com', 'corneliadiamond.com', 'regnumhotels.com',
+  'cullinanhotels.com', 'cullinanlinksgolfclub.com', 'sueno.com.tr', 'kayahotels.com.tr',
+  'titanic-hotels.com', 'gloria.com.tr', 'kempinski.com', 'robinson.com', 'sirene.com.tr',
+  'voyagehotel.com', 'swandorhotels.com', 'caryagolf.com', 'guvenok.com.tr',
+  'mardanpalace.com', 'euromsg.net', 'agc.com.tr', 'nationalturkey.com'
+];function isOurDomain(addr) {
+  return (addr || '').toLowerCase().includes(OUR_DOMAIN);
+}
+function isHotelDomain(addr) {
+  const a = (addr || '').toLowerCase();
+  return HOTEL_DOMAINS.some((d) => a.includes(d));
+}
+
+async function getAccessToken() {
+  const r = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      client_id: process.env.GMAIL_CLIENT_ID,
+      client_secret: process.env.GMAIL_CLIENT_SECRET,
+      refresh_token: process.env.GMAIL_REFRESH_TOKEN,
+      grant_type: 'refresh_token'
+    })
+  });
+  const data = await r.json();
+  if (!data.access_token) {
+    throw new Error('Access token alınamadı - GMAIL_REFRESH_TOKEN kurulu mu? Detay: ' + JSON.stringify(data));
+  }
+  return data.access_token;
+}
 
 function extractGroupSize(text) {
   const m = text.match(/(\d{1,2})\s?(pax|kişi|kisi|pers\.?|person|people)/i);
@@ -304,7 +335,13 @@ SADECE JSON dizisi döndür, başka hiçbir metin/açıklama/markdown ekleme:
   return results.flat();
 }
 
-const { chunk } = require('./_lib/gmail');
+// Küçük bir dizi elemanı BATCH_SIZE'lık parçalara böler - Gmail API'ye aşırı paralel
+// istek atıp rate-limit yememek için, ama yine de seri fetch'ten çok daha hızlı olur.
+function chunk(arr, size) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+  return out;
+}
 
 // Aynı isimdeki (customerKey) birden fazla thread bulunduğunda, hepsinin GERÇEKTEN
 // aynı devam eden talep mi yoksa aynı isimli müşteriden gelen FARKLI/bağımsız talepler
@@ -385,7 +422,20 @@ SADECE JSON dizisi döndür, başka hiçbir metin ekleme:
 // bu iki yeni işlev mevcut rapor.js'e "action" parametresiyle eklendi (bkz. handler
 // içindeki yönlendirme). action olmadan istek gelirse eskisi gibi tam rapor üretilir.
 
-const { getHeaderVal, extractEmailAddr, decodeBase64UrlToText } = require('./_lib/gmail');
+function getHeaderVal(msg, name) {
+  const headers = msg.payload ? msg.payload.headers || [] : [];
+  return (headers.find((h) => h.name.toLowerCase() === name.toLowerCase()) || {}).value || '';
+}
+
+function extractEmailAddr(headerValue) {
+  const m = (headerValue || '').match(/<([^>]+)>/);
+  return m ? m[1].toLowerCase() : (headerValue || '').trim().toLowerCase();
+}
+
+function decodeBase64UrlToText(dataStr) {
+  const b64 = (dataStr || '').replace(/-/g, '+').replace(/_/g, '/');
+  return Buffer.from(b64, 'base64').toString('utf8');
+}
 
 // Mesajın düz-metin gövdesini (varsa) bulur - alıntı (quote) bloğu oluşturmak için.
 // HTML-only mesajlarda düz metin yoksa boş döner (alıntı eklenmez, sorun değil).
@@ -475,39 +525,23 @@ async function getThreadContext(accessToken, threadId) {
   // Karşı taraf (alıcı) - bizim adresimiz olmayan taraf.
   const recipient = isOurDomain(fromAddr) ? toAddr : fromAddr;
 
-  // Alıcının GERÇEK adını çıkarır - Claude'a tahmin ettirmek yerine kesin bir kaynağa
-  // dayanıyor. YÖNE GÖRE farklı kaynak kullanılıyor (30.08.2026 düzeltmesi - bir vakada
-  // Kenan Çot (Gloria) bize "Merhaba Anastasya Hanım" diye yazmıştı - yani mesaj bize
-  // GELMİŞTİ, içindeki selamlama BİZE hitap ediyordu, ama eski mantık o ismi "alıcı"
-  // sanıp Claude'a "Anastasya'ya hitap et" demişti - kendi personelimize hitap eden bir
-  // taslak çıkmıştı. Artık: son mesaj bize GELMİŞSE ismi selamlama cümlesinden değil,
-  // gönderenin Gmail "Kimden" görünen adından (örn. "Kenan Çot") alıyoruz - çok daha
-  // güvenilir, çünkü o zaten gönderenin gerçek adı, tahmin/regex riski yok):
-  const OWN_STAFF_NAMES = ['anastas', 'avan', 'elena', 'beyzadeoğlu', 'beyzadeoglu', 'mustafa'];
-  const lastIsIncoming = !isOurDomain(fromAddr);
+  // Alıcının GERÇEK adını (varsa) selamlama satırından regex ile çıkarır - Claude'a
+  // tahmin ettirmek yerine (30.08.2026: bir vakada Claude, mail imzasındaki KENDİ
+  // personelimizin adını (örn. "Anastasiya") muhatap sanıp ona hitap eden bir taslak
+  // yazmıştı - ciddi bir hata). Regex ile çıkarım varsa KESİN doğru isim garanti eder;
+  // bulunamazsa Claude'a "isim kullanma" talimatı verilir, asla tahmin ettirilmez.
+  const greetingSource = plainBody || snippet;
+  const greetingMatch = greetingSource.match(
+    /(?:Merhaba|Sayın|Selam|Hi|Hello|Dear|Sehr geehrte[r]?|Hej|Здравствуйте|Уважаем\w*)\s+([A-ZÇĞİÖŞÜ][a-zçğıöşüA-ZÇĞİÖŞÜ]+(?:\s+[A-ZÇĞİÖŞÜ][a-zçğıöşüA-ZÇĞİÖŞÜ]+){0,2})/
+  );
+  // Bulunan isim, bizim kendi personel isimlerimizden biriyse (imza karışıklığı riski)
+  // KULLANMA - güvenli tarafta kal.
+  const OWN_STAFF_NAMES = ['anastasiya', 'avan', 'elena', 'beyzadeoğlu', 'beyzadeoglu', 'mustafa'];
   let recipientName = null;
-
-  if (lastIsIncoming) {
-    // Mesaj bize gelmiş - gönderenin görünen adı en güvenilir kaynak (içindeki selamlama
-    // bize hitap ediyor olabilir, kullanma).
-    const nameMatch = fromHeaderFull.match(/^"?([^"<]+?)"?\s*<[^>]+>$/);
-    if (nameMatch) {
-      const candidate = nameMatch[1].trim();
-      const isOwnStaff = OWN_STAFF_NAMES.some((n) => candidate.toLowerCase().includes(n));
-      if (candidate && !candidate.includes('@') && !isOwnStaff) recipientName = candidate;
-    }
-  } else {
-    // Mesajı BİZ göndermişiz - içindeki selamlama gerçekten karşı tarafa hitap ediyor,
-    // regex ile güvenle çıkarılabilir.
-    const greetingSource = plainBody || snippet;
-    const greetingMatch = greetingSource.match(
-      /(?:Merhaba|Sayın|Selam|Hi|Hello|Dear|Sehr geehrte[r]?|Hej|Здравствуйте|Уважаем\w*)\s+([A-ZÇĞİÖŞÜ][a-zçğıöşüA-ZÇĞİÖŞÜ]+(?:\s+[A-ZÇĞİÖŞÜ][a-zçğıöşüA-ZÇĞİÖŞÜ]+){0,2})/
-    );
-    if (greetingMatch) {
-      const candidate = greetingMatch[1].trim();
-      const isOwnStaff = OWN_STAFF_NAMES.some((n) => candidate.toLowerCase().includes(n));
-      if (!isOwnStaff) recipientName = candidate;
-    }
+  if (greetingMatch) {
+    const candidate = greetingMatch[1].trim();
+    const isOwnStaff = OWN_STAFF_NAMES.some((n) => candidate.toLowerCase().includes(n));
+    if (!isOwnStaff) recipientName = candidate;
   }
 
   // Alıcı tipi (30.08.2026, gerçek üslup analizinden): otel/Roger/müşteri - taslak
@@ -596,36 +630,8 @@ doğrulanmış cümleler:
   "Vielen Dank, bei weiteren Fragen stehen wir gerne zur Verfügüng." vb.) - imza kısmı zaten ayrıca
   ekleniyor, sen sadece gövdeyi yaz.
 
-SATIŞ/PAZARLAMA ETKİNLİĞİ - HATIRLATMA MAİLİ ŞUNLARI İÇERMELİ (30.08.2026, gerçek bir örnek
-üzerinden analiz edilip eklendi - pasif/etkisiz hatırlatmalar müşteriden yanıt almıyor):
-
-1. FİYAT/DETAY ÖZETİ: "Son mesaj özeti"nde somut bir fiyat/tarih/oda tipi geçiyorsa, bunu
-   hatırlatmada KISACA tekrar et (örn. "4 gece, çift kişi €XXX" gibi). Müşterinin eski maili
-   tekrar bulup okumasına gerek kalmasın - bu önemli bir sürtünme noktasıdır.
-
-2. NET EYLEM ÇAĞRISI: "Bize dönüş yapmanızı rica ederiz" gibi belirsiz bir ifade YETERSİZDİR.
-   Müşterinin TAM OLARAK ne yapması gerektiğini söyle - örn. "Bu maile yanıt vererek onayınızı
-   iletebilirsiniz" / "Please reply to confirm, or reach us on WhatsApp." Somut ve net olsun.
-
-3. HAFİF, GERÇEKÇİ AcİLİYET: Eğer bağlamdan (sezon, tarih yaklaşıyor, kontenjan) gerçekçi bir
-   aciliyet çıkarılabiliyorsa doğal bir cümleyle ekle (örn. "Ekim ayı golf sezonu hızla
-   doluyor"). SAHTE/UYDURMA bir kıtlık iddiası ("son 2 oda kaldı" gibi belirsiz kaynaklı bir
-   şey) EKLEME - sadece gerçekten mantıklı, genel bir aciliyet ifadesi kullan, yoksa hiç ekleme.
-
-4. BÜTÇE ESNEKLİĞİ (nazik, kapıyı açık tutan bir cümle - KESİN RAKAM VERME): Hatırlatmanın
-   sonuna, eğer "customer" tipi bir alıcıysa, şuna benzer nazik bir cümle ekle: fiyat/bütçe bir
-   sorunsa veya başka bir teklif aldılarsa bizimle paylaşmalarını, onlara en uygun seçeneği
-   bulmaktan memnuniyet duyacağımızı belirt (örn. "If budget is a concern or you've received
-   another offer, please let us know - we'd be happy to find an option that works for you."
-   / Türkçe: "Bütçenizle ilgili bir kaygınız varsa ya da başka bir teklif aldıysanız, bizimle
-   paylaşmanız yeterli - size en uygun seçeneği bulmaktan memnuniyet duyarız."). Bu, KESİN bir
-   indirim vaadi DEĞİL - sadece müşteriyi konuşmaya devam etmeye teşvik eden esnek bir davet.
-   Bu cümleyi SADECE "customer" tipi alıcılarda kullan, "hotel"/"roger" tipinde KULLANMA (o
-   ikisi zaten iş ortağı, bütçe pazarlığı değil operasyonel yazışma).
-
-Kısa, nazik bir hatırlatma maili yaz - selamlama + yukarıdaki 4 unsuru doğal şekilde içeren
-gövde + kapanış. Şablon gibi durmasın, akıcı ve kişisel hissettirsin. SADECE mail gövdesini
-döndür, başka hiçbir açıklama/başlık ekleme.`;
+Kısa, nazik bir hatırlatma maili yaz - selamlama + 2-3 cümlelik nazik hatırlatma + kapanış
+yeterli, uzatma. SADECE mail gövdesini döndür, başka hiçbir açıklama/başlık ekleme.`;
 
   const userMsg = `Konu: ${ctx.subject}\nAlıcı adı: ${ctx.recipientName || '(bilinmiyor - isim kullanma)'}\nAlıcı tipi: ${ctx.recipientType}\nSon mesaj özeti: ${ctx.snippet.slice(0, 300)}`;
 
@@ -707,14 +713,13 @@ function escapeHtmlBasic(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-function buildMimeMessage({ from, to, subject, body, inReplyTo, signatureHtml }) {
+function buildMimeMessage({ from, to, subject, body, inReplyTo }) {
   const paragraphs = body.split(/\r?\n/).map((line) =>
     line.trim() === '' ? '<p style="margin:0;">&nbsp;</p>' : `<p style="margin:0;">${escapeHtmlBasic(line)}</p>`
   ).join('\n');
-  const sig = signatureHtml !== undefined ? signatureHtml : buildSignatureHtml(from);
   const htmlBody = `<html><body style="font-family:Calibri,Arial,sans-serif;font-size:11pt;">
     ${paragraphs}
-    ${sig}
+    ${buildSignatureHtml(from)}
   </body></html>`;
 
   const headers = [
@@ -779,454 +784,6 @@ async function githubWriteJson(path, dataObj, sha, message) {
   if (sha) body.sha = sha;
   const res = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
   return res.ok;
-}
-
-// --- Growth OS Yanıtları (action=growthOsScan/growthOsDraft/growthOsSend, 09.09.2026) ---
-// Belka Growth OS (ayrı bir proje: React+tRPC+TiDB, belka-growth-os.vercel.app) B2B
-// ortaklık teklifi mailleri gönderiyor, "growth-os" Gmail etiketiyle. Bu, o projenin
-// KENDİ cevap-sınıflandırma özelliğinden TAMAMEN BAĞIMSIZ, PARALEL bir görünüm - aynı
-// Gmail kutusunu (mbeyzadeoglubelka@gmail.com) okuyor ama kendi ayrı kalıcı kaydını
-// (api/data/growthos-classified.json) tutuyor, Growth OS'un TiDB veritabanına hiç
-// dokunmuyor. Ekstra Gmail izni GEREKMEDİ - zaten var olan gmail.readonly + gmail.send
-// yeterli (Growth OS'un kendi özelliği gmail.modify istiyordu, biz etiketlemiyoruz).
-const GROWTHOS_CATEGORIES = ['positive', 'meeting', 'referral', 'later', 'do_not_contact'];
-const GROWTHOS_CATEGORY_TR = {
-  positive: 'Olumlu', meeting: 'Görüşme', referral: 'Referans',
-  later: 'Daha sonra', do_not_contact: 'İletişime geçmeyin', other: 'Diğer/Otomatik'
-};
-
-// Growth OS cevaplarını Claude ile sınıflandırır (kategori + Türkçe çeviri) - hem etiket-
-// bazlı taramada hem adres-eşleştirmeli ek taramada AYNI mantık kullanılıyor, kod tekrarı
-// olmasın diye tek yere çıkarıldı (bugünkü _lib refactor'üyle aynı prensip).
-async function classifyGrowthOsItems(newItems) {
-  if (newItems.length === 0) return [];
-
-  const classifySystemPrompt = `Sen "Belka Golf Growth OS" adlı bir B2B iş ortaklığı teklif
-kampanyasına gelen cevapları sınıflandıran bir asistansın. Sana yabancı dilde (Almanca/
-İsveççe/Norveççe/Danca/İngilizce/Fince vb.) gelen mail özetleri verilecek. Her biri için:
-
-1. "category": TAM OLARAK şu değerlerden biri: "positive" (olumlu ilgi, devam etmek istiyor),
-   "meeting" (görüşme/toplantı talep ediyor), "referral" (başka birine yönlendiriyor/iletiyor),
-   "later" (şu an değil ama ilgisiz değil, daha sonra tekrar sorulabilir), "do_not_contact"
-   (açıkça istemiyor, opt-out, bir daha yazmayın diyor), "other" (otomatik yanıt/tatil
-   bildirimi/bounce/teslim edilemedi mesajı - GERÇEK bir insan cevabı değil).
-2. "translation": mailin TÜRKÇE kısa özeti/çevirisi (2-4 cümle yeterli, tam çeviri değil,
-   ne dediğini anlamaya yetecek kadar).
-
-SADECE JSON dizisi döndür: [{"index":1,"category":"positive","translation":"..."}]`;
-
-  const chunks = chunk(newItems, 15);
-  const classResults = await Promise.all(
-    chunks.map(async (grp) => {
-      const listText = grp.map((it, i) =>
-        `${i + 1}. Konu: ${it.subject}\n   Özet: ${it.snippet.slice(0, 300)}`
-      ).join('\n\n');
-      try {
-        const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': process.env.ANTHROPIC_API_KEY,
-            'anthropic-version': '2023-06-01'
-          },
-          body: JSON.stringify({
-            model: 'claude-haiku-4-5-20251001',
-            max_tokens: 2048,
-            system: classifySystemPrompt,
-            messages: [{ role: 'user', content: listText }]
-          })
-        });
-        if (!apiRes.ok) return grp.map((it, i) => ({ index: i + 1, category: 'other', translation: '' }));
-        const data = await apiRes.json();
-        const rawText = (data.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
-        const cleaned = rawText.replace(/^```json\s*/i, '').replace(/```\s*$/i, '').trim();
-        const parsed = JSON.parse(cleaned);
-        return Array.isArray(parsed) ? parsed : grp.map((it, i) => ({ index: i + 1, category: 'other', translation: '' }));
-      } catch (e) {
-        return grp.map((it, i) => ({ index: i + 1, category: 'other', translation: '' }));
-      }
-    })
-  );
-
-  const finalNewItems = [];
-  chunks.forEach((grp, chunkIdx) => {
-    const results = classResults[chunkIdx];
-    const byIndex = new Map(results.map((r) => [r.index, r]));
-    grp.forEach((it, i) => {
-      const r = byIndex.get(i + 1) || { category: 'other', translation: '' };
-      finalNewItems.push({
-        ...it,
-        category: GROWTHOS_CATEGORIES.includes(r.category) ? r.category : 'other',
-        translation: r.translation || ''
-      });
-    });
-  });
-  return finalNewItems;
-}
-
-// Yeni sınıflandırılan cevapları mevcut kayıtlara EKLER (üzerine yazmaz) - aynı thread'de
-// birden fazla cevap varsa hepsi "replies" dizisinde birikir, geçmiş kaybolmaz.
-function mergeGrowthOsItemsIntoStore(storeItems, finalNewItems) {
-  const byThreadId = new Map(storeItems.map((it) => [it.threadId, it]));
-  for (const it of finalNewItems) {
-    const replyEntry = {
-      messageId: it.lastMessageId,
-      date: it.date,
-      snippet: it.snippet,
-      category: it.category,
-      translation: it.translation
-    };
-    const existing = byThreadId.get(it.threadId);
-    if (existing) {
-      existing.replies = [...(existing.replies || []), replyEntry];
-      existing.from = it.from;
-      existing.subject = it.subject;
-      existing.lastMessageId = it.lastMessageId;
-      existing.latestCategory = it.category;
-      existing.latestDate = it.date;
-    } else {
-      byThreadId.set(it.threadId, {
-        threadId: it.threadId,
-        from: it.from,
-        subject: it.subject,
-        lastMessageId: it.lastMessageId,
-        latestCategory: it.category,
-        latestDate: it.date,
-        replies: [replyEntry]
-      });
-    }
-  }
-  return [...byThreadId.values()];
-}
-
-async function handleGrowthOsScan(req, res, accessToken) {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    res.status(500).json({ error: 'api_key_missing' });
-    return;
-  }
-  const PATH = 'api/data/growthos-classified.json';
-  const { data: store, sha } = await githubReadJson(PATH, { items: [], recipientAddresses: [] });
-  // threadId -> son işlenen mesajın ID'si. Sadece threadId takip etmek YETERSİZ olurdu:
-  // aynı thread'de müşteri İKİNCİ kez yazarsa (biz cevap verdikten sonra tekrar), thread
-  // zaten "işlendi" sayılıp o yeni mesaj hiç görülmezdi. Mesaj ID bazlı takip, aynı
-  // thread'de yeni bir mesaj geldiğinde bunu doğru şekilde "güncelleme" olarak yakalar.
-  const lastProcessedMsgId = new Map(store.items.map((it) => [it.threadId, it.lastMessageId]));
-
-  // 09.09.2026 SORUN ÇIKTI (kullanıcı bulguları): "label:growth-os in:inbox" sorgusu
-  // ~400 gönderilen maile karşı sadece 8 cevap buldu - şüpheli derecede düşük. Growth OS
-  // projesinin kendi geçmişinde AYNI risk zaten belgelenmişti: Gmail'in bu etiket
-  // üzerindeki "in:inbox" araması güvenilmez/eksik sonuç verebiliyor. Düzeltme: artık
-  // SADECE etikete göre arıyoruz (in:inbox kısıtlaması KALDIRILDI) - kendi kodumuzda
-  // zaten "bizim domainimizden gelmeyen son mesaj" mantığıyla gerçek cevapları
-  // ayıklıyoruz (aşağıda), Gmail'in in:inbox indekslemesine hiç bağımlı değiliz artık.
-  const q = 'label:growth-os';
-  let threads = [];
-  let pageToken = '';
-  // Sayfalama sınırı 6'dan 10'a çıkarıldı (09.09.2026) - 400+ gönderilen mail varsa 6
-  // sayfa (maks. 300 thread) hepsini kapsamayabilirdi, bazıları hiç taranmadan atlanırdı.
-  for (let i = 0; i < 10; i++) {
-    const url = `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(q)}&maxResults=50${pageToken ? `&pageToken=${pageToken}` : ''}`;
-    const listRes = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
-    const listData = await listRes.json();
-    threads = threads.concat(listData.threads || []);
-    if (!listData.nextPageToken) break;
-    pageToken = listData.nextPageToken;
-  }
-
-  // Her thread'i çekip, "bize gelen SON mesaj"ı (thread'in mutlak son mesajı değil -
-  // biz o thread'de en son cevap vermiş olabiliriz, o zaman müşterinin gerçek son
-  // mesajı daha geride kalır) bulup, daha önce işlediğimiz mesajla karşılaştırıyoruz.
-  // Aynı zamanda BİZİM gönderdiğimiz mesajların "Kime" adreslerini de topluyoruz -
-  // bunlar kalıcı olarak saklanıp "Adres Eşleştirmeli Ek Tarama" (growthOsScanByAddress)
-  // tarafından, etiketi kopmuş/thread'i bozulmuş cevapları bulmak için kullanılacak.
-  const newItems = [];
-  const recipientAddresses = new Set(store.recipientAddresses || []);
-  for (const group of chunk(threads.map((t) => t.id), 10)) {
-    const details = await Promise.all(
-      group.map((id) =>
-        // format=metadata (tam içerik değil) - bu tarama aşamasında sadece kimden/kime/
-        // tarih/konu/özet gerekiyor, tam mesaj gövdesi değil. 400+ thread taranacağı için
-        // bu, Vercel'in süre sınırına takılmamak adına önemli bir hız kazancı sağlıyor.
-        fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${id}?format=metadata&metadataHeaders=From&metadataHeaders=To&metadataHeaders=Date&metadataHeaders=Subject`,
-          { headers: { Authorization: `Bearer ${accessToken}` } }
-        ).then((r) => r.json()).catch(() => null)
-      )
-    );
-    for (const det of details) {
-      if (!det || !det.messages || det.messages.length === 0) continue;
-
-      // Bizim gönderdiğimiz her mesajın "Kime" adresini topla (adres-eşleştirmeli ek
-      // tarama için kalıcı liste). BİLİNEN OTEL PARTNERLERİ (HOTEL_DOMAINS) HARİÇ - onlar
-      // zaten Talep Raporu'nun (rapor.js ana akışı) takip ettiği kişiler, Growth OS'un
-      // değil. (09.09.2026'da gerçek bir hatayla bulundu: Sueno Hotels'in satış temsilcisi
-      // bir kere growth-os etiketli bir yazışmada geçmiş olmalı, bundan sonra onun TÜM
-      // rezervasyon yazışmaları yanlışlıkla Growth OS cevabı sanılmaya başlamıştı.)
-      for (const m of det.messages) {
-        const mFrom = extractEmailAddr(getHeaderVal(m, 'From'));
-        if (isOurDomain(mFrom)) {
-          const mTo = extractEmailAddr(getHeaderVal(m, 'To'));
-          if (mTo && !isHotelDomain(mTo)) recipientAddresses.add(mTo);
-        }
-      }
-
-      // Müşterinin (bizim domainimiz DIŞINDAKİ) en son mesajını bul - thread'in
-      // mutlak sonuncusu değil, çünkü biz sonradan cevap vermiş olabiliriz.
-      let lastCustomerMsg = null;
-      for (let i = det.messages.length - 1; i >= 0; i--) {
-        const fromH = getHeaderVal(det.messages[i], 'From');
-        if (!isOurDomain(extractEmailAddr(fromH))) { lastCustomerMsg = det.messages[i]; break; }
-      }
-      if (!lastCustomerMsg) continue; // bu thread'de hiç müşteri mesajı yok, atla
-
-      const alreadyProcessed = lastProcessedMsgId.get(det.id);
-      if (alreadyProcessed === lastCustomerMsg.id) continue; // bu mesajı zaten işledik
-
-      newItems.push({
-        threadId: det.id,
-        lastMessageId: lastCustomerMsg.id,
-        date: getHeaderVal(lastCustomerMsg, 'Date'),
-        from: getHeaderVal(lastCustomerMsg, 'From'),
-        subject: getHeaderVal(lastCustomerMsg, 'Subject'),
-        snippet: lastCustomerMsg.snippet || ''
-      });
-    }
-  }
-
-  // Yeni cevap bulunamasa bile, bu taramada toplanan alıcı adresleri (recipientAddresses)
-  // kalıcı olarak kaydedilmeli - yoksa "Adres Eşleştirmeli Ek Tarama" hep boş listeyle
-  // çalışırdı. Sadece adres listesi değiştiyse GitHub'a yaz.
-  const addressListChanged = recipientAddresses.size !== (store.recipientAddresses || []).length;
-  if (newItems.length === 0) {
-    if (addressListChanged) {
-      await githubWriteJson(PATH,
-        { items: store.items, recipientAddresses: [...recipientAddresses], lastRunAt: new Date().toISOString() },
-        sha, `Growth OS: alıcı adres listesi güncellendi (${recipientAddresses.size} adres)`);
-    }
-    res.status(200).json({ items: store.items, newlyProcessed: 0 });
-    return;
-  }
-
-  const finalNewItems = await classifyGrowthOsItems(newItems);
-  const allItems = mergeGrowthOsItemsIntoStore(store.items, finalNewItems);
-
-  await githubWriteJson(PATH,
-    { items: allItems, recipientAddresses: [...recipientAddresses], lastRunAt: new Date().toISOString() },
-    sha, `Growth OS cevapları: +${finalNewItems.length} yeni/güncellenen mesaj sınıflandırıldı (toplam ${allItems.length} thread)`);
-
-  res.status(200).json({ items: allItems, newlyProcessed: finalNewItems.length });
-}
-
-// --- Adres Eşleştirmeli Ek Tarama (action=growthOsScanByAddress, 09.09.2026) ---
-// Bazı müşteriler "Yanıtla" yerine yeni bir mail yazınca (ya da mail programı referans
-// başlıklarını kaybedince) Gmail bunu AYNI thread'in devamı SAYMIYOR - hem thread hem
-// etiket eşleşmesi kopuyor, normal tarama (handleGrowthOsScan, sadece "label:growth-os")
-// bu cevabı hiç bulamıyor. Bu ek tarama, etikete hiç bakmadan, SADECE "bu adrese daha
-// önce Growth OS maili gönderdik mi" bilgisine göre gelen kutusunu tarar - kullanıcının
-// önerdiği yöntem. handleGrowthOsScan'in her çalıştırmasında topladığı/kalıcı sakladığı
-// "recipientAddresses" listesini kullanır - bu yüzden ÖNCE en az bir kez normal tarama
-// yapılmış olmalı (yoksa adres listesi boş çıkar).
-async function handleGrowthOsScanByAddress(req, res, accessToken) {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    res.status(500).json({ error: 'api_key_missing' });
-    return;
-  }
-  const PATH = 'api/data/growthos-classified.json';
-  const { data: store, sha } = await githubReadJson(PATH, { items: [], recipientAddresses: [] });
-  // isHotelDomain() ile filtrele - eski (bu düzeltmeden önce) taramalarda yanlışlıkla
-  // eklenmiş otel-partner adresleri varsa, burada da otomatik temizlenmiş olur (JSON'u
-  // elle düzeltmeye gerek kalmaz).
-  const addressList = (store.recipientAddresses || []).filter((a) => !isHotelDomain(a));
-  if (addressList.length === 0) {
-    res.status(200).json({ error: 'Önce normal "Yeni Cevapları Tara" en az bir kez çalıştırılmalı (alıcı adres listesi henüz boş).' });
-    return;
-  }
-
-  const lastProcessedMsgId = new Map(store.items.map((it) => [it.threadId, it.lastMessageId]));
-
-  // Adresleri gruplar halinde ara ("from:a OR from:b OR ...") - tek seferde 400 adresi
-  // tek sorguya sığdırmak yerine 20'şerlik gruplara bölüyoruz (Gmail sorgu uzunluğu ve
-  // güvenilirlik için). Etikete hiç bakmıyoruz - sadece "kimden geldi" önemli.
-  const extraThreadIds = new Set();
-  for (const group of chunk(addressList, 20)) {
-    const orQuery = 'in:inbox (' + group.map((a) => `from:${a}`).join(' OR ') + ')';
-    let pageToken = '';
-    for (let i = 0; i < 3; i++) {
-      const url = `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(orQuery)}&maxResults=50${pageToken ? `&pageToken=${pageToken}` : ''}`;
-      const listRes = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
-      const listData = await listRes.json();
-      for (const t of (listData.threads || [])) extraThreadIds.add(t.id);
-      if (!listData.nextPageToken) break;
-      pageToken = listData.nextPageToken;
-    }
-  }
-
-  if (extraThreadIds.size === 0) {
-    res.status(200).json({ items: store.items, newlyProcessed: 0 });
-    return;
-  }
-
-  const newItems = [];
-  for (const group of chunk([...extraThreadIds], 10)) {
-    const details = await Promise.all(
-      group.map((id) =>
-        fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${id}?format=metadata&metadataHeaders=From&metadataHeaders=Date&metadataHeaders=Subject`,
-          { headers: { Authorization: `Bearer ${accessToken}` } }
-        ).then((r) => r.json()).catch(() => null)
-      )
-    );
-    for (const det of details) {
-      if (!det || !det.messages || det.messages.length === 0) continue;
-      let lastCustomerMsg = null;
-      for (let i = det.messages.length - 1; i >= 0; i--) {
-        const fromH = getHeaderVal(det.messages[i], 'From');
-        if (!isOurDomain(extractEmailAddr(fromH))) { lastCustomerMsg = det.messages[i]; break; }
-      }
-      if (!lastCustomerMsg) continue;
-      const alreadyProcessed = lastProcessedMsgId.get(det.id);
-      if (alreadyProcessed === lastCustomerMsg.id) continue;
-      newItems.push({
-        threadId: det.id,
-        lastMessageId: lastCustomerMsg.id,
-        date: getHeaderVal(lastCustomerMsg, 'Date'),
-        from: getHeaderVal(lastCustomerMsg, 'From'),
-        subject: getHeaderVal(lastCustomerMsg, 'Subject'),
-        snippet: lastCustomerMsg.snippet || ''
-      });
-    }
-  }
-
-  if (newItems.length === 0) {
-    res.status(200).json({ items: store.items, newlyProcessed: 0 });
-    return;
-  }
-
-  const finalNewItems = await classifyGrowthOsItems(newItems);
-  const allItems = mergeGrowthOsItemsIntoStore(store.items, finalNewItems);
-
-  await githubWriteJson(PATH,
-    { items: allItems, recipientAddresses: addressList, lastRunAt: new Date().toISOString() },
-    sha, `Growth OS adres-eşleştirmeli ek tarama: +${finalNewItems.length} yeni mesaj (etiketsiz/thread'i kopuk cevaplar dahil)`);
-
-  res.status(200).json({ items: allItems, newlyProcessed: finalNewItems.length });
-}
-
-// Alıcının dilini "Son mesaj" içeriğinden tespit etmesi için Claude'a bırakıyoruz -
-// gerçek dil tespiti regex ile güvenilir yapılamaz (23 farklı ülke, karışık içerik olabilir).
-async function handleGrowthOsDraft(req, res, accessToken) {
-  const { threadId, mode, turkishText } = req.body || {};
-  if (!threadId || !mode) {
-    res.status(400).json({ error: 'threadId/mode eksik' });
-    return;
-  }
-  if (!process.env.ANTHROPIC_API_KEY) {
-    res.status(500).json({ error: 'api_key_missing' });
-    return;
-  }
-
-  const threadRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${threadId}?format=full`,
-    { headers: { Authorization: `Bearer ${accessToken}` } });
-  const threadData = await threadRes.json();
-  const msgs = threadData.messages || [];
-  if (msgs.length === 0) throw new Error('Thread bulunamadı.');
-  // Müşterinin en son mesajını bul (thread'in mutlak sonuncusu değil - handleGrowthOsScan
-  // ile aynı mantık, tutarlılık için) - nadir bir durumda (kullanıcı eski bir satırı tekrar
-  // açarsa) thread'de bizim daha sonraki bir mesajımız olabilir, ona değil müşterininkine
-  // yanıt hazırlanmalı.
-  let last = null;
-  for (let i = msgs.length - 1; i >= 0; i--) {
-    if (!isOurDomain(extractEmailAddr(getHeaderVal(msgs[i], 'From')))) { last = msgs[i]; break; }
-  }
-  if (!last) last = msgs[msgs.length - 1]; // güvenlik: hiç müşteri mesajı bulunamazsa son mesaja düş
-  const fromHeader = getHeaderVal(last, 'From');
-  const recipient = extractEmailAddr(fromHeader);
-  const subject = getHeaderVal(last, 'Subject');
-  const snippet = last.snippet || '';
-  const messageIdHeader = getHeaderVal(last, 'Message-ID') || getHeaderVal(last, 'Message-Id');
-  const plainBody = findPlainTextBody(last.payload);
-  const dateHeader = getHeaderVal(last, 'Date');
-  const quoteBlock = buildQuoteBlock(fromHeader, dateHeader, plainBody);
-
-  let systemPrompt, userMsg;
-  if (mode === 'translate') {
-    if (!turkishText || !turkishText.trim()) {
-      res.status(400).json({ error: 'turkishText eksik (translate modu için gerekli)' });
-      return;
-    }
-    systemPrompt = `Sana Türkçe bir metin ve bir referans mail (hangi dilde yazıldığını
-anlaman için) verilecek. Görevin: Türkçe metni, referans mailin DİLİNE, düzgün ve
-profesyonel bir iş mailine uygun şekilde çevirmek. Sadece kelime kelime çevirme - doğal,
-akıcı bir iş yazışması diline uyarla. Selamlama/kapanış ekleme (onlar ayrıca ekleniyor),
-SADECE gövde metnini çevir. SADECE çeviriyi döndür, başka hiçbir açıklama ekleme.`;
-    userMsg = `Referans mail (dili tespit için, konu+özet): ${subject} / ${snippet.slice(0, 200)}\n\nÇevrilecek Türkçe metin:\n${turkishText}`;
-  } else {
-    systemPrompt = `Sen "Belka Golf" adına B2B iş ortaklığı teklifi kampanyasına gelen bir
-cevaba takip maili yazan bir asistansın. Sana mailin konusu ve özeti verilecek - bu mail
-hangi dildeyse (Almanca/İsveççe/Norveççe/Danca/İngilizce/Fince vb.) YANITINI KESİNLİKLE O
-DİLDE yaz, Türkçe'ye asla dönme. Kısa, profesyonel, sıcak bir takip maili yaz - "I hope
-this email finds you well" gibi klişeler KULLANMA, direkt konuya gir. Selamlama/kapanış
-ekleme (onlar ayrıca ekleniyor), SADECE gövde metnini yaz. SADECE mail gövdesini döndür.`;
-    userMsg = `Konu: ${subject}\nÖzet: ${snippet.slice(0, 300)}`;
-  }
-
-  const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': process.env.ANTHROPIC_API_KEY,
-      'anthropic-version': '2023-06-01'
-    },
-    body: JSON.stringify({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 500,
-      system: systemPrompt,
-      messages: [{ role: 'user', content: userMsg }]
-    })
-  });
-  if (!apiRes.ok) throw new Error('Anthropic API hatası: ' + (await apiRes.text()).slice(0, 300));
-  const data = await apiRes.json();
-  const draft = (data.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
-
-  res.status(200).json({
-    draft: draft + quoteBlock,
-    to: recipient,
-    subject: subject.toLowerCase().startsWith('re:') ? subject : `Re: ${subject}`,
-    threadId, messageIdHeader
-  });
-}
-
-function buildGrowthOsSignatureHtml() {
-  return `
-    <div style="font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#000;margin-top:20px;">
-      <p style="margin:0;">Best Regards,</p>
-      <p style="margin:0;">&nbsp;</p>
-      <p style="margin:0;"><b style="color:#043D51;">Belka Golf Team</b></p>
-      <p style="margin:0;font-size:10pt;">
-        <a href="mailto:info@belkagolf.com" style="color:#833C0B;">info@belkagolf.com</a> |
-        <a href="http://www.belkagolf.com" style="color:#833C0B;">www.belkagolf.com</a>
-      </p>
-    </div>`;
-}
-
-async function handleGrowthOsSend(req, res, accessToken) {
-  const { threadId, to, subject, body, messageIdHeader } = req.body || {};
-  if (!threadId || !to || !subject || !body) {
-    res.status(400).json({ error: 'Eksik alan(lar) var.' });
-    return;
-  }
-  const from = 'info@belkagolf.com'; // Growth OS her zaman bu adresten gönderir (Send-As alias)
-  const raw = buildMimeMessage({ from, to, subject, body, inReplyTo: messageIdHeader, signatureHtml: buildGrowthOsSignatureHtml() });
-
-  const sendRes = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ raw: toBase64Url(raw), threadId })
-  });
-  if (!sendRes.ok) {
-    const errText = await sendRes.text();
-    res.status(502).json({ error: 'Gmail gönderim hatası', detail: errText.slice(0, 300) });
-    return;
-  }
-  res.status(200).json({ success: true });
 }
 
 // --- Toplu üslup analizi (action=styleAnalysis, 30.08.2026 eklendi, 30.08.2026 kalıcı
@@ -1466,25 +1023,15 @@ export default async function handler(req, res) {
   }
 
   const action = req.query.action || (req.body && req.body.action) || 'report';
-  if (action === 'draft' || action === 'send' || action === 'styleAnalysis' ||
-      action === 'growthOsScan' || action === 'growthOsScanByAddress' ||
-      action === 'growthOsDraft' || action === 'growthOsSend') {
+  if (action === 'draft' || action === 'send' || action === 'styleAnalysis') {
     try {
       const accessToken = await getAccessToken();
       if (action === 'draft') {
         await handleDraftReminder(req, res, accessToken);
       } else if (action === 'send') {
         await handleSendReminder(req, res, accessToken);
-      } else if (action === 'styleAnalysis') {
-        await handleStyleAnalysis(req, res, accessToken);
-      } else if (action === 'growthOsScan') {
-        await handleGrowthOsScan(req, res, accessToken);
-      } else if (action === 'growthOsScanByAddress') {
-        await handleGrowthOsScanByAddress(req, res, accessToken);
-      } else if (action === 'growthOsDraft') {
-        await handleGrowthOsDraft(req, res, accessToken);
       } else {
-        await handleGrowthOsSend(req, res, accessToken);
+        await handleStyleAnalysis(req, res, accessToken);
       }
     } catch (e) {
       res.status(500).json({ error: e.message });
@@ -1502,16 +1049,7 @@ export default async function handler(req, res) {
     // adreslerinden gelen stop-sale bültenlerini de yakalar, adres listesine bağımlı
     // kalmadan. Gerçek müşteri talepleri konu başlığında bu ifadeleri hiç geçirmez.
     const subjectExcl = '-subject:"stop sale" -subject:"open sale" -subject:"stop&open sale"';
-    // GROWTH OS HARİÇ TUTMA (12.09.2026, ACİL DÜZELTME): Growth OS (ayrı B2B pazarlama
-    // kampanyası) info@belkagolf.com'dan gönderiyor - bu adres Talep Raporu'nun ana
-    // sorgusuna da giriyor. Growth OS ~400+ mail gönderince, 8 günlük pencerede bu hacim
-    // gerçek müşteri taleplerini boğdu - kullanıcı "0 talep bulundu" ile fark etti.
-    // Gerçek sebep doğrulandı (Gmail'de canlı test edildi): -label:growth-os eklenince
-    // gerçek talepler tekrar ortaya çıkıyor. NOT: etiketleme %100 tutarlı olmayabilir
-    // (Growth OS'un kendi projesinde de bilinen bir risk) - ileride ek bir konu-bazlı
-    // filtre gerekebilir, ama bu acil/büyük iyileşmeyi hemen sağlıyor.
-    const growthOsExcl = '-label:growth-os';
-    const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com) after:${dateStr} ${noiseExcl} ${subjectExcl} ${growthOsExcl}`;
+    const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com) after:${dateStr} ${noiseExcl} ${subjectExcl}`;
 
     // maxResults 40 idi - yoğun trafikte 8 günlük pencerenin tamamı sığmıyordu.
     // Artık Gmail'in sayfalama (pageToken) mekanizmasıyla 150 thread'e kadar çekiliyor.
