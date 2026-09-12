@@ -2609,23 +2609,6 @@
       ]
     },
     {
-      "threadId": "1a01f34a1fc44425",
-      "from": "\"Tuğçe AKCAN | Sueno Hotels Satış Pazarlama\" <tugce.akcan@sueno.com.tr>",
-      "subject": "RE: HOTEL+GOLF RESERVATİON - 13.02.-20.02.2027 - 4pax - Trond Holm Nilsen ",
-      "lastMessageId": "1a023a646c5aa562",
-      "latestCategory": "positive",
-      "latestDate": "Fri, 21 Aug 2026 09:28:15 +0000",
-      "replies": [
-        {
-          "messageId": "1a023a646c5aa562",
-          "date": "Fri, 21 Aug 2026 09:28:15 +0000",
-          "snippet": "Merhaba Elena Hanım, Talebiniz güncel saha müsaitliğimi doğrultusunda ekteki gibi konfirmedir. Saygılarımla, Tuğçe AKCAN | Sueno Hotels Satış Pazarlama Golf Rezervasyon Şefi Sueno Hotels Golf Belek M.",
-          "category": "positive",
-          "translation": "Talep edilen tarihte müsaitlik onaylanıyor ve detaylı bilgilendirme yapılıyor. Rezervasyon aşamasında."
-        }
-      ]
-    },
-    {
       "threadId": "1a00cf3370577d62",
       "from": "YOONJU OHK <luk2you@nate.com>",
       "subject": "RE: Re: 9-night / 6-round golf package – Cornelia Diamond vs Sueno Deluxe ",
@@ -3318,5 +3301,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:25:15.917Z"
+  "lastRunAt": "2026-09-12T15:25:25.721Z"
 }
