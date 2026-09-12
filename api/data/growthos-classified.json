@@ -885,23 +885,6 @@
       ]
     },
     {
-      "threadId": "1a0851b5a2eab06b",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "Belka Golf — gruppegolf-konsept for Meland Golfklubb",
-      "lastMessageId": "1a0851b5a2eab06b",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 9 Sep 2026 00:39:17 -0700",
-      "replies": [
-        {
-          "messageId": "1a0851b5a2eab06b",
-          "date": "Wed, 9 Sep 2026 00:39:17 -0700",
-          "snippet": "Hei Kai-Olav Kvamme, Belka Golf samarbeider med europeiske golfpartnere som Meland Golfklubb om et transparent gruppepakke for golfreiser til Belek — inkludert green fees, hotell og lokal støtte på",
-          "category": "positive",
-          "translation": "Belka Golf, Meland Golfklubb ile Belek'te şeffaf grup golf paketi (green fee, otel, yerel destek dahil) sunmak üzere ortaklık yapıyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851b5378c1b9f",
       "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
       "subject": "Belka Golf — gruppegolf-konsept for Drøbak Golfklubb",
@@ -2978,5 +2961,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:28:37.724Z"
+  "lastRunAt": "2026-09-12T15:28:40.187Z"
 }
