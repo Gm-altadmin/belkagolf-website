@@ -2813,23 +2813,6 @@
       ]
     },
     {
-      "threadId": "1a0145722f0cc932",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Terje Pedersen",
-      "lastMessageId": "1a0617d7d587ea69",
-      "latestCategory": "later",
-      "latestDate": "Wed, 2 Sep 2026 09:40:09 +0000",
-      "replies": [
-        {
-          "messageId": "1a0617d7d587ea69",
-          "date": "Wed, 2 Sep 2026 09:40:09 +0000",
-          "snippet": "Cancelled for now. He say he need more time... Hope he will come back later. ------------------------------------------------------------------------------------------ DinGolfReise er den største",
-          "category": "later",
-          "translation": "Müşteri Terje Pedersen şu an iptal etti ancak daha sonra tekrar gelebilir. Zamana ihtiyacı var."
-        }
-      ]
-    },
-    {
       "threadId": "19fcbc0e0fbe66cf",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Tom Brataas",
@@ -3896,5 +3879,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:21:43.491Z"
+  "lastRunAt": "2026-09-12T15:21:48.666Z"
 }
