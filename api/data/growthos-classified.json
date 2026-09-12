@@ -2915,23 +2915,6 @@
       ]
     },
     {
-      "threadId": "19fcda3f1e8ae4d8",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Reservation Mr. Arnstein Vagle INVOICE",
-      "lastMessageId": "1a05bf72a4ff9c3e",
-      "latestCategory": "referral",
-      "latestDate": "Tue, 1 Sep 2026 07:55:20 +0000",
-      "replies": [
-        {
-          "messageId": "1a05bf72a4ff9c3e",
-          "date": "Tue, 1 Sep 2026 07:55:20 +0000",
-          "snippet": "Hello. Mr. Vagle ask if they will get a discount for Spa? ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for",
-          "category": "referral",
-          "translation": "DinGolfReise aracılığıyla Mr. Arnstein Vagle'nin SPA indirim sorgusu iletilmiştir."
-        }
-      ]
-    },
-    {
       "threadId": "1a0004810b274042",
       "from": "Reservation1 - DAMLA SAVASTURK <reservation1@corneliadiamond.com>",
       "subject": "RE: Fiyat Teklifi Talebi - 25.10.-31.10.2026 - Accommodation+Lessons with Pro --> 23.10.-28.10.2026 CHRİS KUMAR",
@@ -3828,5 +3811,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:22:02.501Z"
+  "lastRunAt": "2026-09-12T15:22:16.825Z"
 }
