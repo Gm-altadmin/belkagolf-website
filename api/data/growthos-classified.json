@@ -2575,23 +2575,6 @@
       ]
     },
     {
-      "threadId": "1a01f0289cc9fe20",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Tobias Martinsson",
-      "lastMessageId": "1a057b99f3015713",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Mon, 31 Aug 2026 12:09:38 +0000",
-      "replies": [
-        {
-          "messageId": "1a057b99f3015713",
-          "date": "Mon, 31 Aug 2026 12:09:38 +0000",
-          "snippet": "Sorry cancelled. No reply... 🙁 ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra Norge. Mvh/Best",
-          "category": "do_not_contact",
-          "translation": "Özür dilerim, rezervasyon iptal edildi, cevap alınmadı."
-        }
-      ]
-    },
-    {
       "threadId": "1a02443dfd96e483",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Hello",
@@ -3862,5 +3845,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:21:53.100Z"
+  "lastRunAt": "2026-09-12T15:21:56.526Z"
 }
