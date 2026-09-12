@@ -2779,23 +2779,6 @@
       ]
     },
     {
-      "threadId": "19ff03eda6217767",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Mario Gaarder",
-      "lastMessageId": "1a023fdcc6195743",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Fri, 21 Aug 2026 11:03:51 +0000",
-      "replies": [
-        {
-          "messageId": "1a023fdcc6195743",
-          "date": "Fri, 21 Aug 2026 11:03:51 +0000",
-          "snippet": "Sorry cancelled. They say the offer is not of interest... �� No reason why not ------------------------------------------------------------------------------------------ DinGolfReise er den største",
-          "category": "do_not_contact",
-          "translation": "Bay Mario Gaarder iptal etti, teklif ilgi çekmiyor dedi, herhangi bir neden vermedi."
-        }
-      ]
-    },
-    {
       "threadId": "19ff0fd30f6dbffb",
       "from": "\"Şeyma Tongut\" <golfsales1@corneliadiamond.com>",
       "subject": "RE: Fiyat Teklifi Talebi - 01.04.-05.04.2027 - 4 gece + 2 veya 3 greenfee",
@@ -3284,5 +3267,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:25:29.476Z"
+  "lastRunAt": "2026-09-12T15:25:33.831Z"
 }
