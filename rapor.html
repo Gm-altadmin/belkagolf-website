@@ -624,6 +624,8 @@ function renderGosList() {
       historyPanel = `<div class="other-subjects" id="${historyId}" style="display:none;">${olderRows}</div>`;
     }
 
+    const gmailLink = `https://mail.google.com/mail/u/0/#all/${it.threadId}`;
+
     html += `<tr>
       <td>${escapeHtml(d)}</td>
       <td>${escapeHtml(it.from)}</td>
@@ -638,6 +640,15 @@ function renderGosList() {
           <div class="reminder-panel-header">
             <strong>Yanıt Hazırla</strong>
             <button class="reminder-close-btn" onclick="closeReminder('${rowId}')" title="Kapat">✕</button>
+          </div>
+          <div style="background:#f4f4f4; border-radius:6px; padding:12px; margin-bottom:4px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;">
+              <div>
+                <div style="font-size:0.78rem; color:#777; font-weight:600; margin-bottom:4px;">MÜŞTERİNİN YAZDIĞI:</div>
+                <div style="font-size:0.92rem; color:#222;">${escapeHtml(latest.translation || it.subject || '—')}</div>
+              </div>
+              <a href="${gmailLink}" target="_blank" rel="noopener" style="white-space:nowrap; font-size:0.8rem; color:#833C0B; text-decoration:none; border:1px solid #833C0B; border-radius:6px; padding:4px 10px;">Gmail'de Aç ↗</a>
+            </div>
           </div>
           <div id="reminder-${rowId}">
             <div class="reminder-fields-row">
