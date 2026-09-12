@@ -919,23 +919,6 @@
       ]
     },
     {
-      "threadId": "1a08113b571db1b7",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "A considered Belek group-golf option for Thorndon Park Golf Club",
-      "lastMessageId": "1a08113b571db1b7",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 8 Sep 2026 05:52:27 -0700",
-      "replies": [
-        {
-          "messageId": "1a08113b571db1b7",
-          "date": "Tue, 8 Sep 2026 05:52:27 -0700",
-          "snippet": "Hello Iain Evans, Belka Golf works with European golf partners such as Thorndon Park Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the",
-          "category": "positive",
-          "translation": "Belka Golf, Thorndon Park Golf Club ile Belek'te şeffaf bir grup golf paketi (green fees, otel, yerel destek) sunmak için işbirliği yapmaktadır."
-        }
-      ]
-    },
-    {
       "threadId": "1a081137c5dae409",
       "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
       "subject": "A considered Belek group-golf option for Bradford Moor Golf Club",
@@ -2434,5 +2417,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:30:46.240Z"
+  "lastRunAt": "2026-09-12T15:30:50.011Z"
 }
