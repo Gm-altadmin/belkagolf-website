@@ -2881,23 +2881,6 @@
       ]
     },
     {
-      "threadId": "1a0004810b274042",
-      "from": "Reservation1 - DAMLA SAVASTURK <reservation1@corneliadiamond.com>",
-      "subject": "RE: Fiyat Teklifi Talebi - 25.10.-31.10.2026 - Accommodation+Lessons with Pro --> 23.10.-28.10.2026 CHRİS KUMAR",
-      "lastMessageId": "1a0007d69f2a1cbf",
-      "latestCategory": "positive",
-      "latestDate": "Fri, 14 Aug 2026 13:36:54 +0000",
-      "replies": [
-        {
-          "messageId": "1a0007d69f2a1cbf",
-          "date": "Fri, 14 Aug 2026 13:36:54 +0000",
-          "snippet": "Merhaba Konaklama Ve Gree Fee rezervayon talebiniz aşağıdaki detaylarla memnuniyetle konfirmedir. Dersler için Proformanız ektedir. Konfirme no : 4262226 C/IN: 23.10.2026 C/OUT : 28.10.2026 CORNELIA",
-          "category": "positive",
-          "translation": "23.10.-28.10.2026 tarihleri için konaklama ve pro dersler ile rezervasyon onaylanmıştır. Proforma ektedir."
-        }
-      ]
-    },
-    {
       "threadId": "19fffa88cacdae86",
       "from": "\"Hilal KARADENİZ | Sueno Hotels Satış Pazarlama\" <hilal.karadeniz@sueno.com.tr>",
       "subject": "RE: Tee time değişikliği// RE: YENI REZ.//Arnstein Vagle //SUENO GOLF//10.10-17.10.2026//7 gece konaklama + 4x round Pines&Dunes // 2 PAX ",
@@ -3590,5 +3573,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:23:57.764Z"
+  "lastRunAt": "2026-09-12T15:24:02.461Z"
 }
