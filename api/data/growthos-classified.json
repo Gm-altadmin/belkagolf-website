@@ -2660,23 +2660,6 @@
       ]
     },
     {
-      "threadId": "19ff51cf68f3fcac",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Erik Frafjord",
-      "lastMessageId": "1a023ff8a70eece6",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Fri, 21 Aug 2026 11:05:45 +0000",
-      "replies": [
-        {
-          "messageId": "1a023ff8a70eece6",
-          "date": "Fri, 21 Aug 2026 11:05:45 +0000",
-          "snippet": "Sorry cancelled. No reply... 🙁 ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra Norge. Mvh/Best",
-          "category": "do_not_contact",
-          "translation": "Bay Erik Frafjord, özür dilerek iptal etti ve cevap vermedi."
-        }
-      ]
-    },
-    {
       "threadId": "19ff0fd30f6dbffb",
       "from": "\"Şeyma Tongut\" <golfsales1@corneliadiamond.com>",
       "subject": "RE: Fiyat Teklifi Talebi - 01.04.-05.04.2027 - 4 gece + 2 veya 3 greenfee",
@@ -3165,5 +3148,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:26:11.564Z"
+  "lastRunAt": "2026-09-12T15:26:45.992Z"
 }
