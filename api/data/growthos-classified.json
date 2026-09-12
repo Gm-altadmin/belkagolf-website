@@ -902,23 +902,6 @@
       ]
     },
     {
-      "threadId": "1a0851971e888226",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "A considered Belek group-golf option for Rae Golf",
-      "lastMessageId": "1a0851971e888226",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 9 Sep 2026 03:37:12 -0400",
-      "replies": [
-        {
-          "messageId": "1a0851971e888226",
-          "date": "Wed, 9 Sep 2026 03:37:12 -0400",
-          "snippet": "Hello Getter Saaroja, Belka Golf works with European golf partners such as Rae Golf on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground, with",
-          "category": "positive",
-          "translation": "Belka Golf, Rae Golf ile Belek'te şeffaf bir grup golf paketi (green fees, otel, yerel destek) sunmak için işbirliği yapmaktadır."
-        }
-      ]
-    },
-    {
       "threadId": "1a08519458cb86e7",
       "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
       "subject": "Belka Golf — gruppegolfkoncept til Esbjerg Golfklub",
@@ -2621,5 +2604,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:29:48.415Z"
+  "lastRunAt": "2026-09-12T15:29:51.582Z"
 }
