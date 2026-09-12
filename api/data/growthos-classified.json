@@ -885,23 +885,6 @@
       ]
     },
     {
-      "threadId": "1a0851b13b2d1b30",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "A considered Belek group-golf option for Magyar Golf Szövetség",
-      "lastMessageId": "1a0851b13b2d1b30",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 9 Sep 2026 00:38:59 -0700",
-      "replies": [
-        {
-          "messageId": "1a0851b13b2d1b30",
-          "date": "Wed, 9 Sep 2026 00:38:59 -0700",
-          "snippet": "Hello Jakobi András, Belka Golf works with European golf partners such as Magyar Golf Szövetség on a transparent group-golf package for Belek — including green fees, hotel and local support on the",
-          "category": "positive",
-          "translation": "Belka Golf, Magyar Golf Szövetség ile Belek'te şeffaf grup golf paketi (green fee, otel, yerel destek dahil) sunmak üzere ortaklık yapıyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851af69e8f758",
       "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
       "subject": "A considered Belek group-golf option for Croatian Golf Federation (GSH)",
@@ -2859,5 +2842,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:29:01.337Z"
+  "lastRunAt": "2026-09-12T15:29:03.535Z"
 }
