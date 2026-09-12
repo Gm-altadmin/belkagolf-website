@@ -2932,23 +2932,6 @@
       ]
     },
     {
-      "threadId": "1a000444e5d3cf28",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Thomas Jakobsen",
-      "lastMessageId": "1a0621fa97e3d322",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Wed, 2 Sep 2026 12:37:17 +0000",
-      "replies": [
-        {
-          "messageId": "1a0621fa97e3d322",
-          "date": "Wed, 2 Sep 2026 12:37:17 +0000",
-          "snippet": "Sorry cancelled. He say the dates does not fit the rest of the group... 🙁 Stupid man. ------------------------------------------------------------------------------------------ DinGolfReise er den",
-          "category": "do_not_contact",
-          "translation": "Thomas Jakobsen'in rezervasyonu iptal edilmiştir. Tarihler grup için uygun olmadığı için istifa etmiştir."
-        }
-      ]
-    },
-    {
       "threadId": "1a00072974de5699",
       "from": "\"Özlem Bayraktar\" <ozlem.bayraktar@agc.com.tr>",
       "subject": "RE: TEE-TİME RESERVATİON - 5pax - 29.04.2027 - Einar Gulbrandsen",
@@ -3913,5 +3896,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:21:39.200Z"
+  "lastRunAt": "2026-09-12T15:21:43.491Z"
 }
