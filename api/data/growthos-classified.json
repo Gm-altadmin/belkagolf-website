@@ -3763,6 +3763,40 @@
           "translation": "Teslim Durumu Bildirimi - beran@gcko.cz adresine mail teslim edilemedi, mailbox bulunamadı."
         }
       ]
+    },
+    {
+      "threadId": "1a0851ae6f366bf2",
+      "from": "\"Enquiries - Burnham & Berrow Golf Club\" <enquiries@burnhamgolf.co.uk>",
+      "subject": "Automatic reply: A considered Belek group-golf option for Burnham & Berrow Golf Club",
+      "lastMessageId": "1a0851ae6f366bf2",
+      "latestCategory": "other",
+      "latestDate": "Wed, 9 Sep 2026 07:38:22 +0000",
+      "replies": [
+        {
+          "messageId": "1a0851ae6f366bf2",
+          "date": "Wed, 9 Sep 2026 07:38:22 +0000",
+          "snippet": "Many thanks for your email. I am on annual leave until Monday 14th September. This email will be monitored but if you have a matter that requires urgent attention please direct your emails to Nick at",
+          "category": "other",
+          "translation": "Otomatik yanıt: Gönderen kişi 14 Eylül'e kadar izinde olduğunu ve acil konular için Nick'e yönlendirilmesini belirtmektedir. Bu bir otomatik yanıt mesajıdır."
+        }
+      ]
+    },
+    {
+      "threadId": "16fa3d5228f4b193",
+      "from": "Golf asocijacija Srbije <office@golfas.rs>",
+      "subject": "Read: BELKA GOLF - Golf Travel to Belek / Turkey",
+      "lastMessageId": "16fa3d5237f782f3",
+      "latestCategory": "other",
+      "latestDate": "Tue, 14 Jan 2020 14:34:12 +0300",
+      "replies": [
+        {
+          "messageId": "16fa3d5237f782f3",
+          "date": "Tue, 14 Jan 2020 14:34:12 +0300",
+          "snippet": "",
+          "category": "other",
+          "translation": "Konu satırı yalnızca görülüyor, asıl içerik özeti boş olarak gelmektedir. Değerlendirme yapılamaz."
+        }
+      ]
     }
   ],
   "recipientAddresses": [
@@ -3948,5 +3982,5 @@
     "reception@gorkigolf.ru",
     "lars.andersson@bokskogen.com"
   ],
-  "lastRunAt": "2026-09-12T13:51:56.550Z"
+  "lastRunAt": "2026-09-12T13:52:21.499Z"
 }
