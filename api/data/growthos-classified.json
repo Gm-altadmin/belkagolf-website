@@ -2439,30 +2439,6 @@
       ]
     },
     {
-      "threadId": "1a08ffa68a491122",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Reservation Mr. Eirik Sørdal",
-      "lastMessageId": "1a0959ada3214036",
-      "latestCategory": "positive",
-      "latestDate": "Sat, 12 Sep 2026 12:32:29 +0000",
-      "replies": [
-        {
-          "messageId": "1a08ffa68a491122",
-          "date": "Fri, 11 Sep 2026 10:19:08 +0000",
-          "snippet": "Please find atttched Reservation Mr. Eirik Sørdal Please confirm and send tee-times / invoice. ------------------------------------------------------------------------------------------ DinGolfReise er",
-          "category": "other",
-          "translation": "Rezervasyon bilgisi ekte. Lütfen onaylayın ve tee-time/fatura gönderin - otomatik yanıt."
-        },
-        {
-          "messageId": "1a0959ada3214036",
-          "date": "Sat, 12 Sep 2026 12:32:29 +0000",
-          "snippet": "Is there any other hotels possible with better tee-times? ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for",
-          "category": "positive",
-          "translation": "Eirik Sørdal, DinGolfReise (Norveç'in en büyük golf tur operatörü) adına başka otel seçenekleri ve daha iyi tee-time saatleri olup olmadığını soruyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a0906e97c4732e8",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "URGENT!!! Request Mr. Per Edvard Garen Johansen",
@@ -4070,5 +4046,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T14:38:06.450Z"
+  "lastRunAt": "2026-09-12T15:16:01.536Z"
 }
