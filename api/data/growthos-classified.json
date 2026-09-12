@@ -902,23 +902,6 @@
       ]
     },
     {
-      "threadId": "1a0851a83e62d2ec",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "A considered Belek group-golf option for Brean Golf Club",
-      "lastMessageId": "1a0851a83e62d2ec",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 9 Sep 2026 00:38:22 -0700",
-      "replies": [
-        {
-          "messageId": "1a0851a83e62d2ec",
-          "date": "Wed, 9 Sep 2026 00:38:22 -0700",
-          "snippet": "Hello Andrew March, Belka Golf works with European golf partners such as Brean Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground,",
-          "category": "positive",
-          "translation": "Belka Golf, Brean Golf Club ile Belek'te şeffaf bir grup golf paketi (green fees, otel, yerel destek) sunmak için işbirliği yapmaktadır."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851971e888226",
       "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
       "subject": "A considered Belek group-golf option for Rae Golf",
@@ -2774,5 +2757,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:29:16.922Z"
+  "lastRunAt": "2026-09-12T15:29:19.508Z"
 }
