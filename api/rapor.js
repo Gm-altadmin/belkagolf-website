@@ -1502,7 +1502,16 @@ export default async function handler(req, res) {
     // adreslerinden gelen stop-sale bültenlerini de yakalar, adres listesine bağımlı
     // kalmadan. Gerçek müşteri talepleri konu başlığında bu ifadeleri hiç geçirmez.
     const subjectExcl = '-subject:"stop sale" -subject:"open sale" -subject:"stop&open sale"';
-    const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com) after:${dateStr} ${noiseExcl} ${subjectExcl}`;
+    // GROWTH OS HARİÇ TUTMA (12.09.2026, ACİL DÜZELTME): Growth OS (ayrı B2B pazarlama
+    // kampanyası) info@belkagolf.com'dan gönderiyor - bu adres Talep Raporu'nun ana
+    // sorgusuna da giriyor. Growth OS ~400+ mail gönderince, 8 günlük pencerede bu hacim
+    // gerçek müşteri taleplerini boğdu - kullanıcı "0 talep bulundu" ile fark etti.
+    // Gerçek sebep doğrulandı (Gmail'de canlı test edildi): -label:growth-os eklenince
+    // gerçek talepler tekrar ortaya çıkıyor. NOT: etiketleme %100 tutarlı olmayabilir
+    // (Growth OS'un kendi projesinde de bilinen bir risk) - ileride ek bir konu-bazlı
+    // filtre gerekebilir, ama bu acil/büyük iyileşmeyi hemen sağlıyor.
+    const growthOsExcl = '-label:growth-os';
+    const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com) after:${dateStr} ${noiseExcl} ${subjectExcl} ${growthOsExcl}`;
 
     // maxResults 40 idi - yoğun trafikte 8 günlük pencerenin tamamı sığmıyordu.
     // Artık Gmail'in sayfalama (pageToken) mekanizmasıyla 150 thread'e kadar çekiliyor.
