@@ -2728,23 +2728,6 @@
       ]
     },
     {
-      "threadId": "19cc79aa6ba7ac80",
-      "from": "\"Reservation (CULLINAN BELEK)\" <reservation.cullinanbelek@cullinanhotels.com>",
-      "subject": "RE: YENI REZ.//CULLINAN BELEK//Mrs. Natalliaa Reutskaya //24.09-08.10.2026//14 gece konaklama + 4x round Aspendos&Olympos incl buggy- 1 pax ",
-      "lastMessageId": "1a0196995a44317c",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 19 Aug 2026 09:45:45 +0000",
-      "replies": [
-        {
-          "messageId": "1a0196995a44317c",
-          "date": "Wed, 19 Aug 2026 09:45:45 +0000",
-          "snippet": "Merhaba Elena Hanım, Proforma içerisinde REZ ID altında yazmaktadır. İyi çalışmalar dilerim. Saygılarımızla / Kind regards, Mustafa PERE Reservation Agent reservation.cullinanbelek@cullinanhotels.com",
-          "category": "positive",
-          "translation": "Rezervasyon detayları açıklanıyor, Proforma hazırlandığı belirtiliyor. Işlem devam ediyor."
-        }
-      ]
-    },
-    {
       "threadId": "19fcbc0e0fbe66cf",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Tom Brataas",
@@ -3420,5 +3403,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:24:52.620Z"
+  "lastRunAt": "2026-09-12T15:24:55.440Z"
 }
