@@ -956,12 +956,16 @@ async function handleGrowthOsScan(req, res, accessToken) {
       if (!det || !det.messages || det.messages.length === 0) continue;
 
       // Bizim gönderdiğimiz her mesajın "Kime" adresini topla (adres-eşleştirmeli ek
-      // tarama için kalıcı liste).
+      // tarama için kalıcı liste). BİLİNEN OTEL PARTNERLERİ (HOTEL_DOMAINS) HARİÇ - onlar
+      // zaten Talep Raporu'nun (rapor.js ana akışı) takip ettiği kişiler, Growth OS'un
+      // değil. (09.09.2026'da gerçek bir hatayla bulundu: Sueno Hotels'in satış temsilcisi
+      // bir kere growth-os etiketli bir yazışmada geçmiş olmalı, bundan sonra onun TÜM
+      // rezervasyon yazışmaları yanlışlıkla Growth OS cevabı sanılmaya başlamıştı.)
       for (const m of det.messages) {
         const mFrom = extractEmailAddr(getHeaderVal(m, 'From'));
         if (isOurDomain(mFrom)) {
           const mTo = extractEmailAddr(getHeaderVal(m, 'To'));
-          if (mTo) recipientAddresses.add(mTo);
+          if (mTo && !isHotelDomain(mTo)) recipientAddresses.add(mTo);
         }
       }
 
@@ -1028,7 +1032,10 @@ async function handleGrowthOsScanByAddress(req, res, accessToken) {
   }
   const PATH = 'api/data/growthos-classified.json';
   const { data: store, sha } = await githubReadJson(PATH, { items: [], recipientAddresses: [] });
-  const addressList = store.recipientAddresses || [];
+  // isHotelDomain() ile filtrele - eski (bu düzeltmeden önce) taramalarda yanlışlıkla
+  // eklenmiş otel-partner adresleri varsa, burada da otomatik temizlenmiş olur (JSON'u
+  // elle düzeltmeye gerek kalmaz).
+  const addressList = (store.recipientAddresses || []).filter((a) => !isHotelDomain(a));
   if (addressList.length === 0) {
     res.status(200).json({ error: 'Önce normal "Yeni Cevapları Tara" en az bir kez çalıştırılmalı (alıcı adres listesi henüz boş).' });
     return;
