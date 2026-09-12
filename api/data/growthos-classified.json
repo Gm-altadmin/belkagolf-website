@@ -613,23 +613,6 @@
       ]
     },
     {
-      "threadId": "1a0851c5013fe069",
-      "from": "\"Göran Lindblad\" <goran.lindblad@eskilstunagk.se>",
-      "subject": "Re: Belka Golf — gruppgolfkoncept för Eskilstuna Golfklubb",
-      "lastMessageId": "1a085bbdd7d5e1e4",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Wed, 9 Sep 2026 10:34:32 +0000",
-      "replies": [
-        {
-          "messageId": "1a085bbdd7d5e1e4",
-          "date": "Wed, 9 Sep 2026 10:34:32 +0000",
-          "snippet": "Inte intresserad. Tack. Med vänlig hälsning Göran Lindblad Verksamhetschef Eskilstuna Golfklubb 070—2751332 www.eskilstunagk.se From: mustafa beyzadeoğlu &lt;mbeyzadeoglubelka@gmail.com&gt; Sent:",
-          "category": "do_not_contact",
-          "translation": "Göran Lindblad, Eskilstuna Golfklubb adına ilgisi olmadığını açıkça belirtmiştir. İlgili değildir, teşekkür ediyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851c49bfe707c",
       "from": "<jesper@aregolfklubb.com>",
       "subject": "Sv: Belka Golf — gruppgolfkoncept för Åre Golfklubb",
@@ -2366,5 +2349,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:31:21.753Z"
+  "lastRunAt": "2026-09-12T15:31:23.644Z"
 }
