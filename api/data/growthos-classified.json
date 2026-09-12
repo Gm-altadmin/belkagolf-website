@@ -1419,23 +1419,6 @@
       ]
     },
     {
-      "threadId": "1a0851980ec6105a",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "Belka Golf — ryhmägolfkonsepti kohteelle Helsingin Golfklubi ry",
-      "lastMessageId": "1a0851980ec6105a",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 9 Sep 2026 00:37:16 -0700",
-      "replies": [
-        {
-          "messageId": "1a0851980ec6105a",
-          "date": "Wed, 9 Sep 2026 00:37:16 -0700",
-          "snippet": "Hei Antti Ahti, Belka Golf tekee yhteistyötä eurooppalaisten golfkumppaneiden, kuten Helsingin Golfklubi ry, kanssa läpinäkyvän ryhmägolfmatkapaketin parissa Belekiin — mukaan lukien green feet,",
-          "category": "positive",
-          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Helsingin Golfklubi ry'ye tanıtıyor (Fince)."
-        }
-      ]
-    },
-    {
       "threadId": "1a085193d10376f1",
       "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
       "subject": "Belka Golf — gruppegolfkoncept til Dronninglund Golfklub",
@@ -2638,5 +2621,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:29:45.222Z"
+  "lastRunAt": "2026-09-12T15:29:48.415Z"
 }
