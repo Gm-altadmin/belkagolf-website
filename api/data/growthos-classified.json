@@ -2413,6 +2413,1298 @@
           "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Magyar Golf Szövetség'e yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
         }
       ]
+    },
+    {
+      "threadId": "1a0909f41c7161dd",
+      "from": "Kim Sem Henriksen <kim@sgk.no>",
+      "subject": "Automatic reply: Belka Golf — gruppegolf-konsept for Stavanger Golfklubb",
+      "lastMessageId": "1a0909f41c7161dd",
+      "latestCategory": "other",
+      "latestDate": "Fri, 11 Sep 2026 13:19:11 +0000",
+      "replies": [
+        {
+          "messageId": "1a0909f41c7161dd",
+          "date": "Fri, 11 Sep 2026 13:19:11 +0000",
+          "snippet": "Ute med turnering. Tilbake mandag førstkommende.",
+          "category": "other",
+          "translation": "Otomatik yanıt: Turnamayla ilgili çıkışta, pazartesi geri dönüş."
+        }
+      ]
+    },
+    {
+      "threadId": "1a08ffa68a491122",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Reservation Mr. Eirik Sørdal",
+      "lastMessageId": "1a08ffa68a491122",
+      "latestCategory": "other",
+      "latestDate": "Fri, 11 Sep 2026 10:19:08 +0000",
+      "replies": [
+        {
+          "messageId": "1a08ffa68a491122",
+          "date": "Fri, 11 Sep 2026 10:19:08 +0000",
+          "snippet": "Please find atttched Reservation Mr. Eirik Sørdal Please confirm and send tee-times / invoice. ------------------------------------------------------------------------------------------ DinGolfReise er",
+          "category": "other",
+          "translation": "Rezervasyon bilgisi ekte. Lütfen onaylayın ve tee-time/fatura gönderin - otomatik yanıt."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0906e97c4732e8",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "URGENT!!! Request Mr. Per Edvard Garen Johansen",
+      "lastMessageId": "1a0906e97c4732e8",
+      "latestCategory": "positive",
+      "latestDate": "Fri, 11 Sep 2026 12:26:02 +0000",
+      "replies": [
+        {
+          "messageId": "1a0906e97c4732e8",
+          "date": "Fri, 11 Sep 2026 12:26:02 +0000",
+          "snippet": "Hello. I have Request Mr. Per Edvard Garen Johansen 1 pax in sngl 28. september - 15. october Wish to play 10 rounds. (tee-times around 08:00 if possible) Anything available? He ask for all kinds of",
+          "category": "positive",
+          "translation": "Per Edvard Garen Johansen için 28 Eylül - 15 Ekim arası 1 kişi, 10 raund oynamak istiyor, sabah 08:00 civarı tee-time tercih ediyor. Uygunluk sorgularız."
+        }
+      ]
+    },
+    {
+      "threadId": "1a08f85242560171",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Request Mr. Inge Andre Tonning",
+      "lastMessageId": "1a08f85242560171",
+      "latestCategory": "positive",
+      "latestDate": "Fri, 11 Sep 2026 08:11:03 +0000",
+      "replies": [
+        {
+          "messageId": "1a08f85242560171",
+          "date": "Fri, 11 Sep 2026 08:11:03 +0000",
+          "snippet": "Hello. I have Request Mr. Inge Andre Tonning 4 pax in 2 x dbl / twin 18-23. march 2027 Wish to play: 18/3: Carya Floodlight 19/3: 2 rounds 20/3: 2 rounds 21/3: 1 round 22/3: 2 rounds Anything possible?",
+          "category": "positive",
+          "translation": "Inge Andre Tonning için 18-23 Mart 2027'de 4 kişi (2x çift oda), 5 gün boyunca toplam 8 raund talep ediyor. Uygunluk soruluyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a08ed58cbec1a2f",
+      "from": "\"Sude ÖZDEMİR | Sueno Hotels Ön Büro\" <sude.ozdemir@sueno.com.tr>",
+      "subject": "DEPARTURE",
+      "lastMessageId": "1a08ed58cbec1a2f",
+      "latestCategory": "other",
+      "latestDate": "Fri, 11 Sep 2026 04:59:15 +0000",
+      "replies": [
+        {
+          "messageId": "1a08ed58cbec1a2f",
+          "date": "Fri, 11 Sep 2026 04:59:15 +0000",
+          "snippet": "Merhaba, 12.09.2026 tarihinde çıkış yapacak misafirlerimizin otelden alınış saatlerini göndermenizi rica ederiz. İyi çalışmalar. Sude ÖZDEMİR | Sueno Hotels Ön Büro Santralist Sueno Hotels Deluxe &amp;",
+          "category": "other",
+          "translation": "Otel tarafından 12.09.2026 çıkışında otelden alınış saatlerinin gönderilmesi isteği - operasyonel yazışma."
+        }
+      ]
+    },
+    {
+      "threadId": "1a086040b2ae47ee",
+      "from": "Jonni Tiainen <tiainen.jonni@gmail.com>",
+      "subject": "Request for quote for Sueno Golf Belek",
+      "lastMessageId": "1a086040b2ae47ee",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 14:53:27 +0300",
+      "replies": [
+        {
+          "messageId": "1a086040b2ae47ee",
+          "date": "Wed, 9 Sep 2026 14:53:27 +0300",
+          "snippet": "Hello, Our group would be interested in a quote for Sueno Golf Belek consisting of 6 green fees + standard room accommodation, all inclusive, for 8 people for the following alternative dates: - 23 to",
+          "category": "positive",
+          "translation": "Sueno Golf Belek için 8 kişi, 6 green fee + konaklama (all-inclusive) teklif talep ediyor, alternatif tarihler sunuyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a070b2b5435af4e",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Payments",
+      "lastMessageId": "1a08a5f26f84f137",
+      "latestCategory": "do_not_contact",
+      "latestDate": "Thu, 10 Sep 2026 08:11:27 +0000",
+      "replies": [
+        {
+          "messageId": "1a08a5f26f84f137",
+          "date": "Thu, 10 Sep 2026 08:11:27 +0000",
+          "snippet": "5 days since last contact... 🙂 Still no answer. It looks like this is my responsibility to follow up. I really hope you can take your time and look into this so that we can move forward. --------------",
+          "category": "do_not_contact",
+          "translation": "5 gündür cevap yok. Ödeme konusunda takip yapılmasını istiyor, ilerleme için çabuk cevap bekliyoruz."
+        }
+      ]
+    },
+    {
+      "threadId": "1a06cdb6dd18d729",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Dag Jarle Vignes ARRIVAL TRANSFER",
+      "lastMessageId": "1a06cfe66f3637a4",
+      "latestCategory": "other",
+      "latestDate": "Fri, 4 Sep 2026 15:16:47 +0000",
+      "replies": [
+        {
+          "messageId": "1a06cfe66f3637a4",
+          "date": "Fri, 4 Sep 2026 15:16:47 +0000",
+          "snippet": "Ok ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra Norge. Mvh/Best regards Roger Lode Daglig",
+          "category": "other",
+          "translation": "Dag Jarle Vignes'in varış transferi konusunda kısa onay - operasyonel mesaj."
+        }
+      ]
+    },
+    {
+      "threadId": "19be05274d721046",
+      "from": "Pelin Bozoglu <pelinbozoglu@caryagolf.com>",
+      "subject": "FW: YENI TEE TIME REZ.//CARYA//Mr. Tomas Hansen//03.09&04.09&05.09.2026 - 7+1 free",
+      "lastMessageId": "19be05274d721046",
+      "latestCategory": "other",
+      "latestDate": "Wed, 21 Jan 2026 14:30:59 +0300",
+      "replies": [
+        {
+          "messageId": "19be05274d721046",
+          "date": "Wed, 21 Jan 2026 14:30:59 +0300",
+          "snippet": "Merhaba Anastasiya Hanım, Rezervasyon talebiniz aşağıdaki şekilde konfirmedir; Name : TOMAS HANSEN CARYA Date : 03.09.2026 // 04.09.2026 // 05.09.2026 Tee Time : 13:48-13:57 // 15:27-15:36 // 14:24-14:",
+          "category": "other",
+          "translation": "Tomas Hansen için 03-05 Eylül 2026'de Carya'da tee-time rezervasyonu onaylandı - operasyonel bilgi."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0431363c291b13",
+      "from": "\"Lisa Gahn | Blaumond GmbH\" <lisa.gahn@blaumond24.de>",
+      "subject": "Shuttle Service Inquiry for Golf Transfers | Belek (2 Passengers)",
+      "lastMessageId": "1a0431363c291b13",
+      "latestCategory": "positive",
+      "latestDate": "Thu, 27 Aug 2026 11:55:39 +0000",
+      "replies": [
+        {
+          "messageId": "1a0431363c291b13",
+          "date": "Thu, 27 Aug 2026 11:55:39 +0000",
+          "snippet": "Dear Mrs. Beyzadeoğlu, I would like to inquire about booking a private shuttle service for two guests in Belek, Turkey. We are looking to arrange daily round-trip transfers between their hotel and",
+          "category": "positive",
+          "translation": "Belek'te 2 konuk için özel shuttle servisi (otel-golf sahası arası) talep ediliyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0426a0e9f67460",
+      "from": "A H <arif@goldsports.pro>",
+      "subject": "Re: Golf tatili",
+      "lastMessageId": "1a04cddf6099efe3",
+      "latestCategory": "positive",
+      "latestDate": "Sat, 29 Aug 2026 12:33:30 +0300",
+      "replies": [
+        {
+          "messageId": "1a04cddf6099efe3",
+          "date": "Sat, 29 Aug 2026 12:33:30 +0300",
+          "snippet": "Merhaba, Teşekkürler. Mümkünse golf turlarına sabah 09:00–11:00 arasında başlamak istiyoruz. 3 farklı sahada oynamak istiyoruz. Mesela Montgomerie, Nobilis ve Kempinski&#39;nin daha kolay olan sahası (",
+          "category": "positive",
+          "translation": "Golf turları sabah 09:00-11:00 arasında başlamak istiyor, 3 farklı sahada oynamak tercih ediyor (Montgomerie, Nobilis, Kempinski vb)."
+        }
+      ]
+    },
+    {
+      "threadId": "1a00ef5054dc326e",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Payment for appartment",
+      "lastMessageId": "1a03d806dbe52987",
+      "latestCategory": "other",
+      "latestDate": "Wed, 26 Aug 2026 09:57:02 +0000",
+      "replies": [
+        {
+          "messageId": "1a03d806dbe52987",
+          "date": "Wed, 26 Aug 2026 09:57:02 +0000",
+          "snippet": "Hello. I have also registrered invoice for Mr. Per Hægstad: 7204 euro Per Hægstad 7204 Petter Barkost 12935 Magnus Haukeland 5568 Arnstein Vagle 2299 Finn Inge Thomassen 2890 Total 30896 euro 50000 -",
+          "category": "other",
+          "translation": "Per Hægstad ve diğerleri için fatura kaydedildi (toplam 30896 euro) - operasyonel bilgi."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0388658125984c",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: LOST INVOICES",
+      "lastMessageId": "1a0388b7fb55d1da",
+      "latestCategory": "other",
+      "latestDate": "Tue, 25 Aug 2026 10:51:01 +0000",
+      "replies": [
+        {
+          "messageId": "1a0388b7fb55d1da",
+          "date": "Tue, 25 Aug 2026 10:51:01 +0000",
+          "snippet": "done ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra Norge. Mvh/Best regards Roger Lode Daglig",
+          "category": "other",
+          "translation": "Kayıp faturalar konusunda 'tamamlandı' bildirimi - operasyonel mesaj."
+        }
+      ]
+    },
+    {
+      "threadId": "1a037df41641684a",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Reservation Mr. Alexander Hofset INVOICE (Updated)",
+      "lastMessageId": "1a06c0ada2a90ed8",
+      "latestCategory": "positive",
+      "latestDate": "Fri, 4 Sep 2026 10:50:46 +0000",
+      "replies": [
+        {
+          "messageId": "1a06c0ada2a90ed8",
+          "date": "Fri, 4 Sep 2026 10:50:46 +0000",
+          "snippet": "Hello. Attached updated reservation. Now change in flights for departure. Please confirm. ------------------------------------------------------------------------------------------ DinGolfReise er den",
+          "category": "positive",
+          "translation": "Alexander Hofset'in güncellenen rezervasyonu ekte, uçuş değişikliği var, onay bekleniyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a01f0289cc9fe20",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Tobias Martinsson",
+      "lastMessageId": "1a057b99f3015713",
+      "latestCategory": "do_not_contact",
+      "latestDate": "Mon, 31 Aug 2026 12:09:38 +0000",
+      "replies": [
+        {
+          "messageId": "1a057b99f3015713",
+          "date": "Mon, 31 Aug 2026 12:09:38 +0000",
+          "snippet": "Sorry cancelled. No reply... 🙁 ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra Norge. Mvh/Best",
+          "category": "do_not_contact",
+          "translation": "Özür dilerim, rezervasyon iptal edildi, cevap alınmadı."
+        }
+      ]
+    },
+    {
+      "threadId": "1a02443dfd96e483",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Hello",
+      "lastMessageId": "1a024688c23c9253",
+      "latestCategory": "referral",
+      "latestDate": "Fri, 21 Aug 2026 13:00:27 +0000",
+      "replies": [
+        {
+          "messageId": "1a024688c23c9253",
+          "date": "Fri, 21 Aug 2026 13:00:27 +0000",
+          "snippet": "Ok... Say hello from me... 🙂 ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra Norge. Mvh/Best",
+          "category": "referral",
+          "translation": "Norveçli golf tur operatörü DinGolfReise selamlarını gönderiyor. Başka birine yönlendirme veya tanıtım mesajı gibi görünüyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a023fe09b389406",
+      "from": "\"Kenan Çot\" <kenan.cot@gloria.com.tr>",
+      "subject": "RE: Tee-time Müsaitliği - 15.10.2026 - 4pax",
+      "lastMessageId": "1a023fe09b389406",
+      "latestCategory": "do_not_contact",
+      "latestDate": "Fri, 21 Aug 2026 11:04:06 +0000",
+      "replies": [
+        {
+          "messageId": "1a023fe09b389406",
+          "date": "Fri, 21 Aug 2026 11:04:06 +0000",
+          "snippet": "Merhaba Anastasya Hanım, Müsaitlik yok maalesef, Saygılarımızla / Kind Regards / Mit freundlichen Grüßen, Kenan Çot ( Mr.) Sales &amp; Marketing Representative. sales.jpg From: Belka Golf &lt;info@",
+          "category": "do_not_contact",
+          "translation": "Talep edilen tarihte müsaitlik yok. Rezervasyon yapılamıyor cevabı."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0244da38e2a7f9",
+      "from": "<sigen@t-v.by>",
+      "subject": "RE: 13.11-20.11.2026 Cornelia Diamond 32pax",
+      "lastMessageId": "1a0244da38e2a7f9",
+      "latestCategory": "other",
+      "latestDate": "Fri, 21 Aug 2026 15:31:03 +0300",
+      "replies": [
+        {
+          "messageId": "1a0244da38e2a7f9",
+          "date": "Fri, 21 Aug 2026 15:31:03 +0300",
+          "snippet": "А не гольферы Дети Цена доп ти таймов в других и ночные Мячи? Кары? тролли С уважением, Руслан Сегенюк Директор туроператора ООО &quot;Тайм Вояж&quot; Председатель правления Республиканского Союза",
+          "category": "other",
+          "translation": "Rusça yazılı, sorular soruluyor ancak otomatik yanıt veya yarım/belirsiz bir mesaj görünümündedir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a01f539eb0fb119",
+      "from": "\"Sona ASHRAFI | Sueno Hotels Satış Pazarlama\" <sona.ashrafi@sueno.com.tr>",
+      "subject": "RE: FİYAT TEKLİFİ TALEBİ - 21.05.-25.05.2027 - 4 Gece+4 Greenfee",
+      "lastMessageId": "1a02445de3ae28db",
+      "latestCategory": "positive",
+      "latestDate": "Fri, 21 Aug 2026 12:22:34 +0000",
+      "replies": [
+        {
+          "messageId": "1a02445de3ae28db",
+          "date": "Fri, 21 Aug 2026 12:22:34 +0000",
+          "snippet": "Merhaba Elena Hanım, Talep edilen dönemde sizlere 2 farklı seçenek sunarak yardımcı olmak isteriz. Talep etmiş olduğunuz dönemde, 7 gece altındaki konaklamalar için minimum 6 gece üzerinden paket",
+          "category": "positive",
+          "translation": "Talep edilen tarihte iki farklı seçenek sunarak yardımcı olmaya istekli. Detaylı fiyat ve koşullar sunuluyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a01e811071c2b6d",
+      "from": "\"Jari-Pekka Kelhä\" <jari-pekka.kelha@silmaasema.fi>",
+      "subject": "Re: Request for Quotation – Sueno Hotels Deluxe Belek & Golf, 16–23 October 2026",
+      "lastMessageId": "1a01f50011c52d94",
+      "latestCategory": "positive",
+      "latestDate": "Thu, 20 Aug 2026 13:15:32 +0000",
+      "replies": [
+        {
+          "messageId": "1a01f50011c52d94",
+          "date": "Thu, 20 Aug 2026 13:15:32 +0000",
+          "snippet": "Dear Elena, Thank you very much for your detailed reply and for checking the availability. Yes, Sueno Golf Hotel could be an option, especially as guests have full access to the facilities of Sueno",
+          "category": "positive",
+          "translation": "Sueno Golf Hotel seçeneğini kabul ediyor ve otel tesislerine tam erişimi değerlendiriyor. İlgisi devam ediyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a01f34a1fc44425",
+      "from": "\"Tuğçe AKCAN | Sueno Hotels Satış Pazarlama\" <tugce.akcan@sueno.com.tr>",
+      "subject": "RE: HOTEL+GOLF RESERVATİON - 13.02.-20.02.2027 - 4pax - Trond Holm Nilsen ",
+      "lastMessageId": "1a023a646c5aa562",
+      "latestCategory": "positive",
+      "latestDate": "Fri, 21 Aug 2026 09:28:15 +0000",
+      "replies": [
+        {
+          "messageId": "1a023a646c5aa562",
+          "date": "Fri, 21 Aug 2026 09:28:15 +0000",
+          "snippet": "Merhaba Elena Hanım, Talebiniz güncel saha müsaitliğimi doğrultusunda ekteki gibi konfirmedir. Saygılarımla, Tuğçe AKCAN | Sueno Hotels Satış Pazarlama Golf Rezervasyon Şefi Sueno Hotels Golf Belek M.",
+          "category": "positive",
+          "translation": "Talep edilen tarihte müsaitlik onaylanıyor ve detaylı bilgilendirme yapılıyor. Rezervasyon aşamasında."
+        }
+      ]
+    },
+    {
+      "threadId": "1a01f2c96a70d4c5",
+      "from": "Golf Reservation <golf.reservation@swandorhotels.com>",
+      "subject": "RE: 01.11.-08.11.2026 - UNLIMITED GOLF + BUGGY ?",
+      "lastMessageId": "1a01f40415095399",
+      "latestCategory": "positive",
+      "latestDate": "Thu, 20 Aug 2026 12:58:20 +0000",
+      "replies": [
+        {
+          "messageId": "1a01f40415095399",
+          "date": "Thu, 20 Aug 2026 12:58:20 +0000",
+          "snippet": "Elena Hanım merhaba; Unlimited Paket fiyatlarımızın üzerine Buggy fiyatını ilave ederek misafirlere sunabilirsiniz, misafirin raporu varsa Buggy konusunda yardımcı olabiliriz. Rezervasyon aşamasında",
+          "category": "positive",
+          "translation": "Unlimited golf paketi üzerine buggy fiyatı eklenerek sunuluyor. Misafirlerin raporu varsa yardımcı olabileceğini belirtiyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a01e838ca7f3dde",
+      "from": "Per Anderz Eldenfalk <eldenfalk@me.com>",
+      "subject": "Re: Lykia links",
+      "lastMessageId": "1a01fecc425fb84d",
+      "latestCategory": "positive",
+      "latestDate": "Thu, 20 Aug 2026 18:06:46 +0200",
+      "replies": [
+        {
+          "messageId": "1a01fecc425fb84d",
+          "date": "Thu, 20 Aug 2026 18:06:46 +0200",
+          "snippet": "and go back 7/11 Skickat från min mobil därav kortfattat svar Pa Eldenfalk 20 aug. 2026 kl. 15:37 skrev Belka Golf &lt;info@belkagolf.com&gt;: ﻿ Hello Mr.Eldenfalk, they are not able to work out",
+          "category": "positive",
+          "translation": "İsveçli müşteri dönüş tarihini belirtiyor (7/11). Müzakereler devam ediyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a00cf3370577d62",
+      "from": "YOONJU OHK <luk2you@nate.com>",
+      "subject": "RE: Re: 9-night / 6-round golf package – Cornelia Diamond vs Sueno Deluxe ",
+      "lastMessageId": "1a028ad6fd615c46",
+      "latestCategory": "positive",
+      "latestDate": "Sat, 22 Aug 2026 17:54:10 +0900",
+      "replies": [
+        {
+          "messageId": "1a028ad6fd615c46",
+          "date": "Sat, 22 Aug 2026 17:54:10 +0900",
+          "snippet": "Dear Elena, Just to clarify our preferred tee-time schedule in my previous email, we would like to be flexible and use the following priorities: 1st preference: 10:00–11:30 2nd preference: 08:00–10:00",
+          "category": "positive",
+          "translation": "Tee saati tercihlerini açıklık getiriyor ve esnek olmak istediğini belirtiyor. İlgili ve aktif müzakere halinde."
+        }
+      ]
+    },
+    {
+      "threadId": "1a01a1df849bd7cf",
+      "from": "\"Kenan Çot\" <kenan.cot@gloria.com.tr>",
+      "subject": "RE: Tee-time Müsaitliği - 30.03.-06.04.2027 - 2pax ",
+      "lastMessageId": "1a01a1df849bd7cf",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 19 Aug 2026 13:02:47 +0000",
+      "replies": [
+        {
+          "messageId": "1a01a1df849bd7cf",
+          "date": "Wed, 19 Aug 2026 13:02:47 +0000",
+          "snippet": "Merhaba Elena Hanım, 2 pax / dış otel 30.03.2027 13:36 new 31.03.2027 13:18 old 01.04.2027 13:54 new 02.04.2027 14:21 old 03.04.2027 13:54 new 04.04.2027 14:48 old 05.04.2027 14:48 new 06.04.2027 14:48",
+          "category": "positive",
+          "translation": "Tee saati müsaitlik talebine, farklı tarihler için saat bilgileri ile cevap veriliyor. Detaylı tarih ve saat listesi gösterilmiştir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a00d4abc646c916",
+      "from": "\"樓宇涵\" <zoe112073511@gapp.nthu.edu.tw>",
+      "subject": "Re: Inquiry: Dinner Venue and Meeting Room Rental with AV Equipment (Oct 5–9)",
+      "lastMessageId": "1a038ffb0f061402",
+      "latestCategory": "other",
+      "latestDate": "Tue, 25 Aug 2026 20:57:56 +0800",
+      "replies": [
+        {
+          "messageId": "1a038ffb0f061402",
+          "date": "Tue, 25 Aug 2026 20:57:56 +0800",
+          "snippet": "Hi, Is it his whatsapp? Bc I&#39;m rare used this app~ Zoe Belka Golf &lt;info@belkagolf.com&gt;於 2026年8月24日週一，下午8:28寫道： Dear Zoe, thank you for your mail. Could you please contact our restaurant&#39;s",
+          "category": "other",
+          "translation": "Yabancı dilde (Çince), teknik bir soru sorulmuş görünüyor. Tam anlamı belirsiz, iletişim sorunu yaşanıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0191223ba1e3a6",
+      "from": "\"Berk ERSOY | Sueno Hotels Satış Pazarlama\" <berk.ersoy@sueno.com.tr>",
+      "subject": "RE: 24.04.-01.05.2027 Golf Grup Talebi - Fiyatlandırma",
+      "lastMessageId": "1a0191223ba1e3a6",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 19 Aug 2026 08:10:14 +0000",
+      "replies": [
+        {
+          "messageId": "1a0191223ba1e3a6",
+          "date": "Wed, 19 Aug 2026 08:10:14 +0000",
+          "snippet": "Merhabalar, Öncelikle güzel bir gün dileriz. 14 yaşında non golfer için paket yanı non golfer fiyatlar kullanılır. Saygılarımla, From: Belka Golf &lt;info@belkagolf.com&gt; Sent: Wednesday, August 19,",
+          "category": "positive",
+          "translation": "Grup talebine cevap veriliyor, çocuklar için non-golfer fiyatlandırması açıklanıyor. Detaylı bilgi sunuluyor."
+        }
+      ]
+    },
+    {
+      "threadId": "19cc79aa6ba7ac80",
+      "from": "\"Reservation (CULLINAN BELEK)\" <reservation.cullinanbelek@cullinanhotels.com>",
+      "subject": "RE: YENI REZ.//CULLINAN BELEK//Mrs. Natalliaa Reutskaya //24.09-08.10.2026//14 gece konaklama + 4x round Aspendos&Olympos incl buggy- 1 pax ",
+      "lastMessageId": "1a0196995a44317c",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 19 Aug 2026 09:45:45 +0000",
+      "replies": [
+        {
+          "messageId": "1a0196995a44317c",
+          "date": "Wed, 19 Aug 2026 09:45:45 +0000",
+          "snippet": "Merhaba Elena Hanım, Proforma içerisinde REZ ID altında yazmaktadır. İyi çalışmalar dilerim. Saygılarımızla / Kind regards, Mustafa PERE Reservation Agent reservation.cullinanbelek@cullinanhotels.com",
+          "category": "positive",
+          "translation": "Rezervasyon detayları açıklanıyor, Proforma hazırlandığı belirtiliyor. Işlem devam ediyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0145722f0cc932",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Terje Pedersen",
+      "lastMessageId": "1a0617d7d587ea69",
+      "latestCategory": "later",
+      "latestDate": "Wed, 2 Sep 2026 09:40:09 +0000",
+      "replies": [
+        {
+          "messageId": "1a0617d7d587ea69",
+          "date": "Wed, 2 Sep 2026 09:40:09 +0000",
+          "snippet": "Cancelled for now. He say he need more time... Hope he will come back later. ------------------------------------------------------------------------------------------ DinGolfReise er den største",
+          "category": "later",
+          "translation": "Müşteri Terje Pedersen şu an iptal etti ancak daha sonra tekrar gelebilir. Zamana ihtiyacı var."
+        }
+      ]
+    },
+    {
+      "threadId": "19fcbc0e0fbe66cf",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Tom Brataas",
+      "lastMessageId": "1a0234bf66a2e334",
+      "latestCategory": "positive",
+      "latestDate": "Fri, 21 Aug 2026 07:49:36 +0000",
+      "replies": [
+        {
+          "messageId": "1a0234bf66a2e334",
+          "date": "Fri, 21 Aug 2026 07:49:36 +0000",
+          "snippet": "This booking is confirmed for Sirene in 2 x dbl / twin. Is it possible to find any other course for them to play 15/10? I will send you all details after.... -------------------------------------------",
+          "category": "positive",
+          "translation": "Tom Brataas için Sirene'de otel rezervasyonu onaylanmış. 15/10'da başka bir golf sahası bulunup bulunabileceği soruluyor."
+        }
+      ]
+    },
+    {
+      "threadId": "19fccc3f05ff25bc",
+      "from": "Aizek CHEKIROVA <aizek.chekirova@sirene.com.tr>",
+      "subject": "Re: Acil Lütfen**Fiyat teklifi talebi//SIRENE BELEK//15.10.2026- 19.10.2026//4x gece konaklama + 3x Pasha + 1x Sultan - 5 pax",
+      "lastMessageId": "1a014cfd9bbf3d2c",
+      "latestCategory": "positive",
+      "latestDate": "Tue, 18 Aug 2026 15:19:21 +0300",
+      "replies": [
+        {
+          "messageId": "1a014cfd9bbf3d2c",
+          "date": "Tue, 18 Aug 2026 15:19:21 +0300",
+          "snippet": "Merhabalar Elena Hanım, İletmiş olduğunuz talebiniz için uygulayacağımız paket fiyatlarımız aşağıdaki şekilde olacaktır: 15.10.2026 giriş 4 gece konaklama 1 Sultan + 1 Pasha dbl in pp 760 EUR. Single",
+          "category": "positive",
+          "translation": "Elena Hanım'ın fiyat teklifi talebine yanıt. Belirtilen tarihler ve konaklama paketleri için fiyatlandırma yapılmıştır (4 gece, 760 EUR vb.). Rezervasyon detayları sunulmuştur."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0143566a3dbe16",
+      "from": "\"Dilara Ak (CULLINAN LINKS GOLF CLUB)\" <dilara.ak@cullinanlinksgolfclub.com>",
+      "subject": "RE: TİTANİC DELUXE BELEK - Kış 2026-2027 kontrat fiyatları",
+      "lastMessageId": "1a014442ab9f5adb",
+      "latestCategory": "positive",
+      "latestDate": "Tue, 18 Aug 2026 09:46:47 +0000",
+      "replies": [
+        {
+          "messageId": "1a014442ab9f5adb",
+          "date": "Tue, 18 Aug 2026 09:46:47 +0000",
+          "snippet": "Merhaba Elena Hanımcım, Öncelikle güzel bir gün dileriz. Titanic Deluxe Golf Belek 2026-2027 kış kontratlarımız ektedir. Farklı bir yardıma ihtiyacınız olması durumunda bizimler her zaman iletişime",
+          "category": "positive",
+          "translation": "Titanic Deluxe Golf Belek'in 2026-2027 kış kontrat fiyatları gönderilmiştir. Şirket yardıma hazır olduğunu belirtmiştir."
+        }
+      ]
+    },
+    {
+      "threadId": "19ff7e030d4c60d1",
+      "from": "\"Tuğçe AKCAN | Sueno Hotels Satış Pazarlama\" <tugce.akcan@sueno.com.tr>",
+      "subject": "RE: Değişiklik// RE: YENI REZ.//SUENO GOLF//Mr. Lars Audun T Torvik //26.09-03.10.2026//7 gece konaklama + 5x round - 7+1 FREE ",
+      "lastMessageId": "1a09468ebc12012b",
+      "latestCategory": "positive",
+      "latestDate": "Sat, 12 Sep 2026 06:58:19 +0000",
+      "replies": [
+        {
+          "messageId": "1a09468ebc12012b",
+          "date": "Sat, 12 Sep 2026 06:58:19 +0000",
+          "snippet": "Merhaba Anastasiya Hanım, Talep ettiğiniz tarihte yalnızca tek sahamızın açık olması nedeniyle tee time müsaitliklerimiz oldukça sınırlıdır. Misafirleriniz için yalnızca 12:48–12:57 Dunes müsaitliği",
+          "category": "positive",
+          "translation": "7 gece konaklama ve golf turları için tee time müsaitliği bildirilmiştir. Belirtilen tarihte sınırlı saatler sunulmuştur (12:48-12:57 Dunes)."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0142805d8c2863",
+      "from": "Oyku Zeynep Kiral <oyku.kiral@kayahotels.com.tr>",
+      "subject": "RE: SPA paketleri 2026-2027",
+      "lastMessageId": "1a018f0f283219f9",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 19 Aug 2026 07:33:59 +0000",
+      "replies": [
+        {
+          "messageId": "1a018f0f283219f9",
+          "date": "Wed, 19 Aug 2026 07:33:59 +0000",
+          "snippet": "Merhaba Elena Hanım, Öncelikle güzel bir gün dilerim. Talep ettiğiniz dosya başka bir mail üzerinden size iletilmiştir. İyi çalışmalar dilerim. Saygılarımla / Best Regards Öykü KIRAL (Ms.) | Golf Satış",
+          "category": "positive",
+          "translation": "SPA paketleri 2026-2027 dosyası talep edilmiş, başka bir mail üzerinden gönderildiği bildirilmiştir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a00f31c8fc4acbb",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Trond Nilsen",
+      "lastMessageId": "1a01a666353a7d2f",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 19 Aug 2026 14:21:53 +0000",
+      "replies": [
+        {
+          "messageId": "1a01a666353a7d2f",
+          "date": "Wed, 19 Aug 2026 14:21:53 +0000",
+          "snippet": "This booking is confirmed for 2 x dbl in Sueno Golf. I will send you all details later. ------------------------------------------------------------------------------------------ DinGolfReise er den",
+          "category": "positive",
+          "translation": "Sueno Golf'ta çift oda rezervasyonu onaylanmıştır. Detaylar daha sonra gönderilecektir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a00f587e6585300",
+      "from": "\"Kenan Çot\" <kenan.cot@gloria.com.tr>",
+      "subject": "RE: ACİL !!! 03.10.2026 Tee-time Müsaitliği 5pax ",
+      "lastMessageId": "1a00f5c52ecf110d",
+      "latestCategory": "positive",
+      "latestDate": "Mon, 17 Aug 2026 10:55:04 +0000",
+      "replies": [
+        {
+          "messageId": "1a00f5c52ecf110d",
+          "date": "Mon, 17 Aug 2026 10:55:04 +0000",
+          "snippet": "Merhaba Elena Hanım, 07:27-07:36 old Saygılarımızla / Kind Regards / Mit freundlichen Grüßen, Kenan Çot ( Mr.) Sales &amp; Marketing Representative. sales.jpg From: Belka Golf &lt;info@belkagolf.com",
+          "category": "positive",
+          "translation": "03.10.2026 tarihinde 5 kişi için tee-time müsaitliği onaylanmıştır (07:27-07:36)."
+        }
+      ]
+    },
+    {
+      "threadId": "1a000444e5d3cf28",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Thomas Jakobsen",
+      "lastMessageId": "1a0621fa97e3d322",
+      "latestCategory": "do_not_contact",
+      "latestDate": "Wed, 2 Sep 2026 12:37:17 +0000",
+      "replies": [
+        {
+          "messageId": "1a0621fa97e3d322",
+          "date": "Wed, 2 Sep 2026 12:37:17 +0000",
+          "snippet": "Sorry cancelled. He say the dates does not fit the rest of the group... 🙁 Stupid man. ------------------------------------------------------------------------------------------ DinGolfReise er den",
+          "category": "do_not_contact",
+          "translation": "Thomas Jakobsen'in rezervasyonu iptal edilmiştir. Tarihler grup için uygun olmadığı için istifa etmiştir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a00072974de5699",
+      "from": "\"Özlem Bayraktar\" <ozlem.bayraktar@agc.com.tr>",
+      "subject": "RE: TEE-TİME RESERVATİON - 5pax - 29.04.2027 - Einar Gulbrandsen",
+      "lastMessageId": "1a00083133bf3cdf",
+      "latestCategory": "positive",
+      "latestDate": "Fri, 14 Aug 2026 16:43:05 +0300",
+      "replies": [
+        {
+          "messageId": "1a00083133bf3cdf",
+          "date": "Fri, 14 Aug 2026 16:43:05 +0300",
+          "snippet": "Merhaba Elena Hanım, Rezervasyonunuz konfirmedir. İyi çalışmalar dilerim. Özlem BAYRAKTAR. From: Belka Golf &lt;info@belkagolf.com&gt; Sent: Friday, August 14, 2026 4:25 PM To: Reservation 1 &lt;",
+          "category": "positive",
+          "translation": "29.04.2027 tarihinde 5 kişi için tee-time rezervasyonu onaylanmıştır."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0006d774b37635",
+      "from": "Reservation1 - DAMLA SAVASTURK <reservation1@corneliadiamond.com>",
+      "subject": "RE: HOTEL+GOLF RESERVATİON - 27.04.-04.05.2027 - 5pax - Einar Gulbrandsen",
+      "lastMessageId": "1a0046462cdf843d",
+      "latestCategory": "positive",
+      "latestDate": "Sat, 15 Aug 2026 07:48:03 +0000",
+      "replies": [
+        {
+          "messageId": "1a0046462cdf843d",
+          "date": "Sat, 15 Aug 2026 07:48:03 +0000",
+          "snippet": "Merhaba Konaklama Ve Gree Fee rezervayon talebiniz aşağıdaki detaylarla memnuniyetle konfirmedir. Konfirme no : 4262267 / 4262269 / 4262270 C/IN: 27.04.2027 C/OUT : 04.05.2027 CORNELIA DIAMOND Einar",
+          "category": "positive",
+          "translation": "27.04.-04.05.2027 tarihleri için 5 kişilik otel + golf rezervasyonu onaylanmıştır. Konfirme numaraları verilmiştir."
+        }
+      ]
+    },
+    {
+      "threadId": "19fcda3f1e8ae4d8",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Reservation Mr. Arnstein Vagle INVOICE",
+      "lastMessageId": "1a05bf72a4ff9c3e",
+      "latestCategory": "referral",
+      "latestDate": "Tue, 1 Sep 2026 07:55:20 +0000",
+      "replies": [
+        {
+          "messageId": "1a05bf72a4ff9c3e",
+          "date": "Tue, 1 Sep 2026 07:55:20 +0000",
+          "snippet": "Hello. Mr. Vagle ask if they will get a discount for Spa? ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for",
+          "category": "referral",
+          "translation": "DinGolfReise aracılığıyla Mr. Arnstein Vagle'nin SPA indirim sorgusu iletilmiştir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0004810b274042",
+      "from": "Reservation1 - DAMLA SAVASTURK <reservation1@corneliadiamond.com>",
+      "subject": "RE: Fiyat Teklifi Talebi - 25.10.-31.10.2026 - Accommodation+Lessons with Pro --> 23.10.-28.10.2026 CHRİS KUMAR",
+      "lastMessageId": "1a0007d69f2a1cbf",
+      "latestCategory": "positive",
+      "latestDate": "Fri, 14 Aug 2026 13:36:54 +0000",
+      "replies": [
+        {
+          "messageId": "1a0007d69f2a1cbf",
+          "date": "Fri, 14 Aug 2026 13:36:54 +0000",
+          "snippet": "Merhaba Konaklama Ve Gree Fee rezervayon talebiniz aşağıdaki detaylarla memnuniyetle konfirmedir. Dersler için Proformanız ektedir. Konfirme no : 4262226 C/IN: 23.10.2026 C/OUT : 28.10.2026 CORNELIA",
+          "category": "positive",
+          "translation": "23.10.-28.10.2026 tarihleri için konaklama ve pro dersler ile rezervasyon onaylanmıştır. Proforma ektedir."
+        }
+      ]
+    },
+    {
+      "threadId": "19f5f9ca80a8edac",
+      "from": "\"Kenan Çot\" <kenan.cot@gloria.com.tr>",
+      "subject": "RE: YENI TEE TIME REZ.//GLORIA//Mr. Kristian Hamre//12.10&16.10.2026 - 7 pax & 4 pax",
+      "lastMessageId": "1a0003da1f702077",
+      "latestCategory": "positive",
+      "latestDate": "Fri, 14 Aug 2026 12:27:14 +0000",
+      "replies": [
+        {
+          "messageId": "1a0003da1f702077",
+          "date": "Fri, 14 Aug 2026 12:27:14 +0000",
+          "snippet": "Merhaba Elena Hanım, 12.10.26 oyunlarına 1 pax ilave konfirmedir, İsim: Mr. Kristian Hamre Konaklama: Sueno Deluxe Milliyet: Norveç Tarih ve tee time : 12.10.2026 Gloria New 07:00-07:09 8 pax 16.10.",
+          "category": "positive",
+          "translation": "12.10 ve 16.10.2026 tarihlerinde Gloria Golf'ta grup rezervasyonları onaylanmıştır. Tee time detayları bildirilmiştir."
+        }
+      ]
+    },
+    {
+      "threadId": "19fffef5c539ff7c",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Guttorm Vedum Stuge",
+      "lastMessageId": "1a06c312064d2499",
+      "latestCategory": "do_not_contact",
+      "latestDate": "Fri, 4 Sep 2026 11:32:34 +0000",
+      "replies": [
+        {
+          "messageId": "1a06c312064d2499",
+          "date": "Fri, 4 Sep 2026 11:32:34 +0000",
+          "snippet": "Sorry cancelled. This group chose Milano, Italy.... 🙁 ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for",
+          "category": "do_not_contact",
+          "translation": "Guttorm Vedum Stuge'nin grubu rezervasyonu iptal etmiş, Milano İtalya'yı seçmiştir."
+        }
+      ]
+    },
+    {
+      "threadId": "19fffa88cacdae86",
+      "from": "\"Hilal KARADENİZ | Sueno Hotels Satış Pazarlama\" <hilal.karadeniz@sueno.com.tr>",
+      "subject": "RE: Tee time değişikliği// RE: YENI REZ.//Arnstein Vagle //SUENO GOLF//10.10-17.10.2026//7 gece konaklama + 4x round Pines&Dunes // 2 PAX ",
+      "lastMessageId": "1a03335972621952",
+      "latestCategory": "positive",
+      "latestDate": "Mon, 24 Aug 2026 09:59:05 +0000",
+      "replies": [
+        {
+          "messageId": "1a03335972621952",
+          "date": "Mon, 24 Aug 2026 09:59:05 +0000",
+          "snippet": "Merhaba, Ekteki rezervasyonunuz yaklaşan opsiyona istinaden kesine alınmıştır. Uyuşmazlık varsa bilgi vermenizi rica ederiz. Saygılarımla, Hilal KARADENİZ | Sueno Hotels Satış Pazarlama Golf",
+          "category": "positive",
+          "translation": "10.10-17.10.2026 tarihlerinde Arnstein Vagle için 7 gece konaklama ve 4 tur golf rezervasyonu opsiyondan kesinliğe alınmıştır."
+        }
+      ]
+    },
+    {
+      "threadId": "19f9020de25e3079",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Reservation Mr. Alexander Hofset INVOICE",
+      "lastMessageId": "1a024854d8bb966d",
+      "latestCategory": "referral",
+      "latestDate": "Fri, 21 Aug 2026 13:31:51 +0000",
+      "replies": [
+        {
+          "messageId": "1a024854d8bb966d",
+          "date": "Fri, 21 Aug 2026 13:31:51 +0000",
+          "snippet": "Would be nice if you could answer this ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra Norge.",
+          "category": "referral",
+          "translation": "DinGolfReise aracılığıyla Mr. Alexander Hofset'in fatura ile ilgili yanıt talep edilmiştir."
+        }
+      ]
+    },
+    {
+      "threadId": "19ff05a6d425fc79",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Reservation Mr. Lars Audun T. Torvik INVOICE",
+      "lastMessageId": "1a090166877a30b5",
+      "latestCategory": "other",
+      "latestDate": "Fri, 11 Sep 2026 10:49:43 +0000",
+      "replies": [
+        {
+          "messageId": "1a090166877a30b5",
+          "date": "Fri, 11 Sep 2026 10:49:43 +0000",
+          "snippet": "Hello. Mr. Torvik ask if possible to change the tee-time for 30. september to around 09:00? ------------------------------------------------------------------------------------------ DinGolfReise er",
+          "category": "other",
+          "translation": "Bay Torvik, 30 Eylül için tee saatini saat 09:00 civarına değiştirebilir mi diye soruyor. (Rezervasyon/operasyonel istek, iş ortaklığı kampanyas cevabı değil)"
+        }
+      ]
+    },
+    {
+      "threadId": "19ffb238c63556da",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Johan Askeland",
+      "lastMessageId": "1a06179e6fe8c3ce",
+      "latestCategory": "later",
+      "latestDate": "Wed, 2 Sep 2026 09:36:14 +0000",
+      "replies": [
+        {
+          "messageId": "1a06179e6fe8c3ce",
+          "date": "Wed, 2 Sep 2026 09:36:14 +0000",
+          "snippet": "Cancelled for now. He will come back later. ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra",
+          "category": "later",
+          "translation": "Bay Askeland şu an iptal etti ancak daha sonra geri dönecek."
+        }
+      ]
+    },
+    {
+      "threadId": "19ffb4fc156f59c5",
+      "from": "\"Kenan Çot\" <kenan.cot@gloria.com.tr>",
+      "subject": "RE: Oda ve Tee-time Müsaitliği - GLORIA VERDE - 03.04.-10.04.2027 & 10.04.-17.04.2027 - 2pax",
+      "lastMessageId": "19fff27db7666c69",
+      "latestCategory": "other",
+      "latestDate": "Fri, 14 Aug 2026 07:23:50 +0000",
+      "replies": [
+        {
+          "messageId": "19fff27db7666c69",
+          "date": "Fri, 14 Aug 2026 07:23:50 +0000",
+          "snippet": "Merhaba Elena Hanım , Ekte bula bilirsiniz, Saygılarımızla / Kind Regards / Mit freundlichen Grüßen, Kenan Çot ( Mr.) Sales &amp; Marketing Representative. sales.jpg From: Belka Golf &lt;info@belkagolf",
+          "category": "other",
+          "translation": "Otel ve tee-time müsaitliği hakkında bilgiler ektedir. (İç operasyonel mail, kampanya yanıtı değil)"
+        }
+      ]
+    },
+    {
+      "threadId": "19ffb353c7e0ed00",
+      "from": "Oyku Zeynep Kiral <oyku.kiral@kayahotels.com.tr>",
+      "subject": "RE: Fıyat Teklifi Talebi - Ağustos 2027 - 4 gece +1 Greenfee / 6pax",
+      "lastMessageId": "19fffb1b0ff9f2d9",
+      "latestCategory": "other",
+      "latestDate": "Fri, 14 Aug 2026 09:54:23 +0000",
+      "replies": [
+        {
+          "messageId": "19fffb1b0ff9f2d9",
+          "date": "Fri, 14 Aug 2026 09:54:23 +0000",
+          "snippet": "Merhaba Elena Hanım, Ekte bilginize sunulmuştur. İyi çalışmalar dilerim. Saygılarımla / Best Regards Öykü KIRAL (Ms.) | Golf Satış ve Pazarlama Temsilcisi | Golf Sales &amp; Marketing Representative",
+          "category": "other",
+          "translation": "Fiyat teklifi talebine yanıt, ekteki bilgiler sunulmuştur. (İç operasyonel mail, kampanya yanıtı değil)"
+        }
+      ]
+    },
+    {
+      "threadId": "19ffa492a45c034c",
+      "from": "\"Tuğçe AKCAN | Sueno Hotels Satış Pazarlama\" <tugce.akcan@sueno.com.tr>",
+      "subject": "RE: HOTEL+GOLF RESERVATION - 05.12.-12.12.2026 - 3pax - Kristian Reed",
+      "lastMessageId": "19ffb15c9c87d4e5",
+      "latestCategory": "other",
+      "latestDate": "Thu, 13 Aug 2026 12:25:37 +0000",
+      "replies": [
+        {
+          "messageId": "19ffb15c9c87d4e5",
+          "date": "Thu, 13 Aug 2026 12:25:37 +0000",
+          "snippet": "Merhaba Elena Hanım, Talebiniz güncel saha müsaitliğimiz doğrultusunda ekteki gibi konfirmedir. DATE TEE TIME COURSE PLAYER RATE 06.12.2026 08:27 PINES 2 INC 07.12.2026 11:36 DUNES 2 INC 08.12.2026 08:",
+          "category": "other",
+          "translation": "Otel+golf rezervasyonu için tarih ve tee saatleri onaylanmıştır. (İç operasyonel mail, kampanya yanıtı değil)"
+        }
+      ]
+    },
+    {
+      "threadId": "19ffa125fc415666",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Reservation Mr. Einar Gulbrandsen (repeating.)",
+      "lastMessageId": "19ffaf3edc798699",
+      "latestCategory": "other",
+      "latestDate": "Thu, 13 Aug 2026 11:48:38 +0000",
+      "replies": [
+        {
+          "messageId": "19ffaf3edc798699",
+          "date": "Thu, 13 Aug 2026 11:48:38 +0000",
+          "snippet": "Attached updated information. Now also incl tee-times and phone number for Mr. Jarle Gulbrandsen ------------------------------------------------------------------------------------------ DinGolfReise",
+          "category": "other",
+          "translation": "Güncellenmiş bilgiler ve tee saatleri eklenmiştir. (İç operasyonel mail, kampanya yanıtı değil)"
+        }
+      ]
+    },
+    {
+      "threadId": "19ff2541a5bd41cb",
+      "from": "Marco Sammuri <marco.sammuri80@gmail.com>",
+      "subject": "Re: Info travel 24-04 01-05",
+      "lastMessageId": "1a05769f151c22a4",
+      "latestCategory": "positive",
+      "latestDate": "Mon, 31 Aug 2026 12:42:36 +0200",
+      "replies": [
+        {
+          "messageId": "1a05769f151c22a4",
+          "date": "Mon, 31 Aug 2026 12:42:36 +0200",
+          "snippet": "Ok and, why time start the baby club? And price for baby sitter? Sorry for a lot question, but I want close the trip and I know this info!! Thanks Il giorno lun 31 ago 2026 alle 11:37 BelkaGolf &lt;",
+          "category": "positive",
+          "translation": "Musabakanın başlama saati ve bebek bakıcı fiyatı gibi detaylar sorarak seyahati kapatmak istiyor. İlgili görünüyor ancak bilgi talep etmektedir."
+        }
+      ]
+    },
+    {
+      "threadId": "19ff51cf68f3fcac",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Erik Frafjord",
+      "lastMessageId": "1a023ff8a70eece6",
+      "latestCategory": "do_not_contact",
+      "latestDate": "Fri, 21 Aug 2026 11:05:45 +0000",
+      "replies": [
+        {
+          "messageId": "1a023ff8a70eece6",
+          "date": "Fri, 21 Aug 2026 11:05:45 +0000",
+          "snippet": "Sorry cancelled. No reply... 🙁 ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra Norge. Mvh/Best",
+          "category": "do_not_contact",
+          "translation": "Bay Erik Frafjord, özür dilerek iptal etti ve cevap vermedi."
+        }
+      ]
+    },
+    {
+      "threadId": "19fe0705dba7ac88",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Thomas Støfring",
+      "lastMessageId": "1a01e5a56fc68452",
+      "latestCategory": "later",
+      "latestDate": "Thu, 20 Aug 2026 08:47:12 +0000",
+      "replies": [
+        {
+          "messageId": "1a01e5a56fc68452",
+          "date": "Thu, 20 Aug 2026 08:47:12 +0000",
+          "snippet": "Cancelled for now. He will come back later with new dates. ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for",
+          "category": "later",
+          "translation": "Bay Thomas Støfring şu an iptal etti ancak yeni tarihlerle daha sonra geri dönecek."
+        }
+      ]
+    },
+    {
+      "threadId": "19ff4f1df21f0300",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Kjell Hvorup",
+      "lastMessageId": "19ff9ea64ebcd79f",
+      "latestCategory": "do_not_contact",
+      "latestDate": "Thu, 13 Aug 2026 06:58:36 +0000",
+      "replies": [
+        {
+          "messageId": "19ff9ea64ebcd79f",
+          "date": "Thu, 13 Aug 2026 06:58:36 +0000",
+          "snippet": "Sorry cancelled. He say the price is too high, and they now decide to travel togehter with their own home club to Portugal this year... 🙁 ---------------------------------------------------------------",
+          "category": "do_not_contact",
+          "translation": "Bay Kjell Hvorup iptal etti, fiyat çok yüksek buldu ve klub arkadaşlarıyla Portekiz'e gidecek."
+        }
+      ]
+    },
+    {
+      "threadId": "19ff03eda6217767",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Mario Gaarder",
+      "lastMessageId": "1a023fdcc6195743",
+      "latestCategory": "do_not_contact",
+      "latestDate": "Fri, 21 Aug 2026 11:03:51 +0000",
+      "replies": [
+        {
+          "messageId": "1a023fdcc6195743",
+          "date": "Fri, 21 Aug 2026 11:03:51 +0000",
+          "snippet": "Sorry cancelled. They say the offer is not of interest... �� No reason why not ------------------------------------------------------------------------------------------ DinGolfReise er den største",
+          "category": "do_not_contact",
+          "translation": "Bay Mario Gaarder iptal etti, teklif ilgi çekmiyor dedi, herhangi bir neden vermedi."
+        }
+      ]
+    },
+    {
+      "threadId": "19ff1962d44a7c79",
+      "from": "Kirsten Mueller <mueller_kirsten@yahoo.com>",
+      "subject": "Re: Stay in October / Airport transfer?",
+      "lastMessageId": "1a0209baa8753b0e",
+      "latestCategory": "positive",
+      "latestDate": "Thu, 20 Aug 2026 19:17:48 +0000 (UTC)",
+      "replies": [
+        {
+          "messageId": "1a0209baa8753b0e",
+          "date": "Thu, 20 Aug 2026 19:17:48 +0000 (UTC)",
+          "snippet": "Dear Elena, Thank you for your recommendations. Red Castle Hotel is fully booked as well, and a person at Belek Holidays Hotel promised to organize a room for me but this hasn&#39;t happend yet. I",
+          "category": "positive",
+          "translation": "Red Castle Hotel doluydu, Belek Holidays Hotel'de oda organize edilmesini bekliyor. Devam etmek istiyor ancak otel sorunu var."
+        }
+      ]
+    },
+    {
+      "threadId": "19ff0fd30f6dbffb",
+      "from": "\"Şeyma Tongut\" <golfsales1@corneliadiamond.com>",
+      "subject": "RE: Fiyat Teklifi Talebi - 01.04.-05.04.2027 - 4 gece + 2 veya 3 greenfee",
+      "lastMessageId": "19ff117868ce806c",
+      "latestCategory": "other",
+      "latestDate": "Tue, 11 Aug 2026 13:51:19 +0000",
+      "replies": [
+        {
+          "messageId": "19ff117868ce806c",
+          "date": "Tue, 11 Aug 2026 13:51:19 +0000",
+          "snippet": "Merhaba Elena Hanım, Bu rezervasyona özel konaklama fiyatlandırması kapsamında, ilgili tarihler için 5 gece konaklama + 2 round ya da 5 gece konaklama + 3 round golf paketimizden kullanabileceğinizi",
+          "category": "other",
+          "translation": "Fiyat teklifi talebine yanıt, konaklama paket seçenekleri sunulmuştur. (İç operasyonel mail, kampanya yanıtı değil)"
+        }
+      ]
+    },
+    {
+      "threadId": "19ff0fb689e0b836",
+      "from": "\"Berk ERSOY | Sueno Hotels Satış Pazarlama\" <berk.ersoy@sueno.com.tr>",
+      "subject": "RE: Fiyat Teklifi Talebi - 01.04.-05.04.2027 - 4 gece + 2/3 greenfee",
+      "lastMessageId": "19ff492184e1db8d",
+      "latestCategory": "other",
+      "latestDate": "Wed, 12 Aug 2026 06:04:03 +0000",
+      "replies": [
+        {
+          "messageId": "19ff492184e1db8d",
+          "date": "Wed, 12 Aug 2026 06:04:03 +0000",
+          "snippet": "Merhaba Elena Hanım, Aşağıdaki talebiniz için Sueno Hotels Deluxe Belek olması şartı ile 4 gece kabul edebiliriz. Misafir Sueno Hotel Golf Belek tesisinde konaklamak isterse 5 gece paket fiyatlarını",
+          "category": "other",
+          "translation": "4 gece konaklama teklifi yapılmıştır, konaklama yeri tercihine göre paket seçenekleri sunulmuştur. (İç operasyonel mail, kampanya yanıtı değil)"
+        }
+      ]
+    },
+    {
+      "threadId": "19ff0f5e3dd1fd44",
+      "from": "\"Tuğba Uçak\" <golf.sales2@swandorhotels.com>",
+      "subject": "RE: Fiyat Teklifi Talebi - 01.04.-05.04.2027 - 4 gece + 3/4 greenfee",
+      "lastMessageId": "19ff480847e6193d",
+      "latestCategory": "other",
+      "latestDate": "Wed, 12 Aug 2026 05:44:51 +0000",
+      "replies": [
+        {
+          "messageId": "19ff480847e6193d",
+          "date": "Wed, 12 Aug 2026 05:44:51 +0000",
+          "snippet": "Merhaba Anastasiya Hanım, Öncelikle güzel bir gün dilerim. Min. Konaklama 4 gece olduğu için yardımcı oluruz elbette. Fiyatlandırma aşağıda ki şekildedir. 4 Night + 3 Rounds Per person 614 € 4 Night +",
+          "category": "other",
+          "translation": "4 gece + 3-4 tur golf paketinin fiyatlandırması yapılmıştır. (İç operasyonel mail, kampanya yanıtı değil)"
+        }
+      ]
+    },
+    {
+      "threadId": "19fe10f0d8fabb8b",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Einar Gulbrandsen",
+      "lastMessageId": "19ff05442227a4c6",
+      "latestCategory": "positive",
+      "latestDate": "Tue, 11 Aug 2026 10:18:02 +0000",
+      "replies": [
+        {
+          "messageId": "19ff05442227a4c6",
+          "date": "Tue, 11 Aug 2026 10:18:02 +0000",
+          "snippet": "Hello. He ask now if lower prices one week earlier? ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser",
+          "category": "positive",
+          "translation": "Einar Gulbrandsen, bir hafta daha erken fiyat indirimi olup olmadığını soruyor. Golf turu için fiyat müzakeresi yapılmak isteniyor."
+        }
+      ]
+    },
+    {
+      "threadId": "19feaca25927f493",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Kristian Reed",
+      "lastMessageId": "19ff9e23b61497e8",
+      "latestCategory": "positive",
+      "latestDate": "Thu, 13 Aug 2026 06:49:41 +0000",
+      "replies": [
+        {
+          "messageId": "19ff9e23b61497e8",
+          "date": "Thu, 13 Aug 2026 06:49:41 +0000",
+          "snippet": "This booking is confirmed for 3 pax in 1 x dbl/twin + 1 x sngl I will send you all details soon ------------------------------------------------------------------------------------------ DinGolfReise",
+          "category": "positive",
+          "translation": "Kristian Reed için 3 kişilik rezervasyon onaylanmış. Kısa süre içinde tüm detaylar gönderilecek."
+        }
+      ]
+    },
+    {
+      "threadId": "1951895a8c619403",
+      "from": "\"Demet UR | Sueno Hotels Satış Pazarlama\" <demet.dikmen@sueno.com.tr>",
+      "subject": "SHGB ve SHDB 2026 GOLF PAKETLERI HAKKINDA",
+      "lastMessageId": "1951895a8c619403",
+      "latestCategory": "positive",
+      "latestDate": "Tue, 18 Feb 2025 13:23:36 +0300",
+      "replies": [
+        {
+          "messageId": "1951895a8c619403",
+          "date": "Tue, 18 Feb 2025 13:23:36 +0300",
+          "snippet": "Değerli Partnerlerimiz, Sueno Hotels Golf Belek ve Sueno Hotels Deluxe Belek için 2026 yılı EURO&amp;GBP 7 gecelik golf paketleri ekte bilginize sunulmuştur. İlgili fiyat listelerini çalışanlarınız ile",
+          "category": "positive",
+          "translation": "Sueno Hotels Golf Belek ve Deluxe Belek için 2026 yılı 7 gece golf paketleri sunulmuş. Fiyat listeleri ekli olarak paylaşılmıştır."
+        }
+      ]
+    },
+    {
+      "threadId": "19fefbeaeb0c2929",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Titanic / Cullinan courses",
+      "lastMessageId": "19ff009b8f19ab4c",
+      "latestCategory": "positive",
+      "latestDate": "Tue, 11 Aug 2026 08:56:37 +0000",
+      "replies": [
+        {
+          "messageId": "19ff009b8f19ab4c",
+          "date": "Tue, 11 Aug 2026 08:56:37 +0000",
+          "snippet": "You will soon be back as before... 🙂 I look forward to keeping you busy this week... 🙂 ------------------------------------------------------------------------------------------ DinGolfReise er den",
+          "category": "positive",
+          "translation": "Titanic/Cullinan kursları hakkında olumlu bir yanıt. Kişi bu hafta görev almak için sabırsız bekliyor."
+        }
+      ]
+    },
+    {
+      "threadId": "19fc3f07ef01fffc",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: New system for arrival?",
+      "lastMessageId": "19feffa7321d1515",
+      "latestCategory": "other",
+      "latestDate": "Tue, 11 Aug 2026 08:39:56 +0000",
+      "replies": [
+        {
+          "messageId": "19feffa7321d1515",
+          "date": "Tue, 11 Aug 2026 08:39:56 +0000",
+          "snippet": "Ok. I was thinking more about the system at the airport for arriving guests. I know other talk about a system inside the arrival regarding how you will find the person that are picking you up... ------",
+          "category": "other",
+          "translation": "Havaalanı varış sistemi hakkında operasyonel bir soru sorulmuş. Konuk karşılama prosedürü ile ilgili detay konuşması."
+        }
+      ]
+    },
+    {
+      "threadId": "19feff505e738d28",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Beginner golf training package enquiry: 25–31 October 2026",
+      "lastMessageId": "19fffc373f387c18",
+      "latestCategory": "positive",
+      "latestDate": "Fri, 14 Aug 2026 10:13:47 +0000",
+      "replies": [
+        {
+          "messageId": "19fffc373f387c18",
+          "date": "Fri, 14 Aug 2026 10:13:47 +0000",
+          "snippet": "Attached Reservation Mr. Chris Kumar. Please confirm and send invoice. ------------------------------------------------------------------------------------------ DinGolfReise er den største norske",
+          "category": "positive",
+          "translation": "Chris Kumar için başlangıç seviyesi golf eğitim paketi (25-31 Ekim 2026). Rezervasyon ekte, fatura gönderilmesini istiyor."
+        }
+      ]
+    },
+    {
+      "threadId": "19f31831ce4d01a9",
+      "from": "Jaap Hoekstra <j.hoekstra@kpexs.com>",
+      "subject": "Re: Attn Elena",
+      "lastMessageId": "19ff0c4d6c843d63",
+      "latestCategory": "positive",
+      "latestDate": "Tue, 11 Aug 2026 13:21:00 +0100",
+      "replies": [
+        {
+          "messageId": "19ff0c4d6c843d63",
+          "date": "Tue, 11 Aug 2026 13:21:00 +0100",
+          "snippet": "Hi Elena Good to hear from you and yes, we are still planning the golf trip to Mal in the month of April 2027. It looks like the group is gonna be a little bit bigger than expected it - We&#39;re",
+          "category": "positive",
+          "translation": "Elena'ya, Nisan 2027'de Mal'a golf turu planlandığını ve grup beklenenden daha büyük olabileceğini bildiriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "19fefee5c2949d84",
+      "from": "\"Şeyma Tongut\" <golfsales1@corneliadiamond.com>",
+      "subject": "RE: Fiyat Teklifi Talebi - 25.10.-31.10.2026 - Accommodation+Lessons with Pro",
+      "lastMessageId": "19ff0764a5c484d1",
+      "latestCategory": "positive",
+      "latestDate": "Tue, 11 Aug 2026 10:55:12 +0000",
+      "replies": [
+        {
+          "messageId": "19ff0764a5c484d1",
+          "date": "Tue, 11 Aug 2026 10:55:12 +0000",
+          "snippet": "Merhaba Elena Hanım, Bu rezervasyona özel konaklama fiyatlandırması kapsamında, ilgili tarihler için 6 gece konaklama + 1 round golf paketimizden kullanabileceğinizi bilgilerinize sunarız. Golf",
+          "category": "positive",
+          "translation": "Elena Hanım için 25-31 Ekim 2026 tarihinde 6 gece konaklama + golf round paketi sunulmuş. Özel fiyatlandırma sağlanıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "19fefd03bcbf2c61",
+      "from": "\"Tuğba Uçak\" <golf.sales2@swandorhotels.com>",
+      "subject": "RE: Summer 2027 Hotel Concept - URGENT!",
+      "lastMessageId": "19ff08272c0d868b",
+      "latestCategory": "later",
+      "latestDate": "Tue, 11 Aug 2026 11:08:29 +0000",
+      "replies": [
+        {
+          "messageId": "19ff08272c0d868b",
+          "date": "Tue, 11 Aug 2026 11:08:29 +0000",
+          "snippet": "Merhaba Anastasiya Hanım, Öncelikle güzel bir gün dilerim. 2027 yaz konsepti henüz hazırlanma aşamasındadır. Hazır olunca tarafınıza gönderilecektir. Saygılarımla, Tuğba Uçak Golf Sales&amp;Marketing",
+          "category": "later",
+          "translation": "Anastasiya Hanım'a, 2027 yaz konsepti henüz hazırlama aşamasında olduğunu, hazır olunca gönderileceğini bildiriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "19faa032fa9f03cc",
+      "from": "Johannes Wehr <johanneswehr65@gmail.com>",
+      "subject": "AW: Rückzahlungsvereinbarung",
+      "lastMessageId": "19fcd322ac449ded",
+      "latestCategory": "positive",
+      "latestDate": "Tue, 4 Aug 2026 14:34:05 +0000",
+      "replies": [
+        {
+          "messageId": "19fcd322ac449ded",
+          "date": "Tue, 4 Aug 2026 14:34:05 +0000",
+          "snippet": "Hallo Elena, zuerst die positive Nachricht, das Geld ist auf unserem Konto eingegangen. Es wäre schön, wenn wir auch die letzte Hürde noch meistern könnten. Diese beiden Belege von Sun Express liegen",
+          "category": "positive",
+          "translation": "Elena'ya, para hesaba yatırıldığını ve son hürdenin aşılması için çalışıldığını bildiriyor. Sun Express belgeleri ile ilgili detay var."
+        }
+      ]
+    },
+    {
+      "threadId": "19ef443aec2d5cf3",
+      "from": "Yvette Vaughan Jones <yvette@yvjones.com>",
+      "subject": "Re: Our visit from 24 - 30 September 2026 / Yvette Morgan - INVOICE",
+      "lastMessageId": "1a034ed87d9e9421",
+      "latestCategory": "positive",
+      "latestDate": "Mon, 24 Aug 2026 18:59:37 +0100",
+      "replies": [
+        {
+          "messageId": "1a034ed87d9e9421",
+          "date": "Mon, 24 Aug 2026 18:59:37 +0100",
+          "snippet": "Please can you tell us if we can use our bank card to pay as we did for the deposit. Best wishes Yvette Vaughan Jones yvette@yvjones.com Consultant - Arts Culture and Governance mob: +44(0)7816781287",
+          "category": "positive",
+          "translation": "Yvette Vaughan Jones, 24-30 Eylül 2026 ziyareti için banka kartı ile ödeme yapabilip yapamayacağını soruyor."
+        }
+      ]
+    },
+    {
+      "threadId": "19eca7079db91ba7",
+      "from": "\"Tuğba Uçak\" <golf.sales2@swandorhotels.com>",
+      "subject": "FW: LOGO HAKKINDA",
+      "lastMessageId": "19eca7079db91ba7",
+      "latestCategory": "other",
+      "latestDate": "Mon, 15 Jun 2026 11:40:29 +0300",
+      "replies": [
+        {
+          "messageId": "19eca7079db91ba7",
+          "date": "Mon, 15 Jun 2026 11:40:29 +0300",
+          "snippet": "Kindly Reminder… Tuğba Uçak Golf Sales&amp;Marketing Representative golf.sales2@swandorhotels.com T M : +90 242 744 26 00 : +90 505 190 89 03 Lykia World &amp; Links Golf Antalya Antalya,Manavgat",
+          "category": "other",
+          "translation": "Logo ile ilgili hatırlatıcı mesaj. Tuğba Uçak'tan Golf Sales & Marketing ekibinin iletişim bilgileri bulunuyor."
+        }
+      ]
+    },
+    {
+      "threadId": "19df1d1b3493ca9e",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Reservation Mr. Ottar Breivik (family group) INVOICE",
+      "lastMessageId": "19df7ee1e218c796",
+      "latestCategory": "positive",
+      "latestDate": "Tue, 5 May 2026 14:37:51 +0300",
+      "replies": [
+        {
+          "messageId": "19df7ee1e218c796",
+          "date": "Tue, 5 May 2026 14:37:51 +0300",
+          "snippet": "I do not know what you have informed them about a refund for the original booking / stay? If you told them they will get a refund, then it will be problem for me to say they will not get a refund... --",
+          "category": "positive",
+          "translation": "Ottar Breivik'in aile grubu rezervasyonu hakkında geri ödeme detayları ile ilgili önemli bir muhasebe/operasyonel takip."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0909d7e07cf2f2",
+      "from": "Debra Shepherd <debra.shepherd@surbitongolfclub.com>",
+      "subject": "Automatic reply: A considered Belek group-golf option for Surbiton Golf Club",
+      "lastMessageId": "1a0909d7e07cf2f2",
+      "latestCategory": "other",
+      "latestDate": "Fri, 11 Sep 2026 13:17:16 +0000",
+      "replies": [
+        {
+          "messageId": "1a0909d7e07cf2f2",
+          "date": "Fri, 11 Sep 2026 13:17:16 +0000",
+          "snippet": "I am currently out of the office, returning on Tuesday 22nd September, with no access to emails. If there&#39;s anything urgent, please contact susan.ward@surbitongolfclub.com All invoices, statements",
+          "category": "other",
+          "translation": "Otomatik yanıt: Susan Ward, 22 Eylül'de dönüş yapacak. Acil konular için email veya telefon numarası referans alınmış."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0909cf60b125b4",
+      "from": "Contact <contact@thescandinavian.dk>",
+      "subject": "Automatic reply: Belka Golf — gruppegolfkoncept til The Scandinavian Golf Club",
+      "lastMessageId": "1a0909cf60b125b4",
+      "latestCategory": "other",
+      "latestDate": "Fri, 11 Sep 2026 13:16:41 +0000",
+      "replies": [
+        {
+          "messageId": "1a0909cf60b125b4",
+          "date": "Fri, 11 Sep 2026 13:16:41 +0000",
+          "snippet": "Tak for din henvendelse Thank you for your inquiry Tak for din mail og for at kontakte The Scandinavian. Vi værdsætter din interesse i vores klub. Thank you for your email and for reaching out to The",
+          "category": "other",
+          "translation": "Otomatik yanıt: The Scandinavian Golf Club tarafından gelen mail'e otomatik cevap. Danemark'tan kulübe yapılan sorgu."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0909cf2f19b928",
+      "from": "Contact <contact@thescandinavian.dk>",
+      "subject": "Automatic reply: Belka Golf — gruppegolfkoncept til The Scandinavian Golf Club",
+      "lastMessageId": "1a0909cf2f19b928",
+      "latestCategory": "other",
+      "latestDate": "Fri, 11 Sep 2026 13:16:40 +0000",
+      "replies": [
+        {
+          "messageId": "1a0909cf2f19b928",
+          "date": "Fri, 11 Sep 2026 13:16:40 +0000",
+          "snippet": "Tak for din henvendelse Thank you for your inquiry Tak for din mail og for at kontakte The Scandinavian. Vi værdsætter din interesse i vores klub. Thank you for your email and for reaching out to The",
+          "category": "other",
+          "translation": "Otomatik yanıt mesajı. The Scandinavian Golf Club'tan teşekkür ve ilgi için takdir mesajı. Gerçek bir insan cevabı değil, otomatik cevaplama sistemi."
+        }
+      ]
     }
   ],
   "recipientAddresses": [
@@ -2510,5 +3802,5 @@
     "stefan.meyer59@gmail.com",
     "gianpaolofanti@aon.at"
   ],
-  "lastRunAt": "2026-09-12T06:04:38.298Z"
+  "lastRunAt": "2026-09-12T07:29:50.092Z"
 }
