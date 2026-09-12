@@ -808,13 +808,19 @@ async function handleGrowthOsScan(req, res, accessToken) {
   // thread'de yeni bir mesaj geldiğinde bunu doğru şekilde "güncelleme" olarak yakalar.
   const lastProcessedMsgId = new Map(store.items.map((it) => [it.threadId, it.lastMessageId]));
 
-  // label:growth-os in:inbox - Growth OS'un cevaplarının indiği yer. Not: Gmail'in bu
-  // etiket üzerindeki in:inbox araması bazen tutarsız olabiliyor (Growth OS projesinde
-  // gözlemlendi) - şimdilik tek sorgu yeterli kabul ediliyor, sorun çıkarsa genişletilir.
-  const q = 'label:growth-os in:inbox';
+  // 09.09.2026 SORUN ÇIKTI (kullanıcı bulguları): "label:growth-os in:inbox" sorgusu
+  // ~400 gönderilen maile karşı sadece 8 cevap buldu - şüpheli derecede düşük. Growth OS
+  // projesinin kendi geçmişinde AYNI risk zaten belgelenmişti: Gmail'in bu etiket
+  // üzerindeki "in:inbox" araması güvenilmez/eksik sonuç verebiliyor. Düzeltme: artık
+  // SADECE etikete göre arıyoruz (in:inbox kısıtlaması KALDIRILDI) - kendi kodumuzda
+  // zaten "bizim domainimizden gelmeyen son mesaj" mantığıyla gerçek cevapları
+  // ayıklıyoruz (aşağıda), Gmail'in in:inbox indekslemesine hiç bağımlı değiliz artık.
+  const q = 'label:growth-os';
   let threads = [];
   let pageToken = '';
-  for (let i = 0; i < 6; i++) {
+  // Sayfalama sınırı 6'dan 10'a çıkarıldı (09.09.2026) - 400+ gönderilen mail varsa 6
+  // sayfa (maks. 300 thread) hepsini kapsamayabilirdi, bazıları hiç taranmadan atlanırdı.
+  for (let i = 0; i < 10; i++) {
     const url = `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(q)}&maxResults=50${pageToken ? `&pageToken=${pageToken}` : ''}`;
     const listRes = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
     const listData = await listRes.json();
@@ -830,7 +836,10 @@ async function handleGrowthOsScan(req, res, accessToken) {
   for (const group of chunk(threads.map((t) => t.id), 10)) {
     const details = await Promise.all(
       group.map((id) =>
-        fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${id}?format=full`,
+        // format=metadata (tam içerik değil) - bu tarama aşamasında sadece kimden/tarih/
+        // konu/özet gerekiyor, tam mesaj gövdesi değil. 400+ thread taranacağı için bu,
+        // Vercel'in süre sınırına takılmamak adına önemli bir hız kazancı sağlıyor.
+        fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${id}?format=metadata&metadataHeaders=From&metadataHeaders=Date&metadataHeaders=Subject`,
           { headers: { Authorization: `Bearer ${accessToken}` } }
         ).then((r) => r.json()).catch(() => null)
       )
