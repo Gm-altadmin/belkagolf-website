@@ -2575,23 +2575,6 @@
       ]
     },
     {
-      "threadId": "1a01f539eb0fb119",
-      "from": "\"Sona ASHRAFI | Sueno Hotels Satış Pazarlama\" <sona.ashrafi@sueno.com.tr>",
-      "subject": "RE: FİYAT TEKLİFİ TALEBİ - 21.05.-25.05.2027 - 4 Gece+4 Greenfee",
-      "lastMessageId": "1a02445de3ae28db",
-      "latestCategory": "positive",
-      "latestDate": "Fri, 21 Aug 2026 12:22:34 +0000",
-      "replies": [
-        {
-          "messageId": "1a02445de3ae28db",
-          "date": "Fri, 21 Aug 2026 12:22:34 +0000",
-          "snippet": "Merhaba Elena Hanım, Talep edilen dönemde sizlere 2 farklı seçenek sunarak yardımcı olmak isteriz. Talep etmiş olduğunuz dönemde, 7 gece altındaki konaklamalar için minimum 6 gece üzerinden paket",
-          "category": "positive",
-          "translation": "Talep edilen tarihte iki farklı seçenek sunarak yardımcı olmaya istekli. Detaylı fiyat ve koşullar sunuluyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a00d4abc646c916",
       "from": "\"樓宇涵\" <zoe112073511@gapp.nthu.edu.tw>",
       "subject": "Re: Inquiry: Dinner Venue and Meeting Room Rental with AV Equipment (Oct 5–9)",
@@ -3199,5 +3182,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:26:00.881Z"
+  "lastRunAt": "2026-09-12T15:26:05.164Z"
 }
