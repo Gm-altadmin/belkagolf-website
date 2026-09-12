@@ -1419,23 +1419,6 @@
       ]
     },
     {
-      "threadId": "1a08519ccec9a1fa",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "A considered Belek group-golf option for Saltford Golf Club",
-      "lastMessageId": "1a08519ccec9a1fa",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 9 Sep 2026 03:37:35 -0400",
-      "replies": [
-        {
-          "messageId": "1a08519ccec9a1fa",
-          "date": "Wed, 9 Sep 2026 03:37:35 -0400",
-          "snippet": "Hello Joe Bray, Belka Golf works with European golf partners such as Saltford Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground, with",
-          "category": "positive",
-          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Saltford Golf Club'a tanıtıyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851980ec6105a",
       "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
       "subject": "Belka Golf — ryhmägolfkonsepti kohteelle Helsingin Golfklubi ry",
@@ -2655,5 +2638,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:29:42.144Z"
+  "lastRunAt": "2026-09-12T15:29:45.222Z"
 }
