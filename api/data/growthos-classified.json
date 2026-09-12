@@ -3306,23 +3306,6 @@
       ]
     },
     {
-      "threadId": "19faa032fa9f03cc",
-      "from": "Johannes Wehr <johanneswehr65@gmail.com>",
-      "subject": "AW: Rückzahlungsvereinbarung",
-      "lastMessageId": "19fcd322ac449ded",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 4 Aug 2026 14:34:05 +0000",
-      "replies": [
-        {
-          "messageId": "19fcd322ac449ded",
-          "date": "Tue, 4 Aug 2026 14:34:05 +0000",
-          "snippet": "Hallo Elena, zuerst die positive Nachricht, das Geld ist auf unserem Konto eingegangen. Es wäre schön, wenn wir auch die letzte Hürde noch meistern könnten. Diese beiden Belege von Sun Express liegen",
-          "category": "positive",
-          "translation": "Elena'ya, para hesaba yatırıldığını ve son hürdenin aşılması için çalışıldığını bildiriyor. Sun Express belgeleri ile ilgili detay var."
-        }
-      ]
-    },
-    {
       "threadId": "19ef443aec2d5cf3",
       "from": "Yvette Vaughan Jones <yvette@yvjones.com>",
       "subject": "Re: Our visit from 24 - 30 September 2026 / Yvette Morgan - INVOICE",
@@ -3743,5 +3726,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:22:56.027Z"
+  "lastRunAt": "2026-09-12T15:23:05.592Z"
 }
