@@ -2558,23 +2558,6 @@
       ]
     },
     {
-      "threadId": "1a037df41641684a",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Reservation Mr. Alexander Hofset INVOICE (Updated)",
-      "lastMessageId": "1a06c0ada2a90ed8",
-      "latestCategory": "positive",
-      "latestDate": "Fri, 4 Sep 2026 10:50:46 +0000",
-      "replies": [
-        {
-          "messageId": "1a06c0ada2a90ed8",
-          "date": "Fri, 4 Sep 2026 10:50:46 +0000",
-          "snippet": "Hello. Attached updated reservation. Now change in flights for departure. Please confirm. ------------------------------------------------------------------------------------------ DinGolfReise er den",
-          "category": "positive",
-          "translation": "Alexander Hofset'in güncellenen rezervasyonu ekte, uçuş değişikliği var, onay bekleniyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a02443dfd96e483",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Hello",
@@ -3845,5 +3828,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:21:56.526Z"
+  "lastRunAt": "2026-09-12T15:22:02.501Z"
 }
