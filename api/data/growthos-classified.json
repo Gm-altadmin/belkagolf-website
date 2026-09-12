@@ -1648,7 +1648,867 @@
           "translation": "Belka Golf, Golfklubben Hvide Klit gibi Avrupa golf kulüpleriyle Belek'e golf seyahatleri için grup paketleri (green fees, otel ve yerel destek dahil) üzerine işbirliği yapıyor. Kulübe yönelik şeffaf bir teklif sunuluyor."
         }
       ]
+    },
+    {
+      "threadId": "1a0851b3adfaa146",
+      "from": "Mail Delivery Subsystem <mailer-daemon@googlemail.com>",
+      "subject": "Delivery Status Notification (Delay)",
+      "lastMessageId": "1a08f794c84acfb8",
+      "latestCategory": "other",
+      "latestDate": "Fri, 11 Sep 2026 00:58:06 -0700 (PDT)",
+      "replies": [
+        {
+          "messageId": "1a08f794c84acfb8",
+          "date": "Fri, 11 Sep 2026 00:58:06 -0700 (PDT)",
+          "snippet": "Teslim tamamlanmadı İletiniz formann@brgolf.no adresine teslim edilirken geçici bir sorun oluştu. Gmail 23 saat boyunca iletiyi yeniden göndermeyi deneyecek. Teslim kalıcı olarak başarısız olursa",
+          "category": "other",
+          "translation": "Gmail teslim hatası bildirimi. Mail formann@brgolf.no adresine gönderilemedi, sistem 23 saat boyunca yeniden deneyecek."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0851b2b04d6f5c",
+      "from": "Mail Delivery Subsystem <mailer-daemon@googlemail.com>",
+      "subject": "Delivery Status Notification (Failure)",
+      "lastMessageId": "1a0851b3015d9c7a",
+      "latestCategory": "other",
+      "latestDate": "Wed, 09 Sep 2026 00:39:06 -0700 (PDT)",
+      "replies": [
+        {
+          "messageId": "1a0851b3015d9c7a",
+          "date": "Wed, 09 Sep 2026 00:39:06 -0700 (PDT)",
+          "snippet": "Adres bulunamadı davis.puksts@jurmalagolf.lv e-posta adresi bulunamadığından veya e-posta alamadığından iletiniz teslim edilemedi. DAHA FAZLA BİLGİ Sunucudan gelen yanıt: 550 5.1.1 The email account",
+          "category": "other",
+          "translation": "E-posta teslim hatası. davis.puksts@jurmalagolf.lv adresi bulunamadığı için mesaj teslim edilemedi."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0851b0b79715ad",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Magyar Golf Szövetség",
+      "lastMessageId": "1a0851b0b79715ad",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 00:38:56 -0700",
+      "replies": [
+        {
+          "messageId": "1a0851b0b79715ad",
+          "date": "Wed, 9 Sep 2026 00:38:56 -0700",
+          "snippet": "Hello Zilahy Csaba, Belka Golf works with European golf partners such as Magyar Golf Szövetség on a transparent group-golf package for Belek — including green fees, hotel and local support on the",
+          "category": "positive",
+          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Magyar Golf Szövetség'e tanıtıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0851affccaf2df",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Magyar Golf Szövetség",
+      "lastMessageId": "1a0851affccaf2df",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 03:38:54 -0400",
+      "replies": [
+        {
+          "messageId": "1a0851affccaf2df",
+          "date": "Wed, 9 Sep 2026 03:38:54 -0400",
+          "snippet": "Hello Závodszky Zoltán, Belka Golf works with European golf partners such as Magyar Golf Szövetség on a transparent group-golf package for Belek — including green fees, hotel and local support on the",
+          "category": "positive",
+          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Magyar Golf Szövetség'e tanıtıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0851aed644ddbd",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Croatian Golf Federation (GSH)",
+      "lastMessageId": "1a0851aed644ddbd",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 00:38:49 -0700",
+      "replies": [
+        {
+          "messageId": "1a0851aed644ddbd",
+          "date": "Wed, 9 Sep 2026 00:38:49 -0700",
+          "snippet": "Hello Marko Stepinac, Belka Golf works with European golf partners such as Croatian Golf Federation (GSH) on a transparent group-golf package for Belek — including green fees, hotel and local support",
+          "category": "positive",
+          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Croatian Golf Federation'a tanıtıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0851ab80f003a7",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Girton Golf Club",
+      "lastMessageId": "1a0851ab80f003a7",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 03:38:36 -0400",
+      "replies": [
+        {
+          "messageId": "1a0851ab80f003a7",
+          "date": "Wed, 9 Sep 2026 03:38:36 -0400",
+          "snippet": "Hello Giuseppe Ungaro, Belka Golf works with European golf partners such as Girton Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground,",
+          "category": "positive",
+          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Girton Golf Club'a tanıtıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0851a6ff568e43",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Burnham & Berrow Golf Club",
+      "lastMessageId": "1a0851a6ff568e43",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 00:38:17 -0700",
+      "replies": [
+        {
+          "messageId": "1a0851a6ff568e43",
+          "date": "Wed, 9 Sep 2026 00:38:17 -0700",
+          "snippet": "Hello Barney Coleman, Belka Golf works with European golf partners such as Burnham &amp; Berrow Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support",
+          "category": "positive",
+          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Burnham & Berrow Golf Club'a tanıtıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0851a67169cbb6",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for East Devon Golf Club",
+      "lastMessageId": "1a0851a67169cbb6",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 00:38:14 -0700",
+      "replies": [
+        {
+          "messageId": "1a0851a67169cbb6",
+          "date": "Wed, 9 Sep 2026 00:38:14 -0700",
+          "snippet": "Hello Paul Deeprose, Belka Golf works with European golf partners such as East Devon Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the",
+          "category": "positive",
+          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu East Devon Golf Club'a tanıtıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0851a4a6bda653",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Buckingham Golf Club",
+      "lastMessageId": "1a0851a4a6bda653",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 00:38:08 -0700",
+      "replies": [
+        {
+          "messageId": "1a0851a4a6bda653",
+          "date": "Wed, 9 Sep 2026 00:38:08 -0700",
+          "snippet": "Hello Michael Grace, Belka Golf works with European golf partners such as Buckingham Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the",
+          "category": "positive",
+          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Buckingham Golf Club'a tanıtıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0851a409315321",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Buckingham Golf Club",
+      "lastMessageId": "1a0851a409315321",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 00:38:05 -0700",
+      "replies": [
+        {
+          "messageId": "1a0851a409315321",
+          "date": "Wed, 9 Sep 2026 00:38:05 -0700",
+          "snippet": "Hello Greg Hannah, Belka Golf works with European golf partners such as Buckingham Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground,",
+          "category": "positive",
+          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Buckingham Golf Club'a tanıtıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0851a0f252d3bc",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Broadstone Golf Club",
+      "lastMessageId": "1a0851a0f252d3bc",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 00:37:52 -0700",
+      "replies": [
+        {
+          "messageId": "1a0851a0f252d3bc",
+          "date": "Wed, 9 Sep 2026 00:37:52 -0700",
+          "snippet": "Hello Jon Dry, Belka Golf works with European golf partners such as Broadstone Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground,",
+          "category": "positive",
+          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Broadstone Golf Club'a tanıtıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a08519e8bb1830d",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Thornbury Golf Centre",
+      "lastMessageId": "1a08519e8bb1830d",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 00:37:42 -0700",
+      "replies": [
+        {
+          "messageId": "1a08519e8bb1830d",
+          "date": "Wed, 9 Sep 2026 00:37:42 -0700",
+          "snippet": "Hello Gary Norcott, Belka Golf works with European golf partners such as Thornbury Golf Centre on a transparent group-golf package for Belek — including green fees, hotel and local support on the",
+          "category": "positive",
+          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Thornbury Golf Centre'a tanıtıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a08519ccec9a1fa",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Saltford Golf Club",
+      "lastMessageId": "1a08519ccec9a1fa",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 03:37:35 -0400",
+      "replies": [
+        {
+          "messageId": "1a08519ccec9a1fa",
+          "date": "Wed, 9 Sep 2026 03:37:35 -0400",
+          "snippet": "Hello Joe Bray, Belka Golf works with European golf partners such as Saltford Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground, with",
+          "category": "positive",
+          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Saltford Golf Club'a tanıtıyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0851980ec6105a",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — ryhmägolfkonsepti kohteelle Helsingin Golfklubi ry",
+      "lastMessageId": "1a0851980ec6105a",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 00:37:16 -0700",
+      "replies": [
+        {
+          "messageId": "1a0851980ec6105a",
+          "date": "Wed, 9 Sep 2026 00:37:16 -0700",
+          "snippet": "Hei Antti Ahti, Belka Golf tekee yhteistyötä eurooppalaisten golfkumppaneiden, kuten Helsingin Golfklubi ry, kanssa läpinäkyvän ryhmägolfmatkapaketin parissa Belekiin — mukaan lukien green feet,",
+          "category": "positive",
+          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Helsingin Golfklubi ry'ye tanıtıyor (Fince)."
+        }
+      ]
+    },
+    {
+      "threadId": "1a085193d10376f1",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — gruppegolfkoncept til Dronninglund Golfklub",
+      "lastMessageId": "1a085193d10376f1",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 9 Sep 2026 00:36:58 -0700",
+      "replies": [
+        {
+          "messageId": "1a085193d10376f1",
+          "date": "Wed, 9 Sep 2026 00:36:58 -0700",
+          "snippet": "Hej Steen Christensen, Belka Golf samarbejder med europæiske golfpartnere som Dronninglund Golfklub om en gennemsigtig gruppepakke til golfrejser til Belek — inklusive green fees, hotel og lokal",
+          "category": "positive",
+          "translation": "Belka Golf'un Belek'te grup golf paketi (green fees, otel, yerel destek) sunduğunu Dronninglund Golfklub'a tanıtıyor (Danca)."
+        }
+      ]
+    },
+    {
+      "threadId": "1a08519336eba927",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — gruppegolfkoncept til Dronninglund Golfklub",
+      "lastMessageId": "1a08519336eba927",
+      "latestCategory": "other",
+      "latestDate": "Wed, 9 Sep 2026 00:36:56 -0700",
+      "replies": [
+        {
+          "messageId": "1a08519336eba927",
+          "date": "Wed, 9 Sep 2026 00:36:56 -0700",
+          "snippet": "Hej Heidi Selmer Pedersen, Belka Golf samarbejder med europæiske golfpartnere som Dronninglund Golfklub om en gennemsigtig gruppepakke til golfrejser til Belek — inklusive green fees, hotel og lokal",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif mesajıdır, alıcıdan gelen bir yanıt değildir. Belka Golf'un Dronninglund Golfklub'a Belek'te grup golf paketi (green fees, otel, lokal destek dahil) hakkında iş ortaklığı teklifini içerir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a085191584b28a7",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — gruppegolfkoncept til Dragør Golfklub",
+      "lastMessageId": "1a085191584b28a7",
+      "latestCategory": "other",
+      "latestDate": "Wed, 9 Sep 2026 03:36:48 -0400",
+      "replies": [
+        {
+          "messageId": "1a085191584b28a7",
+          "date": "Wed, 9 Sep 2026 03:36:48 -0400",
+          "snippet": "Hej Nicholas Juul Andersen, Belka Golf samarbejder med europæiske golfpartnere som Dragør Golfklub om en gennemsigtig gruppepakke til golfrejser til Belek — inklusive green fees, hotel og lokal support",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif mesajıdır, alıcıdan gelen bir yanıt değildir. Belka Golf'un Dragør Golfklub'a Belek grup golf paketi hakkında iş ortaklığı teklifini içerir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a085190917d1299",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — gruppegolfkoncept til Brønderslev Golfklub",
+      "lastMessageId": "1a085190917d1299",
+      "latestCategory": "other",
+      "latestDate": "Wed, 9 Sep 2026 00:36:45 -0700",
+      "replies": [
+        {
+          "messageId": "1a085190917d1299",
+          "date": "Wed, 9 Sep 2026 00:36:45 -0700",
+          "snippet": "Hej Peter Stecher, Belka Golf samarbejder med europæiske golfpartnere som Brønderslev Golfklub om en gennemsigtig gruppepakke til golfrejser til Belek — inklusive green fees, hotel og lokal support på",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif mesajıdır, alıcıdan gelen bir yanıt değildir. Belka Golf'un Brønderslev Golfklub'a Belek grup golf paketi hakkında iş ortaklığı teklifini içerir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a08518cfaf3e065",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — Gruppengolf-Konzept für Golfpark München Aschheim",
+      "lastMessageId": "1a08518cfaf3e065",
+      "latestCategory": "other",
+      "latestDate": "Wed, 9 Sep 2026 00:36:30 -0700",
+      "replies": [
+        {
+          "messageId": "1a08518cfaf3e065",
+          "date": "Wed, 9 Sep 2026 00:36:30 -0700",
+          "snippet": "Guten Tag Stefan Szilagyi, Belka Golf arbeitet mit europäischen Golfpartnern wie Golfpark München Aschheim an einem transparenten Gruppengolf-Angebot in Belek — inklusive Green Fees, Hotel und lokaler",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif mesajıdır, alıcıdan gelen bir yanıt değildir. Belka Golf'un Golfpark München Aschheim'a Belek'te grup golf paketi hakkında teklifini içerir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a08518c12abc688",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — Gruppengolf-Konzept für Golfpark München Aschheim",
+      "lastMessageId": "1a08518c12abc688",
+      "latestCategory": "other",
+      "latestDate": "Wed, 9 Sep 2026 03:36:26 -0400",
+      "replies": [
+        {
+          "messageId": "1a08518c12abc688",
+          "date": "Wed, 9 Sep 2026 03:36:26 -0400",
+          "snippet": "Guten Tag Florian David, Belka Golf arbeitet mit europäischen Golfpartnern wie Golfpark München Aschheim an einem transparenten Gruppengolf-Angebot in Belek — inklusive Green Fees, Hotel und lokaler",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif mesajıdır, alıcıdan gelen bir yanıt değildir. Belka Golf'un Golfpark München Aschheim'a Belek grup golf paketi hakkında teklifini içerir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0851843a9ea2ff",
+      "from": "Mail Delivery Subsystem <mailer-daemon@googlemail.com>",
+      "subject": "Delivery Status Notification (Failure)",
+      "lastMessageId": "1a085184ae31b5fa",
+      "latestCategory": "other",
+      "latestDate": "Wed, 09 Sep 2026 00:35:56 -0700 (PDT)",
+      "replies": [
+        {
+          "messageId": "1a085184ae31b5fa",
+          "date": "Wed, 09 Sep 2026 00:35:56 -0700 (PDT)",
+          "snippet": "Adres bulunamadı mares@gcko.cz e-posta adresi bulunamadığından veya e-posta alamadığından iletiniz teslim edilemedi. Uzak sunucunun yanıtı şuydu: 550 5.1.1 sorry, no such mailbox here",
+          "category": "other",
+          "translation": "E-posta teslim edilemedi uyarısı. mares@gcko.cz adresine gönderilen mesaj sistem tarafından reddedilmiş, böyle bir posta kutusu mevcut değildir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a085180e856b456",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Golf Resort Konopiště",
+      "lastMessageId": "1a085180e856b456",
+      "latestCategory": "other",
+      "latestDate": "Wed, 9 Sep 2026 00:35:41 -0700",
+      "replies": [
+        {
+          "messageId": "1a085180e856b456",
+          "date": "Wed, 9 Sep 2026 00:35:41 -0700",
+          "snippet": "Hello Petr Kunc, Belka Golf works with European golf partners such as Golf Resort Konopiště on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground,",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif mesajıdır, alıcıdan gelen bir yanıt değildir. Belka Golf'un Golf Resort Konopiště'ye Belek grup golf paketi hakkında teklifini içerir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a081142caffe4df",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Magyar Golf Szövetség",
+      "lastMessageId": "1a081142caffe4df",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 05:52:58 -0700",
+      "replies": [
+        {
+          "messageId": "1a081142caffe4df",
+          "date": "Tue, 8 Sep 2026 05:52:58 -0700",
+          "snippet": "Hello Dr. Schaller-Baross Ernő, Belka Golf works with European golf partners such as Magyar Golf Szövetség on a transparent group-golf package for Belek — including green fees, hotel and local support",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif mesajıdır, alıcıdan gelen bir yanıt değildir. Belka Golf'un Magyar Golf Szövetség'e Belek grup golf paketi hakkında teklifini içerir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0811416b31e4fd",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Croatian Golf Federation (GSH)",
+      "lastMessageId": "1a0811416b31e4fd",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 05:52:52 -0700",
+      "replies": [
+        {
+          "messageId": "1a0811416b31e4fd",
+          "date": "Tue, 8 Sep 2026 05:52:52 -0700",
+          "snippet": "Hello Mirela Tepić, Belka Golf works with European golf partners such as Croatian Golf Federation (GSH) on a transparent group-golf package for Belek — including green fees, hotel and local support on",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif mesajıdır, alıcıdan gelen bir yanıt değildir. Belka Golf'un Hırvatistan Golf Federasyonu'na Belek grup golf paketi hakkında teklifini içerir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a081140562e2fc7",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Knowle Golf Club",
+      "lastMessageId": "1a081140562e2fc7",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 05:52:48 -0700",
+      "replies": [
+        {
+          "messageId": "1a081140562e2fc7",
+          "date": "Tue, 8 Sep 2026 05:52:48 -0700",
+          "snippet": "Hello Rachel Jeffery, Belka Golf works with European golf partners such as Knowle Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground,",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif mesajıdır, alıcıdan gelen bir yanıt değildir. Belka Golf'un Knowle Golf Club'a Belek grup golf paketi hakkında teklifini içerir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a081132d1b5fb1d",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Bingley St Ives Golf Club",
+      "lastMessageId": "1a081132d1b5fb1d",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 05:51:52 -0700",
+      "replies": [
+        {
+          "messageId": "1a081132d1b5fb1d",
+          "date": "Tue, 8 Sep 2026 05:51:52 -0700",
+          "snippet": "Hello Paul Humpherson, Belka Golf works with European golf partners such as Bingley St Ives Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif mesajıdır, alıcıdan gelen bir yanıt değildir. Belka Golf'un Bingley St Ives Golf Club'a Belek grup golf paketi hakkında teklifini içerir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a08112ed2ce358e",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — ryhmägolfkonsepti kohteelle Tapiola Golf",
+      "lastMessageId": "1a08112ed2ce358e",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 05:51:36 -0700",
+      "replies": [
+        {
+          "messageId": "1a08112ed2ce358e",
+          "date": "Tue, 8 Sep 2026 05:51:36 -0700",
+          "snippet": "Hei Linda Ratilainen, Belka Golf tekee yhteistyötä eurooppalaisten golfkumppaneiden, kuten Tapiola Golf, kanssa läpinäkyvän ryhmägolfmatkapaketin parissa Belekiin — mukaan lukien green feet, hotelli ja",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif mesajıdır, alıcıdan gelen bir yanıt değildir. Belka Golf'un Tapiola Golf'a Belek grup golf paketi hakkında teklifini içerir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a08112bfe449d82",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — gruppegolfkoncept til Brande Golfklub",
+      "lastMessageId": "1a08112bfe449d82",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 05:51:24 -0700",
+      "replies": [
+        {
+          "messageId": "1a08112bfe449d82",
+          "date": "Tue, 8 Sep 2026 05:51:24 -0700",
+          "snippet": "Hej Andreas Thune Hansen, Belka Golf samarbejder med europæiske golfpartnere som Brande Golfklub om en gennemsigtig gruppepakke til golfrejser til Belek — inklusive green fees, hotel og lokal support",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif mesajıdır, alıcıdan gelen bir yanıt değildir. Belka Golf'un Brande Golfklub'a Belek grup golf paketi hakkında teklifini içerir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a08112b53f1a2f9",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — gruppegolfkoncept til Lyngbygaard Golf",
+      "lastMessageId": "1a08112b53f1a2f9",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 05:51:22 -0700",
+      "replies": [
+        {
+          "messageId": "1a08112b53f1a2f9",
+          "date": "Tue, 8 Sep 2026 05:51:22 -0700",
+          "snippet": "Hej Christian Philip, Belka Golf samarbejder med europæiske golfpartnere som Lyngbygaard Golf om en gennemsigtig gruppepakke til golfrejser til Belek — inklusive green fees, hotel og lokal support på",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif mesajıdır, alıcıdan gelen bir yanıt değildir. Belka Golf'un Lyngbygaard Golf'a Belek grup golf paketi hakkında teklifini içerir."
+        }
+      ]
+    },
+    {
+      "threadId": "1a08112afe39a888",
+      "from": "Alexander Herringe <AH@lyg.dk>",
+      "subject": "SV: Belka Golf — gruppegolfkoncept til Lyngbygaard Golf",
+      "lastMessageId": "1a08fb2db1d028f8",
+      "latestCategory": "later",
+      "latestDate": "Fri, 11 Sep 2026 09:00:54 +0000",
+      "replies": [
+        {
+          "messageId": "1a08fb2db1d028f8",
+          "date": "Fri, 11 Sep 2026 09:00:54 +0000",
+          "snippet": "Hej Musta, Tak for din mail. Det lyder rigtig spænende - men der er meget run på slutsæsonen. Så jeg skal bede dig om at skrive til mig engang i november. Rigtig god dag! Med venlig hilsen Alexander",
+          "category": "later",
+          "translation": "Alexander teşekkür ediyor, teklif heyecan verici gelse de sezonun sonunda çok meşgul olduğunu söylüyor. Kasım ayında tekrar iletişime geçilmesini istiyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0811287e440e2e",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — gruppegolfkoncept til Furesø Golfklub",
+      "lastMessageId": "1a0811287e440e2e",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 05:51:10 -0700",
+      "replies": [
+        {
+          "messageId": "1a0811287e440e2e",
+          "date": "Tue, 8 Sep 2026 05:51:10 -0700",
+          "snippet": "Hej Peter Hein, Belka Golf samarbejder med europæiske golfpartnere som Furesø Golfklub om en gennemsigtig gruppepakke til golfrejser til Belek — inklusive green fees, hotel og lokal support på stedet,",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Furesø Golfklub'a yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0811208c5025b7",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Golf Hostivař",
+      "lastMessageId": "1a0811208c5025b7",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 05:50:38 -0700",
+      "replies": [
+        {
+          "messageId": "1a0811208c5025b7",
+          "date": "Tue, 8 Sep 2026 05:50:38 -0700",
+          "snippet": "Hello Martin Zycha, Belka Golf works with European golf partners such as Golf Hostivař on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground, with",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Golf Hostivař'a yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0811132f365370",
+      "from": "Annika Ahlgren <annika.ahlgren@laplandresorts.se>",
+      "subject": "Sv: Belka Golf — gruppgolfkoncept för Björkliden Arctic Golf",
+      "lastMessageId": "1a085ddc00313a31",
+      "latestCategory": "referral",
+      "latestDate": "Wed, 9 Sep 2026 11:11:11 +0000",
+      "replies": [
+        {
+          "messageId": "1a085ddc00313a31",
+          "date": "Wed, 9 Sep 2026 11:11:11 +0000",
+          "snippet": "Hej Mustafa! Tack för ditt erbjudande - jag cc:ar vår säljansvarige Viktor Behm som är säljansvarig och kan ta tag i gruppresor och eventuella samarbeten kring vår golfbana! Hälsar Annika Best Regards|",
+          "category": "referral",
+          "translation": "İsveç'ten Annika cevap veriyor ve teklifte ilgi göstererek satış sorumlusu Viktor Behm'i cc'ye ekliyor. Grup seyahatler ve işbirliği konusunda devam etmesi için onu ilgili kişiye yönlendiriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0811112b798a79",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — gruppgolfkoncept för Bodens Golfklubb",
+      "lastMessageId": "1a0811112b798a79",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 05:49:34 -0700",
+      "replies": [
+        {
+          "messageId": "1a0811112b798a79",
+          "date": "Tue, 8 Sep 2026 05:49:34 -0700",
+          "snippet": "Hej Lisa Lövenhaft, Belka Golf samarbetar med europeiska golfpartners som Bodens Golfklubb kring ett transparent grupppaket för golfresor till Belek — inklusive green fees, hotell och lokal support på",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Bodens Golfklubb'a yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a080e0633c87ee6",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — gruppegolf-konsept for Asker Golfklubb",
+      "lastMessageId": "1a080e0633c87ee6",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 04:56:24 -0700",
+      "replies": [
+        {
+          "messageId": "1a080e0633c87ee6",
+          "date": "Tue, 8 Sep 2026 04:56:24 -0700",
+          "snippet": "Hei Anne-Live Bjørnstad, Belka Golf samarbeider med europeiske golfklubber som Asker Golfklubb om et transparent gruppepakke for golfreiser til Belek — inkludert green fees, hotell og lokal støtte på",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Asker Golfklubb'a yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a080df61e2c4817",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Royal Ascot Golf Club",
+      "lastMessageId": "1a080df61e2c4817",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 04:55:18 -0700",
+      "replies": [
+        {
+          "messageId": "1a080df61e2c4817",
+          "date": "Tue, 8 Sep 2026 04:55:18 -0700",
+          "snippet": "Hello Stephen Nicholson, Belka Golf works with European golf clubs such as Royal Ascot Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Royal Ascot Golf Club'a yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a080df2b556022b",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Dunstable Downs Golf Club",
+      "lastMessageId": "1a080df2b556022b",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 04:55:04 -0700",
+      "replies": [
+        {
+          "messageId": "1a080df2b556022b",
+          "date": "Tue, 8 Sep 2026 04:55:04 -0700",
+          "snippet": "Hello Stuart Markham, Belka Golf works with European golf clubs such as Dunstable Downs Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Dunstable Downs Golf Club'a yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a080df1d97ba8b3",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Bedfordshire Golf Club",
+      "lastMessageId": "1a080df1d97ba8b3",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 04:55:00 -0700",
+      "replies": [
+        {
+          "messageId": "1a080df1d97ba8b3",
+          "date": "Tue, 8 Sep 2026 04:55:00 -0700",
+          "snippet": "Hello Glenn Rayner, Belka Golf works with European golf clubs such as Bedfordshire Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground,",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Bedfordshire Golf Club'a yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a080dee701aeb49",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Langley Park Golf Club",
+      "lastMessageId": "1a080dee701aeb49",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 04:54:46 -0700",
+      "replies": [
+        {
+          "messageId": "1a080dee701aeb49",
+          "date": "Tue, 8 Sep 2026 04:54:46 -0700",
+          "snippet": "Hello Mike Timson, Belka Golf works with European golf clubs such as Langley Park Golf Club on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground,",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Langley Park Golf Club'a yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a080ddebf5b99a3",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — ryhmägolfkonsepti kohteelle Suur-Helsingin Golf",
+      "lastMessageId": "1a080ddebf5b99a3",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 04:53:42 -0700",
+      "replies": [
+        {
+          "messageId": "1a080ddebf5b99a3",
+          "date": "Tue, 8 Sep 2026 04:53:42 -0700",
+          "snippet": "Hei Aleksi Ahti, Belka Golf tekee yhteistyötä eurooppalaisten golfklubien, kuten Suur-Helsingin Golf, kanssa läpinäkyvän ryhmägolfmatkapaketin parissa Belekiin — mukaan lukien green feet, hotelli ja",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Suur-Helsingin Golf'e yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a080ddc098463bc",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — ryhmägolfkonsepti kohteelle Espoo Ringside Golf",
+      "lastMessageId": "1a080ddc098463bc",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 04:53:31 -0700",
+      "replies": [
+        {
+          "messageId": "1a080ddc098463bc",
+          "date": "Tue, 8 Sep 2026 04:53:31 -0700",
+          "snippet": "Hei Jarkko Raski, Belka Golf tekee yhteistyötä eurooppalaisten golfklubien, kuten Espoo Ringside Golf, kanssa läpinäkyvän ryhmägolfmatkapaketin parissa Belekiin — mukaan lukien green feet, hotelli ja",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Espoo Ringside Golf'e yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a080bd6de00ecdd",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "Belka Golf — Gruppengolf-Konzept für IMLAUER Hotel Schloss Pichlarn",
+      "lastMessageId": "1a080bd6de00ecdd",
+      "latestCategory": "other",
+      "latestDate": "Tue, 8 Sep 2026 04:18:12 -0700",
+      "replies": [
+        {
+          "messageId": "1a080bd6de00ecdd",
+          "date": "Tue, 8 Sep 2026 04:18:12 -0700",
+          "snippet": "Guten Tag Moritz Schuster, Belka Golf arbeitet mit europäischen Golfclubs wie IMLAUER Hotel Schloss Pichlarn an einem transparenten Gruppengolf-Angebot in Belek — inklusive Green Fees, Hotel und",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün IMLAUER Hotel Schloss Pichlarn'a yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a07c76222702b37",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Polski Związek Golfa (PZG)",
+      "lastMessageId": "1a07c76222702b37",
+      "latestCategory": "other",
+      "latestDate": "Mon, 7 Sep 2026 08:21:52 -0700",
+      "replies": [
+        {
+          "messageId": "1a07c76222702b37",
+          "date": "Mon, 7 Sep 2026 08:21:52 -0700",
+          "snippet": "Hello Andrzej Rosłaniec, Belka Golf works with European golf partners such as Polski Związek Golfa (PZG) on a transparent group-golf package for Belek — including green fees, hotel and local support on",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Polski Związek Golfa'ya yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a07c75aee434545",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Magyar Golf Szövetség",
+      "lastMessageId": "1a07c75aee434545",
+      "latestCategory": "other",
+      "latestDate": "Mon, 7 Sep 2026 08:21:22 -0700",
+      "replies": [
+        {
+          "messageId": "1a07c75aee434545",
+          "date": "Mon, 7 Sep 2026 08:21:22 -0700",
+          "snippet": "Hello Flesch Tamás, Belka Golf works with European golf partners such as Magyar Golf Szövetség on a transparent group-golf package for Belek — including green fees, hotel and local support on the",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Magyar Golf Szövetség'e yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a07c75938f2b457",
+      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
+      "subject": "A considered Belek group-golf option for Magyar Golf Szövetség",
+      "lastMessageId": "1a07c75938f2b457",
+      "latestCategory": "other",
+      "latestDate": "Mon, 7 Sep 2026 08:21:15 -0700",
+      "replies": [
+        {
+          "messageId": "1a07c75938f2b457",
+          "date": "Mon, 7 Sep 2026 08:21:15 -0700",
+          "snippet": "Hello Dala Soma, Belka Golf works with European golf partners such as Magyar Golf Szövetség on a transparent group-golf package for Belek — including green fees, hotel and local support on the ground,",
+          "category": "other",
+          "translation": "Bu bir gönderilen teklif özeti gibi görünüyor, alıcının gerçek cevabı değil. Belka Golf'ün Magyar Golf Szövetség'e yaptığı grup golf paketi teklifi hakkında bilgi içeriyor."
+        }
+      ]
     }
   ],
-  "lastRunAt": "2026-09-12T05:42:21.523Z"
+  "recipientAddresses": [
+    "vajda@skga.sk",
+    "info@royalbled.com",
+    "klubbchef@gullbringagolf.se",
+    "henrik@ringenas.com",
+    "jules@lerjedalen.se",
+    "info@granobygdensgk.se",
+    "petter@visbygk.com",
+    "martin@visbygk.com",
+    "info@nargk.se",
+    "ellen.persson@gavlegolf.com",
+    "klubbchef@ofg.nu",
+    "tatin@yandex.ru",
+    "adminboard@pgaofserbia.com",
+    "contact@theodoragolfclub.ro",
+    "jakub.budaj@pgapolska.com",
+    "dariusz.bobinski@pgapolska.com",
+    "marek.bednarczyk@pgapolska.com",
+    "peter.bronson@pgapolska.com",
+    "contact@nationalgolf.ro",
+    "hr@theodoragolfclub.ro",
+    "info@skolkovogolf.com",
+    "daniel.kraft@gavlegolf.com",
+    "anders.nilsson@degk.se",
+    "magnus@visbygk.com",
+    "johan@lerjedalen.se",
+    "dale.harris@southerncrossgolf.se",
+    "pga@pga.sk",
+    "manager@ukrgolf.org",
+    "uadisabled@ukrgolf.org",
+    "marcin.bartkowski@pgapolska.com",
+    "ole@sgk.no",
+    "kim@sgk.no",
+    "frode@lofotenlinks.no",
+    "christopher@lofotenlinks.no",
+    "allen@lofotenlinks.no",
+    "marc@melandgolf.no",
+    "arturskrukovs@gmail.com",
+    "office@hungolf.hu",
+    "office@golfsavez.hr",
+    "info@teignmouthgolfclub.co.uk",
+    "info@sauntongolf.co.uk",
+    "professional@edgc.co.uk",
+    "enquiries@bigburygolfclub.co.uk",
+    "catering@matlockgolfclub.co.uk",
+    "professional@matlockgolfclub.co.uk",
+    "generalmanager@kedlestonparkgolfclub.co.uk",
+    "generalmanager@chesterfieldgolfclub.co.uk",
+    "professional@chesterfieldgolfclub.co.uk",
+    "jacobbagshaw94@gmail.com",
+    "delamerepro@delameregolf.co.uk",
+    "sec@delameregolf.co.uk",
+    "general.manager@royal-cromer.com",
+    "info@belkagolf.com",
+    "directorofgolf@cottesmoregolf.co.uk",
+    "lisa@cottesmoregolf.co.uk",
+    "info@trevose-gc.co.uk",
+    "manager@mulliongolfclub.co.uk",
+    "info@lanhydrockhotel.com",
+    "info@bowoodpark.com",
+    "golf@jamesandrewsgolfschool.co.uk",
+    "secretary@cleethorpesgolfclub.co.uk",
+    "manager@surbitongolfclub.com",
+    "debra.shepherd@surbitongolfclub.com",
+    "golf@goodwood.com",
+    "tapani.gadd@jyvasgolf.fi",
+    "toimisto@jyvasgolf.fi",
+    "petteri.ruuskanen@kartanogolf.fi",
+    "esa.koljonen@kartanogolf.fi",
+    "petja.vuojarvi@kareliagolf.fi",
+    "aki.keronen@kareliagolf.fi",
+    "markus.lahtinen@himosgolf.fi",
+    "hanna@raegolf.ee",
+    "membership@thescandinavian.dk",
+    "ct@thescandinavian.dk",
+    "contact@thescandinavian.dk",
+    "mer@himmerland.eu",
+    "ht@himmerland.eu",
+    "info@faaborggolfklub.dk",
+    "office@royal-hgc.de",
+    "info@gc-bh.de",
+    "golfresort@quellness-golf.com",
+    "info@quellness-golf.com",
+    "kontakt@gcbadems.de",
+    "ambigene@seznam.cz",
+    "dusan@golfbrothers.cz",
+    "roman.svoboda@pga.cz",
+    "barbora.barcalova@bhlegal.cz",
+    "lukas.tintera@pga.cz",
+    "info@ingolf.by",
+    "proshop@piringolf.bg",
+    "front.office@piringolf.bg",
+    "stefan.meyer59@gmail.com",
+    "gianpaolofanti@aon.at"
+  ],
+  "lastRunAt": "2026-09-12T06:04:38.298Z"
 }
