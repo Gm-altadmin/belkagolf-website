@@ -919,23 +919,6 @@
       ]
     },
     {
-      "threadId": "1a08518ab0a09a2e",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "Belka Golf — Gruppengolf-Konzept für Golfclub Urloffen e.V.",
-      "lastMessageId": "1a08518ab0a09a2e",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 9 Sep 2026 00:36:21 -0700",
-      "replies": [
-        {
-          "messageId": "1a08518ab0a09a2e",
-          "date": "Wed, 9 Sep 2026 00:36:21 -0700",
-          "snippet": "Guten Tag Tanja Taxis, Belka Golf arbeitet mit europäischen Golfpartnern wie Golfclub Urloffen eV an einem transparenten Gruppengolf-Angebot in Belek — inklusive Green Fees, Hotel und lokaler Betreuung",
-          "category": "positive",
-          "translation": "Belka Golf, Golfclub Urloffen eV ile Belek'te şeffaf bir grup golf paketi (green fees, otel, yerel destek) sunmak için işbirliği yapmaktadır."
-        }
-      ]
-    },
-    {
       "threadId": "1a08147ab626c206",
       "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
       "subject": "A considered Belek group-golf option for Long Ashton Golf Club",
@@ -2536,5 +2519,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:30:14.882Z"
+  "lastRunAt": "2026-09-12T15:30:20.738Z"
 }
