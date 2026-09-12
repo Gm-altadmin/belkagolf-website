@@ -885,23 +885,6 @@
       ]
     },
     {
-      "threadId": "1a0851af69e8f758",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "A considered Belek group-golf option for Croatian Golf Federation (GSH)",
-      "lastMessageId": "1a0851af69e8f758",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 9 Sep 2026 00:38:52 -0700",
-      "replies": [
-        {
-          "messageId": "1a0851af69e8f758",
-          "date": "Wed, 9 Sep 2026 00:38:52 -0700",
-          "snippet": "Hello Dalibor Ljubić, Belka Golf works with European golf partners such as Croatian Golf Federation (GSH) on a transparent group-golf package for Belek — including green fees, hotel and local support",
-          "category": "positive",
-          "translation": "Belka Golf, Hırvatistan Golf Federasyonu (GSH) ile Belek'te şeffaf bir grup golf paketi (green fees, otel, yerel destek) sunmak için işbirliği yapmaktadır."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851ae39646aba",
       "from": "Mail Delivery Subsystem <mailer-daemon@googlemail.com>",
       "subject": "Delivery Status Notification (Failure)",
@@ -2808,5 +2791,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:29:11.520Z"
+  "lastRunAt": "2026-09-12T15:29:14.330Z"
 }
