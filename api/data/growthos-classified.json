@@ -2524,23 +2524,6 @@
       ]
     },
     {
-      "threadId": "1a023fe09b389406",
-      "from": "\"Kenan Çot\" <kenan.cot@gloria.com.tr>",
-      "subject": "RE: Tee-time Müsaitliği - 15.10.2026 - 4pax",
-      "lastMessageId": "1a023fe09b389406",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Fri, 21 Aug 2026 11:04:06 +0000",
-      "replies": [
-        {
-          "messageId": "1a023fe09b389406",
-          "date": "Fri, 21 Aug 2026 11:04:06 +0000",
-          "snippet": "Merhaba Anastasya Hanım, Müsaitlik yok maalesef, Saygılarımızla / Kind Regards / Mit freundlichen Grüßen, Kenan Çot ( Mr.) Sales &amp; Marketing Representative. sales.jpg From: Belka Golf &lt;info@",
-          "category": "do_not_contact",
-          "translation": "Talep edilen tarihte müsaitlik yok. Rezervasyon yapılamıyor cevabı."
-        }
-      ]
-    },
-    {
       "threadId": "1a0244da38e2a7f9",
       "from": "<sigen@t-v.by>",
       "subject": "RE: 13.11-20.11.2026 Cornelia Diamond 32pax",
@@ -3114,5 +3097,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:26:54.101Z"
+  "lastRunAt": "2026-09-12T15:26:56.922Z"
 }
