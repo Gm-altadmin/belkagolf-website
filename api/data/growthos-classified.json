@@ -2116,23 +2116,6 @@
       ]
     },
     {
-      "threadId": "1a070b2b5435af4e",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Payments",
-      "lastMessageId": "1a08a5f26f84f137",
-      "latestCategory": "positive",
-      "latestDate": "Thu, 10 Sep 2026 08:11:27 +0000",
-      "replies": [
-        {
-          "messageId": "1a08a5f26f84f137",
-          "date": "Thu, 10 Sep 2026 08:11:27 +0000",
-          "snippet": "5 days since last contact... 🙂 Still no answer. It looks like this is my responsibility to follow up. I really hope you can take your time and look into this so that we can move forward. --------------",
-          "category": "positive",
-          "translation": "Ödeme konusunda takip yapılıyor ve hızlı ilgilenilmesini istiyorlar. Devam etmek için cevap bekliyorlar."
-        }
-      ]
-    },
-    {
       "threadId": "1a0431363c291b13",
       "from": "\"Lisa Gahn | Blaumond GmbH\" <lisa.gahn@blaumond24.de>",
       "subject": "Shuttle Service Inquiry for Golf Transfers | Belek (2 Passengers)",
@@ -3233,5 +3216,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:32:53.878Z"
+  "lastRunAt": "2026-09-12T15:33:04.362Z"
 }
