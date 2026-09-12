@@ -3017,23 +3017,6 @@
       ]
     },
     {
-      "threadId": "19ff4f1df21f0300",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Kjell Hvorup",
-      "lastMessageId": "19ff9ea64ebcd79f",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Thu, 13 Aug 2026 06:58:36 +0000",
-      "replies": [
-        {
-          "messageId": "19ff9ea64ebcd79f",
-          "date": "Thu, 13 Aug 2026 06:58:36 +0000",
-          "snippet": "Sorry cancelled. He say the price is too high, and they now decide to travel togehter with their own home club to Portugal this year... 🙁 ---------------------------------------------------------------",
-          "category": "do_not_contact",
-          "translation": "Bay Kjell Hvorup iptal etti, fiyat çok yüksek buldu ve klub arkadaşlarıyla Portekiz'e gidecek."
-        }
-      ]
-    },
-    {
       "threadId": "19ff03eda6217767",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Mario Gaarder",
@@ -3556,5 +3539,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:24:15.111Z"
+  "lastRunAt": "2026-09-12T15:24:18.810Z"
 }
