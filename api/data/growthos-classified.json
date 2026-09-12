@@ -2643,23 +2643,6 @@
       ]
     },
     {
-      "threadId": "19fffa88cacdae86",
-      "from": "\"Hilal KARADENİZ | Sueno Hotels Satış Pazarlama\" <hilal.karadeniz@sueno.com.tr>",
-      "subject": "RE: Tee time değişikliği// RE: YENI REZ.//Arnstein Vagle //SUENO GOLF//10.10-17.10.2026//7 gece konaklama + 4x round Pines&Dunes // 2 PAX ",
-      "lastMessageId": "1a03335972621952",
-      "latestCategory": "positive",
-      "latestDate": "Mon, 24 Aug 2026 09:59:05 +0000",
-      "replies": [
-        {
-          "messageId": "1a03335972621952",
-          "date": "Mon, 24 Aug 2026 09:59:05 +0000",
-          "snippet": "Merhaba, Ekteki rezervasyonunuz yaklaşan opsiyona istinaden kesine alınmıştır. Uyuşmazlık varsa bilgi vermenizi rica ederiz. Saygılarımla, Hilal KARADENİZ | Sueno Hotels Satış Pazarlama Golf",
-          "category": "positive",
-          "translation": "10.10-17.10.2026 tarihlerinde Arnstein Vagle için 7 gece konaklama ve 4 tur golf rezervasyonu opsiyondan kesinliğe alınmıştır."
-        }
-      ]
-    },
-    {
       "threadId": "19f9020de25e3079",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Reservation Mr. Alexander Hofset INVOICE",
@@ -3250,5 +3233,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:25:49.753Z"
+  "lastRunAt": "2026-09-12T15:25:52.907Z"
 }
