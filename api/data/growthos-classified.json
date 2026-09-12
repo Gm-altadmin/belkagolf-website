@@ -579,23 +579,6 @@
       ]
     },
     {
-      "threadId": "1a0851c6da91a9d5",
-      "from": "Jan Ekblom <jan.ekblom@falsterbogk.se>",
-      "subject": "Sv: Belka Golf — gruppgolfkoncept för Falsterbo Golfklubb",
-      "lastMessageId": "1a085dfc84426891",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Wed, 9 Sep 2026 11:13:46 +0000",
-      "replies": [
-        {
-          "messageId": "1a085dfc84426891",
-          "date": "Wed, 9 Sep 2026 11:13:46 +0000",
-          "snippet": "Hello Mustafa, Thank you for your email. Our golf club do not work with golf trips or commercial agreements. We are a small members club and our members have decided this set up. Best regards, Jan",
-          "category": "do_not_contact",
-          "translation": "Falsterbo Golfklubb, golf turları veya ticari anlaşmalarla çalışmadıklarını, küçük bir üye kulübü olduklarını ve üyelerin bu kararı aldığını bildiriyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851c65814c227",
       "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
       "subject": "Belka Golf — gruppgolfkoncept för Falsterbo Golfklubb",
@@ -2383,5 +2366,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:31:19.707Z"
+  "lastRunAt": "2026-09-12T15:31:21.753Z"
 }
