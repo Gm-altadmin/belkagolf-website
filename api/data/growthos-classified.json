@@ -2796,23 +2796,6 @@
       ]
     },
     {
-      "threadId": "1a0142805d8c2863",
-      "from": "Oyku Zeynep Kiral <oyku.kiral@kayahotels.com.tr>",
-      "subject": "RE: SPA paketleri 2026-2027",
-      "lastMessageId": "1a018f0f283219f9",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 19 Aug 2026 07:33:59 +0000",
-      "replies": [
-        {
-          "messageId": "1a018f0f283219f9",
-          "date": "Wed, 19 Aug 2026 07:33:59 +0000",
-          "snippet": "Merhaba Elena Hanım, Öncelikle güzel bir gün dilerim. Talep ettiğiniz dosya başka bir mail üzerinden size iletilmiştir. İyi çalışmalar dilerim. Saygılarımla / Best Regards Öykü KIRAL (Ms.) | Golf Satış",
-          "category": "positive",
-          "translation": "SPA paketleri 2026-2027 dosyası talep edilmiş, başka bir mail üzerinden gönderildiği bildirilmiştir."
-        }
-      ]
-    },
-    {
       "threadId": "1a00f31c8fc4acbb",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Trond Nilsen",
@@ -3505,5 +3488,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:24:27.407Z"
+  "lastRunAt": "2026-09-12T15:24:33.392Z"
 }
