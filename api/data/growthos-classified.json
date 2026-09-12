@@ -2711,23 +2711,6 @@
       ]
     },
     {
-      "threadId": "19ef443aec2d5cf3",
-      "from": "Yvette Vaughan Jones <yvette@yvjones.com>",
-      "subject": "Re: Our visit from 24 - 30 September 2026 / Yvette Morgan - INVOICE",
-      "lastMessageId": "1a034ed87d9e9421",
-      "latestCategory": "positive",
-      "latestDate": "Mon, 24 Aug 2026 18:59:37 +0100",
-      "replies": [
-        {
-          "messageId": "1a034ed87d9e9421",
-          "date": "Mon, 24 Aug 2026 18:59:37 +0100",
-          "snippet": "Please can you tell us if we can use our bank card to pay as we did for the deposit. Best wishes Yvette Vaughan Jones yvette@yvjones.com Consultant - Arts Culture and Governance mob: +44(0)7816781287",
-          "category": "positive",
-          "translation": "Yvette Vaughan Jones, 24-30 Eylül 2026 ziyareti için banka kartı ile ödeme yapabilip yapamayacağını soruyor."
-        }
-      ]
-    },
-    {
       "threadId": "19eca7079db91ba7",
       "from": "\"Tuğba Uçak\" <golf.sales2@swandorhotels.com>",
       "subject": "FW: LOGO HAKKINDA",
@@ -3131,5 +3114,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:26:50.061Z"
+  "lastRunAt": "2026-09-12T15:26:54.101Z"
 }
