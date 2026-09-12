@@ -868,23 +868,6 @@
       ]
     },
     {
-      "threadId": "1a0851be2924c69f",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "A considered Belek group-golf option for National Golf & Country Club",
-      "lastMessageId": "1a0851be2924c69f",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 9 Sep 2026 00:39:52 -0700",
-      "replies": [
-        {
-          "messageId": "1a0851be2924c69f",
-          "date": "Wed, 9 Sep 2026 00:39:52 -0700",
-          "snippet": "Hello Ozkan Baykal, Belka Golf works with European golf partners such as National Golf &amp; Country Club on a transparent group-golf package for Belek — including green fees, hotel and local support",
-          "category": "positive",
-          "translation": "Belka Golf, National Golf & Country Club ile Belek'te şeffaf grup golf paketi (green fee, otel, yerel destek dahil) sunmak üzere ortaklık yapıyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851bd52c94252",
       "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
       "subject": "A considered Belek group-golf option for Federatia Romana de Golf",
@@ -3097,5 +3080,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:26:56.922Z"
+  "lastRunAt": "2026-09-12T15:28:19.539Z"
 }
