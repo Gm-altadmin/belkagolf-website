@@ -3153,30 +3153,6 @@
       ]
     },
     {
-      "threadId": "19ff05a6d425fc79",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Reservation Mr. Lars Audun T. Torvik INVOICE",
-      "lastMessageId": "1a0953cc0062b136",
-      "latestCategory": "positive",
-      "latestDate": "Sat, 12 Sep 2026 10:49:42 +0000",
-      "replies": [
-        {
-          "messageId": "1a090166877a30b5",
-          "date": "Fri, 11 Sep 2026 10:49:43 +0000",
-          "snippet": "Hello. Mr. Torvik ask if possible to change the tee-time for 30. september to around 09:00? ------------------------------------------------------------------------------------------ DinGolfReise er",
-          "category": "other",
-          "translation": "Bay Torvik, 30 Eylül için tee saatini saat 09:00 civarına değiştirebilir mi diye soruyor. (Rezervasyon/operasyonel istek, iş ortaklığı kampanyas cevabı değil)"
-        },
-        {
-          "messageId": "1a0953cc0062b136",
-          "date": "Sat, 12 Sep 2026 10:49:42 +0000",
-          "snippet": "Please change the tee-times... 🙂 Please confirm. ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra",
-          "category": "positive",
-          "translation": "Lars Audun T. Torvik faturasında tee-time değişikliği talep ediyor ve konfirmasyonu istiyor. DinGolfReise'dan bir yanıt bekleniyor."
-        }
-      ]
-    },
-    {
       "threadId": "19ffb238c63556da",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Johan Askeland",
@@ -4022,5 +3998,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:16:10.678Z"
+  "lastRunAt": "2026-09-12T15:16:17.575Z"
 }
