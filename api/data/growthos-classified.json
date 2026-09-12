@@ -1174,23 +1174,6 @@
       ]
     },
     {
-      "threadId": "1a080dc4856bbe65",
-      "from": "\"mustafa beyzadeoğlu\" <mbeyzadeoglubelka@gmail.com>",
-      "subject": "Belka Golf — gruppegolfkoncept til Golfklubben Hvide Klit",
-      "lastMessageId": "1a080dc4856bbe65",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 8 Sep 2026 04:51:55 -0700",
-      "replies": [
-        {
-          "messageId": "1a080dc4856bbe65",
-          "date": "Tue, 8 Sep 2026 04:51:55 -0700",
-          "snippet": "Hej Jan Andersen, Belka Golf samarbejder med europæiske golfklubber som Golfklubben Hvide Klit om en gennemsigtig gruppepakke til golfrejser til Belek — inklusive green fees, hotel og lokal support på",
-          "category": "positive",
-          "translation": "Belka Golf, Golfklubben Hvide Klit gibi Avrupa golf kulüpleriyle Belek'e golf seyahatleri için grup paketleri (green fees, otel ve yerel destek dahil) üzerine işbirliği yapıyor. Kulübe yönelik şeffaf bir teklif sunuluyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851b3adfaa146",
       "from": "Mail Delivery Subsystem <mailer-daemon@googlemail.com>",
       "subject": "Delivery Status Notification (Failure)",
@@ -2417,5 +2400,5 @@
     "info@alingsasgk.se",
     "office@mwgolfakademie.at"
   ],
-  "lastRunAt": "2026-09-12T15:30:50.011Z"
+  "lastRunAt": "2026-09-12T15:30:55.867Z"
 }
