@@ -2803,23 +2803,6 @@
       ]
     },
     {
-      "threadId": "19ff05a6d425fc79",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Reservation Mr. Lars Audun T. Torvik INVOICE",
-      "lastMessageId": "1a0953cc0062b136",
-      "latestCategory": "positive",
-      "latestDate": "Sat, 12 Sep 2026 10:49:42 +0000",
-      "replies": [
-        {
-          "messageId": "1a0953cc0062b136",
-          "date": "Sat, 12 Sep 2026 10:49:42 +0000",
-          "snippet": "Please change the tee-times... 🙂 Please confirm. ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra",
-          "category": "positive",
-          "translation": "Tee-time değişikliği istenmektedir. Müşteri onay bekleniyor, ilgisi devam ediyor."
-        }
-      ]
-    },
-    {
       "threadId": "19ffb238c63556da",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Johan Askeland",
@@ -3543,5 +3526,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:40:01.407Z"
+  "lastRunAt": "2026-09-13T16:40:06.560Z"
 }
