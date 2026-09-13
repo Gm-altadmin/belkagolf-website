@@ -562,23 +562,6 @@
       ]
     },
     {
-      "threadId": "1a0909fb60cfce85",
-      "from": "Anders Nilsson <anders.nilsson@degk.se>",
-      "subject": "Re: Belka Golf — gruppgolfkoncept för Delsjö Golfklubb",
-      "lastMessageId": "1a090f7cca0ce8d5",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Fri, 11 Sep 2026 14:55:54 +0000",
-      "replies": [
-        {
-          "messageId": "1a090f7cca0ce8d5",
-          "date": "Fri, 11 Sep 2026 14:55:54 +0000",
-          "snippet": "Hej Tack för ert mejl. Vi har precis inlett ett samarbete med en för oss ny partner gällande resor. Önskar er lycka till och tackar för inbjudan. Vi väljer att avstå möte. Anders Med vänlig hälsning",
-          "category": "do_not_contact",
-          "translation": "Delsjö Golf Kulübü yeni bir seyahat ortağı ile iş birliğine başladıklarını ve şu an için toplantıyı kabul etmek istemediklerini belirtiyorlar. İyi dileklerini sunup, teklifi nazikçe reddetmişlerdir."
-        }
-      ]
-    },
-    {
       "threadId": "1a09644712e51b85",
       "from": "Robert Climas <rclimas@northhantsgolf.co.uk>",
       "subject": "Automatic reply: A considered Belek group-golf option for North Hants Golf Club",
@@ -749,7 +732,6 @@
     "hr@theodoragolfclub.ro",
     "info@skolkovogolf.com",
     "daniel.kraft@gavlegolf.com",
-    "anders.nilsson@degk.se",
     "magnus@visbygk.com",
     "johan@lerjedalen.se",
     "dale.harris@southerncrossgolf.se",
@@ -770,5 +752,5 @@
     "office@royal-hgc.de",
     "golfresort@quellness-golf.com"
   ],
-  "lastRunAt": "2026-09-13T17:09:25.798Z"
+  "lastRunAt": "2026-09-13T17:16:07.436Z"
 }
