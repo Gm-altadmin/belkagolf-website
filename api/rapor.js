@@ -1227,6 +1227,35 @@ async function handleGrowthOsSend(req, res, accessToken) {
   res.status(200).json({ success: true });
 }
 
+// Kalıcı kayıttan tek bir (yanlış sınıflandırılmış) yazışmayı siler. 13.09.2026 düzeltmesi:
+// SADECE kaydı (store.items) silmek yetmiyordu - kaydın "lastMessageId" işareti de o
+// kayıtla birlikte gittiği için, "Adres Eşleştirmeli Ek Tarama" bir dahaki çalıştırmada
+// bu adresi hiç görmemiş sanıp TEKRAR ekliyordu (Roger Lode örneğinde tam bu yaşandı).
+// Artık silerken, o kişinin mail adresi de recipientAddresses listesinden ÇIKARILIYOR -
+// bir daha asla geri gelmez.
+async function handleGrowthOsDeleteItem(req, res) {
+  const { threadId } = req.body || {};
+  if (!threadId) {
+    res.status(400).json({ error: 'threadId eksik' });
+    return;
+  }
+  const PATH = 'api/data/growthos-classified.json';
+  const { data: store, sha } = await githubReadJson(PATH, { items: [], recipientAddresses: [] });
+  const deletedItem = store.items.find((it) => it.threadId === threadId);
+  const allItems = store.items.filter((it) => it.threadId !== threadId);
+
+  let recipientAddresses = store.recipientAddresses || [];
+  if (deletedItem) {
+    const deletedAddr = extractEmailAddr(deletedItem.from);
+    recipientAddresses = recipientAddresses.filter((a) => a !== deletedAddr);
+  }
+
+  await githubWriteJson(PATH,
+    { items: allItems, recipientAddresses, lastRunAt: new Date().toISOString() },
+    sha, `Growth OS: bir kayıt elle silindi (threadId=${threadId})`);
+  res.status(200).json({ items: allItems });
+}
+
 // --- Toplu üslup analizi (action=styleAnalysis, 30.08.2026 eklendi, 30.08.2026 kalıcı
 // ilerleme takibi eklendi) ---
 // BİR KEZLİK değil artık - TEKRAR TEKRAR çalıştırılabilir (buton her tıklandığında ya da
@@ -1464,6 +1493,18 @@ export default async function handler(req, res) {
   }
 
   const action = req.query.action || (req.body && req.body.action) || 'report';
+
+  // Silme işlemi Gmail erişimi gerektirmiyor (sadece GitHub'daki kaydı düzenliyor) -
+  // getAccessToken() çağrısına hiç gerek yok, ayrı ve daha basit bir dal.
+  if (action === 'growthOsDeleteItem') {
+    try {
+      await handleGrowthOsDeleteItem(req, res);
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+    return;
+  }
+
   if (action === 'draft' || action === 'send' || action === 'styleAnalysis' ||
       action === 'growthOsScan' || action === 'growthOsScanByAddress' ||
       action === 'growthOsDraft' || action === 'growthOsSend') {
