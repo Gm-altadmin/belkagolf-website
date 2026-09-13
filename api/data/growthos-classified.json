@@ -2733,6 +2733,74 @@
           "translation": "Belka Golf'u teşekkürle yanıtlıyor. Golf seyahatleri alanında kooperasyonlar konusunda ilgili. Daha detaylı bilgi talep ediyor."
         }
       ]
+    },
+    {
+      "threadId": "1a0145722f0cc932",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Terje Pedersen",
+      "lastMessageId": "1a0617d7d587ea69",
+      "latestCategory": "later",
+      "latestDate": "Wed, 2 Sep 2026 09:40:09 +0000",
+      "replies": [
+        {
+          "messageId": "1a0617d7d587ea69",
+          "date": "Wed, 2 Sep 2026 09:40:09 +0000",
+          "snippet": "Cancelled for now. He say he need more time... Hope he will come back later. ------------------------------------------------------------------------------------------ DinGolfReise er den største",
+          "category": "later",
+          "translation": "Terje Pedersen şu an için iptal etti. Daha fazla zamana ihtiyacı olduğunu söylüyor. Umarız daha sonra geri döner."
+        }
+      ]
+    },
+    {
+      "threadId": "1a00f31c8fc4acbb",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Trond Nilsen",
+      "lastMessageId": "1a01a666353a7d2f",
+      "latestCategory": "positive",
+      "latestDate": "Wed, 19 Aug 2026 14:21:53 +0000",
+      "replies": [
+        {
+          "messageId": "1a01a666353a7d2f",
+          "date": "Wed, 19 Aug 2026 14:21:53 +0000",
+          "snippet": "This booking is confirmed for 2 x dbl in Sueno Golf. I will send you all details later. ------------------------------------------------------------------------------------------ DinGolfReise er den",
+          "category": "positive",
+          "translation": "Trond Nilsen'in Sueno Golf'ta 2 çift oda için rezervasyonu onaylandı. Tüm detaylar daha sonra gönderilecek."
+        }
+      ]
+    },
+    {
+      "threadId": "19ff4f1df21f0300",
+      "from": "Roger Lode <rogerlode@hotmail.com>",
+      "subject": "Sv: Request Mr. Kjell Hvorup",
+      "lastMessageId": "19ff9ea64ebcd79f",
+      "latestCategory": "do_not_contact",
+      "latestDate": "Thu, 13 Aug 2026 06:58:36 +0000",
+      "replies": [
+        {
+          "messageId": "19ff9ea64ebcd79f",
+          "date": "Thu, 13 Aug 2026 06:58:36 +0000",
+          "snippet": "Sorry cancelled. He say the price is too high, and they now decide to travel togehter with their own home club to Portugal this year... 🙁 ---------------------------------------------------------------",
+          "category": "do_not_contact",
+          "translation": "Kjell Hvorup iptal etti. Fiyatın çok yüksek olduğunu ve bu yıl kendi golf kulübü ile Portekiz'e gitmek kararı aldıklarını söylüyor."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0964685412e6ab",
+      "from": "Louise Friberg <louise.friberg@vasatorp.golf>",
+      "subject": "Autosvar: Belka Golf — gruppgolfkoncept för Vasatorps Golfklubb",
+      "lastMessageId": "1a0964685412e6ab",
+      "latestCategory": "other",
+      "latestDate": "Sat, 12 Sep 2026 15:39:59 +0000",
+      "replies": [
+        {
+          "messageId": "1a0964685412e6ab",
+          "date": "Sat, 12 Sep 2026 15:39:59 +0000",
+          "snippet": "Hej! Tack för ditt mejl. Jag är på resande fot. Åter den 15 september. Om ditt ärende är brådskande går det bra att skicka ett SMS till mig. För övriga frågor hjälper mina kollegor i receptionen dig",
+          "category": "other",
+          "translation": "Otomatik yanıt: Alıcı 15 Eylül'e kadar seyahattedir. Acil konular için SMS gönderilebilir, diğer sorular için resepsiyon yardımcı olabilir."
+        }
+      ]
     }
   ],
   "recipientAddresses": [
@@ -3083,5 +3151,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:43:53.937Z"
+  "lastRunAt": "2026-09-13T08:45:07.427Z"
 }
