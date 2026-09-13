@@ -3158,6 +3158,23 @@
           "translation": "North Hants Golf Club'ın otomatik yanıtı - alıcı 14 Eylül'e kadar ofisten uzakta, bu gerçek bir insan cevabı değil."
         }
       ]
+    },
+    {
+      "threadId": "1a0909fb60cfce85",
+      "from": "Anders Nilsson <anders.nilsson@degk.se>",
+      "subject": "Re: Belka Golf — gruppgolfkoncept för Delsjö Golfklubb",
+      "lastMessageId": "1a090f7cca0ce8d5",
+      "latestCategory": "do_not_contact",
+      "latestDate": "Fri, 11 Sep 2026 14:55:54 +0000",
+      "replies": [
+        {
+          "messageId": "1a090f7cca0ce8d5",
+          "date": "Fri, 11 Sep 2026 14:55:54 +0000",
+          "snippet": "Hej Tack för ert mejl. Vi har precis inlett ett samarbete med en för oss ny partner gällande resor. Önskar er lycka till och tackar för inbjudan. Vi väljer att avstå möte. Anders Med vänlig hälsning",
+          "category": "do_not_contact",
+          "translation": "Delsjö Golf Kulübü yeni bir seyahat ortağı ile iş birliğine başladıklarını ve şu an için toplantıyı kabul etmek istemediklerini belirtiyorlar. İyi dileklerini sunup, teklifi nazikçe reddetmişlerdir."
+        }
+      ]
     }
   ],
   "recipientAddresses": [
@@ -3506,7 +3523,8 @@
     "office@golfvelden.at",
     "karolbalna@gmail.com",
     "andrysovaanna@gmail.com",
-    "andreas.reiterer@gmx.net"
+    "andreas.reiterer@gmx.net",
+    "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T08:51:22.872Z"
+  "lastRunAt": "2026-09-13T08:54:51.967Z"
 }
