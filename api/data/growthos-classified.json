@@ -2667,23 +2667,6 @@
       ]
     },
     {
-      "threadId": "19ff51cf68f3fcac",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Erik Frafjord",
-      "lastMessageId": "1a023ff8a70eece6",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Fri, 21 Aug 2026 11:05:45 +0000",
-      "replies": [
-        {
-          "messageId": "1a023ff8a70eece6",
-          "date": "Fri, 21 Aug 2026 11:05:45 +0000",
-          "snippet": "Sorry cancelled. No reply... 🙁 ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra Norge. Mvh/Best",
-          "category": "do_not_contact",
-          "translation": "Rezervasyon iptal edilmiştir. Müşteriden cevap alınamamıştır."
-        }
-      ]
-    },
-    {
       "threadId": "19ef443aec2d5cf3",
       "from": "Yvette Vaughan Jones <yvette@yvjones.com>",
       "subject": "Re: Our visit from 24 - 30 September 2026 / Yvette Morgan - INVOICE",
@@ -3118,5 +3101,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:43:12.779Z"
+  "lastRunAt": "2026-09-13T16:43:15.583Z"
 }
