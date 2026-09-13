@@ -2082,23 +2082,6 @@
       ]
     },
     {
-      "threadId": "1a0909fb60cfce85",
-      "from": "Anders Nilsson <anders.nilsson@degk.se>",
-      "subject": "Re: Belka Golf — gruppgolfkoncept för Delsjö Golfklubb",
-      "lastMessageId": "1a090f7cca0ce8d5",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Fri, 11 Sep 2026 14:55:54 +0000",
-      "replies": [
-        {
-          "messageId": "1a090f7cca0ce8d5",
-          "date": "Fri, 11 Sep 2026 14:55:54 +0000",
-          "snippet": "Hej Tack för ert mejl. Vi har precis inlett ett samarbete med en för oss ny partner gällande resor. Önskar er lycka till och tackar för inbjudan. Vi väljer att avstå möte. Anders Med vänlig hälsning",
-          "category": "do_not_contact",
-          "translation": "Yeni bir seyahat ortağı ile anlaştıklarını, şansımızı dilediklerini ve toplantıyı kabul etmediklerini belirtiyorlar."
-        }
-      ]
-    },
-    {
       "threadId": "1a02443dfd96e483",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Hello",
@@ -2520,7 +2503,6 @@
     "hr@theodoragolfclub.ro",
     "info@skolkovogolf.com",
     "daniel.kraft@gavlegolf.com",
-    "anders.nilsson@degk.se",
     "magnus@visbygk.com",
     "johan@lerjedalen.se",
     "dale.harris@southerncrossgolf.se",
@@ -2845,5 +2827,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:48:05.595Z"
+  "lastRunAt": "2026-09-13T08:48:35.603Z"
 }
