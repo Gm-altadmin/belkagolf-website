@@ -2354,23 +2354,6 @@
       ]
     },
     {
-      "threadId": "19f31831ce4d01a9",
-      "from": "Jaap Hoekstra <j.hoekstra@kpexs.com>",
-      "subject": "Re: Attn Elena",
-      "lastMessageId": "19ff0c4d6c843d63",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 11 Aug 2026 13:21:00 +0100",
-      "replies": [
-        {
-          "messageId": "19ff0c4d6c843d63",
-          "date": "Tue, 11 Aug 2026 13:21:00 +0100",
-          "snippet": "Hi Elena Good to hear from you and yes, we are still planning the golf trip to Mal in the month of April 2027. It looks like the group is gonna be a little bit bigger than expected it - We&#39;re",
-          "category": "positive",
-          "translation": "Nisan 2027'de Malaga'ya golf gezisi planlanmaktadır. Grup beklentenden daha büyük olacak."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851c6da91a9d5",
       "from": "Jan Ekblom <jan.ekblom@falsterbogk.se>",
       "subject": "Sv: Belka Golf — gruppgolfkoncept för Falsterbo Golfklubb",
@@ -2947,5 +2930,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:47:14.913Z"
+  "lastRunAt": "2026-09-13T08:47:24.501Z"
 }
