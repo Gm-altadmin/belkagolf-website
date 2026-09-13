@@ -2116,23 +2116,6 @@
       ]
     },
     {
-      "threadId": "1a0426a0e9f67460",
-      "from": "A H <arif@goldsports.pro>",
-      "subject": "Re: Golf tatili",
-      "lastMessageId": "1a04cddf6099efe3",
-      "latestCategory": "positive",
-      "latestDate": "Sat, 29 Aug 2026 12:33:30 +0300",
-      "replies": [
-        {
-          "messageId": "1a04cddf6099efe3",
-          "date": "Sat, 29 Aug 2026 12:33:30 +0300",
-          "snippet": "Merhaba, Teşekkürler. Mümkünse golf turlarına sabah 09:00–11:00 arasında başlamak istiyoruz. 3 farklı sahada oynamak istiyoruz. Mesela Montgomerie, Nobilis ve Kempinski&#39;nin daha kolay olan sahası (",
-          "category": "positive",
-          "translation": "Golf turlarının sabah 09:00-11:00 arasında başlamasını, 3 farklı sahada oynamak istiyorlar (Montgomerie, Nobilis vb.)."
-        }
-      ]
-    },
-    {
       "threadId": "1a02443dfd96e483",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Hello",
@@ -3338,5 +3321,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:41:41.586Z"
+  "lastRunAt": "2026-09-13T08:41:52.484Z"
 }
