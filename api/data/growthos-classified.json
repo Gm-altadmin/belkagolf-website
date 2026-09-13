@@ -2463,23 +2463,6 @@
       ]
     },
     {
-      "threadId": "1a0145722f0cc932",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Terje Pedersen",
-      "lastMessageId": "1a0617d7d587ea69",
-      "latestCategory": "later",
-      "latestDate": "Wed, 2 Sep 2026 09:40:09 +0000",
-      "replies": [
-        {
-          "messageId": "1a0617d7d587ea69",
-          "date": "Wed, 2 Sep 2026 09:40:09 +0000",
-          "snippet": "Cancelled for now. He say he need more time... Hope he will come back later. ------------------------------------------------------------------------------------------ DinGolfReise er den største",
-          "category": "later",
-          "translation": "Şimdilik iptal edildi. Müşteri daha fazla zamana ihtiyaç olduğunu söylüyor. İnşallah daha sonra geri dönecek."
-        }
-      ]
-    },
-    {
       "threadId": "1a0142805d8c2863",
       "from": "Oyku Zeynep Kiral <oyku.kiral@kayahotels.com.tr>",
       "subject": "RE: SPA paketleri 2026-2027",
@@ -2965,5 +2948,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:43:40.842Z"
+  "lastRunAt": "2026-09-13T16:43:50.031Z"
 }
