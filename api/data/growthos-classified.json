@@ -2184,23 +2184,6 @@
       ]
     },
     {
-      "threadId": "1a0191223ba1e3a6",
-      "from": "\"Berk ERSOY | Sueno Hotels Satış Pazarlama\" <berk.ersoy@sueno.com.tr>",
-      "subject": "RE: 24.04.-01.05.2027 Golf Grup Talebi - Fiyatlandırma",
-      "lastMessageId": "1a0191223ba1e3a6",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 19 Aug 2026 08:10:14 +0000",
-      "replies": [
-        {
-          "messageId": "1a0191223ba1e3a6",
-          "date": "Wed, 19 Aug 2026 08:10:14 +0000",
-          "snippet": "Merhabalar, Öncelikle güzel bir gün dileriz. 14 yaşında non golfer için paket yanı non golfer fiyatlar kullanılır. Saygılarımla, From: Belka Golf &lt;info@belkagolf.com&gt; Sent: Wednesday, August 19,",
-          "category": "positive",
-          "translation": "14 yaşındaki non-golfer için paket fiyatı açıklanıyor. 24.04-01.05.2027 golf grup talebine cevap."
-        }
-      ]
-    },
-    {
       "threadId": "19fccc3f05ff25bc",
       "from": "Aizek CHEKIROVA <aizek.chekirova@sirene.com.tr>",
       "subject": "Re: Acil Lütfen**Fiyat teklifi talebi//SIRENE BELEK//15.10.2026- 19.10.2026//4x gece konaklama + 3x Pasha + 1x Sultan - 5 pax",
@@ -3083,5 +3066,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:46:01.494Z"
+  "lastRunAt": "2026-09-13T08:46:17.149Z"
 }
