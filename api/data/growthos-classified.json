@@ -2854,23 +2854,6 @@
       ]
     },
     {
-      "threadId": "19fffef5c539ff7c",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Guttorm Vedum Stuge",
-      "lastMessageId": "1a06c312064d2499",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Fri, 4 Sep 2026 11:32:34 +0000",
-      "replies": [
-        {
-          "messageId": "1a06c312064d2499",
-          "date": "Fri, 4 Sep 2026 11:32:34 +0000",
-          "snippet": "Sorry cancelled. This group chose Milano, Italy.... 🙁 ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for",
-          "category": "do_not_contact",
-          "translation": "Rezervasyon iptal edilmiştir. Grup Milano, İtalya'yı seçmiştir."
-        }
-      ]
-    },
-    {
       "threadId": "19ff05a6d425fc79",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Reservation Mr. Lars Audun T. Torvik INVOICE",
@@ -3543,5 +3526,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:45:37.467Z"
+  "lastRunAt": "2026-09-13T16:45:50.108Z"
 }
