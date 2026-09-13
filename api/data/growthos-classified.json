@@ -2548,23 +2548,6 @@
       ]
     },
     {
-      "threadId": "1a0431363c291b13",
-      "from": "\"Lisa Gahn | Blaumond GmbH\" <lisa.gahn@blaumond24.de>",
-      "subject": "Shuttle Service Inquiry for Golf Transfers | Belek (2 Passengers)",
-      "lastMessageId": "1a0431363c291b13",
-      "latestCategory": "positive",
-      "latestDate": "Thu, 27 Aug 2026 11:55:39 +0000",
-      "replies": [
-        {
-          "messageId": "1a0431363c291b13",
-          "date": "Thu, 27 Aug 2026 11:55:39 +0000",
-          "snippet": "Dear Mrs. Beyzadeoğlu, I would like to inquire about booking a private shuttle service for two guests in Belek, Turkey. We are looking to arrange daily round-trip transfers between their hotel and",
-          "category": "positive",
-          "translation": "Belek'te iki misafir için özel shuttle servisi rezervasyonu hakkında bilgi talep ediyor. Otel ve golf sahaları arasında günlük gidiş-dönüş transferi düzenlemek istiyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a01e811071c2b6d",
       "from": "\"Jari-Pekka Kelhä\" <jari-pekka.kelha@silmaasema.fi>",
       "subject": "Re: Request for Quotation – Sueno Hotels Deluxe Belek & Golf, 16–23 October 2026",
@@ -3390,5 +3373,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:46:26.586Z"
+  "lastRunAt": "2026-09-13T16:46:30.390Z"
 }
