@@ -2388,23 +2388,6 @@
       ]
     },
     {
-      "threadId": "19ff4f1df21f0300",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Kjell Hvorup",
-      "lastMessageId": "19ff9ea64ebcd79f",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Thu, 13 Aug 2026 06:58:36 +0000",
-      "replies": [
-        {
-          "messageId": "19ff9ea64ebcd79f",
-          "date": "Thu, 13 Aug 2026 06:58:36 +0000",
-          "snippet": "Sorry cancelled. He say the price is too high, and they now decide to travel togehter with their own home club to Portugal this year... 🙁 ---------------------------------------------------------------",
-          "category": "do_not_contact",
-          "translation": "Grup iptal, fiyat çok yüksek bulundu. Portekiz'e kendi golf kulübüyle gidecek."
-        }
-      ]
-    },
-    {
       "threadId": "19ff1962d44a7c79",
       "from": "Kirsten Mueller <mueller_kirsten@yahoo.com>",
       "subject": "Re: Stay in October / Airport transfer?",
@@ -3100,5 +3083,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:43:35.676Z"
+  "lastRunAt": "2026-09-13T08:43:44.472Z"
 }
