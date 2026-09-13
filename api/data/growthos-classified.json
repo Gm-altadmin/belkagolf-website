@@ -2371,23 +2371,6 @@
       ]
     },
     {
-      "threadId": "1951895a8c619403",
-      "from": "\"Demet UR | Sueno Hotels Satış Pazarlama\" <demet.dikmen@sueno.com.tr>",
-      "subject": "SHGB ve SHDB 2026 GOLF PAKETLERI HAKKINDA",
-      "lastMessageId": "1951895a8c619403",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 18 Feb 2025 13:23:36 +0300",
-      "replies": [
-        {
-          "messageId": "1951895a8c619403",
-          "date": "Tue, 18 Feb 2025 13:23:36 +0300",
-          "snippet": "Değerli Partnerlerimiz, Sueno Hotels Golf Belek ve Sueno Hotels Deluxe Belek için 2026 yılı EURO&amp;GBP 7 gecelik golf paketleri ekte bilginize sunulmuştur. İlgili fiyat listelerini çalışanlarınız ile",
-          "category": "positive",
-          "translation": "Sueno Hotels için 2026 yılı 7 gece golf paketleri ve EURO/GBP fiyat listelerinin sunulduğu ticari iş ortaklığı mektubu."
-        }
-      ]
-    },
-    {
       "threadId": "19fefbeaeb0c2929",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Titanic / Cullinan courses",
@@ -3066,5 +3049,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:46:17.149Z"
+  "lastRunAt": "2026-09-13T08:46:30.414Z"
 }
