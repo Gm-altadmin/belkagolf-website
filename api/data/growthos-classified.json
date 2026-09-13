@@ -2803,23 +2803,6 @@
       ]
     },
     {
-      "threadId": "19ffb238c63556da",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Johan Askeland",
-      "lastMessageId": "1a06179e6fe8c3ce",
-      "latestCategory": "later",
-      "latestDate": "Wed, 2 Sep 2026 09:36:14 +0000",
-      "replies": [
-        {
-          "messageId": "1a06179e6fe8c3ce",
-          "date": "Wed, 2 Sep 2026 09:36:14 +0000",
-          "snippet": "Cancelled for now. He will come back later. ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra",
-          "category": "later",
-          "translation": "Şu an iptal edilmiştir ancak müşteri daha sonra geri dönecektir."
-        }
-      ]
-    },
-    {
       "threadId": "19ff2541a5bd41cb",
       "from": "Marco Sammuri <marco.sammuri80@gmail.com>",
       "subject": "Re: Info travel 24-04 01-05",
@@ -3458,5 +3441,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:46:10.314Z"
+  "lastRunAt": "2026-09-13T16:46:13.328Z"
 }
