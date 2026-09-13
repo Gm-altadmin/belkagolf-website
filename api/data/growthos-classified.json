@@ -2490,23 +2490,6 @@
       ]
     },
     {
-      "threadId": "19ff03eda6217767",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Mario Gaarder",
-      "lastMessageId": "1a023fdcc6195743",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Fri, 21 Aug 2026 11:03:51 +0000",
-      "replies": [
-        {
-          "messageId": "1a023fdcc6195743",
-          "date": "Fri, 21 Aug 2026 11:03:51 +0000",
-          "snippet": "Sorry cancelled. They say the offer is not of interest... �� No reason why not ------------------------------------------------------------------------------------------ DinGolfReise er den største",
-          "category": "do_not_contact",
-          "translation": "Grup iptal, teklif ilgi çekici değil. Devam etme niyeti yok."
-        }
-      ]
-    },
-    {
       "threadId": "19ff1962d44a7c79",
       "from": "Kirsten Mueller <mueller_kirsten@yahoo.com>",
       "subject": "Re: Stay in October / Airport transfer?",
@@ -3236,5 +3219,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:42:31.911Z"
+  "lastRunAt": "2026-09-13T08:42:36.176Z"
 }
