@@ -3037,9 +3037,9 @@
       "threadId": "1a070b2b5435af4e",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Payments",
-      "lastMessageId": "1a08a5f26f84f137",
-      "latestCategory": "positive",
-      "latestDate": "Thu, 10 Sep 2026 08:11:27 +0000",
+      "lastMessageId": "1a094b435c3e9666",
+      "latestCategory": "other",
+      "latestDate": "Sat, 12 Sep 2026 08:20:33 +0000",
       "replies": [
         {
           "messageId": "1a08a5f26f84f137",
@@ -3047,6 +3047,13 @@
           "snippet": "5 days since last contact... 🙂 Still no answer. It looks like this is my responsibility to follow up. I really hope you can take your time and look into this so that we can move forward. --------------",
           "category": "positive",
           "translation": "Ödeme konusunda 5 gün boyunca cevap beklediklerini ve süreci hızlandırmak için yardım istediklerini belirtiyor. İlerleme sağlamak için işbirliğine istekli görünüyor."
+        },
+        {
+          "messageId": "1a094b435c3e9666",
+          "date": "Sat, 12 Sep 2026 08:20:33 +0000",
+          "snippet": "I thank you for this information, and feel sorry to have damaged your company. So if I understand you correct I should not send any more requests / bookings. Is that correct? And if this is your",
+          "category": "other",
+          "translation": "Kişi bilgi için teşekkür ediyor ve şirketine zarar verdiği için üzüldüğünü söylüyor. Daha fazla istek/rezervasyon göndermemesi gerekip gerekmediğini soruyor. Mesaj eksik/kesilmiş görünüyor."
         }
       ]
     },
@@ -3350,5 +3357,5 @@
     "piotr.owczarek@pgapolska.com",
     "martin.pecko@post.cz"
   ],
-  "lastRunAt": "2026-09-12T15:34:08.743Z"
+  "lastRunAt": "2026-09-13T08:30:02.114Z"
 }
