@@ -2439,23 +2439,6 @@
       ]
     },
     {
-      "threadId": "19faa032fa9f03cc",
-      "from": "Johannes Wehr <johanneswehr65@gmail.com>",
-      "subject": "AW: Rückzahlungsvereinbarung",
-      "lastMessageId": "19fcd322ac449ded",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 4 Aug 2026 14:34:05 +0000",
-      "replies": [
-        {
-          "messageId": "19fcd322ac449ded",
-          "date": "Tue, 4 Aug 2026 14:34:05 +0000",
-          "snippet": "Hallo Elena, zuerst die positive Nachricht, das Geld ist auf unserem Konto eingegangen. Es wäre schön, wenn wir auch die letzte Hürde noch meistern könnten. Diese beiden Belege von Sun Express liegen",
-          "category": "positive",
-          "translation": "Ödeme alınmıştır. Bazı belge/hukuki engellerin aşılması için çalışmalar devam etmektedir. İşbirliği devamlı."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851c6da91a9d5",
       "from": "Jan Ekblom <jan.ekblom@falsterbogk.se>",
       "subject": "Sv: Belka Golf — gruppgolfkoncept för Falsterbo Golfklubb",
@@ -3032,5 +3015,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:46:40.874Z"
+  "lastRunAt": "2026-09-13T08:46:50.166Z"
 }
