@@ -2463,23 +2463,6 @@
       ]
     },
     {
-      "threadId": "1a0426a0e9f67460",
-      "from": "A H <arif@goldsports.pro>",
-      "subject": "Re: Golf tatili",
-      "lastMessageId": "1a04cddf6099efe3",
-      "latestCategory": "positive",
-      "latestDate": "Sat, 29 Aug 2026 12:33:30 +0300",
-      "replies": [
-        {
-          "messageId": "1a04cddf6099efe3",
-          "date": "Sat, 29 Aug 2026 12:33:30 +0300",
-          "snippet": "Merhaba, Teşekkürler. Mümkünse golf turlarına sabah 09:00–11:00 arasında başlamak istiyoruz. 3 farklı sahada oynamak istiyoruz. Mesela Montgomerie, Nobilis ve Kempinski&#39;nin daha kolay olan sahası (",
-          "category": "positive",
-          "translation": "Golf turlarının sabah 09:00-11:00 saatleri arasında başlamasını istiyorlar. Montgömerie, Nobilis ve Kempinski gibi üç farklı sahada oynamak isteyişi belirtiliyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a037df41641684a",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Reservation Mr. Alexander Hofset INVOICE (Updated)",
@@ -3067,5 +3050,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:43:23.322Z"
+  "lastRunAt": "2026-09-13T16:43:26.607Z"
 }
