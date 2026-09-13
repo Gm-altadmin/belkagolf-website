@@ -2871,23 +2871,6 @@
       ]
     },
     {
-      "threadId": "19feaca25927f493",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Kristian Reed",
-      "lastMessageId": "19ff9e23b61497e8",
-      "latestCategory": "positive",
-      "latestDate": "Thu, 13 Aug 2026 06:49:41 +0000",
-      "replies": [
-        {
-          "messageId": "19ff9e23b61497e8",
-          "date": "Thu, 13 Aug 2026 06:49:41 +0000",
-          "snippet": "This booking is confirmed for 3 pax in 1 x dbl/twin + 1 x sngl I will send you all details soon ------------------------------------------------------------------------------------------ DinGolfReise",
-          "category": "positive",
-          "translation": "3 kişilik rezervasyon onaylandı (1 çift/twin oda + 1 tek oda). Tüm detaylar yakında gönderilecek."
-        }
-      ]
-    },
-    {
       "threadId": "19feff505e738d28",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Beginner golf training package enquiry: 25–31 October 2026",
@@ -3339,5 +3322,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:42:14.315Z"
+  "lastRunAt": "2026-09-13T16:42:20.012Z"
 }
