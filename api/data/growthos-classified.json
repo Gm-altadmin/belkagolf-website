@@ -3058,23 +3058,6 @@
       ]
     },
     {
-      "threadId": "19db97707e527716",
-      "from": "\"Mihriban Gökmen Yıldız\" <golf.sales@swandorhotels.com>",
-      "subject": "RE: 1 pax IPTAL// RE: YENI REZ.//LYKIA WORLD//23.04.-28.04.2026//Mr. Torgeir Fossli//5 gece konaklama + 4x round Lykia- 4 pax",
-      "lastMessageId": "19dc4627c0698988",
-      "latestCategory": "positive",
-      "latestDate": "Sat, 25 Apr 2026 14:24:42 +0300",
-      "replies": [
-        {
-          "messageId": "19dc4627c0698988",
-          "date": "Sat, 25 Apr 2026 14:24:42 +0300",
-          "snippet": "Merhaba Anastasiya Hanım , Belka Golf derneği TCI Pro&#39;su Gültekin Akaltun konaklama detayları aşağıdaki gibidir. 3 gece + unlimited golf CHECK-IN 25.04.2026 CHECK-OUT 28.04.2026 Tee-tımes 26.04.",
-          "category": "positive",
-          "translation": "Lykia World'de 23-28 Nisan 2026 için Torgeir Fossli ve grup rezervasyonu (5 gece + 4 round golf) detayları sağlanıyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a096442e5747019",
       "from": "Alex Hill <golfops@northhantsgolf.co.uk>",
       "subject": "Automatic reply: A considered Belek group-golf option for North Hants Golf Club",
@@ -3492,5 +3475,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:40:37.206Z"
+  "lastRunAt": "2026-09-13T16:40:40.946Z"
 }
