@@ -2480,23 +2480,6 @@
       ]
     },
     {
-      "threadId": "1a000444e5d3cf28",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Thomas Jakobsen",
-      "lastMessageId": "1a0621fa97e3d322",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Wed, 2 Sep 2026 12:37:17 +0000",
-      "replies": [
-        {
-          "messageId": "1a0621fa97e3d322",
-          "date": "Wed, 2 Sep 2026 12:37:17 +0000",
-          "snippet": "Sorry cancelled. He say the dates does not fit the rest of the group... 🙁 Stupid man. ------------------------------------------------------------------------------------------ DinGolfReise er den",
-          "category": "do_not_contact",
-          "translation": "Rezervasyon iptal edilmiştir. Müşteri tarihler grubu ile uyuşmadığını belirtmiştir."
-        }
-      ]
-    },
-    {
       "threadId": "19fffef5c539ff7c",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Guttorm Vedum Stuge",
@@ -2948,5 +2931,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:43:50.031Z"
+  "lastRunAt": "2026-09-13T16:43:51.948Z"
 }
