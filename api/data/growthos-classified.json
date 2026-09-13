@@ -2456,23 +2456,6 @@
       ]
     },
     {
-      "threadId": "19df1d1b3493ca9e",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Reservation Mr. Ottar Breivik (family group) INVOICE",
-      "lastMessageId": "19df7ee1e218c796",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 5 May 2026 14:37:51 +0300",
-      "replies": [
-        {
-          "messageId": "19df7ee1e218c796",
-          "date": "Tue, 5 May 2026 14:37:51 +0300",
-          "snippet": "I do not know what you have informed them about a refund for the original booking / stay? If you told them they will get a refund, then it will be problem for me to say they will not get a refund... --",
-          "category": "positive",
-          "translation": "Ottar Breivik'in aile grubu rezervasyonu hakkında geri ödeme ve ödeme konuşulmaktadır. İşbirliği devam ediyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851c6da91a9d5",
       "from": "Jan Ekblom <jan.ekblom@falsterbogk.se>",
       "subject": "Sv: Belka Golf — gruppgolfkoncept för Falsterbo Golfklubb",
@@ -3049,5 +3032,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:46:30.414Z"
+  "lastRunAt": "2026-09-13T08:46:40.874Z"
 }
