@@ -2490,23 +2490,6 @@
       ]
     },
     {
-      "threadId": "19feff505e738d28",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Beginner golf training package enquiry: 25–31 October 2026",
-      "lastMessageId": "19fffc373f387c18",
-      "latestCategory": "positive",
-      "latestDate": "Fri, 14 Aug 2026 10:13:47 +0000",
-      "replies": [
-        {
-          "messageId": "19fffc373f387c18",
-          "date": "Fri, 14 Aug 2026 10:13:47 +0000",
-          "snippet": "Attached Reservation Mr. Chris Kumar. Please confirm and send invoice. ------------------------------------------------------------------------------------------ DinGolfReise er den største norske",
-          "category": "positive",
-          "translation": "Chris Kumar için başlangıç golf eğitim paketi rezervasyonu ektedir. Onay ve fatura talep edilmektedir."
-        }
-      ]
-    },
-    {
       "threadId": "19f31831ce4d01a9",
       "from": "Jaap Hoekstra <j.hoekstra@kpexs.com>",
       "subject": "Re: Attn Elena",
@@ -3134,5 +3117,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:43:21.989Z"
+  "lastRunAt": "2026-09-13T08:43:28.851Z"
 }
