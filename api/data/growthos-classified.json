@@ -2099,23 +2099,6 @@
       ]
     },
     {
-      "threadId": "1a086040b2ae47ee",
-      "from": "Jonni Tiainen <tiainen.jonni@gmail.com>",
-      "subject": "Request for quote for Sueno Golf Belek",
-      "lastMessageId": "1a086040b2ae47ee",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 9 Sep 2026 14:53:27 +0300",
-      "replies": [
-        {
-          "messageId": "1a086040b2ae47ee",
-          "date": "Wed, 9 Sep 2026 14:53:27 +0300",
-          "snippet": "Hello, Our group would be interested in a quote for Sueno Golf Belek consisting of 6 green fees + standard room accommodation, all inclusive, for 8 people for the following alternative dates: - 23 to",
-          "category": "positive",
-          "translation": "Sueno Golf Belek için 8 kişi, 6 greenfee + standart oda, all-inclusive fiyat teklifi isteniyor. Birkaç alternatif tarih verilmiş."
-        }
-      ]
-    },
-    {
       "threadId": "1a0431363c291b13",
       "from": "\"Lisa Gahn | Blaumond GmbH\" <lisa.gahn@blaumond24.de>",
       "subject": "Shuttle Service Inquiry for Golf Transfers | Belek (2 Passengers)",
@@ -3491,5 +3474,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:40:14.422Z"
+  "lastRunAt": "2026-09-13T08:40:33.085Z"
 }
