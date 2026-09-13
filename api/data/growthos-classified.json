@@ -2514,23 +2514,6 @@
       ]
     },
     {
-      "threadId": "1a01f2c96a70d4c5",
-      "from": "Golf Reservation <golf.reservation@swandorhotels.com>",
-      "subject": "RE: 01.11.-08.11.2026 - UNLIMITED GOLF + BUGGY ?",
-      "lastMessageId": "1a01f40415095399",
-      "latestCategory": "positive",
-      "latestDate": "Thu, 20 Aug 2026 12:58:20 +0000",
-      "replies": [
-        {
-          "messageId": "1a01f40415095399",
-          "date": "Thu, 20 Aug 2026 12:58:20 +0000",
-          "snippet": "Elena Hanım merhaba; Unlimited Paket fiyatlarımızın üzerine Buggy fiyatını ilave ederek misafirlere sunabilirsiniz, misafirin raporu varsa Buggy konusunda yardımcı olabiliriz. Rezervasyon aşamasında",
-          "category": "positive",
-          "translation": "Unlimited Paket fiyatına Buggy fiyatı eklenebilir. Misafirin raporu varsa Buggy konusunda yardımcı olunabilir, detaylar rezervasyon aşamasında belirtilecek."
-        }
-      ]
-    },
-    {
       "threadId": "1a00cf3370577d62",
       "from": "YOONJU OHK <luk2you@nate.com>",
       "subject": "RE: Re: 9-night / 6-round golf package – Cornelia Diamond vs Sueno Deluxe ",
@@ -3152,5 +3135,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:43:04.013Z"
+  "lastRunAt": "2026-09-13T16:43:06.649Z"
 }
