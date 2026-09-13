@@ -2444,23 +2444,6 @@
           "translation": "Otomatik yanıt: Alıcı 15 Eylül'e kadar seyahattedir. Acil konular için SMS gönderilebilir, diğer sorular için resepsiyon yardımcı olabilir."
         }
       ]
-    },
-    {
-      "threadId": "1a0909fb60cfce85",
-      "from": "Anders Nilsson <anders.nilsson@degk.se>",
-      "subject": "Re: Belka Golf — gruppgolfkoncept för Delsjö Golfklubb",
-      "lastMessageId": "1a090f7cca0ce8d5",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Fri, 11 Sep 2026 14:55:54 +0000",
-      "replies": [
-        {
-          "messageId": "1a090f7cca0ce8d5",
-          "date": "Fri, 11 Sep 2026 14:55:54 +0000",
-          "snippet": "Hej Tack för ert mejl. Vi har precis inlett ett samarbete med en för oss ny partner gällande resor. Önskar er lycka till och tackar för inbjudan. Vi väljer att avstå möte. Anders Med vänlig hälsning",
-          "category": "do_not_contact",
-          "translation": "Delsjö Golf Kulübü yeni bir seyahat ortağı ile iş birliğine başladıklarını belirtiyorlar. Sunulan teklife ilgi göstermiyorlar ve toplantı talebini açıkça reddediyorlar."
-        }
-      ]
     }
   ],
   "recipientAddresses": [
@@ -2809,8 +2792,7 @@
     "office@golfvelden.at",
     "karolbalna@gmail.com",
     "andrysovaanna@gmail.com",
-    "andreas.reiterer@gmx.net",
-    "anders.nilsson@degk.se"
+    "andreas.reiterer@gmx.net"
   ],
-  "lastRunAt": "2026-09-13T08:50:00.866Z"
+  "lastRunAt": "2026-09-13T08:50:41.750Z"
 }
