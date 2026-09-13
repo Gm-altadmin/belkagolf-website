@@ -2269,23 +2269,6 @@
       ]
     },
     {
-      "threadId": "19fcbc0e0fbe66cf",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Tom Brataas",
-      "lastMessageId": "1a0234bf66a2e334",
-      "latestCategory": "positive",
-      "latestDate": "Fri, 21 Aug 2026 07:49:36 +0000",
-      "replies": [
-        {
-          "messageId": "1a0234bf66a2e334",
-          "date": "Fri, 21 Aug 2026 07:49:36 +0000",
-          "snippet": "This booking is confirmed for Sirene in 2 x dbl / twin. Is it possible to find any other course for them to play 15/10? I will send you all details after.... -------------------------------------------",
-          "category": "positive",
-          "translation": "Tom Brataas için Sirene'de 2x çift oda rezervasyonu onaylandı. 15/10 için başka kurs bulunabilir mi soruluyor."
-        }
-      ]
-    },
-    {
       "threadId": "19fccc3f05ff25bc",
       "from": "Aizek CHEKIROVA <aizek.chekirova@sirene.com.tr>",
       "subject": "Re: Acil Lütfen**Fiyat teklifi talebi//SIRENE BELEK//15.10.2026- 19.10.2026//4x gece konaklama + 3x Pasha + 1x Sultan - 5 pax",
@@ -3219,5 +3202,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:42:36.176Z"
+  "lastRunAt": "2026-09-13T08:42:41.192Z"
 }
