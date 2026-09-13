@@ -2456,23 +2456,6 @@
       ]
     },
     {
-      "threadId": "19f9020de25e3079",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Reservation Mr. Alexander Hofset INVOICE",
-      "lastMessageId": "1a024854d8bb966d",
-      "latestCategory": "positive",
-      "latestDate": "Fri, 21 Aug 2026 13:31:51 +0000",
-      "replies": [
-        {
-          "messageId": "1a024854d8bb966d",
-          "date": "Fri, 21 Aug 2026 13:31:51 +0000",
-          "snippet": "Would be nice if you could answer this ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra Norge.",
-          "category": "positive",
-          "translation": "Cevap alınması talep ediliyor. İstek/soru mevcut, aktif iletişim aranıyor."
-        }
-      ]
-    },
-    {
       "threadId": "19ff51cf68f3fcac",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Erik Frafjord",
@@ -3270,5 +3253,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:42:18.757Z"
+  "lastRunAt": "2026-09-13T08:42:26.060Z"
 }
