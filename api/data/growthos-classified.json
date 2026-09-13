@@ -2184,23 +2184,6 @@
       ]
     },
     {
-      "threadId": "1a01a1df849bd7cf",
-      "from": "\"Kenan Çot\" <kenan.cot@gloria.com.tr>",
-      "subject": "RE: Tee-time Müsaitliği - 30.03.-06.04.2027 - 2pax ",
-      "lastMessageId": "1a01a1df849bd7cf",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 19 Aug 2026 13:02:47 +0000",
-      "replies": [
-        {
-          "messageId": "1a01a1df849bd7cf",
-          "date": "Wed, 19 Aug 2026 13:02:47 +0000",
-          "snippet": "Merhaba Elena Hanım, 2 pax / dış otel 30.03.2027 13:36 new 31.03.2027 13:18 old 01.04.2027 13:54 new 02.04.2027 14:21 old 03.04.2027 13:54 new 04.04.2027 14:48 old 05.04.2027 14:48 new 06.04.2027 14:48",
-          "category": "positive",
-          "translation": "2 kişi, dış otel, 30.03-06.04.2027 tarihleri için tee time müsaitliği sorgulanıyor. Günlük saatleri listelemiş."
-        }
-      ]
-    },
-    {
       "threadId": "1a0191223ba1e3a6",
       "from": "\"Berk ERSOY | Sueno Hotels Satış Pazarlama\" <berk.ersoy@sueno.com.tr>",
       "subject": "RE: 24.04.-01.05.2027 Golf Grup Talebi - Fiyatlandırma",
@@ -3117,5 +3100,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:45:42.474Z"
+  "lastRunAt": "2026-09-13T08:45:48.452Z"
 }
