@@ -2388,23 +2388,6 @@
       ]
     },
     {
-      "threadId": "19fefd03bcbf2c61",
-      "from": "\"Tuğba Uçak\" <golf.sales2@swandorhotels.com>",
-      "subject": "RE: Summer 2027 Hotel Concept - URGENT!",
-      "lastMessageId": "19ff08272c0d868b",
-      "latestCategory": "later",
-      "latestDate": "Tue, 11 Aug 2026 11:08:29 +0000",
-      "replies": [
-        {
-          "messageId": "19ff08272c0d868b",
-          "date": "Tue, 11 Aug 2026 11:08:29 +0000",
-          "snippet": "Merhaba Anastasiya Hanım, Öncelikle güzel bir gün dilerim. 2027 yaz konsepti henüz hazırlanma aşamasındadır. Hazır olunca tarafınıza gönderilecektir. Saygılarımla, Tuğba Uçak Golf Sales&amp;Marketing",
-          "category": "later",
-          "translation": "2027 yaz konsepti henüz hazırlanma aşamasındadır ve hazır olunca gönderilecektir. Şu an değil, ileride ilgisi vardır."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851c6da91a9d5",
       "from": "Jan Ekblom <jan.ekblom@falsterbogk.se>",
       "subject": "Sv: Belka Golf — gruppgolfkoncept för Falsterbo Golfklubb",
@@ -2981,5 +2964,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:46:59.100Z"
+  "lastRunAt": "2026-09-13T08:47:08.769Z"
 }
