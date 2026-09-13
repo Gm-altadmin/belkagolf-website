@@ -795,27 +795,6 @@ const GROWTHOS_CATEGORY_TR = {
   later: 'Daha sonra', do_not_contact: 'İletişime geçmeyin', other: 'Diğer/Otomatik'
 };
 
-// Gmail'in "growth-os" arama operatörü THREAD seviyesinde eşleşiyor - ama etiketin
-// kendisi mesaj seviyesinde uygulanıyor. Yani bir yazışmada TEK bir mesaj (yanlışlıkla,
-// elle) bu etiketi almışsa, o yazışmadaki DİĞER TÜM mesajlar da (örn. bir otele yazılan
-// tamamen alakasız bir rezervasyon mesajı) yanlışlıkla taranıyordu (12.09.2026'da Roger
-// Lode/Sueno Hotels ile gerçek örneklerle bulundu). Düzeltme: etiketin gerçek Gmail
-// ID'sini bulup, SADECE o ID'yi taşıyan MESAJI (thread'in tamamını değil) kontrol et.
-let cachedGrowthOsLabelIds = null;
-async function getGrowthOsLabelIds(accessToken) {
-  if (cachedGrowthOsLabelIds) return cachedGrowthOsLabelIds;
-  try {
-    const res = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/labels',
-      { headers: { Authorization: `Bearer ${accessToken}` } });
-    const data = await res.json();
-    const matches = (data.labels || []).filter((l) => (l.name || '').toLowerCase().includes('growth'));
-    cachedGrowthOsLabelIds = new Set(matches.map((l) => l.id));
-  } catch (e) {
-    cachedGrowthOsLabelIds = new Set();
-  }
-  return cachedGrowthOsLabelIds;
-}
-
 // Growth OS cevaplarını Claude ile sınıflandırır (kategori + Türkçe çeviri) - hem etiket-
 // bazlı taramada hem adres-eşleştirmeli ek taramada AYNI mantık kullanılıyor, kod tekrarı
 // olmasın diye tek yere çıkarıldı (bugünkü _lib refactor'üyle aynı prensip).
@@ -933,14 +912,14 @@ async function handleGrowthOsScan(req, res, accessToken) {
   // thread'de yeni bir mesaj geldiğinde bunu doğru şekilde "güncelleme" olarak yakalar.
   const lastProcessedMsgId = new Map(store.items.map((it) => [it.threadId, it.lastMessageId]));
 
-  // 09.09.2026 SORUN ÇIKTI (kullanıcı bulguları): "label:growth-os in:inbox" sorgusu
-  // ~400 gönderilen maile karşı sadece 8 cevap buldu - şüpheli derecede düşük. Growth OS
-  // projesinin kendi geçmişinde AYNI risk zaten belgelenmişti: Gmail'in bu etiket
-  // üzerindeki "in:inbox" araması güvenilmez/eksik sonuç verebiliyor. Düzeltme: artık
-  // SADECE etikete göre arıyoruz (in:inbox kısıtlaması KALDIRILDI) - kendi kodumuzda
-  // zaten "bizim domainimizden gelmeyen son mesaj" mantığıyla gerçek cevapları
-  // ayıklıyoruz (aşağıda), Gmail'in in:inbox indekslemesine hiç bağımlı değiliz artık.
-  const q = 'label:growth-os';
+  // 12.09.2026 - İKİNCİ DÜZELTME: "label:growth-os" tabanlı arama Gmail'de bizzat test
+  // edilip GÜVENİLMEZ bulundu (bazen gerçek Growth OS maillerini kaçırıyor, bazen de -
+  // Talep Raporu tarafında - gerçek müşteri maillerini yanlışlıkla dışarıda bırakıyordu).
+  // Artık Growth OS'un GERÇEK gönderim şablonuna dayalı konu başlığı araması kullanılıyor
+  // (6 dilde canlı doğrulandı: Danca/İsveççe/Almanca/Norveççe/İngilizce/Fince) - hem daha
+  // güvenilir hem de kullanıcının istediği kadar basit: sadece "biz bu mail adresine bu
+  // şablonla mail attık mı" sorusuna bakıyor.
+  const q = 'from:info@belkagolf.com (subject:"gruppegolfkoncept" OR subject:"gruppgolfkoncept" OR subject:"gruppengolf-konzept" OR subject:"gruppegolf-konsept" OR subject:"group-golf option" OR subject:"ryhmägolfkonsepti")';
   let threads = [];
   let pageToken = '';
   // Sayfalama sınırı 6'dan 10'a çıkarıldı (09.09.2026) - 400+ gönderilen mail varsa 6
@@ -960,7 +939,6 @@ async function handleGrowthOsScan(req, res, accessToken) {
   // Aynı zamanda BİZİM gönderdiğimiz mesajların "Kime" adreslerini de topluyoruz -
   // bunlar kalıcı olarak saklanıp "Adres Eşleştirmeli Ek Tarama" (growthOsScanByAddress)
   // tarafından, etiketi kopmuş/thread'i bozulmuş cevapları bulmak için kullanılacak.
-  const growthOsLabelIds = await getGrowthOsLabelIds(accessToken);
   const newItems = [];
   const recipientAddresses = new Set(store.recipientAddresses || []);
   for (const group of chunk(threads.map((t) => t.id), 10)) {
@@ -978,15 +956,12 @@ async function handleGrowthOsScan(req, res, accessToken) {
       if (!det || !det.messages || det.messages.length === 0) continue;
 
       // Bizim gönderdiğimiz her mesajın "Kime" adresini topla (adres-eşleştirmeli ek
-      // tarama için kalıcı liste). SADECE bu MESAJIN KENDİSİ growth-os etiketini
-      // taşıyorsa (12.09.2026 düzeltmesi - eskiden "thread'de HERHANGİ bir mesaj bu
-      // etiketi taşıyorsa TÜM mesajları tara" mantığı vardı, bu yüzden bir yazışmada tek
-      // bir mesaj yanlışlıkla etiketlenince, o yazışmadaki alakasız mesajlar - örn. Sueno
-      // Hotels'e yazılan bir rezervasyon maili - da yanlışlıkla toplanıyordu).
+      // tarama için kalıcı liste). Ekstra hariç tutma KONTROLÜNE gerek yok artık - üstteki
+      // sorgu zaten konu başlığı şablonuyla (subject:"gruppegolfkoncept" vb.) filtrelediği
+      // için buraya gelen thread'ler zaten güvenilir şekilde gerçek Growth OS gönderimleri.
       for (const m of det.messages) {
         const mFrom = extractEmailAddr(getHeaderVal(m, 'From'));
-        const hasGrowthOsLabel = (m.labelIds || []).some((id) => growthOsLabelIds.has(id));
-        if (isOurDomain(mFrom) && hasGrowthOsLabel) {
+        if (isOurDomain(mFrom)) {
           const mTo = extractEmailAddr(getHeaderVal(m, 'To'));
           if (mTo) recipientAddresses.add(mTo);
         }
@@ -1525,15 +1500,19 @@ export default async function handler(req, res) {
     // adreslerinden gelen stop-sale bültenlerini de yakalar, adres listesine bağımlı
     // kalmadan. Gerçek müşteri talepleri konu başlığında bu ifadeleri hiç geçirmez.
     const subjectExcl = '-subject:"stop sale" -subject:"open sale" -subject:"stop&open sale"';
-    // GROWTH OS HARİÇ TUTMA (12.09.2026, ACİL DÜZELTME): Growth OS (ayrı B2B pazarlama
-    // kampanyası) info@belkagolf.com'dan gönderiyor - bu adres Talep Raporu'nun ana
-    // sorgusuna da giriyor. Growth OS ~400+ mail gönderince, 8 günlük pencerede bu hacim
-    // gerçek müşteri taleplerini boğdu - kullanıcı "0 talep bulundu" ile fark etti.
-    // Gerçek sebep doğrulandı (Gmail'de canlı test edildi): -label:growth-os eklenince
-    // gerçek talepler tekrar ortaya çıkıyor. NOT: etiketleme %100 tutarlı olmayabilir
-    // (Growth OS'un kendi projesinde de bilinen bir risk) - ileride ek bir konu-bazlı
-    // filtre gerekebilir, ama bu acil/büyük iyileşmeyi hemen sağlıyor.
-    const growthOsExcl = '-label:growth-os';
+    // GROWTH OS HARİÇ TUTMA (12.09.2026, iki aşamalı düzeltme):
+    // 1. aşama: "-label:growth-os" eklenmişti ama bu GÜVENİLMEZ çıktı - Gmail'de bizzat
+    //    test edildi, bu sorgu hem bazı gerçek Growth OS maillerini KAÇIRIYOR hem de
+    //    (daha kötüsü) BAZI GERÇEK MÜŞTERİ/OTEL YAZIŞMALARINI YANLIŞLIKLA DIŞARIDA
+    //    BIRAKIYORDU (kullanıcı "sales/info'ya gelen mailer eksik" diye fark etti).
+    // 2. aşama (bu): etiket yerine, Growth OS'un GERÇEK gönderim şablonuna dayalı konu
+    //    başlığı hariç tutması kullanılıyor - Gmail'de canlı test edildi, güvenilir.
+    //    Growth OS'un attığı HER mail "Belka Golf — [golf konsepti] [Kulüp]" ya da "A
+    //    considered Belek group-golf option for [Kulüp]" kalıbında (6 dilde doğrulandı:
+    //    Danca/İsveççe/Almanca/Norveççe/İngilizce/Fince). Gerçek müşteri/otel talepleri bu
+    //    kalıba hiç uymuyor - test sırasında Roger Lode, Sueno gibi gerçek yazışmalar bu
+    //    filtreyle DOĞRU şekilde göründü, hiçbiri kaybolmadı.
+    const growthOsExcl = '-subject:"gruppegolfkoncept" -subject:"gruppgolfkoncept" -subject:"gruppengolf-konzept" -subject:"gruppegolf-konsept" -subject:"group-golf option" -subject:"ryhmägolfkonsepti"';
     const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com) after:${dateStr} ${noiseExcl} ${subjectExcl} ${growthOsExcl}`;
 
     // maxResults 40 idi - yoğun trafikte 8 günlük pencerenin tamamı sığmıyordu.
