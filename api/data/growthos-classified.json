@@ -2269,23 +2269,6 @@
       ]
     },
     {
-      "threadId": "1a0851c5013fe069",
-      "from": "\"Göran Lindblad\" <goran.lindblad@eskilstunagk.se>",
-      "subject": "Re: Belka Golf — gruppgolfkoncept för Eskilstuna Golfklubb",
-      "lastMessageId": "1a085bbdd7d5e1e4",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Wed, 9 Sep 2026 10:34:32 +0000",
-      "replies": [
-        {
-          "messageId": "1a085bbdd7d5e1e4",
-          "date": "Wed, 9 Sep 2026 10:34:32 +0000",
-          "snippet": "Inte intresserad. Tack. Med vänlig hälsning Göran Lindblad Verksamhetschef Eskilstuna Golfklubb 070—2751332 www.eskilstunagk.se From: mustafa beyzadeoğlu &lt;mbeyzadeoglubelka@gmail.com&gt; Sent:",
-          "category": "do_not_contact",
-          "translation": "Eskilstuna Golf Kulübü açıkça ilgili olmadığını ifade etmektedir. 'Hayır, ilgili değilim' şeklinde kısa bir olumsuz yanıt."
-        }
-      ]
-    },
-    {
       "threadId": "1a070b2b5435af4e",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Payments",
@@ -2572,7 +2555,6 @@
     "info@flommensgk.se",
     "david@davidleetgolf.se",
     "janne.ekman@eskilstunagk.se",
-    "goran.lindblad@eskilstunagk.se",
     "info@aregolfklubb.com",
     "emil@fdgolfab.com",
     "info@degerforsgolf.se",
@@ -2809,5 +2791,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:48:46.073Z"
+  "lastRunAt": "2026-09-13T08:48:57.960Z"
 }
