@@ -2133,23 +2133,6 @@
       ]
     },
     {
-      "threadId": "1a037df41641684a",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Reservation Mr. Alexander Hofset INVOICE (Updated)",
-      "lastMessageId": "1a06c0ada2a90ed8",
-      "latestCategory": "positive",
-      "latestDate": "Fri, 4 Sep 2026 10:50:46 +0000",
-      "replies": [
-        {
-          "messageId": "1a06c0ada2a90ed8",
-          "date": "Fri, 4 Sep 2026 10:50:46 +0000",
-          "snippet": "Hello. Attached updated reservation. Now change in flights for departure. Please confirm. ------------------------------------------------------------------------------------------ DinGolfReise er den",
-          "category": "positive",
-          "translation": "Alexander Hofset'in rezervasyonu güncellenmiş, uçuş değişikliği olmuş. Onay isteniyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a01f0289cc9fe20",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Tobias Martinsson",
@@ -3457,5 +3440,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:40:48.604Z"
+  "lastRunAt": "2026-09-13T08:40:57.323Z"
 }
