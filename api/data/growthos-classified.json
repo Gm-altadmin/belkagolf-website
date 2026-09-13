@@ -2565,23 +2565,6 @@
       ]
     },
     {
-      "threadId": "1a0426a0e9f67460",
-      "from": "A H <arif@goldsports.pro>",
-      "subject": "Re: Golf tatili",
-      "lastMessageId": "1a04cddf6099efe3",
-      "latestCategory": "positive",
-      "latestDate": "Sat, 29 Aug 2026 12:33:30 +0300",
-      "replies": [
-        {
-          "messageId": "1a04cddf6099efe3",
-          "date": "Sat, 29 Aug 2026 12:33:30 +0300",
-          "snippet": "Merhaba, Teşekkürler. Mümkünse golf turlarına sabah 09:00–11:00 arasında başlamak istiyoruz. 3 farklı sahada oynamak istiyoruz. Mesela Montgomerie, Nobilis ve Kempinski&#39;nin daha kolay olan sahası (",
-          "category": "positive",
-          "translation": "Golf turlarının sabah 09:00-11:00 arasında başlamasını istiyor. Montgomerie, Nobilis ve Kempinski gibi 3 farklı sahada oynamak isteyip detaylar soruyor."
-        }
-      ]
-    },
-    {
       "threadId": "1a01e811071c2b6d",
       "from": "\"Jari-Pekka Kelhä\" <jari-pekka.kelha@silmaasema.fi>",
       "subject": "Re: Request for Quotation – Sueno Hotels Deluxe Belek & Golf, 16–23 October 2026",
@@ -3407,5 +3390,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:46:21.609Z"
+  "lastRunAt": "2026-09-13T16:46:26.586Z"
 }
