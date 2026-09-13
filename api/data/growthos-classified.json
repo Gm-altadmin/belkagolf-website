@@ -2286,23 +2286,6 @@
       ]
     },
     {
-      "threadId": "1a00f31c8fc4acbb",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Trond Nilsen",
-      "lastMessageId": "1a01a666353a7d2f",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 19 Aug 2026 14:21:53 +0000",
-      "replies": [
-        {
-          "messageId": "1a01a666353a7d2f",
-          "date": "Wed, 19 Aug 2026 14:21:53 +0000",
-          "snippet": "This booking is confirmed for 2 x dbl in Sueno Golf. I will send you all details later. ------------------------------------------------------------------------------------------ DinGolfReise er den",
-          "category": "positive",
-          "translation": "Trond Nilsen için Sueno Golf'ta 2x çift oda rezervasyonu onaylandı. Detaylar sonra gönderilecek."
-        }
-      ]
-    },
-    {
       "threadId": "1a00f587e6585300",
       "from": "\"Kenan Çot\" <kenan.cot@gloria.com.tr>",
       "subject": "RE: ACİL !!! 03.10.2026 Tee-time Müsaitliği 5pax ",
@@ -3151,5 +3134,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:43:15.513Z"
+  "lastRunAt": "2026-09-13T08:43:21.989Z"
 }
