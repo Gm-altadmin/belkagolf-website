@@ -2371,23 +2371,6 @@
       ]
     },
     {
-      "threadId": "19fefee5c2949d84",
-      "from": "\"Şeyma Tongut\" <golfsales1@corneliadiamond.com>",
-      "subject": "RE: Fiyat Teklifi Talebi - 25.10.-31.10.2026 - Accommodation+Lessons with Pro",
-      "lastMessageId": "19ff0764a5c484d1",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 11 Aug 2026 10:55:12 +0000",
-      "replies": [
-        {
-          "messageId": "19ff0764a5c484d1",
-          "date": "Tue, 11 Aug 2026 10:55:12 +0000",
-          "snippet": "Merhaba Elena Hanım, Bu rezervasyona özel konaklama fiyatlandırması kapsamında, ilgili tarihler için 6 gece konaklama + 1 round golf paketimizden kullanabileceğinizi bilgilerinize sunarız. Golf",
-          "category": "positive",
-          "translation": "25-31 Ekim 2026 tarihleri için konaklama + golf dersi paketi teklifi sunulmuştur. Özel fiyatlandırma kapsamında 6 gece konaklama önerilmektedir."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851c6da91a9d5",
       "from": "Jan Ekblom <jan.ekblom@falsterbogk.se>",
       "subject": "Sv: Belka Golf — gruppgolfkoncept för Falsterbo Golfklubb",
@@ -2964,5 +2947,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:47:08.769Z"
+  "lastRunAt": "2026-09-13T08:47:14.913Z"
 }
