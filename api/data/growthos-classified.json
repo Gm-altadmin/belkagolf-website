@@ -3058,23 +3058,6 @@
       ]
     },
     {
-      "threadId": "19ff05a6d425fc79",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Reservation Mr. Lars Audun T. Torvik INVOICE",
-      "lastMessageId": "1a0953cc0062b136",
-      "latestCategory": "positive",
-      "latestDate": "Sat, 12 Sep 2026 10:49:42 +0000",
-      "replies": [
-        {
-          "messageId": "1a0953cc0062b136",
-          "date": "Sat, 12 Sep 2026 10:49:42 +0000",
-          "snippet": "Please change the tee-times... 🙂 Please confirm. ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra",
-          "category": "positive",
-          "translation": "Lars Audun T. Torvik için tee-time değişikliği talep edilip onay isteniyor. Fatura ve rezervasyon güncellemeleriyle ilgili."
-        }
-      ]
-    },
-    {
       "threadId": "1a08113066f49584",
       "from": "Antti Ahti <antti.ahti@helsingingolfklubi.fi>",
       "subject": "VS: Belka Golf — ryhmägolfkonsepti kohteelle Helsingin Golfklubi",
@@ -3559,5 +3542,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:39:42.824Z"
+  "lastRunAt": "2026-09-13T08:39:52.871Z"
 }
