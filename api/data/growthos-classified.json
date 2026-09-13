@@ -2531,23 +2531,6 @@
       ]
     },
     {
-      "threadId": "19fcda3f1e8ae4d8",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Reservation Mr. Arnstein Vagle INVOICE",
-      "lastMessageId": "1a05bf72a4ff9c3e",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 1 Sep 2026 07:55:20 +0000",
-      "replies": [
-        {
-          "messageId": "1a05bf72a4ff9c3e",
-          "date": "Tue, 1 Sep 2026 07:55:20 +0000",
-          "snippet": "Hello. Mr. Vagle ask if they will get a discount for Spa? ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for",
-          "category": "positive",
-          "translation": "Müşteri Spa hizmetleri için indirim olup olmadığını sormuştur. Aktif müşteri ilgisi devam ediyor."
-        }
-      ]
-    },
-    {
       "threadId": "19fffef5c539ff7c",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Guttorm Vedum Stuge",
@@ -3033,5 +3016,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:43:29.248Z"
+  "lastRunAt": "2026-09-13T16:43:32.483Z"
 }
