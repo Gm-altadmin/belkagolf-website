@@ -2235,23 +2235,6 @@
       ]
     },
     {
-      "threadId": "1a00f587e6585300",
-      "from": "\"Kenan Çot\" <kenan.cot@gloria.com.tr>",
-      "subject": "RE: ACİL !!! 03.10.2026 Tee-time Müsaitliği 5pax ",
-      "lastMessageId": "1a00f5c52ecf110d",
-      "latestCategory": "positive",
-      "latestDate": "Mon, 17 Aug 2026 10:55:04 +0000",
-      "replies": [
-        {
-          "messageId": "1a00f5c52ecf110d",
-          "date": "Mon, 17 Aug 2026 10:55:04 +0000",
-          "snippet": "Merhaba Elena Hanım, 07:27-07:36 old Saygılarımızla / Kind Regards / Mit freundlichen Grüßen, Kenan Çot ( Mr.) Sales &amp; Marketing Representative. sales.jpg From: Belka Golf &lt;info@belkagolf.com",
-          "category": "positive",
-          "translation": "03.10.2026 için 5 kişinin tee time müsaitliği talebi yanıtlandı. Saatler onaylandı."
-        }
-      ]
-    },
-    {
       "threadId": "1a00072974de5699",
       "from": "\"Özlem Bayraktar\" <ozlem.bayraktar@agc.com.tr>",
       "subject": "RE: TEE-TİME RESERVATİON - 5pax - 29.04.2027 - Einar Gulbrandsen",
@@ -2913,5 +2896,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:47:38.114Z"
+  "lastRunAt": "2026-09-13T08:47:42.170Z"
 }
