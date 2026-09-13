@@ -2854,23 +2854,6 @@
       ]
     },
     {
-      "threadId": "19feff505e738d28",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Beginner golf training package enquiry: 25–31 October 2026",
-      "lastMessageId": "19fffc373f387c18",
-      "latestCategory": "positive",
-      "latestDate": "Fri, 14 Aug 2026 10:13:47 +0000",
-      "replies": [
-        {
-          "messageId": "19fffc373f387c18",
-          "date": "Fri, 14 Aug 2026 10:13:47 +0000",
-          "snippet": "Attached Reservation Mr. Chris Kumar. Please confirm and send invoice. ------------------------------------------------------------------------------------------ DinGolfReise er den største norske",
-          "category": "positive",
-          "translation": "25-31 Ekim 2026 için başlangıç golf eğitimi paketi: Chris Kumar rezervasyonu ektedir, lütfen onayla ve fatura gönder."
-        }
-      ]
-    },
-    {
       "threadId": "19ef443aec2d5cf3",
       "from": "Yvette Vaughan Jones <yvette@yvjones.com>",
       "subject": "Re: Our visit from 24 - 30 September 2026 / Yvette Morgan - INVOICE",
@@ -3305,5 +3288,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:42:23.125Z"
+  "lastRunAt": "2026-09-13T16:42:26.929Z"
 }
