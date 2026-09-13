@@ -3175,6 +3175,40 @@
           "translation": "Delsjö Golf Kulübü yeni bir seyahat ortağı ile iş birliğine başladıklarını ve şu an için toplantıyı kabul etmek istemediklerini belirtiyorlar. İyi dileklerini sunup, teklifi nazikçe reddetmişlerdir."
         }
       ]
+    },
+    {
+      "threadId": "1a09644f706f2aae",
+      "from": "\"Zala Springs Health & Golf Resort\" <info@zalasprings.hu>",
+      "subject": "Automatikus válasz / Auto-reply",
+      "lastMessageId": "1a09644f706f2aae",
+      "latestCategory": "other",
+      "latestDate": "Sat, 12 Sep 2026 15:38:17 GMT",
+      "replies": [
+        {
+          "messageId": "1a09644f706f2aae",
+          "date": "Sat, 12 Sep 2026 15:38:17 GMT",
+          "snippet": "E-mail üzenetünk egy automatikus válasz a info@zalasprings.hu címre érkező levelekre. This is an auto-reply message for your email sent to the info@zalasprings.hu (for English version see below).",
+          "category": "other",
+          "translation": "Otomatik yanıt mesajı. info@zalasprings.hu adresine gönderilen maillere verilen otomatik cevap."
+        }
+      ]
+    },
+    {
+      "threadId": "1a09644712e51b85",
+      "from": "Robert Climas <rclimas@northhantsgolf.co.uk>",
+      "subject": "Automatic reply: A considered Belek group-golf option for North Hants Golf Club",
+      "lastMessageId": "1a09644712e51b85",
+      "latestCategory": "other",
+      "latestDate": "Sat, 12 Sep 2026 15:37:43 +0000",
+      "replies": [
+        {
+          "messageId": "1a09644712e51b85",
+          "date": "Sat, 12 Sep 2026 15:37:43 +0000",
+          "snippet": "Thank you for your email. I am currently away from the Club on annual leave and will return on Monday 21st September. If you require a response, please contact my colleague Andrew Cloke agm@",
+          "category": "other",
+          "translation": "Otomatik yanıt mesajı. Kişi şu anda yıllık izinde olup 21 Eylül'de dönecektir. Acil durumlarda Andrew Cloke'a yönlendirilmesi isteniyor."
+        }
+      ]
     }
   ],
   "recipientAddresses": [
@@ -3526,5 +3560,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T08:54:51.967Z"
+  "lastRunAt": "2026-09-13T16:36:35.408Z"
 }
