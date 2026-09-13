@@ -2939,23 +2939,6 @@
       ]
     },
     {
-      "threadId": "19f31831ce4d01a9",
-      "from": "Jaap Hoekstra <j.hoekstra@kpexs.com>",
-      "subject": "Re: Attn Elena",
-      "lastMessageId": "19ff0c4d6c843d63",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 11 Aug 2026 13:21:00 +0100",
-      "replies": [
-        {
-          "messageId": "19ff0c4d6c843d63",
-          "date": "Tue, 11 Aug 2026 13:21:00 +0100",
-          "snippet": "Hi Elena Good to hear from you and yes, we are still planning the golf trip to Mal in the month of April 2027. It looks like the group is gonna be a little bit bigger than expected it - We&#39;re",
-          "category": "positive",
-          "translation": "Nisan 2027'de Malezya'ya golf turu planlanıyor, grup beklenenden daha büyük olacak gibi görünüyor."
-        }
-      ]
-    },
-    {
       "threadId": "19ef443aec2d5cf3",
       "from": "Yvette Vaughan Jones <yvette@yvjones.com>",
       "subject": "Re: Our visit from 24 - 30 September 2026 / Yvette Morgan - INVOICE",
@@ -3390,5 +3373,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:41:56.893Z"
+  "lastRunAt": "2026-09-13T16:42:01.076Z"
 }
