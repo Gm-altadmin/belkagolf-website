@@ -2616,23 +2616,6 @@
       ]
     },
     {
-      "threadId": "1a00f31c8fc4acbb",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Trond Nilsen",
-      "lastMessageId": "1a01a666353a7d2f",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 19 Aug 2026 14:21:53 +0000",
-      "replies": [
-        {
-          "messageId": "1a01a666353a7d2f",
-          "date": "Wed, 19 Aug 2026 14:21:53 +0000",
-          "snippet": "This booking is confirmed for 2 x dbl in Sueno Golf. I will send you all details later. ------------------------------------------------------------------------------------------ DinGolfReise er den",
-          "category": "positive",
-          "translation": "Sueno Golf'te 2 çift oda için rezervasyon onaylanmıştır. Tüm detaylar daha sonra gönderilecektir."
-        }
-      ]
-    },
-    {
       "threadId": "1a000444e5d3cf28",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Thomas Jakobsen",
@@ -3220,5 +3203,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:42:48.433Z"
+  "lastRunAt": "2026-09-13T16:42:53.974Z"
 }
