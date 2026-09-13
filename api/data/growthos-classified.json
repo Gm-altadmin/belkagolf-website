@@ -2201,23 +2201,6 @@
       ]
     },
     {
-      "threadId": "1a0142805d8c2863",
-      "from": "Oyku Zeynep Kiral <oyku.kiral@kayahotels.com.tr>",
-      "subject": "RE: SPA paketleri 2026-2027",
-      "lastMessageId": "1a018f0f283219f9",
-      "latestCategory": "positive",
-      "latestDate": "Wed, 19 Aug 2026 07:33:59 +0000",
-      "replies": [
-        {
-          "messageId": "1a018f0f283219f9",
-          "date": "Wed, 19 Aug 2026 07:33:59 +0000",
-          "snippet": "Merhaba Elena Hanım, Öncelikle güzel bir gün dilerim. Talep ettiğiniz dosya başka bir mail üzerinden size iletilmiştir. İyi çalışmalar dilerim. Saygılarımla / Best Regards Öykü KIRAL (Ms.) | Golf Satış",
-          "category": "positive",
-          "translation": "2026-2027 SPA paketleri dosyası istenen e-posta ile gönderilmiş. Talep karşılandı."
-        }
-      ]
-    },
-    {
       "threadId": "1a00072974de5699",
       "from": "\"Özlem Bayraktar\" <ozlem.bayraktar@agc.com.tr>",
       "subject": "RE: TEE-TİME RESERVATİON - 5pax - 29.04.2027 - Einar Gulbrandsen",
@@ -2879,5 +2862,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:47:49.266Z"
+  "lastRunAt": "2026-09-13T08:47:58.231Z"
 }
