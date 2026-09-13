@@ -2514,23 +2514,6 @@
       ]
     },
     {
-      "threadId": "1a01e811071c2b6d",
-      "from": "\"Jari-Pekka Kelhä\" <jari-pekka.kelha@silmaasema.fi>",
-      "subject": "Re: Request for Quotation – Sueno Hotels Deluxe Belek & Golf, 16–23 October 2026",
-      "lastMessageId": "1a01f50011c52d94",
-      "latestCategory": "positive",
-      "latestDate": "Thu, 20 Aug 2026 13:15:32 +0000",
-      "replies": [
-        {
-          "messageId": "1a01f50011c52d94",
-          "date": "Thu, 20 Aug 2026 13:15:32 +0000",
-          "snippet": "Dear Elena, Thank you very much for your detailed reply and for checking the availability. Yes, Sueno Golf Hotel could be an option, especially as guests have full access to the facilities of Sueno",
-          "category": "positive",
-          "translation": "Detaylı cevap ve müsaitlik kontrolü için teşekkürler. Sueno Golf Hotel, misafirlerin tüm tesislere erişimi olması sebebiyle iyi bir seçenek olabilir."
-        }
-      ]
-    },
-    {
       "threadId": "1a01f2c96a70d4c5",
       "from": "Golf Reservation <golf.reservation@swandorhotels.com>",
       "subject": "RE: 01.11.-08.11.2026 - UNLIMITED GOLF + BUGGY ?",
@@ -3169,5 +3152,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:43:02.044Z"
+  "lastRunAt": "2026-09-13T16:43:04.013Z"
 }
