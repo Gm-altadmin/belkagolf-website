@@ -2565,23 +2565,6 @@
       ]
     },
     {
-      "threadId": "19ffb238c63556da",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Johan Askeland",
-      "lastMessageId": "1a06179e6fe8c3ce",
-      "latestCategory": "later",
-      "latestDate": "Wed, 2 Sep 2026 09:36:14 +0000",
-      "replies": [
-        {
-          "messageId": "1a06179e6fe8c3ce",
-          "date": "Wed, 2 Sep 2026 09:36:14 +0000",
-          "snippet": "Cancelled for now. He will come back later. ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra",
-          "category": "later",
-          "translation": "Şu an iptal ama müşteri daha sonra geri döneceğini belirtmiştir."
-        }
-      ]
-    },
-    {
       "threadId": "1a096442e5747019",
       "from": "Alex Hill <golfops@northhantsgolf.co.uk>",
       "subject": "Automatic reply: A considered Belek group-golf option for North Hants Golf Club",
@@ -2999,5 +2982,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:43:34.999Z"
+  "lastRunAt": "2026-09-13T16:43:38.921Z"
 }
