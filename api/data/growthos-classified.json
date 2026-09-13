@@ -2405,23 +2405,6 @@
       ]
     },
     {
-      "threadId": "19fe0705dba7ac88",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Thomas Støfring",
-      "lastMessageId": "1a01e5a56fc68452",
-      "latestCategory": "later",
-      "latestDate": "Thu, 20 Aug 2026 08:47:12 +0000",
-      "replies": [
-        {
-          "messageId": "1a01e5a56fc68452",
-          "date": "Thu, 20 Aug 2026 08:47:12 +0000",
-          "snippet": "Cancelled for now. He will come back later with new dates. ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for",
-          "category": "later",
-          "translation": "Şu an iptal, ancak yeni tarihlerle geri dönecek. Daha sonra kontakt kurulabilir."
-        }
-      ]
-    },
-    {
       "threadId": "19ff4f1df21f0300",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Kjell Hvorup",
@@ -3168,5 +3151,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:42:59.784Z"
+  "lastRunAt": "2026-09-13T08:43:10.362Z"
 }
