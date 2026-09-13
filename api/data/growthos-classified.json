@@ -2905,23 +2905,6 @@
       ]
     },
     {
-      "threadId": "19fe10f0d8fabb8b",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Einar Gulbrandsen",
-      "lastMessageId": "19ff05442227a4c6",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 11 Aug 2026 10:18:02 +0000",
-      "replies": [
-        {
-          "messageId": "19ff05442227a4c6",
-          "date": "Tue, 11 Aug 2026 10:18:02 +0000",
-          "snippet": "Hello. He ask now if lower prices one week earlier? ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser",
-          "category": "positive",
-          "translation": "Müşteri bir hafta önceki tarih için daha düşük fiyat olup olmadığını sormuştur. Devam eden müzakere ilgisi."
-        }
-      ]
-    },
-    {
       "threadId": "19feaca25927f493",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Kristian Reed",
@@ -3458,5 +3441,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:40:46.337Z"
+  "lastRunAt": "2026-09-13T16:40:50.021Z"
 }
