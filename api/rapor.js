@@ -795,6 +795,18 @@ const GROWTHOS_CATEGORY_TR = {
   later: 'Daha sonra', do_not_contact: 'İletişime geçmeyin', other: 'Diğer/Otomatik'
 };
 
+// Growth OS'un GERÇEK gönderim şablonu (13.09.2026 - "Adres Eşleştirmeli Ek Tarama"ya da
+// eklendi, sadece ana taramada vardı). Ana sorguda subject: filtresi olarak kullanılıyor;
+// burada ise Gmail'in from: bazlı aramasıyla bulunan thread'leri DOĞRULAMAK için - adres
+// eşleşmesi TEK BAŞINA yeterli değil, thread'in konusu da gerçekten bu şablona uymalı
+// (Kenan Çot/Tuğba Uçak gibi gerçek yanlış-pozitif örnekleriyle bulundu).
+function isGrowthOsOutreachSubject(subject) {
+  const s = (subject || '').toLowerCase();
+  const hasBrand = s.includes('belka golf') || s.includes('belek');
+  const hasConcept = /gruppegolfkoncept|gruppgolfkoncept|gruppengolf-konzept|gruppegolf-konsept|group-golf option|ryhmägolfkonsepti/.test(s);
+  return hasBrand && hasConcept;
+}
+
 // Growth OS cevaplarını Claude ile sınıflandırır (kategori + Türkçe çeviri) - hem etiket-
 // bazlı taramada hem adres-eşleştirmeli ek taramada AYNI mantık kullanılıyor, kod tekrarı
 // olmasın diye tek yere çıkarıldı (bugünkü _lib refactor'üyle aynı prensip).
@@ -1033,8 +1045,7 @@ async function handleGrowthOsScanByAddress(req, res, accessToken) {
   // isHotelDomain() ile filtrele - eski (bu düzeltmeden önce) taramalarda yanlışlıkla
   // eklenmiş otel-partner adresleri varsa, burada da otomatik temizlenmiş olur (JSON'u
   // elle düzeltmeye gerek kalmaz).
-  const addressList = (store.recipientAddresses || []).filter((a) => !isHotelDomain(a));
-  if (addressList.length === 0) {
+  const addressList = (store.recipientAddresses || []).filter((a) => !isHotelDomain(a));  if (addressList.length === 0) {
     res.status(200).json({ error: 'Önce normal "Yeni Cevapları Tara" en az bir kez çalıştırılmalı (alıcı adres listesi henüz boş).' });
     return;
   }
@@ -1074,6 +1085,15 @@ async function handleGrowthOsScanByAddress(req, res, accessToken) {
     );
     for (const det of details) {
       if (!det || !det.messages || det.messages.length === 0) continue;
+
+      // GÜVENLİK KONTROLÜ (13.09.2026 eklendi): adres listesi eski/kirli olabilir (bir
+      // adres bir kere yanlışlıkla eklenmişse, o kişinin TÜM alakasız yazışmaları hep
+      // buraya düşerdi - Kenan Çot/Tuğba Uçak gibi gerçek örneklerle bulundu). Artık
+      // SADECE thread'in konu başlığı Growth OS şablonuna uyuyorsa devam ediliyor - adres
+      // eşleşmesi TEK BAŞINA yeterli değil.
+      const anySubjectMatches = det.messages.some((m) => isGrowthOsOutreachSubject(getHeaderVal(m, 'Subject')));
+      if (!anySubjectMatches) continue;
+
       let lastCustomerMsg = null;
       for (let i = det.messages.length - 1; i >= 0; i--) {
         const fromH = getHeaderVal(det.messages[i], 'From');
