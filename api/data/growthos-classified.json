@@ -2269,23 +2269,6 @@
       ]
     },
     {
-      "threadId": "1a0851c6da91a9d5",
-      "from": "Jan Ekblom <jan.ekblom@falsterbogk.se>",
-      "subject": "Sv: Belka Golf — gruppgolfkoncept för Falsterbo Golfklubb",
-      "lastMessageId": "1a085dfc84426891",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Wed, 9 Sep 2026 11:13:46 +0000",
-      "replies": [
-        {
-          "messageId": "1a085dfc84426891",
-          "date": "Wed, 9 Sep 2026 11:13:46 +0000",
-          "snippet": "Hello Mustafa, Thank you for your email. Our golf club do not work with golf trips or commercial agreements. We are a small members club and our members have decided this set up. Best regards, Jan",
-          "category": "do_not_contact",
-          "translation": "Falsterbo Golf Kulübü, ticari golf turları ve anlaşmalarıyla çalışmadığını ve küçük bir üye kulübü olduğunu belirtmektedir. Teklif reddedilmiştir."
-        }
-      ]
-    },
-    {
       "threadId": "1a0851c5013fe069",
       "from": "\"Göran Lindblad\" <goran.lindblad@eskilstunagk.se>",
       "subject": "Re: Belka Golf — gruppgolfkoncept för Eskilstuna Golfklubb",
@@ -2587,7 +2570,6 @@
     "axel@skaftogk.se",
     "anton@skaftogk.se",
     "info@flommensgk.se",
-    "jan.ekblom@falsterbogk.se",
     "david@davidleetgolf.se",
     "janne.ekman@eskilstunagk.se",
     "goran.lindblad@eskilstunagk.se",
@@ -2827,5 +2809,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:48:35.603Z"
+  "lastRunAt": "2026-09-13T08:48:46.073Z"
 }
