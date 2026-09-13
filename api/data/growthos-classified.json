@@ -2456,23 +2456,6 @@
       ]
     },
     {
-      "threadId": "19ff51cf68f3fcac",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Erik Frafjord",
-      "lastMessageId": "1a023ff8a70eece6",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Fri, 21 Aug 2026 11:05:45 +0000",
-      "replies": [
-        {
-          "messageId": "1a023ff8a70eece6",
-          "date": "Fri, 21 Aug 2026 11:05:45 +0000",
-          "snippet": "Sorry cancelled. No reply... 🙁 ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra Norge. Mvh/Best",
-          "category": "do_not_contact",
-          "translation": "Grup iptal edildi, cevap yok. Artık ilgilenmiyor."
-        }
-      ]
-    },
-    {
       "threadId": "19fe0705dba7ac88",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Request Mr. Thomas Støfring",
@@ -3253,5 +3236,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:42:26.060Z"
+  "lastRunAt": "2026-09-13T08:42:31.911Z"
 }
