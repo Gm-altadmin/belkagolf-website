@@ -2354,23 +2354,6 @@
       ]
     },
     {
-      "threadId": "19fe10f0d8fabb8b",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Einar Gulbrandsen",
-      "lastMessageId": "19ff05442227a4c6",
-      "latestCategory": "positive",
-      "latestDate": "Tue, 11 Aug 2026 10:18:02 +0000",
-      "replies": [
-        {
-          "messageId": "19ff05442227a4c6",
-          "date": "Tue, 11 Aug 2026 10:18:02 +0000",
-          "snippet": "Hello. He ask now if lower prices one week earlier? ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser",
-          "category": "positive",
-          "translation": "Müşteri (Einar Gulbrandsen) bir hafta öncesinde daha düşük fiyatlar sorgulamaktadır. Devam eden ilgi göstermektedir."
-        }
-      ]
-    },
-    {
       "threadId": "19fefbeaeb0c2929",
       "from": "Roger Lode <rogerlode@hotmail.com>",
       "subject": "Sv: Titanic / Cullinan courses",
@@ -3015,5 +2998,5 @@
     "info@richardgolding.de",
     "office@golfvelden.at"
   ],
-  "lastRunAt": "2026-09-13T08:46:50.166Z"
+  "lastRunAt": "2026-09-13T08:46:55.646Z"
 }
