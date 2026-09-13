@@ -2582,23 +2582,6 @@
       ]
     },
     {
-      "threadId": "1a01f0289cc9fe20",
-      "from": "Roger Lode <rogerlode@hotmail.com>",
-      "subject": "Sv: Request Mr. Tobias Martinsson",
-      "lastMessageId": "1a057b99f3015713",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Mon, 31 Aug 2026 12:09:38 +0000",
-      "replies": [
-        {
-          "messageId": "1a057b99f3015713",
-          "date": "Mon, 31 Aug 2026 12:09:38 +0000",
-          "snippet": "Sorry cancelled. No reply... 🙁 ------------------------------------------------------------------------------------------ DinGolfReise er den største norske aktøren for golfreiser fra Norge. Mvh/Best",
-          "category": "do_not_contact",
-          "translation": "Tobias Martinsson'un isteği iptal edildi. Yanıt vermediği için reservation kaldırılmış."
-        }
-      ]
-    },
-    {
       "threadId": "1a01e811071c2b6d",
       "from": "\"Jari-Pekka Kelhä\" <jari-pekka.kelha@silmaasema.fi>",
       "subject": "Re: Request for Quotation – Sueno Hotels Deluxe Belek & Golf, 16–23 October 2026",
@@ -3441,5 +3424,5 @@
     "andreas.reiterer@gmx.net",
     "anders.nilsson@degk.se"
   ],
-  "lastRunAt": "2026-09-13T16:46:13.328Z"
+  "lastRunAt": "2026-09-13T16:46:17.544Z"
 }
