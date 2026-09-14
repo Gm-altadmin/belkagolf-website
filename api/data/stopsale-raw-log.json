@@ -3500,6 +3500,4371 @@
       "type": "stop",
       "dateStart": "09.09.2026",
       "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a0803d92ef029f3",
+      "mailDate": "2026-09-08T08:58:34.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Junior Suite",
+      "type": "stop",
+      "dateStart": "20.10.2026",
+      "dateEnd": "20.10.2026"
+    },
+    {
+      "messageId": "1a0803d92ef029f3",
+      "mailDate": "2026-09-08T08:58:34.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Junior Suite",
+      "type": "stop",
+      "dateStart": "20.10.2026",
+      "dateEnd": "20.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Family – Jade Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "13.09.2026",
+      "dateEnd": "16.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Family + Jade Suite + Pearl Pool Suite",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Family + Jade Suite",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "27.09.202",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "02.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Suite + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "28.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "14.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Family + Jade Suite",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Family + Jade Suite",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "( dahil) Jade Room + Jade Room Partial Sea View + Jade Room …",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Suite + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "28.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "14.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Suite",
+      "type": "stop",
+      "dateStart": "31.08.2026",
+      "dateEnd": "31.08.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Family + Jade Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "6 Jade Family + Jade Suite",
+      "type": "stop",
+      "dateStart": "12.09.2202",
+      "dateEnd": "12.09.2202"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Family",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Suite + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "28.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room + Jade Room Partial Sea View + Jade Ro…",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "14.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "28.09.2026",
+      "dateEnd": "28.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "28.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Suite + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room + Jade Room Partial Sea View + Jade Ro…",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "14.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Suite",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "27.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Suite + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room + Jade Room Partial Sea View + Jade Ro…",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "14.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Suite + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "26.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Suite + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room + Jade Room Partial Sea View + Jade Ro…",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "14.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a060fee6ac5ddc6",
+      "mailDate": "2026-09-02T07:21:53.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a0582c181ccb032",
+      "mailDate": "2026-08-31T14:14:40.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM Selçuk Suite",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a0582c181ccb032",
+      "mailDate": "2026-08-31T14:14:40.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL Seljuk Suite",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Family Suite + Panoramic Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite +Amber Lagoo…",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "17.09 – (dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Family Suite + Panoramic Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite +Amber Lagoo…",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "17.09 – (dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "29.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "30.08.2026",
+      "dateEnd": "30.08.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite +Amber Lagoo…",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "27.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "30.08.2026",
+      "dateEnd": "30.08.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite +Amber Lagoo…",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "14.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "26.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "30.08.2026",
+      "dateEnd": "30.08.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite +Amber Lagoo…",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "15.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a057d6d476a06b6",
+      "mailDate": "2026-08-31T12:41:32.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "23.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Pool Villa",
+      "type": "stop",
+      "dateStart": "02.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "13.09.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "15.10.2026",
+      "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Select Villa",
+      "type": "stop",
+      "dateStart": "04.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "15.11.2026",
+      "dateEnd": "20.11.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "23.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Pool Villa",
+      "type": "stop",
+      "dateStart": "02.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "13.09.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "15.10.2026",
+      "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Select Villa",
+      "type": "stop",
+      "dateStart": "04.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a04cc1783d5b0d3",
+      "mailDate": "2026-08-29T09:02:23.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "15.11.2026",
+      "dateEnd": "20.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Family + Jade Suite",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Family + Jade Suite",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "14.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "25.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "04.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Suite + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room + Jade Room Partial Sea View + Jade Ro…",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "14.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "25.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "04.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Suite + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room + Jade Room Partial Sea View + Jade Ro…",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Suite",
+      "type": "stop",
+      "dateStart": "04.09.2026",
+      "dateEnd": "04.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Family + Jade Suite + Pearl Pool Room + Pearl Pool Suit…",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "24.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "03.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "04.09.2026",
+      "dateEnd": "04.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Suite + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room + Jade Room Partial Sea View + Jade Ro…",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "11.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room",
+      "type": "stop",
+      "dateStart": "12.10.2026",
+      "dateEnd": "12.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "24.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "03.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "04.09.2026",
+      "dateEnd": "04.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Suite + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room + Jade Room Partial Sea View + Jade Ro…",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "11.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room",
+      "type": "stop",
+      "dateStart": "12.10.2026",
+      "dateEnd": "12.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Pearl Pool Suite",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Suite",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "24.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "03.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "04.09.2026",
+      "dateEnd": "04.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room + Jade Room Partial Sea View + Jade Ro…",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "11.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room",
+      "type": "stop",
+      "dateStart": "12.10.2026",
+      "dateEnd": "12.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Suite + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "24.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "03.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "04.09.2026",
+      "dateEnd": "04.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room + Jade Room Partial Sea View + Jade Ro…",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "11.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room",
+      "type": "stop",
+      "dateStart": "12.10.2026",
+      "dateEnd": "12.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Suite + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Pearl Pool Room + Pearl Pool Suite + Pearl Pool…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Pearl Pool Room + Pearl Pool Suite + Pearl Pool…",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "19.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil /inc.) Jade Room + Jade Room Partial Sea View + Jade …",
+      "type": "stop",
+      "dateStart": "24.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "03.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "04.09.2026",
+      "dateEnd": "04.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room + Jade Room Partial Sea View + Jade Ro…",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "11.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room",
+      "type": "stop",
+      "dateStart": "12.10.2026",
+      "dateEnd": "12.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc) Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a0391623e55953d",
+      "mailDate": "2026-08-25T13:22:27.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Executive Villa",
+      "type": "stop",
+      "dateStart": "27.08.2026",
+      "dateEnd": "28.08.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "13.09.2026",
+      "dateEnd": "13.09.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Gloria Villa",
+      "type": "stop",
+      "dateStart": "06.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "26.10.2026",
+      "dateEnd": "26.10.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Room",
+      "type": "stop",
+      "dateStart": "30.09.2026",
+      "dateEnd": "30.09.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Deluxe Suite",
+      "type": "stop",
+      "dateStart": "27.08.2026",
+      "dateEnd": "28.08.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Executive Villa",
+      "type": "stop",
+      "dateStart": "27.08.2026",
+      "dateEnd": "28.08.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "13.09.2026",
+      "dateEnd": "13.09.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Gloria Villa",
+      "type": "stop",
+      "dateStart": "06.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "26.10.2026",
+      "dateEnd": "26.10.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Room",
+      "type": "stop",
+      "dateStart": "30.09.2026",
+      "dateEnd": "30.09.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a032ecd9cd301ed",
+      "mailDate": "2026-08-24T08:39:38.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Deluxe Suite",
+      "type": "stop",
+      "dateStart": "27.08.2026",
+      "dateEnd": "28.08.2026"
+    },
+    {
+      "messageId": "19ffa451c10fd61d",
+      "mailDate": "2026-08-13T08:37:41.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM PAZARLAR AİLE ODASI (DAHİL) SATIŞI DURDUR",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "25.08.2026"
+    },
+    {
+      "messageId": "19ffa451c10fd61d",
+      "mailDate": "2026-08-13T08:37:41.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM PAZARLAR ROYAL GOLF VILLA (DAHİL) SATIŞI DURDUR",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "24.08.2026"
+    },
+    {
+      "messageId": "19ffa451c10fd61d",
+      "mailDate": "2026-08-13T08:37:41.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL FAMILY ROOM",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "25.08.2026"
+    },
+    {
+      "messageId": "19ffa451c10fd61d",
+      "mailDate": "2026-08-13T08:37:41.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL ROYAL GOLF VILLA",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "24.08.2026"
+    },
+    {
+      "messageId": "19fd636be94fb14d",
+      "mailDate": "2026-08-06T08:35:40.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS A Block Family Land Opened",
+      "type": "open",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "19fd636be94fb14d",
+      "mailDate": "2026-08-06T08:35:40.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS B Block Family Land Opened",
+      "type": "open",
+      "dateStart": "29.08.2026",
+      "dateEnd": "30.08.2026"
+    },
+    {
+      "messageId": "19fd636be94fb14d",
+      "mailDate": "2026-08-06T08:35:40.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS B Block Family Land Opened",
+      "type": "open",
+      "dateStart": "03.09.2026",
+      "dateEnd": "03.09.2026"
+    },
+    {
+      "messageId": "19fd636be94fb14d",
+      "mailDate": "2026-08-06T08:35:40.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS B Block Family Land Opened",
+      "type": "open",
+      "dateStart": "05.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "19fd636be94fb14d",
+      "mailDate": "2026-08-06T08:35:40.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Family Side Sea Opened",
+      "type": "open",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "19fd636bf8f3642b",
+      "mailDate": "2026-08-06T08:35:40.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS A Block Family Land Opened",
+      "type": "open",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "19fd636bf8f3642b",
+      "mailDate": "2026-08-06T08:35:40.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS B Block Family Land Opened",
+      "type": "open",
+      "dateStart": "29.08.2026",
+      "dateEnd": "30.08.2026"
+    },
+    {
+      "messageId": "19fd636bf8f3642b",
+      "mailDate": "2026-08-06T08:35:40.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS B Block Family Land Opened",
+      "type": "open",
+      "dateStart": "03.09.2026",
+      "dateEnd": "03.09.2026"
+    },
+    {
+      "messageId": "19fd636bf8f3642b",
+      "mailDate": "2026-08-06T08:35:40.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS B Block Family Land Opened",
+      "type": "open",
+      "dateStart": "05.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "19fd636bf8f3642b",
+      "mailDate": "2026-08-06T08:35:40.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Family Side Sea Opened",
+      "type": "open",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "King Suite",
+      "type": "stop",
+      "dateStart": "12.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "23.08.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "King Villa",
+      "type": "stop",
+      "dateStart": "05.08.2026",
+      "dateEnd": "11.08.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "King Suite",
+      "type": "stop",
+      "dateStart": "12.08.2026",
+      "dateEnd": "15.08.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "16.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standart Room",
+      "type": "stop",
+      "dateStart": "17.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "King Suite",
+      "type": "stop",
+      "dateStart": "12.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "23.08.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "King Villa",
+      "type": "stop",
+      "dateStart": "05.08.2026",
+      "dateEnd": "11.08.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "King Suite",
+      "type": "stop",
+      "dateStart": "12.08.2026",
+      "dateEnd": "15.08.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "16.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "19fd127a4ddcc49c",
+      "mailDate": "2026-08-05T09:01:04.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standart Room",
+      "type": "stop",
+      "dateStart": "17.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fa299c7482a18d",
+      "mailDate": "2026-07-27T08:03:35.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (TEK GECE) TÜM PAZARLAR DELUXE ODA (SUIT) YENİ",
+      "type": "stop",
+      "dateStart": "02.08.2026",
+      "dateEnd": "02.08.2026"
+    },
+    {
+      "messageId": "19fa299c7482a18d",
+      "mailDate": "2026-07-27T08:03:35.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (TEK GECE) TÜM PAZARLAR STANDART ODA SUPERIOR ODA YENİ",
+      "type": "stop",
+      "dateStart": "13.08.2026",
+      "dateEnd": "13.08.2026"
+    },
+    {
+      "messageId": "19fa299c7482a18d",
+      "mailDate": "2026-07-27T08:03:35.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (TEK GECE) TÜM PAZARLAR FAMILY POOL SUIT BALCONY YENİ",
+      "type": "stop",
+      "dateStart": "19.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "19fa299c7482a18d",
+      "mailDate": "2026-07-27T08:03:35.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (ONE NIGHT) ALL MARKETS DELUXE ROOM (SUITE) NEW",
+      "type": "stop",
+      "dateStart": "02.08.2026",
+      "dateEnd": "02.08.2026"
+    },
+    {
+      "messageId": "19fa299c7482a18d",
+      "mailDate": "2026-07-27T08:03:35.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (ONE NIGHT) ALL MARKETS STANDARD ROOM SUPERIOR ROOM NEW",
+      "type": "stop",
+      "dateStart": "13.08.2026",
+      "dateEnd": "13.08.2026"
+    },
+    {
+      "messageId": "19fa299c7482a18d",
+      "mailDate": "2026-07-27T08:03:35.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (ONE NIGHT) ALL MARKETS FAMILY POOL SUITE BALCONY NEW",
+      "type": "stop",
+      "dateStart": "19.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "19f89421de9ff59f",
+      "mailDate": "2026-07-22T09:57:19.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "TÜM PAZARLAR EXCLUSIVE POOL VILLA YENİ",
+      "type": "stop",
+      "dateStart": "01.08.2026",
+      "dateEnd": "04.08.2026"
+    },
+    {
+      "messageId": "19f89421de9ff59f",
+      "mailDate": "2026-07-22T09:57:19.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (TEK GECE) TÜM PAZARLAR EXCLUSIVE POOL VILLA YENİ",
+      "type": "stop",
+      "dateStart": "06.08.2026",
+      "dateEnd": "06.08.2026"
+    },
+    {
+      "messageId": "19f89421de9ff59f",
+      "mailDate": "2026-07-22T09:57:19.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "(INC.) ALL MARKETS EXCLUSIVE POOL VILLA NEW",
+      "type": "stop",
+      "dateStart": "01.08.2026",
+      "dateEnd": "04.08.2026"
+    },
+    {
+      "messageId": "19f89421de9ff59f",
+      "mailDate": "2026-07-22T09:57:19.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (ONE NIGHT) ALL MARKETS EXCLUSIVE POOL VILLA NEW",
+      "type": "stop",
+      "dateStart": "06.08.2026",
+      "dateEnd": "06.08.2026"
+    },
+    {
+      "messageId": "19f6082e81fc7d15",
+      "mailDate": "2026-07-14T12:03:40.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (TEK GECE) TÜM PAZARLAR MALDIVE HOUSE YENİ",
+      "type": "stop",
+      "dateStart": "21.07.2026",
+      "dateEnd": "21.07.2026"
+    },
+    {
+      "messageId": "19f6082e81fc7d15",
+      "mailDate": "2026-07-14T12:03:40.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (ONE NIGHT) ALL MARKETS MALDIVE HOUSE NEW",
+      "type": "stop",
+      "dateStart": "21.07.2026",
+      "dateEnd": "21.07.2026"
     }
   ]
 }
