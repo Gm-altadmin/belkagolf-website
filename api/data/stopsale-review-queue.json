@@ -778,6 +778,22 @@
         "dateStart": "22.09.2026",
         "dateEnd": "22.09.2026"
       }
+    },
+    {
+      "messageId": "1a071808854456bf",
+      "mailDate": "2026-09-05T12:17:24.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK STOP SALE SUPERIOR FAMILY ROOM 3-4.11.2026- 2 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a071808854456bf",
+        "mailDate": "2026-09-05T12:17:24.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "04.11.2026",
+        "dateEnd": "04.11.2026"
+      }
     }
   ]
 }
