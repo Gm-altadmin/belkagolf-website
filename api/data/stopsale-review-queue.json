@@ -29,6 +29,29 @@
         "dateStart": "25.09.2026",
         "dateEnd": "25.09.2026"
       }
+    },
+    {
+      "messageId": "1a094b3694492df3",
+      "mailDate": "2026-09-12T08:19:41.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK HOTEL STOP SALE STANDARD JUNIOR SUITE GARDEN VIEW 25.09.2026",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a094b3694492df3",
+        "mailDate": "2026-09-12T08:19:41.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "25.09.2026",
+        "dateEnd": "25.09.2026"
+      }
+    },
+    {
+      "messageId": "1a094af89a22d2b3",
+      "mailDate": "2026-09-12T08:15:27.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
