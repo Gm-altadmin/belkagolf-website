@@ -1010,6 +1010,50 @@
       "hotel": "Kaya Palazzo / Kaya Belek",
       "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a08130ea038192d",
+      "mailDate": "2026-09-08T13:24:22.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //12-16 SEPTEMBER 2026 BLUE SUITE & 18 SEPTEMBER 2026 STANDARD EXECUTIVE ROOM CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0813178adf46c4",
+      "mailDate": "2026-09-08T13:24:58.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //12-16 SEPTEMBER 2026 BLUE SUITE & 18 SEPTEMBER 2026 STANDARD EXECUTIVE ROOM CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a01416e00a5e5c5",
+      "mailDate": "2026-08-18T08:57:19.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK HOTEL OPEN SALE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a01416e00a5e5c5",
+        "mailDate": "2026-08-18T08:57:19.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "open",
+        "dateStart": "26.09.2026",
+        "dateEnd": "26.09.2026"
+      }
+    },
+    {
+      "messageId": "19fcb9860b7bb513",
+      "mailDate": "2026-08-04T07:06:29.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //12 AUGUST 2026 ALL STANDARD ROOMS & LAKE FAMILY  / 08-09 AUGUST LAKE&GARDEN FAMILY ROOMS / 10-11 AUGUST GOLF SUITE 1-2 TURQUOISE LAKE HOUSES CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19fcb9933643ce47",
+      "mailDate": "2026-08-04T07:07:23.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //12 AUGUST 2026 ALL STANDARD ROOMS & LAKE FAMILY  / 08-09 AUGUST LAKE&GARDEN FAMILY ROOMS / 10-11 AUGUST GOLF SUITE 1-2 TURQUOISE LAKE HOUSES CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
