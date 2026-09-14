@@ -250,22 +250,26 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
   }
   const totalCandidateThreads = allThreadIds.length;
 
-  // Hangi thread'lerin İÇİNDE işlenmemiş mesaj olabileceğini bilmediğimiz için (mesaj ID'leri
-  // thread detayını çekmeden bilinmiyor), thread'leri sırayla açıp içindeki her mesajı kontrol
-  // ediyoruz - zaten işlenmiş TÜM mesajları içeren thread'leri atlayabilmek için önce hafif bir
-  // targetThreads seçimi yapmak yerine, basitçe sırayla ilerleyip `limit` kadar YENİ MESAJ
-  // işlenene kadar thread açmaya devam ediyoruz (bir thread'in tüm mesajları zaten işlenmişse
-  // hızlıca bir sonrakine geçilir, ekstra API maliyeti düşük çünkü sadece thread detay çekimi).
+  // PERFORMANS DÜZELTMESİ (14.09.2026, canlı testte 504 GATEWAY_TIMEOUT bulundu): iş
+  // ilerledikçe artan sayıda thread "tamamen işlenmiş" hale geliyor, ama eski kod HER
+  // turda TÜM 970 thread'i baştan sona tek tek açıp (format=full - ağır bir istek) kontrol
+  // ediyordu - bu da 60sn Vercel süresini aştı. Çözüm: tamamen işlenmiş thread'ler kalıcı
+  // olarak (progress.json'da) işaretlenir, bir sonraki turlarda o thread'ler HİÇ AÇILMAZ
+  // (network isteği bile atılmaz) - zamanla tarama hızlanır, en sona doğru en hızlı olur.
+  const fullyProcessedThreadIds = new Set(progress.fullyProcessedThreadIds || []);
+  const candidateThreadIds = allThreadIds.filter(id => !fullyProcessedThreadIds.has(id));
+
   let newRecordsCount = 0, newReviewCount = 0, threadsOpened = 0, messagesProcessed = 0;
   const newlyProcessedIds = [];
 
-  for (const threadId of allThreadIds) {
+  for (const threadId of candidateThreadIds) {
     if (messagesProcessed >= limit) break;
     threadsOpened++;
     const detRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${threadId}?format=full`,
       { headers: { Authorization: `Bearer ${accessToken}` } });
     const det = await detRes.json();
     const msgs = det.messages || [];
+    let allMsgsDone = true;
     for (const msg of msgs) {
       if (processedSet.has(msg.id)) continue;
       const from = getHeader(msg, 'From');
@@ -278,6 +282,7 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
         processedSet.add(msg.id); newlyProcessedIds.push(msg.id); continue;
       }
 
+      if (messagesProcessed >= limit) { allMsgsDone = false; break; }
       const { records, reviewItems } = await extractRecordsForMessage(msg, accessToken);
       rawLog.records.push(...records);
       reviewQueue.items.push(...reviewItems);
@@ -286,11 +291,15 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
       processedSet.add(msg.id);
       newlyProcessedIds.push(msg.id);
       messagesProcessed++;
-      if (messagesProcessed >= limit) break;
+      if (messagesProcessed >= limit) { allMsgsDone = false; break; }
     }
+    // Bu thread'deki TÜM mesajlar (limit'e takılmadan) işlendiyse, bir daha asla açılmasın
+    // diye kalıcı listeye ekleniyor - en büyük hız kazancı burada.
+    if (allMsgsDone) fullyProcessedThreadIds.add(threadId);
   }
 
   progress.processedMessageIds = Array.from(processedSet);
+  progress.fullyProcessedThreadIds = Array.from(fullyProcessedThreadIds);
   progress.lastRun = new Date().toISOString();
   progress.totalCandidateThreadsLastSeen = totalCandidateThreads;
   // BUG DÜZELTMESİ (14.09.2026, canlı testte bulundu): Gmail'in thread-arama sayfalaması
