@@ -611,6 +611,23 @@
           "translation": "Delsjö Golf Kulübü yeni bir seyahat ortağı ile işbirliğine başladıklarını, sunulan teklif için teşekkür ettiklerini ancak toplantı talebini kabul etmediğini ve işbirliğinden vazgeçtiklerini belirtmektedir."
         }
       ]
+    },
+    {
+      "threadId": "1a0964671e7a340e",
+      "from": "\"Håkan Skärström\" <hakan@albatrossgolf.se>",
+      "subject": "Sv: Belka Golf — gruppgolfkoncept för Albatross Golfklubb",
+      "lastMessageId": "1a09e90f0c9096a1",
+      "latestCategory": "referral",
+      "latestDate": "Mon, 14 Sep 2026 06:18:14 +0000",
+      "replies": [
+        {
+          "messageId": "1a09e90f0c9096a1",
+          "date": "Mon, 14 Sep 2026 06:18:14 +0000",
+          "snippet": "Hej Vår tränare Johan Blixt är det som kör alla resor. -- Bästa hälsningar Håkan Skärström Klubbchef Albatross Golfklubb 031-797 07 94 hakan@albatrossgolf.se Från: Belka Golf Team &lt;info@belkagolf.",
+          "category": "referral",
+          "translation": "Albatross Golfklubb'un kulüp şefi Håkan Skärström, grup golf turlarının sorumlusu olarak antrenör Johan Blixt'i tavsiye ediyor ve onunla iletişime geçilmesi gerektiğini belirtiyor."
+        }
+      ]
     }
   ],
   "recipientAddresses": [
@@ -777,7 +794,12 @@
     "directorofgolf@cottesmoregolf.co.uk",
     "debra.shepherd@surbitongolfclub.com",
     "markus.lahtinen@himosgolf.fi",
-    "stefan.meyer59@gmail.com"
+    "stefan.meyer59@gmail.com",
+    "info@teignmouthgolfclub.co.uk",
+    "info@lanhydrockhotel.com",
+    "petja.vuojarvi@kareliagolf.fi",
+    "membership@thescandinavian.dk",
+    "lukas.tintera@pga.cz"
   ],
-  "lastRunAt": "2026-09-13T20:49:03.259Z"
+  "lastRunAt": "2026-09-14T10:27:11.623Z"
 }
