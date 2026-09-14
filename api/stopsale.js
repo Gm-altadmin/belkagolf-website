@@ -101,7 +101,21 @@ async function githubWriteJson(path, dataObj, sha, message) {
   const contentB64 = Buffer.from(JSON.stringify(dataObj, null, 2) + '\n', 'utf8').toString('base64');
   const body = { message, content: contentB64, branch: GH_BRANCH };
   if (sha) body.sha = sha;
-  const r = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
+  let r = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
+  if (!r.ok && r.status === 409) {
+    // EŞZAMANLI YAZMA ÇAKIŞMASI (14.09.2026, canlı testte bulundu): aynı anda birden fazla
+    // istek aynı dosyayı güncellemeye çalışırsa GitHub 409 döner (sha güncelliğini yitirdi).
+    // TEK bir yeniden deneme yapılır - dosyanın GÜNCEL sha'sını tazeden çekip aynı içerikle
+    // tekrar yazılır. Bu, tek bir turun kaybını önler; kalıcı bir üstteki self-healing
+    // (loggedMessageIds kontrolü, aşağıda) ise daha önceki BAŞARISIZ turların kalıntı
+    // riskini (mükerrer işleme) ayrıca giderir.
+    const freshRes = await fetch(url + `?ref=${GH_BRANCH}`, { headers: { Authorization: headers.Authorization, Accept: headers.Accept } });
+    if (freshRes.ok) {
+      const freshJson = await freshRes.json();
+      body.sha = freshJson.sha;
+      r = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
+    }
+  }
   return r.ok;
 }
 
@@ -214,6 +228,14 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
   const { data: rawLog, sha: rawLogSha } = await githubReadJson(RAW_LOG_PATH, { records: [] });
   const { data: reviewQueue, sha: reviewSha } = await githubReadJson(REVIEW_PATH, { items: [] });
   const processedSet = new Set(progress.processedMessageIds || []);
+  // KENDİ KENDİNİ ONARAN KONTROL (14.09.2026, canlı testte bulunan bug için): eğer
+  // ÖNCEKİ bir turda progress.json yazımı başarısız olduysa (ama rawLog/review başarılı
+  // olduysa), processedSet eksik/geride kalmış olabilir - bu durumda aynı mesaj TEKRAR
+  // işlenip ham log'a MÜKERRER kayıt olarak girebilirdi. Çözüm: processedSet'e ek olarak,
+  // ham log'da ve review kuyruğunda GERÇEKTEN var olan messageId'leri de "işlenmiş" say -
+  // tek doğruluk kaynağı artık sadece progress.json değil, fiilen yazılmış veri.
+  for (const rec of (rawLog.records || [])) processedSet.add(rec.messageId);
+  for (const item of (reviewQueue.items || [])) processedSet.add(item.messageId);
 
   const q = `(subject:"stop sale" OR subject:"open sale" OR subject:"stop&open sale") after:${BACKFILL_SINCE}`;
   let allThreadIds = [];
