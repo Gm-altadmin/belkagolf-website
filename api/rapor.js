@@ -1592,7 +1592,15 @@ export default async function handler(req, res) {
     //    kalıba hiç uymuyor - test sırasında Roger Lode, Sueno gibi gerçek yazışmalar bu
     //    filtreyle DOĞRU şekilde göründü, hiçbiri kaybolmadı.
     const growthOsExcl = '-subject:"gruppegolfkoncept" -subject:"gruppgolfkoncept" -subject:"gruppengolf-konzept" -subject:"gruppegolf-konsept" -subject:"group-golf option" -subject:"ryhmägolfkonsepti"';
-    const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com) after:${dateStr} ${noiseExcl} ${subjectExcl} ${growthOsExcl}`;
+    // DELIVEREDTO EKLENDİ (14.09.2026): "to:" operatörü sadece görünen To/Cc başlığını
+    // arıyor - müşteri maili Bcc ile (veya bir form/yönlendirme üzerinden To: alanı boş
+    // kalacak şekilde) gönderdiyse "to:info@belkagolf.com" eşleşmiyor, mail kutuya düşse
+    // bile rapor onu göremiyordu (Nik Krebs vakası - "Alıcı::" alanı tamamen boştu, imza
+    // sadece "gmail.com" gösteriyordu, klasik Bcc/form işareti). "deliveredto:" ise
+    // Gmail'in gerçek Delivered-To başlığına bakıyor - görünür To: boş olsa bile mail bu
+    // kutuya gerçekten teslim edildiyse yakalıyor. "to:" koşulları güvenlik için korundu,
+    // deliveredto: ek bir OR dalı olarak eklendi (var olan eşleşmeleri daraltmaz).
+    const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR deliveredto:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR deliveredto:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com OR deliveredto:mb@belkagolf.com) after:${dateStr} ${noiseExcl} ${subjectExcl} ${growthOsExcl}`;
 
     // maxResults 40 idi - yoğun trafikte 8 günlük pencerenin tamamı sığmıyordu.
     // Artık Gmail'in sayfalama (pageToken) mekanizmasıyla 150 thread'e kadar çekiliyor.
