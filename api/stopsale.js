@@ -271,6 +271,22 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
   progress.processedMessageIds = Array.from(processedSet);
   progress.lastRun = new Date().toISOString();
   progress.totalCandidateThreadsLastSeen = totalCandidateThreads;
+  // BUG DÜZELTMESİ (14.09.2026, canlı testte bulundu): Gmail'in thread-arama sayfalaması
+  // büyük sonuç kümelerinde TUTARSIZ - aynı sorgu farklı turlarda 969/0/50/250 gibi
+  // çok farklı toplam sayılar dönebiliyor (rapor.js'teki styleAnalysis'in
+  // resultSizeEstimate sorununa benzer, bilinen bir Gmail API zayıflığı). Bu yüzden
+  // "threadsOpened >= totalCandidateThreads" karşılaştırması TEK BAŞINA yanıltıcı -
+  // Gmail o turda şans eseri az/boş sonuç dönerse erken "bitti" sinyali veriyordu.
+  // ÇÖZÜM: tek bir turun sayısına güvenmek yerine ART ARDA KAÇ TURDUR YENİ MESAJ
+  // BULUNAMADIĞINI (consecutiveEmptyRuns) kalıcı olarak (progress.json'da) say -
+  // gerçekten bitmiş olmak için bu sayaç en az 3'e ulaşmalı (tek seferlik bir Gmail
+  // aksaklığı 1-2 turda kendini düzeltir, 3 art arda boş tur gerçek bitişe işaret eder).
+  if (messagesProcessed === 0) {
+    progress.consecutiveEmptyRuns = (progress.consecutiveEmptyRuns || 0) + 1;
+  } else {
+    progress.consecutiveEmptyRuns = 0;
+  }
+  const reliableDone = progress.consecutiveEmptyRuns >= 3;
 
   const stamp = new Date().toISOString();
   const okProgress = await githubWriteJson(PROGRESS_PATH, progress, progressSha, `Stop-sale takvim taraması: ilerleme güncellendi (${stamp})`);
@@ -285,7 +301,8 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
     newReviewItemsAdded: newReviewCount,
     totalProcessedSoFar: processedSet.size,
     totalCandidateThreads: totalCandidateThreads,
-    doneEstimate: messagesProcessed < limit && threadsOpened >= totalCandidateThreads
+    doneEstimate: reliableDone,
+    consecutiveEmptyRuns: progress.consecutiveEmptyRuns
   });
 }
 
