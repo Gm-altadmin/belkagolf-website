@@ -14633,6 +14633,3525 @@
       "type": "open",
       "dateStart": "29.07.2026",
       "dateEnd": "30.07.2026"
+    },
+    {
+      "messageId": "1a08a6cebd775788",
+      "mailDate": "2026-09-10T08:26:29.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM PAZARLAR LAGOON SUITE (DAHİL) SATIŞI DURDUR",
+      "type": "stop",
+      "dateStart": "13.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a08a6cebd775788",
+      "mailDate": "2026-09-10T08:26:29.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM PAZARLAR ROYAL GOLF VILLA (DAHİL) SATIŞI DURDUR",
+      "type": "stop",
+      "dateStart": "13.09.2026",
+      "dateEnd": "16.09.2026"
+    },
+    {
+      "messageId": "1a08a6cebd775788",
+      "mailDate": "2026-09-10T08:26:29.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL LAGOON SUITE",
+      "type": "stop",
+      "dateStart": "13.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a08a6cebd775788",
+      "mailDate": "2026-09-10T08:26:29.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL ROYAL GOLF VILLA",
+      "type": "stop",
+      "dateStart": "13.09.2026",
+      "dateEnd": "16.09.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Executive Villa",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "17.10.2026",
+      "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Main Building",
+      "type": "stop",
+      "dateStart": "17.10.2026",
+      "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "18.10.2026",
+      "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "22.10.2026",
+      "dateEnd": "22.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Main Building",
+      "type": "stop",
+      "dateStart": "22.10.2026",
+      "dateEnd": "22.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "03.11.2026",
+      "dateEnd": "04.11.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite Pool Access",
+      "type": "stop",
+      "dateStart": "03.11.2026",
+      "dateEnd": "04.11.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Pool Villa",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Garden Villa",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "28.09.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Sea View Room",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Sea View Room",
+      "type": "stop",
+      "dateStart": "07.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Sea View Room",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "25.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "12.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "18.10.2026",
+      "dateEnd": "19.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Executive Villa",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "17.10.2026",
+      "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Main Building",
+      "type": "stop",
+      "dateStart": "17.10.2026",
+      "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "18.10.2026",
+      "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "22.10.2026",
+      "dateEnd": "22.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Main Building",
+      "type": "stop",
+      "dateStart": "22.10.2026",
+      "dateEnd": "22.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "03.11.2026",
+      "dateEnd": "04.11.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite Pool Access",
+      "type": "stop",
+      "dateStart": "03.11.2026",
+      "dateEnd": "04.11.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Pool Villa",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Garden Villa",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "28.09.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Sea View Room",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Sea View Room",
+      "type": "stop",
+      "dateStart": "07.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Sea View Room",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "25.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "12.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "1a08a6974176e4a9",
+      "mailDate": "2026-09-10T08:22:42.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "18.10.2026",
+      "dateEnd": "19.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Family Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Family Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "16.09.2026",
+      "dateEnd": "16.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "15.10.2026",
+      "dateEnd": "15.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "17.10.2026",
+      "dateEnd": "17.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "04.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "07.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "21.10.2026",
+      "dateEnd": "21.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "23.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "25.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "26.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "07.10.2026",
+      "dateEnd": "07.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "21.10.2026",
+      "dateEnd": "21.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Family Suite + Panoramic Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "23.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "25.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "03.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "23.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "07.10.2026",
+      "dateEnd": "07.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "21.10.2026",
+      "dateEnd": "21.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "25.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "03.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "23.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Family Suite + Panoramic Suite + Amber Lagoon S…",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "18.09.1926"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "23.10.2026",
+      "dateEnd": "23.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "02.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "17.09 – (dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Family Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "15.09.1926"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "17.09 – (dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Family Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "17.09 – (dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Family Suite + Panoramic Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite +Amber Lagoo…",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "17.09 – (dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Family Suite + Panoramic Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Amber Lagoon Suite",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite +Amber Lagoo…",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "17.09 – (dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "04.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "29.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "30.08.2026",
+      "dateEnd": "30.08.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite +Amber Lagoo…",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "27.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "30.08.2026",
+      "dateEnd": "30.08.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite +Amber Lagoo…",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "14.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/ inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "26.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Panoramic Suite",
+      "type": "stop",
+      "dateStart": "30.08.2026",
+      "dateEnd": "30.08.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite + Amber Lago…",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite + Family Suite + Panoramic Suite +Amber Lagoo…",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Panoramic Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "Seascape Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite",
+      "type": "stop",
+      "dateStart": "15.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Panoramic Suite",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a06cab3a8f44688",
+      "mailDate": "2026-09-04T13:45:56.000Z",
+      "hotel": "Regnum The Crown",
+      "roomType": "(dahil/inc.) Seascape Suite + Family Suite + Panoramic Suite…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "14.11.2026"
+    },
+    {
+      "messageId": "1a061c315aae22ea",
+      "mailDate": "2026-09-02T10:56:10.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM PAZARLAR LAGOON SUITE (TEK GÜN) SATIŞI DURDUR",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a061c315aae22ea",
+      "mailDate": "2026-09-02T10:56:10.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL LAGOON SUITE (ONLY ONE DAY)",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06138db4678b00",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY ROOM GOLF VIEW",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "14.09.2026"
+    },
+    {
+      "messageId": "1a06138db4678b00",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06138db4678b00",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06138db4678b00",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06138db4678b00",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06138db4678b00",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "06.11.2026"
+    },
+    {
+      "messageId": "1a06138db4678b00",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND DUBLEX SWIM UP SUITE",
+      "type": "stop",
+      "dateStart": "29.12.2026",
+      "dateEnd": "02.01.2027"
+    },
+    {
+      "messageId": "1a06138dba3822d4",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY ROOM GOLF VIEW",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "14.09.2026"
+    },
+    {
+      "messageId": "1a06138dba3822d4",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06138dba3822d4",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06138dba3822d4",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06138dba3822d4",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06138dba3822d4",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "06.11.2026"
+    },
+    {
+      "messageId": "1a06138dba3822d4",
+      "mailDate": "2026-09-02T08:25:11.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND DUBLEX SWIM UP SUITE",
+      "type": "stop",
+      "dateStart": "29.12.2026",
+      "dateEnd": "02.01.2027"
+    },
+    {
+      "messageId": "1a06138de898b761",
+      "mailDate": "2026-09-02T08:25:12.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY ROOM GOLF VIEW",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "14.09.2026"
+    },
+    {
+      "messageId": "1a06138de898b761",
+      "mailDate": "2026-09-02T08:25:12.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06138de898b761",
+      "mailDate": "2026-09-02T08:25:12.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06138de898b761",
+      "mailDate": "2026-09-02T08:25:12.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06138de898b761",
+      "mailDate": "2026-09-02T08:25:12.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a06138de898b761",
+      "mailDate": "2026-09-02T08:25:12.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "06.11.2026"
+    },
+    {
+      "messageId": "1a06138de898b761",
+      "mailDate": "2026-09-02T08:25:12.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND DUBLEX SWIM UP SUITE",
+      "type": "stop",
+      "dateStart": "29.12.2026",
+      "dateEnd": "02.01.2027"
+    },
+    {
+      "messageId": "1a06177b0b275da5",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY DUPLEX",
+      "type": "stop",
+      "dateStart": "04.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06177b0b275da5",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR ROOM SWIM-UP",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "14.09.2026"
+    },
+    {
+      "messageId": "1a06177b0b275da5",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR ROOM SWIM-UP",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a06177b0b275da5",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND DUBLEX SWIM-UP",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a06177b0b275da5",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND FAMILY",
+      "type": "stop",
+      "dateStart": "01.11.2026",
+      "dateEnd": "02.11.2026"
+    },
+    {
+      "messageId": "1a06177b127c7879",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY DUPLEX",
+      "type": "stop",
+      "dateStart": "04.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06177b127c7879",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR ROOM SWIM-UP",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "14.09.2026"
+    },
+    {
+      "messageId": "1a06177b127c7879",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR ROOM SWIM-UP",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a06177b127c7879",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND DUBLEX SWIM-UP",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a06177b127c7879",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND FAMILY",
+      "type": "stop",
+      "dateStart": "01.11.2026",
+      "dateEnd": "02.11.2026"
+    },
+    {
+      "messageId": "1a06177b1d49a6c9",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY DUPLEX",
+      "type": "stop",
+      "dateStart": "04.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a06177b1d49a6c9",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR ROOM SWIM-UP",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "14.09.2026"
+    },
+    {
+      "messageId": "1a06177b1d49a6c9",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR ROOM SWIM-UP",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a06177b1d49a6c9",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND DUBLEX SWIM-UP",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a06177b1d49a6c9",
+      "mailDate": "2026-09-02T09:33:49.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND FAMILY",
+      "type": "stop",
+      "dateStart": "01.11.2026",
+      "dateEnd": "02.11.2026"
+    },
+    {
+      "messageId": "1a05d1db14d2bc62",
+      "mailDate": "2026-09-01T13:17:02.000Z",
+      "hotel": "Titanic Deluxe Golf Belek",
+      "roomType": "(TEK GÜN) TÜM PAZARLAR TÜM ODA TİPLERİ YENİ",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a05d1db14d2bc62",
+      "mailDate": "2026-09-01T13:17:02.000Z",
+      "hotel": "Titanic Deluxe Golf Belek",
+      "roomType": "(ONE DAY) ALL MARKET ALL ROOM TYPES NEW",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Turkey Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Deluxe",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Deluxe",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Deluxe",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Turkey Market Deluxe",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Deluxe",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "15.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "15.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "15.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Turkey Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "15.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a05c1f5767db7f4",
+      "mailDate": "2026-09-01T08:39:13.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "15.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a05d11a21f6eb24",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Turkey Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a05d11a21f6eb24",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a05d11a21f6eb24",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a05d11a21f6eb24",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a05d11a21f6eb24",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a05d11a21f6eb24",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Turkey Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a05d11a21f6eb24",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a05d11a21f6eb24",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a05d11a21f6eb24",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a05d11a21f6eb24",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a05d11a28a1ce58",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Turkey Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a05d11a28a1ce58",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a05d11a28a1ce58",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a05d11a28a1ce58",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a05d11a28a1ce58",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a05d11a28a1ce58",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Turkey Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a05d11a28a1ce58",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a05d11a28a1ce58",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a05d11a28a1ce58",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a05d11a28a1ce58",
+      "mailDate": "2026-09-01T13:03:52.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a05713451d9f38d",
+      "mailDate": "2026-08-31T09:07:56.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Lagoon Duplex Swim-up",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a05713451d9f38d",
+      "mailDate": "2026-08-31T09:07:56.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS A Block Land",
+      "type": "stop",
+      "dateStart": "28.09.2026",
+      "dateEnd": "30.09.2026"
+    },
+    {
+      "messageId": "1a05713451d9f38d",
+      "mailDate": "2026-08-31T09:07:56.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Duplex Garden",
+      "type": "stop",
+      "dateStart": "18.10.2026",
+      "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "1a05713451d9f38d",
+      "mailDate": "2026-08-31T09:07:56.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Lagoon Duplex Swim-up",
+      "type": "stop",
+      "dateStart": "18.10.2026",
+      "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "1a05713451d9f38d",
+      "mailDate": "2026-08-31T09:07:56.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Lagoon Duplex Swim-up",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "19.10.2026"
+    },
+    {
+      "messageId": "1a05713451d9f38d",
+      "mailDate": "2026-08-31T09:07:56.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS B Block Land",
+      "type": "stop",
+      "dateStart": "28.10.2026",
+      "dateEnd": "30.10.2026"
+    },
+    {
+      "messageId": "1a05713451d9f38d",
+      "mailDate": "2026-08-31T09:07:56.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Duplex Garden",
+      "type": "stop",
+      "dateStart": "28.10.2026",
+      "dateEnd": "28.10.2026"
+    },
+    {
+      "messageId": "1a0191325a9d9269",
+      "mailDate": "2026-08-19T08:11:20.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Maxx Lagoon Duplex 3 Bedrooms Opened",
+      "type": "open",
+      "dateStart": "28.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a0191325a9d9269",
+      "mailDate": "2026-08-19T08:11:20.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Maxx Lagoon 1 Bedroom Opened",
+      "type": "open",
+      "dateStart": "13.09.2026",
+      "dateEnd": "16.09.2026"
+    },
+    {
+      "messageId": "1a004db6e15ff218",
+      "mailDate": "2026-08-15T09:58:05.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa Opened",
+      "type": "open",
+      "dateStart": "19.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "1a004db6e15ff218",
+      "mailDate": "2026-08-15T09:58:05.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa Opened",
+      "type": "open",
+      "dateStart": "21.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "1a004db6e15ff218",
+      "mailDate": "2026-08-15T09:58:05.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Roof Sea Opened",
+      "type": "open",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "1a004db6e15ff218",
+      "mailDate": "2026-08-15T09:58:05.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Lagoon Duplex Suite Opened",
+      "type": "open",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "1a004db6ec3b412d",
+      "mailDate": "2026-08-15T09:58:05.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa Opened",
+      "type": "open",
+      "dateStart": "19.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "1a004db6ec3b412d",
+      "mailDate": "2026-08-15T09:58:05.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa Opened",
+      "type": "open",
+      "dateStart": "21.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "1a004db6ec3b412d",
+      "mailDate": "2026-08-15T09:58:05.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Roof Sea Opened",
+      "type": "open",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "1a004db6ec3b412d",
+      "mailDate": "2026-08-15T09:58:05.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Lagoon Duplex Suite Opened",
+      "type": "open",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Main Building",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Gloria Villa",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Junior Suite",
+      "type": "stop",
+      "dateStart": "16.10.2026",
+      "dateEnd": "17.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "20.10.2026",
+      "dateEnd": "20.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Main Building",
+      "type": "stop",
+      "dateStart": "20.10.2026",
+      "dateEnd": "20.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Gloria Villa",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Laguna Room",
+      "type": "stop",
+      "dateStart": "13.09.2026",
+      "dateEnd": "13.09.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Presidential Villa",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "24.08.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Junior Suite",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "30.08.2026",
+      "dateEnd": "01.09.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "23.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Select Villa",
+      "type": "stop",
+      "dateStart": "30.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "29.10.2026",
+      "dateEnd": "30.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Main Building",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Gloria Villa",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Junior Suite",
+      "type": "stop",
+      "dateStart": "16.10.2026",
+      "dateEnd": "17.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "20.10.2026",
+      "dateEnd": "20.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Main Building",
+      "type": "stop",
+      "dateStart": "20.10.2026",
+      "dateEnd": "20.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Gloria Villa",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Laguna Room",
+      "type": "stop",
+      "dateStart": "13.09.2026",
+      "dateEnd": "13.09.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Presidential Villa",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "24.08.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Junior Suite",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "30.08.2026",
+      "dateEnd": "01.09.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "23.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Select Villa",
+      "type": "stop",
+      "dateStart": "30.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a004ad00310bac1",
+      "mailDate": "2026-08-15T09:07:22.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "29.10.2026",
+      "dateEnd": "30.10.2026"
+    },
+    {
+      "messageId": "19ff531d60b44020",
+      "mailDate": "2026-08-12T08:58:32.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "18.08.2026",
+      "dateEnd": "18.08.2026"
+    },
+    {
+      "messageId": "19ff531d60b44020",
+      "mailDate": "2026-08-12T08:58:32.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Owner Villa",
+      "type": "stop",
+      "dateStart": "17.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "19ff531d60b44020",
+      "mailDate": "2026-08-12T08:58:32.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "19ff531d60b44020",
+      "mailDate": "2026-08-12T08:58:32.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "22.09.2026"
+    },
+    {
+      "messageId": "19ff531d60b44020",
+      "mailDate": "2026-08-12T08:58:32.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "19ff531d60b44020",
+      "mailDate": "2026-08-12T08:58:32.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Lagoon Family Suite",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "19ff61d5eeb4edb5",
+      "mailDate": "2026-08-12T13:15:48.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Lagoon Duplex Suite",
+      "type": "stop",
+      "dateStart": "18.08.2026",
+      "dateEnd": "18.08.2026"
+    },
+    {
+      "messageId": "19ff61d5eeb4edb5",
+      "mailDate": "2026-08-12T13:15:48.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Lagoon Duplex Suite",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19ff61d5f12beff6",
+      "mailDate": "2026-08-12T13:15:48.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Lagoon Duplex Suite",
+      "type": "stop",
+      "dateStart": "18.08.2026",
+      "dateEnd": "18.08.2026"
+    },
+    {
+      "messageId": "19ff61d5f12beff6",
+      "mailDate": "2026-08-12T13:15:48.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Lagoon Duplex Suite",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19ff67324216461d",
+      "mailDate": "2026-08-12T14:49:29.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "02.10.2026"
+    },
+    {
+      "messageId": "19ff673251128d07",
+      "mailDate": "2026-08-12T14:49:29.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "02.10.2026"
+    },
+    {
+      "messageId": "19fe0d8e6480139c",
+      "mailDate": "2026-08-08T10:08:59.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM Lagoon Suite",
+      "type": "stop",
+      "dateStart": "12.08.2026",
+      "dateEnd": "15.08.2026"
+    },
+    {
+      "messageId": "19fe0d8e6480139c",
+      "mailDate": "2026-08-08T10:08:59.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL Lagoon Suite",
+      "type": "stop",
+      "dateStart": "12.08.2026",
+      "dateEnd": "15.08.2026"
+    },
+    {
+      "messageId": "19fe1515b9de9008",
+      "mailDate": "2026-08-08T12:20:33.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM Superior Oda Kısmi Deniz Manz.",
+      "type": "stop",
+      "dateStart": "13.08.2026",
+      "dateEnd": "14.08.2026"
+    },
+    {
+      "messageId": "19fe1515b9de9008",
+      "mailDate": "2026-08-08T12:20:33.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL Superior Room Side Sea View (ınc)",
+      "type": "stop",
+      "dateStart": "13.08.2026",
+      "dateEnd": "14.08.2026"
+    },
+    {
+      "messageId": "19fd630e6604459f",
+      "mailDate": "2026-08-06T08:29:17.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND FAMILY",
+      "type": "stop",
+      "dateStart": "14.08.2026",
+      "dateEnd": "14.08.2026"
+    },
+    {
+      "messageId": "19fd630e6604459f",
+      "mailDate": "2026-08-06T08:29:17.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND FAMILY",
+      "type": "stop",
+      "dateStart": "19.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "19fd630e6604459f",
+      "mailDate": "2026-08-06T08:29:17.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON DUPLEX GOLF VILLA",
+      "type": "stop",
+      "dateStart": "03.11.2026",
+      "dateEnd": "06.11.2026"
     }
   ]
 }
