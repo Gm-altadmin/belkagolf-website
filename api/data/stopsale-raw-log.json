@@ -8513,6 +8513,627 @@
       "type": "stop",
       "dateStart": "06.09.2026",
       "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a08a983420027b6",
+      "mailDate": "2026-09-10T09:13:46.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Side Sea Opened",
+      "type": "open",
+      "dateStart": "02.10.2026",
+      "dateEnd": "02.10.2026"
+    },
+    {
+      "messageId": "1a08a9839357d942",
+      "mailDate": "2026-09-10T09:13:47.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Side Sea Opened",
+      "type": "open",
+      "dateStart": "02.10.2026",
+      "dateEnd": "02.10.2026"
+    },
+    {
+      "messageId": "1a08bc6868e6ef15",
+      "mailDate": "2026-09-10T14:43:59.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Family Side Sea Opened",
+      "type": "open",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a08bc68bbb6f6f9",
+      "mailDate": "2026-09-10T14:44:00.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Family Side Sea Opened",
+      "type": "open",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a085ee0a199ff91",
+      "mailDate": "2026-09-09T11:29:25.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a085ee0a199ff91",
+      "mailDate": "2026-09-09T11:29:25.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a085ee0a199ff91",
+      "mailDate": "2026-09-09T11:29:25.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Suite Family Garden",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a085ee0a199ff91",
+      "mailDate": "2026-09-09T11:29:25.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Maxx Lagoon 1 Bedroom",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a085ee0a199ff91",
+      "mailDate": "2026-09-09T11:29:25.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Maxx Lagoon Duplex 2 Bedrooms",
+      "type": "stop",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "1a085ee0a199ff91",
+      "mailDate": "2026-09-09T11:29:25.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "14.09.2026"
+    },
+    {
+      "messageId": "1a085ee0a199ff91",
+      "mailDate": "2026-09-09T11:29:25.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "14.09.2026"
+    },
+    {
+      "messageId": "1a085ee0a199ff91",
+      "mailDate": "2026-09-09T11:29:25.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Suite Family Garden",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "14.09.2026"
+    },
+    {
+      "messageId": "1a085ee0a199ff91",
+      "mailDate": "2026-09-09T11:29:25.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Suite Family Sea",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "14.09.2026"
+    },
+    {
+      "messageId": "1a085ee0a199ff91",
+      "mailDate": "2026-09-09T11:29:25.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Maxx Lagoon Duplex 2 Bedrooms",
+      "type": "stop",
+      "dateStart": "14.09.2026",
+      "dateEnd": "14.09.2026"
+    },
+    {
+      "messageId": "1a085ee0a199ff91",
+      "mailDate": "2026-09-09T11:29:25.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "16.09.2026",
+      "dateEnd": "16.09.2026"
+    },
+    {
+      "messageId": "1a080ec7bf8f5fb4",
+      "mailDate": "2026-09-08T12:09:37.000Z",
+      "hotel": "Sueno Hotels Golf Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "open",
+      "dateStart": "24.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a080ec7bf8f5fb4",
+      "mailDate": "2026-09-08T12:09:37.000Z",
+      "hotel": "Sueno Hotels Golf Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "open",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a080ec7bf8f5fb4",
+      "mailDate": "2026-09-08T12:09:37.000Z",
+      "hotel": "Sueno Hotels Golf Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "open",
+      "dateStart": "09.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a080ec7bf8f5fb4",
+      "mailDate": "2026-09-08T12:09:37.000Z",
+      "hotel": "Sueno Hotels Golf Belek",
+      "roomType": "tüm oda tipleri",
+      "type": "stop",
+      "dateStart": "21.11.2026",
+      "dateEnd": "21.11.2026"
+    },
+    {
+      "messageId": "1a080ec7bf8f5fb4",
+      "mailDate": "2026-09-08T12:09:37.000Z",
+      "hotel": "Sueno Hotels Golf Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "open",
+      "dateStart": "11.12.2026",
+      "dateEnd": "11.12.2026"
+    },
+    {
+      "messageId": "1a080ec7bf8f5fb4",
+      "mailDate": "2026-09-08T12:09:37.000Z",
+      "hotel": "Sueno Hotels Deluxe Belek",
+      "roomType": "ECO ROH",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "13.09.2026"
+    },
+    {
+      "messageId": "1a080ec7bf8f5fb4",
+      "mailDate": "2026-09-08T12:09:37.000Z",
+      "hotel": "Sueno Hotels Deluxe Belek",
+      "roomType": "ECO ROH",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "1a080ec7bf8f5fb4",
+      "mailDate": "2026-09-08T12:09:37.000Z",
+      "hotel": "Sueno Hotels Deluxe Belek",
+      "roomType": "ECO ROH",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a080ec7bf8f5fb4",
+      "mailDate": "2026-09-08T12:09:37.000Z",
+      "hotel": "Sueno Hotels Deluxe Belek",
+      "roomType": "Deluxe Room Land View oda tipi",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a080ec7bf8f5fb4",
+      "mailDate": "2026-09-08T12:09:37.000Z",
+      "hotel": "Sueno Hotels Deluxe Belek",
+      "roomType": "Deluxe Room Land View oda tipi",
+      "type": "stop",
+      "dateStart": "17.03.2027",
+      "dateEnd": "17.03.2027"
+    },
+    {
+      "messageId": "1a0805f0c82e2c99",
+      "mailDate": "2026-09-08T09:35:08.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "08.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0805f0c82e2c99",
+      "mailDate": "2026-09-08T09:35:08.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Main Building",
+      "type": "stop",
+      "dateStart": "08.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0805f0c82e2c99",
+      "mailDate": "2026-09-08T09:35:08.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Junior Suite",
+      "type": "stop",
+      "dateStart": "20.10.2026",
+      "dateEnd": "20.10.2026"
+    },
+    {
+      "messageId": "1a0805f0c82e2c99",
+      "mailDate": "2026-09-08T09:35:08.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "08.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0805f0c82e2c99",
+      "mailDate": "2026-09-08T09:35:08.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Main Building",
+      "type": "stop",
+      "dateStart": "08.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0805f0c82e2c99",
+      "mailDate": "2026-09-08T09:35:08.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Junior Suite",
+      "type": "stop",
+      "dateStart": "20.10.2026",
+      "dateEnd": "20.10.2026"
+    },
+    {
+      "messageId": "1a07aa39ce0cddd8",
+      "mailDate": "2026-09-07T06:52:18.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY SUITE SWIM-UP Opened",
+      "type": "stop",
+      "dateStart": "07.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a07aa3a1947c114",
+      "mailDate": "2026-09-07T06:52:19.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY SUITE SWIM-UP Opened",
+      "type": "stop",
+      "dateStart": "07.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a070c6d17c06b93",
+      "mailDate": "2026-09-05T08:54:33.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "25.10.2026"
+    },
+    {
+      "messageId": "1a070c6d57e0f63a",
+      "mailDate": "2026-09-05T08:54:34.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "25.10.2026"
+    },
+    {
+      "messageId": "1a05bf343c91ab08",
+      "mailDate": "2026-09-01T07:51:04.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM Sultan Villa",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a05bf343c91ab08",
+      "mailDate": "2026-09-01T07:51:04.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL Sultan Villa",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a04d06ee66bd40b",
+      "mailDate": "2026-08-29T10:18:15.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Owner Villa Opened",
+      "type": "open",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a04d06ee9313977",
+      "mailDate": "2026-08-29T10:18:15.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Owner Villa Opened",
+      "type": "open",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a048a3697891980",
+      "mailDate": "2026-08-28T13:51:04.000Z",
+      "hotel": "Titanic Deluxe Golf Belek",
+      "roomType": "(TEK GÜN) TÜM PAZARLAR TÜM ODA TİPLERİ YENİ",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a048a3697891980",
+      "mailDate": "2026-08-28T13:51:04.000Z",
+      "hotel": "Titanic Deluxe Golf Belek",
+      "roomType": "(ONE DAY) ALL MARKET ALL ROOM TYPES NEW",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a04243e901715ba",
+      "mailDate": "2026-08-27T08:09:02.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a04243e901715ba",
+      "mailDate": "2026-08-27T08:09:02.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Land",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a04243e901715ba",
+      "mailDate": "2026-08-27T08:09:02.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a04243e901715ba",
+      "mailDate": "2026-08-27T08:09:02.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Lagoon Family Suite",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a04243e901715ba",
+      "mailDate": "2026-08-27T08:09:02.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Suite",
+      "type": "stop",
+      "dateStart": "05.09.2026",
+      "dateEnd": "05.09.2026"
+    },
+    {
+      "messageId": "1a0424abf30ff147",
+      "mailDate": "2026-08-27T08:16:30.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Lagoon Family Suite",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a042f398d05b404",
+      "mailDate": "2026-08-27T11:20:56.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "29.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a042f39974793a9",
+      "mailDate": "2026-08-27T11:20:56.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "29.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a043a3a5030a88d",
+      "mailDate": "2026-08-27T14:33:13.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Sea",
+      "type": "stop",
+      "dateStart": "29.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a043a3a5030a88d",
+      "mailDate": "2026-08-27T14:33:13.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "29.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a043a3a5030a88d",
+      "mailDate": "2026-08-27T14:33:13.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Lagoon Family Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a043a3a5030a88d",
+      "mailDate": "2026-08-27T14:33:13.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Villa",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a043a3a5f9309c1",
+      "mailDate": "2026-08-27T14:33:13.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Sea",
+      "type": "stop",
+      "dateStart": "29.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a043a3a5f9309c1",
+      "mailDate": "2026-08-27T14:33:13.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "29.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "1a043a3a5f9309c1",
+      "mailDate": "2026-08-27T14:33:13.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Lagoon Family Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a043a3a5f9309c1",
+      "mailDate": "2026-08-27T14:33:13.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Villa",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a02362079701450",
+      "mailDate": "2026-08-21T08:13:42.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "25.08.2026",
+      "dateEnd": "25.08.2026"
+    },
+    {
+      "messageId": "1a02362079701450",
+      "mailDate": "2026-08-21T08:13:42.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Deluxe Suite",
+      "type": "stop",
+      "dateStart": "27.08.2026",
+      "dateEnd": "27.08.2026"
+    },
+    {
+      "messageId": "1a02362079701450",
+      "mailDate": "2026-08-21T08:13:42.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a023620baac1e64",
+      "mailDate": "2026-08-21T08:13:43.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "25.08.2026",
+      "dateEnd": "25.08.2026"
+    },
+    {
+      "messageId": "1a023620baac1e64",
+      "mailDate": "2026-08-21T08:13:43.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Deluxe Suite",
+      "type": "stop",
+      "dateStart": "27.08.2026",
+      "dateEnd": "27.08.2026"
+    },
+    {
+      "messageId": "1a023620baac1e64",
+      "mailDate": "2026-08-21T08:13:43.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a024b310565a216",
+      "mailDate": "2026-08-21T14:21:50.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "27.08.2026",
+      "dateEnd": "27.08.2026"
+    },
+    {
+      "messageId": "1a024b310565a216",
+      "mailDate": "2026-08-21T14:21:50.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a024b310565a216",
+      "mailDate": "2026-08-21T14:21:50.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a024b310c8dd4ae",
+      "mailDate": "2026-08-21T14:21:50.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "27.08.2026",
+      "dateEnd": "27.08.2026"
+    },
+    {
+      "messageId": "1a024b310c8dd4ae",
+      "mailDate": "2026-08-21T14:21:50.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Suite",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a024b310c8dd4ae",
+      "mailDate": "2026-08-21T14:21:50.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
     }
   ]
 }
