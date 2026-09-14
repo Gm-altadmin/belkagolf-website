@@ -234,6 +234,50 @@
       "hotel": "Cornelia Diamond Golf Resort & Spa",
       "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 13-18 SEPTEMBER 2026 STANDARD EXECUTIVE ROOM & 14-16 SEPTEMBER 2026 GOLF SUITE TYPE 1 CATEGORY STOP SALE",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a08567d6251e58d",
+      "mailDate": "2026-09-09T09:02:50.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a07abeedfa1e7af",
+      "mailDate": "2026-09-07T07:22:08.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 08-11 SEPTEMBER 2026 LAKE FAMILY ROOM & GARDEN FAMILY ROOM  & 11-12  SEPTEMBER 2026GOLF SUITE TYPE 1 CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a06c10e6accead5",
+      "mailDate": "2026-09-04T10:57:22.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK HOTEL STOP SALE BOHEMIA DUBLEX SUITE 12.09.2026-1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a06c10e6accead5",
+        "mailDate": "2026-09-04T10:57:22.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "12.09.2026",
+        "dateEnd": "12.09.2026"
+      }
+    },
+    {
+      "messageId": "1a061c50df7b7a6c",
+      "mailDate": "2026-09-02T10:58:19.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 03-04 SEPTEMBER 2026 LAKE FAMILY ROOM & 07 SEPTEMBER 2026 GARDEN FAMILY ROOM CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a061c599705a8ff",
+      "mailDate": "2026-09-02T10:58:55.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 03-04 SEPTEMBER 2026 LAKE FAMILY ROOM & 07 SEPTEMBER 2026 GARDEN FAMILY ROOM CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
