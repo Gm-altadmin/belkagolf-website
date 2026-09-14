@@ -1237,6 +1237,20 @@
         "dateStart": "03.10.2026",
         "dateEnd": "03.10.2026"
       }
+    },
+    {
+      "messageId": "1a0569cd0a0f07b9",
+      "mailDate": "2026-08-31T06:58:33.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 31 AUGUST - 04 SEPTEMBER 2026 STANDARD EXECUTIVE ROOMS CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0569d5a9f911a8",
+      "mailDate": "2026-08-31T06:59:08.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 31 AUGUST - 04 SEPTEMBER 2026 STANDARD EXECUTIVE ROOMS CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
