@@ -172,6 +172,68 @@
         "dateStart": "04.10.2026",
         "dateEnd": "08.10.2026"
       }
+    },
+    {
+      "messageId": "1a090d7a7214b5a2",
+      "mailDate": "2026-09-11T14:20:47.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK HOTEL STOP SALE BOHEMIA VILLA 13.09.2026 -1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a090d7a7214b5a2",
+        "mailDate": "2026-09-11T14:20:47.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "13.09.2026",
+        "dateEnd": "13.09.2026"
+      }
+    },
+    {
+      "messageId": "1a090cc10f36f425",
+      "mailDate": "2026-09-11T14:08:08.000Z",
+      "hotel": "Regnum Carya / Regnum The Crown",
+      "subject": "REVIZE/ REVISED OPEN SALE/REGNUM CARYA 11.09.2026",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a090cc10f36f425",
+        "mailDate": "2026-09-11T14:08:08.000Z",
+        "hotel": "Regnum Carya / Regnum The Crown",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "open",
+        "dateStart": "14.11.2026",
+        "dateEnd": "14.11.2026"
+      }
+    },
+    {
+      "messageId": "1a090c9b3fbf54af",
+      "mailDate": "2026-09-11T14:05:33.000Z",
+      "hotel": "Regnum Carya / Regnum The Crown",
+      "subject": "OPEN SALE/REGNUM THE CROWN  11.09.2026",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a090c9b3fbf54af",
+        "mailDate": "2026-09-11T14:05:33.000Z",
+        "hotel": "Regnum Carya / Regnum The Crown",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "open",
+        "dateStart": "14.11.2026",
+        "dateEnd": "14.11.2026"
+      }
+    },
+    {
+      "messageId": "1a09007b63ecfdb7",
+      "mailDate": "2026-09-11T10:33:40.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 13-18 SEPTEMBER 2026 STANDARD EXECUTIVE ROOM & 14-16 SEPTEMBER 2026 GOLF SUITE TYPE 1 CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0900852833d7c9",
+      "mailDate": "2026-09-11T10:34:20.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 13-18 SEPTEMBER 2026 STANDARD EXECUTIVE ROOM & 14-16 SEPTEMBER 2026 GOLF SUITE TYPE 1 CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
