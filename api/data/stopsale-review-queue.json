@@ -794,6 +794,50 @@
         "dateStart": "04.11.2026",
         "dateEnd": "04.11.2026"
       }
+    },
+    {
+      "messageId": "1a07a9633213f18f",
+      "mailDate": "2026-09-07T06:37:39.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK STOP SALE ​​TÜM ODA TİPLERİ (Bohemia Dublex Suite & Villa HARİÇ) ​09.09​ -11.09.2026 - ​3 GECE / ​BOHEMIA SUITE 07.09- 08.09.2026 - 2 GECE / BOHEMIA DUBLEX 07.08 -08.09.2026 - 2 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a07a9633213f18f",
+        "mailDate": "2026-09-07T06:37:39.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "11.09.2026",
+        "dateEnd": "11.09.2026"
+      }
+    },
+    {
+      "messageId": "1a05bea0634efae8",
+      "mailDate": "2026-09-01T07:40:59.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //01-04 SEPTEMBER 2026 BLUE SUITE& 07 SEPTEMBER 2026 STANDARD EXECUTIVE ROOM CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a05bea872006943",
+      "mailDate": "2026-09-01T07:41:32.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //01-04 SEPTEMBER 2026 BLUE SUITE& 07 SEPTEMBER 2026 STANDARD EXECUTIVE ROOM CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19fffaabf06f9a4b",
+      "mailDate": "2026-08-14T09:46:48.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 23-25 AUGUST 2026 GOLF SUITE TYPE 1 & 05 SEPTEMBER 2026 ALL STANDARD ROOMS CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19fffab77c96075d",
+      "mailDate": "2026-08-14T09:47:35.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 23-25 AUGUST 2026 GOLF SUITE TYPE 1 & 05 SEPTEMBER 2026 ALL STANDARD ROOMS CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
