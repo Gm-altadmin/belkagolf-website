@@ -656,6 +656,75 @@
         "dateStart": "09.08.2026",
         "dateEnd": "09.08.2026"
       }
+    },
+    {
+      "messageId": "1a07bccaea8c9a52",
+      "mailDate": "2026-09-07T12:16:47.000Z",
+      "hotel": "Regnum Carya / Regnum The Crown",
+      "subject": "OPEN SALE/REGNUM THE CROWN  07.09.2026",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a07bccaea8c9a52",
+        "mailDate": "2026-09-07T12:16:47.000Z",
+        "hotel": "Regnum Carya / Regnum The Crown",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "open",
+        "dateStart": "11.09.2026",
+        "dateEnd": "12.09.2026"
+      }
+    },
+    {
+      "messageId": "1a06254833deacdd",
+      "mailDate": "2026-09-02T13:35:01.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 03-04-05 SEPTEMBER 2026 HARMONY SUITE CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0625522b5c2a95",
+      "mailDate": "2026-09-02T13:35:42.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 03-04-05 SEPTEMBER 2026 HARMONY SUITE CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a04d1cd63477190",
+      "mailDate": "2026-08-29T10:42:11.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK HOTEL STOP SALE TÜM ODA TİPLERİ (Bohemia Suite & Villa DAHİL) 05.09.2026 - 1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a04d1cd63477190",
+        "mailDate": "2026-08-29T10:42:11.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "05.09.2026",
+        "dateEnd": "05.09.2026"
+      }
+    },
+    {
+      "messageId": "1a0489cd995f94dc",
+      "mailDate": "2026-08-28T13:43:54.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a018bf42b45e41e",
+      "mailDate": "2026-08-19T06:39:43.000Z",
+      "hotel": "Regnum Carya / Regnum The Crown",
+      "subject": "OPEN SALE/REGNUM THE CROWN CIS/EU/MEA/UK/GOLF 19.08.2026",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a018bf42b45e41e",
+        "mailDate": "2026-08-19T06:39:43.000Z",
+        "hotel": "Regnum Carya / Regnum The Crown",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "open",
+        "dateStart": "15.11.2026",
+        "dateEnd": "15.11.2026"
+      }
     }
   ]
 }
