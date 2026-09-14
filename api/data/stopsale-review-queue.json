@@ -1142,6 +1142,29 @@
         "dateStart": "16.09.2026",
         "dateEnd": "16.09.2026"
       }
+    },
+    {
+      "messageId": "19fb86d95721dca8",
+      "mailDate": "2026-07-31T13:46:57.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK HOTEL STOP SALE PASHA SUITE 11.08.2026 - 1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "19fb86d95721dca8",
+        "mailDate": "2026-07-31T13:46:57.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "11.08.2026",
+        "dateEnd": "11.08.2026"
+      }
+    },
+    {
+      "messageId": "19fb34c6c8b24803",
+      "mailDate": "2026-07-30T13:52:38.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //04 AUGUST 2026 GOLF SUITE TYPE 2 CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
