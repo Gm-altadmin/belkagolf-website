@@ -1200,6 +1200,43 @@
       "hotel": "Cornelia Diamond Golf Resort & Spa",
       "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //03-05 AUGUST 2026 TURQUOISE LAKE HOUSES CATEGORY STOP SALE",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a019bf0c6119d38",
+      "mailDate": "2026-08-19T11:19:06.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a01a3b24ceaeef7",
+      "mailDate": "2026-08-19T13:34:39.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a01972355fe4856",
+      "mailDate": "2026-08-19T09:55:10.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0149a130951e44",
+      "mailDate": "2026-08-18T11:20:37.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK STOP SALE ​DELUXE JUNIOR SUITE ​03.​10.2026 – 1 GECE / ​SUPERIOR FAMILY ROOM ​03.​10.2026 – 1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a0149a130951e44",
+        "mailDate": "2026-08-18T11:20:37.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "03.10.2026",
+        "dateEnd": "03.10.2026"
+      }
     }
   ]
 }
