@@ -250,24 +250,36 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
   }
   const totalCandidateThreads = allThreadIds.length;
 
-  // PERFORMANS DÜZELTMESİ (14.09.2026, canlı testte 504 GATEWAY_TIMEOUT bulundu): iş
-  // ilerledikçe artan sayıda thread "tamamen işlenmiş" hale geliyor, ama eski kod HER
-  // turda TÜM 970 thread'i baştan sona tek tek açıp (format=full - ağır bir istek) kontrol
-  // ediyordu - bu da 60sn Vercel süresini aştı. Çözüm: tamamen işlenmiş thread'ler kalıcı
-  // olarak (progress.json'da) işaretlenir, bir sonraki turlarda o thread'ler HİÇ AÇILMAZ
-  // (network isteği bile atılmaz) - zamanla tarama hızlanır, en sona doğru en hızlı olur.
+  // PERFORMANS DÜZELTMESİ (14.09.2026, canlı testte 504 GATEWAY_TIMEOUT bulundu):
+  // 1. deneme: tamamen işlenmiş thread'leri kalıcı olarak işaretleyip atlama - tek başına
+  // yeterli olmadı çünkü thread detayları TEK TEK SIRAYLA (await ... await ...) çekiliyordu,
+  // bu da yüzlerce ağır network isteğinin birbirini beklemesi demekti (971 thread sıraylaysa
+  // dakikalarca sürer). 2. deneme (bu): thread detayları PARALEL çekiliyor (10'arlı gruplar,
+  // Promise.all - rapor.js'in zaten kullandığı aynı desen). Ayrıca artık "hangi thread tamamen
+  // bitti" kontrolü, PAHALI olan asıl işleme (extractRecordsForMessage - ek indirme/Excel
+  // ayrıştırma içerebilir) adımından AYRILDI: bir thread'in mesajları zaten processedSet'teyse
+  // bunu ucuza (sadece üyelik kontrolü) tespit edip fullyProcessedThreadIds'e ekleyebiliyoruz,
+  // `limit`'e daha ulaşmamış olsak bile - bu sayede tek bir çağrıda çok daha fazla thread
+  // "bitti" olarak işaretlenip bir sonraki tur için gerçekten küçülüyor.
   const fullyProcessedThreadIds = new Set(progress.fullyProcessedThreadIds || []);
   const candidateThreadIds = allThreadIds.filter(id => !fullyProcessedThreadIds.has(id));
+  const BATCH_FETCH_CAP = 150; // bir çağrıda en fazla bu kadar thread detayı çekilir (süre güvenliği)
+  const threadsBatch = candidateThreadIds.slice(0, BATCH_FETCH_CAP);
 
-  let newRecordsCount = 0, newReviewCount = 0, threadsOpened = 0, messagesProcessed = 0;
+  const detailResults = [];
+  for (const group of chunk(threadsBatch, 10)) {
+    const dets = await Promise.all(
+      group.map(id => fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${id}?format=full`,
+        { headers: { Authorization: `Bearer ${accessToken}` } }).then(r => r.json()))
+    );
+    dets.forEach((d, i) => detailResults.push({ threadId: group[i], det: d }));
+  }
+
+  let newRecordsCount = 0, newReviewCount = 0, messagesProcessed = 0;
   const newlyProcessedIds = [];
+  const threadsOpened = detailResults.length;
 
-  for (const threadId of candidateThreadIds) {
-    if (messagesProcessed >= limit) break;
-    threadsOpened++;
-    const detRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${threadId}?format=full`,
-      { headers: { Authorization: `Bearer ${accessToken}` } });
-    const det = await detRes.json();
+  for (const { threadId, det } of detailResults) {
     const msgs = det.messages || [];
     let allMsgsDone = true;
     for (const msg of msgs) {
@@ -282,7 +294,7 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
         processedSet.add(msg.id); newlyProcessedIds.push(msg.id); continue;
       }
 
-      if (messagesProcessed >= limit) { allMsgsDone = false; break; }
+      if (messagesProcessed >= limit) { allMsgsDone = false; continue; } // limit dolduysa PAHALI işlemi atla, ama diğer thread'lerin ucuz kontrolüne devam et
       const { records, reviewItems } = await extractRecordsForMessage(msg, accessToken);
       rawLog.records.push(...records);
       reviewQueue.items.push(...reviewItems);
@@ -291,7 +303,6 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
       processedSet.add(msg.id);
       newlyProcessedIds.push(msg.id);
       messagesProcessed++;
-      if (messagesProcessed >= limit) { allMsgsDone = false; break; }
     }
     // Bu thread'deki TÜM mesajlar (limit'e takılmadan) işlendiyse, bir daha asla açılmasın
     // diye kalıcı listeye ekleniyor - en büyük hız kazancı burada.
