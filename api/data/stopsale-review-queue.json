@@ -1590,6 +1590,50 @@
       "hotel": "Kaya Palazzo / Kaya Belek",
       "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a07144e7d398f00",
+      "mailDate": "2026-09-05T11:12:16.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a07fc4420e632f1",
+      "mailDate": "2026-09-08T06:46:04.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a07fd444f26b402",
+      "mailDate": "2026-09-08T07:03:33.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19fb2ceada44e5c0",
+      "mailDate": "2026-07-30T11:35:17.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19fb1c3ccd96f902",
+      "mailDate": "2026-07-30T06:43:47.000Z",
+      "hotel": "Regnum Carya / Regnum The Crown",
+      "subject": "OPEN SALE/REGNUM THE CROWN 30.07.2026",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "19fb1c3ccd96f902",
+        "mailDate": "2026-07-30T06:43:47.000Z",
+        "hotel": "Regnum Carya / Regnum The Crown",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "open",
+        "dateStart": "02.08.2026",
+        "dateEnd": "02.08.2026"
+      }
     }
   ]
 }
