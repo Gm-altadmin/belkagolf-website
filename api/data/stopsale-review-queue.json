@@ -608,6 +608,54 @@
       "hotel": "Cornelia Diamond Golf Resort & Spa",
       "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //04 -05 AUGUST 2026  LAKE FAMILY ROOM & 05 AUGUST 2026 GOLF SUITE TYPE 2 CATEGORY STOP SALE",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a07b8ee670ab7ef",
+      "mailDate": "2026-09-07T11:09:18.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK STOP SALE BOHEMIA VILLA 09.09 -12.09.2026 -4 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a07b8ee670ab7ef",
+        "mailDate": "2026-09-07T11:09:18.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "12.09.2026",
+        "dateEnd": "12.09.2026"
+      }
+    },
+    {
+      "messageId": "19fbcc6c865d79f4",
+      "mailDate": "2026-08-01T10:02:52.000Z",
+      "hotel": "Regnum Carya / Regnum The Crown",
+      "subject": "OPEN SALE/REGNUM CARYA 01.08.2026",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "19fbcc6c865d79f4",
+        "mailDate": "2026-08-01T10:02:52.000Z",
+        "hotel": "Regnum Carya / Regnum The Crown",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "open",
+        "dateStart": "01.09.2026",
+        "dateEnd": "16.09.2026"
+      }
+    },
+    {
+      "messageId": "19fb6fa938b64851",
+      "mailDate": "2026-07-31T07:01:43.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK STOP SALE DELUXE JUNIOR SUITE 08.08 - 09.08.2026- 2 GECE / BOHEMIA SUITE 10.08.2026 -1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "19fb6fa938b64851",
+        "mailDate": "2026-07-31T07:01:43.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "09.08.2026",
+        "dateEnd": "09.08.2026"
+      }
     }
   ]
 }
