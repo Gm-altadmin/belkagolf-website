@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "messageId": "1a09ef0a44155150",
+      "mailDate": "2026-09-14T08:02:46.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a09ff7e7a757959",
+      "mailDate": "2026-09-14T12:50:19.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "RE: KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a09ee8280e9e619",
+      "mailDate": "2026-09-14T07:53:30.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK STOP SALE TÜM ODA TİPLERİ (Bohemia Suite & Villa HARİÇ) ​24.09​-25.09.2026 - ​2 GECE / ​PASHA SUITE 02.10.2026 -1 GECE / ​PASHA SUITE 0​4.10.2026 -1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a09ee8280e9e619",
+        "mailDate": "2026-09-14T07:53:30.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "25.09.2026",
+        "dateEnd": "25.09.2026"
+      }
+    }
+  ]
+}
