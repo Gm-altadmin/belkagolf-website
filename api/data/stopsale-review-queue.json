@@ -1320,6 +1320,80 @@
         "dateStart": "25.08.2026",
         "dateEnd": "25.08.2026"
       }
+    },
+    {
+      "messageId": "1a0572ae1045605c",
+      "mailDate": "2026-08-31T09:33:43.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 03-04 SEPTEMBER 2026 ALL STANDARD ROOMS CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0572bbaf428c2d",
+      "mailDate": "2026-08-31T09:34:39.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 03-04 SEPTEMBER 2026 ALL STANDARD ROOMS CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19fcb941325bb27b",
+      "mailDate": "2026-08-04T07:01:47.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK STOP SALE TERRACE SUITE 11.08.2026 - 1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "19fcb941325bb27b",
+        "mailDate": "2026-08-04T07:01:47.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "11.08.2026",
+        "dateEnd": "11.08.2026"
+      }
+    },
+    {
+      "messageId": "19fc733381667393",
+      "mailDate": "2026-08-03T10:37:31.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //03-05 AUGUST 2026 AMBER&SAPPHIRE LAKE VILLAS & 05 AUGUST BLUE SUITE & 6 AUGUST TURQUOISE LAKE HOUSES  CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19fc733c63ff0bc8",
+      "mailDate": "2026-08-03T10:38:07.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //03-05 AUGUST 2026 AMBER&SAPPHIRE LAKE VILLAS & 05 AUGUST BLUE SUITE & 6 AUGUST TURQUOISE LAKE HOUSES  CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19fc6b8e5039f1d1",
+      "mailDate": "2026-08-03T08:23:54.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK STOP SALE SUPERIOR FAMILY SUITE 14.08 - 15.08.2026- 2 GECE / SUPERIOR FAMILY SUITE 18.08.2026- 1 GECE / TÜM ODA TİPLERİ (Bohemia Suite & Villa DAHİL) 10.08.2026 - 1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "19fc6b8e5039f1d1",
+        "mailDate": "2026-08-03T08:23:54.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "15.08.2026",
+        "dateEnd": "15.08.2026"
+      }
+    },
+    {
+      "messageId": "19fbd6a395543fbf",
+      "mailDate": "2026-08-01T13:01:23.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //03-05 AUGUST 2026 FAMILY SUITE CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19fbd6c86d80c8e7",
+      "mailDate": "2026-08-01T13:03:54.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //03-05 AUGUST 2026 FAMILY SUITE CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
