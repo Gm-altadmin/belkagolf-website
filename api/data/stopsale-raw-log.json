@@ -29573,6 +29573,51 @@
       "type": "stop",
       "dateStart": "08.11.2026",
       "dateEnd": "22.11.2026"
+    },
+    {
+      "messageId": "1a07b1600fadb8bb",
+      "mailDate": "2026-09-07T08:57:15.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Maxx Lagoon 1 Bedroom",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a07c54c73f7f9af",
+      "mailDate": "2026-09-07T14:45:26.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "1a07c54cad09c98f",
+      "mailDate": "2026-09-07T14:45:27.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "19fd607a5d78d25d",
+      "mailDate": "2026-08-06T07:44:13.000Z",
+      "hotel": "Titanic Deluxe Golf Belek",
+      "roomType": "(TEK GÜN) TÜM PAZARLAR TÜM ODA TİPLERİ YENİ",
+      "type": "stop",
+      "dateStart": "15.08.2026",
+      "dateEnd": "15.08.2026"
+    },
+    {
+      "messageId": "19fd607a5d78d25d",
+      "mailDate": "2026-08-06T07:44:13.000Z",
+      "hotel": "Titanic Deluxe Golf Belek",
+      "roomType": "(ONE DAY) ALL MARKET ALL ROOM TYPES NEW",
+      "type": "stop",
+      "dateStart": "15.08.2026",
+      "dateEnd": "15.08.2026"
     }
   ]
 }
