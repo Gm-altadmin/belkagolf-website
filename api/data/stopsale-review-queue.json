@@ -1084,6 +1084,34 @@
         "dateStart": "12.08.2026",
         "dateEnd": "12.08.2026"
       }
+    },
+    {
+      "messageId": "19ff584968d9b44a",
+      "mailDate": "2026-08-12T10:28:55.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19ff5ee8a98fca81",
+      "mailDate": "2026-08-12T12:24:39.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19ff4d97c78c9cbb",
+      "mailDate": "2026-08-12T07:22:02.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19feafa4c295dd35",
+      "mailDate": "2026-08-10T09:21:40.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //13-15 AUGUST 2026 TURQUOISE LAKE HOUSES & 25 AUGUST 2026 ALL STANDARD ROOMS CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
