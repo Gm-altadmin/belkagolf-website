@@ -894,6 +894,43 @@
       "hotel": "Cornelia Diamond Golf Resort & Spa",
       "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //13-15 AUGUST 2026 TURQUOISE LAKE HOUSES & 25 AUGUST 2026 ALL STANDARD ROOMS CATEGORY STOP SALE",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a000646a4c80f9b",
+      "mailDate": "2026-08-14T13:09:36.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19ff4b3146edcac0",
+      "mailDate": "2026-08-12T06:40:05.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK HOTEL OPEN SALE BOHEMIA SUITE 02.09-14.09.2026 (DAHİL)",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "19ff4b3146edcac0",
+        "mailDate": "2026-08-12T06:40:05.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "open",
+        "dateStart": "14.09.2026",
+        "dateEnd": "14.09.2026"
+      }
+    },
+    {
+      "messageId": "19fdb31e12b6d0c9",
+      "mailDate": "2026-08-07T07:48:27.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //14 AUGUST 2026 ALL STANDARD ROOMS &14-16 AUGUST 2026- 19-20 AUGUST 2026 LAPIS LAKE VILLA CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19fb34a0f48a9110",
+      "mailDate": "2026-07-30T13:50:03.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //04 AUGUST 2026 GOLF SUITE TYPE 2 CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
