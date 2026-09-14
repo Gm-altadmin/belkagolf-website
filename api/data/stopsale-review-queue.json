@@ -732,6 +732,36 @@
       "hotel": "Cornelia Diamond Golf Resort & Spa",
       "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 03 SEPTEMBER 2026 GOLF SUITE TYPE 1 CATEGORY STOP SALE",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a013a340ee32b17",
+      "mailDate": "2026-08-18T06:51:01.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK STOP SALE ​​​STANDARD JUNIOR SUITE GARDEN VIEW 20.09.202​6 – 1 GECE​ / STANDARD JUNIOR SUITE SEA VIEW 20.09.202​6 – 1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a013a340ee32b17",
+        "mailDate": "2026-08-18T06:51:01.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "20.09.202",
+        "dateEnd": "20.09.202"
+      }
+    },
+    {
+      "messageId": "19fbc24c95c414f8",
+      "mailDate": "2026-08-01T07:05:55.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //06 AUGUST  2026 ALL STANDARTD ROOMS CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "19fbc2579b3adc55",
+      "mailDate": "2026-08-01T07:06:40.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //06 AUGUST  2026 ALL STANDARTD ROOMS CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
