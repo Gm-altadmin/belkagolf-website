@@ -7775,6 +7775,1518 @@
       "type": "stop",
       "dateStart": "28.05.2026",
       "dateEnd": "29.05.2026"
+    },
+    {
+      "messageId": "1a01e5fb455a3106",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS A Block Family Land",
+      "type": "stop",
+      "dateStart": "15.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a01e5fb455a3106",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Bungalow",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a01e5fb455a3106",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Deluxe",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb455a3106",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Deluxe",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb455a3106",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Deluxe",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb455a3106",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Deluxe",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb455a3106",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Deluxe",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb455a3106",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb455a3106",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb455a3106",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb455a3106",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb455a3106",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb4a42ab44",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS A Block Family Land",
+      "type": "stop",
+      "dateStart": "15.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a01e5fb4a42ab44",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Bungalow",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a01e5fb4a42ab44",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Deluxe",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb4a42ab44",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Deluxe",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb4a42ab44",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Deluxe",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb4a42ab44",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Deluxe",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb4a42ab44",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Deluxe",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb4a42ab44",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb4a42ab44",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb4a42ab44",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb4a42ab44",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a01e5fb4a42ab44",
+      "mailDate": "2026-08-20T08:53:04.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Duplex Garden",
+      "type": "stop",
+      "dateStart": "15.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Deluxe",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Deluxe",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Deluxe",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Deluxe",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Deluxe",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market A Block Family Land",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf A Block Family Land",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market A Block Family Land",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market A Block Family Land",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market A Block Family Land",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Duplex Garden",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6c7c02892",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Duplex Garden",
+      "type": "stop",
+      "dateStart": "15.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Deluxe",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Deluxe",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Deluxe",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Deluxe",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Deluxe",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market A Block Family Land",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf A Block Family Land",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market A Block Family Land",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market A Block Family Land",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market A Block Family Land",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Duplex Garden",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a01fac6ca0d7982",
+      "mailDate": "2026-08-20T14:56:29.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a004b9233e7b98c",
+      "mailDate": "2026-08-15T09:20:37.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Suite Family Garden",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "1a004b9233e7b98c",
+      "mailDate": "2026-08-15T09:20:37.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a004b9233e7b98c",
+      "mailDate": "2026-08-15T09:20:37.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a004b923cc0d985",
+      "mailDate": "2026-08-15T09:20:37.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Suite Family Garden",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "1a004b923cc0d985",
+      "mailDate": "2026-08-15T09:20:37.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a004b923cc0d985",
+      "mailDate": "2026-08-15T09:20:37.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "19fff7afc293662a",
+      "mailDate": "2026-08-14T08:54:38.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Deluxe",
+      "type": "stop",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "19fff7afc293662a",
+      "mailDate": "2026-08-14T08:54:38.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS A Block Land",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "19fff7afd62b294d",
+      "mailDate": "2026-08-14T08:54:38.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Deluxe",
+      "type": "stop",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "19fff7afd62b294d",
+      "mailDate": "2026-08-14T08:54:38.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS A Block Land",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Lagoon Duplex Swim-up",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Lagoon Duplex Swim-up",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Lagoon Duplex Swim-up",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Lagoon Duplex Swim-up",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Lagoon Duplex Swim-up",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Duplex Garden",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a000a9849272338",
+      "mailDate": "2026-08-14T14:25:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "07.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "19fff5f0d1dae495",
+      "mailDate": "2026-08-14T08:24:07.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "19fff5f0d1dae495",
+      "mailDate": "2026-08-14T08:24:07.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Suite",
+      "type": "stop",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "19fff5f0db491c8d",
+      "mailDate": "2026-08-14T08:24:07.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "19fff5f0db491c8d",
+      "mailDate": "2026-08-14T08:24:07.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Suite",
+      "type": "stop",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "19fff6cee0c93db2",
+      "mailDate": "2026-08-14T08:39:17.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "15.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "19fff6cee0c93db2",
+      "mailDate": "2026-08-14T08:39:17.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "28.10.2026",
+      "dateEnd": "28.10.2026"
+    },
+    {
+      "messageId": "19fff6cee0c93db2",
+      "mailDate": "2026-08-14T08:39:17.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Villa",
+      "type": "stop",
+      "dateStart": "28.10.2026",
+      "dateEnd": "29.10.2026"
+    },
+    {
+      "messageId": "19fff6cefe98285b",
+      "mailDate": "2026-08-14T08:39:17.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "15.09.2026",
+      "dateEnd": "15.09.2026"
+    },
+    {
+      "messageId": "19fff6cefe98285b",
+      "mailDate": "2026-08-14T08:39:17.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "28.10.2026",
+      "dateEnd": "28.10.2026"
+    },
+    {
+      "messageId": "19fff6cefe98285b",
+      "mailDate": "2026-08-14T08:39:17.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Villa",
+      "type": "stop",
+      "dateStart": "28.10.2026",
+      "dateEnd": "29.10.2026"
+    },
+    {
+      "messageId": "1a0009e4a668dcec",
+      "mailDate": "2026-08-14T14:12:49.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Land",
+      "type": "stop",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "19ffa640b032d1f5",
+      "mailDate": "2026-08-13T09:11:28.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Suite",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19ffa640b032d1f5",
+      "mailDate": "2026-08-13T09:11:28.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Deluxe Suite",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19ffa640b032d1f5",
+      "mailDate": "2026-08-13T09:11:28.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "24.08.2026",
+      "dateEnd": "24.08.2026"
+    },
+    {
+      "messageId": "19ffa640b032d1f5",
+      "mailDate": "2026-08-13T09:11:28.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "19ffa640b032d1f5",
+      "mailDate": "2026-08-13T09:11:28.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Lagoon Family Suite",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "19ffa640b3701e90",
+      "mailDate": "2026-08-13T09:11:28.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Suite",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19ffa640b3701e90",
+      "mailDate": "2026-08-13T09:11:28.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Deluxe Suite",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19ffa640b3701e90",
+      "mailDate": "2026-08-13T09:11:28.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "24.08.2026",
+      "dateEnd": "24.08.2026"
+    },
+    {
+      "messageId": "19ffa640b3701e90",
+      "mailDate": "2026-08-13T09:11:28.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "19ffa640b3701e90",
+      "mailDate": "2026-08-13T09:11:28.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Lagoon Family Suite",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "19ffb82cdbe92d42",
+      "mailDate": "2026-08-13T14:24:41.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "25.08.2026",
+      "dateEnd": "25.08.2026"
+    },
+    {
+      "messageId": "19ffb82cdbe92d42",
+      "mailDate": "2026-08-13T14:24:41.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "19ffb82cdbe92d42",
+      "mailDate": "2026-08-13T14:24:41.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Lagoon Family Suite",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "19ffb82cdbe92d42",
+      "mailDate": "2026-08-13T14:24:41.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "19ffb82cdfea66f8",
+      "mailDate": "2026-08-13T14:24:41.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "25.08.2026",
+      "dateEnd": "25.08.2026"
+    },
+    {
+      "messageId": "19ffb82cdfea66f8",
+      "mailDate": "2026-08-13T14:24:41.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Sea",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "19ffb82cdfea66f8",
+      "mailDate": "2026-08-13T14:24:41.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Lagoon Family Suite",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "19ffb82cdfea66f8",
+      "mailDate": "2026-08-13T14:24:41.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "19ff53a95be02bf7",
+      "mailDate": "2026-08-12T09:08:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Bungalow",
+      "type": "stop",
+      "dateStart": "14.08.2026",
+      "dateEnd": "15.08.2026"
+    },
+    {
+      "messageId": "19ff53a95be02bf7",
+      "mailDate": "2026-08-12T09:08:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS A Block Family Land",
+      "type": "stop",
+      "dateStart": "17.08.2026",
+      "dateEnd": "17.08.2026"
+    },
+    {
+      "messageId": "19ff53a95be02bf7",
+      "mailDate": "2026-08-12T09:08:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "26.08.2026",
+      "dateEnd": "26.08.2026"
+    },
+    {
+      "messageId": "19ff53a95be02bf7",
+      "mailDate": "2026-08-12T09:08:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "17.10.2026",
+      "dateEnd": "17.10.2026"
+    },
+    {
+      "messageId": "19ff53a95be02bf7",
+      "mailDate": "2026-08-12T09:08:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Lagoon Duplex Swim-up",
+      "type": "stop",
+      "dateStart": "26.10.2026",
+      "dateEnd": "28.10.2026"
+    },
+    {
+      "messageId": "19ff53a95be02bf7",
+      "mailDate": "2026-08-12T09:08:05.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Family Side Sea",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "02.10.2026"
+    },
+    {
+      "messageId": "19ff67a2d8b10c3c",
+      "mailDate": "2026-08-12T14:57:10.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Duplex Garden",
+      "type": "stop",
+      "dateStart": "23.08.2026",
+      "dateEnd": "23.08.2026"
+    },
+    {
+      "messageId": "19ff67a2d8b10c3c",
+      "mailDate": "2026-08-12T14:57:10.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS B Block Land",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "19ff67a2d8b10c3c",
+      "mailDate": "2026-08-12T14:57:10.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Duplex Garden",
+      "type": "stop",
+      "dateStart": "27.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "19ff67a3007958bf",
+      "mailDate": "2026-08-12T14:57:11.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Duplex Garden",
+      "type": "stop",
+      "dateStart": "23.08.2026",
+      "dateEnd": "23.08.2026"
+    },
+    {
+      "messageId": "19ff67a3007958bf",
+      "mailDate": "2026-08-12T14:57:11.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS B Block Land",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "19ff67a3007958bf",
+      "mailDate": "2026-08-12T14:57:11.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Duplex Garden",
+      "type": "stop",
+      "dateStart": "27.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "tüm oda tipleri",
+      "type": "stop",
+      "dateStart": "09.08.2026",
+      "dateEnd": "14.08.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart land view oda tipi",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "01.09.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "open",
+      "dateStart": "15.10.2026",
+      "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart land view oda tipi",
+      "type": "open",
+      "dateStart": "19.10.2026",
+      "dateEnd": "22.10.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart land view oda tipi",
+      "type": "open",
+      "dateStart": "24.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "open",
+      "dateStart": "28.10.2026",
+      "dateEnd": "28.10.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "stop",
+      "dateStart": "22.11.2026",
+      "dateEnd": "22.11.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "open",
+      "dateStart": "02.12.2026",
+      "dateEnd": "03.12.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "open",
+      "dateStart": "05.12.2026",
+      "dateEnd": "05.12.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "tüm oda tipleri",
+      "type": "stop",
+      "dateStart": "27.08.2026",
+      "dateEnd": "28.08.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Sea View",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Sea View",
+      "type": "open",
+      "dateStart": "09.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Sea View",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Sea View",
+      "type": "stop",
+      "dateStart": "30.09.2026",
+      "dateEnd": "30.09.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Land View",
+      "type": "open",
+      "dateStart": "17.10.2026",
+      "dateEnd": "20.10.2026"
+    },
+    {
+      "messageId": "19fe1771a05b587c",
+      "mailDate": "2026-08-08T13:01:47.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Land View & ECO ROH",
+      "type": "open",
+      "dateStart": "04.11.2027",
+      "dateEnd": "06.11.2027"
+    },
+    {
+      "messageId": "19fc28648b3520a9",
+      "mailDate": "2026-08-02T12:50:08.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Bungalow",
+      "type": "stop",
+      "dateStart": "17.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "19fc28648b3520a9",
+      "mailDate": "2026-08-02T12:50:08.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "17.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "19fc28648b3520a9",
+      "mailDate": "2026-08-02T12:50:08.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Deluxe",
+      "type": "stop",
+      "dateStart": "17.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "19fc2864a2e5e320",
+      "mailDate": "2026-08-02T12:50:09.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Bungalow",
+      "type": "stop",
+      "dateStart": "17.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "19fc2864a2e5e320",
+      "mailDate": "2026-08-02T12:50:09.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "17.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "19fc2864a2e5e320",
+      "mailDate": "2026-08-02T12:50:09.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Deluxe",
+      "type": "stop",
+      "dateStart": "17.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "19f366a8ae7de95c",
+      "mailDate": "2026-07-06T07:53:00.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "(DAHİL) TÜM PAZARLAR BÜTÜN ODA TİPLERİ (MALDIVE HOUSE, LAGOO…",
+      "type": "stop",
+      "dateStart": "20.07.2026",
+      "dateEnd": "22.07.2026"
+    },
+    {
+      "messageId": "19f366a8ae7de95c",
+      "mailDate": "2026-07-06T07:53:00.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "(TEK GÜN) TÜM PAZARLAR BÜTÜN ODA TİPLERİ (MALDIVE HOUSE, LAG…",
+      "type": "stop",
+      "dateStart": "24.07.2026",
+      "dateEnd": "24.07.2026"
+    },
+    {
+      "messageId": "19f366a8ae7de95c",
+      "mailDate": "2026-07-06T07:53:00.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "(DAHİL) TÜM PAZARLAR BÜTÜN ODA TİPLERİ (MALDIVE HOUSE, LAGOO…",
+      "type": "stop",
+      "dateStart": "27.07.2026",
+      "dateEnd": "28.07.2026"
+    },
+    {
+      "messageId": "19f366a8ae7de95c",
+      "mailDate": "2026-07-06T07:53:00.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS ALL ROOM TYPES (EXC. MALDIVE HOUSE, LAGOON DUBLE…",
+      "type": "stop",
+      "dateStart": "20.07.2026",
+      "dateEnd": "22.07.2026"
+    },
+    {
+      "messageId": "19f366a8ae7de95c",
+      "mailDate": "2026-07-06T07:53:00.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "(ONE NIGHT) ALL MARKETS ALL ROOM TYPES (EXC. MALDIVE HOUSE, …",
+      "type": "stop",
+      "dateStart": "24.07.2026",
+      "dateEnd": "24.07.2026"
+    },
+    {
+      "messageId": "19f366a8ae7de95c",
+      "mailDate": "2026-07-06T07:53:00.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS ALL ROOM TYPES (EXC. MALDIVE HOUSE, LAGOON DUBLE…",
+      "type": "stop",
+      "dateStart": "27.07.2026",
+      "dateEnd": "28.07.2026"
+    },
+    {
+      "messageId": "19edad27857bc88a",
+      "mailDate": "2026-06-18T13:01:27.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "open",
+      "dateStart": "08.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "19edad27857bc88a",
+      "mailDate": "2026-06-18T13:01:27.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "open",
+      "dateStart": "12.10.2026",
+      "dateEnd": "14.10.2026"
+    },
+    {
+      "messageId": "19edad27857bc88a",
+      "mailDate": "2026-06-18T13:01:27.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "open",
+      "dateStart": "20.10.2026",
+      "dateEnd": "20.10.2026"
+    },
+    {
+      "messageId": "19edad27857bc88a",
+      "mailDate": "2026-06-18T13:01:27.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "open",
+      "dateStart": "27.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "19edad27857bc88a",
+      "mailDate": "2026-06-18T13:01:27.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Land View",
+      "type": "stop",
+      "dateStart": "02.07.2026",
+      "dateEnd": "20.07.2026"
+    },
+    {
+      "messageId": "19edad27857bc88a",
+      "mailDate": "2026-06-18T13:01:27.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Land View",
+      "type": "stop",
+      "dateStart": "29.10.2026",
+      "dateEnd": "31.10.2026"
+    },
+    {
+      "messageId": "19edad27857bc88a",
+      "mailDate": "2026-06-18T13:01:27.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Land View & ECO ROH",
+      "type": "stop",
+      "dateStart": "30.01.2027",
+      "dateEnd": "01.02.2027"
+    },
+    {
+      "messageId": "19edad27857bc88a",
+      "mailDate": "2026-06-18T13:01:27.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Land View & ECO ROH",
+      "type": "stop",
+      "dateStart": "01.10.2027",
+      "dateEnd": "03.10.2027"
     }
   ]
 }
