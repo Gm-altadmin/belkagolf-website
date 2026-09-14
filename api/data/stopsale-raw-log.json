@@ -29618,6 +29618,987 @@
       "type": "stop",
       "dateStart": "15.08.2026",
       "dateEnd": "15.08.2026"
+    },
+    {
+      "messageId": "1a05c23721ffbbca",
+      "mailDate": "2026-09-01T08:43:42.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Main Building Side Sea Opened",
+      "type": "open",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a05c23721ffbbca",
+      "mailDate": "2026-09-01T08:43:42.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Deluxe Opened",
+      "type": "open",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a05c23721ffbbca",
+      "mailDate": "2026-09-01T08:43:42.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Side Sea Opened",
+      "type": "open",
+      "dateStart": "21.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a05c23721ffbbca",
+      "mailDate": "2026-09-01T08:43:42.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Deluxe Opened",
+      "type": "open",
+      "dateStart": "23.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a05c23721ffbbca",
+      "mailDate": "2026-09-01T08:43:42.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Main Building Side Sea Opened",
+      "type": "open",
+      "dateStart": "15.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a05be80a54ceb21",
+      "mailDate": "2026-09-01T07:38:49.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Sea",
+      "type": "stop",
+      "dateStart": "02.09.2026",
+      "dateEnd": "03.09.2026"
+    },
+    {
+      "messageId": "1a05be80a54ceb21",
+      "mailDate": "2026-09-01T07:38:49.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Roof Sea",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a05be80a54ceb21",
+      "mailDate": "2026-09-01T07:38:49.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Roof Sea",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a05be80b11915aa",
+      "mailDate": "2026-09-01T07:38:49.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Sea",
+      "type": "stop",
+      "dateStart": "02.09.2026",
+      "dateEnd": "03.09.2026"
+    },
+    {
+      "messageId": "1a05be80b11915aa",
+      "mailDate": "2026-09-01T07:38:49.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Roof Sea",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "1a05be80b11915aa",
+      "mailDate": "2026-09-01T07:38:49.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Roof Sea",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a05c23c91b2f50d",
+      "mailDate": "2026-09-01T08:44:04.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Suite Land",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a05c23c91b2f50d",
+      "mailDate": "2026-09-01T08:44:04.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Roof Land",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a05c23c91b2f50d",
+      "mailDate": "2026-09-01T08:44:04.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Land",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a05c23c91b2f50d",
+      "mailDate": "2026-09-01T08:44:04.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Lagoon Duplex Suite",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a05c23c91b2f50d",
+      "mailDate": "2026-09-01T08:44:04.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Family Suite",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a05c23c91b2f50d",
+      "mailDate": "2026-09-01T08:44:04.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Terrace Lagoon Family Suite",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a05c23c91b2f50d",
+      "mailDate": "2026-09-01T08:44:04.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS King Suite",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a05c23c91b2f50d",
+      "mailDate": "2026-09-01T08:44:04.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a05c23c91b2f50d",
+      "mailDate": "2026-09-01T08:44:04.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Deluxe Suite",
+      "type": "stop",
+      "dateStart": "06.09.2026",
+      "dateEnd": "08.09.2026"
+    },
+    {
+      "messageId": "1a048229cb36245c",
+      "mailDate": "2026-08-28T11:30:23.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM PAZARLAR SUPERIOR YANDAN DENİZ MANZARALI ODA (DAHİL) SAT…",
+      "type": "stop",
+      "dateStart": "02.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a048229cb36245c",
+      "mailDate": "2026-08-28T11:30:23.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM PAZARLAR ONE BEDROOM SUITE GOLF MANZARALI ODA (DAHİL) SA…",
+      "type": "stop",
+      "dateStart": "02.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a048229cb36245c",
+      "mailDate": "2026-08-28T11:30:23.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM PAZARLAR ONE BEDROOM SUITE DENİZ MANZARALI ODA (DAHİL) S…",
+      "type": "stop",
+      "dateStart": "02.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a048229cb36245c",
+      "mailDate": "2026-08-28T11:30:23.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL SUPERIOR SIDE SEA VIEW",
+      "type": "stop",
+      "dateStart": "02.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a048229cb36245c",
+      "mailDate": "2026-08-28T11:30:23.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL ONE BEDROOM SUITE GOLF VIEW",
+      "type": "stop",
+      "dateStart": "02.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a048229cb36245c",
+      "mailDate": "2026-08-28T11:30:23.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL ONE BEDROOM SUITE SEA VIEW",
+      "type": "stop",
+      "dateStart": "02.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Gloria Villa",
+      "type": "stop",
+      "dateStart": "15.08.2026",
+      "dateEnd": "15.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Main Building",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Gloria Villa",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "25.10.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Pool Villa",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Garden Villa",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Sea View Room",
+      "type": "stop",
+      "dateStart": "23.08.2026",
+      "dateEnd": "25.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Sea View Room",
+      "type": "stop",
+      "dateStart": "29.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "03.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Room",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "King Suite",
+      "type": "stop",
+      "dateStart": "06.08.2026",
+      "dateEnd": "07.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Select Villa",
+      "type": "stop",
+      "dateStart": "06.08.2026",
+      "dateEnd": "07.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "King Suite",
+      "type": "stop",
+      "dateStart": "13.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Presidential Villa",
+      "type": "stop",
+      "dateStart": "17.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Select Villa",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Junior Suite",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Select Villa",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Junior Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Gloria Villa",
+      "type": "stop",
+      "dateStart": "15.08.2026",
+      "dateEnd": "15.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Garden Building",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Standard Room Main Building",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Gloria Villa",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "10.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Golf Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "25.10.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Pool Villa",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Garden Villa",
+      "type": "stop",
+      "dateStart": "22.08.2026",
+      "dateEnd": "22.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Sea View Room",
+      "type": "stop",
+      "dateStart": "23.08.2026",
+      "dateEnd": "25.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Sea View Room",
+      "type": "stop",
+      "dateStart": "29.08.2026",
+      "dateEnd": "29.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "03.09.2026",
+      "dateEnd": "06.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Serenity Resort",
+      "roomType": "Superior Room",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "King Suite",
+      "type": "stop",
+      "dateStart": "06.08.2026",
+      "dateEnd": "07.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Select Villa",
+      "type": "stop",
+      "dateStart": "06.08.2026",
+      "dateEnd": "07.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "King Suite",
+      "type": "stop",
+      "dateStart": "13.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Presidential Villa",
+      "type": "stop",
+      "dateStart": "17.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Suite",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Family Suite",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Select Villa",
+      "type": "stop",
+      "dateStart": "20.08.2026",
+      "dateEnd": "20.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Junior Suite",
+      "type": "stop",
+      "dateStart": "21.08.2026",
+      "dateEnd": "21.08.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Select Villa",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Junior Suite",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "19fd679fb92cc349",
+      "mailDate": "2026-08-06T09:49:06.000Z",
+      "hotel": "Gloria Verde Resort",
+      "roomType": "Standard Room",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "13.10.2026"
+    },
+    {
+      "messageId": "19fd630e6a2c02ef",
+      "mailDate": "2026-08-06T08:29:17.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND FAMILY",
+      "type": "stop",
+      "dateStart": "14.08.2026",
+      "dateEnd": "14.08.2026"
+    },
+    {
+      "messageId": "19fd630e6a2c02ef",
+      "mailDate": "2026-08-06T08:29:17.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND FAMILY",
+      "type": "stop",
+      "dateStart": "19.08.2026",
+      "dateEnd": "19.08.2026"
+    },
+    {
+      "messageId": "19fd630e6a2c02ef",
+      "mailDate": "2026-08-06T08:29:17.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON DUPLEX GOLF VILLA",
+      "type": "stop",
+      "dateStart": "03.11.2026",
+      "dateEnd": "06.11.2026"
+    },
+    {
+      "messageId": "19fd66c571270246",
+      "mailDate": "2026-08-06T09:34:12.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR ROOM SWIM-UP",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "19fd66c571270246",
+      "mailDate": "2026-08-06T09:34:12.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY ROOM GOLF VIEW",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "19fd66c571270246",
+      "mailDate": "2026-08-06T09:34:12.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "19fd66c5b66d2273",
+      "mailDate": "2026-08-06T09:34:13.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR ROOM SWIM-UP",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "19fd66c5b66d2273",
+      "mailDate": "2026-08-06T09:34:13.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY ROOM GOLF VIEW",
+      "type": "stop",
+      "dateStart": "08.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "19fd66c5b66d2273",
+      "mailDate": "2026-08-06T09:34:13.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "11.09.2026",
+      "dateEnd": "11.09.2026"
+    },
+    {
+      "messageId": "19fc7feb6aeaf72f",
+      "mailDate": "2026-08-03T14:19:47.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Deluxe Suite Opened",
+      "type": "open",
+      "dateStart": "23.08.2026",
+      "dateEnd": "23.08.2026"
+    },
+    {
+      "messageId": "19fc7feb6aeaf72f",
+      "mailDate": "2026-08-03T14:19:47.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Roof Sea Opened",
+      "type": "open",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "19fc7feb6aeaf72f",
+      "mailDate": "2026-08-03T14:19:47.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Roof Sea Opened",
+      "type": "open",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "19fc7feb6aeaf72f",
+      "mailDate": "2026-08-03T14:19:47.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa Opened",
+      "type": "open",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "19fc7feb6aeaf72f",
+      "mailDate": "2026-08-03T14:19:47.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa Opened",
+      "type": "open",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "19fc7feb6f603aac",
+      "mailDate": "2026-08-03T14:19:47.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Royal Deluxe Suite Opened",
+      "type": "open",
+      "dateStart": "23.08.2026",
+      "dateEnd": "23.08.2026"
+    },
+    {
+      "messageId": "19fc7feb6f603aac",
+      "mailDate": "2026-08-03T14:19:47.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Roof Sea Opened",
+      "type": "open",
+      "dateStart": "12.09.2026",
+      "dateEnd": "12.09.2026"
+    },
+    {
+      "messageId": "19fc7feb6f603aac",
+      "mailDate": "2026-08-03T14:19:47.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Roof Sea Opened",
+      "type": "open",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "19fc7feb6f603aac",
+      "mailDate": "2026-08-03T14:19:47.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa Opened",
+      "type": "open",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "19fc7feb6f603aac",
+      "mailDate": "2026-08-03T14:19:47.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa Opened",
+      "type": "open",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "19fc7b7c34d737ca",
+      "mailDate": "2026-08-03T13:02:17.000Z",
+      "hotel": "Titanic Deluxe Golf Belek",
+      "roomType": "(TEK GÜN) TÜM PAZARLAR TÜM ODA TİPLERİ YENİ",
+      "type": "stop",
+      "dateStart": "08.08.2026",
+      "dateEnd": "08.08.2026"
+    },
+    {
+      "messageId": "19fc7b7c34d737ca",
+      "mailDate": "2026-08-03T13:02:17.000Z",
+      "hotel": "Titanic Deluxe Golf Belek",
+      "roomType": "(ONE DAY) ALL MARKET ALL ROOM TYPES NEW",
+      "type": "stop",
+      "dateStart": "08.08.2026",
+      "dateEnd": "08.08.2026"
+    },
+    {
+      "messageId": "19f7e69fd07d7505",
+      "mailDate": "2026-07-20T07:25:03.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "( TEK GECE ) TÜM PAZARLAR LAGOON DUPLEX SUIT YENİ",
+      "type": "stop",
+      "dateStart": "05.08.2026",
+      "dateEnd": "05.08.2026"
+    },
+    {
+      "messageId": "19f7e69fd07d7505",
+      "mailDate": "2026-07-20T07:25:03.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "( ONE NIGHT ) ALL MARKETS LAGOON DUPLEX SUIT NEW",
+      "type": "stop",
+      "dateStart": "05.08.2026",
+      "dateEnd": "05.08.2026"
     }
   ]
 }
