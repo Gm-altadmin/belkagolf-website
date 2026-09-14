@@ -278,6 +278,50 @@
       "hotel": "Cornelia Diamond Golf Resort & Spa",
       "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 03-04 SEPTEMBER 2026 LAKE FAMILY ROOM & 07 SEPTEMBER 2026 GARDEN FAMILY ROOM CATEGORY STOP SALE",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a08095c1b945fa7",
+      "mailDate": "2026-09-08T10:34:53.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //14-18 SEPTEMBER 2026 HARMONY SUITE & 19-24 SEPTEMBER 2026 GARDEN FAMILY ROOMCATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0809648813f39e",
+      "mailDate": "2026-09-08T10:35:28.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //14-18 SEPTEMBER 2026 HARMONY SUITE & 19-24 SEPTEMBER 2026 GARDEN FAMILY ROOMCATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a06bb71de28b5bb",
+      "mailDate": "2026-09-04T09:19:18.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //08-09 SEPTEMBER 2026 TURQUOISE LAKE HOUSES CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a06bb7ab7fcd77b",
+      "mailDate": "2026-09-04T09:19:54.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //08-09 SEPTEMBER 2026 TURQUOISE LAKE HOUSES CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a04d4fbb94edc23",
+      "mailDate": "2026-08-29T11:37:46.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK HOTEL STOP SALE TÜM ODA TİPLERİ (Bohemia Dublex Suite & Villa HARİÇ) 12.09.2026 - 1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a04d4fbb94edc23",
+        "mailDate": "2026-08-29T11:37:46.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "12.09.2026",
+        "dateEnd": "12.09.2026"
+      }
     }
   ]
 }
