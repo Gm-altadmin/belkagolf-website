@@ -1600,7 +1600,22 @@ export default async function handler(req, res) {
     // Gmail'in gerçek Delivered-To başlığına bakıyor - görünür To: boş olsa bile mail bu
     // kutuya gerçekten teslim edildiyse yakalıyor. "to:" koşulları güvenlik için korundu,
     // deliveredto: ek bir OR dalı olarak eklendi (var olan eşleşmeleri daraltmaz).
-    const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR deliveredto:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR deliveredto:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com OR deliveredto:mb@belkagolf.com) after:${dateStr} ${noiseExcl} ${subjectExcl} ${growthOsExcl}`;
+    //
+    // LABEL EKLENDİ (14.09.2026, en güvenilir katman): mbeyzadeoglubelka@gmail.com hesabı
+    // info@/sales@/mb@ kutularını Natro/kurumsaleposta.com üzerinden POP3 ile çekiyor -
+    // Gmail'in POP3 Mail Fetcher'ı çektiği mailin orijinal To:/Delivered-To başlığını KENDİ
+    // hesap adresiyle üzerine yazıyor (Nik Krebs vakası: Bcc ile gönderilmiş, görünür To:
+    // yok, "deliveredto:" bile eşleşmedi çünkü o başlık artık "mbeyzadeoglubelka@gmail.com"
+    // yazıyordu, orijinal adres kayboldu). Çözüm: Gmail Ayarlar > Hesaplar ve İçe Aktarma >
+    // her POP3 hesabı için "Gelen postaları etiketle" açıldı (14.09.2026, kullanıcı elle
+    // yaptı) - bu artık her maile, To:/Delivered-To başlığından TAMAMEN BAĞIMSIZ, hangi
+    // POP3 hesabından çekildiğini gösteren bir Gmail etiketi ekliyor, canlı test edildi
+    // (Gmail arama kutusunda label:info@belkagolf.com gerçek/yeni sonuçlar döndürdü).
+    // ÖNEMLİ SINIRLAMA: bu etiketleme SADECE ayar açıldıktan SONRA gelen maillere uygulanıyor,
+    // Gmail eski mailleri geriye dönük etiketlemiyor - yani to:/deliveredto: dalları hâlâ
+    // gerekli (geçmiş/etiketlenmemiş mailler için), label: dalları ek güvence katmanı.
+    const labelExcl = 'label:"info@belkagolf.com" OR label:"sales@belkagolf.com" OR label:"mb@belkagolf.com"';
+    const q = `(from:sales@belkagolf.com OR to:sales@belkagolf.com OR deliveredto:sales@belkagolf.com OR from:info@belkagolf.com OR to:info@belkagolf.com OR deliveredto:info@belkagolf.com OR to:mb@belkagolf.com OR cc:mb@belkagolf.com OR deliveredto:mb@belkagolf.com OR ${labelExcl}) after:${dateStr} ${noiseExcl} ${subjectExcl} ${growthOsExcl}`;
 
     // maxResults 40 idi - yoğun trafikte 8 günlük pencerenin tamamı sığmıyordu.
     // Artık Gmail'in sayfalama (pageToken) mekanizmasıyla 150 thread'e kadar çekiliyor.
