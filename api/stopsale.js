@@ -37,8 +37,268 @@
 // stop/limited kayıtları üretilir. Bu kaynak, HTML/düz-metin ayrıştırıcılarına EK olarak
 // (onların yerine değil) devreye girer - ikisi birbirini tamamlar.
 
+// KALICI TAKVİM SİSTEMİ (14.09.2026 eklendi, henüz kod - ilk toplu taramadan önce):
+// Yukarıdaki "rows" mantığı sadece CANLI PANEL (Stop-Open Sale tab) için - her mail
+// ayrı bir "duyuru" satırı, otel bazlı gruplanıp gösteriliyor ama gün-gün gerçek bir
+// takvim değil (örn. bir STOP sonra gelen bir OPEN'ın hangi günleri gerçekten AÇTIĞI
+// otomatik hesaplanmıyor, kullanıcı kafasında birleştiriyordu).
+//
+// Yeni sistem EVENT-LOG mimarisi kullanıyor (kullanıcı onayı 14.09.2026, "taban sağlam
+// olsun" isteği üzerine): api/data/stopsale-raw-log.json'da HER stop/open-sale mailinden
+// çıkarılan HAM kayıtlar (otel + oda tipi ham metni + tarih aralığı + tip + mail tarihi)
+// hiç değiştirilmeden, sırasız eklenir (append-only). ÇÖZÜMLENMİŞ TAKVİM asla ayrıca
+// saklanmaz - her istekte bu ham loglar MAIL TARİHİNE göre kronolojik (eskiden yeniye)
+// sıralanıp yeniden oynatılır (replay), her gün için o günü etkileyen EN SON mail kazanır.
+// Bu sayede: (a) geriye dönük tarama hangi sırayla/hangi partiler halinde yapılırsa
+// yapılsın sonuç her zaman doğru olur, (b) tek doğruluk kaynağı var, iki ayrı veri
+// senkron kalmak zorunda değil, (c) bir parse hatası fark edilirse ham log'dan düzeltip
+// takvim otomatik yeniden hesaplanır.
+// Oda tipi anahtarı: otelin kendi yazdığı ham metin (extractXxx fonksiyonlarının zaten
+// ürettiği "context" alanı) - bizim 13 kategoriye otomatik eşleme YAPILMIYOR (yanlış
+// eşleşme riski, kullanıcı kararı 14.09.2026).
+// Belirsiz/düşük güvenli kayıtlar (tarih çıkarılamadı, ya da "tek tarih düşük güven" son
+// çare) HAM LOG'A YAZILMAZ - api/data/stopsale-review-queue.json'a düşer, kullanıcı elle
+// onaylayana kadar takvimi etkilemez (kullanıcı kararı, hemfikir olunan 4. madde).
+// Veri yoksa (hiç mail yoksa) o gün/oda tipi "açık" sayılır (kullanıcı kararı, gerekçe:
+// nihai karar zaten otele gönderilen rezervasyon talebinde, bu takvim sadece ön-filtre).
+
 const XLSX = require('xlsx');
 const { getAccessToken, chunk, decodeBase64UrlToText: decodeBase64Url, decodeBase64UrlToBuffer } = require('./_lib/gmail');
+
+export const config = { maxDuration: 60 };
+
+const GH_REPO_OWNER = 'Gm-altadmin';
+const GH_REPO_NAME = 'belkagolf-website';
+const GH_BRANCH = 'main';
+
+async function githubReadJson(path, fallback) {
+  if (!process.env.GITHUB_TOKEN) return { data: fallback, sha: null };
+  const url = `https://api.github.com/repos/${GH_REPO_OWNER}/${GH_REPO_NAME}/contents/${path}?ref=${GH_BRANCH}`;
+  const headers = {
+    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28'
+  };
+  const r = await fetch(url, { headers });
+  if (!r.ok) return { data: fallback, sha: null }; // dosya yoksa (ilk çalıştırma) boş başla
+  const json = await r.json();
+  try {
+    return { data: JSON.parse(Buffer.from(json.content, 'base64').toString('utf8')), sha: json.sha };
+  } catch (e) {
+    return { data: fallback, sha: json.sha };
+  }
+}
+
+async function githubWriteJson(path, dataObj, sha, message) {
+  if (!process.env.GITHUB_TOKEN) return false;
+  const url = `https://api.github.com/repos/${GH_REPO_OWNER}/${GH_REPO_NAME}/contents/${path}`;
+  const headers = {
+    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+    'Content-Type': 'application/json'
+  };
+  const contentB64 = Buffer.from(JSON.stringify(dataObj, null, 2) + '\n', 'utf8').toString('base64');
+  const body = { message, content: contentB64, branch: GH_BRANCH };
+  if (sha) body.sha = sha;
+  const r = await fetch(url, { method: 'PUT', headers, body: JSON.stringify(body) });
+  return r.ok;
+}
+
+const RAW_LOG_PATH = 'api/data/stopsale-raw-log.json';
+const REVIEW_PATH = 'api/data/stopsale-review-queue.json';
+const PROGRESS_PATH = 'api/data/stopsale-backfill-progress.json';
+const BACKFILL_SINCE = '2026/01/01'; // kullanıcı onayı 14.09.2026 - geriye dönük tarama başlangıcı
+
+// Bir mesajdan (zaten fetch edilmiş, format=full) HAM giriş listesi çıkarır - canlı panelin
+// (handler'daki default 'report' dalı) kullandığı AYNI extractXxx fonksiyonlarını çağırır,
+// TEK FARKLA: burada "bugünden sonraki" filtresi YOK (geçmiş kapanışlar da takvime gerekli,
+// tarihsel doğruluk için). confidence: 'normal' (tarih net çıkarıldı) | 'review' (belirsiz,
+// ham loga girmemeli, review kuyruğuna gider).
+async function extractRecordsForMessage(msg, accessToken) {
+  const subject = getHeader(msg, 'Subject');
+  const from = getHeader(msg, 'From');
+  const sType = subjectType(subject);
+  const html = findHtmlBody(msg.payload);
+  const baseHotel = hotelFromSender(from);
+  const subHotelFromSubj = subHotelFromSubject(subject);
+
+  let entries = html ? extractFromHtml(html, sType, subHotelFromSubj) : [];
+
+  const attachmentParts = findAttachmentParts(msg.payload);
+  for (const part of attachmentParts) {
+    if (!isSpreadsheetPart(part)) continue;
+    try {
+      const buf = await fetchAttachmentBuffer(accessToken, msg.id, part.body.attachmentId);
+      if (buf) entries = entries.concat(extractFromColorCalendar(buf));
+    } catch (e) { /* ekte sorun varsa sessizce atla - bu mail için diğer kaynaklar denenmeye devam eder */ }
+  }
+
+  if (entries.length === 0) {
+    entries = extractFromPlainTextLines(findPlainBody(msg.payload));
+  }
+
+  let lowConfidence = false;
+  if (entries.length === 0) {
+    const plain = findPlainBody(msg.payload);
+    const dm = plain.match(DATE_RANGE_RE);
+    if (dm) {
+      const dateStart = toDate(dm[1], dm[2], dm[3]);
+      const dateEnd = dm[4] ? toDate(dm[4], dm[5], dm[6]) : dateStart;
+      if (!isNaN(dateStart.getTime())) {
+        entries = [{ dateStart, dateEnd, type: sType, context: '(tek tarih, düşük güven)', subHotel: null }];
+        lowConfidence = true;
+      }
+    }
+  }
+
+  const mailDateHeader = getHeader(msg, 'Date');
+  const mailDate = msg.internalDate ? new Date(parseInt(msg.internalDate, 10)) : new Date(mailDateHeader || Date.now());
+
+  if (entries.length === 0) {
+    return { records: [], reviewItems: [{ messageId: msg.id, mailDate: mailDate.toISOString(), hotel: baseHotel, subject, reason: 'Tarih otomatik çıkarılamadı' }] };
+  }
+
+  const records = [];
+  const reviewItems = [];
+  for (const e of entries) {
+    if (isNaN(e.dateStart.getTime()) || isNaN(e.dateEnd.getTime())) continue;
+    const hotel = e.subHotel ? e.subHotel.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()) : baseHotel;
+    const rec = {
+      messageId: msg.id,
+      mailDate: mailDate.toISOString(),
+      hotel,
+      roomType: (e.context || '(oda tipi belirtilmemiş)').trim(),
+      type: e.type,
+      dateStart: fmtDate(e.dateStart),
+      dateEnd: fmtDate(e.dateEnd)
+    };
+    if (lowConfidence) {
+      reviewItems.push({ messageId: msg.id, mailDate: mailDate.toISOString(), hotel, subject, reason: 'Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir', draftRecord: rec });
+    } else {
+      records.push(rec);
+    }
+  }
+  return { records, reviewItems };
+}
+
+// Ham log'dan çözümlenmiş takvimi hesaplar (replay). Mail tarihine göre kronolojik
+// (eskiden yeniye) sıralayıp her kaydı sırayla uygular - aynı gün için sonraki kayıt
+// bir öncekini ezer ("en son mail kazanır", kullanıcı onayı 14.09.2026).
+function buildCalendarFromLog(records) {
+  const sorted = [...records].sort((a, b) => new Date(a.mailDate) - new Date(b.mailDate));
+  const calendar = {}; // calendar[hotel][roomType][YYYY-MM-DD] = 'stop'|'open'|'limited'
+  const parseTR = (s) => { const [d, m, y] = s.split('.').map(Number); return new Date(y, m - 1, d); };
+  for (const rec of sorted) {
+    if (!calendar[rec.hotel]) calendar[rec.hotel] = {};
+    if (!calendar[rec.hotel][rec.roomType]) calendar[rec.hotel][rec.roomType] = {};
+    const start = parseTR(rec.dateStart);
+    const end = parseTR(rec.dateEnd);
+    if (isNaN(start.getTime()) || isNaN(end.getTime())) continue;
+    for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+      const key = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+      calendar[rec.hotel][rec.roomType][key] = rec.type;
+    }
+  }
+  return calendar;
+}
+
+async function handleBuildCalendarBatch(req, res, accessToken) {
+  if (!process.env.GITHUB_TOKEN) {
+    res.status(500).json({ error: 'github_token_missing - kalıcı ilerleme takibi için GITHUB_TOKEN gerekli' });
+    return;
+  }
+  const limit = Math.min(parseInt(req.query.limit || '15', 10) || 15, 30);
+
+  const { data: progress, sha: progressSha } = await githubReadJson(PROGRESS_PATH, { processedMessageIds: [] });
+  const { data: rawLog, sha: rawLogSha } = await githubReadJson(RAW_LOG_PATH, { records: [] });
+  const { data: reviewQueue, sha: reviewSha } = await githubReadJson(REVIEW_PATH, { items: [] });
+  const processedSet = new Set(progress.processedMessageIds || []);
+
+  const q = `(subject:"stop sale" OR subject:"open sale" OR subject:"stop&open sale") after:${BACKFILL_SINCE}`;
+  let allThreadIds = [];
+  let pageToken = '';
+  for (let i = 0; i < 20; i++) {
+    const url = `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(q)}&maxResults=50${pageToken ? `&pageToken=${pageToken}` : ''}`;
+    const listRes = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
+    const listData = await listRes.json();
+    allThreadIds = allThreadIds.concat((listData.threads || []).map(t => t.id));
+    if (!listData.nextPageToken) break;
+    pageToken = listData.nextPageToken;
+  }
+  const totalCandidateThreads = allThreadIds.length;
+
+  // Hangi thread'lerin İÇİNDE işlenmemiş mesaj olabileceğini bilmediğimiz için (mesaj ID'leri
+  // thread detayını çekmeden bilinmiyor), thread'leri sırayla açıp içindeki her mesajı kontrol
+  // ediyoruz - zaten işlenmiş TÜM mesajları içeren thread'leri atlayabilmek için önce hafif bir
+  // targetThreads seçimi yapmak yerine, basitçe sırayla ilerleyip `limit` kadar YENİ MESAJ
+  // işlenene kadar thread açmaya devam ediyoruz (bir thread'in tüm mesajları zaten işlenmişse
+  // hızlıca bir sonrakine geçilir, ekstra API maliyeti düşük çünkü sadece thread detay çekimi).
+  let newRecordsCount = 0, newReviewCount = 0, threadsOpened = 0, messagesProcessed = 0;
+  const newlyProcessedIds = [];
+
+  for (const threadId of allThreadIds) {
+    if (messagesProcessed >= limit) break;
+    threadsOpened++;
+    const detRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/threads/${threadId}?format=full`,
+      { headers: { Authorization: `Bearer ${accessToken}` } });
+    const det = await detRes.json();
+    const msgs = det.messages || [];
+    for (const msg of msgs) {
+      if (processedSet.has(msg.id)) continue;
+      const from = getHeader(msg, 'From');
+      const subject = getHeader(msg, 'Subject');
+      if (['mardanpalace.com', 'rixos.com', 'cajabymaxxroyal.com', 'belkagolf.com'].some(d => from.toLowerCase().includes(d))) {
+        processedSet.add(msg.id); newlyProcessedIds.push(msg.id); continue;
+      }
+      const subHotelChk = subHotelFromSubject(subject);
+      if (subHotelChk && ['VOYAGE SORGUN', 'VOYAGE TORBA', 'VOYAGE KUNDU', 'MAXX ROYAL BODRUM RESORT'].includes(subHotelChk)) {
+        processedSet.add(msg.id); newlyProcessedIds.push(msg.id); continue;
+      }
+
+      const { records, reviewItems } = await extractRecordsForMessage(msg, accessToken);
+      rawLog.records.push(...records);
+      reviewQueue.items.push(...reviewItems);
+      newRecordsCount += records.length;
+      newReviewCount += reviewItems.length;
+      processedSet.add(msg.id);
+      newlyProcessedIds.push(msg.id);
+      messagesProcessed++;
+      if (messagesProcessed >= limit) break;
+    }
+  }
+
+  progress.processedMessageIds = Array.from(processedSet);
+  progress.lastRun = new Date().toISOString();
+  progress.totalCandidateThreadsLastSeen = totalCandidateThreads;
+
+  const stamp = new Date().toISOString();
+  const okProgress = await githubWriteJson(PROGRESS_PATH, progress, progressSha, `Stop-sale takvim taraması: ilerleme güncellendi (${stamp})`);
+  const okLog = await githubWriteJson(RAW_LOG_PATH, rawLog, rawLogSha, `Stop-sale takvim taraması: +${newRecordsCount} kayıt (${stamp})`);
+  const okReview = await githubWriteJson(REVIEW_PATH, reviewQueue, reviewSha, `Stop-sale takvim taraması: +${newReviewCount} gözden geçir (${stamp})`);
+
+  res.status(200).json({
+    ok: okProgress && okLog && okReview,
+    threadsOpenedThisRun: threadsOpened,
+    messagesProcessedThisRun: messagesProcessed,
+    newRecordsAdded: newRecordsCount,
+    newReviewItemsAdded: newReviewCount,
+    totalProcessedSoFar: processedSet.size,
+    totalCandidateThreads: totalCandidateThreads,
+    doneEstimate: messagesProcessed < limit && threadsOpened >= totalCandidateThreads
+  });
+}
+
+async function handleGetCalendar(req, res) {
+  const { data: rawLog } = await githubReadJson(RAW_LOG_PATH, { records: [] });
+  const calendar = buildCalendarFromLog(rawLog.records || []);
+  res.status(200).json({ generatedAt: new Date().toISOString(), totalRawRecords: (rawLog.records || []).length, calendar });
+}
+
+async function handleGetReviewQueue(req, res) {
+  const { data: reviewQueue } = await githubReadJson(REVIEW_PATH, { items: [] });
+  res.status(200).json({ count: (reviewQueue.items || []).length, items: reviewQueue.items || [] });
+}
 
 function findHtmlBody(payload) {
   if (!payload) return '';
@@ -390,6 +650,21 @@ export default async function handler(req, res) {
   }
   if (!process.env.GMAIL_REFRESH_TOKEN) {
     res.status(500).json({ error: 'Sistem henüz kurulmadı: GMAIL_REFRESH_TOKEN eksik.' });
+    return;
+  }
+
+  // KALICI TAKVİM aksiyonları (14.09.2026 eklendi) - var olan 'report' (varsayılan,
+  // aşağıdaki try bloğu) davranışını HİÇ DEĞİŞTİRMEZ, sadece yeni action dallarını yakalar.
+  const action = req.query.action || (req.body && req.body.action) || 'report';
+  if (action === 'buildCalendarBatch' || action === 'getCalendar' || action === 'getReviewQueue') {
+    try {
+      if (action === 'getCalendar') { await handleGetCalendar(req, res); return; }
+      if (action === 'getReviewQueue') { await handleGetReviewQueue(req, res); return; }
+      const accessTokenCal = await getAccessToken();
+      await handleBuildCalendarBatch(req, res, accessTokenCal);
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
     return;
   }
 
