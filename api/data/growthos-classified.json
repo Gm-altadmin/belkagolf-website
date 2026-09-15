@@ -630,23 +630,6 @@
       ]
     },
     {
-      "threadId": "1a09643e893d2504",
-      "from": "Jane Huggins <admin@eaglescliffe.golf>",
-      "subject": "RE: A considered Belek group-golf option for Eaglescliffe Golf Club",
-      "lastMessageId": "1a09fc343a3d3523",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Mon, 14 Sep 2026 12:52:49 +0100",
-      "replies": [
-        {
-          "messageId": "1a09fc343a3d3523",
-          "date": "Mon, 14 Sep 2026 12:52:49 +0100",
-          "snippet": "Hello, Could you please remove us from your contact list? Thank you. Kind Regards. Address: Yarm Road, Eaglescliffe, Stockton-on-Tees TS16 0DQ Website: https://eaglescliffe.golf -----Original Message--",
-          "category": "do_not_contact",
-          "translation": "Bizi iletişim listenizden çıkarmanızı rica ediyoruz. Teşekkür ederiz. İlginiz için saygılarımız."
-        }
-      ]
-    },
-    {
       "threadId": "1a090a09251cc19b",
       "from": "Klubbchef GGCC <klubbchef@gullbringagolf.se>",
       "subject": "Sv: Belka Golf — gruppgolfkoncept för Gullbringa Golf & Country Club",
@@ -728,7 +711,6 @@
     "golfops@northhantsgolf.co.uk",
     "tom@regc.co.uk",
     "proshop@regc.co.uk",
-    "admin@eaglescliffe.golf",
     "enquiries@durhamcitygolf.co.uk",
     "finance@sherbornegolfclub.co.uk",
     "james.fuller@parkstonegolfclub.co.uk",
@@ -849,5 +831,5 @@
     "hanna@raegolf.ee",
     "gianpaolofanti@aon.at"
   ],
-  "lastRunAt": "2026-09-15T07:48:41.503Z"
+  "lastRunAt": "2026-09-15T07:49:17.632Z"
 }
