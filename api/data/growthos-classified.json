@@ -647,23 +647,6 @@
       ]
     },
     {
-      "threadId": "1a09643e893d2504",
-      "from": "Jane Huggins <admin@eaglescliffe.golf>",
-      "subject": "RE: A considered Belek group-golf option for Eaglescliffe Golf Club",
-      "lastMessageId": "1a09fc343a3d3523",
-      "latestCategory": "do_not_contact",
-      "latestDate": "Mon, 14 Sep 2026 12:52:49 +0100",
-      "replies": [
-        {
-          "messageId": "1a09fc343a3d3523",
-          "date": "Mon, 14 Sep 2026 12:52:49 +0100",
-          "snippet": "Hello, Could you please remove us from your contact list? Thank you. Kind Regards. Address: Yarm Road, Eaglescliffe, Stockton-on-Tees TS16 0DQ Website: https://eaglescliffe.golf -----Original Message--",
-          "category": "do_not_contact",
-          "translation": "Lütfen bizi iletişim listenizden çıkarınız. Teşekkür ederim."
-        }
-      ]
-    },
-    {
       "threadId": "1a0909ca1297056b",
       "from": "Helle Thomasberg <ht@himmerland.eu>",
       "subject": "Sv: Belka Golf — gruppegolfkoncept til HimmerLand",
@@ -864,7 +847,6 @@
     "aki.keronen@kareliagolf.fi",
     "hanna@raegolf.ee",
     "gianpaolofanti@aon.at",
-    "admin@eaglescliffe.golf",
     "allen@lofotenlinks.no",
     "professional@chesterfieldgolfclub.co.uk",
     "sec@delameregolf.co.uk",
@@ -880,5 +862,5 @@
     "dusan@golfbrothers.cz",
     "roman.svoboda@pga.cz"
   ],
-  "lastRunAt": "2026-09-16T08:37:30.831Z"
+  "lastRunAt": "2026-09-16T08:37:56.951Z"
 }
