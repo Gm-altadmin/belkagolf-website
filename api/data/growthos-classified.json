@@ -645,6 +645,40 @@
           "translation": "Şu an uygun değil, yeni bir Pro alımı yapılıyor. Lütfen ilkbahar döneminde tekrar iletişime geçin. Saygılarımızla, Anna Joelsson, Gullbringa Golf & Country Club Kulüp Müdürü."
         }
       ]
+    },
+    {
+      "threadId": "1a09643e893d2504",
+      "from": "Jane Huggins <admin@eaglescliffe.golf>",
+      "subject": "RE: A considered Belek group-golf option for Eaglescliffe Golf Club",
+      "lastMessageId": "1a09fc343a3d3523",
+      "latestCategory": "do_not_contact",
+      "latestDate": "Mon, 14 Sep 2026 12:52:49 +0100",
+      "replies": [
+        {
+          "messageId": "1a09fc343a3d3523",
+          "date": "Mon, 14 Sep 2026 12:52:49 +0100",
+          "snippet": "Hello, Could you please remove us from your contact list? Thank you. Kind Regards. Address: Yarm Road, Eaglescliffe, Stockton-on-Tees TS16 0DQ Website: https://eaglescliffe.golf -----Original Message--",
+          "category": "do_not_contact",
+          "translation": "Lütfen bizi iletişim listenizden çıkarınız. Teşekkür ederim."
+        }
+      ]
+    },
+    {
+      "threadId": "1a0909ca1297056b",
+      "from": "Helle Thomasberg <ht@himmerland.eu>",
+      "subject": "Sv: Belka Golf — gruppegolfkoncept til HimmerLand",
+      "lastMessageId": "1a09e828d1554113",
+      "latestCategory": "meeting",
+      "latestDate": "Mon, 14 Sep 2026 06:02:31 +0000",
+      "replies": [
+        {
+          "messageId": "1a09e828d1554113",
+          "date": "Mon, 14 Sep 2026 06:02:31 +0000",
+          "snippet": "Hej Belka, Ja, det vil vi gerne høre mere om, hvordan vil det passe imorgen eftermiddag kl. 14? Venlig Hilsen / Best Regards Helle Thomasberg Director of Sales &amp; Marketing Mobil: +4551631983 E-mail",
+          "category": "meeting",
+          "translation": "Evet, daha fazla bilgi almak istiyoruz. Yarın saat 14:00'te görüşme yapabilir miyiz?"
+        }
+      ]
     }
   ],
   "recipientAddresses": [
@@ -829,7 +863,22 @@
     "toimisto@jyvasgolf.fi",
     "aki.keronen@kareliagolf.fi",
     "hanna@raegolf.ee",
-    "gianpaolofanti@aon.at"
+    "gianpaolofanti@aon.at",
+    "admin@eaglescliffe.golf",
+    "allen@lofotenlinks.no",
+    "professional@chesterfieldgolfclub.co.uk",
+    "sec@delameregolf.co.uk",
+    "info@bowoodpark.com",
+    "secretary@cleethorpesgolfclub.co.uk",
+    "tapani.gadd@jyvasgolf.fi",
+    "petteri.ruuskanen@kartanogolf.fi",
+    "esa.koljonen@kartanogolf.fi",
+    "ht@himmerland.eu",
+    "info@gc-bh.de",
+    "info@quellness-golf.com",
+    "ambigene@seznam.cz",
+    "dusan@golfbrothers.cz",
+    "roman.svoboda@pga.cz"
   ],
-  "lastRunAt": "2026-09-15T07:49:17.632Z"
+  "lastRunAt": "2026-09-16T08:37:30.831Z"
 }
