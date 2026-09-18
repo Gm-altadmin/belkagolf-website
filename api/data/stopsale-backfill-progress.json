@@ -1745,9 +1745,9 @@
     "19f2696bd2b325dd",
     "1a0b475f74d215ce"
   ],
-  "consecutiveEmptyRuns": 5,
+  "consecutiveEmptyRuns": 6,
   "resetAt": "2026-09-18T11:45:53.562Z",
-  "lastRun": "2026-09-18T12:52:25.198Z",
+  "lastRun": "2026-09-18T12:58:18.521Z",
   "totalCandidateThreadsLastSeen": 1000,
   "maxSeenCandidateThreads": 1000
 }
