@@ -1101,8 +1101,8 @@
     "19fe191893484f59",
     "19fe17ab49382b6d"
   ],
-  "consecutiveEmptyRuns": 0,
+  "consecutiveEmptyRuns": 1,
   "resetAt": "2026-09-18T11:45:53.562Z",
-  "lastRun": "2026-09-18T11:56:00.770Z",
-  "totalCandidateThreadsLastSeen": 1000
+  "lastRun": "2026-09-18T11:56:10.724Z",
+  "totalCandidateThreadsLastSeen": 0
 }
