@@ -471,9 +471,33 @@
   </div>
 
   <div id="view-stopsale" style="display:none;">
-    <div class="meta" id="stopsale-meta">Yükleniyor...</div>
-    <button class="refresh-btn" onclick="loadStopSale()">Yenile</button>
-    <div id="stopsale-body"></div>
+    <div style="margin-bottom:10px;">
+      <button class="tab-btn ss-subtab active" id="ss-subtab-cal" onclick="switchStopSaleSubview('cal')">📅 Takvim</button>
+      <button class="tab-btn ss-subtab" id="ss-subtab-list" onclick="switchStopSaleSubview('list')">📋 Ham Liste</button>
+    </div>
+
+    <div id="ss-view-cal">
+      <div class="meta" id="stopsale-cal-meta">Yükleniyor...</div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0;">
+        <select id="ss-hotel-select" onchange="renderStopSaleCalendar()" style="padding:6px 10px;border-radius:6px;"></select>
+        <button class="refresh-btn" onclick="ssShiftWindow(-1)">◀ Önceki Ay</button>
+        <span id="ss-window-label" style="color:#ccc;"></span>
+        <button class="refresh-btn" onclick="ssShiftWindow(1)">Sonraki Ay ▶</button>
+        <button class="refresh-btn" onclick="loadStopSaleCalendar(true)">Yenile</button>
+      </div>
+      <div style="font-size:12px;color:#aaa;margin-bottom:8px;">
+        <span style="background:#F4CCCC;padding:2px 8px;border-radius:3px;">Kapalı (STOP)</span>
+        <span style="background:#D9EAD3;padding:2px 8px;border-radius:3px;margin-left:6px;">Açık (OPEN, otel bildirmiş)</span>
+        <span style="border:1px solid #555;padding:2px 8px;border-radius:3px;margin-left:6px;">Bildirim yok — varsayılan açık, nihai teyit otelden alınmalı</span>
+      </div>
+      <div id="ss-cal-table-wrap" style="overflow-x:auto;"></div>
+    </div>
+
+    <div id="ss-view-list" style="display:none;">
+      <div class="meta" id="stopsale-meta">Yükleniyor...</div>
+      <button class="refresh-btn" onclick="loadStopSale()">Yenile</button>
+      <div id="stopsale-body"></div>
+    </div>
   </div>
 
   <div id="view-noise" style="display:none;">
@@ -790,7 +814,7 @@ function switchTab(name) {
   document.getElementById('tab-btn-noise').classList.toggle('active', name === 'noise');
   document.getElementById('tab-btn-growthos').classList.toggle('active', name === 'growthos');
   if (name === 'campaigns') loadCampaigns();
-  if (name === 'stopsale') loadStopSale();
+  if (name === 'stopsale') loadStopSaleCalendar();
 }
 
 async function scanNoise() {
@@ -883,6 +907,102 @@ async function confirmNoise() {
 }
 
 const SALE_LABEL = { stop: 'STOP SALE', open: 'OPEN SALE', both: 'STOP & OPEN', other: 'Diğer' };
+
+function switchStopSaleSubview(which) {
+  document.getElementById('ss-view-cal').style.display = which === 'cal' ? 'block' : 'none';
+  document.getElementById('ss-view-list').style.display = which === 'list' ? 'block' : 'none';
+  document.getElementById('ss-subtab-cal').classList.toggle('active', which === 'cal');
+  document.getElementById('ss-subtab-list').classList.toggle('active', which === 'list');
+  if (which === 'cal' && !SS_CAL_DATA) loadStopSaleCalendar();
+  if (which === 'list') loadStopSale();
+}
+
+// KALICI TAKVİM (18.09.2026 eklendi): /api/stopsale?action=getCalendar zaten ham
+// log'dan kronolojik replay ile hesaplanmış {otel: {odaTipi: {"YYYY-MM-DD": "stop"|"open"}}}
+// döndürüyor. Burada sadece görselleştiriyoruz - tüm veriyi aynı anda tabloya basmak
+// tarayıcıyı yorar diye, tek seferde bir otel + 1 aylık kaydırılabilir pencere gösteriyoruz.
+let SS_CAL_DATA = null; // { hotelName: { roomType: { 'YYYY-MM-DD': 'stop'|'open' } } }
+let SS_WINDOW_START = new Date(); // ayın başına yuvarlanır
+SS_WINDOW_START.setDate(1);
+SS_WINDOW_START.setHours(0, 0, 0, 0);
+const SS_WINDOW_DAYS = 31;
+
+async function loadStopSaleCalendar(forceRefresh) {
+  const meta = document.getElementById('stopsale-cal-meta');
+  if (SS_CAL_DATA && !forceRefresh) { renderStopSaleCalendar(); return; }
+  meta.textContent = 'Takvim yükleniyor (birkaç saniye sürebilir)...';
+  try {
+    const res = await fetch('/api/stopsale?action=getCalendar&password=' + encodeURIComponent(SAVED_PW));
+    const data = await res.json();
+    if (res.status === 401) { meta.textContent = 'Şifre hatalı — sayfayı yenileyip tekrar giriş yapın.'; return; }
+    if (data.error) { meta.textContent = 'Hata: ' + escapeHtml(data.error); return; }
+
+    // Ayrıştırma hatasıyla oda-tipi-adının otel alanına sızdığı boş/anlamsız
+    // girişleri (gerçek oda içermeyenleri) filtrele - kullanıcıyı yormasın.
+    SS_CAL_DATA = {};
+    for (const [hotel, rooms] of Object.entries(data.calendar || {})) {
+      if (rooms && Object.keys(rooms).length > 0) SS_CAL_DATA[hotel] = rooms;
+    }
+
+    const select = document.getElementById('ss-hotel-select');
+    const hotels = Object.keys(SS_CAL_DATA).sort((a, b) => a.localeCompare(b, 'tr'));
+    select.innerHTML = hotels.map(h => `<option value="${escapeHtml(h)}">${escapeHtml(h)}</option>`).join('');
+
+    meta.textContent = `${data.totalRawRecords} ham kayıttan üretildi — ${hotels.length} otel — ${new Date(data.generatedAt).toLocaleString('tr-TR')}`;
+    renderStopSaleCalendar();
+  } catch (e) {
+    meta.textContent = 'Bağlantı hatası: ' + e.message;
+  }
+}
+
+function ssShiftWindow(deltaMonths) {
+  SS_WINDOW_START.setMonth(SS_WINDOW_START.getMonth() + deltaMonths);
+  renderStopSaleCalendar();
+}
+
+function ssDateKey(d) {
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+
+function renderStopSaleCalendar() {
+  if (!SS_CAL_DATA) return;
+  const hotel = document.getElementById('ss-hotel-select').value;
+  const rooms = SS_CAL_DATA[hotel];
+  const wrap = document.getElementById('ss-cal-table-wrap');
+  document.getElementById('ss-window-label').textContent =
+    SS_WINDOW_START.toLocaleDateString('tr-TR', { month: 'long', year: 'numeric' });
+  if (!rooms) { wrap.innerHTML = '<div style="color:#999;">Bu otel için veri yok.</div>'; return; }
+
+  const days = [];
+  for (let i = 0; i < SS_WINDOW_DAYS; i++) {
+    const d = new Date(SS_WINDOW_START);
+    d.setDate(d.getDate() + i);
+    if (d.getMonth() !== SS_WINDOW_START.getMonth()) break; // sadece o ay
+    days.push(d);
+  }
+
+  let html = '<table style="border-collapse:collapse;font-size:11px;"><tr><th style="position:sticky;left:0;background:#222;padding:4px 8px;min-width:220px;text-align:left;">Oda Tipi</th>';
+  for (const d of days) {
+    html += `<th style="padding:2px;writing-mode:vertical-rl;min-width:20px;">${d.getDate()}</th>`;
+  }
+  html += '</tr>';
+
+  const roomNames = Object.keys(rooms).sort((a, b) => a.localeCompare(b, 'tr'));
+  for (const room of roomNames) {
+    const dateStatus = rooms[room];
+    html += `<tr><td style="position:sticky;left:0;background:#1a1a1a;padding:4px 8px;border:1px solid #333;">${escapeHtml(room)}</td>`;
+    for (const d of days) {
+      const status = dateStatus[ssDateKey(d)];
+      let bg = 'transparent';
+      if (status === 'stop') bg = '#F4CCCC';
+      else if (status === 'open') bg = '#D9EAD3';
+      html += `<td style="border:1px solid #333;width:20px;height:20px;background:${bg};" title="${d.toLocaleDateString('tr-TR')}${status ? ' — ' + SALE_LABEL[status] : ' — bildirim yok'}"></td>`;
+    }
+    html += '</tr>';
+  }
+  html += '</table>';
+  wrap.innerHTML = html;
+}
 
 function toggleStopSaleGroup(gid) {
   const body = document.getElementById(gid);
