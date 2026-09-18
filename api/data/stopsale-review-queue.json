@@ -1752,6 +1752,50 @@
       "hotel": "Kaya Palazzo / Kaya Belek",
       "subject": "REVIZE KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0a3e5175177bfd",
+      "mailDate": "2026-09-15T07:08:15.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0a44f0d28411a5",
+      "mailDate": "2026-09-15T09:03:59.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0a3decc1685b97",
+      "mailDate": "2026-09-15T07:01:23.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //17 OCTOBER  2026 ALL STANDARTD ROOMS &  GARDEN FAMILY ROOMS &LAKE FAMILY ROOMS CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0a3df62ace261c",
+      "mailDate": "2026-09-15T07:02:01.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //17 OCTOBER  2026 ALL STANDARTD ROOMS &  GARDEN FAMILY ROOMS &LAKE FAMILY ROOMS CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0a3d27834884cb",
+      "mailDate": "2026-09-15T06:47:55.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK STOP SALE TÜM ODA TİPLERİ (Bohemia Suite & Villa HARİÇ) 2​7.09.2026 - ​1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a0a3d27834884cb",
+        "mailDate": "2026-09-15T06:47:55.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "07.09.2026",
+        "dateEnd": "07.09.2026"
+      }
     }
   ]
 }
