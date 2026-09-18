@@ -1810,6 +1810,29 @@
       "hotel": "Cornelia Diamond Golf Resort & Spa",
       "subject": "CORNELIA DIAMOND GOLF RESORT & SPA // 12 SEPTEMBER 2026 STANDARD EXECUTIVE ROOM CATEGORY STOP SALE",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a042046ed77533d",
+      "mailDate": "2026-08-27T06:59:42.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK HOTEL STOP SALE TERRACE SUITE 30.08-31.08.2026 - 2 GECE // LALE SUITE 30.08.2026 - 1 GECE // SUPERIOR FAMILY ROOM 01.09-02.09.2026 - 2 GECE // DELUXE JUNIOR SUITE 18.09-19.09.2026 - 2 GECE // BOHEMIA SUITE 12.09-14.09.2026 - 3 GECE // BOHEMIA VILLA WITH PRIVATE POOL 19.09- 25.09.2026- 7 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a042046ed77533d",
+        "mailDate": "2026-08-27T06:59:42.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "31.08.2026",
+        "dateEnd": "31.08.2026"
+      }
+    },
+    {
+      "messageId": "1a041ee4620ee5f4",
+      "mailDate": "2026-08-27T06:35:30.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
