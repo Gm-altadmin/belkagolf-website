@@ -1583,6 +1583,1761 @@
       "type": "stop",
       "dateStart": "13.10.2026",
       "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a0a96496bae324d",
+      "mailDate": "2026-09-16T08:45:37.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Europe Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a0a96496bae324d",
+      "mailDate": "2026-09-16T08:45:37.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Golf Duplex Garden",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a0a96496bae324d",
+      "mailDate": "2026-09-16T08:45:37.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Middle East Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a0a96496bae324d",
+      "mailDate": "2026-09-16T08:45:37.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Russian Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a0a96496bae324d",
+      "mailDate": "2026-09-16T08:45:37.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "Uk Market Duplex Garden",
+      "type": "stop",
+      "dateStart": "13.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a0aa9cdca56e6e2",
+      "mailDate": "2026-09-16T14:26:42.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Deluxe",
+      "type": "stop",
+      "dateStart": "18.10.2026",
+      "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "1a0aa9cdca56e6e2",
+      "mailDate": "2026-09-16T14:26:42.000Z",
+      "hotel": "Voyage Belek",
+      "roomType": "ALL MARKETS Main Building Side Sea",
+      "type": "stop",
+      "dateStart": "18.10.2026",
+      "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "1a0a940ada15d6b9",
+      "mailDate": "2026-09-16T08:06:23.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR DUPLEX SWIM UP",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a940ada15d6b9",
+      "mailDate": "2026-09-16T08:06:23.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a940ada15d6b9",
+      "mailDate": "2026-09-16T08:06:23.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a940ada15d6b9",
+      "mailDate": "2026-09-16T08:06:23.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY ROOM GOLF VIEW",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a0a940ada15d6b9",
+      "mailDate": "2026-09-16T08:06:23.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market FAMILY ROOM UK MARKET",
+      "type": "stop",
+      "dateStart": "24.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a0a940ada15d6b9",
+      "mailDate": "2026-09-16T08:06:23.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "26.10.2026",
+      "dateEnd": "26.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market FAMILY ROOM UK MARKET",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market FAMILY ROOM UK MARKET",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a0a9797a9cfa3f7",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market FAMILY ROOM UK MARKET",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market FAMILY ROOM UK MARKET",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b217d765",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market FAMILY ROOM UK MARKET",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market FAMILY ROOM UK MARKET",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a0a9797b5dd3371",
+      "mailDate": "2026-09-16T09:08:26.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a0a9f74a73f27ac",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a0a9f74a73f27ac",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "28.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a9f74a73f27ac",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "28.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a9f74a73f27ac",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "02.10.2026"
+    },
+    {
+      "messageId": "1a0a9f74a73f27ac",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "02.10.2026"
+    },
+    {
+      "messageId": "1a0a9f74a73f27ac",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "06.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a9f74a73f27ac",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "06.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a9f74a73f27ac",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "06.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a9f74a73f27ac",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "06.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a9f74b81d0a9c",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a0a9f74b81d0a9c",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "28.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a9f74b81d0a9c",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "28.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a9f74b81d0a9c",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "02.10.2026"
+    },
+    {
+      "messageId": "1a0a9f74b81d0a9c",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market FAMILY ROOF SUITE with JACUZZI",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "02.10.2026"
+    },
+    {
+      "messageId": "1a0a9f74b81d0a9c",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "06.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a9f74b81d0a9c",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "06.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a9f74b81d0a9c",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "06.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a9f74b81d0a9c",
+      "mailDate": "2026-09-16T11:25:51.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "06.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0aa824e01cc5eb",
+      "mailDate": "2026-09-16T13:57:42.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND FAMILY",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "22.09.2026"
+    },
+    {
+      "messageId": "1a0aa824f65963bc",
+      "mailDate": "2026-09-16T13:57:42.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND FAMILY",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "22.09.2026"
+    },
+    {
+      "messageId": "1a0aa824f7d77e33",
+      "mailDate": "2026-09-16T13:57:42.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS GRAND FAMILY",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "22.09.2026"
+    },
+    {
+      "messageId": "1a0a92f7031ca54b",
+      "mailDate": "2026-09-16T07:47:34.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Villa Opened",
+      "type": "open",
+      "dateStart": "20.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a0a9274dd6dc6f2",
+      "mailDate": "2026-09-16T07:38:40.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Family Suite Land",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a0aa9232bc8c651",
+      "mailDate": "2026-09-16T14:15:03.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Lagoon Duplex Suite",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "1a0aa9232bc8c651",
+      "mailDate": "2026-09-16T14:15:03.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Lagoon Duplex Suite",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "22.09.2026"
+    },
+    {
+      "messageId": "1a0aa9232bc8c651",
+      "mailDate": "2026-09-16T14:15:03.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa",
+      "type": "stop",
+      "dateStart": "26.10.2026",
+      "dateEnd": "30.10.2026"
+    },
+    {
+      "messageId": "1a0aa9233c7ed121",
+      "mailDate": "2026-09-16T14:15:03.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Lagoon Duplex Suite",
+      "type": "stop",
+      "dateStart": "20.09.2026",
+      "dateEnd": "20.09.2026"
+    },
+    {
+      "messageId": "1a0aa9233c7ed121",
+      "mailDate": "2026-09-16T14:15:03.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Lagoon Duplex Suite",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "22.09.2026"
+    },
+    {
+      "messageId": "1a0aa9233c7ed121",
+      "mailDate": "2026-09-16T14:15:03.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa",
+      "type": "stop",
+      "dateStart": "26.10.2026",
+      "dateEnd": "30.10.2026"
+    },
+    {
+      "messageId": "1a0a56395ad0c125",
+      "mailDate": "2026-09-15T14:06:02.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Maxx Lagoon Duplex 3 Bedrooms Opened",
+      "type": "open",
+      "dateStart": "27.09.2026",
+      "dateEnd": "28.09.2026"
+    },
+    {
+      "messageId": "1a0a55de77dbdb65",
+      "mailDate": "2026-09-15T13:59:50.000Z",
+      "hotel": "Maxx Royal Belek Golf Resort",
+      "roomType": "ALL MARKETS Albatross Deluxe Villa Opened",
+      "type": "open",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a0a545ac887cb57",
+      "mailDate": "2026-09-15T13:33:22.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM Royal Golf Villa",
+      "type": "open",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a0a545ac887cb57",
+      "mailDate": "2026-09-15T13:33:22.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL Royal Golf Villa",
+      "type": "open",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "stop",
+      "dateStart": "11.10.2026",
+      "dateEnd": "11.10.2026"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "stop",
+      "dateStart": "14.10.2026",
+      "dateEnd": "14.10.2026"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "stop",
+      "dateStart": "25.10.2026",
+      "dateEnd": "25.10.2026"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart land view oda tipi",
+      "type": "stop",
+      "dateStart": "27.10.2026",
+      "dateEnd": "27.10.2026"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart land oda tipi",
+      "type": "stop",
+      "dateStart": "30.10.2026",
+      "dateEnd": "31.10.2026"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart land view oda tipi",
+      "type": "stop",
+      "dateStart": "02.11.2026",
+      "dateEnd": "02.11.2026"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "bütün oda tipleri",
+      "type": "stop",
+      "dateStart": "15.11.2026",
+      "dateEnd": "15.11.2026"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view",
+      "type": "stop",
+      "dateStart": "16.11.2026",
+      "dateEnd": "17.11.2026"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view",
+      "type": "stop",
+      "dateStart": "21.11.2026",
+      "dateEnd": "22.11.2026"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "stop",
+      "dateStart": "01.03.2027",
+      "dateEnd": "01.03.2027"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart land view oda tipi",
+      "type": "stop",
+      "dateStart": "06.09.2027",
+      "dateEnd": "09.03.2027"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart golf view oda tipi",
+      "type": "stop",
+      "dateStart": "22.03.2027",
+      "dateEnd": "22.03.2027"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Golf Hotel Belek",
+      "roomType": "standart land view oda tipi",
+      "type": "stop",
+      "dateStart": "04.04.2027",
+      "dateEnd": "05.04.2027"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Sea View",
+      "type": "open",
+      "dateStart": "30.09.2026",
+      "dateEnd": "30.09.2026"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "tüm oda tipleri",
+      "type": "open",
+      "dateStart": "07.11.2026",
+      "dateEnd": "19.11.2026"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Sea View",
+      "type": "stop",
+      "dateStart": "21.11.2026",
+      "dateEnd": "21.11.2026"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Land View",
+      "type": "stop",
+      "dateStart": "01.10.2027",
+      "dateEnd": "03.10.2027"
+    },
+    {
+      "messageId": "1a0a51fbcd38a8c9",
+      "mailDate": "2026-09-15T12:51:56.000Z",
+      "hotel": "Sueno Deluxe Hotel Belek",
+      "roomType": "Deluxe Room Land View ve ECO ROH oda tipi",
+      "type": "stop",
+      "dateStart": "21.10.2027",
+      "dateEnd": "31.10.2027"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Family + Jade Suite + Pearl Pool Suite",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Pearl Pool Room + Pearl Pool Family",
+      "type": "stop",
+      "dateStart": "06.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "1 5 .09.2026 - (dahil/inc.) Jade Room + Jade Room Partial Se…",
+      "type": "stop",
+      "dateStart": "17.09.2026",
+      "dateEnd": "17.09.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "18.09.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "21.09.2026",
+      "dateEnd": "21.09.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "22.09.2026",
+      "dateEnd": "23.09.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View …",
+      "type": "stop",
+      "dateStart": "28.09.2026",
+      "dateEnd": "28.09.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "29.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "05.10.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "06.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "09.10.2026",
+      "dateEnd": "10.10.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "14.10.2026",
+      "dateEnd": "16.10.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "19.10.2026",
+      "dateEnd": "22.10.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room +Jade Room Partial Sea View + Jade Ro…",
+      "type": "stop",
+      "dateStart": "23.10.2026",
+      "dateEnd": "24.10.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "2 5 .10.2026 - (dahil/inc.) Jade Room + Jade Room Partial Se…",
+      "type": "stop",
+      "dateStart": "28.10.2026",
+      "dateEnd": "28.10.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room + Jade Room Partial Sea View + Jade Room Sea View",
+      "type": "stop",
+      "dateStart": "29.10.2026",
+      "dateEnd": "29.10.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "05.11.2026",
+      "dateEnd": "07.11.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "(dahil/inc.) Jade Room + Jade Room Partial Sea View + Jade R…",
+      "type": "stop",
+      "dateStart": "08.11.2026",
+      "dateEnd": "13.11.2026"
+    },
+    {
+      "messageId": "1a0a4f5e73539f60",
+      "mailDate": "2026-09-15T12:06:14.000Z",
+      "hotel": "Regnum Carya",
+      "roomType": "Jade Room",
+      "type": "stop",
+      "dateStart": "31.12.2026",
+      "dateEnd": "31.12.2026"
+    },
+    {
+      "messageId": "1a0a462eb62250ab",
+      "mailDate": "2026-09-15T09:25:41.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM PAZARLAR SUPERIOR YANDAN DENİZ MANZARALI ODA (DAHİL) SAT…",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a462eb62250ab",
+      "mailDate": "2026-09-15T09:25:41.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM PAZARLAR DELUXE DENİZ MANZARALI ODA (DAHİL) SATIŞI DURDU…",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a462eb62250ab",
+      "mailDate": "2026-09-15T09:25:41.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM PAZARLAR AİLE ODASI (DAHİL) SATIŞI DURDUR",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a462eb62250ab",
+      "mailDate": "2026-09-15T09:25:41.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM PAZARLAR ONE BEDROOM SUITE GOLF MANZARALI ODA (DAHİL) SA…",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a462eb62250ab",
+      "mailDate": "2026-09-15T09:25:41.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL SUPERIOR SIDE SEA VIEW",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a462eb62250ab",
+      "mailDate": "2026-09-15T09:25:41.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL DELUXE SEA VIEW",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a462eb62250ab",
+      "mailDate": "2026-09-15T09:25:41.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL FAMILY ROOM",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a462eb62250ab",
+      "mailDate": "2026-09-15T09:25:41.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL ONE BEDROOM SUITE GOLF VIEW",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON DUPLEX GOLF VILLA",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON DUPLEX GOLF VILLA",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON DUPLEX GOLF VILLA",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS EXCLUSIVE VILLA",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "08.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70a7c0294",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "08.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON DUPLEX GOLF VILLA",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON DUPLEX GOLF VILLA",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON DUPLEX GOLF VILLA",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS EXCLUSIVE VILLA",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "08.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0a44a70ffcc841",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "08.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON DUPLEX GOLF VILLA",
+      "type": "stop",
+      "dateStart": "18.09.2026",
+      "dateEnd": "19.09.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON DUPLEX GOLF VILLA",
+      "type": "stop",
+      "dateStart": "24.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS LAGOON DUPLEX GOLF VILLA",
+      "type": "stop",
+      "dateStart": "27.09.2026",
+      "dateEnd": "27.09.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "01.10.2026",
+      "dateEnd": "01.10.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS EXCLUSIVE VILLA",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market LAGOON GOLF SWIM UP",
+      "type": "stop",
+      "dateStart": "05.10.2026",
+      "dateEnd": "06.10.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Uk Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "08.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0a44a718a9f0db",
+      "mailDate": "2026-09-15T08:58:57.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "West Europe Market LAGOON BEACH SWIM UP",
+      "type": "stop",
+      "dateStart": "08.10.2026",
+      "dateEnd": "08.10.2026"
+    },
+    {
+      "messageId": "1a0a4fca83d50d7d",
+      "mailDate": "2026-09-15T12:13:37.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "East Europe Market SUPERIOR DUPLEX SWIM UP",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a0a4fca83d50d7d",
+      "mailDate": "2026-09-15T12:13:37.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Middle East Market SUPERIOR DUPLEX SWIM UP",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a0a4fca83d50d7d",
+      "mailDate": "2026-09-15T12:13:37.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Russian & CIS Market SUPERIOR DUPLEX SWIM UP",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a0a4fca83d50d7d",
+      "mailDate": "2026-09-15T12:13:37.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "Turkey Market SUPERIOR DUPLEX SWIM UP",
+      "type": "stop",
+      "dateStart": "25.09.2026",
+      "dateEnd": "25.09.2026"
+    },
+    {
+      "messageId": "1a0a4fca83d50d7d",
+      "mailDate": "2026-09-15T12:13:37.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR DUPLEX SWIM UP",
+      "type": "stop",
+      "dateStart": "26.09.2026",
+      "dateEnd": "26.09.2026"
+    },
+    {
+      "messageId": "1a0a4fca83d50d7d",
+      "mailDate": "2026-09-15T12:13:37.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR DUPLEX SWIM UP",
+      "type": "stop",
+      "dateStart": "28.09.2026",
+      "dateEnd": "28.09.2026"
+    },
+    {
+      "messageId": "1a0a4fca83d50d7d",
+      "mailDate": "2026-09-15T12:13:37.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY SUITE SWIM-UP",
+      "type": "stop",
+      "dateStart": "28.09.2026",
+      "dateEnd": "29.09.2026"
+    },
+    {
+      "messageId": "1a0a4fca83d50d7d",
+      "mailDate": "2026-09-15T12:13:37.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY ROOM GOLF VIEW",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "02.10.2026"
+    },
+    {
+      "messageId": "1a0a4fca83d50d7d",
+      "mailDate": "2026-09-15T12:13:37.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY ROOM SEA VIEW",
+      "type": "stop",
+      "dateStart": "02.10.2026",
+      "dateEnd": "02.10.2026"
+    },
+    {
+      "messageId": "1a0a4fca83d50d7d",
+      "mailDate": "2026-09-15T12:13:37.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS FAMILY ROOM GOLF VIEW",
+      "type": "stop",
+      "dateStart": "03.10.2026",
+      "dateEnd": "03.10.2026"
     }
   ]
 }
