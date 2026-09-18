@@ -1833,6 +1833,22 @@
       "hotel": "Kaya Palazzo / Kaya Belek",
       "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a01de20841974da",
+      "mailDate": "2026-08-20T06:35:48.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK HOTEL STOP SALE TÜM ODA TİPLERİ (Bohemia Suite & Villa DAHİL) 27.08-28.08.2026 - 2 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a01de20841974da",
+        "mailDate": "2026-08-20T06:35:48.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "28.08.2026",
+        "dateEnd": "28.08.2026"
+      }
     }
   ]
 }
