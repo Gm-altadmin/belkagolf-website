@@ -1009,7 +1009,13 @@ function renderStopSaleCalendar() {
   }
   html += '</tr>';
 
-  const roomNames = Object.keys(rooms).sort((a, b) => a.localeCompare(b, 'tr'));
+  // GENEL KİRLİLİK FİLTRESİ (18.09.2026 eklendi): bazı kayıtlarda (parser'daki ayrı bir
+  // hatadan) oda tipi metni yerine JavaScript'in ham tarih string'i ("Mon Oct 28 2024
+  // 00:00:00 GMT+0000...") kaydedilmiş - herhangi bir otelde çıkabilir, otel bazlı
+  // kara liste bunu yakalayamaz. Bu deseni taşıyan satırları gizliyoruz (veri silinmiyor,
+  // sadece görünümde saklanıyor).
+  const SS_DATE_STRING_RE = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) [A-Za-z]{3} \d{1,2} \d{4}/;
+  const roomNames = Object.keys(rooms).filter(r => !SS_DATE_STRING_RE.test(r)).sort((a, b) => a.localeCompare(b, 'tr'));
   for (const room of roomNames) {
     const dateStatus = rooms[room];
     html += `<tr><td style="position:sticky;left:0;background:#1a1a1a;padding:4px 8px;border:1px solid #333;">${escapeHtml(room)}</td>`;
