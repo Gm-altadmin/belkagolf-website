@@ -540,8 +540,8 @@
     "1a06625ce73cfdc6",
     "1a0661674db4f9b9"
   ],
-  "consecutiveEmptyRuns": 0,
+  "consecutiveEmptyRuns": 1,
   "resetAt": "2026-09-18T11:45:53.562Z",
-  "lastRun": "2026-09-18T11:51:16.638Z",
-  "totalCandidateThreadsLastSeen": 1000
+  "lastRun": "2026-09-18T11:51:33.328Z",
+  "totalCandidateThreadsLastSeen": 0
 }
