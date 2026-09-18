@@ -956,7 +956,18 @@ async function loadStopSaleCalendar(forceRefresh) {
     }
 
     const select = document.getElementById('ss-hotel-select');
-    const hotels = Object.keys(SS_CAL_DATA).sort((a, b) => a.localeCompare(b, 'tr'));
+    // KOZMETİK FİLTRE (18.09.2026 eklendi): ayrıştırma hatası yüzünden bazı maillerde oda
+    // tipi metni yanlışlıkla "otel" alanına yazılmış (örn. "Bali House Garden", "Economy
+    // Room"). Veriye dokunmuyoruz (SS_CAL_DATA'da hâlâ duruyor) - sadece seçim listesinde
+    // gizliyoruz ki kullanıcı gerçek 18 oteli net görsün. Kök neden (hangi mail formatı
+    // bunu tetikliyor) ayrı bir düzeltme gerektiriyor, henüz yapılmadı.
+    const SS_KNOWN_JUNK_HOTELS = new Set(['Bali House Garden', 'Bali House Swim Up', 'Corner SuiTe',
+      'Course Booking', 'Deluxe Room (Suit)', 'Design Pool Villa', 'Economy Room', 'Exclusive Pool Villa',
+      'Family Pool Balcony (2th Floor )', 'Family Pool Swimup', 'Family Suite Garden',
+      'Family Suite Main Building', 'Lagoon Duplex Suite With Private Pool', 'Major Suite',
+      'Maldive House', 'Ottoman Spa Suite', 'Package Sales', 'Standart Room', 'Superior Pool Villa',
+      'Superior Room']);
+    const hotels = Object.keys(SS_CAL_DATA).filter(h => !SS_KNOWN_JUNK_HOTELS.has(h)).sort((a, b) => a.localeCompare(b, 'tr'));
     select.innerHTML = hotels.map(h => `<option value="${escapeHtml(h)}">${escapeHtml(h)}</option>`).join('');
 
     meta.textContent = `${data.totalRawRecords} ham kayıttan üretildi — ${hotels.length} otel — ${new Date(data.generatedAt).toLocaleString('tr-TR')}${newInfo}`;
