@@ -1849,6 +1849,54 @@
         "dateStart": "28.08.2026",
         "dateEnd": "28.08.2026"
       }
+    },
+    {
+      "messageId": "1a018b5739391a43",
+      "mailDate": "2026-08-19T06:29:00.000Z",
+      "hotel": "Regnum Carya / Regnum The Crown",
+      "subject": "OPEN SALE/REGNUM CARYA CIS/EU/MEA/UK/GOLF  19.08.2026",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a018b5739391a43",
+        "mailDate": "2026-08-19T06:29:00.000Z",
+        "hotel": "Regnum Carya / Regnum The Crown",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "open",
+        "dateStart": "15.11.2026",
+        "dateEnd": "15.11.2026"
+      }
+    },
+    {
+      "messageId": "19ffb8e647a2feca",
+      "mailDate": "2026-08-13T14:37:21.000Z",
+      "hotel": "Regnum Carya / Regnum The Crown",
+      "subject": "OPEN SALE/REGNUM CARYA 13.08.2026",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "19ffb8e647a2feca",
+        "mailDate": "2026-08-13T14:37:21.000Z",
+        "hotel": "Regnum Carya / Regnum The Crown",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "open",
+        "dateStart": "25.10.2026",
+        "dateEnd": "26.10.2026"
+      }
+    },
+    {
+      "messageId": "19ffb1c95414edb7",
+      "mailDate": "2026-08-13T12:33:02.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK STOP SALE STANDARD JUNIOR SUITE GARDEN VIEW 25.08.2026 – 1 GECE / STANDARD JUNIOR SUITE SEA VIEW 25.08.2026 – 1 GECE / DELUXE JUNIOR SUITE 25.08.2026 – 1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "19ffb1c95414edb7",
+        "mailDate": "2026-08-13T12:33:02.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "25.08.2026",
+        "dateEnd": "25.08.2026"
+      }
     }
   ]
 }
