@@ -930,8 +930,19 @@ const SS_WINDOW_DAYS = 31;
 async function loadStopSaleCalendar(forceRefresh) {
   const meta = document.getElementById('stopsale-cal-meta');
   if (SS_CAL_DATA && !forceRefresh) { renderStopSaleCalendar(); return; }
-  meta.textContent = 'Takvim yükleniyor (birkaç saniye sürebilir)...';
+  meta.textContent = 'Yeni mailler kontrol ediliyor...';
   try {
+    // OTOMATİK GÜNCELLEME (18.09.2026 eklendi): panel her açıldığında, takvimi göstermeden
+    // önce sessizce "yeni stop/open-sale maili var mı?" diye bir tarama yapılır.
+    // buildCalendarBatch zaten daha önce işlenmiş mesajları (processedMessageIds) atlıyor,
+    // yani bu çağrı sadece SON AÇILIŞTAN BERİ gelen yeni mailleri işler - normalde çok az
+    // olacağı için (günde birkaç mail) birkaç saniyede biter. Panel bu sayede her zaman
+    // güncel kalır, ayrı bir zamanlanmış görev (cron) kurmaya gerek kalmaz.
+    const scanRes = await fetch('/api/stopsale?action=buildCalendarBatch&limit=30&password=' + encodeURIComponent(SAVED_PW));
+    const scanData = await scanRes.json();
+    const newInfo = scanData.newRecordsAdded > 0 ? ` — ${scanData.newRecordsAdded} yeni kayıt bulundu` : '';
+
+    meta.textContent = 'Takvim yükleniyor...';
     const res = await fetch('/api/stopsale?action=getCalendar&password=' + encodeURIComponent(SAVED_PW));
     const data = await res.json();
     if (res.status === 401) { meta.textContent = 'Şifre hatalı — sayfayı yenileyip tekrar giriş yapın.'; return; }
@@ -948,7 +959,7 @@ async function loadStopSaleCalendar(forceRefresh) {
     const hotels = Object.keys(SS_CAL_DATA).sort((a, b) => a.localeCompare(b, 'tr'));
     select.innerHTML = hotels.map(h => `<option value="${escapeHtml(h)}">${escapeHtml(h)}</option>`).join('');
 
-    meta.textContent = `${data.totalRawRecords} ham kayıttan üretildi — ${hotels.length} otel — ${new Date(data.generatedAt).toLocaleString('tr-TR')}`;
+    meta.textContent = `${data.totalRawRecords} ham kayıttan üretildi — ${hotels.length} otel — ${new Date(data.generatedAt).toLocaleString('tr-TR')}${newInfo}`;
     renderStopSaleCalendar();
   } catch (e) {
     meta.textContent = 'Bağlantı hatası: ' + e.message;
