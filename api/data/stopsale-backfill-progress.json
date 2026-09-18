@@ -738,7 +738,9 @@
     "19f747f479acc91a",
     "19f7475bc3b87c1d",
     "19f37184a19c0442",
-    "19f2696bd2b325dd"
+    "19f2696bd2b325dd",
+    "1a0b475f74d215ce",
+    "1a0b475fa47acf34"
   ],
   "fullyProcessedThreadIds": [
     "1a0b4498d34f08b2",
@@ -1740,11 +1742,12 @@
     "19f7475bc3b87c1d",
     "19f3c6b1a99933e6",
     "19f37184a19c0442",
-    "19f2696bd2b325dd"
+    "19f2696bd2b325dd",
+    "1a0b475f74d215ce"
   ],
-  "consecutiveEmptyRuns": 4,
+  "consecutiveEmptyRuns": 5,
   "resetAt": "2026-09-18T11:45:53.562Z",
-  "lastRun": "2026-09-18T12:15:55.091Z",
+  "lastRun": "2026-09-18T12:52:25.198Z",
   "totalCandidateThreadsLastSeen": 1000,
   "maxSeenCandidateThreads": 1000
 }
