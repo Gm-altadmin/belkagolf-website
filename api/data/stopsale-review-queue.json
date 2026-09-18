@@ -1690,6 +1690,68 @@
       "hotel": "Kaya Palazzo / Kaya Belek",
       "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0a944e26576a58",
+      "mailDate": "2026-09-16T08:10:59.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0a55671b92eeb6",
+      "mailDate": "2026-09-15T13:51:41.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK STOP SALE BOHEMIA SUITE 26.09-27.09.2026- 2 GECE /BOHEMIA DUBLEX 16.09-17.09.2026 -2 GECE / STANDARD JUNIOR SUİTE GARDEN VIEW 28.09.2026 -1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a0a55671b92eeb6",
+        "mailDate": "2026-09-15T13:51:41.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "27.09.2026",
+        "dateEnd": "27.09.2026"
+      }
+    },
+    {
+      "messageId": "1a0a522009bbc874",
+      "mailDate": "2026-09-15T12:54:24.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK HOTEL STOP SALE 03.10-17.10.2026 (Dahil); STANDARD JUNIOR SUITE GARDEN VIEW // STANDARD JUNIOR SUITE SEA VIEW",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a0a522009bbc874",
+        "mailDate": "2026-09-15T12:54:24.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "17.10.2026",
+        "dateEnd": "17.10.2026"
+      }
+    },
+    {
+      "messageId": "1a0a47092a5452fa",
+      "mailDate": "2026-09-15T09:40:36.000Z",
+      "hotel": "Sirene Belek Golf Hotel",
+      "subject": "SIRENE BELEK STOP SALE ​​TÜM ODA TİPLERİ (Bohemia Suite & Villa DAHİL) 2​4.09.2026 - ​1 GECE",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a0a47092a5452fa",
+        "mailDate": "2026-09-15T09:40:36.000Z",
+        "hotel": "Sirene Belek Golf Hotel",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "stop",
+        "dateStart": "24.09.2026",
+        "dateEnd": "24.09.2026"
+      }
+    },
+    {
+      "messageId": "1a0a45184f15d10e",
+      "mailDate": "2026-09-15T09:06:41.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "REVIZE KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
