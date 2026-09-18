@@ -1634,6 +1634,62 @@
         "dateStart": "02.08.2026",
         "dateEnd": "02.08.2026"
       }
+    },
+    {
+      "messageId": "1a0b39b1eec8cc6f",
+      "mailDate": "2026-09-18T08:21:23.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0ae321d77ff374",
+      "mailDate": "2026-09-17T07:08:35.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0aa71f1a2eb5ee",
+      "mailDate": "2026-09-16T13:39:49.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //16-17  SEPTEMBER 2026 LAPIS LAKE VILLA CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0aa727915d9eef",
+      "mailDate": "2026-09-16T13:40:24.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //16-17  SEPTEMBER 2026 LAPIS LAKE VILLA CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0aa6579efde49a",
+      "mailDate": "2026-09-16T13:26:12.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0aa13fcda32c2e",
+      "mailDate": "2026-09-16T11:57:12.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //03 OCTOBER  2026 BLUE SUITE CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0aa1493a28b987",
+      "mailDate": "2026-09-16T11:57:50.000Z",
+      "hotel": "Cornelia Diamond Golf Resort & Spa",
+      "subject": "CORNELIA DIAMOND GOLF RESORT & SPA //03 OCTOBER  2026 BLUE SUITE CATEGORY STOP SALE",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0a9f3959d15303",
+      "mailDate": "2026-09-16T11:21:48.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
