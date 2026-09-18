@@ -119,10 +119,50 @@ async function githubWriteJson(path, dataObj, sha, message) {
   return r.ok;
 }
 
-const RAW_LOG_PATH = 'api/data/stopsale-raw-log.json';
 const REVIEW_PATH = 'api/data/stopsale-review-queue.json';
 const PROGRESS_PATH = 'api/data/stopsale-backfill-progress.json';
 const BACKFILL_SINCE = '2026/01/01'; // kullanıcı onayı 14.09.2026 - geriye dönük tarama başlangıcı
+
+// KRİTİK BUG DÜZELTMESİ (14.09.2026, canlı testte veri kaybına yol açtı): ham log tek
+// büyük dosya olarak tutulmuyor artık. GitHub'ın Contents API'si 1MB üzeri dosyaların
+// içeriğini OKUMADA döndürmüyor (content alanı boş geliyor) - bu da "dosya yokmuş" gibi
+// yorumlanıp bir sonraki BOŞ-yazma (0 yeni kayıt bulunan bir turda) gerçek/büyük içeriğin
+// ÜZERİNE boş içerik yazılmasına, yani TÜM VERİNİN SİLİNMESİNE yol açtı (gerçekte yaşandı,
+// 1500+ mesaj işlenmişken dosya 0 kayıtla bulundu). Çözüm: ham log AYLIK PARÇALARA
+// (shard) bölünüyor - her ay kendi küçük dosyasında (asla 1MB'a yaklaşmaz), hiçbiri bu
+// sınıra takılmaz. mailDate'in yıl-ay kısmı dosya adını belirler.
+function rawLogShardPath(mailDateIso) {
+  const ym = mailDateIso.slice(0, 7); // "2026-08"
+  return `api/data/stopsale-raw-log-${ym}.json`;
+}
+
+// GitHub'da api/data/ klasöründeki tüm "stopsale-raw-log-*.json" dosyalarını listeler
+// (hangi ayların şu an var olduğunu bilmeden okuyabilmek için).
+async function listRawLogShardPaths() {
+  if (!process.env.GITHUB_TOKEN) return [];
+  const url = `https://api.github.com/repos/${GH_REPO_OWNER}/${GH_REPO_NAME}/contents/api/data?ref=${GH_BRANCH}`;
+  const headers = {
+    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28'
+  };
+  const r = await fetch(url, { headers });
+  if (!r.ok) return [];
+  const items = await r.json();
+  if (!Array.isArray(items)) return [];
+  return items.filter(it => /^stopsale-raw-log-\d{4}-\d{2}\.json$/.test(it.name)).map(it => 'api/data/' + it.name);
+}
+
+// Tüm shard'ları okuyup TEK bir kayıt dizisinde birleştirir (replay/self-healing için).
+async function readAllRawLogRecords() {
+  const paths = await listRawLogShardPaths();
+  let all = [];
+  for (const p of paths) {
+    const { data } = await githubReadJson(p, { records: [] });
+    all = all.concat(data.records || []);
+  }
+  return all;
+}
 
 // Bir mesajdan (zaten fetch edilmiş, format=full) HAM giriş listesi çıkarır - canlı panelin
 // (handler'daki default 'report' dalı) kullandığı AYNI extractXxx fonksiyonlarını çağırır,
@@ -225,16 +265,17 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
   const limit = Math.min(parseInt(req.query.limit || '15', 10) || 15, 30);
 
   const { data: progress, sha: progressSha } = await githubReadJson(PROGRESS_PATH, { processedMessageIds: [] });
-  const { data: rawLog, sha: rawLogSha } = await githubReadJson(RAW_LOG_PATH, { records: [] });
+  const allExistingRecords = await readAllRawLogRecords();
   const { data: reviewQueue, sha: reviewSha } = await githubReadJson(REVIEW_PATH, { items: [] });
   const processedSet = new Set(progress.processedMessageIds || []);
   // KENDİ KENDİNİ ONARAN KONTROL (14.09.2026, canlı testte bulunan bug için): eğer
   // ÖNCEKİ bir turda progress.json yazımı başarısız olduysa (ama rawLog/review başarılı
   // olduysa), processedSet eksik/geride kalmış olabilir - bu durumda aynı mesaj TEKRAR
   // işlenip ham log'a MÜKERRER kayıt olarak girebilirdi. Çözüm: processedSet'e ek olarak,
-  // ham log'da ve review kuyruğunda GERÇEKTEN var olan messageId'leri de "işlenmiş" say -
-  // tek doğruluk kaynağı artık sadece progress.json değil, fiilen yazılmış veri.
-  for (const rec of (rawLog.records || [])) processedSet.add(rec.messageId);
+  // ham log'da (artık TÜM shard'lar) ve review kuyruğunda GERÇEKTEN var olan messageId'leri
+  // de "işlenmiş" say - tek doğruluk kaynağı artık sadece progress.json değil, fiilen
+  // yazılmış veri.
+  for (const rec of allExistingRecords) processedSet.add(rec.messageId);
   for (const item of (reviewQueue.items || [])) processedSet.add(item.messageId);
 
   const q = `(subject:"stop sale" OR subject:"open sale" OR subject:"stop&open sale") after:${BACKFILL_SINCE}`;
@@ -277,6 +318,7 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
 
   let newRecordsCount = 0, newReviewCount = 0, messagesProcessed = 0;
   const newlyProcessedIds = [];
+  const newRecordsThisRun = []; // shard'lara gruplanıp AYRI AYRI yazılacak - tek büyük dosya değil
   const threadsOpened = detailResults.length;
 
   for (const { threadId, det } of detailResults) {
@@ -296,7 +338,7 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
 
       if (messagesProcessed >= limit) { allMsgsDone = false; continue; } // limit dolduysa PAHALI işlemi atla, ama diğer thread'lerin ucuz kontrolüne devam et
       const { records, reviewItems } = await extractRecordsForMessage(msg, accessToken);
-      rawLog.records.push(...records);
+      newRecordsThisRun.push(...records);
       reviewQueue.items.push(...reviewItems);
       newRecordsCount += records.length;
       newReviewCount += reviewItems.length;
@@ -332,7 +374,26 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
 
   const stamp = new Date().toISOString();
   const okProgress = await githubWriteJson(PROGRESS_PATH, progress, progressSha, `Stop-sale takvim taraması: ilerleme güncellendi (${stamp})`);
-  const okLog = await githubWriteJson(RAW_LOG_PATH, rawLog, rawLogSha, `Stop-sale takvim taraması: +${newRecordsCount} kayıt (${stamp})`);
+
+  // AYLIK SHARD YAZIMI (14.09.2026 - veri kaybı düzeltmesi): bu turda bulunan yeni kayıtlar
+  // mailDate'e göre ay ay gruplanır, HER shard AYRI okunup (o anki en güncel haliyle),
+  // sadece o aya ait yeni kayıtlar eklenip TEKRAR yazılır. Her dosya küçük kaldığı için
+  // (bir ay içindeki mail sayısı sınırlı) asla 1MB sınırına yaklaşmaz, okuma asla
+  // "boşmuş gibi" görünmez, dolayısıyla üzerine yanlışlıkla boş yazma riski ortadan kalkar.
+  const byShardPath = {};
+  for (const rec of newRecordsThisRun) {
+    const p = rawLogShardPath(rec.mailDate);
+    if (!byShardPath[p]) byShardPath[p] = [];
+    byShardPath[p].push(rec);
+  }
+  let okLog = true;
+  for (const [shardPath, recs] of Object.entries(byShardPath)) {
+    const { data: shardData, sha: shardSha } = await githubReadJson(shardPath, { records: [] });
+    shardData.records = (shardData.records || []).concat(recs);
+    const wrote = await githubWriteJson(shardPath, shardData, shardSha, `Stop-sale takvim taraması: +${recs.length} kayıt (${shardPath}, ${stamp})`);
+    if (!wrote) okLog = false;
+  }
+
   const okReview = await githubWriteJson(REVIEW_PATH, reviewQueue, reviewSha, `Stop-sale takvim taraması: +${newReviewCount} gözden geçir (${stamp})`);
 
   res.status(200).json({
@@ -349,14 +410,29 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
 }
 
 async function handleGetCalendar(req, res) {
-  const { data: rawLog } = await githubReadJson(RAW_LOG_PATH, { records: [] });
-  const calendar = buildCalendarFromLog(rawLog.records || []);
-  res.status(200).json({ generatedAt: new Date().toISOString(), totalRawRecords: (rawLog.records || []).length, calendar });
+  const allRecords = await readAllRawLogRecords();
+  const calendar = buildCalendarFromLog(allRecords);
+  res.status(200).json({ generatedAt: new Date().toISOString(), totalRawRecords: allRecords.length, calendar });
 }
 
 async function handleGetReviewQueue(req, res) {
   const { data: reviewQueue } = await githubReadJson(REVIEW_PATH, { items: [] });
   res.status(200).json({ count: (reviewQueue.items || []).length, items: reviewQueue.items || [] });
+}
+
+// SIFIRLAMA (14.09.2026, veri kaybı düzeltmesi sonrası gerekli): ham log shard'lara
+// bölünmeden önceki tarama, progress.json'da 1510 mesajı "işlendi" olarak işaretlemişti,
+// ama o mesajlardan üretilen kayıtlar (rawLog) veri kaybı yüzünden silinmişti. Bu action
+// SADECE ilerleme sayaçlarını sıfırlar (processedMessageIds, fullyProcessedThreadIds,
+// consecutiveEmptyRuns) - review kuyruğuna VEYA (varsa) şu an var olan shard dosyalarına
+// DOKUNMAZ, sadece taramanın "en baştan, bu sefer doğru şekilde" tekrar geçmesini sağlar.
+// Kendi kendini onaran kontrol (readAllRawLogRecords) zaten hangi mesajların GERÇEKTEN
+// kayıtlı olduğunu görüp onları otomatik atlayacağı için, aynı işi iki kez yapma riski yok.
+async function handleResetCalendarProgress(req, res) {
+  const { sha } = await githubReadJson(PROGRESS_PATH, {});
+  const fresh = { processedMessageIds: [], fullyProcessedThreadIds: [], consecutiveEmptyRuns: 0, resetAt: new Date().toISOString() };
+  const ok = await githubWriteJson(PROGRESS_PATH, fresh, sha, `Stop-sale takvim: ilerleme sıfırlandı (veri kaybı düzeltmesi sonrası, ${new Date().toISOString()})`);
+  res.status(200).json({ ok, message: ok ? 'İlerleme sıfırlandı, tarama en baştan (ama artık her mesaj gerçekten kayıtlıysa atlanacak şekilde) başlayabilir.' : 'Sıfırlama yazımı başarısız oldu.' });
 }
 
 function findHtmlBody(payload) {
@@ -715,10 +791,11 @@ export default async function handler(req, res) {
   // KALICI TAKVİM aksiyonları (14.09.2026 eklendi) - var olan 'report' (varsayılan,
   // aşağıdaki try bloğu) davranışını HİÇ DEĞİŞTİRMEZ, sadece yeni action dallarını yakalar.
   const action = req.query.action || (req.body && req.body.action) || 'report';
-  if (action === 'buildCalendarBatch' || action === 'getCalendar' || action === 'getReviewQueue') {
+  if (action === 'buildCalendarBatch' || action === 'getCalendar' || action === 'getReviewQueue' || action === 'resetCalendarProgress') {
     try {
       if (action === 'getCalendar') { await handleGetCalendar(req, res); return; }
       if (action === 'getReviewQueue') { await handleGetReviewQueue(req, res); return; }
+      if (action === 'resetCalendarProgress') { await handleResetCalendarProgress(req, res); return; }
       const accessTokenCal = await getAccessToken();
       await handleBuildCalendarBatch(req, res, accessTokenCal);
     } catch (e) {
