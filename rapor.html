@@ -956,26 +956,46 @@ async function loadStopSaleCalendar(forceRefresh) {
     }
 
     const select = document.getElementById('ss-hotel-select');
-    // KOZMETİK FİLTRE (18.09.2026 eklendi): ayrıştırma hatası yüzünden bazı maillerde oda
-    // tipi metni yanlışlıkla "otel" alanına yazılmış (örn. "Bali House Garden", "Economy
-    // Room"). Veriye dokunmuyoruz (SS_CAL_DATA'da hâlâ duruyor) - sadece seçim listesinde
-    // gizliyoruz ki kullanıcı gerçek 18 oteli net görsün. Kök neden (hangi mail formatı
-    // bunu tetikliyor) ayrı bir düzeltme gerektiriyor, henüz yapılmadı.
-    const SS_KNOWN_JUNK_HOTELS = new Set(['Bali House Garden', 'Bali House Swim Up', 'Corner SuiTe',
-      'Course Booking', 'Deluxe Room (Suit)', 'Design Pool Villa', 'Economy Room', 'Exclusive Pool Villa',
-      'Family Pool Balcony (2th Floor )', 'Family Pool Swimup', 'Family Suite Garden',
-      'Family Suite Main Building', 'Lagoon Duplex Suite With Private Pool', 'Major Suite',
-      'Maldive House', 'Ottoman Spa Suite', 'Package Sales', 'Standart Room', 'Superior Pool Villa',
-      'Superior Room']);
-    const hotels = Object.keys(SS_CAL_DATA).filter(h => !SS_KNOWN_JUNK_HOTELS.has(h)).sort((a, b) => a.localeCompare(b, 'tr'));
+    // KANONİK 18 OTEL EŞLEMESİ (18.09.2026, kullanıcının gerçek partner listesine göre
+    // düzeltildi): açılır liste artık SADECE var olan verideki isimleri değil, sizin
+    // gerçek 18 otelinizi (hotel-packages.xlsx'teki isimlerle) gösteriyor - veri olsun
+    // olmasın hepsi listede. Bazı oteller mail formatına göre birden fazla ayrı isimle
+    // kaydedilmiş (örn. Sueno 6 varyanta bölünmüştü) - bunlar tek kanonik isim altında
+    // BİRLEŞTİRİLİYOR (oda tipleri toplanıyor). Veri hiç yoksa (Cornelia, Kaya Palazzo,
+    // Kaya Belek, Lykia, Robinson Nobilis, Sirene - şu an için, ya parse edilemedi ya da
+    // hiç mail bulunamadı) o otel yine listede görünür, sadece hücreler boş/açık kalır.
+    const SS_HOTEL_MAP = {
+      'Maxx Royal': ['Maxx Royal Belek Golf Resort'],
+      'Cornelia Diamond': ['Cornelia Diamond Golf Resort & Spa'],
+      'Regnum Carya': ['Regnum Carya'],
+      'Regnum The Crown': ['Regnum The Crown'],
+      'Cullinan Belek': ['Cullinan Belek'],
+      'Sueno Golf Belek': ['Sueno Golf', 'Sueno Golf Hotel Belek', 'Sueno Hotels Golf Belek'],
+      'Sueno DeLuxe Belek': ['Sueno Deluxe', 'Sueno Deluxe Hotel Belek', 'Sueno Hotels Deluxe Belek'],
+      'Kaya Palazzo': ['Kaya Palazzo / Kaya Belek', 'Kaya Palazzo'],
+      'Kaya Belek': ['Kaya Belek'],
+      'Titanic Deluxe Golf Belek': ['Titanic Deluxe Golf Belek'],
+      'Gloria Serenity': ['Gloria Serenity Resort'],
+      'Gloria Golf': ['Gloria Golf Resort'],
+      'Gloria Verde': ['Gloria Verde Resort'],
+      'Lykia World Antalya': ['Lykia World Antalya'],
+      'Kempinski Dome': ['Kempinski Hotel The Dome'],
+      'Robinson Nobilis': ['Robinson Nobilis'],
+      'Sirene Belek': ['Sirene Belek Golf Hotel', 'Sirene Belek'],
+      'Voyage Belek Golf & Spa': ['Voyage Belek']
+    };
+    SS_CANONICAL_MAP = SS_HOTEL_MAP;
+    const hotels = Object.keys(SS_HOTEL_MAP).sort((a, b) => a.localeCompare(b, 'tr'));
     select.innerHTML = hotels.map(h => `<option value="${escapeHtml(h)}">${escapeHtml(h)}</option>`).join('');
 
-    meta.textContent = `${data.totalRawRecords} ham kayıttan üretildi — ${hotels.length} otel — ${new Date(data.generatedAt).toLocaleString('tr-TR')}${newInfo}`;
+    meta.textContent = `${data.totalRawRecords} ham kayıttan üretildi — ${hotels.length} otel (18 partnerin tamamı listelenir, veri olmayanlar boş/açık gösterilir) — ${new Date(data.generatedAt).toLocaleString('tr-TR')}${newInfo}`;
     renderStopSaleCalendar();
   } catch (e) {
     meta.textContent = 'Bağlantı hatası: ' + e.message;
   }
 }
+
+let SS_CANONICAL_MAP = null;
 
 function ssShiftWindow(deltaMonths) {
   SS_WINDOW_START.setMonth(SS_WINDOW_START.getMonth() + deltaMonths);
@@ -987,13 +1007,26 @@ function ssDateKey(d) {
 }
 
 function renderStopSaleCalendar() {
-  if (!SS_CAL_DATA) return;
+  if (!SS_CAL_DATA || !SS_CANONICAL_MAP) return;
   const hotel = document.getElementById('ss-hotel-select').value;
-  const rooms = SS_CAL_DATA[hotel];
   const wrap = document.getElementById('ss-cal-table-wrap');
   document.getElementById('ss-window-label').textContent =
     SS_WINDOW_START.toLocaleDateString('tr-TR', { month: 'long', year: 'numeric' });
-  if (!rooms) { wrap.innerHTML = '<div style="color:#999;">Bu otel için veri yok.</div>'; return; }
+
+  // Varyant isimlerdeki oda tiplerini kanonik otel altında birleştir (union) - aynı oda
+  // tipi birden fazla varyantta çıkarsa, tarih durumları basitçe üst üste yazılır (bu
+  // varyantlar arasında gerçek tarih çakışması olası değil, farklı mail kaynakları).
+  const sourceKeys = SS_CANONICAL_MAP[hotel] || [];
+  const rooms = {};
+  for (const key of sourceKeys) {
+    const src = SS_CAL_DATA[key];
+    if (!src) continue;
+    for (const [room, dateStatus] of Object.entries(src)) {
+      if (!rooms[room]) rooms[room] = {};
+      Object.assign(rooms[room], dateStatus);
+    }
+  }
+  const hasAnyData = Object.keys(rooms).length > 0;
 
   const days = [];
   for (let i = 0; i < SS_WINDOW_DAYS; i++) {
@@ -1003,7 +1036,12 @@ function renderStopSaleCalendar() {
     days.push(d);
   }
 
-  let html = '<table style="border-collapse:collapse;font-size:11px;"><tr><th style="position:sticky;left:0;background:#222;padding:4px 8px;min-width:220px;text-align:left;">Oda Tipi</th>';
+  let html = '';
+  if (!hasAnyData) {
+    html += '<div style="color:#999;margin-bottom:8px;">Bu otel için stop/open-sale kaydı bulunamadı (henüz parse edilemedi veya bu dönemde mail gelmedi) — aşağıdaki takvim tüm günleri <b>varsayılan açık</b> gösteriyor, nihai teyidi otelden alın.</div>';
+  }
+
+  html += '<table style="border-collapse:collapse;font-size:11px;"><tr><th style="position:sticky;left:0;background:#222;padding:4px 8px;min-width:220px;text-align:left;">Oda Tipi</th>';
   for (const d of days) {
     html += `<th style="padding:2px;writing-mode:vertical-rl;min-width:20px;">${d.getDate()}</th>`;
   }
@@ -1015,9 +1053,11 @@ function renderStopSaleCalendar() {
   // kara liste bunu yakalayamaz. Bu deseni taşıyan satırları gizliyoruz (veri silinmiyor,
   // sadece görünümde saklanıyor).
   const SS_DATE_STRING_RE = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) [A-Za-z]{3} \d{1,2} \d{4}/;
-  const roomNames = Object.keys(rooms).filter(r => !SS_DATE_STRING_RE.test(r)).sort((a, b) => a.localeCompare(b, 'tr'));
+  const roomNames = hasAnyData
+    ? Object.keys(rooms).filter(r => !SS_DATE_STRING_RE.test(r)).sort((a, b) => a.localeCompare(b, 'tr'))
+    : ['Tüm Oda Tipleri (kayıt yok)'];
   for (const room of roomNames) {
-    const dateStatus = rooms[room];
+    const dateStatus = rooms[room] || {};
     html += `<tr><td style="position:sticky;left:0;background:#1a1a1a;padding:4px 8px;border:1px solid #333;">${escapeHtml(room)}</td>`;
     for (const d of days) {
       const status = dateStatus[ssDateKey(d)];
