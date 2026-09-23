@@ -6398,6 +6398,24 @@
       "type": "stop",
       "dateStart": "18.10.2026",
       "dateEnd": "18.10.2026"
+    },
+    {
+      "messageId": "1a0867c721116632",
+      "mailDate": "2026-09-09T14:04:58.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR GOLF VIEW GOLF PACKAGES YENİ",
+      "type": "stop",
+      "dateStart": "23.04.2027",
+      "dateEnd": "30.04.2027"
+    },
+    {
+      "messageId": "1a0867c721116632",
+      "mailDate": "2026-09-09T14:04:58.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "ALL MARKETS SUPERIOR GOLF VIEW GOLF PACKAGES NEW",
+      "type": "stop",
+      "dateStart": "23.04.2027",
+      "dateEnd": "30.04.2027"
     }
   ]
 }
