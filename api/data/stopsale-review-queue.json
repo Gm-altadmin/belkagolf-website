@@ -1,3 +1,11 @@
 {
-  "items": []
+  "items": [
+    {
+      "messageId": "1a0c3fae90eb7d41",
+      "mailDate": "2026-09-21T12:39:56.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    }
+  ]
 }
