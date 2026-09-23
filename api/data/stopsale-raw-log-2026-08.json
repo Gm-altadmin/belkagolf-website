@@ -2366,6 +2366,114 @@
       "type": "stop",
       "dateStart": "08.11.2026",
       "dateEnd": "15.11.2026"
+    },
+    {
+      "messageId": "1a0582c181ccb032",
+      "mailDate": "2026-08-31T14:14:40.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "TÜM Selçuk Suite",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a0582c181ccb032",
+      "mailDate": "2026-08-31T14:14:40.000Z",
+      "hotel": "Kempinski Hotel The Dome",
+      "roomType": "ALL Seljuk Suite",
+      "type": "stop",
+      "dateStart": "01.09.2026",
+      "dateEnd": "07.09.2026"
+    },
+    {
+      "messageId": "1a048cd671d514bd",
+      "mailDate": "2026-08-28T14:36:56.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "(ONE NIGHT) ALL MARKETS STANDARD ROOM NEW",
+      "type": "stop",
+      "dateStart": "04.09.2026",
+      "dateEnd": "04.09.2026"
+    },
+    {
+      "messageId": "1a048cd671d514bd",
+      "mailDate": "2026-08-28T14:36:56.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "(ONE NIGHT) ALL MARKETS SUPERIOR ROOM NEW",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a048cd671d514bd",
+      "mailDate": "2026-08-28T14:36:56.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "(ONE NIGHT) ALL MARKETS STANDARD ROOM NEW",
+      "type": "stop",
+      "dateStart": "04.09.2026",
+      "dateEnd": "04.09.2026"
+    },
+    {
+      "messageId": "1a048cd671d514bd",
+      "mailDate": "2026-08-28T14:36:56.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "(ONE NIGHT) ALL MARKETS SUPERIOR ROOM NEW",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a056e294bf9f2d6",
+      "mailDate": "2026-08-31T08:14:45.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (TEK GECE) TÜM PAZARLAR BÜTÜN ODA TİPLERİ (MALDIVE HOUSE, …",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a056e294bf9f2d6",
+      "mailDate": "2026-08-31T08:14:45.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (ONE NIGHT) ALL MARKETS ALL ROOM TYPES (EXC. MALDIVE HOUSE…",
+      "type": "stop",
+      "dateStart": "09.09.2026",
+      "dateEnd": "09.09.2026"
+    },
+    {
+      "messageId": "1a057b9c3bc0d394",
+      "mailDate": "2026-08-31T12:09:47.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (TEK GECE) TÜM PAZARLAR SUPERIOR ODA YENİ",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a057b9c3bc0d394",
+      "mailDate": "2026-08-31T12:09:47.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "TÜM PAZARLAR BALI HOUSE SWIM UP YENİ",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "24.09.2026"
+    },
+    {
+      "messageId": "1a057b9c3bc0d394",
+      "mailDate": "2026-08-31T12:09:47.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "– (ONE NIGHT) ALL MARKETS SUPERIOR ROOM NEW",
+      "type": "stop",
+      "dateStart": "10.09.2026",
+      "dateEnd": "10.09.2026"
+    },
+    {
+      "messageId": "1a057b9c3bc0d394",
+      "mailDate": "2026-08-31T12:09:47.000Z",
+      "hotel": "Cullinan Belek",
+      "roomType": "(INC.) ALL MARKETS BALI HOUSE SWIM UP NEW",
+      "type": "stop",
+      "dateStart": "19.09.2026",
+      "dateEnd": "24.09.2026"
     }
   ]
 }
