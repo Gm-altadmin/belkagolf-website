@@ -793,6 +793,60 @@ async function githubWriteJson(path, dataObj, sha, message) {
   return res.ok;
 }
 
+// --- TALEP RAPORU SATIR SİLME (23.09.2026) ---
+// Kullanıcı Talep Raporu'nda istenmeyen bir satırı 🗑 ile kalıcı kaldırabiliyor. Gönderen
+// ENGELLENMEZ (gürültü listesinden farkı bu) - sadece o yazışma gizlenir. Kayıt:
+// api/data/hidden-threads.json = { hidden: { threadId: gizlendiğiandakiSonMesajId } }.
+// GÜVENLİK: thread'e SONRADAN yeni mail gelirse son mesaj id değişir ve satır OTOMATİK geri
+// gelir - silinen bir yazışmaya gelen müşteri cevabı asla kaçmaz. Okuma hatasında asla yazılmaz,
+// çakışmada taze okunup birleştirilir (stopsale.js'te yaşanan veri kaybı dersinden).
+const HIDDEN_PATH = 'api/data/hidden-threads.json';
+
+async function hiddenRead() {
+  if (!process.env.GITHUB_TOKEN) return { data: { hidden: {} }, sha: null, ok: false };
+  const url = `https://api.github.com/repos/${GH_REPO_OWNER}/${GH_REPO_NAME}/contents/${HIDDEN_PATH}?ref=${GH_BRANCH}`;
+  const r = await fetch(url, { headers: {
+    Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28'
+  } });
+  if (r.status === 404) return { data: { hidden: {} }, sha: null, ok: true };
+  if (!r.ok) return { data: { hidden: {} }, sha: null, ok: false };
+  const json = await r.json();
+  try {
+    const data = JSON.parse(Buffer.from(json.content || '', 'base64').toString('utf8'));
+    if (!data.hidden || typeof data.hidden !== 'object') data.hidden = {};
+    return { data, sha: json.sha, ok: true };
+  } catch (e) {
+    return { data: { hidden: {} }, sha: json.sha, ok: false };
+  }
+}
+
+async function handleHideThreads(req, res) {
+  const keys = (req.body && req.body.keys) || [];
+  const valid = Array.isArray(keys) ? keys.filter((k) => k && typeof k.t === 'string' && typeof k.m === 'string').slice(0, 50) : [];
+  if (valid.length === 0) {
+    res.status(400).json({ error: 'Silinecek satır bilgisi eksik.' });
+    return;
+  }
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const { data, sha, ok } = await hiddenRead();
+    if (!ok) {
+      res.status(503).json({ error: 'Kayıt geçici olarak okunamadı, birkaç saniye sonra tekrar deneyin.' });
+      return;
+    }
+    for (const k of valid) data.hidden[k.t] = k.m;
+    data.updatedAt = new Date().toISOString();
+    const wrote = await githubWriteJson(HIDDEN_PATH, data, sha, `Talep Raporu: ${valid.length} satır gizlendi`);
+    if (wrote) {
+      res.status(200).json({ ok: true, hiddenCount: Object.keys(data.hidden).length });
+      return;
+    }
+    await new Promise((r) => setTimeout(r, 400 + Math.floor(Math.random() * 800)));
+  }
+  res.status(503).json({ error: 'Kaydedilemedi (çakışma), tekrar deneyin.' });
+}
+
 // --- Growth OS Yanıtları (action=growthOsScan/growthOsDraft/growthOsSend, 09.09.2026) ---
 // Belka Growth OS (ayrı bir proje: React+tRPC+TiDB, belka-growth-os.vercel.app) B2B
 // ortaklık teklifi mailleri gönderiyor, "growth-os" Gmail etiketiyle. Bu, o projenin
@@ -1546,6 +1600,15 @@ export default async function handler(req, res) {
 
   // Silme işlemi Gmail erişimi gerektirmiyor (sadece GitHub'daki kaydı düzenliyor) -
   // getAccessToken() çağrısına hiç gerek yok, ayrı ve daha basit bir dal.
+  if (action === 'hideThreads') {
+    try {
+      await handleHideThreads(req, res);
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+    return;
+  }
+
   if (action === 'growthOsDeleteItem') {
     try {
       await handleGrowthOsDeleteItem(req, res);
@@ -1679,12 +1742,17 @@ export default async function handler(req, res) {
       detailResults.push(...group_dets);
     }
 
+    const hiddenRes = await hiddenRead();
+    const hiddenMap = hiddenRes.ok ? (hiddenRes.data.hidden || {}) : {};
+
     const rawItems = [];
     for (const det of detailResults) {
       const msgs = det.messages || [];
       const first = msgs[0];
       const last = msgs[msgs.length - 1];
       if (!last) continue;
+      // Kullanıcı bu satırı silmişse ve o zamandan beri YENİ mail gelmemişse gösterme.
+      if (hiddenMap[det.id] && hiddenMap[det.id] === last.id) continue;
 
       const subject = getHeaderFrom(last, 'Subject');
       const lastFrom = getHeaderFrom(last, 'From');
@@ -1716,6 +1784,7 @@ export default async function handler(req, res) {
       rawItems.push({
         index: rawItems.length + 1,
         threadId: det.id,
+        lastMessageId: last.id,
         subject, from: lastFrom, date, snippet,
         trail: rawTrail, lastColor, daysWaiting, isUrgentKw, isPriceShopping,
         groupSize, nights, loyal, messageCount: msgs.length, rawMsgs,
@@ -1754,7 +1823,8 @@ export default async function handler(req, res) {
         groupSize: it.groupSize,
         messageCount: it.messageCount,
         isLate,
-        customerKey: it.customerKey
+        customerKey: it.customerKey,
+        hideKeys: [{ t: it.threadId, m: it.lastMessageId }]
       });
     }
 
@@ -1784,12 +1854,15 @@ export default async function handler(req, res) {
       } else {
         existing.mergedCount += 1;
         existing.otherSubjects.push(it.subject);
+        const combinedHideKeys = (existing.hideKeys || []).concat(it.hideKeys || []);
+        existing.hideKeys = combinedHideKeys;
         if (new Date(it.date) > new Date(existing.date)) {
           const otherSubjects = [...existing.otherSubjects, existing.subject];
           const mergedCount = existing.mergedCount;
           Object.assign(existing, it);
           existing.otherSubjects = otherSubjects;
           existing.mergedCount = mergedCount;
+          existing.hideKeys = combinedHideKeys;
         }
       }
     }
