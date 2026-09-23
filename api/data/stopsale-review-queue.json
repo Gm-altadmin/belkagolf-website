@@ -13,6 +13,57 @@
       "hotel": "Kaya Palazzo / Kaya Belek",
       "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0b39b1eec8cc6f",
+      "mailDate": "2026-09-18T08:21:23.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0ae321d77ff374",
+      "mailDate": "2026-09-17T07:08:35.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0aa6579efde49a",
+      "mailDate": "2026-09-16T13:26:12.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0a9f3959d15303",
+      "mailDate": "2026-09-16T11:21:48.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0a944e26576a58",
+      "mailDate": "2026-09-16T08:10:59.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a08f157fbf08417",
+      "mailDate": "2026-09-11T06:09:06.000Z",
+      "hotel": "Regnum Carya / Regnum The Crown",
+      "subject": "OPEN SALE/REGNUM CARYA 11.09.2026",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "1a08f157fbf08417",
+        "mailDate": "2026-09-11T06:09:06.000Z",
+        "hotel": "Regnum Carya / Regnum The Crown",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "open",
+        "dateStart": "18.09.2026",
+        "dateEnd": "18.09.2026"
+      }
     }
   ]
 }
