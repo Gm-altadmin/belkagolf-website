@@ -1513,14 +1513,48 @@ function buildRow(item, rowIdx) {
     </td>
   </tr>`;
 
-  return `<tr${lateStyle}>
+  // SATIR SİLME (23.09.2026): satırın gizleme anahtarları global kayıtta tutulur, düğme
+  // sadece satır numarasını taşır (HTML içine JSON gömmekten daha güvenli).
+  ROW_HIDE_KEYS[rowIdx] = item.hideKeys || [];
+  const hideBtn = (item.hideKeys && item.hideKeys.length)
+    ? `<button class="reminder-btn" style="margin-left:6px;" title="Bu satırı Talep Raporu'ndan kalıcı kaldır (yazışmaya yeni mail gelirse geri gelir)" onclick="hideRow('${rowIdx}', this)">🗑 Sil</button>`
+    : '';
+
+  return `<tr${lateStyle} id="row-${rowIdx}">
     <td>${d}</td>
     <td>${escapeHtml(item.from)}</td>
     <td>${escapeHtml(item.subject)}${mergeBadge}${otherSubjectsHtml}${noiseBadge}</td>
     <td>${escapeHtml(item.snippet).slice(0, 120)}${item.snippet.length > 120 ? '…' : ''}</td>
     <td>${renderTrail(item.trail)}<span class="status-label">${escapeHtml(item.statusLabel)}</span></td>
-    <td class="oneri">${escapeHtml(item.oneri)}${reminderBtn}</td>
+    <td class="oneri">${escapeHtml(item.oneri)}${reminderBtn}${hideBtn}</td>
   </tr>${reminderRow}`;
+}
+
+const ROW_HIDE_KEYS = {};
+
+async function hideRow(rowIdx, btn) {
+  const keys = ROW_HIDE_KEYS[rowIdx] || [];
+  if (!keys.length) return;
+  if (!confirm('Bu satır Talep Raporu\'ndan kalıcı olarak kaldırılsın mı?\n\nGönderen engellenmez. Bu yazışmaya ileride yeni bir mail gelirse satır otomatik olarak geri gelir.')) return;
+  btn.disabled = true;
+  btn.textContent = 'Siliniyor...';
+  try {
+    const res = await fetch('/api/rapor', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: SAVED_PW, action: 'hideThreads', keys })
+    });
+    const data = await res.json();
+    if (!res.ok || !data.ok) throw new Error(data.error || 'Silinemedi');
+    const row = document.getElementById('row-' + rowIdx);
+    const rem = document.getElementById('reminder-row-' + rowIdx);
+    if (row) row.remove();
+    if (rem) rem.remove();
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = '🗑 Sil';
+    alert('Silinemedi: ' + e.message);
+  }
 }
 
 function buildTable(items, startIdx) {
