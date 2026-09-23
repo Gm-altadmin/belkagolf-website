@@ -189,7 +189,7 @@ async function extractRecordsForMessage(msg, accessToken) {
   }
 
   if (entries.length === 0) {
-    entries = extractFromPlainTextLines(findPlainBody(msg.payload));
+    entries = extractFromPlainTextLines(findPlainBody(msg.payload), sType);
   }
 
   let lowConfidence = false;
@@ -217,6 +217,9 @@ async function extractRecordsForMessage(msg, accessToken) {
   const reviewItems = [];
   for (const e of entries) {
     if (isNaN(e.dateStart.getTime()) || isNaN(e.dateEnd.getTime())) continue;
+    // SAÇMA TARİH KORUMASI (20.09.2026): bozuk yazımlar ("20.09.202" gibi) yıl 202/999
+    // üretiyordu - 2025-2028 dışı veya 400 günden uzun aralıklar kayda girmez.
+    if (!isSaneRange(e.dateStart, e.dateEnd)) continue;
     const hotel = e.subHotel ? e.subHotel.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()) : baseHotel;
     const rec = {
       messageId: msg.id,
@@ -239,6 +242,19 @@ async function extractRecordsForMessage(msg, accessToken) {
 // Ham log'dan çözümlenmiş takvimi hesaplar (replay). Mail tarihine göre kronolojik
 // (eskiden yeniye) sıralayıp her kaydı sırayla uygular - aynı gün için sonraki kayıt
 // bir öncekini ezer ("en son mail kazanır", kullanıcı onayı 14.09.2026).
+// Makul tarih penceresi: 2025-01-01 .. 2028-12-31 ve en fazla 400 günlük aralık.
+// ÖNEMLİ: bu olmadan tek bir bozuk kayıt (örn. yıl 202 -> 2026) gün-gün döngüde
+// ~660.000 iterasyon yapıp getCalendar'ı yavaşlatıyor ve JSON'u MB'larca şişiriyordu
+// (indirilen takvim dosyasında 1.3 milyon sahte gün hücresi bu yüzdendi).
+const SANE_MIN = new Date(2025, 0, 1).getTime();
+const SANE_MAX = new Date(2028, 11, 31).getTime();
+function isSaneRange(start, end) {
+  const a = start.getTime(), b = end.getTime();
+  if (isNaN(a) || isNaN(b)) return false;
+  if (a < SANE_MIN || b > SANE_MAX || b < a) return false;
+  return (b - a) / 86400000 <= 400;
+}
+
 function buildCalendarFromLog(records) {
   const sorted = [...records].sort((a, b) => new Date(a.mailDate) - new Date(b.mailDate));
   const calendar = {}; // calendar[hotel][roomType][YYYY-MM-DD] = 'stop'|'open'|'limited'
@@ -248,7 +264,7 @@ function buildCalendarFromLog(records) {
     if (!calendar[rec.hotel][rec.roomType]) calendar[rec.hotel][rec.roomType] = {};
     const start = parseTR(rec.dateStart);
     const end = parseTR(rec.dateEnd);
-    if (isNaN(start.getTime()) || isNaN(end.getTime())) continue;
+    if (!isSaneRange(start, end)) continue; // bozuk eski kayıtları atla (bkz. isSaneRange)
     for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
       const key = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
       calendar[rec.hotel][rec.roomType][key] = rec.type;
@@ -303,6 +319,7 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
   // `limit`'e daha ulaşmamış olsak bile - bu sayede tek bir çağrıda çok daha fazla thread
   // "bitti" olarak işaretlenip bir sonraki tur için gerçekten küçülüyor.
   const fullyProcessedThreadIds = new Set(progress.fullyProcessedThreadIds || []);
+  const prevFullyCount = fullyProcessedThreadIds.size;
   const candidateThreadIds = allThreadIds.filter(id => !fullyProcessedThreadIds.has(id));
   const BATCH_FETCH_CAP = 150; // bir çağrıda en fazla bu kadar thread detayı çekilir (süre güvenliği)
   const threadsBatch = candidateThreadIds.slice(0, BATCH_FETCH_CAP);
@@ -374,7 +391,16 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
   const reliableDone = thisRunLooksReliable && progress.consecutiveEmptyRuns >= 3;
 
   const stamp = new Date().toISOString();
-  const okProgress = await githubWriteJson(PROGRESS_PATH, progress, progressSha, `Stop-sale takvim taraması: ilerleme güncellendi (${stamp})`);
+  // GEREKSİZ COMMIT ENGELİ (20.09.2026): panel sekmesi her açıldığında otomatik tarama
+  // çalışıyor - hiçbir şey değişmese bile progress/review GitHub'a yazılıyordu, her yazım
+  // bir commit = bir Vercel deploy denemesi demekti (günlük deploy kotasının dolmasının
+  // sebeplerinden biri). Artık sadece GERÇEK bir değişiklik varsa yazılıyor. Boş turlarda
+  // sayaç sadece 'bitti' eşiğine (3) kadar kaydedilir, sonrası hiç yazılmaz.
+  const progressChanged = messagesProcessed > 0 || newlyProcessedIds.length > 0 ||
+    fullyProcessedThreadIds.size !== prevFullyCount || (progress.consecutiveEmptyRuns <= 3 && thisRunLooksReliable);
+  const okProgress = progressChanged
+    ? await githubWriteJson(PROGRESS_PATH, progress, progressSha, `Stop-sale takvim taraması: ilerleme güncellendi (${stamp})`)
+    : true;
 
   // AYLIK SHARD YAZIMI (14.09.2026 - veri kaybı düzeltmesi): bu turda bulunan yeni kayıtlar
   // mailDate'e göre ay ay gruplanır, HER shard AYRI okunup (o anki en güncel haliyle),
@@ -395,7 +421,9 @@ async function handleBuildCalendarBatch(req, res, accessToken) {
     if (!wrote) okLog = false;
   }
 
-  const okReview = await githubWriteJson(REVIEW_PATH, reviewQueue, reviewSha, `Stop-sale takvim taraması: +${newReviewCount} gözden geçir (${stamp})`);
+  const okReview = newReviewCount > 0
+    ? await githubWriteJson(REVIEW_PATH, reviewQueue, reviewSha, `Stop-sale takvim taraması: +${newReviewCount} gözden geçir (${stamp})`)
+    : true;
 
   res.status(200).json({
     ok: okProgress && okLog && okReview,
@@ -432,10 +460,17 @@ async function handleGetReviewQueue(req, res) {
 // Kendi kendini onaran kontrol (readAllRawLogRecords) zaten hangi mesajların GERÇEKTEN
 // kayıtlı olduğunu görüp onları otomatik atlayacağı için, aynı işi iki kez yapma riski yok.
 async function handleResetCalendarProgress(req, res) {
+  // DÜZELTME (20.09.2026): review kuyruğu da temizleniyor. Kendi kendini onaran kontrol,
+  // kuyruktaki mailleri "zaten işlendi" sayıyordu - yani parser iyileşse bile (Cornelia/
+  // Sirene gibi) o mailler ASLA yeniden denenmezdi. Kuyruk boşaltılınca bu mailler yeni
+  // parser'la tekrar işlenir; hâlâ çözülemeyenler kuyruğa geri düşer. Ham log shard'larına
+  // DOKUNULMAZ - orada kayıtlı mailler atlanmaya devam eder (mükerrer kayıt oluşmaz).
   const { sha } = await githubReadJson(PROGRESS_PATH, {});
-  const fresh = { processedMessageIds: [], fullyProcessedThreadIds: [], consecutiveEmptyRuns: 0, resetAt: new Date().toISOString() };
-  const ok = await githubWriteJson(PROGRESS_PATH, fresh, sha, `Stop-sale takvim: ilerleme sıfırlandı (veri kaybı düzeltmesi sonrası, ${new Date().toISOString()})`);
-  res.status(200).json({ ok, message: ok ? 'İlerleme sıfırlandı, tarama en baştan (ama artık her mesaj gerçekten kayıtlıysa atlanacak şekilde) başlayabilir.' : 'Sıfırlama yazımı başarısız oldu.' });
+  const fresh = { processedMessageIds: [], fullyProcessedThreadIds: [], consecutiveEmptyRuns: 0, maxSeenCandidateThreads: 0, resetAt: new Date().toISOString() };
+  const ok = await githubWriteJson(PROGRESS_PATH, fresh, sha, `Stop-sale takvim: ilerleme sıfırlandı (${new Date().toISOString()})`);
+  const { sha: reviewSha } = await githubReadJson(REVIEW_PATH, { items: [] });
+  const okReview = await githubWriteJson(REVIEW_PATH, { items: [] }, reviewSha, `Stop-sale takvim: gözden geçir kuyruğu sıfırlandı (${new Date().toISOString()})`);
+  res.status(200).json({ ok: ok && okReview, message: (ok && okReview) ? 'İlerleme ve gözden geçir kuyruğu sıfırlandı - tarama yeniden başlatılabilir.' : 'Sıfırlama yazımı başarısız oldu.' });
 }
 
 function findHtmlBody(payload) {
@@ -515,6 +550,81 @@ const OPEN_RE = /open sale|satışa açık|satisa acik/i;
 // DELUXE HOTEL BELEK") alt-otel adı olarak takip eder.
 const LINE_DATE_SALE_RE = /(\d{1,2})\.(\d{1,2})(?:\.(\d{2,4}))?(?:\s*[-–—]\s*(\d{1,2})\.(\d{1,2})\.(\d{2,4}))?\s*tarih(?:inde|leri\s+dahil)\s+(.+?)\s+(STOP\s*SALE|OPEN\s*SALE|SATIŞA\s*KAPALI|SATIŞA\s*AÇIK)/i;
 
+// SIRENE FORMATI (18.09.2026 eklendi): Sirene her SATIRA "*ODA TİPİ DD.MM[.YYYY][-DD.MM.YYYY]
+// - N GECE*" yazıyor (STOP/OPEN kelimesi satırda değil, mailin genelinde bir kez geçiyor) -
+// LINE_DATE_SALE_RE'nin "tarih(inde/leri dahil) ... STOP/OPEN SALE" kalıbına uymadığı için
+// hep "tek tarih düşük güven" son çaresine düşüyordu, çoklu segmentler kayboluyordu.
+const SIRENE_LINE_RE = /^\*?\s*(.+?)\s+(\d{1,2})\.(\d{1,2})(?:\.(\d{2,4}))?(?:\s*[-–—]\s*(\d{1,2})\.(\d{1,2})\.(\d{2,4}))?\s*[-–—]?\s*\d+\s*(?:GECE|NIGHTS?)\b/i;
+
+function extractSireneStyleLine(line, saleType) {
+  const cleaned = line.replace(/^\*+\s*/, '').replace(/\*+\s*$/, '').trim();
+  const m = cleaned.match(SIRENE_LINE_RE);
+  if (!m) return null;
+  const d1 = parseInt(m[2], 10), mo1 = parseInt(m[3], 10);
+  const y1raw = m[4] ? (m[4].length === 2 ? 2000 + parseInt(m[4], 10) : parseInt(m[4], 10)) : null;
+  let dateStart, dateEnd;
+  if (m[5]) {
+    const d2 = parseInt(m[5], 10), mo2 = parseInt(m[6], 10);
+    const y2 = m[7].length === 2 ? 2000 + parseInt(m[7], 10) : parseInt(m[7], 10);
+    dateEnd = new Date(y2, mo2 - 1, d2);
+    dateStart = new Date(y1raw !== null ? y1raw : y2, mo1 - 1, d1);
+  } else {
+    if (y1raw === null) return null; // tek tarihte yıl yoksa güvenli tarafta kal
+    dateStart = new Date(y1raw, mo1 - 1, d1);
+    dateEnd = dateStart;
+  }
+  if (isNaN(dateStart.getTime()) || isNaN(dateEnd.getTime())) return null;
+  let context = m[1].trim();
+  if (context.length > 60) context = context.slice(0, 60) + '…';
+  return { dateStart, dateEnd, type: saleType, context, subHotel: null };
+}
+
+// CORNELIA FORMATI (18.09.2026 eklendi): tarihler Türkçe/İngilizce AY İSMİYLE yazılı
+// ("02 EYLÜL 2026"), HTML tablosu satır-satır START/END/ODA_TİPİ/PAZAR şeklinde 4'lü
+// gruplar halinde metne dönüşüyor - DATE_RANGE_RE (DD.MM.YYYY) bunu hiç tanımıyordu.
+const TR_MONTHS = { OCAK: 1, ŞUBAT: 2, SUBAT: 2, MART: 3, NİSAN: 4, NISAN: 4, MAYIS: 5, HAZİRAN: 6, HAZIRAN: 6,
+  TEMMUZ: 7, AĞUSTOS: 8, AGUSTOS: 8, EYLÜL: 9, EYLUL: 9, EKİM: 10, EKIM: 10, KASIM: 11, ARALIK: 12 };
+const EN_MONTHS = { JANUARY: 1, FEBRUARY: 2, MARCH: 3, APRIL: 4, MAY: 5, JUNE: 6, JULY: 7, AUGUST: 8,
+  SEPTEMBER: 9, OCTOBER: 10, NOVEMBER: 11, DECEMBER: 12 };
+const MONTH_NAME_LINE_RE = /^(\d{1,2})\s+([A-ZÇĞİÖŞÜa-zçğıöşü]+)\s+(\d{4})$/;
+
+function parseMonthNameDate(line) {
+  const m = (line || '').trim().match(MONTH_NAME_LINE_RE);
+  if (!m) return null;
+  const monthKey = m[2].toUpperCase();
+  const mo = TR_MONTHS[monthKey] || EN_MONTHS[monthKey];
+  if (!mo) return null;
+  const d = new Date(parseInt(m[3], 10), mo - 1, parseInt(m[1], 10));
+  return isNaN(d.getTime()) ? null : d;
+}
+
+function extractMonthNameTable(text, saleType) {
+  // DÜZELTME: gerçek maillerde tarih satırları arasında BOŞ SATIRLAR var (HTML tablo
+  // hücrelerinin düz metne dönüşme şekli) - ilk denemede bitişik satır beklendiği için
+  // hiçbir eşleşme bulunamamıştı. Önce boş satırları eleyip sadece dolu satırlarla
+  // çalışıyoruz, "iki ardışık ay-isimli tarih" kalıbı böylece doğru yakalanıyor.
+  const lines = (text || '').split(/\r?\n/).map(l => l.trim()).filter(l => l !== '');
+  const entries = [];
+  let i = 0;
+  while (i < lines.length - 1) {
+    const d1 = parseMonthNameDate(lines[i]);
+    if (!d1) { i++; continue; }
+    const d2 = parseMonthNameDate(lines[i + 1]);
+    if (!d2) { i++; continue; }
+    const contextParts = [];
+    let j = i + 2;
+    while (j < lines.length && !(parseMonthNameDate(lines[j]) && lines[j + 1] && parseMonthNameDate(lines[j + 1]))) {
+      if (!/pazar|market/i.test(lines[j])) contextParts.push(lines[j].replace(/\*/g, '').trim());
+      j++;
+    }
+    let context = contextParts.join(' ').trim() || '(oda tipi belirtilmemiş)';
+    if (context.length > 60) context = context.slice(0, 60) + '…';
+    entries.push({ dateStart: d1, dateEnd: d2, type: saleType, context, subHotel: null });
+    i = j;
+  }
+  return entries;
+}
+
 function isHeaderLine(line) {
   if (!line || line.length < 3 || line.length > 60) return false;
   if (/\d/.test(line)) return false;
@@ -523,8 +633,13 @@ function isHeaderLine(line) {
   return true;
 }
 
-function extractFromPlainTextLines(text) {
-  const lines = (text || '').split(/\r?\n/);
+function extractFromPlainTextLines(text, fallbackSaleType) {
+  // GÖRÜNMEZ KARAKTER TEMİZLİĞİ (18.09.2026 eklendi): bazı oteller (Sirene başta) satır
+  // içine zero-width space (\u200b) sıkıştırıyor - bu, "20.09.2026" gibi bir tarihi
+  // "20.09.202\u200b6" haline getirip regex'in yıl basamağını kırpmasına sebep oluyordu
+  // (canlı testte bulunan gerçek bug - "20.09.202" bozuk tarihi buradan geliyordu).
+  const cleanText = (text || '').replace(/[\u200B\u200C\u200D\uFEFF]/g, '');
+  const lines = cleanText.split(/\r?\n/);
   let currentSubHotel = null;
   const entries = [];
   for (const raw of lines) {
@@ -552,9 +667,21 @@ function extractFromPlainTextLines(text) {
       if (context.length > 60) context = context.slice(0, 60) + '…';
 
       entries.push({ dateStart, dateEnd, type, context, subHotel: currentSubHotel });
-    } else if (isHeaderLine(line)) {
-      currentSubHotel = line;
+      continue;
     }
+    // SIRENE KALIBI (18.09.2026): satırda STOP/OPEN kelimesi yok, mailin genel tipi
+    // (fallbackSaleType, subjectType()'tan) kullanılır.
+    if (fallbackSaleType) {
+      const sireneEntry = extractSireneStyleLine(line, fallbackSaleType);
+      if (sireneEntry) { entries.push(sireneEntry); continue; }
+    }
+    if (isHeaderLine(line)) currentSubHotel = line;
+  }
+  // CORNELIA KALIBI (18.09.2026): satır-satır değil, ardışık ay-isimli tarih ÇİFTLERİ +
+  // altındaki oda tipi satırları halinde - farklı bir tarama şekli gerektirir, yukarıdaki
+  // satır döngüsünden sonra, sadece hâlâ hiç kayıt yoksa denenir (ek/yedek yöntem).
+  if (entries.length === 0 && fallbackSaleType) {
+    entries.push(...extractMonthNameTable(cleanText, fallbackSaleType));
   }
   return entries;
 }
@@ -898,7 +1025,7 @@ export default async function handler(req, res) {
         // extractFromPlainTextLines yorumu, Sueno gibi tablosuz mailler için 29.08.2026 eklendi).
         if (entries.length === 0) {
           const plainLines = findPlainBody(msg.payload);
-          entries = extractFromPlainTextLines(plainLines);
+          entries = extractFromPlainTextLines(plainLines, sType);
         }
 
         // 2. çare de boşsa (nadir - genelde sadece PDF ekli maillerde), düz metinden TEK

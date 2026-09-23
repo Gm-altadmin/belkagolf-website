@@ -248,7 +248,13 @@ SADECE JSON dizisi döndür, başka hiçbir metin/açıklama/markdown ekleme:
         .join('\n\n');
 
       try {
-        const apiRes = await fetch('https://api.anthropic.com/v1/messages', {
+        // KARARLILIK DÜZELTMESİ (20.09.2026 - "Onaylı sayısı her açılışta 6-16 arası
+        // zıplıyor" şikayetinin ASIL sebebi): temperature hiç verilmemişti, varsayılan 1.0
+        // (rastgele mod) - aynı thread her sayfa yüklemesinde farklı sınıflanabiliyordu.
+        // temperature:0 ile aynı girdi = aynı karar. Ayrıca 8 grup paralel gittiğinde biri
+        // geçici hata (429 rate limit / 529 overloaded) alırsa o grup SESSİZCE regex
+        // fallback'e düşüp farklı sonuç veriyordu - artık 1 kez kısa beklemeyle tekrar deneniyor.
+        const callClaude = () => fetch('https://api.anthropic.com/v1/messages', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -258,10 +264,16 @@ SADECE JSON dizisi döndür, başka hiçbir metin/açıklama/markdown ekleme:
           body: JSON.stringify({
             model: 'claude-haiku-4-5-20251001',
             max_tokens: 2048,
+            temperature: 0,
             system: systemPrompt,
             messages: [{ role: 'user', content: listText }]
           })
         });
+        let apiRes = await callClaude();
+        if (!apiRes.ok && (apiRes.status === 429 || apiRes.status === 529 || apiRes.status >= 500)) {
+          await new Promise((r) => setTimeout(r, 1500));
+          apiRes = await callClaude();
+        }
         if (!apiRes.ok) throw new Error('anthropic_api_error');
 
         const data = await apiRes.json();
@@ -1619,16 +1631,37 @@ export default async function handler(req, res) {
 
     // maxResults 40 idi - yoğun trafikte 8 günlük pencerenin tamamı sığmıyordu.
     // Artık Gmail'in sayfalama (pageToken) mekanizmasıyla 150 thread'e kadar çekiliyor.
-    let threads = [];
-    let pageToken = '';
-    for (let i = 0; i < 4; i++) {
-      const url = `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(q)}&maxResults=50${pageToken ? `&pageToken=${pageToken}` : ''}`;
-      const listRes = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
-      const listData = await listRes.json();
-      threads = threads.concat(listData.threads || []);
-      if (!listData.nextPageToken || threads.length >= 150) break;
-      pageToken = listData.nextPageToken;
+    //
+    // GÜVENİLİRLİK DÜZELTMESİ (18.09.2026, kullanıcının fark ettiği bug): "Onaylı" sayısı
+    // panel her açılışta 6-16 arası rastgele zıplıyordu, hiçbir gerçek değişiklik olmadan.
+    // Kök neden stopsale.js'in kalıcı takvim projesinde CANLI TESTTE zaten kanıtlanmıştı:
+    // Gmail'in thread-arama sayfalaması BÜYÜK sonuç kümelerinde TUTARSIZ - aynı sorgu art
+    // arda çağrılarda farklı (bazen eksik) thread listeleri döndürebiliyor. Bu yüzden hangi
+    // threadlerin sınıflandırmaya girdiği her sayfa yüklemesinde değişiyor, dolayısıyla
+    // Onaylı/İptal sayıları da değişiyordu - sınıflandırma mantığında hata YOK, girdi
+    // listesi kararsızdı. Çözüm: AYNI sorguyu İKİ KEZ çekip (ardışık, ucuz - sadece ID
+    // listesi, ağır thread-detay çekimi değil) sonuçları thread ID'sine göre BİRLEŞTİRMEK
+    // (union) - iki bağımsız çağrının İKİSİNİN DE aynı threadi kaçırma ihtimali tek
+    // çağrıya göre çok daha düşük, aynı stopsale.js'teki "thisRunLooksReliable" dersinin
+    // burada uygulanabilir hali (orada tekrar deneme yapılabiliyordu, burada kullanıcı
+    // beklemesin diye tek istekte iki iç sorgu ile aynı güvenceyi sağlıyoruz).
+    async function fetchThreadIdsOnce() {
+      let ids = [];
+      let pt = '';
+      for (let i = 0; i < 4; i++) {
+        const url = `https://gmail.googleapis.com/gmail/v1/users/me/threads?q=${encodeURIComponent(q)}&maxResults=50${pt ? `&pageToken=${pt}` : ''}`;
+        const listRes = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
+        const listData = await listRes.json();
+        ids = ids.concat(listData.threads || []);
+        if (!listData.nextPageToken || ids.length >= 150) break;
+        pt = listData.nextPageToken;
+      }
+      return ids;
     }
+    const [pass1, pass2] = await Promise.all([fetchThreadIdsOnce(), fetchThreadIdsOnce()]);
+    const mergedById = new Map();
+    for (const t of pass1.concat(pass2)) mergedById.set(t.id, t);
+    let threads = Array.from(mergedById.values());
 
     // Thread detayları 10'arlı gruplar halinde PARALEL çekiliyor (Promise.all) -
     // seri yöntemde 150 thread 45-75sn sürüp Vercel timeout riski taşıyordu.
