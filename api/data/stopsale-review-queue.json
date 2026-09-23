@@ -170,6 +170,13 @@
       "hotel": "Kaya Palazzo / Kaya Belek",
       "subject": "KAYA BELEK STOP SALE INFORMATION_OVERBOOKING",
       "reason": "Tarih otomatik çıkarılamadı"
+    },
+    {
+      "messageId": "1a0425a5aca42e98",
+      "mailDate": "2026-08-27T08:33:33.000Z",
+      "hotel": "Kaya Palazzo / Kaya Belek",
+      "subject": "KAYA PALAZZO GOLF RESORT BELEK STOP SALE INFORMATION_OVERBOOKING",
+      "reason": "Tarih otomatik çıkarılamadı"
     }
   ]
 }
