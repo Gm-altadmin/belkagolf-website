@@ -242,6 +242,22 @@
         "dateStart": "25.10.2026",
         "dateEnd": "26.10.2026"
       }
+    },
+    {
+      "messageId": "19ffa0e3ca45c186",
+      "mailDate": "2026-08-13T07:37:45.000Z",
+      "hotel": "Regnum Carya / Regnum The Crown",
+      "subject": "OPEN SALE/REGNUM THE CROWN 13.08.2026",
+      "reason": "Tek tarih, düşük güven - oda tipi/aralık belirsiz olabilir",
+      "draftRecord": {
+        "messageId": "19ffa0e3ca45c186",
+        "mailDate": "2026-08-13T07:37:45.000Z",
+        "hotel": "Regnum Carya / Regnum The Crown",
+        "roomType": "(tek tarih, düşük güven)",
+        "type": "open",
+        "dateStart": "20.08.2026",
+        "dateEnd": "20.08.2026"
+      }
     }
   ]
 }
