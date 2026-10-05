@@ -662,6 +662,23 @@
           "translation": "Evet, daha fazla bilgi almak istiyoruz. Yarın saat 14:00'te görüşme yapabilir miyiz?"
         }
       ]
+    },
+    {
+      "threadId": "1a09645b30cafc64",
+      "from": "<golf@sungardenresort.ro>",
+      "subject": "RE: A considered Belek group-golf option for SunGarden Golf & Spa Resort",
+      "lastMessageId": "1a0b3df92bf39edd",
+      "latestCategory": "meeting",
+      "latestDate": "Fri, 18 Sep 2026 12:36:09 +0300",
+      "replies": [
+        {
+          "messageId": "1a0b3df92bf39edd",
+          "date": "Fri, 18 Sep 2026 12:36:09 +0300",
+          "snippet": "Dear Belka Golf Team, Thank you for reaching out. Yes, this is certainly of great interest to us, and we would be happy to discuss a potential collaboration. We can have a call starting from Monday,",
+          "category": "meeting",
+          "translation": "Belka Golf ekibine teşekkür ederiz. Bu konu bizim için kesinlikle ilgi çekicidir ve potansiyel bir işbirliği hakkında konuşmaktan memnuniyet duyarız. Pazartesi günü itibaren bir görüşme yapabiliriz."
+        }
+      ]
     }
   ],
   "recipientAddresses": [
@@ -862,5 +879,5 @@
     "dusan@golfbrothers.cz",
     "roman.svoboda@pga.cz"
   ],
-  "lastRunAt": "2026-09-16T08:37:56.951Z"
+  "lastRunAt": "2026-10-05T05:15:49.067Z"
 }
